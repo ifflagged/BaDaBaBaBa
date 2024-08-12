@@ -1,0 +1,77 @@
+name: Convert Modules
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天执行一次
+  workflow_dispatch: # 手动触发
+
+jobs:
+  update-snippet:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Download Pinduoduo.snippet
+      run: |
+        mkdir -p Original/ZenmoFeiShi
+        curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
+
+    - name: Prepare Replacement Variables
+      id: prepare-replacement
+      run: |
+        # 提取 hostname 后面的内容
+        HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Pinduoduo.snippet)
+        
+        # 生成拼多多注释行
+        COMMENT="# 拼多多 // $HOSTNAMES"
+        
+        # 将 COMMENT 变量导出为环境变量
+        echo "COMMENT=$COMMENT" >> $GITHUB_ENV
+
+    - name: Convert Pinduoduo.snippet to Surge sgmodule
+      run: |
+        # 创建 Modules/Surge 文件夹
+        mkdir -p Modules/Surge
+        
+        # 修改并生成适用于 Surge 的 sgmodule 文件
+        sed -e "1 i $COMMENT" \
+            -e 's/url reject-dict/- reject/Ig' \
+            -e '/url script-response-body/ s/^/Pinduoduo = type=http-response,pattern=/' \
+            -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+            -e 's/raw.githubusercontent.com/github.com/Ig' \
+            -e 's/\/main\//\/raw\/main\//Ig' \
+            -e 's/hostname =/hostname = %APPEND%/Ig' \
+            Original/ZenmoFeiShi/Pinduoduo.snippet > Modules/Surge/Pinduoduo.sgmodule
+
+    - name: Convert Pinduoduo.snippet to Loon plugin
+      run: |
+        # 创建 Modules/Loon 文件夹
+        mkdir -p Modules/Loon
+        
+        # 修改并生成适用于 Loon 的 plugin 文件
+        sed -e "1 i $COMMENT" \
+            -e 's/url reject-dict/reject-dict/Ig' \
+            -e '/url script-response-body/ s/^/http-response /' \
+            -e 's/url script-response-body/script-path=/Ig' \
+            -e '/script-path=/ s/$/, requires-body = true, tag = Pinduoduo/' \
+            -e 's/raw.githubusercontent.com/github.com/Ig' \
+            -e 's/\/main\//\/raw\/main\//Ig' \
+            Original/ZenmoFeiShi/Pinduoduo.snippet > Modules/Loon/Pinduoduo.plugin
+
+    - name: Create README in Modules directory
+      run: |
+        echo "# Modules for Surge and Loon" > Modules/README.md
+        echo "" >> Modules/README.md
+        echo "This repository contains Surge and Loon configurations." >> Modules/README.md
+        echo "" >> Modules/README.md
+        echo "## Source" >> Modules/README.md
+        echo "Pinduoduo snippet is sourced from: [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)" >> Modules/README.md
+
+    - name: Commit changes
+      run: |
+        git config --local user.name "ifflagged"
+        git config --local user.email "qibo.sign@outlook.com"
+        git add .
+        git commit -m "Convert Pinduoduo.snippet for Surge and Loon"
+        git push

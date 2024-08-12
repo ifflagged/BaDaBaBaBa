@@ -1,0 +1,78 @@
+name: Convert Lists
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天执行一次
+  workflow_dispatch: # 手动触发
+
+jobs:
+  update-lists:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Download MyBlockAds.list and Pinduoduo.list
+      run: |
+        mkdir -p Original/ZenmoFeiShi Original/RuCu6
+        curl -L -o Original/RuCu6/MyBlockAds.list https://github.com/RuCu6/QuanX/raw/main/Rules/MyBlockAds.list
+        curl -L -o Original/ZenmoFeiShi/Pinduoduo.list https://github.com/ZenmoFeiShi/rule/raw/main/Pinduoduo.list
+
+    - name: Merge Pinduoduo.list with MyBlockAds.list
+      run: |
+        # 在 Pinduoduo.list 前面添加 # 拼多多 注释
+        echo "# 拼多多" > Original/ZenmoFeiShi/TempPinduoduo.list
+        cat Original/ZenmoFeiShi/Pinduoduo.list >> Original/ZenmoFeiShi/TempPinduoduo.list
+        
+        # 合并 MyBlockAds.list 和 添加了注释的 Pinduoduo.list
+        cat Original/RuCu6/MyBlockAds.list Original/ZenmoFeiShi/TempPinduoduo.list > Original/MergedList.list
+
+    - name: Generate Reject.list for Surge
+      run: |
+        # 修改并生成适用于 Surge 的 Reject.list
+        mkdir -p Ruleset/Surge
+        sed -e 's/HOST/DOMAIN/Ig' \
+            -e 's/HOSt-SUFFIX/DOMAIN-SUFFIX/Ig' \
+            -e 's/HOST-KEYWORD/DOMAIN-KEYWORD/Ig' \
+            -e 's/IP-CIDR/IP-CIDR/Ig' \
+            -e 's/IP6-CIDR/IP-CIDR6/Ig' \
+            -e 's/REJECT/REJECT/Ig' \
+            -e 's@//@#@g' \
+            -e '/;/d' \
+            Original/MergedList.list > Ruleset/Surge/Reject.list
+
+    - name: Generate Reject.yaml for Clash
+      run: |
+        # 修改并生成适用于 Clash 的 Reject.yaml
+        mkdir -p Ruleset/Clash
+        echo "payload:" > Ruleset/Clash/Reject.yaml
+        sed -e 's/^DOMAIN/  - DOMAIN/Ig' \
+            -e 's/^DOMAIN-SUFFIX/  - DOMAIN-SUFFIX/Ig' \
+            -e 's/^DOMAIN-KEYWORD/  - DOMAIN-KEYWORD/Ig' \
+            -e 's/^IP-CIDR/  - IP-CIDR/Ig' \
+            -e 's/^IP-CIDR6/  - IP-CIDR6/Ig' \
+            -e 's@//@#@g' \
+            -e '/;/d' \
+            Ruleset/Surge/Reject.list >> Ruleset/Clash/Reject.yaml
+
+    - name: Clean up temporary files
+      run: |
+        rm Original/ZenmoFeiShi/TempPinduoduo.list
+        rm Original/MergedList.list
+
+    - name: Create README with source links
+      run: |
+        echo "# Ruleset Sources" > Ruleset/README.md
+        echo "" >> Ruleset/README.md
+        echo "## Surge and Clash" >> Ruleset/README.md
+        echo "" >> Ruleset/README.md
+        echo "- MyBlockAds.list: [RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rules/MyBlockAds.list)" >> Ruleset/README.md
+        echo "- Pinduoduo.list: [ZenmoFeiShi/rule](https://github.com/ZenmoFeiShi/rule/raw/main/Pinduoduo.list)" >> Ruleset/README.md
+
+    - name: Commit changes
+      run: |
+        git config --local user.name "ifflagged"
+        git config --local user.email "qibo.sign@outlook.com"
+        git add .
+        git commit -m "Update Reject lists"
+        git push

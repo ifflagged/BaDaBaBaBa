@@ -46,11 +46,16 @@ jobs:
         
         # 修改并生成适用于 Surge 的 Pinduoduo.sgmodule 文件
         sed -e "1 i $PDD_COMMENT" \
-            -e 's/url reject-dict/- reject/Ig' \
+            -e 's/url reject-dict/reject-dict/Ig' \
+            -e "s/url reject-200/- reject/Ig" \
+            -e 's/url reject/- reject/Ig' \
             -e '/url script-response-body/ s/^/Pinduoduo = type=http-response,pattern=/' \
+            -e '/url script-request-body/ s/^/Pinduoduo = type=http-request,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+            -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
+            -e 's/\/master\//\/raw\/master\//Ig' \
             -e 's/hostname =/hostname = %APPEND%/Ig' \
             Original/ZenmoFeiShi/Pinduoduo.snippet > Modules/Surge/Pinduoduo.sgmodule
 
@@ -62,22 +67,32 @@ jobs:
         # 修改并生成适用于 Loon 的 Pinduoduo.plugin 文件
         sed -e "1 i $PDD_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
+            -e "s/url reject-200/- reject/Ig" \
+            -e 's/url reject/- reject/Ig' \
             -e '/url script-response-body/ s/^/http-response /' \
+            -e '/url script-request-body/ s/^/http-request /' \
             -e 's/url script-response-body/script-path=/Ig' \
+            -e 's/url script-request-body/script-path=/Ig' \
             -e '/script-path=/ s/$/, requires-body = true, tag = Pinduoduo/' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
+            -e 's/\/master\//\/raw\/master\//Ig' \
             Original/ZenmoFeiShi/Pinduoduo.snippet > Modules/Loon/Pinduoduo.plugin
 
     - name: Convert SmzdmAds.conf to Surge sgmodule
       run: |
         # 修改并生成适用于 Surge 的 SmzdmAds.sgmodule 文件
         sed -e "1 i $SMZDM_COMMENT" \
+            -e 's/url reject-dict/reject-dict/Ig' \
             -e "s/url reject-200/- reject/Ig" \
+            -e 's/url reject/- reject/Ig' \
             -e '/url script-response-body/ s/^/SMZDM = type=http-response,pattern=/' \
+            -e '/url script-request-body/ s/^/SMZDM = type=http-request,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+            -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
+            -e 's/\/master\//\/raw\/master\//Ig' \
             -e 's/hostname =/hostname = %APPEND%/Ig' \
             Original/ddgksf2013/SmzdmAds.conf > Modules/Surge/SmzdmAds.sgmodule
 
@@ -85,11 +100,17 @@ jobs:
       run: |
         # 修改并生成适用于 Loon 的 SmzdmAds.plugin 文件
         sed -e "1 i $SMZDM_COMMENT" \
+            -e 's/url reject-dict/reject-dict/Ig' \
+            -e "s/url reject-200/- reject/Ig" \
+            -e 's/url reject/- reject/Ig' \
             -e '/url script-response-body/ s/^/http-response /' \
+            -e '/url script-request-body/ s/^/http-request /' \
             -e 's/url script-response-body/script-path=/Ig' \
+            -e 's/url script-request-body/script-path=/Ig' \
             -e '/script-path=/ s/$/, requires-body = true, tag = SMZDM/' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
+            -e 's/\/master\//\/raw\/master\//Ig' \
             Original/ddgksf2013/SmzdmAds.conf > Modules/Loon/SmzdmAds.plugin
 
     - name: Create README in Modules directory

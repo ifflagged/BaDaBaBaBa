@@ -1,4 +1,4 @@
-name: Convert Modules
+name: Convert Lists
 
 on:
   schedule:
@@ -6,154 +6,73 @@ on:
   workflow_dispatch: # 手动触发
 
 jobs:
-  update-snippet:
+  update-lists:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Download Pinduoduo.snippet, SmzdmAds.conf, and Didichuxing.snippet
+    - name: Download MyBlockAds.list and Pinduoduo.list
       run: |
-        mkdir -p Original/ZenmoFeiShi Original/ddgksf2013
-        curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
-        curl -L -o Original/ddgksf2013/SmzdmAds.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
-        curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
+        mkdir -p Original/ZenmoFeiShi Original/RuCu6
+        curl -L -o Original/RuCu6/MyBlockAds.list https://github.com/RuCu6/QuanX/raw/main/Rules/MyBlockAds.list
+        curl -L -o Original/ZenmoFeiShi/Pinduoduo.list https://github.com/ZenmoFeiShi/rule/raw/main/Pinduoduo.list
 
-    - name: Prepare Replacement Variables
-      id: prepare-replacement
+    - name: Merge Pinduoduo.list with MyBlockAds.list
       run: |
-        # 提取 Pinduoduo.snippet 中的 hostname
-        PDD_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Pinduoduo.snippet)
-        PDD_COMMENT="# 拼多多 // $PDD_HOSTNAMES"
-        echo "PDD_COMMENT=$PDD_COMMENT" >> $GITHUB_ENV
+        # 在 Pinduoduo.list 前面添加 # 拼多多 注释
+        echo "# 拼多多" > Original/ZenmoFeiShi/TempPinduoduo.list
+        cat Original/ZenmoFeiShi/Pinduoduo.list >> Original/ZenmoFeiShi/TempPinduoduo.list
+        
+        # 合并 MyBlockAds.list 和 添加了注释的 Pinduoduo.list
+        cat Original/RuCu6/MyBlockAds.list Original/ZenmoFeiShi/TempPinduoduo.list > Original/MergedList.list
 
-        # 提取 SmzdmAds.conf 中的 hostname
-        SMZDM_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ddgksf2013/SmzdmAds.conf)
-        SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
-        echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
-
-        # 提取 Didichuxing.snippet 中的 hostname
-        DIDI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Didichuxing.snippet)
-        DIDI_COMMENT="# 滴滴出行 // $DIDI_HOSTNAMES"
-        echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
-
-    - name: Convert Pinduoduo.snippet to Surge sgmodule
+    - name: Generate Reject.list for Surge
       run: |
-        mkdir -p Modules/Surge
-        sed -e "1 i $PDD_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
-            -e '/url script-response-body/ s/^/Pinduoduo = type=http-response,pattern=/' \
-            -e '/url script-request-body/ s/^/Pinduoduo = type=http-request,pattern=/' \
-            -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
-            -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
-            -e 's/raw.githubusercontent.com/github.com/Ig' \
-            -e 's/\/main\//\/raw\/main\//Ig' \
-            -e 's/\/master\//\/raw\/master\//Ig' \
-            -e 's/hostname =/hostname = %APPEND%/Ig' \
-            Original/ZenmoFeiShi/Pinduoduo.snippet > Modules/Surge/Pinduoduo.sgmodule
-
-    - name: Convert Pinduoduo.snippet to Loon plugin
-      run: |
-        mkdir -p Modules/Loon
-        sed -e "1 i $PDD_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
-            -e '/url script-response-body/ s/^/http-response /' \
-            -e '/url script-request-body/ s/^/http-request /' \
-            -e 's/url script-response-body/script-path=/Ig' \
-            -e 's/url script-request-body/script-path=/Ig' \
-            -e '/script-path=/ s/$/, requires-body = true, tag = Pinduoduo/' \
-            -e 's/raw.githubusercontent.com/github.com/Ig' \
-            -e 's/\/main\//\/raw\/main\//Ig' \
-            -e 's/\/master\//\/raw\/master\//Ig' \
-            Original/ZenmoFeiShi/Pinduoduo.snippet > Modules/Loon/Pinduoduo.plugin
-
-    - name: Convert SmzdmAds.conf to Surge sgmodule
-      run: |
-        sed -e "1 i $SMZDM_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
-            -e '/url script-response-body/ s/^/SMZDM = type=http-response,pattern=/' \
-            -e '/url script-request-body/ s/^/SMZDM = type=http-request,pattern=/' \
-            -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
-            -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
-            -e 's/raw.githubusercontent.com/github.com/Ig' \
-            -e 's/\/main\//\/raw\/main\//Ig' \
-            -e 's/\/master\//\/raw\/master\//Ig' \
-            -e 's/hostname =/hostname = %APPEND%/Ig' \
-            Original/ddgksf2013/SmzdmAds.conf > Modules/Surge/SmzdmAds.sgmodule
-
-    - name: Convert SmzdmAds.conf to Loon plugin
-      run: |
-        sed -e "1 i $SMZDM_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
-            -e '/url script-response-body/ s/^/http-response /' \
-            -e '/url script-request-body/ s/^/http-request /' \
-            -e 's/url script-response-body/script-path=/Ig' \
-            -e 's/url script-request-body/script-path=/Ig' \
-            -e '/script-path=/ s/$/, requires-body = true, tag = SMZDM/' \
-            -e 's/raw.githubusercontent.com/github.com/Ig' \
-            -e 's/\/main\//\/raw\/main\//Ig' \
-            -e 's/\/master\//\/raw\/master\//Ig' \
-            Original/ddgksf2013/SmzdmAds.conf > Modules/Loon/SmzdmAds.plugin
-
-    - name: Convert Didichuxing.snippet to Surge sgmodule
-      run: |
-        sed -e "1 i $DIDI_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
-            -e '/url script-response-body/ s/^/DIDI = type=http-response,pattern=/' \
-            -e '/url script-request-body/ s/^/DIDI = type=http-request,pattern=/' \
-            -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
-            -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
-            -e 's/raw.githubusercontent.com/github.com/Ig' \
-            -e 's/\/main\//\/raw\/main\//Ig' \
-            -e 's/\/master\//\/raw\/master\//Ig' \
+        # 修改并生成适用于 Surge 的 Reject.list
+        mkdir -p Ruleset/Surge
+        sed -e 's/HOST/DOMAIN/Ig' \
+            -e 's/HOSt-SUFFIX/DOMAIN-SUFFIX/Ig' \
+            -e 's/HOST-KEYWORD/DOMAIN-KEYWORD/Ig' \
             -e 's/IP-CIDR/IP-CIDR/Ig' \
+            -e 's/IP6-CIDR/IP-CIDR6/Ig' \
             -e 's/REJECT/REJECT/Ig' \
-            -e 's/hostname =/hostname = %APPEND%/Ig' \
-            Original/ZenmoFeiShi/Didichuxing.snippet > Modules/Surge/Didichuxing.sgmodule
+            -e 's@//@#@g' \
+            -e '/;/d' \
+            Original/MergedList.list > Ruleset/Surge/Reject.list
 
-    - name: Convert Didichuxing.snippet to Loon plugin
+    - name: Generate Reject.yaml for Clash
       run: |
-        sed -e "1 i $DIDI_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
-            -e '/url script-response-body/ s/^/http-response /' \
-            -e '/url script-request-body/ s/^/http-request /' \
-            -e 's/url script-response-body/script-path=/Ig' \
-            -e 's/url script-request-body/script-path=/Ig' \
-            -e '/script-path=/ s/$/, requires-body = true, tag = DIDI/' \
-            -e 's/raw.githubusercontent.com/github.com/Ig' \
-            -e 's/\/main\//\/raw\/main\//Ig' \
-            -e 's/\/master\//\/raw\/master\//Ig' \
-            -e 's/IP-CIDR/IP-CIDR/Ig' \
-            -e 's/, REJECT/, REJECT, no-resolve/Ig' \
-            Original/ZenmoFeiShi/Didichuxing.snippet > Modules/Loon/Didichuxing.plugin
+        # 修改并生成适用于 Clash 的 Reject.yaml
+        mkdir -p Ruleset/Clash
+        echo "payload:" > Ruleset/Clash/Reject.yaml
+        sed -e 's/^DOMAIN/  - DOMAIN/Ig' \
+            -e 's/^DOMAIN-SUFFIX/  - DOMAIN-SUFFIX/Ig' \
+            -e 's/^DOMAIN-KEYWORD/  - DOMAIN-KEYWORD/Ig' \
+            -e 's/^IP-CIDR/  - IP-CIDR/Ig' \
+            -e 's/^IP-CIDR6/  - IP-CIDR6/Ig' \
+            -e 's@//@#@g' \
+            -e '/;/d' \
+            Ruleset/Surge/Reject.list >> Ruleset/Clash/Reject.yaml
 
-    - name: Create README in Modules directory
+    - name: Clean up temporary files
       run: |
-        echo "# Modules for Surge and Loon" > Modules/README.md
-        echo "" >> Modules/README.md
-        echo "This repository contains Surge and Loon configurations." >> Modules/README.md
-        echo "" >> Modules/README.md
-        echo "## Source" >> Modules/README.md
-        echo "Pinduoduo snippet is sourced from: [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)" >> Modules/README.md
-        echo "SmzdmAds snippet is sourced from: [ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)" >> Modules/README.md
-        echo "Didichuxing snippet is sourced from: [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)" >> Modules/README.md
+        rm Original/ZenmoFeiShi/TempPinduoduo.list
+        rm Original/MergedList.list
+
+    - name: Create README with source links
+      run: |
+        echo "# Ruleset Sources" > Ruleset/README.md
+        echo "" >> Ruleset/README.md
+        echo "## Surge and Clash" >> Ruleset/README.md
+        echo "" >> Ruleset/README.md
+        echo "- MyBlockAds.list: [RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rules/MyBlockAds.list)" >> Ruleset/README.md
+        echo "- Pinduoduo.list: [ZenmoFeiShi/rule](https://github.com/ZenmoFeiShi/rule/raw/main/Pinduoduo.list)" >> Ruleset/README.md
 
     - name: Commit changes
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
         git add .
-        git commit -m "Convert Modules for Surge and Loon"
+        git commit -m "Update Reject lists"
         git push

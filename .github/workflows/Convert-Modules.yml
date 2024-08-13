@@ -46,7 +46,7 @@ jobs:
         
         # 修改并生成适用于 Surge 的 Pinduoduo.sgmodule 文件
         sed -e "1 i $PDD_COMMENT" \
-            -e 's/url reject-d both UK/ US/ UK -D/' \
+            -e 's/url reject-dict/- reject/Ig' \
             -e '/url script-response-body/ s/^/Pinduoduo = type=http-response,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \

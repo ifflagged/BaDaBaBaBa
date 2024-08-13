@@ -12,39 +12,34 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Download Pinduoduo.snippet and SmzdmAds.conf
+    - name: Download Pinduoduo.snippet, SmzdmAds.conf, and Didichuxing.snippet
       run: |
         mkdir -p Original/ZenmoFeiShi Original/ddgksf2013
         curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
         curl -L -o Original/ddgksf2013/SmzdmAds.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
+        curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
 
     - name: Prepare Replacement Variables
       id: prepare-replacement
       run: |
         # 提取 Pinduoduo.snippet 中的 hostname
         PDD_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Pinduoduo.snippet)
-        
-        # 生成拼多多注释行
         PDD_COMMENT="# 拼多多 // $PDD_HOSTNAMES"
-        
-        # 将 PDD_COMMENT 变量导出为环境变量
         echo "PDD_COMMENT=$PDD_COMMENT" >> $GITHUB_ENV
 
         # 提取 SmzdmAds.conf 中的 hostname
         SMZDM_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ddgksf2013/SmzdmAds.conf)
-
-        # 生成 SMZDM 注释行
         SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
-        
-        # 将 SMZDM_COMMENT 变量导出为环境变量
         echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
+
+        # 提取 Didichuxing.snippet 中的 hostname
+        DIDI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Didichuxing.snippet)
+        DIDI_COMMENT="# 滴滴出行 // $DIDI_HOSTNAMES"
+        echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
 
     - name: Convert Pinduoduo.snippet to Surge sgmodule
       run: |
-        # 创建 Modules/Surge 文件夹
         mkdir -p Modules/Surge
-        
-        # 修改并生成适用于 Surge 的 Pinduoduo.sgmodule 文件
         sed -e "1 i $PDD_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
             -e "s/url reject-200/- reject/Ig" \
@@ -61,10 +56,7 @@ jobs:
 
     - name: Convert Pinduoduo.snippet to Loon plugin
       run: |
-        # 创建 Modules/Loon 文件夹
         mkdir -p Modules/Loon
-        
-        # 修改并生成适用于 Loon 的 Pinduoduo.plugin 文件
         sed -e "1 i $PDD_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
             -e "s/url reject-200/- reject/Ig" \
@@ -81,7 +73,6 @@ jobs:
 
     - name: Convert SmzdmAds.conf to Surge sgmodule
       run: |
-        # 修改并生成适用于 Surge 的 SmzdmAds.sgmodule 文件
         sed -e "1 i $SMZDM_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
             -e "s/url reject-200/- reject/Ig" \
@@ -98,7 +89,6 @@ jobs:
 
     - name: Convert SmzdmAds.conf to Loon plugin
       run: |
-        # 修改并生成适用于 Loon 的 SmzdmAds.plugin 文件
         sed -e "1 i $SMZDM_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
             -e "s/url reject-200/- reject/Ig" \
@@ -113,6 +103,42 @@ jobs:
             -e 's/\/master\//\/raw\/master\//Ig' \
             Original/ddgksf2013/SmzdmAds.conf > Modules/Loon/SmzdmAds.plugin
 
+    - name: Convert Didichuxing.snippet to Surge sgmodule
+      run: |
+        sed -e "1 i $DIDI_COMMENT" \
+            -e 's/url reject-dict/reject-dict/Ig' \
+            -e "s/url reject-200/- reject/Ig" \
+            -e 's/url reject/- reject/Ig' \
+            -e '/url script-response-body/ s/^/DIDI = type=http-response,pattern=/' \
+            -e '/url script-request-body/ s/^/DIDI = type=http-request,pattern=/' \
+            -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+            -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
+            -e 's/raw.githubusercontent.com/github.com/Ig' \
+            -e 's/\/main\//\/raw\/main\//Ig' \
+            -e 's/\/master\//\/raw\/master\//Ig' \
+            -e 's/IP-CIDR/IP-CIDR/Ig' \
+            -e 's/REJECT/REJECT/Ig' \
+            -e 's/hostname =/hostname = %APPEND%/Ig' \
+            Original/ZenmoFeiShi/Didichuxing.snippet > Modules/Surge/Didichuxing.sgmodule
+
+    - name: Convert Didichuxing.snippet to Loon plugin
+      run: |
+        sed -e "1 i $DIDI_COMMENT" \
+            -e 's/url reject-dict/reject-dict/Ig' \
+            -e "s/url reject-200/- reject/Ig" \
+            -e 's/url reject/- reject/Ig' \
+            -e '/url script-response-body/ s/^/http-response /' \
+            -e '/url script-request-body/ s/^/http-request /' \
+            -e 's/url script-response-body/script-path=/Ig' \
+            -e 's/url script-request-body/script-path=/Ig' \
+            -e '/script-path=/ s/$/, requires-body = true, tag = DIDI/' \
+            -e 's/raw.githubusercontent.com/github.com/Ig' \
+            -e 's/\/main\//\/raw\/main\//Ig' \
+            -e 's/\/master\//\/raw\/master\//Ig' \
+            -e 's/IP-CIDR/IP-CIDR/Ig' \
+            -e 's/, REJECT/, REJECT, no-resolve/Ig' \
+            Original/ZenmoFeiShi/Didichuxing.snippet > Modules/Loon/Didichuxing.plugin
+
     - name: Create README in Modules directory
       run: |
         echo "# Modules for Surge and Loon" > Modules/README.md
@@ -122,11 +148,12 @@ jobs:
         echo "## Source" >> Modules/README.md
         echo "Pinduoduo snippet is sourced from: [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)" >> Modules/README.md
         echo "SmzdmAds snippet is sourced from: [ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)" >> Modules/README.md
+        echo "Didichuxing snippet is sourced from: [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)" >> Modules/README.md
 
     - name: Commit changes
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
         git add .
-        git commit -m "Convert Pinduoduo.snippet and SmzdmAds.conf for Surge and Loon"
+        git commit -m "Convert Modules for Surge and Loon"
         git push

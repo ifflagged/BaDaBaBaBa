@@ -12,11 +12,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Download Pinduoduo.snippet and Bilibili.conf
+    - name: Download Pinduoduo.snippet and SmzdmAds.conf
       run: |
         mkdir -p Original/ZenmoFeiShi Original/ddgksf2013
         curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
-        curl -L -o Original/ddgksf2013/Bilibili.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Bilibili.conf
+        curl -L -o Original/ddgksf2013/SmzdmAds.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
 
     - name: Prepare Replacement Variables
       id: prepare-replacement
@@ -30,14 +30,14 @@ jobs:
         # 将 PDD_COMMENT 变量导出为环境变量
         echo "PDD_COMMENT=$PDD_COMMENT" >> $GITHUB_ENV
 
-        # 提取 Bilibili.conf 中的 hostname
-        BILI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ddgksf2013/Bilibili.conf)
+        # 提取 SmzdmAds.conf 中的 hostname
+        SMZDM_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ddgksf2013/SmzdmAds.conf)
 
-        # 生成 Bilibili 注释行
-        BILI_COMMENT="# Bilibili // $BILI_HOSTNAMES"
+        # 生成 SMZDM 注释行
+        SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
         
-        # 将 BILI_COMMENT 变量导出为环境变量
-        echo "BILI_COMMENT=$BILI_COMMENT" >> $GITHUB_ENV
+        # 将 SMZDM_COMMENT 变量导出为环境变量
+        echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
 
     - name: Convert Pinduoduo.snippet to Surge sgmodule
       run: |
@@ -46,7 +46,7 @@ jobs:
         
         # 修改并生成适用于 Surge 的 Pinduoduo.sgmodule 文件
         sed -e "1 i $PDD_COMMENT" \
-            -e 's/url reject-dict/- reject/Ig' \
+            -e 's/url reject-d both UK/ US/ UK -D/' \
             -e '/url script-response-body/ s/^/Pinduoduo = type=http-response,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
@@ -69,28 +69,28 @@ jobs:
             -e 's/\/main\//\/raw\/main\//Ig' \
             Original/ZenmoFeiShi/Pinduoduo.snippet > Modules/Loon/Pinduoduo.plugin
 
-    - name: Convert Bilibili.conf to Surge sgmodule
+    - name: Convert SmzdmAds.conf to Surge sgmodule
       run: |
-        # 修改并生成适用于 Surge 的 Bilibili.sgmodule 文件
-        sed -e "1 i $BILI_COMMENT" \
+        # 修改并生成适用于 Surge 的 SmzdmAds.sgmodule 文件
+        sed -e "1 i $SMZDM_COMMENT" \
             -e "s/url reject-200/- reject/Ig" \
             -e '/url script-response-body/ s/^/SMZDM = type=http-response,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/hostname =/hostname = %APPEND%/Ig' \
-            Original/ddgksf2013/Bilibili.conf > Modules/Surge/Bilibili.sgmodule
+            Original/ddgksf2013/SmzdmAds.conf > Modules/Surge/SmzdmAds.sgmodule
 
-    - name: Convert Bilibili.conf to Loon plugin
+    - name: Convert SmzdmAds.conf to Loon plugin
       run: |
-        # 修改并生成适用于 Loon 的 Bilibili.plugin 文件
-        sed -e "1 i $BILI_COMMENT" \
+        # 修改并生成适用于 Loon 的 SmzdmAds.plugin 文件
+        sed -e "1 i $SMZDM_COMMENT" \
             -e '/url script-response-body/ s/^/http-response /' \
             -e 's/url script-response-body/script-path=/Ig' \
             -e '/script-path=/ s/$/, requires-body = true, tag = SMZDM/' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
-            Original/ddgksf2013/Bilibili.conf > Modules/Loon/Bilibili.plugin
+            Original/ddgksf2013/SmzdmAds.conf > Modules/Loon/SmzdmAds.plugin
 
     - name: Create README in Modules directory
       run: |
@@ -100,12 +100,12 @@ jobs:
         echo "" >> Modules/README.md
         echo "## Source" >> Modules/README.md
         echo "Pinduoduo snippet is sourced from: [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)" >> Modules/README.md
-        echo "Bilibili snippet is sourced from: [ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Bilibili.conf)" >> Modules/README.md
+        echo "SmzdmAds snippet is sourced from: [ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)" >> Modules/README.md
 
     - name: Commit changes
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
         git add .
-        git commit -m "Convert Pinduoduo.snippet and Bilibili.conf for Surge and Loon"
+        git commit -m "Convert Pinduoduo.snippet and SmzdmAds.conf for Surge and Loon"
         git push

@@ -1,7 +1,7 @@
 # 拼多多 // api.pinduoduo.com
 #!name = 拼多多净化页面布局
 #!author = 怎么肥事
-#!update = 2024-08-10 15:23
+#!update = 2024-08-13 17:04
 
 ^https:\/\/api\.pinduoduo\.com\/search_hotquery reject-dict
 ^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data reject-dict
@@ -12,6 +12,7 @@
 ^https:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append reject-dict
 ^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/my_order_group reject-dict
 ^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/likes reject-dict
+http-response ^https:\/\/api\.pinduoduo\.com\/search script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js, requires-body = true, tag = Pinduoduo
 http-response ^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js, requires-body = true, tag = Pinduoduo
 http-response ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js, requires-body = true, tag = Pinduoduo
 http-response ^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js, requires-body = true, tag = Pinduoduo

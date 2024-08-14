@@ -15,33 +15,32 @@ jobs:
     - name: Download snippets
       run: |
         mkdir -p Original/ZenmoFeiShi Original/ddgksf2013 Original/RuCu6
-        curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
-        curl -L -o Original/ddgksf2013/SmzdmAds.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
-        curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
-        curl -L -o Original/RuCu6/Amap.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet
-        curl -L -o Original/RuCu6/Bilibili.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet
+        curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet || true
+        curl -L -o Original/ddgksf2013/SmzdmAds.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf || true
+        curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet || true
+        curl -L -o Original/RuCu6/Amap.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet || true
+        curl -L -o Original/RuCu6/Bilibili.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet || true
 
     - name: Prepare Replacement Variables
       id: prepare-replacement
       run: |
-        # 提取 hostname 并生成注释
-        AMAP_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/RuCu6/Amap.snippet)
+        AMAP_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/RuCu6/Amap.snippet || echo "N/A")
         AMAP_COMMENT="# 高德地图 // $AMAP_HOSTNAMES"
         echo "AMAP_COMMENT=$AMAP_COMMENT" >> $GITHUB_ENV
 
-        BILIBILI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/RuCu6/Bilibili.snippet)
+        BILIBILI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/RuCu6/Bilibili.snippet || echo "N/A")
         BILIBILI_COMMENT="# 哔哩哔哩 // $BILIBILI_HOSTNAMES"
         echo "BILIBILI_COMMENT=$BILIBILI_COMMENT" >> $GITHUB_ENV
 
-        PDD_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Pinduoduo.snippet)
+        PDD_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Pinduoduo.snippet || echo "N/A")
         PDD_COMMENT="# 拼多多 // $PDD_HOSTNAMES"
         echo "PDD_COMMENT=$PDD_COMMENT" >> $GITHUB_ENV
 
-        SMZDM_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ddgksf2013/SmzdmAds.conf)
+        SMZDM_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ddgksf2013/SmzdmAds.conf || echo "N/A")
         SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
         echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
 
-        DIDI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Didichuxing.snippet)
+        DIDI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Didichuxing.snippet || echo "N/A")
         DIDI_COMMENT="# 滴滴出行 // $DIDI_HOSTNAMES"
         echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
 
@@ -259,10 +258,12 @@ jobs:
         if ! git diff --cached --exit-code; then
           git commit -m 'Update Surge and Loon modules'
           git push
-        fi
+          echo "files_updated=true" >> $GITHUB_ENV
+        else
+          echo "files_updated=false" >> $GITHUB_ENV
 
     - name: Send TG notification
-      if: success()
+      if: env.files_updated == 'true'
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TG_ID }}

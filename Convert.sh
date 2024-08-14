@@ -17,6 +17,12 @@ sed -e "1 i $comment" \
     -e 's/raw.githubusercontent.com/github.com/Ig' \
     -e 's/\/main\//\/raw\/main\//Ig' \
     -e 's/\/master\//\/raw\/master\//Ig' \
+    -e 's/HOST/DOMAIN/Ig' \
+    -e 's/HOSt-SUFFIX/DOMAIN-SUFFIX/Ig' \
+    -e 's/HOST-KEYWORD/DOMAIN-KEYWORD/Ig' \
+    -e 's/IP-CIDR/IP-CIDR/Ig' \
+    -e 's/IP6-CIDR/IP-CIDR6/Ig' \
+    -e 's/, REJECT/, REJECT, no-resolve/Ig' \
     -e 's/hostname =/hostname = %APPEND%/Ig' \
     $input_file > Modules/Surge/${module_name}.sgmodule
 
@@ -36,5 +42,11 @@ sed -e "1 i $comment" \
     -e 's/raw.githubusercontent.com/github.com/Ig' \
     -e 's/\/main\//\/raw\/main\//Ig' \
     -e 's/\/master\//\/raw\/master\//Ig' \
+    -e 's/HOST/DOMAIN/Ig' \
+    -e 's/HOSt-SUFFIX/DOMAIN-SUFFIX/Ig' \
+    -e 's/HOST-KEYWORD/DOMAIN-KEYWORD/Ig' \
+    -e 's/IP-CIDR/IP-CIDR/Ig' \
+    -e 's/IP6-CIDR/IP-CIDR6/Ig' \
+    -e 's/, REJECT/, REJECT, no-resolve/Ig' \
     -e 's/hostname =/hostname = %APPEND%/Ig' \
     $input_file > Modules/Loon/${module_name}.loon

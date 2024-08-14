@@ -49,12 +49,14 @@ jobs:
       run: |
         mkdir -p Modules/Surge
         sed -e "1 i $AMAP_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
+            -e 's/url reject-dict/- reject/Ig' \
             -e "s/url reject-200/- reject/Ig" \
             -e 's/url reject/- reject/Ig' \
             -e '/url script-response-body/ s/^/Amap = type=http-response,pattern=/' \
+            -e '/url script-response-header/ s/^/Amap = type=http-response,pattern=/' \
             -e '/url script-request-body/ s/^/Amap = type=http-request,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+            -e 's/ url script-response-header /,requires-body=0,script-path=/Ig' \
             -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
@@ -67,13 +69,16 @@ jobs:
         mkdir -p Modules/Loon
         sed -e "1 i $AMAP_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
+            -e "s/url reject-200/reject-200/Ig" \
+            -e 's/url reject/reject/Ig' \
             -e '/url script-response-body/ s/^/http-response /' \
+            -e '/url script-response-header/ s/^/http-response /' \
             -e '/url script-request-body/ s/^/http-request /' \
+            -e '/-body/ s/$/, requires-body = true, tag = Amap/' \
+            -e '/-header/ s/$/, requires-body = flas, tag = Amap/' \
             -e 's/url script-response-body/script-path=/Ig' \
             -e 's/url script-request-body/script-path=/Ig' \
-            -e '/script-path=/ s/$/, requires-body = true, tag = Amap/' \
+            -e 's/url script-request-header/script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/\/master\//\/raw\/master\//Ig' \
@@ -82,12 +87,14 @@ jobs:
     - name: Convert Bilibili.snippet to Surge sgmodule
       run: |
         sed -e "1 i $BILIBILI_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
+            -e 's/url reject-dict/- reject/Ig' \
             -e "s/url reject-200/- reject/Ig" \
             -e 's/url reject/- reject/Ig' \
             -e '/url script-response-body/ s/^/Bilibili = type=http-response,pattern=/' \
+            -e '/url script-response-header/ s/^/Bilibili = type=http-response,pattern=/' \
             -e '/url script-request-body/ s/^/Bilibili = type=http-request,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+            -e 's/ url script-response-header /,requires-body=0,script-path=/Ig' \
             -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
@@ -99,13 +106,16 @@ jobs:
       run: |
         sed -e "1 i $BILIBILI_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
+            -e "s/url reject-200/reject-200/Ig" \
+            -e 's/url reject/reject/Ig' \
             -e '/url script-response-body/ s/^/http-response /' \
+            -e '/url script-response-header/ s/^/http-response /' \
             -e '/url script-request-body/ s/^/http-request /' \
+            -e '/-body/ s/$/, requires-body = true, tag = Bilibili/' \
+            -e '/-header/ s/$/, requires-body = false, tag = Bilibili/' \
             -e 's/url script-response-body/script-path=/Ig' \
+            -e 's/url script-response-header/script-path=/Ig' \
             -e 's/url script-request-body/script-path=/Ig' \
-            -e '/script-path=/ s/$/, requires-body = true, tag = Bilibili/' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/\/master\//\/raw\/master\//Ig' \
@@ -114,12 +124,14 @@ jobs:
     - name: Convert Didichuxing.snippet to Surge sgmodule
       run: |
         sed -e "1 i $DIDI_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
+            -e 's/url reject-dict/- reject/Ig' \
             -e "s/url reject-200/- reject/Ig" \
             -e 's/url reject/- reject/Ig' \
             -e '/url script-response-body/ s/^/DIDI = type=http-response,pattern=/' \
+            -e '/url script-response-header/ s/^/DIDI = type=http-response,pattern=/' \
             -e '/url script-request-body/ s/^/DIDI = type=http-request,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+            -e 's/ url script-response-header /,requires-body=0,script-path=/Ig' \
             -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
@@ -133,13 +145,16 @@ jobs:
       run: |
         sed -e "1 i $DIDI_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
+            -e "s/url reject-200/reject-200/Ig" \
+            -e 's/url reject/reject/Ig' \
             -e '/url script-response-body/ s/^/http-response /' \
+            -e '/url script-response-header/ s/^/http-response /' \
             -e '/url script-request-body/ s/^/http-request /' \
+            -e '/-body/ s/$/, requires-body = true, tag = DIDI/' \
+            -e '/-header/ s/$/, requires-body = false, tag = DIDI/' \
             -e 's/url script-response-body/script-path=/Ig' \
+            -e 's/url script-response-header/script-path=/Ig' \
             -e 's/url script-request-body/script-path=/Ig' \
-            -e '/script-path=/ s/$/, requires-body = true, tag = DIDI/' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/\/master\//\/raw\/master\//Ig' \
@@ -150,12 +165,14 @@ jobs:
     - name: Convert Pinduoduo.snippet to Surge sgmodule
       run: |
         sed -e "1 i $PDD_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
+            -e 's/url reject-dict/- reject/Ig' \
             -e "s/url reject-200/- reject/Ig" \
             -e 's/url reject/- reject/Ig' \
             -e '/url script-response-body/ s/^/Pinduoduo = type=http-response,pattern=/' \
+            -e '/url script-response-header/ s/^/Pinduoduo = type=http-response,pattern=/' \
             -e '/url script-request-body/ s/^/Pinduoduo = type=http-request,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+            -e 's/ url script-response-header /,requires-body=0,script-path=/Ig' \
             -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
@@ -167,13 +184,16 @@ jobs:
       run: |
         sed -e "1 i $PDD_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
+            -e "s/url reject-200/reject-200/Ig" \
+            -e 's/url reject/reject/Ig' \
             -e '/url script-response-body/ s/^/http-response /' \
+            -e '/url script-response-header/ s/^/http-response /' \
             -e '/url script-request-body/ s/^/http-request /' \
+            -e '/-body/ s/$/, requires-body = true, tag = Pinduoduo/' \
+            -e '/-header/ s/$/, requires-body = false, tag = Pinduoduo/' \
             -e 's/url script-response-body/script-path=/Ig' \
+            -e 's/url script-response-header/script-path=/Ig' \
             -e 's/url script-request-body/script-path=/Ig' \
-            -e '/script-path=/ s/$/, requires-body = true, tag = Pinduoduo/' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/\/master\//\/raw\/master\//Ig' \
@@ -182,12 +202,14 @@ jobs:
     - name: Convert SmzdmAds.conf to Surge sgmodule
       run: |
         sed -e "1 i $SMZDM_COMMENT" \
-            -e 's/url reject-dict/reject-dict/Ig' \
+            -e 's/url reject-dict/- reject/Ig' \
             -e "s/url reject-200/- reject/Ig" \
             -e 's/url reject/- reject/Ig' \
             -e '/url script-response-body/ s/^/Smzdm = type=http-response,pattern=/' \
+            -e '/url script-response-header/ s/^/Smzdm = type=http-response,pattern=/' \
             -e '/url script-request-body/ s/^/Smzdm = type=http-request,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+            -e 's/ url script-response-header /,requires-body=0,script-path=/Ig' \
             -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
@@ -199,13 +221,16 @@ jobs:
       run: |
         sed -e "1 i $SMZDM_COMMENT" \
             -e 's/url reject-dict/reject-dict/Ig' \
-            -e "s/url reject-200/- reject/Ig" \
-            -e 's/url reject/- reject/Ig' \
+            -e "s/url reject-200/reject-200/Ig" \
+            -e 's/url reject/reject/Ig' \
             -e '/url script-response-body/ s/^/http-response /' \
+            -e '/url script-response-header/ s/^/http-response /' \
             -e '/url script-request-body/ s/^/http-request /' \
+            -e '/-body/ s/$/, requires-body = true, tag = SmzdmAds/' \
+            -e '/-header/ s/$/, requires-body = false, tag = SmzdmAds/' \
             -e 's/url script-response-body/script-path=/Ig' \
+            -e 's/url script-response-header/script-path=/Ig' \
             -e 's/url script-request-body/script-path=/Ig' \
-            -e '/script-path=/ s/$/, requires-body = true, tag = SmzdmAds/' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/\/master\//\/raw\/master\//Ig' \

@@ -79,7 +79,7 @@ jobs:
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
-        git commit -m "Update Reject lists and README"
+        git commit -m "Update Reject list"
         git push
 
     - name: Send Telegram notification if changes were committed
@@ -88,7 +88,7 @@ jobs:
         TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
         TG_ID: ${{ secrets.TG_ID }}
       run: |
-        MESSAGE="New Reject lists and README have been updated and pushed."
+        MESSAGE="Reject list has been updated."
         curl -s -X POST "https://api.telegram.org/bot$TG_BOT_TOKEN/sendMessage" \
           -d chat_id="$TG_ID" \
           -d text="$MESSAGE"

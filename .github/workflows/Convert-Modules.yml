@@ -15,35 +15,35 @@ jobs:
     - name: Download snippets
       run: |
         mkdir -p Original/ZenmoFeiShi Original/ddgksf2013 Original/RuCu6
-        curl -L -o Original/RuCu6/Amap.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet
-        curl -L -o Original/RuCu6/Bilibili.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet
-        curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
         curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
         curl -L -o Original/ddgksf2013/SmzdmAds.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
+        curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
+        curl -L -o Original/RuCu6/Amap.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet
+        curl -L -o Original/RuCu6/Bilibili.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet
 
     - name: Prepare Replacement Variables
       id: prepare-replacement
       run: |
-        # 提取各 snippet 中的 hostname
+        # 提取 hostname 并生成注释
         AMAP_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/RuCu6/Amap.snippet)
-        BILIBILI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/RuCu6/Bilibili.snippet)
-        DIDI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Didichuxing.snippet)
-        PDD_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Pinduoduo.snippet)
-        SMZDM_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ddgksf2013/SmzdmAds.conf)
-        
-        # 生成注释行
-        AMAP_COMMENT="# Amap // $AMAP_HOSTNAMES"
-        BILIBILI_COMMENT="# Bilibili // $BILIBILI_HOSTNAMES"
-        DIDI_COMMENT="# 滴滴出行 // $DIDI_HOSTNAMES"
-        PDD_COMMENT="# 拼多多 // $PDD_HOSTNAMES"
-        SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
-        
-        # 导出为环境变量
+        AMAP_COMMENT="# 高德地图 // $AMAP_HOSTNAMES"
         echo "AMAP_COMMENT=$AMAP_COMMENT" >> $GITHUB_ENV
+
+        BILIBILI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/RuCu6/Bilibili.snippet)
+        BILIBILI_COMMENT="# 哔哩哔哩 // $BILIBILI_HOSTNAMES"
         echo "BILIBILI_COMMENT=$BILIBILI_COMMENT" >> $GITHUB_ENV
-        echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
+
+        PDD_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Pinduoduo.snippet)
+        PDD_COMMENT="# 拼多多 // $PDD_HOSTNAMES"
         echo "PDD_COMMENT=$PDD_COMMENT" >> $GITHUB_ENV
+
+        SMZDM_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ddgksf2013/SmzdmAds.conf)
+        SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
         echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
+
+        DIDI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Didichuxing.snippet)
+        DIDI_COMMENT="# 滴滴出行 // $DIDI_HOSTNAMES"
+        echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
 
     - name: Convert Amap.snippet to Surge sgmodule
       run: |
@@ -139,10 +139,12 @@ jobs:
             -e '/url script-request-body/ s/^/http-request /' \
             -e 's/url script-response-body/script-path=/Ig' \
             -e 's/url script-request-body/script-path=/Ig' \
-            -e '/script-path=/ s/$/, requires-body = true, tag = Didichuxing/' \
+            -e '/script-path=/ s/$/, requires-body = true, tag = DIDI/' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/\/master\//\/raw\/master\//Ig' \
+            -e 's/IP-CIDR/IP-CIDR/Ig' \
+            -e 's/, REJECT/, REJECT, no-resolve/Ig' \
             Original/ZenmoFeiShi/Didichuxing.snippet > Modules/Loon/Didichuxing.plugin
 
     - name: Convert Pinduoduo.snippet to Surge sgmodule
@@ -151,15 +153,13 @@ jobs:
             -e 's/url reject-dict/reject-dict/Ig' \
             -e "s/url reject-200/- reject/Ig" \
             -e 's/url reject/- reject/Ig' \
-            -e '/url script-response-body/ s/^/PDD = type=http-response,pattern=/' \
-            -e '/url script-request-body/ s/^/PDD = type=http-request,pattern=/' \
+            -e '/url script-response-body/ s/^/Pinduoduo = type=http-response,pattern=/' \
+            -e '/url script-request-body/ s/^/Pinduoduo = type=http-request,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
             -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/\/master\//\/raw\/master\//Ig' \
-            -e 's/IP-CIDR/IP-CIDR/Ig' \
-            -e 's/, REJECT/, REJECT, no-resolve/Ig' \
             -e 's/hostname =/hostname = %APPEND%/Ig' \
             Original/ZenmoFeiShi/Pinduoduo.snippet > Modules/Surge/Pinduoduo.sgmodule
 
@@ -182,23 +182,22 @@ jobs:
     - name: Convert SmzdmAds.conf to Surge sgmodule
       run: |
         sed -e "1 i $SMZDM_COMMENT" \
-            -e 's/^hostname =/hostname = %APPEND%/Ig' \
             -e 's/url reject-dict/reject-dict/Ig' \
             -e "s/url reject-200/- reject/Ig" \
             -e 's/url reject/- reject/Ig' \
-            -e '/url script-response-body/ s/^/SMZDM = type=http-response,pattern=/' \
-            -e '/url script-request-body/ s/^/SMZDM = type=http-request,pattern=/' \
+            -e '/url script-response-body/ s/^/Smzdm = type=http-response,pattern=/' \
+            -e '/url script-request-body/ s/^/Smzdm = type=http-request,pattern=/' \
             -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
             -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
             -e 's/raw.githubusercontent.com/github.com/Ig' \
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/\/master\//\/raw\/master\//Ig' \
+            -e 's/hostname =/hostname = %APPEND%/Ig' \
             Original/ddgksf2013/SmzdmAds.conf > Modules/Surge/SmzdmAds.sgmodule
 
     - name: Convert SmzdmAds.conf to Loon plugin
       run: |
         sed -e "1 i $SMZDM_COMMENT" \
-            -e 's/^hostname =/hostname = %APPEND%/Ig' \
             -e 's/url reject-dict/reject-dict/Ig' \
             -e "s/url reject-200/- reject/Ig" \
             -e 's/url reject/- reject/Ig' \
@@ -212,18 +211,20 @@ jobs:
             -e 's/\/master\//\/raw\/master\//Ig' \
             Original/ddgksf2013/SmzdmAds.conf > Modules/Loon/SmzdmAds.plugin
 
-    - name: Commit changes
+    - name: Check if files are updated
       run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git add Modules/*
-        git commit -m "Updated Surge and Loon modules on $(date +"%Y-%m-%d")" || echo "No changes to commit"
-        git push || echo "No changes to push"
+        git config --local user.name "ifflagged"
+        git config --local user.email "qibo.sign@outlook.com"
+        git add Modules
+        if ! git diff --cached --exit-code; then
+          git commit -m 'Update Surge and Loon modules'
+          git push
+        fi
 
-    - name: Send Telegram Notification
-      if: success() && steps.commit-changes.outputs.COMMIT_OUTPUT != 'No changes to commit'
-      uses: appleboy/telegram-action@0.6.0
+    - name: Send TG notification
+      if: success()
+      uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TG_ID }}
         token: ${{ secrets.TG_BOT_TOKEN }}
-        message: "Surge and Loon modules have been updated."
+        message: 'Surge and Loon modules have been updated.'

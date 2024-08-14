@@ -268,7 +268,7 @@ jobs:
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
-        git add Modules
+        git add .
         if ! git diff --cached --exit-code; then
           git commit -m 'Update Surge and Loon modules'
           git push

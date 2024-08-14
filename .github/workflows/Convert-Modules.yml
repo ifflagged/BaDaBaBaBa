@@ -75,7 +75,7 @@ jobs:
             -e '/url script-response-header/ s/^/http-response /' \
             -e '/url script-request-body/ s/^/http-request /' \
             -e '/-body/ s/$/, requires-body = true, tag = Amap/' \
-            -e '/-header/ s/$/, requires-body = flas, tag = Amap/' \
+            -e '/-header/ s/$/, requires-body = false, tag = Amap/' \
             -e 's/url script-response-body/script-path=/Ig' \
             -e 's/url script-request-body/script-path=/Ig' \
             -e 's/url script-request-header/script-path=/Ig' \

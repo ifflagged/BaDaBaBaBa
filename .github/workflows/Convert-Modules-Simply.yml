@@ -48,11 +48,11 @@ jobs:
     - name: Convert snippets
       run: |
         mkdir -p Modules/Surge Modules/Loon
-        bash Convert.sh "Original/RuCu6/Amap.snippet" "Amap" "$AMAP_COMMENT"
-        bash Convert.sh "Original/RuCu6/Bilibili.snippet" "Bilibili" "$BILIBILI_COMMENT"
-        bash Convert.sh "Original/ZenmoFeiShi/Didichuxing.snippet" "Didichuxing" "$DIDI_COMMENT"
-        bash Convert.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "Pinduoduo" "$PDD_COMMENT"
-        bash Convert.sh "Original/ddgksf2013/SmzdmAds.conf" "SmzdmAds" "$SMZDM_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/Amap.snippet" "Amap" "$AMAP_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/Bilibili.snippet" "Bilibili" "$BILIBILI_COMMENT"
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Didichuxing.snippet" "Didichuxing" "$DIDI_COMMENT"
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "Pinduoduo" "$PDD_COMMENT"
+        bash Convert-Modules.sh "Original/ddgksf2013/SmzdmAds.conf" "SmzdmAds" "$SMZDM_COMMENT"
 
     - name: Create README in Modules directory
       run: |

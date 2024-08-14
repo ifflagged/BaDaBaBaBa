@@ -21,4 +21,4 @@ Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/oak\
 
 
 
-DOMAINname = api.pinduoduo.com
+Hostname = %APPEND% api.pinduoduo.com

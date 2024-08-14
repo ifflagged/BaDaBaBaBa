@@ -38,4 +38,4 @@ http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? script-pa
 ^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp reject-dict
 ^https:\/\/app\.bilibili\.com\/x\/resource\/ip reject-dict
 
-DOMAINname = app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net
+Hostname = %APPEND% app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net

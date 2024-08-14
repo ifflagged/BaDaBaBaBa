@@ -38,4 +38,4 @@ Bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/resource
 ^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp - reject
 ^https:\/\/app\.bilibili\.com\/x\/resource\/ip - reject
 
-DOMAINname = app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net
+Hostname = %APPEND% app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net

@@ -47,4 +47,4 @@ Amap = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(car\/o
 Amap = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/amap.js
 Amap = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_car_tips\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/amap.js
 
-DOMAINname = m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com
+Hostname = %APPEND% m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com

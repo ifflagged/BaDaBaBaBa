@@ -20,16 +20,12 @@ jobs:
 
     - name: Merge Pinduoduo.list with MyBlockAds.list
       run: |
-        # 在 Pinduoduo.list 前面添加 # 拼多多 注释
         echo "# 拼多多" > Original/ZenmoFeiShi/TempPinduoduo.list
         cat Original/ZenmoFeiShi/Pinduoduo.list >> Original/ZenmoFeiShi/TempPinduoduo.list
-        
-        # 合并 MyBlockAds.list 和 添加了注释的 Pinduoduo.list
         cat Original/RuCu6/MyBlockAds.list Original/ZenmoFeiShi/TempPinduoduo.list > Original/MergedList.list
 
     - name: Generate Reject.list for Surge
       run: |
-        # 修改并生成适用于 Surge 的 Reject.list
         mkdir -p Ruleset/Surge
         sed -e 's/HOST/DOMAIN/Ig' \
             -e 's/HOSt-SUFFIX/DOMAIN-SUFFIX/Ig' \
@@ -43,7 +39,6 @@ jobs:
 
     - name: Generate Reject.yaml for Clash
       run: |
-        # 修改并生成适用于 Clash 的 Reject.yaml
         mkdir -p Ruleset/Clash
         echo "payload:" > Ruleset/Clash/Reject.yaml
         sed -e 's/^DOMAIN/  - DOMAIN/Ig' \
@@ -60,19 +55,31 @@ jobs:
         rm Original/ZenmoFeiShi/TempPinduoduo.list
         rm Original/MergedList.list
 
-    - name: Create README with source links
+    - name: Check for changes
+      id: changes
       run: |
-        echo "# Ruleset Sources" > Ruleset/README.md
-        echo "" >> Ruleset/README.md
-        echo "## Surge and Clash" >> Ruleset/README.md
-        echo "" >> Ruleset/README.md
-        echo "- MyBlockAds.list: [RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rules/MyBlockAds.list)" >> Ruleset/README.md
-        echo "- Pinduoduo.list: [ZenmoFeiShi/rule](https://github.com/ZenmoFeiShi/rule/raw/main/Pinduoduo.list)" >> Ruleset/README.md
+        git add .
+        if git diff-index --quiet HEAD --; then
+          echo "No changes detected" > result.txt
+        else
+          echo "Changes detected" > result.txt
+        fi
 
-    - name: Commit changes
+    - name: Commit changes if any
+      if: steps.changes.outputs.result == 'Changes detected'
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
-        git add .
         git commit -m "Update Reject lists"
         git push
+
+    - name: Send Telegram notification if changes were committed
+      if: steps.changes.outputs.result == 'Changes detected'
+      env:
+        TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+        TG_ID: ${{ secrets.TG_ID }}
+      run: |
+        MESSAGE="New Reject lists have been updated and pushed."
+        curl -s -X POST "https://api.telegram.org/bot$TG_BOT_TOKEN/sendMessage" \
+          -d chat_id="$TG_ID" \
+          -d text="$MESSAGE"

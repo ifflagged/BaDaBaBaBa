@@ -45,5 +45,5 @@ sed -e "1 i $comment" \
     -e 's/url script-response-body/script-path=/Ig' \
     -e 's/url script-response-header/script-path=/Ig' \
     -e 's/url script-request-body/script-path=/Ig' \
-    -e 's/hostname =/Hostname = /Ig' \
+    -e 's/hostname =/Hostname =/Ig' \
     $input_file > Modules/Loon/${module_name}.plugin

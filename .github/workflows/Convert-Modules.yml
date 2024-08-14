@@ -252,8 +252,8 @@ jobs:
 
     - name: Check if files are updated
       run: |
-        git config --local user.name "ifflagged"
-        git config --local user.email "qibo.sign@outlook.com"
+        git config --global user.name "ifflagged"
+        git config --global user.email "qibo.sign@outlook.com"
         git add Modules
         if ! git diff --cached --exit-code; then
           git commit -m 'Update Surge and Loon modules'

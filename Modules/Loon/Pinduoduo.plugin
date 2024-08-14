@@ -21,4 +21,4 @@ http-response ^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render scri
 
 
 
-Hostname = %APPEND% api.pinduoduo.com
+Hostname =  api.pinduoduo.com

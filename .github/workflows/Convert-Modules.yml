@@ -243,11 +243,26 @@ jobs:
         echo "This repository contains Surge and Loon configurations." >> Modules/README.md
         echo "" >> Modules/README.md
         echo "## Source" >> Modules/README.md
-        echo "Amap snippet is sourced from: [RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet)" >> Modules/README.md
-        echo "Bilibili snippet is sourced from: [RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet)" >> Modules/README.md
-        echo "Didichuxing snippet is sourced from: [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)" >> Modules/README.md
-        echo "Pinduoduo snippet is sourced from: [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)" >> Modules/README.md
-        echo "SmzdmAds snippet is sourced from: [ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)" >> Modules/README.md
+        echo "" >> Modules/README.md
+        
+        echo "Amap snippet is sourced from:" >> Modules/README.md
+        echo "[RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet)" >> Modules/README.md
+        echo "" >> Modules/README.md
+        
+        echo "Bilibili snippet is sourced from:" >> Modules/README.md
+        echo "[RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet)" >> Modules/README.md
+        echo "" >> Modules/README.md
+        
+        echo "Didichuxing snippet is sourced from:" >> Modules/README.md
+        echo "[ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)" >> Modules/README.md
+        echo "" >> Modules/README.md
+        
+        echo "Pinduoduo snippet is sourced from:" >> Modules/README.md
+        echo "[ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)" >> Modules/README.md
+        echo "" >> Modules/README.md
+        
+        echo "SmzdmAds snippet is sourced from:" >> Modules/README.md
+        echo "[ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)" >> Modules/README.md
 
     - name: Check if files are updated
       run: |

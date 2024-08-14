@@ -235,20 +235,21 @@ jobs:
             -e 's/\/main\//\/raw\/main\//Ig' \
             -e 's/\/master\//\/raw\/master\//Ig' \
             Original/ddgksf2013/SmzdmAds.conf > Modules/Loon/SmzdmAds.plugin
-- name: Update README with Source Links
-  run: |
-    echo "# Converted Modules" > README.md
-    echo "Source:" >> README.md
-    echo "- [Pinduoduo.snippet](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)<br>" >> README.md
-    echo "- [SmzdmAds.conf](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)<br>" >> README.md
-    echo "- [Didichuxing.snippet](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)<br>" >> README.md
-    echo "- [Amap.snippet](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet)<br>" >> README.md
-    echo "- [Bilibili.snippet](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet)<br>" >> README.md
-    git add README.md
-    if ! git diff --cached --exit-code; then
-      git commit -m 'Update README with source links'
-      git push
-    fi
+
+    - name: Update README with Source Links
+      run: |
+        echo "# Converted Modules" > README.md
+        echo "Source:" >> README.md
+        echo "- [Pinduoduo.snippet](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)<br>" >> README.md
+        echo "- [SmzdmAds.conf](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)<br>" >> README.md
+        echo "- [Didichuxing.snippet](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)<br>" >> README.md
+        echo "- [Amap.snippet](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet)<br>" >> README.md
+        echo "- [Bilibili.snippet](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet)<br>" >> README.md
+        git add README.md
+        if ! git diff --cached --exit-code; then
+          git commit -m 'Update README with source links'
+          git push
+        fi
 
     - name: Check if files are updated
       run: |

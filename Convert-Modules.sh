@@ -49,4 +49,4 @@ sed -e "1 i $comment" \
     -e 's/IP6-CIDR,/IP-CIDR6,/Ig' \
     -e 's/, REJECT/, REJECT, no-resolve/Ig' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
-    $input_file > Modules/Loon/${module_name}.loon
+    $input_file > Modules/Loon/${module_name}.plugin

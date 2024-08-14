@@ -249,18 +249,18 @@ jobs:
           git commit -m 'Update README with source links'
           git push
         fi
+    - name: Set up Git identity
+     run: |
+        git config --local user.name "ifflagged"
+        git config --local user.email "qibo.sign@outlook.com"
 
     - name: Check if files are updated
-      run: |
-        git config --global user.name "ifflagged"
-        git config --global user.email "qibo.sign@outlook.com"
+     run: |
         git add Modules
-        if ! git diff --cached --exit-code; then
-          git commit -m 'Update Surge and Loon modules'
-          git push
-          echo "files_updated=true" >> $GITHUB_ENV
-        else
-          echo "files_updated=false" >> $GITHUB_ENV
+       if ! git diff --cached --exit-code; then
+         git commit -m 'Update Surge and Loon modules'
+         git push
+       fi
 
     - name: Send TG notification
       if: env.files_updated == 'true'

@@ -55,14 +55,23 @@ jobs:
         rm Original/ZenmoFeiShi/TempPinduoduo.list
         rm Original/MergedList.list
 
+    - name: Create or update README with source links
+      run: |
+        echo "# Ruleset Sources" > Ruleset/README.md
+        echo "" >> Ruleset/README.md
+        echo "## Surge and Clash" >> Ruleset/README.md
+        echo "" >> Ruleset/README.md
+        echo "- MyBlockAds.list: [RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rules/MyBlockAds.list)" >> Ruleset/README.md
+        echo "- Pinduoduo.list: [ZenmoFeiShi/rule](https://github.com/ZenmoFeiShi/rule/raw/main/Pinduoduo.list)" >> Ruleset/README.md
+
     - name: Check for changes
       id: changes
       run: |
         git add .
         if git diff-index --quiet HEAD --; then
-          echo "No changes detected" > result.txt
+          echo "::set-output name=result::No changes"
         else
-          echo "Changes detected" > result.txt
+          echo "::set-output name=result::Changes detected"
         fi
 
     - name: Commit changes if any
@@ -70,7 +79,7 @@ jobs:
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
-        git commit -m "Update Reject lists"
+        git commit -m "Update Reject lists and README"
         git push
 
     - name: Send Telegram notification if changes were committed
@@ -79,7 +88,7 @@ jobs:
         TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
         TG_ID: ${{ secrets.TG_ID }}
       run: |
-        MESSAGE="New Reject lists have been updated and pushed."
+        MESSAGE="New Reject lists and README have been updated and pushed."
         curl -s -X POST "https://api.telegram.org/bot$TG_BOT_TOKEN/sendMessage" \
           -d chat_id="$TG_ID" \
           -d text="$MESSAGE"

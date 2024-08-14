@@ -4,11 +4,11 @@
 #!author = 怎么肥事
 #!update = 2024-07-20 22:41
 #! ps = 需要分流禁用掉以下ip地址⬇️
-IP-CIDR, 123.207.209.39/32, REJECT, no-resolve
-IP-CIDR, 123.207.209.60/32, REJECT, no-resolve
-IP-CIDR, 139.199.240.12/32, REJECT, no-resolve
+ip-cidr, 123.207.209.39/32, reject
+ip-cidr, 123.207.209.60/32, reject
+ip-cidr, 139.199.240.12/32, reject
 群友EDDA分享
-IP-CIDR, 139.199.240.15/32, REJECT, no-resolve
+ip-cidr, 139.199.240.15/32, reject
 */
 
 ^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget - reject
@@ -19,10 +19,10 @@ IP-CIDR, 139.199.240.15/32, REJECT, no-resolve
 ^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget - reject
 ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast - reject
 ^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf - reject
-DIDI = type=http-response,pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-DIDI = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-DIDI = type=http-response,pattern=^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-DIDI = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+Didichuxing = type=http-response,pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+Didichuxing = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+Didichuxing = type=http-response,pattern=^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+Didichuxing = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
 
 
 

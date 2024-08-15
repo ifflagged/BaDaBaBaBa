@@ -1,8 +1,9 @@
 # 拼多多 // api.pinduoduo.com
 #!name = 拼多多净化页面布局
 #!author = 怎么肥事
-#!update = 2024-08-13 17:04
+#!update = 2024-08-14 20:53
 
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/order_express_group - reject
 ^https:\/\/api\.pinduoduo\.com\/search_hotquery - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/new_chat_group - reject

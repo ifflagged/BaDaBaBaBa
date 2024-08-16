@@ -40,13 +40,13 @@ sed -e "1 i $comment" \
 # Loon conversion
 sed -e "1 i $comment" \
     -e "$sed_common" \
-    -e 's/url reject/- reject/Ig' \
-    -e "s/url reject-200/- reject-200/Ig" \
-    -e 's/url reject-img/- reject-img/Ig' \
-    -e 's/url reject-dict/- reject-dict/Ig' \
-    -e 's/url reject-array/- reject-array/Ig' \
-    -e 's/url reject-video/- reject-video/Ig' \
-    -e 's/url reject-replace/- reject-replace/Ig' \
+    -e 's/url reject/reject/Ig' \
+    -e "s/url reject-200/reject-200/Ig" \
+    -e 's/url reject-img/reject-img/Ig' \
+    -e 's/url reject-dict/reject-dict/Ig' \
+    -e 's/url reject-array/reject-array/Ig' \
+    -e 's/url reject-video/reject-video/Ig' \
+    -e 's/url reject-replace/reject-replace/Ig' \
     -e "/url script-response-body/ s/^/http-response /" \
     -e "/url script-response-header/ s/^/http-response /" \
     -e "/url script-request-body/ s/^/http-request /" \

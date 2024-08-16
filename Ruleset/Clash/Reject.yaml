@@ -330,7 +330,6 @@ payload:
   - DOMAIN, th-a.pinduoduo.com, REJECT
   - DOMAIN, th-b.pinduoduo.com, REJECT
   - DOMAIN, th.pinduoduo.com, REJECT
-  - IP-CIDR, 114.110.96.6/32, REJECT
   - IP-CIDR, 117.185.242.150/32, REJECT
   - IP-CIDR, 36.152.46.13/32, REJECT
   - IP-CIDR, 36.152.46.15/32, REJECT

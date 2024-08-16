@@ -51,7 +51,6 @@ host, ta.pinduoduo.com, reject
 host, th-a.pinduoduo.com, reject
 host, th-b.pinduoduo.com, reject
 host, th.pinduoduo.com, reject
-ip-cidr, 114.110.96.6/32, reject
 ip-cidr, 117.185.242.150/32, reject
 ip-cidr, 36.152.46.13/32, reject
 ip-cidr, 36.152.46.15/32, reject

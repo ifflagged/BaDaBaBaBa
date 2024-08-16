@@ -13,48 +13,48 @@
 
 [Rule]
 # Outlook
-DOMAIN, acdn.adnxs.com, REJECT, no-resolve
-DOMAIN, mediation.adnxs.com, REJECT, no-resolve
-DOMAIN, sin3-ib.adnxs.com, REJECT, no-resolve
+DOMAIN, acdn.adnxs.com, REJECT
+DOMAIN, mediation.adnxs.com, REJECT
+DOMAIN, sin3-ib.adnxs.com, REJECT
 
 # 小米
-DOMAIN, sdkconfig.ad.xiaomi.com, REJECT, no-resolve-DROP
-DOMAIN, data.mistat.xiaomi.com, REJECT, no-resolve
-DOMAIN, tracking.intl.miui.com, REJECT, no-resolve
+DOMAIN, sdkconfig.ad.xiaomi.com, REJECT-DROP
+DOMAIN, data.mistat.xiaomi.com, REJECT
+DOMAIN, tracking.intl.miui.com, REJECT
 
 # 米家
-DOMAIN, sdkconfig.ad.xiaomi.com, REJECT, no-resolve
+DOMAIN, sdkconfig.ad.xiaomi.com, REJECT
 
 # 通用广告
-DOMAIN-SUFFIX, doubleclick-cn.net, REJECT, no-resolve
-DOMAIN-SUFFIX, doubleclick.net, REJECT, no-resolve
+DOMAIN-SUFFIX, doubleclick-cn.net, REJECT
+DOMAIN-SUFFIX, doubleclick.net, REJECT
 
 # 虎牙直播开屏广告
-DOMAIN, business.msstatic.com, REJECT, no-resolve
-DOMAIN-SUFFIX, v1d.szbdyd.com, REJECT, no-resolve
-URL-REGEX, ^http:\/\/cdn\.wup\.huya\.com\/launch\/queryHttpDns$, REJECT, no-resolve
+DOMAIN, business.msstatic.com, REJECT
+DOMAIN-SUFFIX, v1d.szbdyd.com, REJECT
+URL-REGEX, ^http:\/\/cdn\.wup\.huya\.com\/launch\/queryHttpDns$, REJECT
 
 # 中国联通
-DOMAIN-SUFFIX, m1.ad.10010.com, REJECT, no-resolve
+DOMAIN-SUFFIX, m1.ad.10010.com, REJECT
 
 # 中国电信
-DOMAIN, ad.21cn.com, REJECT, no-resolve
-DOMAIN, ad.k.21cn.com, REJECT, no-resolve
-DOMAIN, admarket.21cn.com, REJECT, no-resolve
-DOMAIN, adshows.21cn.com, REJECT, no-resolve
+DOMAIN, ad.21cn.com, REJECT
+DOMAIN, ad.k.21cn.com, REJECT
+DOMAIN, admarket.21cn.com, REJECT
+DOMAIN, adshows.21cn.com, REJECT
 IP-CIDR, 122.229.8.47/32, REJECT, no-resolve, no-resolve
 IP-CIDR, 122.229.29.89/32, REJECT, no-resolve, no-resolve
 
 # 快递100
-URL-REGEX, ^http:\/\/p\.kuaidi100\.com\/mobile\/mobileapi\.do, REJECT, no-resolve-DICT
-URL-REGEX, ^http:\/\/p\.kuaidi100\.com\/advertisement\/, REJECT, no-resolve-DICT
+URL-REGEX, ^http:\/\/p\.kuaidi100\.com\/mobile\/mobileapi\.do, REJECT-DICT
+URL-REGEX, ^http:\/\/p\.kuaidi100\.com\/advertisement\/, REJECT-DICT
 
 # 亲邻开门
-DOMAIN, mall-dsp2.qinlinkeji.com, REJECT, no-resolve // 首页商品信息流
-DOMAIN, mallapi2.qinlinkeji.com, REJECT, no-resolve // 商城页面
+DOMAIN, mall-dsp2.qinlinkeji.com, REJECT // 首页商品信息流
+DOMAIN, mallapi2.qinlinkeji.com, REJECT // 商城页面
 
 # Pixiv - 作品底部广告
-DOMAIN, open-pixon.ads-pixiv.net, REJECT, no-resolve
+DOMAIN, open-pixon.ads-pixiv.net, REJECT
 
 [Rewrite]
 # 摩托范弹窗广告

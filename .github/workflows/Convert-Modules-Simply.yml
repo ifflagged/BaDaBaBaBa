@@ -27,27 +27,27 @@ jobs:
       id: prepare-replacement
       run: |
         # 提取 hostname 并生成注释
-        AMAP_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/RuCu6/Amap.snippet)
+        AMAP_HOSTNAMES=$(grep -v '^#' Original/RuCu6/Amap.snippet | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
         AMAP_COMMENT="# 高德地图 // $AMAP_HOSTNAMES"
         echo "AMAP_COMMENT=$AMAP_COMMENT" >> $GITHUB_ENV
 
-        BILIBILI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/RuCu6/Bilibili.snippet)
+        BILIBILI_HOSTNAMES=$(grep -v '^#' Original/RuCu6/Bilibili.snippet | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
         BILIBILI_COMMENT="# 哔哩哔哩 // $BILIBILI_HOSTNAMES"
         echo "BILIBILI_COMMENT=$BILIBILI_COMMENT" >> $GITHUB_ENV
 
-        CHONGXIE_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/Lodepuly/chongxie.txt || echo "N/A")
+        CHONGXIE_HOSTNAMES=$(grep -v '^#' Original/Lodepuly/chongxie.txt | grep 'hostname =' | awk -F'hostname = ' '{print $2}' || echo "N/A")
         CHONGXIE_COMMENT="# 重写 // $CHONGXIE_HOSTNAMES"
         echo "CHONGXIE_COMMENT=$CHONGXIE_COMMENT" >> $GITHUB_ENV
 
-        DIDI_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Didichuxing.snippet)
+        DIDI_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Didichuxing.snippet | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
         DIDI_COMMENT="# 滴滴出行 // $DIDI_HOSTNAMES"
         echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
 
-        PDD_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ZenmoFeiShi/Pinduoduo.snippet)
+        PDD_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Pinduoduo.snippet | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
         PDD_COMMENT="# 拼多多 // $PDD_HOSTNAMES"
         echo "PDD_COMMENT=$PDD_COMMENT" >> $GITHUB_ENV
 
-        SMZDM_HOSTNAMES=$(grep -oP '(?<=hostname = ).*' Original/ddgksf2013/SmzdmAds.conf)
+        SMZDM_HOSTNAMES=$(grep -v '^#' Original/ddgksf2013/SmzdmAds.conf | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
         SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
         echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
 

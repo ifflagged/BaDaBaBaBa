@@ -17,11 +17,12 @@ jobs:
         mkdir -p Original/Lodepuly Original/ZenmoFeiShi Original/ddgksf2013 Original/RuCu6
         curl -L -o Original/Lodepuly/Remove_ads_by_keli.plugin https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Plugin/Remove_ads_by_keli.plugin
         curl -L -o Original/Lodepuly/chongxie.txt https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt
-        curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
         curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
+        curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
         curl -L -o Original/ddgksf2013/SmzdmAds.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
         curl -L -o Original/RuCu6/Amap.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet
         curl -L -o Original/RuCu6/Bilibili.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet
+        curl -L -o Original/RuCu6/MyBlockAds.conf https://github.com/RuCu6/QuanX/raw/main/Rewrites/MyBlockAds.conf
 
     - name: Prepare Replacement Variables
       id: prepare-replacement
@@ -43,6 +44,10 @@ jobs:
         DIDI_COMMENT="# 滴滴出行 // $DIDI_HOSTNAMES"
         echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
 
+        MYBLOCKADS_HOSTNAMES=$(grep -v '^#' Original/RuCu6/MyBlockAds.conf | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
+        MYBLOCKADS_COMMENT="# 我的屏蔽广告 // $MYBLOCKADS_HOSTNAMES"
+        echo "MYBLOCKADS_COMMENT=$MYBLOCKADS_COMMENT" >> $GITHUB_ENV
+
         PDD_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Pinduoduo.snippet | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
         PDD_COMMENT="# 拼多多 // $PDD_HOSTNAMES"
         echo "PDD_COMMENT=$PDD_COMMENT" >> $GITHUB_ENV
@@ -54,11 +59,11 @@ jobs:
     - name: Convert snippets
       run: |
         mkdir -p Modules/Surge Modules/Loon
-        bash Convert-Modules.sh "Original/Lodepuly/chongxie.txt" "Chongxie" "$CHONGXIE_COMMENT"
-        bash Convert-Modules.sh "Original/Lodepuly/Remove_ads_by_keli.plugin" "RemoveAdsByKeli" "# 去广告插件"
         bash Convert-Modules.sh "Original/RuCu6/Amap.snippet" "Amap" "$AMAP_COMMENT"
         bash Convert-Modules.sh "Original/RuCu6/Bilibili.snippet" "Bilibili" "$BILIBILI_COMMENT"
+        bash Convert-Modules.sh "Original/Lodepuly/chongxie.txt" "Chongxie" "$CHONGXIE_COMMENT"
         bash Convert-Modules.sh "Original/ZenmoFeiShi/Didichuxing.snippet" "Didichuxing" "$DIDI_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/MyBlockAds.conf" "MyBlockAds" "$MYBLOCKADS_COMMENT"
         bash Convert-Modules.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "Pinduoduo" "$PDD_COMMENT"
         bash Convert-Modules.sh "Original/ddgksf2013/SmzdmAds.conf" "SmzdmAds" "$SMZDM_COMMENT"
 
@@ -85,6 +90,10 @@ jobs:
 
         echo "Didichuxing snippet is sourced from:" >> Modules/README.md
         echo "[ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)" >> Modules/README.md
+        echo "" >> Modules/README.md
+        
+        echo "MyBlockAds snippet is sourced from:" >> Modules/README.md
+        echo "[RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rewrites/MyBlockAds.conf)" >> Modules/README.md
         echo "" >> Modules/README.md
         
         echo "Pinduoduo snippet is sourced from:" >> Modules/README.md

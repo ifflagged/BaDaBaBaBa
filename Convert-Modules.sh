@@ -26,7 +26,7 @@ sed -e "1 i $comment" \
     -e 's/url reject-array/- reject/Ig' \
     -e 's/url reject-video/- reject/Ig' \
     -e 's/url reject-replace/- reject/Ig' \
-    -e 's/url reject/- reject/Ig' \         # 放在后面避免影响结果
+    -e 's/url reject/- reject/Ig' \
     -e 's/, REJECT-DROP/, REJECT/Ig' \
     -e "/url script-response-body/ s/^/${module_name} = type=http-response,pattern=/" \
     -e "/url script-response-header/ s/^/${module_name} = type=http-response,pattern=/" \
@@ -46,7 +46,7 @@ sed -e "1 i $comment" \
     -e 's/url reject-array/reject-array/Ig' \
     -e 's/url reject-video/reject-video/Ig' \
     -e 's/url reject-replace/reject-replace/Ig' \
-    -e 's/url reject/reject/Ig' \        # 放在后面避免影响结果
+    -e 's/url reject/reject/Ig' \
     -e "/url script-response-body/ s/^/http-response /" \
     -e "/url script-response-header/ s/^/http-response /" \
     -e "/url script-request-body/ s/^/http-request /" \

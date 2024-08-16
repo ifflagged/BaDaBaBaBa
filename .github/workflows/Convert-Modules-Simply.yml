@@ -14,15 +14,15 @@ jobs:
 
     - name: Download snippets
       run: |
-        mkdir -p Original/Lodepuly Original/ZenmoFeiShi Original/ddgksf2013 Original/RuCu6
-        curl -L -o Original/Lodepuly/Remove_ads_by_keli.plugin https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Plugin/Remove_ads_by_keli.plugin
-        curl -L -o Original/Lodepuly/chongxie.txt https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt
-        curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
-        curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
+        mkdir -p Original/ddgksf2013 Original/fmz200 Original/Lodepuly Original/RuCu6 Original/ZenmoFeiShi
         curl -L -o Original/ddgksf2013/SmzdmAds.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
+        curl -L -o Original/fmz200/chongxie.txt https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt
+        curl -L -o Original/Lodepuly/Remove_ads_by_keli.plugin https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Plugin/Remove_ads_by_keli.plugin
         curl -L -o Original/RuCu6/Amap.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet
         curl -L -o Original/RuCu6/Bilibili.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet
         curl -L -o Original/RuCu6/MyBlockAds.conf https://github.com/RuCu6/QuanX/raw/main/Rewrites/MyBlockAds.conf
+        curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
+        curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
 
     - name: Prepare Replacement Variables
       id: prepare-replacement

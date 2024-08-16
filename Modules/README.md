@@ -16,6 +16,9 @@ Chongxie snippet is sourced from:
 Didichuxing snippet is sourced from:
 [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)
 
+MyBlockAds snippet is sourced from:
+[RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rewrites/MyBlockAds.conf)
+
 Pinduoduo snippet is sourced from:
 [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)
 

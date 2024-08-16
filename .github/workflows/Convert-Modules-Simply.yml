@@ -83,17 +83,21 @@ jobs:
         echo "[ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)" >> Modules/README.md
 
     - name: Check if files are updated
+      id: check-update
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
         git add .
-        if ! git diff --cached --exit-code; then
+        if git diff --cached --quiet; then
+          echo "NO_CHANGES=true" >> $GITHUB_ENV
+        else
           git commit -m 'Update Surge and Loon modules'
           git push
+          echo "NO_CHANGES=false" >> $GITHUB_ENV
         fi
 
     - name: Send TG notification
-      if: success()
+      if: env.NO_CHANGES == 'false'
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TG_ID }}

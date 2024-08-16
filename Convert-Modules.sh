@@ -5,9 +5,9 @@ comment=$3
 
 # Common replacements for both Surge and Loon
 sed_common="
+    /raw.githubusercontent.com/ s/\/main\//\/raw\/main\//Ig
+    /raw.githubusercontent.com/ s/\/master\//\/raw\/master\//Ig
     s/raw.githubusercontent.com/github.com/Ig
-    s/\/main\//\/raw\/main\//Ig
-    s/\/master\//\/raw\/master\//Ig
     s/url script-analyze-echo-response/url script-response-body/Ig
     s/HOST,/DOMAIN,/Ig
     s/HOST-SUFFIX,/DOMAIN-SUFFIX,/Ig

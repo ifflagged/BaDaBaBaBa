@@ -4,7 +4,7 @@
 #!author=fmz200
 #!homepage=https://github.com/fmz200/wool_scripts
 #!icon=https://github.com/fmz200/wool_scripts/raw/main/icons/gif/naisi-01.gif
-#!raw-url=https://github.com/fmz200/wool_scripts/raw/raw/main/QuantumultX/rewrite/chongxie.txt
+#!raw-url=https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt
 #!tg-group=https://t.me/lanjieguanggao
 #!tag = 去广告, fmz200
 #!system = iOS, iPad
@@ -1095,7 +1095,7 @@ https?:\/\/awg\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert
 # > 航旅纵横
 # > Hostname = home.umetrip.com, discardrp.umetrip.com, startup.umetrip.com,
 ^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native reject
-http-response ^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$ script-path= https://gitlab.com/lodepuly/vpn_tool/-/raw/raw/master/Resource/Script/Umetrip/Umetrip_remove_ads.js, requires-body = true, tag = Chongxie
+http-response ^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$ script-path= https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/Umetrip/Umetrip_remove_ads.js, requires-body = true, tag = Chongxie
 
 # > 汇丰汇选
 # Hostname = m.prod.app.hsbcfts.com.cn
@@ -3019,17 +3019,17 @@ http-response https://mgesq.api.mgtv.com/dsl/index.+ script-path= https://github
 # 拦截广告下发
 ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch %E9%97%B2%E9%B1%BC* url-and-header reject, requires-body = false, tag = Chongxie
 # 首页顶部标签
-http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
+http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
 # 搜索栏填充词
-http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
+http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
 # 首页闲鱼币入口、底部发布球
-http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/ script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
+http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
 # 我的页面横幅
 ^https:\/\/dinamicx\.alibabausercontent\.com\/pub\/fish_home_top_kingkong_new\/ reject
 # 商品信息流广告
-http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/ script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
+http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
 # 定位地区页面的信息流广告
-http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.local\.home\/ script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
+http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.local\.home\/ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js, requires-body = true, tag = Chongxie
 # 搜索页面净化
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ reject-dict
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.discover\/ reject-dict
@@ -3064,21 +3064,21 @@ http-response ^https?:\/\/.+?\.(pipi|fuli|xiang(jiao|xiang))apps\.com\/(ucp\/ind
 ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/surprisebox\/(get_style|open|submit_action) reject-dict
 ^https?:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? reject-dict
 # 详情页,小部件
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/widgets script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/widgets script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
 # 搜索页
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(banner|hot)_list script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(hint|trending)\? script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/notes\? script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(banner|hot)_list script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(hint|trending)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/notes\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
 # 开屏广告
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\? script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config$ script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config$ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
 # 图片水印,视频水印
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/(v\d\/note\/feed|v3\/note\/videofeed)\? script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/(imagefeed|live_photo\/save) script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/(v\d\/note\/feed|v3\/note\/videofeed)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/(imagefeed|live_photo\/save) script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
 # 信息流
 ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/guide\? reject-dict
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/followfeed\? script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\? script-path= https://github.com/fmz200/wool_scripts/raw/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/followfeed\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = Chongxie
 ^https?:\/\/www\.xiaohongshu\.com\/api\/sns\/(v\d\/ads\/resource|v2\/hey\/\w+\/hey_gallery) reject-dict
 # 评论区用户id置空 (实验功能可能无效)
 ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/comment\/list url response-body red_id response-body fmz200, requires-body = true, tag = Chongxie
@@ -3144,9 +3144,9 @@ http-response ^https?:\/\/.*\.xima.*\.com\/mobile-user\/v\d\/homePage script-pat
 # > YouTube
 # Hostname = rr*.googlevideo.com, youtubei.googleapis.com
 # 请求体
-http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|get_watch|next|player|reel\/reel_watch_sequence) script-path= https://github.com/Maasea/sgmodule/raw/raw/master/Script/Youtube/dist/youtube.request.preview.js, requires-body = true, tag = Chongxie
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|get_watch|next|player|reel\/reel_watch_sequence) script-path= https://github.com/Maasea/sgmodule/raw/master/Script/Youtube/dist/youtube.request.preview.js, requires-body = true, tag = Chongxie
 # 响应体
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(account\/get_setting|browse|get_watch|guide|next|player|reel\/reel_watch_sequence|search) script-path= https://github.com/Maasea/sgmodule/raw/raw/master/Script/Youtube/dist/youtube.response.preview.js, requires-body = true, tag = Chongxie
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(account\/get_setting|browse|get_watch|guide|next|player|reel\/reel_watch_sequence|search) script-path= https://github.com/Maasea/sgmodule/raw/master/Script/Youtube/dist/youtube.response.preview.js, requires-body = true, tag = Chongxie
 # 播放页广告
 ^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\? reject-dict
 

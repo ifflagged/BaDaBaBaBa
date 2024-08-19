@@ -45,7 +45,7 @@ jobs:
         echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
 
         REMOVEADSBYKELI_HOSTNAMES=$(grep -v '^#' Original/Lodepuly/Remove_ads_by_keli.plugin | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        REMOVEADSBYKELI_COMMENT="# Remove Ads by Keli plugin"
+        REMOVEADSBYKELI_COMMENT="# 可莉广告过滤器 // $REMOVEADSBYKELI_HOSTNAMES"
         echo "REMOVEADSBYKELI_COMMENT=$REMOVEADSBYKELI_COMMENT" >> $GITHUB_ENV
         
         MYBLOCKADS_HOSTNAMES=$(grep -v '^#' Original/RuCu6/MyBlockAds.conf | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")

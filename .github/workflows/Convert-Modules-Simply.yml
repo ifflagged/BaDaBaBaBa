@@ -28,31 +28,35 @@ jobs:
       id: prepare-replacement
       run: |
         # 提取 hostname 并生成注释
-        AMAP_HOSTNAMES=$(grep -v '^#' Original/RuCu6/Amap.snippet | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
+        AMAP_HOSTNAMES=$(grep -v '^#' Original/RuCu6/Amap.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
         AMAP_COMMENT="# 高德地图 // $AMAP_HOSTNAMES"
         echo "AMAP_COMMENT=$AMAP_COMMENT" >> $GITHUB_ENV
 
-        BILIBILI_HOSTNAMES=$(grep -v '^#' Original/RuCu6/Bilibili.snippet | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
+        BILIBILI_HOSTNAMES=$(grep -v '^#' Original/RuCu6/Bilibili.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
         BILIBILI_COMMENT="# 哔哩哔哩 // $BILIBILI_HOSTNAMES"
         echo "BILIBILI_COMMENT=$BILIBILI_COMMENT" >> $GITHUB_ENV
 
-        CHONGXIE_HOSTNAMES=$(grep -v '^#' Original/Lodepuly/chongxie.txt | grep 'hostname =' | awk -F'hostname = ' '{print $2}' || echo "N/A")
+        CHONGXIE_HOSTNAMES=$(grep -v '^#' Original/fmz200/chongxie.txt | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
         CHONGXIE_COMMENT="# 重写 // $CHONGXIE_HOSTNAMES"
         echo "CHONGXIE_COMMENT=$CHONGXIE_COMMENT" >> $GITHUB_ENV
 
-        DIDI_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Didichuxing.snippet | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
+        DIDI_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Didichuxing.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
         DIDI_COMMENT="# 滴滴出行 // $DIDI_HOSTNAMES"
         echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
 
-        MYBLOCKADS_HOSTNAMES=$(grep -v '^#' Original/RuCu6/MyBlockAds.conf | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
+        REMOVEADSBYKELI_HOSTNAMES=$(grep -v '^#' Original/Lodepuly/Remove_ads_by_keli.plugin | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
+        REMOVEADSBYKELI_COMMENT="# Remove Ads by Keli plugin"
+        echo "REMOVEADSBYKELI_COMMENT=$REMOVEADSBYKELI_COMMENT" >> $GITHUB_ENV
+        
+        MYBLOCKADS_HOSTNAMES=$(grep -v '^#' Original/RuCu6/MyBlockAds.conf | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
         MYBLOCKADS_COMMENT="# 我的屏蔽广告 // $MYBLOCKADS_HOSTNAMES"
         echo "MYBLOCKADS_COMMENT=$MYBLOCKADS_COMMENT" >> $GITHUB_ENV
 
-        PDD_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Pinduoduo.snippet | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
+        PDD_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Pinduoduo.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
         PDD_COMMENT="# 拼多多 // $PDD_HOSTNAMES"
         echo "PDD_COMMENT=$PDD_COMMENT" >> $GITHUB_ENV
 
-        SMZDM_HOSTNAMES=$(grep -v '^#' Original/ddgksf2013/SmzdmAds.conf | grep 'hostname =' | awk -F'hostname = ' '{print $2}')
+        SMZDM_HOSTNAMES=$(grep -v '^#' Original/ddgksf2013/SmzdmAds.conf | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
         SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
         echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
 
@@ -61,8 +65,9 @@ jobs:
         mkdir -p Modules/Surge Modules/Loon
         bash Convert-Modules.sh "Original/RuCu6/Amap.snippet" "Amap" "$AMAP_COMMENT"
         bash Convert-Modules.sh "Original/RuCu6/Bilibili.snippet" "Bilibili" "$BILIBILI_COMMENT"
-        bash Convert-Modules.sh "Original/Lodepuly/chongxie.txt" "Chongxie" "$CHONGXIE_COMMENT"
+        bash Convert-Modules.sh "Original/fmz200/chongxie.txt" "Chongxie" "$CHONGXIE_COMMENT"
         bash Convert-Modules.sh "Original/ZenmoFeiShi/Didichuxing.snippet" "Didichuxing" "$DIDI_COMMENT"
+        bash Convert-Modules.sh "Original/Lodepuly/Remove_ads_by_keli.plugin" "RemoveAdsByKeli" "$REMOVEADSBYKELI_COMMENT"
         bash Convert-Modules.sh "Original/RuCu6/MyBlockAds.conf" "MyBlockAds" "$MYBLOCKADS_COMMENT"
         bash Convert-Modules.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "Pinduoduo" "$PDD_COMMENT"
         bash Convert-Modules.sh "Original/ddgksf2013/SmzdmAds.conf" "SmzdmAds" "$SMZDM_COMMENT"

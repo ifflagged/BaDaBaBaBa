@@ -1,14 +1,14 @@
-# 去广告插件
+# Remove Ads by Keli plugin
 #!name = 可莉广告过滤器
 #!desc = 可莉自用的广告过滤器
 #!openUrl = 
-#!author = 可莉🅥[https://gitlab.com/lodepuly/vpn_tool/-/blob/raw/master/README.md]
-#!tag = 去广告, 可莉
+#!author = 可莉🅥[https://gitlab.com/lodepuly/vpn_tool/-/blob/master/README.md]
+#!tag = 去广告
 #!system = 
 #!system_version = 
 #!loon_version = 3.2.1(732)
-#!homepage = https://gitlab.com/lodepuly/vpn_tool/-/blob/raw/master/README.md
-#!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/raw/main/Other_icon/120px/KeLee.png
+#!homepage = https://gitlab.com/lodepuly/vpn_tool/-/blob/master/README.md
+#!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/Other_icon/120px/KeLee.png
 #!date = 2024-08-14 21:37:06
 
 [Rule]

@@ -8,7 +8,7 @@ sed_common="
     /raw.githubusercontent.com/ s/\/main\//\/raw\/main\//Ig
     /raw.githubusercontent.com/ s/\/master\//\/raw\/master\//Ig
     s/raw.githubusercontent.com/github.com/Ig
-    s/url script-analyze-echo-response/url script-response-body/Ig
+    s/url script-analyze-echo-response/url script-request-body/Ig
     s/HOST,/DOMAIN,/Ig
     s/HOST-SUFFIX,/DOMAIN-SUFFIX,/Ig
     s/HOST-KEYWORD,/DOMAIN-KEYWORD,/Ig

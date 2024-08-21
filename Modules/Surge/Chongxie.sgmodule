@@ -512,7 +512,7 @@ Chongxie = type=http-response,pattern=^https:\/\/api\.boohee\.com\/open-interfac
 # > 菜鸟裹裹
 # Hostname = %APPEND% cn-acs.m.cainiao.com, amdc.m.taobao.com
 # 其他
-Chongxie = type=http-response,pattern=^https?:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$,requires-body=0,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js
+Chongxie = type=http-response,pattern=^https?:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js
 # 首页 好物推荐,商品推广,底部标签页,快递详情页,问卷调查,主页图标
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.adkeyword\.get\.cn - reject
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.cncommunity\.my\.station\.query\.cn - reject
@@ -3708,7 +3708,7 @@ Chongxie = type=http-response,pattern=^https?:\/\/app\.zhuanzhuan\.com\/zz\/tran
 
 # > 中国国际航空
 # Hostname = %APPEND% m.airchina.com.cn
-Chongxie = type=http-response,pattern=^https:\/\/m\.airchina\.com\.cn\/airchina\/gateway\/v\d(\.\d)*\/api\/services,requires-body=0,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/airchina.js
+Chongxie = type=http-response,pattern=^https:\/\/m\.airchina\.com\.cn\/airchina\/gateway\/v\d(\.\d)*\/api\/services,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/airchina.js
 
 
 # >>>>>>>>>>>>>>> ✅ # ✅ <<<<<<<<<<<<<<

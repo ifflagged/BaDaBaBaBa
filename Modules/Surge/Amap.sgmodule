@@ -8,7 +8,7 @@
 ;^https:\/\/mps\.amap\.com\/ws\/mps\/scene\? - reject
 
 # 其他
-Amap = type=http-response,pattern=^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$,requires-body=0,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js
+Amap = type=http-response,pattern=^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js
 
 # 导航详情页,路线规划,地点详情页,搜索详情页,导航结束页
 Amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/amap.js

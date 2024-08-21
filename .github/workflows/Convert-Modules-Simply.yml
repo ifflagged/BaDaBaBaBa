@@ -16,6 +16,7 @@ jobs:
       run: |
         mkdir -p Original/ddgksf2013 Original/fmz200 Original/Lodepuly Original/RuCu6 Original/ZenmoFeiShi
         curl -L -o Original/ddgksf2013/SmzdmAds.conf https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
+        curl -L -o Original/ddgksf2013/StartUp.conf https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/StartUp.conf
         curl -L -o Original/fmz200/chongxie.txt https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt
         curl -L -o Original/Lodepuly/Remove_ads_by_keli.plugin https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Plugin/Remove_ads_by_keli.plugin
         curl -L -o Original/RuCu6/Amap.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet
@@ -23,6 +24,7 @@ jobs:
         curl -L -o Original/RuCu6/MyBlockAds.conf https://github.com/RuCu6/QuanX/raw/main/Rewrites/MyBlockAds.conf
         curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
         curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
+        curl -L -o Original/ZenmoFeiShi/Smzdm.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet
 
     - name: Prepare Replacement Variables
       id: prepare-replacement
@@ -60,6 +62,14 @@ jobs:
         SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
         echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
 
+        STARTUP_HOSTNAMES=$(grep -v '^#' Original/ddgksf2013/StartUp.conf | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
+        STARTUP_COMMENT="# 启动广告过滤 // $STARTUP_HOSTNAMES"
+        echo "STARTUP_COMMENT=$STARTUP_COMMENT" >> $GITHUB_ENV
+        
+        ZENMO_SMZDM_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Smzdm.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
+        ZENMO_SMZDM_COMMENT="# ZenmoFeiShi 什么值得买 // $ZENMO_SMZDM_HOSTNAMES"
+        echo "ZENMO_SMZDM_COMMENT=$ZENMO_SMZDM_COMMENT" >> $GITHUB_ENV
+
     - name: Convert snippets
       run: |
         mkdir -p Modules/Surge Modules/Loon
@@ -71,6 +81,8 @@ jobs:
         bash Convert-Modules.sh "Original/RuCu6/MyBlockAds.conf" "MyBlockAds" "$MYBLOCKADS_COMMENT"
         bash Convert-Modules.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "Pinduoduo" "$PDD_COMMENT"
         bash Convert-Modules.sh "Original/ddgksf2013/SmzdmAds.conf" "SmzdmAds" "$SMZDM_COMMENT"
+        bash Convert-Modules.sh "Original/ddgksf2013/StartUp.conf" "StartUp" "$STARTUP_COMMENT"
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Smzdm.snippet" "ZenmoSmzdm" "$ZENMO_SMZDM_COMMENT"
 
     - name: Create README in Modules directory
       run: |
@@ -111,6 +123,14 @@ jobs:
         
         echo "SmzdmAds snippet is sourced from:" >> Modules/README.md
         echo "[ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)" >> Modules/README.md
+        
+        echo "" >> Modules/README.md
+        echo "StartUp snippet is sourced from:" >> Modules/README.md
+        echo "[ddgksf2013/Rewrite](https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/StartUp.conf)" >> Modules/README.md
+        
+        echo "" >> Modules/README.md
+        echo "ZenmoFeiShi Smzdm snippet is sourced from:" >> Modules/README.md
+        echo "[ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet)" >> Modules/README.md
 
     - name: Check if files are updated
       id: check-update

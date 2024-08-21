@@ -46,7 +46,7 @@ Hostname = patient-api.suh.cn, userpms-api.suh.cn, se-api.djiits.com, a.line.me,
 
 # > 12306
 # Hostname = ad.12306.cn
-http-response ^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList script-path= https://github.com/kokoryh/Script/raw/master/js/12306.js, requires-body = true, tag = Chongxie
+http-request ^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList script-path= https://github.com/kokoryh/Script/raw/master/js/12306.js, requires-body = true, tag = Chongxie
 
 
 
@@ -2326,7 +2326,7 @@ http-response ^https?:\/\/www\.1314zhilv\.com\/ltsstnew\/(common\/getJGQIconNew|
 # > TestFlight
 # Hostname = testflight.apple.com
 # TF账户管理 App更新时提示"APP不可用"问题，解决部分TF兑换错了区域的问题，例如Loon兑换到了国区
-http-response ^https?:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/ script-path= https://github.com/NobyDa/Script/raw/master/TestFlight/TestFlightAccount.js, requires-body = true, tag = Chongxie
+http-request ^https?:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/ script-path= https://github.com/NobyDa/Script/raw/master/TestFlight/TestFlightAccount.js, requires-body = true, tag = Chongxie
 
 # > TT语音
 # Hostname = ga-album-cdnqn.52tt.com

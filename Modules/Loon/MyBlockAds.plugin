@@ -6,7 +6,7 @@
 
 # ======= 0 ======= #
 # 12306 //ad.12306.cn, mobile.12306.cn
-http-response ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/12306.js, requires-body = true, tag = MyBlockAds
+http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/12306.js, requires-body = true, tag = MyBlockAds
 http-response ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js, requires-body = false, tag = MyBlockAds
 # 58同城 //*.58cdn.com.cn, app.58.com, pic?.ajkimg.com
 ^https:\/\/app\.58\.com\/api\/home\/(advertising|appadv) reject

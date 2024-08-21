@@ -27,3 +27,9 @@ RemoveAdsByKeli plugin is sourced from:
 
 SmzdmAds snippet is sourced from:
 [ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)
+
+StartUp snippet is sourced from:
+[ddgksf2013/Rewrite](https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/StartUp.conf)
+
+ZenmoFeiShi Smzdm snippet is sourced from:
+[ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet)

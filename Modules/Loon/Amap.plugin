@@ -2,7 +2,7 @@
 #!name = 高德地图
 #!desc = 缺德地图有治了
 #!author = RuCu6 kokoryh
-#!update = 2024-08-14 15:25
+#!update = 2024-08-24 07:50
 
 # 此条可以屏蔽首次进入的天气动效图层  但是会导致足迹不显示地图数据
 ;^https:\/\/mps\.amap\.com\/ws\/mps\/scene\? reject-dict
@@ -16,7 +16,6 @@ http-response ^https:\/\/m5\.amap\.com\/ws\/bus\/plan\/integrate\? script-path= 
 http-response ^https:\/\/m5\.amap\.com\/ws\/c3frontend\/af-(hotel|launch)\/page\/main\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/amap.js, requires-body = true, tag = Amap
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(car-end|route-plan) reject-dict
 http-response ^https:\/\/m5\.amap\.com\/ws\/perception\/drive\/(routeInfo|routePlan) script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/amap.js, requires-body = true, tag = Amap
-^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? reject-dict
 http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/(common\/coupon\/info|poi\/detail) script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/amap.js, requires-body = true, tag = Amap
 http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/amap.js, requires-body = true, tag = Amap
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? reject-dict

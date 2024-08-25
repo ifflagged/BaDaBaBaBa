@@ -2,7 +2,7 @@
 #!name = MyBlockAds
 #!desc = 去广告合集, 以下app请使用单独配置文件: 高德地图,哔哩哔哩,网易云音乐,微博,YouTube,知乎
 #!author = RuCu6
-#!update = 2024-08-11 13:40
+#!update = 2024-08-24 12:50
 
 # ======= 0 ======= #
 # 12306 //ad.12306.cn, mobile.12306.cn
@@ -17,7 +17,7 @@ http-response ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ scrip
 
 # ======= A ======= #
 # amdc
-http-response ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$ script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js, requires-body = true, tag = MyBlockAds
+http-response ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js, requires-body = true, tag = MyBlockAds
 # 爱回收 //gw.aihuishou.com
 ^https:\/\/gw.aihuishou.com\/app-portal\/home\/getadvertisement reject
 # 爱思助手 //list-app-m.i4.cn

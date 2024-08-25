@@ -2,13 +2,13 @@
 #!name = 高德地图
 #!desc = 缺德地图有治了
 #!author = RuCu6 kokoryh
-#!update = 2024-08-24 07:50
+#!update = 2024-08-24 12:50
 
 # 此条可以屏蔽首次进入的天气动效图层  但是会导致足迹不显示地图数据
 ;^https:\/\/mps\.amap\.com\/ws\/mps\/scene\? reject-dict
 
 # 其他
-http-response ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$ script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js, requires-body = true, tag = Amap
+http-response ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js, requires-body = true, tag = Amap
 
 # 导航详情页,路线规划,地点详情页,搜索详情页,导航结束页
 http-response ^https:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/amap.js, requires-body = true, tag = Amap

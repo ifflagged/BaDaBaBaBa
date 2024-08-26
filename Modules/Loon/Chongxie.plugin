@@ -1709,8 +1709,8 @@ http-response ^https?:\/\/mobileso\.bz\.mgtv\.com\/mobile\/recommend\/v2\? scrip
 ^https?:\/\/sdk1xyajs\.data\.kuiniuca\.com reject
 
 # > 脉脉
-# 感谢【可莉】分享
 # Hostname = open.taou.com, h3.open.taou.com
+# 感谢【可莉】分享
 # 开屏广告、职位页面横幅
 ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/adshow\? reject-dict
 # 赠送礼物 - 横幅

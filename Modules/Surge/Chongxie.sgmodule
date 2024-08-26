@@ -1709,8 +1709,8 @@ Chongxie = type=http-response,pattern=^https?:\/\/mobileso\.bz\.mgtv\.com\/mobil
 ^https?:\/\/sdk1xyajs\.data\.kuiniuca\.com - reject
 
 # > 脉脉
-# 感谢【可莉】分享
 # Hostname = %APPEND% open.taou.com, h3.open.taou.com
+# 感谢【可莉】分享
 # 开屏广告、职位页面横幅
 ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/adshow\? - reject
 # 赠送礼物 - 横幅

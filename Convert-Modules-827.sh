@@ -1,4 +1,5 @@
 #!/bin/bash
+
 input_file=$1
 module_name=$2
 comment=$3
@@ -30,7 +31,7 @@ $comment" \
     -e 's/url reject/- reject/Ig' \
     -e 's/, REJECT-DROP/, REJECT/Ig' \
     -e "/url script-response-body/ s/^/${module_name} = type=http-response,pattern=/" \
-    -e "/url script-echo-response/ s/^/${module_name} = type=http-response,pattern=/" \
+    -e "/url sscript-echo-response/ s/^/${module_name} = type=http-response,pattern=/" \
     -e "/url script-response-header/ s/^/${module_name} = type=http-response,pattern=/" \
     -e "/url script-request-body/ s/^/${module_name} = type=http-request,pattern=/" \
     -e "/url script-request-header/ s/^/${module_name} = type=http-request,pattern=/" \
@@ -56,7 +57,7 @@ $comment" \
     -e 's/url reject-replace/reject-replace/Ig' \
     -e 's/url reject/reject/Ig' \
     -e "/url script-response-body/ s/^/http-response /" \
-    -e "/url script-echo-response/ s/^/http-response /" \
+    -e "/url sscript-echo-response/ s/^/http-response /" \
     -e "/url script-response-header/ s/^/http-response /" \
     -e "/url script-request-body/ s/^/http-request /" \
     -e "/url script-request-header/ s/^/http-request /" \

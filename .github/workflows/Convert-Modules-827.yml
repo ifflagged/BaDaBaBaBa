@@ -43,7 +43,7 @@ jobs:
           author=$(echo "$line" | awk '{print $2}')
           filename=$(echo "$line" | awk '{print $3}')
           base_filename=$(basename "$url" .plugin)
-          bash Convert-Modules.sh "Original/$(basename "$url")" "${author}_${filename}" "${!author}_${filename// /_}_COMMENT"
+          bash Convert-Modules-827.sh "Original/$(basename "$url")" "${author}_${filename}" "${!author}_${filename// /_}_COMMENT"
         done < Modules-Links.txt
 
     - name: Create README in Modules directory

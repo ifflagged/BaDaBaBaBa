@@ -1,4 +1,4 @@
-name: Convert Modules 827
+name: Convert Modules
 
 on:
   schedule:
@@ -12,26 +12,46 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Download and process snippets
+    - name: Download snippets from Modules-Links.txt
       run: |
-        mkdir -p Original Modules/Surge Modules/Loon
-
-        # Read links from Modules-Links.txt and process each
-        while IFS= read -r link; do
-          # Extract filename from the URL
-          filename=$(basename "$link")
-          # Determine the module name based on the filename
-          module_name=$(echo "${filename%%.*}" | sed 's/\(.*\)/\L\1/')
-
-          # Download the file
-          curl -L -o "Original/${filename}" "$link"
-
-          # Generate a comment based on the filename
-          comment="# ${filename} // $(basename "$link")"
-
-          # Run the conversion script
-          bash Convert-Modules-827.sh "Original/${filename}" "${module_name}" "$comment"
+        mkdir -p Original
+        while read -r url; do
+          # 提取作者名称和文件名
+          author=$(echo "$url" | awk -F'/' '{print $4}')
+          filename=$(basename "$url")
+          # 创建作者文件夹
+          mkdir -p "Original/$author"
+          # 下载文件
+          curl -L -o "Original/$author/$filename" "$url"
         done < Modules-Links.txt
+
+    - name: Prepare Replacement Variables
+      id: prepare-replacement
+      run: |
+        for file in $(find Original -type f); do
+          # 提取文件路径中的作者和文件名
+          author=$(basename "$(dirname "$file")")
+          filename=$(basename "$file" | cut -d'.' -f1)
+          # 提取非注释行中的 hostname 信息
+          hostnames=$(grep -v '^#' "$file" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
+          # 生成注释内容
+          comment="# ${filename} // ${hostnames}"
+          # 生成环境变量名，替换空格为下划线并确保它是合法的
+          varname="${author}_${filename}_COMMENT"  
+          # 输出到环境变量
+          echo "$varname=$comment" >> $GITHUB_ENV
+        done
+
+    - name: Convert snippets
+      run: |
+        mkdir -p Modules/Surge Modules/Loon
+        for file in $(find Original -type f); do
+          author=$(basename "$(dirname "$file")")
+          filename=$(basename "$file" | cut -d'.' -f1)
+          varname="${author}_${filename}_COMMENT"
+          comment=${!varname}
+          bash Convert-Modules.sh "$file" "${author}_${filename}" "$comment"
+        done
 
     - name: Create README in Modules directory
       run: |
@@ -41,13 +61,13 @@ jobs:
         echo "" >> Modules/README.md
         echo "## Sources" >> Modules/README.md
         echo "" >> Modules/README.md
-        
-        # Create links based on the files processed
-        while IFS= read -r link; do
-          filename=$(basename "$link")
-          module_name=$(echo "${filename%%.*}" | sed 's/\(.*\)/\L\1/')
-          echo "- **${module_name}**: Converted from [${filename}](${link})" >> Modules/README.md
-        done < Modules-Links.txt
+
+        for file in $(find Original -type f); do
+          author=$(basename "$(dirname "$file")")
+          filename=$(basename "$file" | cut -d'.' -f1)
+          url=$(grep "$author/$filename" Modules-Links.txt)
+          echo "- **${filename}**: Converted from [${author} ${filename}](${url})" >> Modules/README.md
+        done
 
     - name: Commit and Push changes
       run: |

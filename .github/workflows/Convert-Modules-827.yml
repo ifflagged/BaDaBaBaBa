@@ -53,7 +53,7 @@ jobs:
           bash Convert-Modules.sh "$file" "${author}_${filename}" "$comment"
         done
 
-      - name: Debugging the Script
+    - name: Debugging the Script
       run: |
         set -e
         echo "# Modules for Surge and Loon" > Modules/README.md

@@ -1,4 +1,4 @@
-name: Convert Modules Simply
+name: Convert Modules 827
 
 on:
   schedule:
@@ -12,29 +12,25 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Download Modules-Links.txt
-      run: |
-        curl -L -o Modules-Links.txt https://path/to/Modules-Links.txt
-
-    - name: Download and Convert snippets
+    - name: Download and process snippets
       run: |
         mkdir -p Original Modules/Surge Modules/Loon
-        while IFS= read -r line; do
-          # 提取 URL 和文件名
-          url=$(echo $line | awk '{print $1}')
-          filename=$(basename "$url")
-          author=$(echo $url | awk -F'/' '{print $(NF-2)}')
-          module_name=$(echo $filename | sed 's/\.[^\.]*$//')
-          
-          # 下载文件
-          curl -L -o "Original/$filename" "$url"
 
-          # 提取注释内容
-          hostnames=$(grep -v '^#' "Original/$filename" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
-          comment="# ${module_name} // ${hostnames}"
-          
-          # 转换文件
-          bash Convert-Modules-827.sh "Original/$filename" "${author}_${module_name}" "$comment"
+        # Read links from Modules-Links.txt and process each
+        while IFS= read -r link; do
+          # Extract filename from the URL
+          filename=$(basename "$link")
+          # Determine the module name based on the filename
+          module_name=$(echo "${filename%%.*}" | sed 's/\(.*\)/\L\1/')
+
+          # Download the file
+          curl -L -o "Original/${filename}" "$link"
+
+          # Generate a comment based on the filename
+          comment="# ${filename} // $(basename "$link")"
+
+          # Run the conversion script
+          bash Convert-Modules-827.sh "Original/${filename}" "${module_name}" "$comment"
         done < Modules-Links.txt
 
     - name: Create README in Modules directory
@@ -45,13 +41,12 @@ jobs:
         echo "" >> Modules/README.md
         echo "## Sources" >> Modules/README.md
         echo "" >> Modules/README.md
-
-        while IFS= read -r line; do
-          url=$(echo $line | awk '{print $1}')
-          filename=$(basename "$url")
-          module_name=$(echo $filename | sed 's/\.[^\.]*$//')
-          author=$(echo $url | awk -F'/' '{print $(NF-2)}')
-          echo "- **${module_name}**: Converted from [${author} ${filename}](https://github.com/${author}/repo/raw/master/${filename})" >> Modules/README.md
+        
+        # Create links based on the files processed
+        while IFS= read -r link; do
+          filename=$(basename "$link")
+          module_name=$(echo "${filename%%.*}" | sed 's/\(.*\)/\L\1/')
+          echo "- **${module_name}**: Converted from [${filename}](${link})" >> Modules/README.md
         done < Modules-Links.txt
 
     - name: Commit and Push changes

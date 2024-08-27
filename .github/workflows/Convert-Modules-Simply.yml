@@ -94,7 +94,22 @@ jobs:
       run: |
         echo "# Modules for Surge and Loon" > Modules/README.md
         echo "" >> Modules/README.md
-        echo "This repository contains Surge and Loon configurations." >> Modules/README.md
+        echo "This directory contains converted modules from various sources, compatible with Surge and Loon." >> Modules/README.md
+        echo "" >> Modules/README.md
+        echo "## Sources" >> Modules/README.md
+        echo "" >> Modules/README.md
+    
+        echo "- **Amap**: Converted from [RuCu6 Amap.snippet](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet)" >> Modules/README.md
+        echo "- **Bilibili**: Converted from [RuCu6 Bilibili.snippet](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet)" >> Modules/README.md
+        echo "- **Chongxie**: Converted from [fmz200 chongxie.txt](https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt)" >> Modules/README.md
+        echo "- **Didichuxing**: Converted from [ZenmoFeiShi Didichuxing.snippet](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)" >> Modules/README.md
+        echo "- **RemoveAdsByKeli**: Converted from [Lodepuly Remove_ads_by_keli.plugin](https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Plugin/Remove_ads_by_keli.plugin)" >> Modules/README.md
+        echo "- **MyBlockAds**: Converted from [RuCu6 MyBlockAds.conf](https://github.com/RuCu6/QuanX/raw/main/Rewrites/MyBlockAds.conf)" >> Modules/README.md
+        echo "- **Pinduoduo**: Converted from [ZenmoFeiShi Pinduoduo.snippet](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)" >> Modules/README.md
+        echo "- **SmzdmAds**: Converted from [ddgksf2013 SmzdmAds.conf](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)" >> Modules/README.md
+        echo "- **StartUp**: Converted from [ddgksf2013 StartUp.conf](https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/StartUp.conf)" >> Modules/README.md
+        echo "- **Weibo**: Converted from [RuCu6 Weibo.snippet](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/weibo.snippet)" >> Modules/README.md
+        echo "- **ZenmoFeiShi_Smzdm**: Converted from [ZenmoFeiShi Smzdm.snippet](https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet)" >> Modules/README.md
 
     - name: Commit and Push changes
       run: |

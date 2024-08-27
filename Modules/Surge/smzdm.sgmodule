@@ -1,0 +1,16 @@
+# Smzdm.snippet // Smzdm.snippet
+#!name = 什么值得买净化
+#!author = 怎么肥事
+#!update = 2024-02-11 01:02
+smzdm = type=http-response,pattern=^https:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+smzdm = type=http-response,pattern=^https:\/\/haojia-api\.smzdm\.com\/home\/list,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+smzdm = type=http-response,pattern=^https:\/\/app-api\.smzdm\.com\/util\/update,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+smzdm = type=http-response,pattern=^https:\/\/homepage-api\.smzdm\.com\/v3\/home,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+smzdm = type=http-response,pattern=^https:\/\/user-api\.smzdm\.com\/vip,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+smzdm = type=http-response,pattern=^https:\/\/user-api\.smzdm\.com\/vip\/bottom_card_list,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+smzdm = type=http-response,pattern=^https:\/\/article-api\.smzdm\.com\/publish\/get_bubble,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+smzdm = type=http-response,pattern=^https:\/\/qianbao\.smzdm\.com\/v\d\/app\/home,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+smzdm = type=http-response,pattern=^https:\/\/s3\.zdmimg\.com\/third\/index,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+smzdm = type=http-response,pattern=^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading - reject
+Hostname = %APPEND% haojia-api.smzdm.com, homepage-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com ,qianbao.smzdm.com,s3.zdmimg.com,post.m.smzdm.com,haojia.m.smzdm.com

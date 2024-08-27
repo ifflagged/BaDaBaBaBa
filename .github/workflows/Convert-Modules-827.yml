@@ -1,4 +1,4 @@
-name: Convert Modules
+name: Convert Modules Simply
 
 on:
   schedule:

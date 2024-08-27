@@ -58,8 +58,12 @@ jobs:
           comment="Converted from $filename by $author"
           comment_var="${sanitized_module_name}_COMMENT"
           
+          # Export the comment as an environment variable (optional)
+          export "$comment_var"="$comment"
+
           # Run the conversion script
-          bash Convert-Modules.sh "$file" "$sanitized_module
+          bash Convert-Modules.sh "$file" "$sanitized_module_name" "$comment"
+        done
 
     - name: Create README in Modules directory
       run: |

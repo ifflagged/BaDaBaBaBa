@@ -47,8 +47,9 @@ jobs:
         # 循环处理每个文件
         for file in "${!files[@]}"; do
           IFS=' ' read -r filename author <<< "${files[$file]}"
-          hostnames=$(grep -v '^#' "$file" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-          comment="# ${filename} // $hostnames"
+          # 提取非注释行中的 hostname 信息
+          hostnames=$(grep -v '^#' "$file" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
+          comment="# ${filename} // ${hostnames}"
           varname="${author}_${filename// /_}_COMMENT"
           echo "$varname=$comment" >> $GITHUB_ENV
         done
@@ -58,7 +59,7 @@ jobs:
         mkdir -p Modules/Surge Modules/Loon
         bash Convert-Modules.sh "Original/RuCu6/Amap.snippet" "RuCu6_Amap" "$AMAP_COMMENT"
         bash Convert-Modules.sh "Original/RuCu6/Bilibili.snippet" "RuCu6_Bilibili" "$BILIBILI_COMMENT"
-        bash Convert-Modules.sh "Original/fmz200/chongxie.txt" "fmz200_Chongxie" "$CHONGXIE_COMMENT" 
+        bash Convert-Modules.sh "Original/fmz200/chongxie.txt" "fmz200_Chongxie" "$CHONGXIE_COMMENT"
         bash Convert-Modules.sh "Original/ZenmoFeiShi/Didichuxing.snippet" "ZenmoFeiShi_Didichuxing" "$DIDI_COMMENT"
         bash Convert-Modules.sh "Original/Lodepuly/Remove_ads_by_keli.plugin" "Lodepuly_RemoveAdsByKeli" "$REMOVEADSBYKELI_COMMENT"
         bash Convert-Modules.sh "Original/RuCu6/MyBlockAds.conf" "RuCu6_MyBlockAds" "$MYBLOCKADS_COMMENT"

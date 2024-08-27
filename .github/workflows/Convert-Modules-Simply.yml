@@ -115,7 +115,7 @@ jobs:
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
-        git add Modules/ README.md
+        git add .
         if git diff --cached --quiet; then
           echo "No changes detected"
         else

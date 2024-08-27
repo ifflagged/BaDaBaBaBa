@@ -17,10 +17,13 @@ jobs:
         mkdir -p Original
         while IFS= read -r url; do
           filename=$(basename "$url")
-          author=$(echo "$url" | awk -F'/' '{print $(NF-3)}')
-          directory="Original/$author"
-          mkdir -p "$directory"
-          curl -L -o "$directory/$filename" "$url"
+          # Extract author from the URL by finding the position of the domain name and slicing
+          domain=$(echo "$url" | awk -F[/:] '{print $4}')
+          author=$(echo "$url" | awk -v domain="$domain" -F"${domain}/" '{print $2}' | awk -F'/' '{print $1}')
+          # Create the directory structure based on the author
+          mkdir -p "Original/$author"
+          # Download the file
+          curl -L -o "Original/$author/$filename" "$url"
         done < Modules-Links.txt
 
     - name: Prepare Replacement Variables
@@ -48,7 +51,7 @@ jobs:
           author=$(basename "$(dirname "$file")")
           varname="${author}_${filename// /_}_COMMENT"
           module_name="${author}_${filename%%.*}"  # 去掉文件扩展名
-          bash Convert-Modules.sh "$file" "$module_name" "${!varname}"
+          bash Convert-Modules-827.sh "$file" "$module_name" "${!varname}"
         done
 
     - name: Create README in Modules directory

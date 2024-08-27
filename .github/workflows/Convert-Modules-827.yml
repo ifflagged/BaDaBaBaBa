@@ -1,4 +1,4 @@
-name: Convert Modules 827
+name: Convert Modules Simply
 
 on:
   schedule:
@@ -12,58 +12,30 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Download snippets based on Modules-Links.txt
+    - name: Download Modules-Links.txt
       run: |
-        mkdir -p Original
-        while IFS= read -r url; do
+        curl -L -o Modules-Links.txt https://path/to/Modules-Links.txt
+
+    - name: Download and Convert snippets
+      run: |
+        mkdir -p Original Modules/Surge Modules/Loon
+        while IFS= read -r line; do
+          # 提取 URL 和文件名
+          url=$(echo $line | awk '{print $1}')
           filename=$(basename "$url")
-          # Extract author from the URL by finding the position of the domain name and slicing
-          domain=$(echo "$url" | awk -F[/:] '{print $4}')
-          author=$(echo "$url" | awk -v domain="$domain" -F"${domain}/" '{print $2}' | awk -F'/' '{print $1}')
-          # Create the directory structure based on the author
-          mkdir -p "Original/$author"
-          # Download the file
-          curl -L -o "Original/$author/$filename" "$url"
+          author=$(echo $url | awk -F'/' '{print $(NF-2)}')
+          module_name=$(echo $filename | sed 's/\.[^\.]*$//')
+          
+          # 下载文件
+          curl -L -o "Original/$filename" "$url"
+
+          # 提取注释内容
+          hostnames=$(grep -v '^#' "Original/$filename" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
+          comment="# ${module_name} // ${hostnames}"
+          
+          # 转换文件
+          bash Convert-Modules-827.sh "Original/$filename" "${author}_${module_name}" "$comment"
         done < Modules-Links.txt
-
-    - name: Prepare Replacement Variables
-      id: prepare-replacement
-      run: |
-        for file in Original/*/*; do
-          # 提取文件名和作者
-          filename=$(basename "$file")
-          author=$(basename "$(dirname "$file")")
-          # 提取非注释行中的 hostname 信息
-          hostnames=$(grep -v '^#' "$file" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
-          # 生成注释内容
-          comment="# ${filename} // ${hostnames}"
-          # 生成环境变量名，替换空格为下划线并确保它是合法的
-          varname="${author}_${filename// /_}_COMMENT"  
-          # 输出到环境变量
-          echo "$varname=$comment" >> $GITHUB_ENV
-        done
-
-    - name: Convert snippets
-      run: |
-        for file in Original/*/*; do
-          # Extract author, filename, and module name
-          author=$(basename "$(dirname "$file")")
-          filename=$(basename "$file")
-          module_name="${filename%.*}"
-          
-          # Sanitize module name by replacing invalid characters with underscores
-          sanitized_module_name=$(echo "$module_name" | sed 's/[^a-zA-Z0-9_]/_/g')
-
-          # Add your comment or custom logic here
-          comment="Converted from $filename by $author"
-          comment_var="${sanitized_module_name}_COMMENT"
-          
-          # Export the comment as an environment variable (optional)
-          export "$comment_var"="$comment"
-
-          # Run the conversion script
-          bash Convert-Modules.sh "$file" "$sanitized_module_name" "$comment"
-        done
 
     - name: Create README in Modules directory
       run: |
@@ -73,10 +45,14 @@ jobs:
         echo "" >> Modules/README.md
         echo "## Sources" >> Modules/README.md
         echo "" >> Modules/README.md
-        for file in Modules/Surge/*; do
-          basefile=$(basename "$file")
-          echo "- **${basefile%%.*}**: Converted from [${basefile%%.*}](https://github.com/$(basename "$(dirname "$file")")/$(basename "$file"))" >> Modules/README.md
-        done
+
+        while IFS= read -r line; do
+          url=$(echo $line | awk '{print $1}')
+          filename=$(basename "$url")
+          module_name=$(echo $filename | sed 's/\.[^\.]*$//')
+          author=$(echo $url | awk -F'/' '{print $(NF-2)}')
+          echo "- **${module_name}**: Converted from [${author} ${filename}](https://github.com/${author}/repo/raw/master/${filename})" >> Modules/README.md
+        done < Modules-Links.txt
 
     - name: Commit and Push changes
       run: |

@@ -113,8 +113,8 @@ jobs:
 
     - name: Commit and Push changes
       run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "GitHub Actions"
+        git config --local user.name "ifflagged"
+        git config --local user.email "qibo.sign@outlook.com"
         git add Modules/ README.md
         if git diff --cached --quiet; then
           echo "No changes detected"

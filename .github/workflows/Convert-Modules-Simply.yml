@@ -22,6 +22,7 @@ jobs:
         curl -L -o Original/RuCu6/Amap.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet
         curl -L -o Original/RuCu6/Bilibili.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet
         curl -L -o Original/RuCu6/MyBlockAds.conf https://github.com/RuCu6/QuanX/raw/main/Rewrites/MyBlockAds.conf
+        curl -L -o Original/RuCu6/weibo.snippet https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/weibo.snippet
         curl -L -o Original/ZenmoFeiShi/Didichuxing.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
         curl -L -o Original/ZenmoFeiShi/Pinduoduo.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
         curl -L -o Original/ZenmoFeiShi/Smzdm.snippet https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet
@@ -61,14 +62,18 @@ jobs:
         SMZDM_HOSTNAMES=$(grep -v '^#' Original/ddgksf2013/SmzdmAds.conf | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
         SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
         echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
-
+        
         STARTUP_HOSTNAMES=$(grep -v '^#' Original/ddgksf2013/StartUp.conf | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        STARTUP_COMMENT="# 启动广告过滤 // $STARTUP_HOSTNAMES"
+        STARTUP_COMMENT="# 启动广告 // $STARTUP_HOSTNAMES"
         echo "STARTUP_COMMENT=$STARTUP_COMMENT" >> $GITHUB_ENV
         
-        ZENMO_SMZDM_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Smzdm.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        ZENMO_SMZDM_COMMENT="# ZenmoFeiShi 什么值得买 // $ZENMO_SMZDM_HOSTNAMES"
-        echo "ZENMO_SMZDM_COMMENT=$ZENMO_SMZDM_COMMENT" >> $GITHUB_ENV
+        WEIBO_HOSTNAMES=$(grep -v '^#' Original/RuCu6/weibo.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
+        WEIBO_COMMENT="# 微博 // $WEIBO_HOSTNAMES"
+        echo "WEIBO_COMMENT=$WEIBO_COMMENT" >> $GITHUB_ENV
+        
+        ZENMOFEISHI_SMZDM_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Smzdm.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
+        ZENMOFEISHI_SMZDM_COMMENT="# ZenmoFeiShi 什么值得买 // $ZENMOFEISHI_SMZDM_HOSTNAMES"
+        echo "ZENMOFEISHI_SMZDM_COMMENT=$ZENMOFEISHI_SMZDM_COMMENT" >> $GITHUB_ENV
 
     - name: Convert snippets
       run: |
@@ -82,74 +87,33 @@ jobs:
         bash Convert-Modules.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "Pinduoduo" "$PDD_COMMENT"
         bash Convert-Modules.sh "Original/ddgksf2013/SmzdmAds.conf" "SmzdmAds" "$SMZDM_COMMENT"
         bash Convert-Modules.sh "Original/ddgksf2013/StartUp.conf" "StartUp" "$STARTUP_COMMENT"
-        bash Convert-Modules.sh "Original/ZenmoFeiShi/Smzdm.snippet" "ZenmoSmzdm" "$ZENMO_SMZDM_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/weibo.snippet" "Weibo" "$WEIBO_COMMENT"
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Smzdm.snippet" "ZenmoFeiShi_Smzdm" "$ZENMOFEISHI_SMZDM_COMMENT"
 
     - name: Create README in Modules directory
       run: |
         echo "# Modules for Surge and Loon" > Modules/README.md
         echo "" >> Modules/README.md
         echo "This repository contains Surge and Loon configurations." >> Modules/README.md
-        echo "" >> Modules/README.md
-        echo "## Source" >> Modules/README.md
-        echo "" >> Modules/README.md
-        
-        echo "Amap snippet is sourced from:" >> Modules/README.md
-        echo "[RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet)" >> Modules/README.md
-        echo "" >> Modules/README.md
-        
-        echo "Bilibili snippet is sourced from:" >> Modules/README.md
-        echo "[RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet)" >> Modules/README.md
-        echo "" >> Modules/README.md
-        
-        echo "Chongxie snippet is sourced from:" >> Modules/README.md
-        echo "[fmz200/wool_scripts](https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt)" >> Modules/README.md
-        echo "" >> Modules/README.md
 
-        echo "Didichuxing snippet is sourced from:" >> Modules/README.md
-        echo "[ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)" >> Modules/README.md
-        echo "" >> Modules/README.md
-        
-        echo "MyBlockAds snippet is sourced from:" >> Modules/README.md
-        echo "[RuCu6/QuanX](https://github.com/RuCu6/QuanX/raw/main/Rewrites/MyBlockAds.conf)" >> Modules/README.md
-        echo "" >> Modules/README.md
-        
-        echo "Pinduoduo snippet is sourced from:" >> Modules/README.md
-        echo "[ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)" >> Modules/README.md
-        echo "" >> Modules/README.md
-        
-        echo "RemoveAdsByKeli plugin is sourced from:" >> Modules/README.md
-        echo "[lodepuly/vpn_tool](https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Plugin/Remove_ads_by_keli.plugin)" >> Modules/README.md
-        echo "" >> Modules/README.md
-        
-        echo "SmzdmAds snippet is sourced from:" >> Modules/README.md
-        echo "[ddgksf2013/Rewrite](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)" >> Modules/README.md
-        
-        echo "" >> Modules/README.md
-        echo "StartUp snippet is sourced from:" >> Modules/README.md
-        echo "[ddgksf2013/Rewrite](https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/StartUp.conf)" >> Modules/README.md
-        
-        echo "" >> Modules/README.md
-        echo "ZenmoFeiShi Smzdm snippet is sourced from:" >> Modules/README.md
-        echo "[ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet)" >> Modules/README.md
-
-    - name: Check if files are updated
-      id: check-update
+    - name: Commit and Push changes
       run: |
-        git config --local user.name "ifflagged"
-        git config --local user.email "qibo.sign@outlook.com"
-        git add .
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "GitHub Actions"
+        git add Modules/ README.md
         if git diff --cached --quiet; then
-          echo "NO_CHANGES=true" >> $GITHUB_ENV
+          echo "No changes detected"
         else
-          git commit -m 'Update Surge and Loon modules'
+          git commit -m "Update Modules"
           git push
-          echo "NO_CHANGES=false" >> $GITHUB_ENV
         fi
 
-    - name: Send TG notification
-      if: env.NO_CHANGES == 'false'
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TG_ID }}
-        token: ${{ secrets.TG_BOT_TOKEN }}
-        message: 'Surge and Loon modules have been updated.'
+    - name: Send TG Notification
+      run: |
+        UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
+        if [ -n "$UPDATED_FILES" ]; then
+          MESSAGE="The following files have been updated:\n$UPDATED_FILES"
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage -d chat_id=${{ secrets.TG_ID }} -d text="$MESSAGE"
+        else
+          echo "No files were updated, no notification sent."
+        fi

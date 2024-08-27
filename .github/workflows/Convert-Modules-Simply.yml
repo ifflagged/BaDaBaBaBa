@@ -42,7 +42,7 @@ jobs:
         files["Original/ddgksf2013/SmzdmAds.conf"]="SmzdmAds ddgksf2013"
         files["Original/ddgksf2013/StartUp.conf"]="StartUp ddgksf2013"
         files["Original/RuCu6/weibo.snippet"]="Weibo RuCu6"
-        files["Original/ZenmoFeiShi/Smzdm.snippet"]="ZenmoFeiShi Smzdm"
+        files["Original/ZenmoFeiShi/Smzdm.snippet"]="Smzdm ZenmoFeiShi"
 
         # 循环处理每个文件
         for file in "${!files[@]}"; do
@@ -56,17 +56,17 @@ jobs:
     - name: Convert snippets
       run: |
         mkdir -p Modules/Surge Modules/Loon
-        bash Convert-Modules.sh "Original/RuCu6/Amap.snippet" "Amap" "$RuCu6_Amap_COMMENT"
-        bash Convert-Modules.sh "Original/RuCu6/Bilibili.snippet" "Bilibili" "$RuCu6_Bilibili_COMMENT"
-        bash Convert-Modules.sh "Original/fmz200/chongxie.txt" "Chongxie" "$fmz200_Chongxie_COMMENT"
-        bash Convert-Modules.sh "Original/ZenmoFeiShi/Didichuxing.snippet" "Didichuxing" "$ZenmoFeiShi_Didichuxing_COMMENT"
-        bash Convert-Modules.sh "Original/Lodepuly/Remove_ads_by_keli.plugin" "RemoveAdsByKeli" "$Lodepuly_RemoveAdsByKeli_COMMENT"
-        bash Convert-Modules.sh "Original/RuCu6/MyBlockAds.conf" "MyBlockAds" "$RuCu6_MyBlockAds_COMMENT"
-        bash Convert-Modules.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "Pinduoduo" "$ZenmoFeiShi_Pinduoduo_COMMENT"
-        bash Convert-Modules.sh "Original/ddgksf2013/SmzdmAds.conf" "SmzdmAds" "$ddgksf2013_SmzdmAds_COMMENT"
-        bash Convert-Modules.sh "Original/ddgksf2013/StartUp.conf" "StartUp" "$ddgksf2013_StartUp_COMMENT"
-        bash Convert-Modules.sh "Original/RuCu6/weibo.snippet" "Weibo" "$RuCu6_Weibo_COMMENT"
-        bash Convert-Modules.sh "Original/ZenmoFeiShi/Smzdm.snippet" "ZenmoFeiShi_Smzdm" "$ZenmoFeiShi_Smzdm_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/Amap.snippet" "RuCu6_Amap" "$AMAP_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/Bilibili.snippet" "RuCu6_Bilibili" "$BILIBILI_COMMENT"
+        bash Convert-Modules.sh "Original/fmz200/chongxie.txt" "fmz200_Chongxie" "$CHONGXIE_COMMENT" 
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Didichuxing.snippet" "ZenmoFeiShi_Didichuxing" "$DIDI_COMMENT"
+        bash Convert-Modules.sh "Original/Lodepuly/Remove_ads_by_keli.plugin" "Lodepuly_RemoveAdsByKeli" "$REMOVEADSBYKELI_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/MyBlockAds.conf" "RuCu6_MyBlockAds" "$MYBLOCKADS_COMMENT"
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "ZenmoFeiShi_Pinduoduo" "$PDD_COMMENT"
+        bash Convert-Modules.sh "Original/ddgksf2013/SmzdmAds.conf" "ddgksf2013_SmzdmAds" "$SMZDM_COMMENT"
+        bash Convert-Modules.sh "Original/ddgksf2013/StartUp.conf" "ddgksf2013_StartUp" "$STARTUP_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/weibo.snippet" "RuCu6_Weibo" "$WEIBO_COMMENT"
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Smzdm.snippet" "ZenmoFeiShi_Smzdm" "$ZENMOFEISHI_SMZDM_COMMENT"
 
     - name: Create README in Modules directory
       run: |

@@ -53,9 +53,8 @@ jobs:
           bash Convert-Modules.sh "$file" "${author}_${filename}" "$comment"
         done
 
-    - name: Debugging the Script
+    - name: Create README in Modules directory
       run: |
-        set -e
         echo "# Modules for Surge and Loon" > Modules/README.md
         echo "" >> Modules/README.md
         echo "This directory contains converted modules from various sources, compatible with Surge and Loon." >> Modules/README.md
@@ -63,24 +62,13 @@ jobs:
         echo "## Sources" >> Modules/README.md
         echo "" >> Modules/README.md
 
-        echo "Finding files in Original directory:"
-        find Original -type f
-
-        echo "Processing each file:"
         for file in $(find Original -type f); do
-          echo "Processing file: $file"
           author=$(basename "$(dirname "$file")")
-          filename=$(basename "$file" | cut -d'.' -f1)
-          echo "Author: $author, Filename: $filename"
-          url=$(grep "$author/$filename" Modules-Links.txt)
-          echo "URL found: $url"
-          if [[ -n "$url" ]]; then
-            echo "- **${filename}**: Converted from [${author} ${filename}](${url})" >> Modules/README.md
-          else
-            echo "Warning: No URL found for $author/$filename"
-          fi
+          filename=$(basename "$file")
+          url=$(grep "$filename" Modules-Links.txt)
+          echo "- **${filename%.*}**: Converted from [${author} ${filename%.*}](${url})" >> Modules/README.md
         done
-  
+
     - name: Commit and Push changes
       run: |
         git config --local user.name "ifflagged"

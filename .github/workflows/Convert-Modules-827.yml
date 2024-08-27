@@ -1,4 +1,4 @@
-name: Convert Modules Simply
+name: Convert Modules 827
 
 on:
   schedule:
@@ -12,39 +12,44 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Download links
+    - name: Download snippets based on Modules-Links.txt
       run: |
         mkdir -p Original
-        while IFS= read -r line; do
-          url=$(echo "$line" | awk '{print $1}')
-          file=$(basename "$url")
-          curl -L -o "Original/$file" "$url"
+        while IFS= read -r url; do
+          filename=$(basename "$url")
+          author=$(echo "$url" | awk -F'/' '{print $(NF-3)}')
+          directory="Original/$author"
+          mkdir -p "$directory"
+          curl -L -o "$directory/$filename" "$url"
         done < Modules-Links.txt
 
     - name: Prepare Replacement Variables
       id: prepare-replacement
       run: |
-        while IFS= read -r line; do
-          url=$(echo "$line" | awk '{print $1}')
-          author=$(echo "$line" | awk '{print $2}')
-          filename=$(echo "$line" | awk '{print $3}')
-          file="Original/$(basename "$url")"
+        for file in Original/*/*; do
+          # 提取文件名和作者
+          filename=$(basename "$file")
+          author=$(basename "$(dirname "$file")")
+          # 提取非注释行中的 hostname 信息
           hostnames=$(grep -v '^#' "$file" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
+          # 生成注释内容
           comment="# ${filename} // ${hostnames}"
-          varname="${author}_${filename// /_}_COMMENT"
+          # 生成环境变量名，替换空格为下划线并确保它是合法的
+          varname="${author}_${filename// /_}_COMMENT"  
+          # 输出到环境变量
           echo "$varname=$comment" >> $GITHUB_ENV
-        done < Modules-Links.txt
+        done
 
     - name: Convert snippets
       run: |
         mkdir -p Modules/Surge Modules/Loon
-        while IFS= read -r line; do
-          url=$(echo "$line" | awk '{print $1}')
-          author=$(echo "$line" | awk '{print $2}')
-          filename=$(echo "$line" | awk '{print $3}')
-          base_filename=$(basename "$url" .plugin)
-          bash Convert-Modules-827.sh "Original/$(basename "$url")" "${author}_${filename}" "${!author}_${filename// /_}_COMMENT"
-        done < Modules-Links.txt
+        for file in Original/*/*; do
+          filename=$(basename "$file")
+          author=$(basename "$(dirname "$file")")
+          varname="${author}_${filename// /_}_COMMENT"
+          module_name="${author}_${filename%%.*}"  # 去掉文件扩展名
+          bash Convert-Modules.sh "$file" "$module_name" "${!varname}"
+        done
 
     - name: Create README in Modules directory
       run: |
@@ -54,12 +59,10 @@ jobs:
         echo "" >> Modules/README.md
         echo "## Sources" >> Modules/README.md
         echo "" >> Modules/README.md
-        while IFS= read -r line; do
-          url=$(echo "$line" | awk '{print $1}')
-          author=$(echo "$line" | awk '{print $2}')
-          filename=$(echo "$line" | awk '{print $3}')
-          echo "- **${filename}**: Converted from [${filename} (${author})]($url)" >> Modules/README.md
-        done < Modules-Links.txt
+        for file in Modules/Surge/*; do
+          basefile=$(basename "$file")
+          echo "- **${basefile%%.*}**: Converted from [${basefile%%.*}](https://github.com/$(basename "$(dirname "$file")")/$(basename "$file"))" >> Modules/README.md
+        done
 
     - name: Commit and Push changes
       run: |
@@ -75,6 +78,7 @@ jobs:
 
     - name: Send TG Notification
       run: |
+        # Check if there is a previous commit
         if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
           UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
         else

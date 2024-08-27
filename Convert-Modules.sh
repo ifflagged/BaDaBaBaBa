@@ -18,7 +18,8 @@ sed_common="
 "
 
 # Surge conversion
-sed -e "1 i $comment" \
+sed -e "1 i\\
+$comment" \
     -e "$sed_common" \
     -e "s/url reject-200/- reject/Ig" \
     -e 's/url reject-img/- reject/Ig' \
@@ -41,10 +42,11 @@ sed -e "1 i $comment" \
     -e 's/ url script-analyze-echo-response /,requires-body=1,script-path=/Ig' \
     -e 's/ url script-request-header /,requires-body=0,script-path=/Ig' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
-    $input_file > Modules/Surge/${module_name}.sgmodule
+    "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 
 # Loon conversion
-sed -e "1 i $comment" \
+sed -e "1 i\\
+$comment" \
     -e "$sed_common" \
     -e "s/url reject-200/reject-200/Ig" \
     -e 's/url reject-img/reject-img/Ig' \
@@ -72,4 +74,4 @@ sed -e "1 i $comment" \
     -e 's/url script-request-header/script-path=/Ig' \
     -e 's/url script-analyze-echo-response/script-path=/Ig' \
     -e 's/hostname =/Hostname =/Ig' \
-    $input_file > Modules/Loon/${module_name}.plugin
+    "$input_file" > "Modules/Loon/${module_name}.plugin"

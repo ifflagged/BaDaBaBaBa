@@ -45,14 +45,21 @@ jobs:
 
     - name: Convert snippets
       run: |
-        mkdir -p Modules/Surge Modules/Loon
         for file in Original/*/*; do
-          filename=$(basename "$file")
+          # Extract author, filename, and module name
           author=$(basename "$(dirname "$file")")
-          varname="${author}_${filename// /_}_COMMENT"
-          module_name="${author}_${filename%%.*}"  # 去掉文件扩展名
-          bash Convert-Modules-827.sh "$file" "$module_name" "${!varname}"
-        done
+          filename=$(basename "$file")
+          module_name="${filename%.*}"
+          
+          # Sanitize module name by replacing invalid characters with underscores
+          sanitized_module_name=$(echo "$module_name" | sed 's/[^a-zA-Z0-9_]/_/g')
+
+          # Add your comment or custom logic here
+          comment="Converted from $filename by $author"
+          comment_var="${sanitized_module_name}_COMMENT"
+          
+          # Run the conversion script
+          bash Convert-Modules.sh "$file" "$sanitized_module
 
     - name: Create README in Modules directory
       run: |

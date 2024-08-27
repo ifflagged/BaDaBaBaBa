@@ -1,0 +1,11 @@
+https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf ddgksf2013 SmzdmAds
+https://github.com/ddgksf2013/Rewrite/master/AdBlock/StartUp.conf ddgksf2013 StartUp
+https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt fmz200 Chongxie
+https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Plugin/Remove_ads_by_keli.plugin Lodepuly RemoveAdsByKeli
+https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/amap.snippet RuCu6 Amap
+https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/bilibili.snippet RuCu6 Bilibili
+https://github.com/RuCu6/QuanX/raw/main/Rewrites/MyBlockAds.conf RuCu6 MyBlockAds
+https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/weibo.snippet RuCu6 Weibo
+https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet ZenmoFeiShi Didichuxing
+https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet ZenmoFeiShi Pinduoduo
+https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet ZenmoFeiShi Smzdm

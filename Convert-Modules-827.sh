@@ -42,7 +42,7 @@ $comment" \
     -e 's/ url script-analyze-echo-response /,requires-body=1,script-path=/Ig' \
     -e 's/ url script-request-header /,requires-body=0,script-path=/Ig' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
-    "$input_file" > "Modules/Surge/${module_name}.conf"
+    "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 
 # Loon conversion
 sed -e "1 i\\
@@ -69,4 +69,4 @@ $comment" \
     -e 's/ url script-analyze-echo-response /,requires-body=1,script-path=/Ig' \
     -e 's/ url script-request-header /,requires-body=0,script-path=/Ig' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
-    "$input_file" > "Modules/Loon/${module_name}.conf"
+    "$input_file" > "Modules/Loon/${module_name}.plugin"

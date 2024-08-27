@@ -30,65 +30,43 @@ jobs:
     - name: Prepare Replacement Variables
       id: prepare-replacement
       run: |
-        # 提取 hostname 并生成注释
-        AMAP_HOSTNAMES=$(grep -v '^#' Original/RuCu6/Amap.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        AMAP_COMMENT="# 高德地图 // $AMAP_HOSTNAMES"
-        echo "AMAP_COMMENT=$AMAP_COMMENT" >> $GITHUB_ENV
+        # 定义文件和作者的映射
+        declare -A files
+        files["Original/RuCu6/Amap.snippet"]="Amap RuCu6"
+        files["Original/RuCu6/Bilibili.snippet"]="Bilibili RuCu6"
+        files["Original/fmz200/chongxie.txt"]="Chongxie fmz200"
+        files["Original/ZenmoFeiShi/Didichuxing.snippet"]="Didichuxing ZenmoFeiShi"
+        files["Original/Lodepuly/Remove_ads_by_keli.plugin"]="RemoveAdsByKeli Lodepuly"
+        files["Original/RuCu6/MyBlockAds.conf"]="MyBlockAds RuCu6"
+        files["Original/ZenmoFeiShi/Pinduoduo.snippet"]="Pinduoduo ZenmoFeiShi"
+        files["Original/ddgksf2013/SmzdmAds.conf"]="SmzdmAds ddgksf2013"
+        files["Original/ddgksf2013/StartUp.conf"]="StartUp ddgksf2013"
+        files["Original/RuCu6/weibo.snippet"]="Weibo RuCu6"
+        files["Original/ZenmoFeiShi/Smzdm.snippet"]="ZenmoFeiShi Smzdm"
 
-        BILIBILI_HOSTNAMES=$(grep -v '^#' Original/RuCu6/Bilibili.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        BILIBILI_COMMENT="# 哔哩哔哩 // $BILIBILI_HOSTNAMES"
-        echo "BILIBILI_COMMENT=$BILIBILI_COMMENT" >> $GITHUB_ENV
-
-        CHONGXIE_HOSTNAMES=$(grep -v '^#' Original/fmz200/chongxie.txt | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        CHONGXIE_COMMENT="# 重写 // $CHONGXIE_HOSTNAMES"
-        echo "CHONGXIE_COMMENT=$CHONGXIE_COMMENT" >> $GITHUB_ENV
-
-        DIDI_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Didichuxing.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        DIDI_COMMENT="# 滴滴出行 // $DIDI_HOSTNAMES"
-        echo "DIDI_COMMENT=$DIDI_COMMENT" >> $GITHUB_ENV
-
-        REMOVEADSBYKELI_HOSTNAMES=$(grep -v '^#' Original/Lodepuly/Remove_ads_by_keli.plugin | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        REMOVEADSBYKELI_COMMENT="# 可莉广告过滤器 // $REMOVEADSBYKELI_HOSTNAMES"
-        echo "REMOVEADSBYKELI_COMMENT=$REMOVEADSBYKELI_COMMENT" >> $GITHUB_ENV
-        
-        MYBLOCKADS_HOSTNAMES=$(grep -v '^#' Original/RuCu6/MyBlockAds.conf | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        MYBLOCKADS_COMMENT="# 我的屏蔽广告 // $MYBLOCKADS_HOSTNAMES"
-        echo "MYBLOCKADS_COMMENT=$MYBLOCKADS_COMMENT" >> $GITHUB_ENV
-
-        PDD_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Pinduoduo.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        PDD_COMMENT="# 拼多多 // $PDD_HOSTNAMES"
-        echo "PDD_COMMENT=$PDD_COMMENT" >> $GITHUB_ENV
-
-        SMZDM_HOSTNAMES=$(grep -v '^#' Original/ddgksf2013/SmzdmAds.conf | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        SMZDM_COMMENT="# 什么值得买 // $SMZDM_HOSTNAMES"
-        echo "SMZDM_COMMENT=$SMZDM_COMMENT" >> $GITHUB_ENV
-        
-        STARTUP_HOSTNAMES=$(grep -v '^#' Original/ddgksf2013/StartUp.conf | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        STARTUP_COMMENT="# 启动广告 // $STARTUP_HOSTNAMES"
-        echo "STARTUP_COMMENT=$STARTUP_COMMENT" >> $GITHUB_ENV
-        
-        WEIBO_HOSTNAMES=$(grep -v '^#' Original/RuCu6/weibo.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        WEIBO_COMMENT="# 微博 // $WEIBO_HOSTNAMES"
-        echo "WEIBO_COMMENT=$WEIBO_COMMENT" >> $GITHUB_ENV
-        
-        ZENMOFEISHI_SMZDM_HOSTNAMES=$(grep -v '^#' Original/ZenmoFeiShi/Smzdm.snippet | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
-        ZENMOFEISHI_SMZDM_COMMENT="# ZenmoFeiShi 什么值得买 // $ZENMOFEISHI_SMZDM_HOSTNAMES"
-        echo "ZENMOFEISHI_SMZDM_COMMENT=$ZENMOFEISHI_SMZDM_COMMENT" >> $GITHUB_ENV
+        # 循环处理每个文件
+        for file in "${!files[@]}"; do
+          IFS=' ' read -r filename author <<< "${files[$file]}"
+          hostnames=$(grep -v '^#' "$file" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' || echo "N/A")
+          comment="# ${filename} // $hostnames"
+          varname="${author}_${filename// /_}_COMMENT"
+          echo "$varname=$comment" >> $GITHUB_ENV
+        done
 
     - name: Convert snippets
       run: |
         mkdir -p Modules/Surge Modules/Loon
-        bash Convert-Modules.sh "Original/RuCu6/Amap.snippet" "Amap" "$AMAP_COMMENT"
-        bash Convert-Modules.sh "Original/RuCu6/Bilibili.snippet" "Bilibili" "$BILIBILI_COMMENT"
-        bash Convert-Modules.sh "Original/fmz200/chongxie.txt" "Chongxie" "$CHONGXIE_COMMENT"
-        bash Convert-Modules.sh "Original/ZenmoFeiShi/Didichuxing.snippet" "Didichuxing" "$DIDI_COMMENT"
-        bash Convert-Modules.sh "Original/Lodepuly/Remove_ads_by_keli.plugin" "RemoveAdsByKeli" "$REMOVEADSBYKELI_COMMENT"
-        bash Convert-Modules.sh "Original/RuCu6/MyBlockAds.conf" "MyBlockAds" "$MYBLOCKADS_COMMENT"
-        bash Convert-Modules.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "Pinduoduo" "$PDD_COMMENT"
-        bash Convert-Modules.sh "Original/ddgksf2013/SmzdmAds.conf" "SmzdmAds" "$SMZDM_COMMENT"
-        bash Convert-Modules.sh "Original/ddgksf2013/StartUp.conf" "StartUp" "$STARTUP_COMMENT"
-        bash Convert-Modules.sh "Original/RuCu6/weibo.snippet" "Weibo" "$WEIBO_COMMENT"
-        bash Convert-Modules.sh "Original/ZenmoFeiShi/Smzdm.snippet" "ZenmoFeiShi_Smzdm" "$ZENMOFEISHI_SMZDM_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/Amap.snippet" "Amap" "$RuCu6_Amap_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/Bilibili.snippet" "Bilibili" "$RuCu6_Bilibili_COMMENT"
+        bash Convert-Modules.sh "Original/fmz200/chongxie.txt" "Chongxie" "$fmz200_Chongxie_COMMENT"
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Didichuxing.snippet" "Didichuxing" "$ZenmoFeiShi_Didichuxing_COMMENT"
+        bash Convert-Modules.sh "Original/Lodepuly/Remove_ads_by_keli.plugin" "RemoveAdsByKeli" "$Lodepuly_RemoveAdsByKeli_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/MyBlockAds.conf" "MyBlockAds" "$RuCu6_MyBlockAds_COMMENT"
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Pinduoduo.snippet" "Pinduoduo" "$ZenmoFeiShi_Pinduoduo_COMMENT"
+        bash Convert-Modules.sh "Original/ddgksf2013/SmzdmAds.conf" "SmzdmAds" "$ddgksf2013_SmzdmAds_COMMENT"
+        bash Convert-Modules.sh "Original/ddgksf2013/StartUp.conf" "StartUp" "$ddgksf2013_StartUp_COMMENT"
+        bash Convert-Modules.sh "Original/RuCu6/weibo.snippet" "Weibo" "$RuCu6_Weibo_COMMENT"
+        bash Convert-Modules.sh "Original/ZenmoFeiShi/Smzdm.snippet" "ZenmoFeiShi_Smzdm" "$ZenmoFeiShi_Smzdm_COMMENT"
 
     - name: Create README in Modules directory
       run: |

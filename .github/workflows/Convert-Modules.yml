@@ -61,14 +61,14 @@ jobs:
         echo "" >> Modules/README.md
         echo "## Sources" >> Modules/README.md
         echo "" >> Modules/README.md
-        
+
         for file in $(find Original -type f); do
           author=$(basename "$(dirname "$file")")
-          filename=$(basename "$file" | cut -d'.' -f1)
-          url=$(grep "$filename" Modules-Links.txt)
-          echo "- **${filename%.*}**: Converted from [${author} ${filename}](${url})" >> Modules/README.md
+          filename=$(basename "$file")
+          url=$(grep -F "$(basename "$filename")" Modules-Links.txt)
+          echo "- **${filename%.*}**: Converted from [${author} ${filename%.*}](${url})" >> Modules/README.md
         done
-        
+
     - name: Commit and Push changes
       run: |
         git config --local user.name "ifflagged"
@@ -80,7 +80,7 @@ jobs:
           git commit -m "Update Modules"
           git push
         fi
-
+        
     - name: Send TG Notification
       run: |
         # Check if there is a previous commit

@@ -40,12 +40,14 @@ jobs:
           FILES_LIST="${FILES_LIST}\n${file_path};${author};${filename_no_ext};${comment}"
         done < Modules-Links.txt
         
-        # 将 README 内容和文件列表保存到环境变量
-        echo "README_CONTENT=$(echo -e "$README_CONTENT")" >> $GITHUB_ENV
-        echo "FILES_LIST=$(echo -e "$FILES_LIST")" >> $GITHUB_ENV
+        # 将 README 内容和文件列表保存到环境变量，使用 Base64 编码
+        echo "README_CONTENT=$(echo -e "$README_CONTENT" | base64)" >> $GITHUB_ENV
+        echo "FILES_LIST=$(echo -e "$FILES_LIST" | base64)" >> $GITHUB_ENV
 
     - name: Convert snippets
       run: |
+        # 解码 FILES_LIST 变量
+        FILES_LIST=$(echo "$FILES_LIST" | base64 --decode)
         IFS=$'\n'
         for file_info in $FILES_LIST; do
           # 跳过空行
@@ -59,6 +61,8 @@ jobs:
 
     - name: Create README in Modules directory
       run: |
+        # 解码 README 内容
+        README_CONTENT=$(echo "$README_CONTENT" | base64 --decode)
         echo "# Modules for Surge and Loon" > Modules/README.md
         echo "" >> Modules/README.md
         echo "This directory contains converted modules from various sources, compatible with Surge and Loon." >> Modules/README.md

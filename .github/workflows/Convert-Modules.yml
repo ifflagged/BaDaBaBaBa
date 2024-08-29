@@ -68,7 +68,8 @@ jobs:
           url=$(grep "$filename" Modules-Links.txt)
           echo "- **${filename%.*}**: Converted from [${author} ${filename%.*}](${url})" >> Modules/README.md
         done
-
+      shell: /usr/bin/bash -e {0}
+      
     - name: Commit and Push changes
       run: |
         git config --local user.name "ifflagged"

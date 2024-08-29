@@ -16,7 +16,7 @@ jobs:
       run: |
         mkdir -p Original
         README_CONTENT=""
-        FILES_LIST=""
+        FILES_LIST=()
         while read -r url; do
           # 提取作者名称和文件名
           author=$(echo "$url" | awk -F'/' '{print $4}')
@@ -36,25 +36,20 @@ jobs:
           # 生成注释内容
           comment="# ${filename_no_ext} // ${hostnames}"
           
-          # 保存文件路径和注释到环境变量
-          FILES_LIST="$FILES_LIST\n$file_path;$author;$filename_no_ext;$comment"
+          # 将文件信息添加到 FILES_LIST 数组中
+          FILES_LIST+=("$file_path;$author;$filename_no_ext;$comment")
         done < Modules-Links.txt
         
         # 将 README 内容和文件列表保存到环境变量
         echo "README_CONTENT=$README_CONTENT" >> $GITHUB_ENV
-        echo "FILES_LIST=$FILES_LIST" >> $GITHUB_ENV
+        printf "%s\n" "${FILES_LIST[@]}" > files_list.txt
 
     - name: Convert snippets
       run: |
         mkdir -p Modules/Surge Modules/Loon
-        IFS=$'\n'
-        for file_info in $FILES_LIST; do
-          file_path=$(echo $file_info | cut -d';' -f1)
-          author=$(echo $file_info | cut -d';' -f2)
-          filename=$(echo $file_info | cut -d';' -f3)
-          comment=$(echo $file_info | cut -d';' -f4)
+        while IFS=";" read -r file_path author filename comment; do
           bash Convert-Modules.sh "$file_path" "${author}_${filename}" "$comment"
-        done
+        done < files_list.txt
 
     - name: Create README in Modules directory
       run: |

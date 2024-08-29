@@ -55,27 +55,18 @@ jobs:
 
     - name: Create README in Modules directory
       run: |
-        # Write the header to README.md
         echo "# Modules for Surge and Loon" > Modules/README.md
         echo "" >> Modules/README.md
         echo "This directory contains converted modules from various sources, compatible with Surge and Loon." >> Modules/README.md
         echo "" >> Modules/README.md
         echo "## Sources" >> Modules/README.md
         echo "" >> Modules/README.md
-
-        find Original -type f | while read -r file; do
+        
+        for file in $(find Original -type f); do
           author=$(basename "$(dirname "$file")")
-          filename=$(basename "$file")
+          filename=$(basename "$file" | cut -d'.' -f1)
           url=$(grep "$filename" Modules-Links.txt)
-
-          # Debugging output
-          echo "Processing file: $file"
-          echo "Author: $author"
-          echo "Filename: $filename"
-          echo "URL: $url"
-
-        # Append to README.md
-          echo "- **${filename%.*}**: Converted from [${author} ${filename%.*}](${url})" >> Modules/README.md
+          echo "- **${filename%.*}**: Converted from [${author} ${filename}](${url})" >> Modules/README.md
         done
         
     - name: Commit and Push changes

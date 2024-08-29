@@ -12,50 +12,48 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Download snippets from Modules-Links.txt
+    - name: Download snippets and prepare variables
       run: |
         mkdir -p Original
         README_CONTENT=""
+        FILES_LIST=""
         while read -r url; do
           # 提取作者名称和文件名
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
+          filename_no_ext=$(basename "$url" | cut -d'.' -f1)
           # 创建作者文件夹
           mkdir -p "Original/$author"
           # 下载文件
-          curl -L -o "Original/$author/$filename" "$url"
-          # 生成 README 中的内容
-          README_CONTENT="$README_CONTENT\n- **${filename%.*}**: Converted from [${author} ${filename%.*}](${url})"
-        done < Modules-Links.txt
-        # 将 README 内容保存到环境变量中
-        echo "README_CONTENT=$README_CONTENT" >> $GITHUB_ENV
-
-    - name: Prepare Replacement Variables
-      id: prepare-replacement
-      run: |
-        for file in $(find Original -type f); do
-          # 提取文件路径中的作者和文件名
-          author=$(basename "$(dirname "$file")")
-          filename=$(basename "$file" | cut -d'.' -f1)
+          file_path="Original/$author/$filename"
+          curl -L -o "$file_path" "$url"
+          
+          # 准备README内容
+          README_CONTENT="$README_CONTENT\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
+          
           # 提取非注释行中的 hostname 信息
-          hostnames=$(grep -v '^#' "$file" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
+          hostnames=$(grep -v '^#' "$file_path" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
           # 生成注释内容
-          comment="# ${filename} // ${hostnames}"
-          # 生成环境变量名，替换空格为下划线并确保它是合法的
-          varname="${author}_${filename}_COMMENT"  
-          # 输出到环境变量
-          echo "$varname=$comment" >> $GITHUB_ENV
-        done
+          comment="# ${filename_no_ext} // ${hostnames}"
+          
+          # 保存文件路径和注释到环境变量
+          FILES_LIST="$FILES_LIST\n$file_path;$author;$filename_no_ext;$comment"
+        done < Modules-Links.txt
+        
+        # 将 README 内容和文件列表保存到环境变量
+        echo "README_CONTENT=$README_CONTENT" >> $GITHUB_ENV
+        echo "FILES_LIST=$FILES_LIST" >> $GITHUB_ENV
 
     - name: Convert snippets
       run: |
         mkdir -p Modules/Surge Modules/Loon
-        for file in $(find Original -type f); do
-          author=$(basename "$(dirname "$file")")
-          filename=$(basename "$file" | cut -d'.' -f1)
-          varname="${author}_${filename}_COMMENT"
-          comment=${!varname}
-          bash Convert-Modules.sh "$file" "${author}_${filename}" "$comment"
+        IFS=$'\n'
+        for file_info in $FILES_LIST; do
+          file_path=$(echo $file_info | cut -d';' -f1)
+          author=$(echo $file_info | cut -d';' -f2)
+          filename=$(echo $file_info | cut -d';' -f3)
+          comment=$(echo $file_info | cut -d';' -f4)
+          bash Convert-Modules.sh "$file_path" "${author}_${filename}" "$comment"
         done
 
     - name: Create README in Modules directory

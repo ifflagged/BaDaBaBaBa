@@ -962,7 +962,6 @@ fmz200_chongxie = type=http-response,pattern=^https?:\/\/tiku\.fenbi\.com\/activ
 # Hostname = %APPEND% m*.amap.com, optimus-ads.amap.com
 ^https?:\/\/m5\.amap\.com\/ws\/shield\/dsp\/app\/startup\/init\? - reject
 ^https?:\/\/m5\.amap\.com\/ws\/valueadded\/ - reject
-^https?:\/\/m\d\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\/ - reject
 ^https?:\/\/optimus-ads\.amap\.com\/uploadimg\/ - reject
 
 # > 国家地理
@@ -2571,7 +2570,7 @@ fmz200_chongxie = type=http-response,pattern=^https?:\/\/app02\.vgtime\.com:8080
 # >>>>>>>>>>>>>>> ✅ W ✅ <<<<<<<<<<<<<<
 # > Weico(微博客户端)
 # Hostname = %APPEND% overseas.weico.cc
-^https?:\/\/overseas.weico.cc\/portal.php\?a=get_coopen_ads - reject
+^https?:\/\/overseas\.weico\.cc\/portal\.php\?a=get_coopen_ads - reject
 
 # > WPS
 # Hostname = %APPEND% ios.wps.cn, mobile-pic.cache.iciba.com
@@ -2862,7 +2861,7 @@ fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.m\.mi\.com\/v1\/ap
 
 # > 小睡眠
 # Hostname = %APPEND% api.psy-1.com
-^https?:\/\/api.psy-1.com\/cosleep\/startup - reject
+^https?:\/\/api\.psy-1\.com\/cosleep\/startup - reject
 
 # > 小特- 首选特斯拉中文社区
 # Hostname = %APPEND% lcen.xiaote.net

@@ -9,3 +9,4 @@ https://github.com/RuCu6/QuanX/raw/main/Rewrites/Cube/weibo.snippet
 https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
 https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
 https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet
+https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js

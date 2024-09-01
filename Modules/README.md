@@ -16,3 +16,4 @@ This directory contains converted modules from various sources, compatible with 
 - **Didichuxing**: Converted from [ZenmoFeiShi Didichuxing](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)
 - **Pinduoduo**: Converted from [ZenmoFeiShi Pinduoduo](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)
 - **Smzdm**: Converted from [ZenmoFeiShi Smzdm](https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet)
+- **NoAds**: Converted from [Yuheng0101 NoAds](https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js)

@@ -43,5 +43,5 @@ ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/baike-api\.smzdm\.c
 ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/list_v10,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
 # > 搜索标签去广告@blackmatrix7
 ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
-# 值会员权益中心banner广告@blackmatrix7
+# > 值会员权益中心banner广告@blackmatrix7
 ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js

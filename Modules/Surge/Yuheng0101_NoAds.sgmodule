@@ -1,43 +1,9 @@
-# Surge format for Yuheng0101_NoAds
-/******************************************
- * @name 广告移不动
- * @description 去除肉眼可见的广告
- * @channel https://t.me/yqc_123
- * @feedback https://t.me/lanjieguanggao
- * @version 1.0.0
-******************************************
-脚本声明:
-1. 本脚本仅用于学习研究，禁止用于商业用途
-2. 本脚本不保证准确性、可靠性、完整性和及时性
-3. 任何个人或组织均可无需经过通知而自由使用
-4. 作者对任何脚本问题概不负责，包括由此产生的任何损失
-5. 如果任何单位或个人认为该脚本可能涉嫌侵犯其权利，应及时通知并提供身份证明、所有权证明，我将在收到认证文件确认后删除
-6. 请勿将本脚本用于商业用途，由此引起的问题与作者无关
-7. 本脚本及其更新版权归作者所有
-******************************************
-特别说明:
-由于App内大部分活动都使用web-view嵌入H5的形式且链接不定, 故不对内部活动进行相关广告去除。
-******************************************
-Hostname = %APPEND% client.app.coc.10086.cn, h.app.coc.10086.cn
-# 启动页
-^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$ url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js
-# 首页 - 下拉
-^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/newTopPullSecond\/getNewTopPullList url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js
-# 首页 - 悬浮广告
-^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/emotionMarket\/getEmotionMarketNew url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js
-^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/homeArea\/getTopAreaList url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js
-# 弹窗
-^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail url reject-200
-# 办理 - 横幅
-^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/navigation\/getNavigationNewInfo url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js
-# 我的 - 弹窗 
-^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/friendShake\/getShakeList url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js
-******************************************/
-Hostname = %APPEND% client.app.coc.10086.cn, h.app.coc.10086.cn
-Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$,requires-body=1,script-path=
-Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/newTopPullSecond\/getNewTopPullList,requires-body=1,script-path=
-Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/emotionMarket\/getEmotionMarketNew,requires-body=1,script-path=
-Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/homeArea\/getTopAreaList,requires-body=1,script-path=
+# # NoAds // client.app.coc.10086.cn, h.app.coc.10086.cn,
+Hostname = %APPEND%  client.app.coc.10086.cn, h.app.coc.10086.cn
+^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$ - script-response-body
+^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/newTopPullSecond\/getNewTopPullList - script-response-body
+^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/emotionMarket\/getEmotionMarketNew - script-response-body
+^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/homeArea\/getTopAreaList - script-response-body
 ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject
-Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/navigation\/getNavigationNewInfo,requires-body=1,script-path=
-Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/friendShake\/getShakeList,requires-body=1,script-path=
+^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/navigation\/getNavigationNewInfo - script-response-body
+^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/friendShake\/getShakeList - script-response-body

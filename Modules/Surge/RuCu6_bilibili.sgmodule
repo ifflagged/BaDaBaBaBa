@@ -88,3 +88,21 @@ RuCu6_bilibili = type=http-request,pattern=,requires-body=0,script-path=
 RuCu6_bilibili = type=http-request,pattern=[MITM],requires-body=0,script-path=
 RuCu6_bilibili = type=http-request,pattern=hostname,requires-body=0,script-path=grpc.biliapi.net,
 # # bilibili // ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com,
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_bilibili = type=http-request,pattern=http-response,requires-body=0,script-path==
+# # bilibili // ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com,

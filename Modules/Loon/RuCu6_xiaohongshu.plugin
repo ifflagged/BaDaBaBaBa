@@ -42,3 +42,15 @@ http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
 http-request [MITM] script-path=, requires-body=false, tag=RuCu6_xiaohongshu
 http-request hostname script-path=www.xiaohongshu.com, requires-body=false, tag=RuCu6_xiaohongshu
 # # xiaohongshu // edith.xiaohongshu.com, www.xiaohongshu.com,
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+# # xiaohongshu // edith.xiaohongshu.com, www.xiaohongshu.com,

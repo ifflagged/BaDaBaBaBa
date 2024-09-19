@@ -26,3 +26,6 @@ http-request  script-path=, requires-body=false, tag=RuCu6_youtube
 http-request [MITM] script-path=, requires-body=false, tag=RuCu6_youtube
 http-request hostname script-path=youtubei.googleapis.com, requires-body=false, tag=RuCu6_youtube
 # # youtube // rr*.googlevideo.com, youtubei.googleapis.com,
+http-request http-request script-path==, requires-body=false, tag=RuCu6_youtube
+http-request http-response script-path==, requires-body=false, tag=RuCu6_youtube
+# # youtube // rr*.googlevideo.com, youtubei.googleapis.com,

@@ -26,3 +26,6 @@ RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
 RuCu6_youtube = type=http-request,pattern=[MITM],requires-body=0,script-path=
 RuCu6_youtube = type=http-request,pattern=hostname,requires-body=0,script-path=youtubei.googleapis.com
 # # youtube // rr*.googlevideo.com, youtubei.googleapis.com,
+RuCu6_youtube = type=http-request,pattern=http-request,requires-body=0,script-path==
+RuCu6_youtube = type=http-request,pattern=http-response,requires-body=0,script-path==
+# # youtube // rr*.googlevideo.com, youtubei.googleapis.com,

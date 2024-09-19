@@ -75,3 +75,23 @@ http-request  script-path=, requires-body=false, tag=RuCu6_weibo
 http-request [MITM] script-path=, requires-body=false, tag=RuCu6_weibo
 http-request hostname script-path=*.weibo.com,, requires-body=false, tag=RuCu6_weibo
 # # weibo // *.weibo.cn, *.weibo.com, weibo.com,
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+http-request http-response script-path==, requires-body=false, tag=RuCu6_weibo
+# # weibo // *.weibo.cn, *.weibo.com, weibo.com,

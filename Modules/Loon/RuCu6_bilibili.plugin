@@ -88,3 +88,21 @@ http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
 http-request [MITM] script-path=, requires-body=false, tag=RuCu6_bilibili
 http-request hostname script-path=grpc.biliapi.net,, requires-body=false, tag=RuCu6_bilibili
 # # bilibili // ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com,
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+# # bilibili // ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com,

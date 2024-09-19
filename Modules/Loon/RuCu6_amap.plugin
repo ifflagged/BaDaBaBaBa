@@ -60,3 +60,20 @@ http-request  script-path=, requires-body=false, tag=RuCu6_amap
 http-request [MITM] script-path=, requires-body=false, tag=RuCu6_amap
 http-request hostname script-path=m5-zb.amap.com,, requires-body=false, tag=RuCu6_amap
 # # amap // m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com,
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+http-request http-response script-path==, requires-body=false, tag=RuCu6_amap
+# # amap // m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com,

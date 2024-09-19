@@ -60,3 +60,20 @@ RuCu6_amap = type=http-request,pattern=,requires-body=0,script-path=
 RuCu6_amap = type=http-request,pattern=[MITM],requires-body=0,script-path=
 RuCu6_amap = type=http-request,pattern=hostname,requires-body=0,script-path=m5-zb.amap.com,
 # # amap // m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com,
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+RuCu6_amap = type=http-request,pattern=http-response,requires-body=0,script-path==
+# # amap // m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com,

@@ -1,0 +1,353 @@
+ # myblockads // ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, 2023.redircdn.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, adserviceretry.kglink.cn, gateway.kugou.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, osg-service.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com, mobilepaas.abchina.com.cn, ad.mcloud.139.com, jzts.cmpassport.com,
+#!name = MyBlockAds
+#!desc = 自用去广告插件，以下app请使用单独插件：高德地图,哔哩哔哩,网易云音乐,微博,YouTube,知乎。
+#!author = RuCu6[https://github.com/RuCu6]
+#!date = 2024-09-17 22:35
+
+[Rule]
+# ======= 0 ======= #
+# 12306
+DOMAIN, ad.12306.cn, DIRECT
+
+# ======= A ======= #
+# 阿里巴巴
+DOMAIN, dns.alidns.com, - reject
+DOMAIN, ems.youku.com, - reject
+DOMAIN, hudong.alicdn.com, - reject
+DOMAIN, ossgw.alicdn.com, - reject
+DOMAIN-SUFFIX, ut.taobao.com, - reject
+# 阿里云盘
+IP-CIDR, 203.107.1.1/24, - reject, no-resolve
+# 爱奇艺
+DOMAIN, api.iqiyi.com, - reject
+# Apple
+DOMAIN, advertising.apple.com, - reject
+DOMAIN, api-adservices.apple.com, - reject
+DOMAIN, apple.comscoreresearch.com, - reject
+DOMAIN, banners.itunes.apple.com, - reject
+DOMAIN, iad.apple.com, - reject
+DOMAIN, iadcontent.apple.com, - reject
+DOMAIN, iadctest.qwapi.com, - reject
+DOMAIN, iadmoo.apple.com, - reject
+DOMAIN, iadworkbench.apple.com, - reject
+DOMAIN, launch.apple.com, - reject
+DOMAIN, qwapi.apple.com, - reject
+DOMAIN-SUFFIX, advp.apple.com, - reject
+DOMAIN-SUFFIX, iad-apple.com, - reject
+DOMAIN-SUFFIX, iadsdk.apple.com, - reject
+# 安全浏览限制解除
+DOMAIN, lookup.api.bsb.baidu.com, - reject
+DOMAIN-SUFFIX, u3.ucweb.com, - reject
+DOMAIN-KEYWORD, safebrowsing., - reject
+
+# ======= B ======= #
+# 百度
+DOMAIN, mobads.baidu.com, - reject
+DOMAIN-SUFFIX, pos.baidu.com, - reject
+# 百度地图
+DOMAIN, afd.baidu.com, - reject
+DOMAIN, afdconf.baidu.com, - reject
+DOMAIN, lc.map.baidu.com, - reject
+# 百度
+IP-CIDR, 180.76.76.112/32, - reject, no-resolve
+IP-CIDR, 180.76.76.200/32, - reject, no-resolve
+
+# ======= C ======= #
+# 昌原云充
+DOMAIN, m.adyounger.com, - reject
+# Clue 智库
+DOMAIN, api.helloclue.com, - reject
+DOMAIN, brahe.apptimize.com, - reject
+DOMAIN, collector.clue.run, - reject
+DOMAIN, images.ctfassets.net, - reject
+DOMAIN, mapi.apptimize.com, - reject
+DOMAIN, md-i-s.apptimize.com, - reject
+
+# ======= D ======= #
+# DNS 无响应
+DOMAIN, adttrackingprd.hwwt8.com, - reject
+
+# ======= F ======= #
+# 放松双眼
+DOMAIN, adservice.sigmob.cn, - reject
+
+# ======= G ======= #
+# 工商银行
+DOMAIN, pageviewp.icbc.com.cn, - reject
+DOMAIN-SUFFIX, mall.icbc.com.cn, - reject
+# 广告联盟
+DOMAIN, ad.zijieapi.com, - reject
+DOMAIN, adapi.izuiyou.com, - reject
+DOMAIN, adtracker.adfunlink.com, - reject
+DOMAIN, dig.bdurl.net, - reject
+DOMAIN, dsp-x.jd.com, - reject
+DOMAIN, et.tanx.com, - reject
+DOMAIN, gdfp.gifshow.com, - reject
+DOMAIN, init.supersonicads.com, - reject
+#DOMAIN, is.snssdk.com, - reject
+DOMAIN, janapi.jd.com, - reject
+DOMAIN, mercury-gateway.ixiaochuan.cn, - reject
+DOMAIN, open.e.kuaishou.com, - reject
+DOMAIN, open.kuaishou.com, - reject
+DOMAIN, pagead2.googlesyndication-cn.com, - reject
+DOMAIN, pagead2.googlesyndication.com, - reject
+DOMAIN, sdk.e.qq.com, - reject
+DOMAIN, tangram.e.qq.com, - reject
+DOMAIN, ws.tapjoyads.com, - reject
+DOMAIN, www.googleadservices.com, - reject
+DOMAIN-SUFFIX, ads.linkedin.com, - reject
+DOMAIN-SUFFIX, ads.vungle.com, - reject
+DOMAIN-SUFFIX, adservice.google.com, - reject
+DOMAIN-SUFFIX, adukwai.com, - reject
+DOMAIN-SUFFIX, applovin.com, - reject
+DOMAIN-SUFFIX, applvn.com, - reject
+DOMAIN-SUFFIX, appsflyer.com, - reject
+DOMAIN-SUFFIX, appsflyersdk.com, - reject
+DOMAIN-SUFFIX, kuaishouzt.com, - reject
+DOMAIN-SUFFIX, miaozhen.com, - reject
+DOMAIN-SUFFIX, ubixioe.com, - reject
+DOMAIN-SUFFIX, unityads.unity3d.com, - reject
+DOMAIN-SUFFIX, v.smtcdns.com, - reject
+DOMAIN-SUFFIX, zijieapi.com, - reject
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, - reject
+DOMAIN-KEYWORD, ads.g.doubleclick, - reject
+DOMAIN-KEYWORD, asiad.byteactivity, - reject
+DOMAIN-KEYWORD, pangolin-sdk-toutiao, - reject
+DOMAIN-KEYWORD, pangolin.snssdk.com, - reject
+DOMAIN-KEYWORD, pglstatp-toutiao, - reject
+DOMAIN-KEYWORD, video-cn.snssdk.com, - reject
+
+# ======= H ======= #
+# 海尔智家
+DOMAIN-SUFFIX, ehaier.com, - reject
+# httpdns
+DOMAIN, hdns.ksyun.com, - reject
+DOMAIN-KEYWORD, httpdns., - reject
+DOMAIN-KEYWORD, httpdns-, - reject
+
+# ======= J ======= #
+# 建设银行
+DOMAIN-KEYWORD, adv.ccb.com, - reject
+# 京东
+DOMAIN, dns.jd.com, - reject
+IP-CIDR, 101.124.19.122/32, - reject, no-resolve
+IP-CIDR6, 2402:db40:5100:1011::5/128, - reject, no-resolve
+
+# ======= K ======= #
+# 酷狗音乐
+DOMAIN, ads.service.kugou.com, - reject
+DOMAIN, adserviceretry.kglink.cn, DIRECT
+DOMAIN, adserviceretry.kugou.com, - reject
+# 酷我音乐
+DOMAIN, ad.tencentmusic.com, - reject
+DOMAIN, g.koowo.com, - reject
+DOMAIN, mobilead.kuwo.cn, - reject
+DOMAIN, rich.kuwo.cn, - reject
+
+# ======= L ======= #
+# 蓝奏云
+DOMAIN, statics.woozooo.com, - reject
+
+# ======= M ======= #
+# 芒果TV
+DOMAIN, credits.bz.mgtv.com, - reject
+DOMAIN, credits2.bz.mgtv.com, - reject
+DOMAIN, credits3.bz.mgtv.com, - reject
+DOMAIN, dflow.bz.mgtv.com, - reject
+DOMAIN, encounter.bz.mgtv.com, - reject
+DOMAIN, floor.bz.mgtv.com, - reject
+DOMAIN, layer.bz.mgtv.com, - reject
+DOMAIN, mob.bz.mgtv.com, - reject
+DOMAIN, rc-topic-api.bz.mgtv.com, - reject
+DOMAIN, rprain.bz.mgtv.com, - reject
+DOMAIN, rprain.log.mgtv.com, - reject
+DOMAIN, vip.bz.mgtv.com, - reject
+DOMAIN-SUFFIX, da.mgtv.com, - reject
+# 美团
+DOMAIN, maplocatesdksnapshot.d.meituan.net, - reject
+DOMAIN, metrics-picture.d.meituan.net, - reject
+IP-CIDR, 103.37.155.60/32, - reject, no-resolve
+# 美颜相机
+DOMAIN, aaid.uyunad.com, - reject
+DOMAIN, adui.tg.meitu.com, - reject
+
+# ======= O ======= #
+# Outlook
+DOMAIN, acdn.adnxs.com, - reject
+DOMAIN, mediation.adnxs.com, - reject
+DOMAIN, sin3-ib.adnxs.com, - reject
+
+# ======= Q ======= #
+# 其他
+DOMAIN, affcpatrk.com, - reject
+
+# ======= S ======= #
+# 什么值得买
+DOMAIN, api.zuihuimai.com, - reject
+# 数字联盟
+DOMAIN-SUFFIX, shuzilm.cn, - reject
+# Speedtest
+DOMAIN, ads.pubmatic.com, - reject
+DOMAIN, id.hadron.ad.gt, - reject
+DOMAIN-KEYWORD, -adsystem.com, - reject
+
+# ======= T ======= #
+# 太平洋保险
+DOMAIN, a.cpic.com.cn, - reject
+# 腾讯
+DOMAIN, adsmind.gdtimg.com, - reject
+DOMAIN, info4.video.qq.com, - reject
+DOMAIN, info6.video.qq.com, - reject
+DOMAIN, ios.video.mpush.qq.com, - reject
+DOMAIN, otheve.beacon.qq.com, - reject
+DOMAIN, pgdt.gtimg.cn, - reject
+DOMAIN, tmead.y.qq.com, - reject
+DOMAIN, tmeadbak.y.qq.com, - reject
+DOMAIN, tmeadcomm.y.qq.com, - reject
+DOMAIN, tpns.qq.com, - reject
+DOMAIN-SUFFIX, gdt.qq.com, - reject
+DOMAIN-SUFFIX, l.qq.com, - reject
+DOMAIN-KEYWORD, trace.qq.com, - reject
+DOMAIN-KEYWORD, trace.video.qq.com, - reject
+IP-CIDR, 47.110.187.87/32, - reject, no-resolve
+
+# ======= W ======= #
+# 微信
+DOMAIN, badjs.weixinbridge.com, - reject
+DOMAIN, dns.weixin.qq.com.cn, - reject
+DOMAIN-SUFFIX, wxs.qq.com, - reject
+
+# ======= X ======= #
+# 小米
+DOMAIN, sdkconfig.ad.xiaomi.com, - reject
+# 迅雷 解除版权限制
+;DOMAIN, hub5btmain.v6.shub.sandai.net, - reject
+;DOMAIN, hub5emu.v6.shub.sandai.net, - reject
+;DOMAIN, hub5idx.v6.shub.sandai.net, - reject
+
+# ======= Y ======= #
+# 移花宫
+DOMAIN, tong.8888888888.bid, - reject
+DOMAIN-KEYWORD, 4240585f1fb7266, - reject
+# 云闪付 开屏广告
+DOMAIN, ads.95516.com, - reject
+DOMAIN, switch.cup.com.cn, - reject
+# Yandex
+DOMAIN, yandexmetrica.com, - reject
+
+# ======= REGEX ======= #
+URL-REGEX, ^http:\/\/\w{32}\.jddebug\.com\/diagnose\?, - reject
+
+[Rewrite]
+# 爱思助手 //list-app-m.i4.cn
+^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
+
+# 阿里云盘 //*api.alipan.com, member.alipan.com
+^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders - - reject
+^https:\/\/member\.alipan\.com\/v2\/activity\/sign_in_luckyBottle - - reject
+
+# 阿里巴巴 //acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict) - - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv - - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise - - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimusic\.common\.mobileservice\.startinit - - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.etao\.noah\.query\/.+tao_splash - - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryadvertise - - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get - - reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources - - reject
+^https:\/\/heic\.alicdn\.com\/imgextra\/i\d\/\d*\/?[\w!]+-\d-(?:octopus|tps-1125-1602|tps-1080-1920)\.(?:jpg|png)_(?:1\d{3}|9\d{2})x(?:1\d{3}|9\d{2})q[59]0 - - reject
+^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad - - reject
+^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) - - reject
+
+# 百度云 //pan.baidu.com
+^https:\/\/pan\.baidu\.com\/(?:act\/|aipic\/|aisearch\/|api\/getsyscfg\?|rest\/) - - reject
+
+# 豆瓣 //api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
+^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ - - reject
+^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ - - reject
+
+# 工商银行 //image.mybank.icbc.com.cn
+
+# 建设银行
+^http:\/\/image1\.ccb\.com\/newsinfo\/eBranch\/check\/(?:nf\/newfin\/activity|po\/poortheme\/activity)\/\w+\.png - reject
+
+# 京东 //api.m.jd.com
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:searchBoxWord|stationPullService|uniformRecommend[06]) - - reject
+
+# 交管12123 //gab.122.gov.cn
+^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery\/adver - - reject
+
+# 酷安 //api.coolapk.com
+^https:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch - - reject
+
+# 猫眼 //p0.pipi.cn
+^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.jpg\?imageMogr2\/quality\/ - - reject
+^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.(?:jpg|png)\?imageMogr2\/thumbnail\/(?:860x0|!165x165|!1049x1169) - - reject
+
+# 每日万年历
+^http:\/\/app-cdn\.2q10\.com\/app\/ical\/honored\? - - reject
+
+# 美团 & 美团外卖 //flowplus.meituan.net, img.meituan.net, s3plus.meituan.net
+^http:\/\/wmapi\.meituan\.com\/api\/v7\/(?:loadInfo|openscreen|startpicture) - - reject
+^https:\/\/flowplus\.meituan\.net\/v1\/mss_\w+\/linglong\/\d+\.jpg - - reject
+^https:\/\/img\.meituan\.net\/bizad\/bizad_brandCpt_\d+\.jpg - - reject
+^https:\/\/s3plus\.meituan\.net\/ocean-blk-index\/index\/blk_conf_\d+\.json - - reject
+^https:\/\/s3plus\.meituan\.net\/v1\/mss_\w+\/(?:brandcpt-vedio|waimai-alita)\/\w+\.zip$ - - reject
+
+# 网上国网 //osg-service.sgcc.com.cn
+^https:\/\/osg-service\.sgcc\.com\.cn:18600\/emss-pfa-appset-front\/bootpageoutter\/ - - reject
+
+# 微信 //mp.weixin.qq.com
+^https:\/\/mp\.weixin\.qq\.com\/mp\/(?:cps_product_info|getappmsgad|jsmonitor|masonryfeed|relatedarticle) - - reject
+
+# 小米商城 //api.m.mi.com, shop-api.retail.mi.com
+^https:\/\/api\.m\.mi\.com\/(?:v1\/(?:app\/popup_info|home\/page_feed|misearch\/search_input)|v2\/search\/search_default) - - reject
+^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) - - reject
+
+# 米家 //home.mi.com
+^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) - - reject
+
+# 云闪付 //wallet.95516.com
+^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
+
+[Script]
+# 12306 //ad.12306.cn, mobile.12306.cn
+http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/12306.js, requires-body = true, tag = 12306_splash
+http-response ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/header.js, tag = 12306_appin
+
+# 阿里云盘 //*api.alipan.com, member.alipan.com
+http-response ^https:\/\/(biz)?api\.alipan\.com\/apps\/v\d\/users?\/home\/(?:news|widgets) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/adrive.js, requires-body = true, tag = aliyun_mine
+http-response ^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/adrive.js, requires-body = true, tag = aliyun_board
+
+# 阿里巴巴 //acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com
+http-response ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/myBlockAds.js, requires-body = true, tag = taobao_1
+http-response ^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/myBlockAds.js, requires-body = true, tag = taobao_2
+
+# 草榴社区 //2023.redircdn.com
+http-response ^https:\/\/2023\.redircdn\.com\/web\/mob_post\.js\? script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/myBlockAds.js, requires-body = true, tag = caoliu
+
+# 京东 //api.m.jd.com
+http-response ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/jingdong.js, requires-body = true, tag = jingdong
+
+# 酷安 //api.coolapk.com
+http-response ^https:\/\/api\.coolapk\.com\/v6\/(?:feed\/detail|feed\/replyList|page\/dataList|main\/dataList|main\/indexV8|main\/init) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/coolapk.js, requires-body = true, tag = coolapk
+
+# 酷狗音乐 //adserviceretry.kglink.cn, gateway.kugou.com
+http-response ^https:\/\/gateway\.kugou\.com\/(?:adp\/ad\/v1\/mine_top_banner|ads\.gateway\/v2\/home_card) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/kugou.js, requires-body = true, tag = kg_gateway
+http-response ^https?:\/\/adserviceretry\.kglink\.cn\/v\d\/mobile\w+ script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/kugou.js, requires-body = true, tag = kg_linkcn
+
+# 微信封禁页面 //weixin110.qq.com, security.wechat.com
+http-response ^https\:\/\/(?:weixin110\.qq|security\.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/wechat/unlockUrls.js, requires-body = true, tag = wechat
+
+# 小米商城 //api.m.mi.com, shop-api.retail.mi.com
+http-response ^https:\/\/api\.m\.mi\.com\/v1\/(?:app\/start|order\/expressView) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/myBlockAds.js, requires-body = true, tag = mi_mall
+
+# 中国农业银行 //mobilepaas.abchina.com.cn
+http-request ^https:\/\/mobilepaas\.abchina\.com\.cn:441\/mgw\.htm$ script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/header.js, tag = abchina
+
+# 中国移动云盘 //ad.mcloud.139.com, jzts.cmpassport.com
+http-response ^https:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\/ script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/cloud139.js, requires-body = true, tag = cloud139_1
+http-response ^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/cloud139.js, requires-body = true, tag = cloud139_2
+
+[MITM]
+Hostname = ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, 2023.redircdn.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, adserviceretry.kglink.cn, gateway.kugou.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, osg-service.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com, mobilepaas.abchina.com.cn, ad.mcloud.139.com, jzts.cmpassport.com

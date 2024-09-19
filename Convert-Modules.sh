@@ -1,100 +1,80 @@
 #!/bin/bash
 
-# 检查是否传入了所有必要的参数
-if [[ -z "$1" || -z "$2" ]]; then
-  echo "Usage: $0 <input_file> <module_name> [comment]"
-  exit 1
-fi
+# Input and output variables
+input_file=$1
+module_name=$2
+comment=$3
 
-# 参数传入
-input_file=$1  # 输入文件路径
-module_name=$2  # 模块名称
-comment=$3  # 可选注释
-
-# 创建输出目录
+# Create directories for Surge and Loon if not already present
 mkdir -p Modules/Surge Modules/Loon
 
-# 格式1处理函数
-convert_format1() {
-  while read -r line; do
-    if [[ $line =~ ^(http|https) ]]; then
-      url=$(echo "$line" | awk '{print $1}')
-      action=$(echo "$line" | awk '{print $3}')
-      script=$(echo "$line" | awk '{print $4}')
+# Output files for Surge and Loon
+surge_output="Modules/Surge/${module_name}.sgmodule"
+loon_output="Modules/Loon/${module_name}.plugin"
 
-      # 根据不同的 action 来区分是否是 http-response 或 http-request
-      if [[ $action =~ ^(script-response-body|script-echo-response|script-response-header)$ ]]; then
-        echo "$module_name = type=http-response,pattern=$url,requires-body=1,script-path=$script" >> Modules/Surge/${module_name}.sgmodule
-        echo "http-response $url script-path=$script, requires-body=true, tag=${module_name}" >> Modules/Loon/${module_name}.plugin
-      else
-        echo "$module_name = type=http-request,pattern=$url,requires-body=0,script-path=$script" >> Modules/Surge/${module_name}.sgmodule
-        echo "http-request $url script-path=$script, requires-body=false, tag=${module_name}" >> Modules/Loon/${module_name}.plugin
-      fi
-    fi
-  done < "$input_file"
-}
+# Initialize output files
+echo "# Surge format for ${module_name}" > "$surge_output"
+echo "# Loon format for ${module_name}" > "$loon_output"
 
-# 格式2处理函数
-convert_format2() {
-  while read -r line; do
-    url=$(echo "$line" | awk '{print $1}')
-    echo "$url - reject" >> Modules/Surge/${module_name}.sgmodule
-    echo "$line" >> Modules/Loon/${module_name}.plugin
-  done < "$input_file"
-}
+# Read the input file line by line
+while IFS= read -r line; do
 
-# 格式3处理函数
-convert_format3() {
-  while read -r line; do
-    if [[ $line =~ ^HOST ]]; then
-      echo "${line/HOST/DOMAIN}" >> Modules/Surge/${module_name}.sgmodule
-      echo "${line/HOST/DOMAIN}" >> Modules/Loon/${module_name}.plugin
-    elif [[ $line =~ ^IP-CIDR ]]; then
-      echo "$line, no-resolve" >> Modules/Surge/${module_name}.sgmodule
-      echo "$line" >> Modules/Loon/${module_name}.plugin
+    # Rewrite processing (Surge & Loon)
+    if [[ "$line" =~ ^(http|https)-response.*script-path ]]; then
+        # Convert to Surge format
+        converted_surge=$(echo "$line" | sed -E 's/(http.*response.*)(script-path)/type=http-response,\1requires-body=1,\2/')
+        echo "$converted_surge" >> "$surge_output"
+
+        # Convert to Loon format
+        converted_loon=$(echo "$line" | sed -E 's/(http.*response.*)(script-path)/\1, requires-body=true, tag = '"${module_name}"'/')
+        echo "$converted_loon" >> "$loon_output"
+
+    elif [[ "$line" =~ ^(http|https)-request.*script-path ]]; then
+        # Convert to Surge format
+        converted_surge=$(echo "$line" | sed -E 's/(http.*request.*)(script-path)/type=http-request,\1requires-body=0,\2/')
+        echo "$converted_surge" >> "$surge_output"
+
+        # Convert to Loon format
+        converted_loon=$(echo "$line" | sed -E 's/(http.*request.*)(script-path)/\1, requires-body=false, tag = '"${module_name}"'/')
+        echo "$converted_loon" >> "$loon_output"
+
+    # URL Rewrite processing
+    elif [[ "$line" =~ ^(http|https).*url.*reject ]]; then
+        # Convert to Surge and Loon format
+        converted=$(echo "$line" | sed 's/url reject/- reject/')
+        echo "$converted" >> "$surge_output"
+        echo "$line" >> "$loon_output"
+
+    # Rule processing
+    elif [[ "$line" =~ ^(HOST|HOST-SUFFIX|HOST-KEYWORD|IP-CIDR|IP6-CIDR) ]]; then
+        # Convert rules to Surge/Loon format
+        converted=$(echo "$line" | sed -E 's/HOST/DOMAIN/; s/HOST-SUFFIX/DOMAIN-SUFFIX/; s/HOST-KEYWORD/DOMAIN-KEYWORD/; s/IP6-CIDR/IP-CIDR6/')
+        echo "$converted" >> "$surge_output"
+        echo "$converted" >> "$loon_output"
+
+    # MITM processing
+    elif [[ "$line" =~ ^hostname ]]; then
+        # Convert MITM to Surge and Loon formats
+        surge_mitm=$(echo "$line" | sed 's/hostname = /Hostname = %APPEND% /')
+        loon_mitm=$(echo "$line" | sed 's/hostname = /Hostname = /')
+        echo "$surge_mitm" >> "$surge_output"
+        echo "$loon_mitm" >> "$loon_output"
+
+    # URL processing
+    elif [[ "$line" =~ ^https?:\/\/raw\. ]]; then
+        # Convert raw URLs to Surge/Loon format
+        converted=$(echo "$line" | sed 's/raw\.githubusercontent\.com/github.com\/raw/')
+        echo "$converted" >> "$surge_output"
+        echo "$converted" >> "$loon_output"
+    
     else
-      echo "${line/;/#}" >> Modules/Surge/${module_name}.sgmodule
-      echo "${line/;/#}" >> Modules/Loon/${module_name}.plugin
+        # For any unrecognized line, keep it unchanged in both outputs
+        echo "$line" >> "$surge_output"
+        echo "$line" >> "$loon_output"
     fi
-  done < "$input_file"
-}
 
-# 格式4处理函数
-convert_format4() {
-  while read -r line; do
-    echo "${line/raw.githubusercontent.com/github.com}" >> Modules/Surge/${module_name}.sgmodule
-    echo "${line/raw.githubusercontent.com/github.com}" >> Modules/Loon/${module_name}.plugin
-  done < "$input_file"
-}
+done < "$input_file"
 
-# 格式5处理函数
-convert_format5() {
-  while read -r line; do
-    echo "Hostname = %APPEND% $line" >> Modules/Surge/${module_name}.sgmodule
-    echo "Hostname = $line" >> Modules/Loon/${module_name}.plugin
-  done < "$input_file"
-}
-
-# 根据输入文件格式选择相应的转换函数
-if grep -q "^http" "$input_file"; then
-  convert_format1
-elif grep -q "url reject" "$input_file"; then
-  convert_format2
-elif grep -q "HOST" "$input_file"; then
-  convert_format3
-elif grep -q "raw.githubusercontent.com" "$input_file"; then
-  convert_format4
-elif grep -q "hostname =" "$input_file"; then
-  convert_format5
-else
-  echo "Unknown file format. Please check the input file."
-  exit 1
-fi
-
-# 添加注释（如果提供了注释）
-if [[ -n "$comment" ]]; then
-  echo "# $comment" >> Modules/Surge/${module_name}.sgmodule
-  echo "# $comment" >> Modules/Loon/${module_name}.plugin
-fi
-
-echo "转换完成，结果已保存到 Modules/Surge/${module_name}.sgmodule 和 Modules/Loon/${module_name}.plugin"
+echo "Conversion complete. Files generated:"
+echo "Surge: $surge_output"
+echo "Loon: $loon_output"

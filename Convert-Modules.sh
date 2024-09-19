@@ -46,14 +46,12 @@ $comment" \
     -e 's/, reject-video/, REJECT/Ig' \
     -e 's/, reject-replace/, REJECT/Ig' \
     -e 's/\(,\s\)reject\b/\1REJECT/Ig' \
-    -e 's/^reject-200$/- reject/Ig' \
-    -e 's/^reject-img$/- reject/Ig' \
-    -e 's/^reject-dict$/- reject/Ig' \
-    -e 's/^reject-array$/- reject/Ig' \
-    -e 's/^reject-video$/- reject/Ig' \
-    -e 's/^reject-replace$/- reject/Ig' \
-    -e 's/^reject$/- reject/Ig' \
-    -e 's/\(^[^,]*\b\)reject/\1- reject/Ig' \
+    -e 's/reject-200/- reject/Ig' \
+    -e 's/reject-img/- reject/Ig' \
+    -e 's/reject-dict/- reject/Ig' \
+    -e 's/reject-array/- reject/Ig' \
+    -e 's/reject-video/- reject/Ig' \
+    -e 's/reject-replace/- reject/Ig' \
     "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 
 # Loon conversion

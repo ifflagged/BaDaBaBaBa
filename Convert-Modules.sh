@@ -4,113 +4,128 @@ input_file=$1
 module_name=$2
 comment=$3
 
-# Output directories
-surge_output_dir="Modules/Surge"
-loon_output_dir="Modules/Loon"
+# Output paths
+surge_output="Modules/Surge/${module_name}.sgmodule"
+loon_output="Modules/Loon/${module_name}.plugin"
 
-# Create directories if they don't exist
-mkdir -p "$surge_output_dir" "$loon_output_dir"
+# Create output directories if they don't exist
+mkdir -p Modules/Surge
+mkdir -p Modules/Loon
 
-surge_output="${surge_output_dir}/${module_name}.sgmodule"
-loon_output="${loon_output_dir}/${module_name}.plugin"
+# Initialize output files
+echo "# Surge module for ${module_name}" > "$surge_output"
+echo "# Loon plugin for ${module_name}" > "$loon_output"
 
-# Function to process QX Header Rewrite and convert to Surge/Loon formats
-process_header_rewrite() {
-    while read -r line; do
-        # Extract details based on QuanX format and convert
-        pattern=$(echo "$line" | awk '{print $1}')
-        type=$(echo "$line" | awk '{print $3}')
-        url=$(echo "$line" | awk '{print $5}')
-        
-        # Determine request type and requires-body
-        case "$type" in
-            "script-response-body"|"script-echo-response"|"script-response-header")
-                surge_type="http-response"
-                loon_type="http-response"
-                requires_body=1
-                ;;
-            "script-request-body"|"script-analyze-echo-response")
-                surge_type="http-request"
-                loon_type="http-request"
-                requires_body=0
-                ;;
-            *)
-                surge_type="http-request"
-                loon_type="http-request"
-                requires_body=0
-                ;;
-        esac
+# Function to handle rewrites and convert formats
+convert_rewrite() {
+    local line="$1"
 
-        # Write to Surge output
-        echo "$module_name = type=${surge_type},pattern=${pattern},requires-body=${requires_body},script-path=${url}" >> "$surge_output"
-        
-        # Write to Loon output
-        echo "${loon_type} ${pattern} script-path=${url}, requires-body=${requires_body}, tag=${module_name}" >> "$loon_output"
-    done < <(grep '^http' "$input_file") # Filter lines starting with URLs
-}
-
-# Function to process QX URL Rewrite and convert to Surge/Loon formats
-process_url_rewrite() {
-    while read -r line; do
-        # Extract details
-        pattern=$(echo "$line" | awk '{print $1}')
-        qx_action=$(echo "$line" | awk '{print $3}')
-
-        # Convert action for Surge and Loon
-        surge_action="reject"
-        loon_action=$qx_action
-        
-        # Write to Surge output
-        echo "$pattern - $surge_action" >> "$surge_output"
-        
-        # Write to Loon output
-        echo "$pattern $loon_action" >> "$loon_output"
-    done < <(grep '^https?' "$input_file") # Filter lines starting with http/https patterns
-}
-
-# Function to process Rules
-process_rules() {
-    while read -r line; do
-        # Extract details
-        rule_type=$(echo "$line" | awk -F', ' '{print $1}')
-        domain=$(echo "$line" | awk -F', ' '{print $2}')
-        action=$(echo "$line" | awk -F', ' '{print $3}')
-        
-        # Convert to Surge and Loon formats
-        if [[ "$rule_type" == "HOST" ]]; then
-            surge_rule="DOMAIN, ${domain}, ${action}"
-            loon_rule="DOMAIN, ${domain}, ${action}"
+    # Check for script-response-body, script-echo-response, etc.
+    if [[ $line =~ script-response-body|script-echo-response|script-response-header ]]; then
+        requires_body="requires-body=1"
+        type="http-response"
+    elif [[ $line =~ script-request-body|script-analyze-echo-response ]]; then
+        requires_body="requires-body=1"
+        type="http-request"
+    else
+        requires_body="requires-body=0"
+        if [[ $line =~ http-response ]]; then
+            type="http-response"
         else
-            surge_rule="${rule_type}, ${domain}, ${action}, no-resolve"
-            loon_rule="${rule_type}, ${domain}, ${action}"
+            type="http-request"
         fi
-        
-        # Write to Surge output
-        echo "$surge_rule" >> "$surge_output"
-        
-        # Write to Loon output
-        echo "$loon_rule" >> "$loon_output"
-    done < <(grep '^HOST' "$input_file") # Filter lines starting with HOST rules
+    fi
+
+    # Extract pattern and script path from the input line
+    pattern=$(echo "$line" | cut -d' ' -f1)
+    script_path=$(echo "$line" | grep -oP '(https?://[^\s]+)')
+
+    # Write to Surge format
+    echo "${module_name} = type=${type},pattern=${pattern},${requires_body},script-path=${script_path}" >> "$surge_output"
+
+    # Write to Loon format
+    echo "${type} ${pattern} script-path=${script_path}, ${requires_body}, tag=${module_name}" >> "$loon_output"
 }
 
-# Function to process MITM entries
-process_mitm() {
-    while read -r line; do
-        # Process MITM hostnames
-        mitm_hosts=$(echo "$line" | awk -F' = ' '{print $2}')
-        
-        # Append for Surge
-        echo "Hostname = %APPEND% ${mitm_hosts}" >> "$surge_output"
-        
-        # Regular format for Loon
-        echo "Hostname = ${mitm_hosts}" >> "$loon_output"
-    done < <(grep '^hostname' "$input_file")
+# Function to handle URL rejections and convert formats
+convert_url_reject() {
+    local line="$1"
+
+    # Extract pattern and reject type
+    pattern=$(echo "$line" | cut -d' ' -f1)
+
+    # Surge output format
+    echo "${pattern} - reject" >> "$surge_output"
+
+    # Loon output format
+    echo "${pattern} reject" >> "$loon_output"
 }
 
-# Run the functions to process different types
-process_header_rewrite
-process_url_rewrite
-process_rules
-process_mitm
+# Function to handle Rule section
+convert_rule() {
+    local line="$1"
+    # Convert HOST to DOMAIN and apply other transformations for Surge and Loon
+    converted_line=$(echo "$line" | sed 's/HOST/DOMAIN/g; s/HOST-SUFFIX/DOMAIN-SUFFIX/g; s/HOST-KEYWORD/DOMAIN-KEYWORD/g; s/IP6-CIDR/IP-CIDR6/g')
+    
+    # Surge output format
+    echo "$converted_line" >> "$surge_output"
+    
+    # Loon output format
+    echo "$converted_line" >> "$loon_output"
+}
 
-echo "Conversion completed. Files saved to $surge_output and $loon_output."
+# Function to handle URL section
+convert_url() {
+    local line="$1"
+    
+    # Convert raw.githubusercontent URL to the Surge/Loon format
+    converted_url=$(echo "$line" | sed 's/raw.githubusercontent.com/github.com/g' | sed 's/\/raw\//\/blob\//g')
+
+    # Write to both Surge and Loon outputs
+    echo "$converted_url" >> "$surge_output"
+    echo "$converted_url" >> "$loon_output"
+}
+
+# Function to handle MITM hostname section
+convert_mitm() {
+    local line="$1"
+
+    # Surge format (append mode)
+    echo "Hostname = %APPEND% ${line}" >> "$surge_output"
+
+    # Loon format
+    echo "Hostname = ${line}" >> "$loon_output"
+}
+
+# Process the input file line by line
+while IFS= read -r line; do
+    case "$line" in
+        # Detect header rewrites and process
+        Header\ Rewrite*)
+            convert_rewrite "$line"
+            ;;
+        # Detect URL rewrites and process
+        URL\ Rewrite*)
+            convert_url_reject "$line"
+            ;;
+        # Detect rules and process
+        Rule*)
+            convert_rule "$line"
+            ;;
+        # Detect URLs and process
+        URL*)
+            convert_url "$line"
+            ;;
+        # Detect MITM hostnames and process
+        MITM*)
+            convert_mitm "$line"
+            ;;
+        *)
+            echo "Unknown line format: $line"
+            ;;
+    esac
+done < "$input_file"
+
+echo "Conversion complete. Output files:"
+echo "Surge: $surge_output"
+echo "Loon: $loon_output"

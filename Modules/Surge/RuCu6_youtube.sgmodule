@@ -26,3 +26,4 @@ type=http-response,http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\
 
 [MITM]
 Hostname = %APPEND% rr*.googlevideo.com, youtubei.googleapis.com
+Hostname = %APPEND% rr*.googlevideo.com, youtubei.googleapis.com

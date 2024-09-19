@@ -42,3 +42,4 @@ type=http-response,http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v
 
 [MITM]
 Hostname = %APPEND% edith.xiaohongshu.com, www.xiaohongshu.com
+Hostname = %APPEND% edith.xiaohongshu.com, www.xiaohongshu.com

@@ -88,3 +88,6 @@ type=http-response,http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/
 
 [MITM]
 Hostname = %APPEND% ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords - reject
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo - reject
+Hostname = %APPEND% ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com

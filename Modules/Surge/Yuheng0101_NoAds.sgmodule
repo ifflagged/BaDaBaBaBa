@@ -33,3 +33,11 @@ Hostname = %APPEND% client.app.coc.10086.cn, h.app.coc.10086.cn
 # 我的 - 弹窗 
 ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/friendShake\/getShakeList url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js
 ******************************************/
+Hostname = %APPEND% client.app.coc.10086.cn, h.app.coc.10086.cn
+Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$,requires-body=1,script-path=
+Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/newTopPullSecond\/getNewTopPullList,requires-body=1,script-path=
+Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/emotionMarket\/getEmotionMarketNew,requires-body=1,script-path=
+Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/homeArea\/getTopAreaList,requires-body=1,script-path=
+^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject
+Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/navigation\/getNavigationNewInfo,requires-body=1,script-path=
+Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/friendShake\/getShakeList,requires-body=1,script-path=

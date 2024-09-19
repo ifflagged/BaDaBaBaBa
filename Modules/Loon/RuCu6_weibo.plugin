@@ -75,3 +75,4 @@ http-response ^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/list\? , requires-bod
 
 [MITM]
 Hostname = *.weibo.cn, *.weibo.com, weibo.com
+Hostname = *.weibo.cn, *.weibo.com, weibo.com

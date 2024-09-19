@@ -244,3 +244,5 @@ DOMAIN, open-pixon.ads-pixiv.net, REJECT
 
 
 [MitM]
+IP-CIDR, 122.229.8.47/32, REJECT, no-resolve
+IP-CIDR, 122.229.29.89/32, REJECT, no-resolve

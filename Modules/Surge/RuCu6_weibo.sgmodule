@@ -75,3 +75,4 @@ type=http-response,http-response ^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/li
 
 [MITM]
 Hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com
+Hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com

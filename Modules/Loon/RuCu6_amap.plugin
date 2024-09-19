@@ -60,3 +60,4 @@ http-response ^https:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_ca
 
 [MITM]
 Hostname = m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com
+Hostname = m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com

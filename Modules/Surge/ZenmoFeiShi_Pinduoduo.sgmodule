@@ -3,16 +3,16 @@
 #!author = 怎么肥事
 #!update = 2024-08-14 20:53
 
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/order_express_group - REJECT
+^https:\/\/api\.pinduoduo\.com\/search_hotquery - REJECT
+^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data - REJECT
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/new_chat_group - REJECT
+^https:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up - REJECT
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/personal - REJECT
+^https:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide - REJECT
+^https:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append - REJECT
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/my_order_group - REJECT
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/likes - REJECT
 ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/search,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
 ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
 ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js

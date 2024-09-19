@@ -11,22 +11,22 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 
 [Rewrite]
 # 开屏广告
-REJECT
+^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) REJECT-dict
 # 满意度调研
-REJECT
+^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? REJECT-dict
 # 大会员广告
-REJECT
+^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? REJECT-dict
 # 移除搜索中的默认关键词
-REJECT
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords - REJECT
 # 直播广告
-REJECT
+^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? REJECT-dict
 # 屏蔽默认搜索框关键词
-REJECT
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords REJECT
 # 流量卡推荐
-REJECT
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo - REJECT
 # IP请求、地理位置请求 //api.bilibili.com
-REJECT
-REJECT
+^https:\/\/app\.bilibili\.com\/x\/resource\/ip REJECT-dict
+^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp REJECT-dict
 # 移除视频链接跟踪参数
 (^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
 # 移除直播间链接跟踪参数

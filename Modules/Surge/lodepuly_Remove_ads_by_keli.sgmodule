@@ -58,187 +58,187 @@ DOMAIN, open-pixon.ads-pixiv.net, REJECT
 
 [Rewrite]
 # 摩托范弹窗广告
-REJECT
+^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk REJECT
 
 # 车来了 - 为您推荐
-REJECT
+^https:\/\/cdn\.web\.chelaile\.net\.cn\/info-flow\/index\.html REJECT
 
 # 最右
-REJECT
+^http:\/\/mercury-gateway\.ixiaochuan\.cn\/mercury\/v1\/ad\/ REJECT
 
 # 米家
-REJECT
+^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(banner|carousel\/banners|myTab|openingBanner) REJECT-dict
 
 # 小米
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
+^https?:\/\/api\.m\.mi\.com\/v\d\/app\/start REJECT-200
+^https?:\/\/api\.jr\.mi\.com\/v\d\/adv\/ REJECT-200
+^https?:\/\/api\.jr\.mi\.com\/jr\/api\/playScreen REJECT-200
+^https?:\/\/api-mifit.+?\.huami\.com\/discovery\/mi\/discovery\/.+?_ad\? REJECT-200
+^https?:\/\/home\.mi\.com\/cgi-op\/api\/v\d\/recommendation\/banner REJECT
+^https?:\/\/(api-mifit|api-mifit-\w+)\.huami\.com\/discovery\/mi\/discovery\/\w+_ad\? REJECT
+^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/homepage_ad\? REJECT-img
+^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/sleep_ad\? REJECT-img
+^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/sport_summary_ad\? REJECT-img
+^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/sport_training_ad\? REJECT-img
+^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/step_detail_ad\? REJECT-img
+^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/training_video_ad\? REJECT-img
 
 # 小米有品
-REJECT
+^https:\/\/shopapi\.io\.mi\.com\/mtop\/mf\/resource\/homePage\/pageConfig REJECT-200
 # 小米运动
-REJECT
+^https:\/\/api-mifit-cn2\.huami\.com\/discovery\/mi\/cards\/startpage_ad REJECT
 
 # 米家
-REJECT
+^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(banner|myTab)\? REJECT-dict
 
 # 米读
-REJECT
-REJECT
-REJECT
+^https:\/\/apiwz\.midukanshu\.com\/advert\/getPopup$ REJECT
+^https:\/\/apiwz\.midukanshu\.com\/advert\/treasureInfo$ REJECT
+^https:\/\/apiwz\.midukanshu\.com\/config\/getAds$ REJECT
 
 # 有兔阅读（米兔）
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
+^http:\/\/img\.dailmo\.com\/img\/61\/23c7125bfe6166d69f3bff5b0ca4d31e\.jpg REJECT
+^http:\/\/img\.dailmo\.com\/img\/50\/edb40c6392f848df37f9c31d8a6f90f6\.jpg REJECT
+^http:\/\/img\.dailmo\.com\/img\/6\/90585d9e96c73dd49644af57d8501624\.jpg REJECT
+^http:\/\/img\.dailmo\.com\/img\/5\/6cb2aa237ce1f65944aa1ecb29fbdeef\.jpg REJECT
+^http:\/\/img\.allahall\.com\/img\/61\/23c7125bfe6166d69f3bff5b0ca4d31e\.jpg REJECT
+^http:\/\/img\.allahall\.com\/img\/50\/edb40c6392f848df37f9c31d8a6f90f6\.jpg REJECT
+^http:\/\/img\.allahall\.com\/img\/6\/90585d9e96c73dd49644af57d8501624\.jpg REJECT
+^http:\/\/img\.allahall\.com\/img\/5\/6cb2aa237ce1f65944aa1ecb29fbdeef\.jpg REJECT
+^http:\/\/img\.allahall\.com\/img\/59\/6a13a75dfe46ebfdac96bd27ef098885\.jpg REJECT
+^http:\/\/app\.zhoudamozi\.com\/ad\/.+ REJECT-200
 
 # 拼多多 //api.pinduoduo.com, api.yangkeduo.com
-REJECT
+^https:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash REJECT
 
 # 闲鱼 //gw.alicdn.com, acs.m.taobao.com
-REJECT
-REJECT
-REJECT
-REJECT
+^https:\/\/gw\.alicdn\.com\/mt\/ REJECT
+^https:\/\/gw\.alicdn\.com\/tfs\/.+\d{3,4}-\d{4} REJECT
+^https:\/\/gw\.alicdn\.com\/tps\/.+\d{3,4}-\d{4} REJECT
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome REJECT
 
 # QQ
 # QQ钱包广告 //m.qianbao.qq.com
-REJECT
-REJECT
+^https:\/\/m\.qianbao\.qq\.com\/services\/walletHome\/getQQshopData\? REJECT-dict
+^https:\/\/m\.qianbao\.qq\.com\/services\/walletHome\/getGameData\? REJECT-dict
 # QQ钱包公益广告
-REJECT
+^https:\/\/m\.qianbao\.qq\.com\/services\/walletHome\/getFootData\? REJECT-dict
 
 # 和风天气 hfapp-service.qweather.net
-REJECT
+^https:\/\/hfapp-service\.qweather\.net\/v2\.0\/app\/ad\/list\? REJECT-dict
 
 # 航旅纵横 @Dragon
 # 首页悬浮标签
-REJECT
+^http:\/\/home\.umetrip\.com\/gateway\/api\/umetrip\/native REJECT
 # 我的页面轮播图
-REJECT
+^http:\/\/umerp\.umetrip\.com\/gateway\/api\/umetrip\/native REJECT
 
 # 掌上英雄联盟 @𝑨梦 @𝑪𝒉𝒙𝒎𝟏𝟎𝟐𝟑
-REJECT
+^https?:\/\/us\.l\.qq\.com\/exapp REJECT-200
 
 # 中国移动开屏广告
-REJECT
+^https:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/(explorePage\/getAdverList|init\/startInit) REJECT
 
 # 有道词典 @安妮
 # 翻译广告
-REJECT
+^https:\/\/dict\.youdao\.com\/course\/tab\/translateTab REJECT-dict
 # 听读训练
-REJECT
+^https:\/\/dict\.youdao\.com\/homepage\/tile REJECT-dict
 # 首次查词弹窗
-REJECT
+^https:\/\/api-overmind\.youdao\.com\/openapi\/get\/luna\/dict\/dict-mobile\/prod\/dictCommonConfig REJECT-dict
 # 首页弹窗
-REJECT
+^https:\/\/cdke\.youdao\.com\/course3\/recommend\/dict\/startup REJECT-dict
 # 搜索预想
-REJECT
+^https:\/\/dict\.youdao\.com\/commonsearch REJECT-dict
 # 会员优惠券弹窗
-REJECT
+^https:\/\/dict\.youdao\.com\/vip\/activity\/couponinfo REJECT-dict
 # 首页左上角福利中心
-REJECT
+^https:\/\/dict\.youdao\.com\/dictusertask\/system REJECT-dict
 
 # 深圳通
-REJECT
+^https?:\/\/ecard\.shenzhentong\.com\/wxweb\/bwxppub2\/QryAdvertList\.do REJECT-200
 
 # 埋堆堆 @Kuraki //sfo.mddcloud.com.cn, mob.mddcloud.com.cn, toblog.ctobsnssdk.com, t-dsp.pinduoduo.com, mobads-pre-config.cdn.bcebos.com, sdk1xyajs.data.kuiniuca.com, conf-darwin.xycdn.com, *.ubixioe.com
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
-REJECT
+^https?:\/\/mob\.mddcloud\.com\.cn\/adApi\/advert\/(first|third)part\/advertList REJECT-dict
+^https?:\/\/t-dsp\.pinduoduo\.com REJECT-200
+^https?:\/\/mobads-pre-config\.cdn\.bcebos\.com\/preload\.php REJECT-200
+^http?:\/\/sfo\.mddcloud\.com\.cn\/api\/v2\/sfo\/popup_displays? REJECT-dict
+^https?:\/\/tower\.ubixioe\.com\/mob\/mediation REJECT
+^https?:\/\/toblog\.ctobsnssdk\.com REJECT-200
+^https?:\/\/conf-darwin\.xycdn\.com REJECT-dict
+^https?:\/\/sdk1xyajs\.data\.kuiniuca\.com REJECT
 
 # 威锋 - 开屏广告
-REJECT
+^https:\/\/api\.wfdata\.club\/v2\/yesfeng\/yesList REJECT
 
 # 闲鱼 - 开屏广告
-REJECT
+^https:\/\/iyes\.youku\.com\/uts\/v1\/start\/ REJECT-dict
 # 闲鱼 - 底部浮层发布球
-REJECT
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.get\/ REJECT-dict
 
 # 创客贴设计 - 开屏广告
-REJECT
+^https:\/\/gw\.chuangkit\.com\/team\/app\/common\/ad\/ REJECT-dict
 
 # 稿定设计 - 开屏广告
-REJECT
+^https:\/\/qiye\.gaoding\.com\/api\/v3\/oc\/v2\/delivery-pits\/ios-splash\/ REJECT-dict
 
 # 猫眼 - 移除开屏广告、红包悬浮
-REJECT
-REJECT
+^https:\/\/p0\.pipi\.cn\/(adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.jpg\?imageMogr2\/quality\/ REJECT-dict
+^https:\/\/p0\.pipi\.cn\/(adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.(jpg|png)\?imageMogr2\/thumbnail\/(860x0|!165x165|!1049x1169) REJECT-dict
 
 # 站酷 - 开屏广告
-REJECT
+^https:\/\/api\.zcool\.com\.cn\/v\d\.\d\.\d/common\/open-screen REJECT-dict
 
 # 香山智能 - 开屏广告
 ^https:\/\/shealthyapi\.senssun\.com\/v1\/app\/banner\/findByType\?type=bottom$
 
 # 下厨房 - 开屏广告
-REJECT
+^https:\/\/api\.xiachufang\.com\/v2\/ad\/ REJECT-dict
 
 # 懒饭 - 开屏广告
-REJECT
+^https:\/\/lanfanapp\.com\/api\/v1\/ads\/ REJECT-dict
 
 #向日葵 #开屏广告 #主机名client-api-v2.oray.com
-REJECT
+^https:\/\/client-api-v2\.oray\.com\/materials\/SLCC_IOS_STARTUP REJECT-dict
 #向日葵 #首页文字广告
-REJECT
+^https:\/\/client-api-v2\.oray\.com\/materials\/SLCC_IOS_DEVICE REJECT-dict
 #向日葵 #发现页广告
-REJECT
+^https:\/\/client-api-v2\.oray\.com\/materials\/SUNLOGIN_CLIENT_IOS_PROMOTION REJECT-dict
 
 # 10099
-REJECT
+^https:\/\/app\.10099\.com\.cn\/contact-web\/api\/version\/getFlashScreenPage REJECT
 
 # 飞智游戏厅 - 开屏广告
-REJECT
+^https:\/\/api\.flydigi\.com\/android\/v2\/ad REJECT-dict
 
 # 小爱音箱 - 我的页面会员推广
-REJECT
+^https:\/\/info\.mina\.xiaoaisound\.com\/payGuide\/userCenter REJECT-dict
 # 小爱音箱 - 首页推广轮播图
-REJECT
+^https:\/\/info\.mina\.xiaoaisound\.com\/advertise\/ REJECT-dict
 
 # 水印相机 - 去开屏广告
-REJECT
+^https:\/\/api\.xiangji\.qq\.com\/splash$ REJECT-dict
 
 # 央视频广告
-REJECT
+^https:\/\/cdn\.cmgadx\.com\/sdk\/pool\/ REJECT-dict
 
 # 亲邻开门
-REJECT
+^https:\/\/qadx\.qinlinad\.com\/ad\/ REJECT-dict
 
 # 小米运动健康
 # 运动页面活动推广
-REJECT
+^https:\/\/watch\.iot\.mi\.com\/cgi-op\/api\/v1\/watch\/health\/resource\?business=MI_WATCH_SPORT REJECT-dict
 
 # 设备页面横幅推广
-REJECT
+^https:\/\/watch\.iot\.mi\.com\/cgi-op\/api\/v1\/watch\/health\/resource\?business=MI_HEALTH_DEVICE_TAB_PAGE REJECT-dict
 
 # 淘票票 - 开屏广告
-REJECT
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryloadingbanner\/ REJECT-dict
 # 淘票票 - 弹窗
-REJECT
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.life\.popup\.get\/ REJECT-dict
 
 # Pixiv - 底栏广告
-REJECT
+^https:\/\/d\.socdm\.com\/adsv\/ REJECT-dict
 
 [Script]
 

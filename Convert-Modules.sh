@@ -52,7 +52,7 @@ $comment" \
     -e '/http-response/ s/, tag.*//' \
     -e '/http-request/ s/, tag.*//' \
     -e 's/ script-path = /,script-path=/Ig' \
-    -e '/302/ s/\(.*\)\(302\)\(.*\)/\1\3 302/'
+    -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/'
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
     "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 

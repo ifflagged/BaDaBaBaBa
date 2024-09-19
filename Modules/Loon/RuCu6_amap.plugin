@@ -1,18 +1,2 @@
-# # amap // m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com,
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_amap
-Hostname =  m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com
+# Loon module for RuCu6_amap
+Hostname = m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com

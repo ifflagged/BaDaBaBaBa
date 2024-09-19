@@ -1,18 +1,2 @@
-# # amap // m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com,
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_amap = type=http-response,pattern=http-response,requires-body=0,script-path==
-Hostname = %APPEND%  m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com
+# Surge module for RuCu6_amap
+Hostname = %APPEND% m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com

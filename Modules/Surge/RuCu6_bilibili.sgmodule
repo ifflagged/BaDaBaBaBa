@@ -1,21 +1,4 @@
-# # bilibili // ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com,
+# Surge module for RuCu6_bilibili
 ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords - reject
 ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo - reject
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_bilibili = type=http-response,pattern=http-response,requires-body=0,script-path==
-Hostname = %APPEND%  ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com
+Hostname = %APPEND% ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com

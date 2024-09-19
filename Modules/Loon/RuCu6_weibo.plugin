@@ -1,21 +1,2 @@
-# # weibo // *.weibo.cn, *.weibo.com, weibo.com,
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_weibo
-Hostname =  *.weibo.cn, *.weibo.com, weibo.com
+# Loon module for RuCu6_weibo
+Hostname = *.weibo.cn, *.weibo.com, weibo.com

@@ -1,4 +1,2 @@
-# # youtube // rr*.googlevideo.com, youtubei.googleapis.com,
-RuCu6_youtube = type=http-request,pattern=http-request,requires-body=0,script-path==
-RuCu6_youtube = type=http-response,pattern=http-response,requires-body=0,script-path==
-Hostname = %APPEND%  rr*.googlevideo.com, youtubei.googleapis.com
+# Surge module for RuCu6_youtube
+Hostname = %APPEND% rr*.googlevideo.com, youtubei.googleapis.com

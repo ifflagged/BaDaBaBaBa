@@ -1,4 +1,2 @@
-# # youtube // rr*.googlevideo.com, youtubei.googleapis.com,
-http-request http-request script-path==, requires-body=false, requires-body=0, tag=RuCu6_youtube
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_youtube
-Hostname =  rr*.googlevideo.com, youtubei.googleapis.com
+# Loon module for RuCu6_youtube
+Hostname = rr*.googlevideo.com, youtubei.googleapis.com

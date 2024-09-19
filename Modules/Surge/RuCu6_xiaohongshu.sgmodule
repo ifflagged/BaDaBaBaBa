@@ -1,13 +1,2 @@
-# # xiaohongshu // edith.xiaohongshu.com, www.xiaohongshu.com,
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_xiaohongshu = type=http-response,pattern=http-response,requires-body=0,script-path==
-Hostname = %APPEND%  edith.xiaohongshu.com, www.xiaohongshu.com
+# Surge module for RuCu6_xiaohongshu
+Hostname = %APPEND% edith.xiaohongshu.com, www.xiaohongshu.com

@@ -1,21 +1,4 @@
-# # bilibili // ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com,
+# Loon module for RuCu6_bilibili
 ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords reject-dict
 ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo reject-dict
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_bilibili
-Hostname =  ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com
+Hostname = ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com

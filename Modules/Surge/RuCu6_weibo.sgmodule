@@ -1,21 +1,2 @@
-# # weibo // *.weibo.cn, *.weibo.com, weibo.com,
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-RuCu6_weibo = type=http-response,pattern=http-response,requires-body=0,script-path==
-Hostname = %APPEND%  *.weibo.cn, *.weibo.com, weibo.com
+# Surge module for RuCu6_weibo
+Hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com

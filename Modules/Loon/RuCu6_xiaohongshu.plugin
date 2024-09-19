@@ -1,13 +1,2 @@
-# # xiaohongshu // edith.xiaohongshu.com, www.xiaohongshu.com,
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-http-response http-response script-path==, requires-body=false, requires-body=0, tag=RuCu6_xiaohongshu
-Hostname =  edith.xiaohongshu.com, www.xiaohongshu.com
+# Loon module for RuCu6_xiaohongshu
+Hostname = edith.xiaohongshu.com, www.xiaohongshu.com

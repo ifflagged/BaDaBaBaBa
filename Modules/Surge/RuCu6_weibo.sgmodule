@@ -1,2 +1,20 @@
-# Surge module for RuCu6_weibo
-Hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,
+Hostname = %APPEND% hostname = *.weibo.cn, *.weibo.com, weibo.com

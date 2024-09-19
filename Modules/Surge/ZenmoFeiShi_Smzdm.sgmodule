@@ -1,12 +1,11 @@
-# Surge module for ZenmoFeiShi_Smzdm
-^https:\/\/app-api\.smzdm\.com\/util\/loading - reject
-^https:\/\/haojia-api\.smzdm\.com\/home\/list - reject
-^https:\/\/app-api\.smzdm\.com\/util\/update - reject
-^https:\/\/homepage-api\.smzdm\.com\/v3\/home - reject
-^https:\/\/user-api\.smzdm\.com\/vip - reject
-^https:\/\/user-api\.smzdm\.com\/vip\/bottom_card_list - reject
-^https:\/\/article-api\.smzdm\.com\/publish\/get_bubble - reject
-^https:\/\/qianbao\.smzdm\.com\/v\d\/app\/home - reject
-^https:\/\/s3\.zdmimg\.com\/third\/index - reject
-^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list - reject
-^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading - reject
+^https:\/\/app-api\.smzdm\.com\/util\/loading url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/haojia-api\.smzdm\.com\/home\/list url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/app-api\.smzdm\.com\/util\/update url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/homepage-api\.smzdm\.com\/v3\/home url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/user-api\.smzdm\.com\/vip url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/user-api\.smzdm\.com\/vip\/bottom_card_list url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/article-api\.smzdm\.com\/publish\/get_bubble url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/qianbao\.smzdm\.com\/v\d\/app\/home url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/s3\.zdmimg\.com\/third\/index url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
+^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading- reject-dict

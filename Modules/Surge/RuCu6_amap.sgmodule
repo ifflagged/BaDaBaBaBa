@@ -1,2 +1,17 @@
-# Surge module for RuCu6_amap
-Hostname = %APPEND% m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/amap.js,
+Hostname = %APPEND% hostname = m5.amap.com, m5-zb.amap.com, oss.amap.com, sns.amap.com

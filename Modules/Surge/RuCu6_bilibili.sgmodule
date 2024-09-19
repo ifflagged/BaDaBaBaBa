@@ -1,4 +1,20 @@
-# Surge module for RuCu6_bilibili
-^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords - reject
-^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo - reject
-Hostname = %APPEND% ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords- reject-dict
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo- reject-dict
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/protoC.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/protoC.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/protoC.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/protoC.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/protoC.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/protoC.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/protoC.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js,
+Hostname = %APPEND% hostname = ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com

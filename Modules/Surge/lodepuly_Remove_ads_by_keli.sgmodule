@@ -1,3 +1,2 @@
-# Surge module for lodepuly_Remove_ads_by_keli
-IP-CIDR,  122.229.8.47/32, REJECT, no-resolve, REJECT, no-resolve
-IP-CIDR,  122.229.29.89/32, REJECT, no-resolve, REJECT, no-resolve
+IP-CIDR, 122.229.8.47/32, REJECT, no-resolve
+IP-CIDR, 122.229.29.89/32, REJECT, no-resolve

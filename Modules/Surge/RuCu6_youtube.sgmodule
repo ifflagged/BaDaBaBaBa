@@ -1,2 +1,3 @@
-# Surge module for RuCu6_youtube
-Hostname = %APPEND% rr*.googlevideo.com, youtubei.googleapis.com
+type=http-request,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/request.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/response.js,
+Hostname = %APPEND% hostname = rr*.googlevideo.com, youtubei.googleapis.com

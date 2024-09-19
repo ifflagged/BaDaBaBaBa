@@ -1,15 +1,14 @@
-# Loon module for ZenmoFeiShi_Pinduoduo
-^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/order_express_group reject-dict
-^https:\/\/api\.pinduoduo\.com\/search_hotquery reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/new_chat_group reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/personal reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/my_order_group reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/likes reject-dict
-^https:\/\/api\.pinduoduo\.com\/search script-response-body
-^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub script-response-body
-^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub script-response-body
-^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render script-response-body
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/order_express_group- reject-dict
+^https:\/\/api\.pinduoduo\.com\/search_hotquery- reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data- reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/new_chat_group- reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up- reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/personal- reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide- reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append- reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/my_order_group- reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/likes- reject-dict
+^https:\/\/api\.pinduoduo\.com\/search url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Pinduoduo.js
+^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Pinduoduo.js
+^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Pinduoduo.js
+^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Pinduoduo.js

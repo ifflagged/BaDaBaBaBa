@@ -1,2 +1,12 @@
-# Surge module for RuCu6_xiaohongshu
-Hostname = %APPEND% edith.xiaohongshu.com, www.xiaohongshu.com
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+type=http-response,pattern=,requires-body=false,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+Hostname = %APPEND% hostname = edith.xiaohongshu.com, www.xiaohongshu.com

@@ -1,2 +1,3 @@
-# Loon module for RuCu6_youtube
-Hostname = rr*.googlevideo.com, youtubei.googleapis.com
+http-request  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/request.js,, requires-body=false, tag=RuCu6_youtube
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/response.js,, requires-body=false, tag=RuCu6_youtube
+Hostname = hostname = rr*.googlevideo.com, youtubei.googleapis.com

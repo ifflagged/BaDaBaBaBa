@@ -1,2 +1,12 @@
-# Loon module for RuCu6_xiaohongshu
-Hostname = edith.xiaohongshu.com, www.xiaohongshu.com
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+http-response  script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,, requires-body=false, tag=RuCu6_xiaohongshu
+Hostname = hostname = edith.xiaohongshu.com, www.xiaohongshu.com

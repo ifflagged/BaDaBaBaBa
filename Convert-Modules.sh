@@ -61,7 +61,6 @@ $comment" \
     -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
     "$input_file" > "Modules/Surge/${module_name}.sgmodule"
-    "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 
 # Loon conversion
 sed -e "1 i\\

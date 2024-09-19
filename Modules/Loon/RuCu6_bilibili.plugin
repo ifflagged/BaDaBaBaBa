@@ -1,0 +1,90 @@
+http-request #!name script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request #!desc script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request #!author script-path=RuCu6[https://github.com/RuCu6],, requires-body=false, tag=RuCu6_bilibili
+http-request #!date script-path=08:50, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request [Rule] script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request URL-REGEX, script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request URL-REGEX, script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request [Rewrite] script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request ^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request ^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request ^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request ^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request ^https:\/\/app\.bilibili\.com\/x\/resource\/ip script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request ^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request (^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request (^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request [Script] script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=待完善, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=待完善, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request # script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request http-response script-path==, requires-body=false, tag=RuCu6_bilibili
+http-request  script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request [MITM] script-path=, requires-body=false, tag=RuCu6_bilibili
+http-request hostname script-path=grpc.biliapi.net,, requires-body=false, tag=RuCu6_bilibili
+# # bilibili // ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com,

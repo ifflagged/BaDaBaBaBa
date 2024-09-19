@@ -41,3 +41,4 @@ http-response ^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list scr
 ^https:\/\/s3\.zdmimg\.com\/third\/index url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
 ^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js
 ^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading url reject-dict
+Hostname = haojia-api.smzdm.com, homepage-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com ,qianbao.smzdm.com,s3.zdmimg.com,post.m.smzdm.com,haojia.m.smzdm.com

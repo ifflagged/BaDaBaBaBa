@@ -68,3 +68,4 @@ http-response ^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render scri
 
 
 
+Hostname = api.pinduoduo.com

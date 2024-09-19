@@ -116,3 +116,15 @@ http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/note\/(?:imagefe
 
 [MITM]
 Hostname = %APPEND% edith.xiaohongshu.com, www.xiaohongshu.com
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+RuCu6_xiaohongshu = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/xiaohongshu.js,
+Hostname = %APPEND% edith.xiaohongshu.com, www.xiaohongshu.com

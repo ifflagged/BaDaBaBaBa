@@ -1038,3 +1038,20 @@ http-response ^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent scr
 
 [MITM]
 Hostname = %APPEND% ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, 2023.redircdn.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, adserviceretry.kglink.cn, gateway.kugou.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, osg-service.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com, mobilepaas.abchina.com.cn, ad.mcloud.139.com, jzts.cmpassport.com
+RuCu6_myblockads = type=http-request,pattern=http-request,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/12306.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/header.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/adrive.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/adrive.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/myBlockAds.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/myBlockAds.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/myBlockAds.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/jingdong.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/coolapk.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/kugou.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/kugou.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/wechat/unlockUrls.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/myBlockAds.js,
+RuCu6_myblockads = type=http-request,pattern=http-request,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/header.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/cloud139.js,
+RuCu6_myblockads = type=http-request,pattern=http-response,requires-body=0,script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/cloud139.js,
+Hostname = %APPEND% ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, 2023.redircdn.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, adserviceretry.kglink.cn, gateway.kugou.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, osg-service.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com, mobilepaas.abchina.com.cn, ad.mcloud.139.com, jzts.cmpassport.com

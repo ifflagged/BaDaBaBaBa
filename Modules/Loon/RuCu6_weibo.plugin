@@ -207,3 +207,23 @@ http-response ^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/list\? script-path = 
 
 [MITM]
 Hostname = *.weibo.cn, *.weibo.com, weibo.com
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/weibo.js,, requires-body=0, tag=RuCu6_weibo
+Hostname = *.weibo.cn, *.weibo.com, weibo.com

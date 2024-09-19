@@ -99,3 +99,4 @@ Hostname = %APPEND% client.app.coc.10086.cn, h.app.coc.10086.cn
 # 我的 - 弹窗 
 ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/friendShake\/getShakeList url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js
 ******************************************/
+Hostname = %APPEND% client.app.coc.10086.cn, h.app.coc.10086.cn

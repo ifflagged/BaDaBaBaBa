@@ -77,3 +77,6 @@ http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next
 
 [MITM]
 Hostname = rr*.googlevideo.com, youtubei.googleapis.com
+http-request http-request script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/request.js,, requires-body=0, tag=RuCu6_youtube
+http-request http-response script-path=https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/response.js,, requires-body=0, tag=RuCu6_youtube
+Hostname = rr*.googlevideo.com, youtubei.googleapis.com

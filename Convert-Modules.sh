@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Input parameters
 input_file=$1
 module_name=$2
 comment=$3
@@ -8,124 +9,76 @@ comment=$3
 surge_output="Modules/Surge/${module_name}.sgmodule"
 loon_output="Modules/Loon/${module_name}.plugin"
 
-# Create output directories if they don't exist
-mkdir -p Modules/Surge
-mkdir -p Modules/Loon
+# Create directories if they don't exist
+mkdir -p "$(dirname "$surge_output")"
+mkdir -p "$(dirname "$loon_output")"
 
-# Initialize output files
-echo "# Surge module for ${module_name}" > "$surge_output"
-echo "# Loon plugin for ${module_name}" > "$loon_output"
+# Initialize the output files
+echo "# Surge module: $module_name" > "$surge_output"
+echo "# Loon plugin: $module_name" > "$loon_output"
 
-# Function to handle rewrites and convert formats
-convert_rewrite() {
-    local line="$1"
+# Processing function for each line of input
+process_line() {
+  local line="$1"
+  local surge_result=""
+  local loon_result=""
 
-    # Check for script-response-body, script-echo-response, etc.
-    if [[ $line =~ script-response-body|script-echo-response|script-response-header ]]; then
-        requires_body="requires-body=1"
-        type="http-response"
-    elif [[ $line =~ script-request-body|script-analyze-echo-response ]]; then
-        requires_body="requires-body=1"
-        type="http-request"
+  # Script-Type URL pattern handling
+  if [[ $line =~ $Script_Type ]]; then
+    script_url="${BASH_REMATCH[3]}"
+    if [[ ${BASH_REMATCH[2]} =~ (script-response-body|script-echo-response|script-response-header|script-analyze-echo-response) ]]; then
+      requires_body="1"
+      surge_type="http-response"
     else
-        requires_body="requires-body=0"
-        if [[ $line =~ http-response ]]; then
-            type="http-response"
-        else
-            type="http-request"
-        fi
+      requires_body="0"
+      surge_type="http-request"
     fi
-
-    # Extract pattern and script path from the input line
-    pattern=$(echo "$line" | cut -d' ' -f1)
-    script_path=$(echo "$line" | grep -oP '(https?://[^\s]+)')
-
-    # Write to Surge format
-    echo "${module_name} = type=${type},pattern=${pattern},${requires_body},script-path=${script_path}" >> "$surge_output"
-
-    # Write to Loon format
-    echo "${type} ${pattern} script-path=${script_path}, ${requires_body}, tag=${module_name}" >> "$loon_output"
-}
-
-# Function to handle URL rejections and convert formats
-convert_url_reject() {
-    local line="$1"
-
-    # Extract pattern and reject type
-    pattern=$(echo "$line" | cut -d' ' -f1)
-
-    # Surge output format
-    echo "${pattern} - reject" >> "$surge_output"
-
-    # Loon output format
-    echo "${pattern} reject" >> "$loon_output"
-}
-
-# Function to handle Rule section
-convert_rule() {
-    local line="$1"
-    # Convert HOST to DOMAIN and apply other transformations for Surge and Loon
-    converted_line=$(echo "$line" | sed 's/HOST/DOMAIN/g; s/HOST-SUFFIX/DOMAIN-SUFFIX/g; s/HOST-KEYWORD/DOMAIN-KEYWORD/g; s/IP6-CIDR/IP-CIDR6/g')
-    
-    # Surge output format
-    echo "$converted_line" >> "$surge_output"
-    
-    # Loon output format
-    echo "$converted_line" >> "$loon_output"
-}
-
-# Function to handle URL section
-convert_url() {
-    local line="$1"
-    
-    # Convert raw.githubusercontent URL to the Surge/Loon format
-    converted_url=$(echo "$line" | sed 's/raw.githubusercontent.com/github.com/g' | sed 's/\/raw\//\/blob\//g')
-
-    # Write to both Surge and Loon outputs
-    echo "$converted_url" >> "$surge_output"
-    echo "$converted_url" >> "$loon_output"
-}
-
-# Function to handle MITM hostname section
-convert_mitm() {
-    local line="$1"
-
-    # Surge format (append mode)
-    echo "Hostname = %APPEND% ${line}" >> "$surge_output"
-
+    # Surge format
+    surge_result="${module_name} = type=${surge_type},pattern=${BASH_REMATCH[1]},requires-body=${requires_body},script-path=${script_url}"
     # Loon format
-    echo "Hostname = ${line}" >> "$loon_output"
+    loon_result="${surge_type} ${BASH_REMATCH[1]} script-path=${script_url}, requires-body=${requires_body}, tag=${module_name}"
+
+  # URL Rewrite handling
+  elif [[ $line =~ $URL_Rewrite ]]; then
+    # Surge format
+    surge_result="${BASH_REMATCH[1]} - ${BASH_REMATCH[2]}"
+    # Loon format
+    loon_result="${BASH_REMATCH[1]} ${BASH_REMATCH[2]}"
+
+  # URL conversion handling
+  elif [[ $line =~ https://raw\.githubusercontent\.com ]]; then
+    # Surge & Loon both have the same URL conversion
+    surge_result=$(echo "$line" | sed -e 's/raw.githubusercontent.com/github.com/' -e 's/\/main\//\/raw\/main\//' -e 's/\/master\//\/raw\/master\//')
+    loon_result="$surge_result"
+
+  # MITM (hostname) handling
+  elif [[ $line =~ hostname ]]; then
+    # Surge format
+    surge_result="Hostname = %APPEND% ${line#*=}"
+    # Loon format
+    loon_result="Hostname = ${line#*=}"
+
+  # Rule conversion (Rule file format)
+  elif [[ $line =~ ^HOST ]]; then
+    # Surge format
+    surge_result=$(echo "$line" | sed 's/HOST/DOMAIN/' | sed 's/REJECT/& no-resolve/')
+    loon_result=$(echo "$line" | sed 's/HOST/DOMAIN/')
+  fi
+
+  # Write to output files
+  if [[ -n $surge_result ]]; then
+    echo "$surge_result" >> "$surge_output"
+  fi
+  if [[ -n $loon_result ]]; then
+    echo "$loon_result" >> "$loon_output"
+  fi
 }
 
-# Process the input file line by line
+# Read and process the input file line by line
 while IFS= read -r line; do
-    case "$line" in
-        # Detect header rewrites and process
-        Header\ Rewrite*)
-            convert_rewrite "$line"
-            ;;
-        # Detect URL rewrites and process
-        URL\ Rewrite*)
-            convert_url_reject "$line"
-            ;;
-        # Detect rules and process
-        Rule*)
-            convert_rule "$line"
-            ;;
-        # Detect URLs and process
-        URL*)
-            convert_url "$line"
-            ;;
-        # Detect MITM hostnames and process
-        MITM*)
-            convert_mitm "$line"
-            ;;
-        *)
-            echo "Unknown line format: $line"
-            ;;
-    esac
+  process_line "$line"
 done < "$input_file"
 
-echo "Conversion complete. Output files:"
-echo "Surge: $surge_output"
-echo "Loon: $loon_output"
+echo "Conversion complete. Output files generated:"
+echo "$surge_output"
+echo "$loon_output"

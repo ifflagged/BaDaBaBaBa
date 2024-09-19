@@ -55,7 +55,7 @@
 ^https?:\/\/app\.58\.com\/api\/home\/(advertising|appadv) - - reject
 # > 555
 ddgksf2013_StartUp = type=http-response,pattern=^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/api\/v\d\/movie\/index_recommend,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/555Ad.js
-^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/.*?\/v\d\/(version$|notice\?|top_notice\?|advert\?position=[^2]+) - reject
+^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/.*?\/v\d\/(version$|notice\?|top_notice\?|advert\?position=[^2]+) - - reject
 # > 12123
 ^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery - - reject
 # > 123pan
@@ -223,8 +223,8 @@ ddgksf2013_StartUp = type=http-response,pattern=;^https:\/\/api\.gamer\.com\.tw\
 
 # > elema
 ^https?:\/\/elemecdn.com\/.+\/sitemap - - reject
-^https?:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4} - reject
-^https?:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} - reject
+^https?:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4} - - reject
+^https?:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} - - reject
 ^https?:\/\/fuss10.elemecdn.com\/.+.mp4 - - reject
 ^https?:\/\/www1.elecfans.com\/www\/delivery\/ - - reject
 # > echongdian
@@ -421,7 +421,7 @@ https://tagit.hyhuo.com/recover/list - - reject
 # > laiChon
 ^https?:\/\/(mobile|shop)\.laichon\.com\/api\/(v1\/goods\/goodsList|exposureAdvStatistics|getWebAdvList) - - reject
 # > liangBulU
-# DOMAIN-SUFFIX, admobile.top, REJECT
+# DOMAIN-SUFFIX, admobile.top, - reject
 https?:\/\/helper\.2bulu\.com\/(greenPea\/queryTasks|proSpecial\/allData|saveSplashFrequencyStatistics|getPopInfo|getAppEntranceConfig|promote\/list|getSplash|outing\/reqFoundNewList|outing\/reqIndex) - - reject
 # > lanRenTingShu
 ^https?:\/\/.*\/yyting\/advertclient\/ClientAdvertList.action - - reject
@@ -464,8 +464,8 @@ https?:\/\/helper\.2bulu\.com\/(greenPea\/queryTasks|proSpecial\/allData|saveSpl
 # > MaiDuiDui
 ^https?:\/\/mob\.mddcloud\.com\.cn\/adApi\/advert - - reject
 # > manhuaren
-^https?:\/\/.*mangaapi\.manhuaren\.\w{2,4}\/v\d\/public\/(getStartUpMessage|getStartPageAds|getShelfActivity) - reject
-^https?:\/\/.*mangaapi\.manhuaren\.\w{2,4}\/v\d\/ad - reject
+^https?:\/\/.*mangaapi\.manhuaren\.\w{2,4}\/v\d\/public\/(getStartUpMessage|getStartPageAds|getShelfActivity) - - reject
+^https?:\/\/.*mangaapi\.manhuaren\.\w{2,4}\/v\d\/ad - - reject
 # > MIX
 ^https?:\/\/dispatcher\.camera360\.com\/api\/v1\/list$ - - reject
 ^https?:\/\/mix-api\.camera360\.com\/v\d\/operational-positions - - reject

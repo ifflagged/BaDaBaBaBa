@@ -5,16 +5,16 @@
 #!date = 2024-04-13 14:20:28
 
 [Rule]
-AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
+AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), - reject
 
 [Rewrite]
 # 惊喜弹窗
-^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action)- - reject
-^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\?- - reject
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action) - - reject
+^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? - - reject
 
 # 信息流
-^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/guide\/user_banner|v3\/note\/guide)- - reject
-^https:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v1\/ads\/resource|v2\/hey\/\w+\/hey_gallery)- - reject
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/guide\/user_banner|v3\/note\/guide) - - reject
+^https:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v1\/ads\/resource|v2\/hey\/\w+\/hey_gallery) - - reject
 
 [Script]
 # 详情页小部件、关注页感兴趣的人

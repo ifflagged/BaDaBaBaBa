@@ -1,95 +1,95 @@
 #!/bin/bash
 
-# Input file containing original lines (replace with your actual input file path)
-input_file=$1
+# 检查是否传入了所有必要的参数
+if [[ -z "$1" || -z "$2" ]]; then
+  echo "Usage: $0 <input_file> <module_name> [comment]"
+  exit 1
+fi
 
-# Output directories for Surge and Loon
-surge_output_dir="Modules/Surge"
-loon_output_dir="Modules/Loon"
+# 传入的参数
+input_file=$1  # 第一个参数：输入文件
+module_name=$2  # 第二个参数：模块名称
+comment=$3  # 第三个参数：注释（可选）
 
-# Create the output directories if they don't exist
-mkdir -p "$surge_output_dir"
-mkdir -p "$loon_output_dir"
+# 创建输出目录
+mkdir -p Modules/Surge Modules/Loon
 
-# Comment to add at the top of the files
-comment=$3
+# 文件格式1转换函数
+convert_format1() {
+  while read -r line; do
+    if [[ $line =~ ^(script-response-body|script-echo-response|script-response-header) ]]; then
+      pattern=$(echo "$line" | awk '{print $1}')
+      echo "$module_name = type=http-response,pattern=$pattern,requires-body=1,script-path=$(echo "$line" | awk '{print $4}')" >> Modules/Surge/${module_name}.sgmodule
+      echo "http-response $pattern script-path=$(echo "$line" | awk '{print $4}'), requires-body=true, tag=${module_name}" >> Modules/Loon/${module_name}.plugin
+    else
+      pattern=$(echo "$line" | awk '{print $1}')
+      echo "$module_name = type=http-request,pattern=$pattern,requires-body=0,script-path=$(echo "$line" | awk '{print $4}')" >> Modules/Surge/${module_name}.sgmodule
+      echo "http-request $pattern script-path=$(echo "$line" | awk '{print $4}'), requires-body=false, tag=${module_name}" >> Modules/Loon/${module_name}.plugin
+    fi
+  done < "$input_file"
+}
 
-# Common sed commands to be shared between Surge and Loon
-sed_common="
-    s/reject-200/- reject/Ig
-    s/reject-img/- reject/Ig
-    s/reject-dict/- reject/Ig
-    s/reject-array/- reject/Ig
-    s/reject-video/- reject/Ig
-    s/reject-replace/- reject/Ig
-    s/reject/- reject/Ig
-"
+# 文件格式2转换函数
+convert_format2() {
+  while read -r line; do
+    pattern=$(echo "$line" | awk '{print $1}')
+    echo "$pattern - reject" >> Modules/Surge/${module_name}.sgmodule
+    echo "$line" >> Modules/Loon/${module_name}.plugin
+  done < "$input_file"
+}
 
-# Loop through each line in the input file
-while IFS= read -r line; do
-  # Extract the tag value (e.g., RuCu6_amap)
-  tag=$(echo "$line" | grep -oP '(?<=tag = ).*')
+# 文件格式3转换函数
+convert_format3() {
+  while read -r line; do
+    if [[ $line =~ ^HOST ]]; then
+      echo "${line/HOST/DOMAIN}" >> Modules/Surge/${module_name}.sgmodule
+      echo "${line/HOST/DOMAIN}" >> Modules/Loon/${module_name}.plugin
+    elif [[ $line =~ ^IP-CIDR ]]; then
+      echo "${line}, no-resolve" >> Modules/Surge/${module_name}.sgmodule
+      echo "$line" >> Modules/Loon/${module_name}.plugin
+    else
+      echo "${line/;/#}" >> Modules/Surge/${module_name}.sgmodule
+      echo "${line/;/#}" >> Modules/Loon/${module_name}.plugin
+    fi
+  done < "$input_file"
+}
 
-  # Derive module_name from the tag by removing any unwanted characters if necessary
-  module_name="${tag// /_}"  # Replace spaces with underscores
+# 文件格式4转换函数
+convert_format4() {
+  while read -r line; do
+    echo "${line/raw.githubusercontent.com/github.com}" >> Modules/Surge/${module_name}.sgmodule
+    echo "${line/raw.githubusercontent.com/github.com}" >> Modules/Loon/${module_name}.plugin
+  done < "$input_file"
+}
 
-  # SURGE conversion
-  sed -e "1 i\\ $comment" \
-      -e "$sed_common" \
-      -e "s/url reject-200/- reject/Ig" \
-      -e 's/url reject-img/- reject/Ig' \
-      -e 's/url reject-dict/- reject/Ig' \
-      -e 's/url reject-array/- reject/Ig' \
-      -e 's/url reject-video/- reject/Ig' \
-      -e 's/url reject-replace/- reject/Ig' \
-      -e 's/url reject/- reject/Ig' \
-      -e 's/, REJECT-DROP/, REJECT/Ig' \
-      -e "/url script-response-body/ s/^/${module_name} = type=http-response,pattern=/" \
-      -e "/url script-echo-response/ s/^/${module_name} = type=http-response,pattern=/" \
-      -e "/url script-response-header/ s/^/${module_name} = type=http-response,pattern=/" \
-      -e "/url script-request-body/ s/^/${module_name} = type=http-request,pattern=/" \
-      -e "/url script-request-header/ s/^/${module_name} = type=http-request,pattern=/" \
-      -e "/url script-analyze-echo-response/ s/^/${module_name} = type=http-request,pattern=/" \
-      -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
-      -e 's/ url script-echo-response /,requires-body=1,script-path=/Ig' \
-      -e 's/ url script-response-header /,requires-body=1,script-path=/Ig' \
-      -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
-      -e 's/ url script-analyze-echo-response /,requires-body=1,script-path=/Ig' \
-      -e 's/ url script-request-header /,requires-body=0,script-path=/Ig' \
-      -e 's/hostname =/Hostname = %APPEND%/Ig' \
-      "$input_file" > "${surge_output_dir}/${module_name}.sgmodule"
+# 文件格式5转换函数
+convert_format5() {
+  while read -r line; do
+    echo "Hostname = %APPEND% $line" >> Modules/Surge/${module_name}.sgmodule
+    echo "Hostname = $line" >> Modules/Loon/${module_name}.plugin
+  done < "$input_file"
+}
 
-  # LOON conversion
-  sed -e "1 i\\ $comment" \
-      -e "$sed_common" \
-      -e "s/url reject-200/reject-200/Ig" \
-      -e 's/url reject-img/reject-img/Ig' \
-      -e 's/url reject-dict/reject-dict/Ig' \
-      -e 's/url reject-array/reject-array/Ig' \
-      -e 's/url reject-video/reject-video/Ig' \
-      -e 's/url reject-replace/reject-replace/Ig' \
-      -e 's/url reject/reject/Ig' \
-      -e "/url script-response-body/ s/^/http-response /" \
-      -e "/url script-echo-response/ s/^/http-response /" \
-      -e "/url script-response-header/ s/^/http-response /" \
-      -e "/url script-request-body/ s/^/http-request /" \
-      -e "/url script-request-header/ s/^/http-request /" \
-      -e "/url script-analyze-echo-response/ s/^/http-request /" \
-      -e "/script-response-body/ s/$/, requires-body = true, tag = ${module_name}/" \
-      -e "/script-echo-response/ s/$/, requires-body = true, tag = ${module_name}/" \
-      -e "/script-response-header/ s/$/, requires-body = true, tag = ${module_name}/" \
-      -e "/script-request-body/ s/$/, requires-body = true, tag = ${module_name}/" \
-      -e "/script-analyze-echo-response/ s/$/, requires-body = true, tag = ${module_name}/" \
-      -e "/script-request-header/ s/$/, requires-body = false, tag = ${module_name}/" \
-      -e 's/url script-response-body/script-path=/Ig' \
-      -e 's/url script-echo-response/script-path=/Ig' \
-      -e 's/url script-response-header/script-path=/Ig' \
-      -e 's/url script-request-body/script-path=/Ig' \
-      -e 's/url script-request-header/script-path=/Ig' \
-      -e 's/url script-analyze-echo-response/script-path=/Ig' \
-      -e 's/hostname =/Hostname =/Ig' \
-      "$input_file" > "${loon_output_dir}/${module_name}.plugin"
+# 判断输入文件格式，并调用相应的转换函数
+if grep -q "^http" "$input_file"; then
+  convert_format1
+elif grep -q "url reject" "$input_file"; then
+  convert_format2
+elif grep -q "HOST" "$input_file"; then
+  convert_format3
+elif grep -q "raw.githubusercontent.com" "$input_file"; then
+  convert_format4
+elif grep -q "hostname =" "$input_file"; then
+  convert_format5
+else
+  echo "Unknown file format. Please check the input file."
+  exit 1
+fi
 
-done < "$input_file"
+# 添加注释（如果提供了注释）
+if [[ -n "$comment" ]]; then
+  echo "# $comment" >> Modules/Surge/${module_name}.sgmodule
+  echo "# $comment" >> Modules/Loon/${module_name}.plugin
+fi
 
-echo "Transformation complete. Results saved in $surge_output_dir and $loon_output_dir."
+echo "转换完成，结果已保存到 Modules/Surge/${module_name}.sgmodule 和 Modules/Loon/${module_name}.plugin"

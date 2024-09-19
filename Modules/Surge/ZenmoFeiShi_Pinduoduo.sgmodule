@@ -1,1 +1,24 @@
-# Surge module for ZenmoFeiShi_Pinduoduo
+# Surge module: ZenmoFeiShi_Pinduoduo
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Pinduoduo = type=http-request,pattern=,requires-body=0,script-path=

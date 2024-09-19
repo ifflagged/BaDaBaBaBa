@@ -1,1 +1,28 @@
-# Surge module for RuCu6_youtube
+# Surge module: RuCu6_youtube
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
+RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=

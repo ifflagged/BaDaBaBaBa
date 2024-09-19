@@ -1,1 +1,15 @@
-# Surge module for ZenmoFeiShi_Smzdm
+# Surge module: ZenmoFeiShi_Smzdm
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Smzdm = type=http-request,pattern=,requires-body=0,script-path=

@@ -1,1 +1,15 @@
-# Loon plugin for ZenmoFeiShi_Smzdm
+# Loon plugin: ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm
+http-request  script-path=, requires-body=0, tag=ZenmoFeiShi_Smzdm

@@ -1,1 +1,30 @@
-# Surge module for ZenmoFeiShi_Didichuxing
+# Surge module: ZenmoFeiShi_Didichuxing
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=
+ZenmoFeiShi_Didichuxing = type=http-request,pattern=,requires-body=0,script-path=

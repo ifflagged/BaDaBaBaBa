@@ -39,7 +39,7 @@ $comment" \
     -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
     -e 's/ url script-analyze-echo-response /,requires-body=1,script-path=/Ig' \
     -e 's/ url script-request-header /,requires-body=0,script-path=/Ig' \
-    -e '/reject/ { s/^.*reject.*$/- reject/; s/^.*- reject.*$/REJECT/ }' \
+    -e '/\breject\b/ { s/\(.*[^-]\b\)reject/\1- reject/; s/\(- reject\)/REJECT/Ig }' \
     -e "s/http-response /${module_name} = type=http-response,pattern=/" \
     -e "s/http-request /${module_name} = type=http-request,pattern=/" \
     -e '/http-response/ s/, tag.*//' \

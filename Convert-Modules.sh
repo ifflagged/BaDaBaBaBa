@@ -13,7 +13,7 @@ sed_common="
     s/HOST-KEYWORD,/DOMAIN-KEYWORD,/Ig
     s/IP-CIDR,/IP-CIDR,/Ig
     s/IP6-CIDR,/IP-CIDR6,/Ig
-    /IP-CIDR/ s/, REJECT/, REJECT, no-resolve/Ig
+    /IP-CIDR/ s/\(REJECT\)\([^,]*$\)/\1, no-resolve/Ig
 "
 
 # Surge conversion

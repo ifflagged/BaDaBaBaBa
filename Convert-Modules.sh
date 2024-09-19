@@ -52,6 +52,15 @@ $comment" \
     -e 's/reject-array/- reject/Ig' \
     -e 's/reject-video/- reject/Ig' \
     -e 's/reject-replace/- reject/Ig' \
+    -e '/[^,-] reject/ { s/\b reject\b/ - reject/Ig }' \
+    -e "s/http-response /${module_name} = type=http-response,pattern=/" \
+    -e "s/http-request /${module_name} = type=http-request,pattern=/" \
+    -e '/http-response/ s/, tag.*//' \
+    -e '/http-request/ s/, tag.*//' \
+    -e 's/ script-path = /,script-path=/Ig' \
+    -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/' \
+    -e 's/hostname =/Hostname = %APPEND%/Ig' \
+    "$input_file" > "Modules/Surge/${module_name}.sgmodule"
     "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 
 # Loon conversion

@@ -1,31 +1,28 @@
-RuCu6_youtube = type=http-request,pattern=#!name,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=#!desc,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=#!author,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=#!date,requires-body=0,script-path=21:59:22
-RuCu6_youtube = type=http-request,pattern=#!select,requires-body=0,script-path=true,
-RuCu6_youtube = type=http-request,pattern=#!select,requires-body=0,script-path=true,
-RuCu6_youtube = type=http-request,pattern=#!select,requires-body=0,script-path=zh-Hans,
-RuCu6_youtube = type=http-request,pattern=#!select,requires-body=0,script-path=zh-Hans,
-RuCu6_youtube = type=http-request,pattern=#!select,requires-body=0,script-path=true,
-RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=[Rule],requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=AND,((DOMAIN,youtubei.googleapis.com),,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=AND,((DOMAIN-SUFFIX,googlevideo.com),,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=[Rewrite],requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=#,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\?,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=[Script],requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=#,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=http-request,requires-body=0,script-path==
-RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=#,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=http-response,requires-body=0,script-path==
-RuCu6_youtube = type=http-request,pattern=,requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=[MITM],requires-body=0,script-path=
-RuCu6_youtube = type=http-request,pattern=hostname,requires-body=0,script-path=youtubei.googleapis.com
-# # youtube // rr*.googlevideo.com, youtubei.googleapis.com,
-RuCu6_youtube = type=http-request,pattern=http-request,requires-body=0,script-path==
-RuCu6_youtube = type=http-request,pattern=http-response,requires-body=0,script-path==
-# # youtube // rr*.googlevideo.com, youtubei.googleapis.com,
+# Surge format for RuCu6_youtube
+#!name = YouTube
+#!desc = 移除广告。
+#!author = Maasea[https://github.com/Maasea/sgmodule]
+#!date = 2024-06-11 21:59:22
+#!select = 隐藏上传按钮, true, false
+#!select = 隐藏选段按钮, true, false
+#!select = 字幕翻译语言, zh-Hans, zh-Hant, ja, ko, en, off
+#!select = 歌词翻译语言, zh-Hans, zh-Hant, ja, ko, en, off
+#!select = 启用调试模式, true, false
+
+[Rule]
+AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
+
+[Rewrite]
+# 使用reject-dict方法以减少开销
+^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\? reject-dict
+
+[Script]
+# 请求体
+type=http-request,http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|reel\/reel_watch_sequence|get_watch) requires-body=0,script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/request.js, requires-body = true, binary-body-mode = true, tag = YouTube请求
+
+# 响应体
+type=http-response,http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) requires-body=1,script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/response.js, requires-body = true, binary-body-mode = true, tag = YouTube响应
+
+[MITM]
+Hostname = %APPEND% rr*.googlevideo.com, youtubei.googleapis.com

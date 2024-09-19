@@ -27,7 +27,6 @@ $comment" \
     -e 's/url reject-video/- reject/Ig' \
     -e 's/url reject-replace/- reject/Ig' \
     -e 's/url reject/- reject/Ig' \
-    -e 's/, REJECT-DROP/, REJECT/Ig' \
     -e "/url script-response-body/ s/^/${module_name} = type=http-response,pattern=/" \
     -e "/url script-echo-response/ s/^/${module_name} = type=http-response,pattern=/" \
     -e "/url script-response-header/ s/^/${module_name} = type=http-response,pattern=/" \
@@ -40,13 +39,7 @@ $comment" \
     -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
     -e 's/ url script-analyze-echo-response /,requires-body=1,script-path=/Ig' \
     -e 's/ url script-request-header /,requires-body=0,script-path=/Ig' \
-    -e "s/ reject-200/ - reject/Ig" \
-    -e 's/ reject-img/ - reject/Ig' \
-    -e 's/ reject-dict/ - reject/Ig' \
-    -e 's/ reject-array/ - reject/Ig' \
-    -e 's/ reject-video/ - reject/Ig' \
-    -e 's/ reject-replace/ - reject/Ig' \
-    -e 's/\b reject\b/ - reject/Ig' \
+    -e '/reject/ { s/^.*reject.*$/- reject/; s/^.*- reject.*$/REJECT/ }' \
     -e "s/http-response /${module_name} = type=http-response,pattern=/" \
     -e "s/http-request /${module_name} = type=http-request,pattern=/" \
     -e '/http-response/ s/, tag.*//' \

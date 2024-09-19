@@ -112,7 +112,7 @@ while IFS= read -r line; do
         process_header_rewrite "$line"
     elif [[ $line =~ url ]]; then
         process_url_rewrite "$line"
-    elif [[ $line =~ ^HOST|IP|^;HOST ]]; then
+    elif [[ $line =~ ^HOST || $line =~ ^IP || $line =~ ^";HOST" ]]; then
         process_rule "$line"
     elif [[ $line =~ ^https ]]; then
         process_url "$line"
@@ -120,5 +120,4 @@ while IFS= read -r line; do
         process_mitm "$line"
     fi
 done < "$input_file"
-
 echo "Conversion complete: Surge -> $surge_output, Loon -> $loon_output"

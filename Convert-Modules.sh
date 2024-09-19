@@ -46,9 +46,11 @@ $comment" \
     -e 's/reject-array/- reject/Ig' \
     -e 's/reject-video/- reject/Ig' \
     -e 's/reject-replace/- reject/Ig' \
-    -e 's/reject/- reject/Ig' \
-    -e "/http-response/ s/^/${module_name} = type=http-response,pattern=/" \
-    -e "/http-request/ s/^/${module_name} = type=http-request,pattern=/" \
+    -e 's/\breject\b/- reject/Ig' \
+    -e "s/http-response /${module_name} = type=http-response,pattern=/" \
+    -e "s/http-request /${module_name} = type=http-request,pattern=/" \
+    -e '/http-response/ s/, tag.*//' \
+    -e '/http-request/ s/, tag.*//' \
     -e 's/ script-path = /,script-path=/Ig' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
     "$input_file" > "Modules/Surge/${module_name}.sgmodule"
@@ -82,5 +84,6 @@ $comment" \
     -e 's/url script-request-body/script-path=/Ig' \
     -e 's/url script-request-header/script-path=/Ig' \
     -e 's/url script-analyze-echo-response/script-path=/Ig' \
+    -e 's/, tag.*/\, tag = '"${module_name}"'/' \
     -e 's/hostname =/Hostname =/Ig' \
     "$input_file" > "Modules/Loon/${module_name}.plugin"

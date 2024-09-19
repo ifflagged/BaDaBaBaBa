@@ -13,10 +13,10 @@
 ^https:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append - - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/my_order_group - - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/likes - - reject
-ZenmoFeiShi_Pinduoduo = type=http-response,pattern=ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/search,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
-ZenmoFeiShi_Pinduoduo = type=http-response,pattern=ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
-ZenmoFeiShi_Pinduoduo = type=http-response,pattern=ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
-ZenmoFeiShi_Pinduoduo = type=http-response,pattern=ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
+ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/search,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
+ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
+ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
+ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js
 
 
 

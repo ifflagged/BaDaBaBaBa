@@ -14,15 +14,15 @@ AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),- reject
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),- reject
 
 [Rewrite]
-# 使用- - reject方法以减少开销
+# 使用- reject方法以减少开销
 ^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\? - - reject
 
 [Script]
 # 请求体
-RuCu6_youtube = type=http-request,pattern=http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|reel\/reel_watch_sequence|get_watch),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/request.js, requires-body = true, binary-body-mode = true, tag = YouTube请求
+RuCu6_youtube = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|reel\/reel_watch_sequence|get_watch),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/request.js, requires-body = true, binary-body-mode = true
 
 # 响应体
-RuCu6_youtube = type=http-response,pattern=http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/response.js, requires-body = true, binary-body-mode = true, tag = YouTube响应
+RuCu6_youtube = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/response.js, requires-body = true, binary-body-mode = true
 
 [MITM]
 Hostname = %APPEND% rr*.googlevideo.com, youtubei.googleapis.com

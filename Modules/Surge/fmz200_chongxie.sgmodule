@@ -46,7 +46,7 @@ Hostname = %APPEND% patient-api.suh.cn, userpms-api.suh.cn, se-api.djiits.com, a
 
 # > 12306
 # Hostname = %APPEND% ad.12306.cn
-fmz200_chongxie = type=http-request,pattern=fmz200_chongxie = type=http-request,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://github.com/kokoryh/Script/raw/master/js/12306.js
+fmz200_chongxie = type=http-request,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://github.com/kokoryh/Script/raw/master/js/12306.js
 
 
 
@@ -83,13 +83,13 @@ fmz200_chongxie = type=http-request,pattern=fmz200_chongxie = type=http-request,
 # Hostname = %APPEND% vip7.fzwdyy.cn, *.qyfxgd.cn, *.weilai555.com, *.ecoliving168.com
 ^https?:\/\/vip7\.fzwdyy\.cn:8083\/api\/(getAdvertInfo|getGOOGAdvert) - - reject
 ^https?:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+){1,3}(:\d+)?\/api\/v\d\/advert - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+){1,3}(:\d+)?\/api\/v\d\/movie\/index_recommend,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/555Ad.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+){1,3}(:\d+)?\/api\/v\d\/movie\/index_recommend,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/555Ad.js
 
 # > 51信用卡管家
 # Hostname = %APPEND% api.u51.com
 ^https?:\/\/api\.u51\.com\/(generic-config-gateway|rs-resys)\/api\/v\d\/(creditpage-config|recommend) - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.u51\.com\/liabilitygateway\/api\/v\d\/homepage\/liabilityline,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/51card.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.u51\.com\/generic-config-gateway\/api\/v\d\/guanjia\/me-tab2\/config,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/51card.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.u51\.com\/liabilitygateway\/api\/v\d\/homepage\/liabilityline,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/51card.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.u51\.com\/generic-config-gateway\/api\/v\d\/guanjia\/me-tab2\/config,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/51card.js
 
 # > 58
 # Hostname = %APPEND% *.58cdn.com.cn, app.58.com
@@ -106,7 +106,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # Hostname = %APPEND% appapi.51job*.com, cupid.51job*.com
 ^https?:\/\/appapi\.51job(app)?\.com\/api\/market\/(adtrace|get_launch|get_prompt) - - reject
 ^https?:\/\/cupid\.51job(app)?\.com\/open\/index\/recommend-infos - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/cupid\.51job(app)?\.com\/open\/noauth\/recommend\/job-tab-dynamic,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/51job.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/cupid\.51job(app)?\.com\/open\/noauth\/recommend\/job-tab-dynamic,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/51job.js
 
 
 
@@ -149,16 +149,16 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources - - reject
 ^https:\/\/heic\.alicdn\.com\/imgextra\/i\d\/\d*\/?[\w!]+-\d-(octopus|tps-1125-1602|tps-1080-1920)\.(jp|pn)g_(1\d{3}|9\d{2})x(1\d{3}|9\d{2})q[59]0 - - reject
 ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js
 ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
 
 # > 阿里云盘
 # Hostname = %APPEND% api.alipan.com, member.alipan.com
 ^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.alipan\.com\/apps\/v2\/users\/home\/(news|widgets),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/adrive.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/adrive.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.alipan\.com\/apps\/v2\/users\/home\/(news|widgets),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/adrive.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/adrive.js
 ^https:\/\/member\.alipan\.com\/v2\/activity\/sign_in_luckyBottle - - reject
 
 # > 爱奇艺
@@ -166,34 +166,34 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 播放页开通会员提示
 ^https?:\/\/act\.vip\.iqiyi\.com\/interact\/api\/v2\/show\? - - reject
 # 首页信息流广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/[\d\.]+\/3f1\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/access\.if\.iqiyi\.com\/3f1\/cards\.iqiyi\.com\/(views_category\/3\.0\/category_home|views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/cards\.iqiyi\.com\/views_category\/3\.0\/(category_home|categorylib_content|film_hybrid)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/[\d\.]+\/3f1\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/access\.if\.iqiyi\.com\/3f1\/cards\.iqiyi\.com\/(views_category\/3\.0\/category_home|views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/cards\.iqiyi\.com\/views_category\/3\.0\/(category_home|categorylib_content|film_hybrid)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 播放详情页
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/cards\.iqiyi\.com\/views_plt\/3\.0\/player_tabs_v2\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/cards\.iqiyi\.com\/views_plt\/3\.0\/player_tabs_v2\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 搜索页列表
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/cards\.iqiyi\.com\/views_search\/3\.0\/(hot_query_)?search\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/cards\.iqiyi\.com\/views_search\/3\.0\/(hot_query_)?search\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 评论区
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/comment-card\.iqiyi\.com\/views_comment\/3\.0\/long_video_comments\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/comment-card\.iqiyi\.com\/views_comment\/3\.0\/long_video_comments\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 我的页面菜单
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/iface2\.iqiyi\.com\/aggregate\/3\.0\/getMyMenus\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/iface2\.iqiyi\.com\/aggregate\/3\.0\/getMyMenus\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 首页左上角天气
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/iface2\.iqiyi\.com\/control\/3\.0\/init_proxy\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/iface2\.iqiyi\.com\/control\/3\.0\/init_proxy\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 通用控制,各tab页二楼
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/iface2\.iqiyi\.com\/fusion\/3\.0\/common_switch\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/iface2\.iqiyi\.com\/fusion\/3\.0\/common_switch\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 播放页多余动效
 ^https?:\/\/iface2\.iqiyi\.com\/ivos\/interact\/video\/data\? - - reject
 # 播放页升级白金会员按钮
 ^https?:\/\/iface2\.iqiyi\.com\/video\/3\.0\/v_interface_proxy\? - - reject
 # 底部tab,顶部tab
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/iface2\.iqiyi\.com\/views\/3\.0\/(bottom_theme|home_top_menu)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/iface2\.iqiyi\.com\/views\/3\.0\/(bottom_theme|home_top_menu)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 青少年弹窗
 ^https?:\/\/iface2\.iqiyi\.com\/views_pop\/3\.0\/pop_control\? - - reject
 # 搜索框填充词
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/search\.video\.iqiyi\.com\/q\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/search\.video\.iqiyi\.com\/q\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 开屏广告,播放广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/(kjp|t7z)\.cupid\.iqiyi\.com\/mixer\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/(kjp|t7z)\.cupid\.iqiyi\.com\/mixer\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 
 # > 爱企查
 # Hostname = %APPEND% b2baifanfan.baidu.com
@@ -246,7 +246,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 未登录时个人界面广告
 ^https?:\/\/social\.blued\.cn\/users\/no_auth\/benefit - - reject
 # 登录后个人界面广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/social\.blued\.cn\/users\/.+\/more\/ios\?v=2,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/blued.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/social\.blued\.cn\/users\/.+\/more\/ios\?v=2,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/blued.js
 
 # > 半月谈
 # Hostname = %APPEND% www.banyuetanapp.com
@@ -278,7 +278,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?:\/\/tb2\.bdstatic\.com\/tb\/mobile\/spb\/widget\/jump - - reject
 ^https?:\/\/ss0\.bdstatic\.com/.+?_\d{3}_\d{4}\.jpg - - reject
 ^https?:\/\/gss0\.bdstatic\.com\/.+?\/static\/wiseindex\/img\/bd_red_packet\.png - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/newclient\.map\.baidu\.com\/client\/phpui2\/\?qt=ads,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/baidumap.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/newclient\.map\.baidu\.com\/client\/phpui2\/\?qt=ads,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/baidumap.js
 
 # > 百度输入法
 # Hostname = %APPEND% r6.mo.baidu.com, res.mi.baidu.com, mime.baidu.com, mbd.baidu.com
@@ -288,7 +288,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?:\/\/mime\.baidu\.com\/v5\/start_screen_ads\/list - - reject
 ^https?:\/\/mime\.baidu\.com\/v5\/hotpatch\/check\?hotpatch - - reject
 # 净化 个人页随机图片
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=#^https?:\/\/mime\.baidu\.com\/(imrobot\/v1\/pub\/relation\/get_robot_list|v5\/custom_page\/(layout|getdata)),requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/JS/bdsrf.js
+fmz200_chongxie = type=http-response,pattern=#^https?:\/\/mime\.baidu\.com\/(imrobot\/v1\/pub\/relation\/get_robot_list|v5\/custom_page\/(layout|getdata)),requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/JS/bdsrf.js
 # 百度输入法开屏
 ^https?:\/\/mime\.baidu\.com\/v5\/start_screen_ads/list - - reject
 # 应用内灵感语录 输入页面推荐里语录
@@ -320,8 +320,8 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 
 # > 百度贴吧
 # Hostname = %APPEND% tiebac.baidu.com, *.tieba.baidu.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/f\/(frs\/(page|threadlist|generalTabList)|pb\/page|excellent\/personalized)$|tiebaads\/commonbatch|c\/s\/sync$),requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/tieba-json.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/c\/f\/(frs\/(page|threadlist|generalTabList)|pb\/page|excellent\/personalized)\?cmd,requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/tieba-proto.js
+fmz200_chongxie = type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/f\/(frs\/(page|threadlist|generalTabList)|pb\/page|excellent\/personalized)$|tiebaads\/commonbatch|c\/s\/sync$),requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/tieba-json.js
+fmz200_chongxie = type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/c\/f\/(frs\/(page|threadlist|generalTabList)|pb\/page|excellent\/personalized)\?cmd,requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/tieba-proto.js
 
 # > 百度翻译
 # Hostname = %APPEND% mime.baidu.com
@@ -359,29 +359,29 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 哔哩哔哩
 # Hostname = %APPEND% app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net
 # Proto 动态广告,后台播放限制,播放页广告 //app.bilibili.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|ViewProgress),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|ViewProgress),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js
 # 观影页,直播间商品广告浮窗,搜索框填充词,首页信息流,热搜发现,右上角活动,标签页
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.bilibili\.com\/pgc\/page\/(bangumi|cinema\/tab\?),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.bilibili\.com\/pgc\/page\/(bangumi|cinema\/tab\?),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
 ^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? - - reject
 ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/(feed\/index(\/story)?|search\/square)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/(top\/activity|show\/tab\/v2)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/(feed\/index(\/story)?|search\/square)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/(top\/activity|show\/tab\/v2)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
 # 满意度调研
 ^https?:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? - - reject
 # 开屏广告 //app.bilibili.com
 ^https?:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH - - reject
 ^https?:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH - - reject
 ^https?:\/\/api\.bilibili\.com\/x\/mengqi\/v1\/resource\? - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/splash\/(brand\/list|event\/list2|list|show)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/splash\/(brand\/list|event\/list2|list|show)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
 # 我的页面 解锁1080P高码率,4K画质,皮肤推送 //app.bilibili.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine(\/ipad)?|myinfo)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine(\/ipad)?|myinfo)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js
 # IP请求,地理位置请求 //api.bilibili.com
 ^https?:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp - - reject
 ^https?:\/\/app\.bilibili\.com\/x\/resource\/ip - - reject
@@ -394,8 +394,8 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Shop\/GetShopItems - - reject
 ^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.SeasonV\d\/GetSeasonInfo - - reject
 ^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.Read\/ActInfo - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.User\/UCenterConf,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/bilibiliManga.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.User\/GetInitInfo,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/bilibiliManga.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.User\/UCenterConf,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/bilibiliManga.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.User\/GetInitInfo,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/bilibiliManga.js
 
 # > 北京首汽
 # Hostname = %APPEND% gateway.shouqiev.com
@@ -467,7 +467,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # Hostname = %APPEND% api.boohee.com, bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn, lego.boohee.com, status.boohee.com
 # 感谢【可莉】分享
 # 记录 - 大家都在看data.recom_cards / 底部按钮data.recom_btns
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.boohee\.com\/meta-interface\/v2\/index\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bohe/bohe_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.boohee\.com\/meta-interface\/v2\/index\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bohe/bohe_ads.js
 # 记录 - 悬浮部件
 ^https:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/page_float_bubbles\? - - reject
 # 记录 - 发布
@@ -479,9 +479,9 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 弹窗配置
 ^https:\/\/bohe\.sfo-tx-shanghai-01\.saas\.sensorsdata\.cn\/api\/v2\/sfo\/user_popup_configs\? - - reject
 # 广场 - 推荐 - 红标data.tabs[1].badge /轮播图data.recommend_ads
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/plaza\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bohe/bohe_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/plaza\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bohe/bohe_ads.js
 # 代谢中心 - 顶部轮播图top_banner / 免费问诊推广diagnos_config / 合作医疗机构partner_hospital / 医患问答question_answer / 热门商品product / 品牌大事件brand_story
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.boohee\.com\/open-interface\/v1\/string\/market_page\?title=metabolism_config$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bohe/bohe_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.boohee\.com\/open-interface\/v1\/string\/market_page\?title=metabolism_config$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/bohe/bohe_ads.js
 # 绑定设备 - 横幅推广
 ^https:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/sensor-banners\? - - reject
 
@@ -512,18 +512,18 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 菜鸟裹裹
 # Hostname = %APPEND% cn-acs.m.cainiao.com, amdc.m.taobao.com
 # 其他
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/header.js
 # 首页 好物推荐,商品推广,底部标签页,快递详情页,问卷调查,主页图标
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.adkeyword\.get\.cn - - reject
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.cncommunity\.my\.station\.query\.cn - - reject
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(batch\.show\.v2|index)\.cn - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.m?show\.cn,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.m?show\.cn,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbopen\.miniapp\.recommend\.cpc\.cn - - reject
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbmensa\.research\.researchservice\.(acquire|event|close)\.cn - - reject
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.(homepage\.merge|tabbar\.marketing)\.get\.cn - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.(pickup\.empty\.page|protocol\.homepage)\.get\.cn,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.(pickup\.empty\.page|protocol\.homepage)\.get\.cn,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js
 # 消息中心
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.nbfriend\.message\.conversation\.list\.cn,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.nbfriend\.message\.conversation\.list\.cn,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js
 # 发现页 数字角标 裹裹券
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.com\.cainiao\.cnactivitycenter - - reject
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.com\.cainiao\.cncreditmarket\.hit\.getactivityhit\.cn - - reject
@@ -566,7 +566,7 @@ http:\/\/ad\.myfriday\.cn\/d\/json\/1\.1 - - reject
 
 # > 财新
 # Hostname = %APPEND% gg.caixin.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/caixin/caixinAd.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/caixin/caixinAd.js
 
 # > 财联社
 # Hostname = %APPEND% api3.cls.cn
@@ -613,7 +613,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 大众点评
 # Hostname = %APPEND% img.meituan.net
 # 开屏广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/img\.meituan\.net\/dpmobile\/,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/dianping.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/img\.meituan\.net\/dpmobile\/,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/dianping.js
 #^https?:\/\/img\.meituan\.net\/dpmobile\/.+93241\.png - - reject
 #^https?:\/\/img\.meituan\.net\/dpmobile\/.*.(gif|jpg) - - reject
 
@@ -719,23 +719,23 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # Hostname = %APPEND% api.gamer.com.tw
 ^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d\/anime_get_question\.php - - reject
 # (黑屏25秒)
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d/(token|m3u8).php\?,requires-body=1,script-path=https://github.com/NobyDa/Script/raw/master/Bahamut/BahamutAnimeAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d/(token|m3u8).php\?,requires-body=1,script-path=https://github.com/NobyDa/Script/raw/master/Bahamut/BahamutAnimeAds.js
 
 # > 滴滴出行
 # Hostname = %APPEND% res.xiaojukeji.com, common.diditaxi.com.cn, hd.xiaojukeji.com, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, conf.diditaxi.com.cn
 ^https?:\/\/hd\.xiaojukeji\.com\/d - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/freight\.xiaojukeji\.com\/gateway,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/daijia\.kuaidadi\.com\/gateway,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/daijia\.kuaidadi\.com:443\/gateway,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/freight\.xiaojukeji\.com\/gateway,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/daijia\.kuaidadi\.com\/gateway,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/daijia\.kuaidadi\.com:443\/gateway,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
 # 微信小程序个人中心净化 感谢【TEXAS】分享
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/common\.diditaxi\.com\.cn\/common\/v5,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didi.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/common\.diditaxi\.com\.cn\/common\/v5,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didi.js
 
 # > 滴滴青桔
 # Hostname = %APPEND% pt-starimg.didistatic.com, omgup*.xiaojukeji.com
@@ -812,7 +812,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > Flightradar24
 # Hostname = %APPEND% mobile.flightradar24.com
 # 解锁
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobile\.flightradar24\.com\/mobile\/(user-session|subscribe),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/scripts/Flightradar24.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobile\.flightradar24\.com\/mobile\/(user-session|subscribe),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/scripts/Flightradar24.js
 
 # > 飞猪 + 阿里巴巴
 # Hostname = %APPEND% acs.m.taobao.com, gw.alicdn.com
@@ -831,10 +831,10 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?:\/\/ptf\.flyertrip\.com\/common\/cf\/.*.jpg - - reject
 ^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=advis - - reject
 ^https?:\/\/47\.100\.65\.202\/api\/mobile\/index\.php\?version=\d&mobile=yes&module=basicdata&type=forumlist url response-body adv response-body fmz200
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/fly.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/47\.100\.65\.202\/source\/plugin\/mobile\/mobile\.php\?module=threadpost&.+?&page=1,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/fly.js
 ^https?:\/\/www\.flyert\.com\/.*\.php\?module=advis - - reject
 ^https?:\/\/www\.flyert\.com(\.cn)?\/.*\.php\?module=advis - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/www\.flyert\.com(\.cn)?\/.*plugin,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/flyert.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/www\.flyert\.com(\.cn)?\/.*plugin,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/flyert.js
 
 # 飞智游戏厅
 # Hostname = %APPEND% api.flydigi.com
@@ -906,7 +906,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 粉笔
 # Hostname = %APPEND% tiku.fenbi.com
 # 开屏广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/tiku\.fenbi\.com\/activity\/app\/launcher\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/fenbi.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/tiku\.fenbi\.com\/activity\/app\/launcher\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/fenbi.js
 
 
 
@@ -1116,7 +1116,7 @@ https?:\/\/awg\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert
 # > 航旅纵横
 # > Hostname = %APPEND% home.umetrip.com, discardrp.umetrip.com, startup.umetrip.com,
 ^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$,requires-body=1,script-path=https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/Umetrip/Umetrip_remove_ads.js
+fmz200_chongxie = type=http-response,pattern=^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$,requires-body=1,script-path=https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/Umetrip/Umetrip_remove_ads.js
 
 # > 汇丰汇选
 # Hostname = %APPEND% m.prod.app.hsbcfts.com.cn
@@ -1139,7 +1139,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.querysinglepage - - reject
 ^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.fc\.recommend\.feedscommondservice - - reject
 ^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.querytabfeedstream - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.query(index|my)page,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/freshippo.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.query(index|my)page,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/freshippo.js
 
 
 # > 海豚优惠
@@ -1167,8 +1167,8 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 汇付天下
 # Hostname = %APPEND% mcsp.cloudpnr.com, saas-ad.cloudpnr.com
 # 感谢【可莉】分享
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/mcsp\.cloudpnr\.com\/api\/miniapp\/popular\/T_MINIAPP$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/huifutianxia_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/saas-ad\.cloudpnr\.com\/huifuad-base-api\/api\/tactics\/ad,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/huifutianxia_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/mcsp\.cloudpnr\.com\/api\/miniapp\/popular\/T_MINIAPP$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/huifutianxia_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/saas-ad\.cloudpnr\.com\/huifuad-base-api\/api\/tactics\/ad,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/huifutianxia_ads.js
 
 # > 海马爸比
 # Hostname = %APPEND% 39.98.135.211
@@ -1184,7 +1184,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > IT之家
 # Hostname = %APPEND% napi.ithome.com
 # 移除 轮播图 置顶文章 信息流广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/napi\.ithome\.com\/api\/(news\/index|topmenu\/getfeeds),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/ithome.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/napi\.ithome\.com\/api\/(news\/index|topmenu\/getfeeds),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/ithome.js
 
 
 
@@ -1203,13 +1203,13 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 首页横幅广告
 ^https?:\/\/yunbusiness\.ccb\.com\/clp_service\/txCtrl\?txcode=A3341A(002|006|009|119|120) - - reject
 ^https?:\/\/yunbusiness\.ccb\.com\/clp_service\/txCtrl\?txcode=A3341C147 - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/yunbusiness\.ccb\.com\/basic_service\/txCtrl\?txcode=A3341AB04,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/ccbLife/ccbLifeAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/yunbusiness\.ccb\.com\/basic_service\/txCtrl\?txcode=A3341AB04,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/ccbLife/ccbLifeAds.js
 # 删除首页+金融+我的多个横幅等乱七八糟的广告
 ^https?:\/\/yunbusiness\.ccb\.com\/basic_service\/txCtrl\?txcode=A3341AB05 url echo-response application/json echo-response https://github.com/fmz200/wool_scripts/raw/main/Scripts/ccbLife/A3341AB05.json
 # 我的页面悬浮广告
 ^https?:\/\/yunbusiness\.ccb\.com\/basic_service\/txCtrl\? url response-body "TAG_AD_INFO" response-body "fmz200"
 # 内置饿了么
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/g\.alicdn\.com\/.*o2o-ad,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/alicdn.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/g\.alicdn\.com\/.*o2o-ad,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/alicdn.js
 ^https?:\/\/waimai-guide\.ele\.me\/\w+\/mtop\.alsc\.eleme\.\w+\.trigger\.respond - - reject
 ^https?:\/\/waimai-guide\.ele\.me\/\w+\/mtop\.alsc\.wamai\.store\.detail\.miniapp\.popup - - reject
 ^https?:\/\/waimai-guide\.ele\.me\/\w+\/mtop\.venus\.shopcouponpopupservice\.getshopcouponspopup - - reject
@@ -1229,7 +1229,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 
 # > 京东
 # Hostname = %APPEND% api.m.jd.com, dns.jd.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/jingdong.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/jingdong.js
 # 禁京东直播小窗
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getWidgetV1052 - - reject
 
@@ -1241,7 +1241,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # Hostname = %APPEND% api.m.jd.com
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising url response-body jdLiteAdvertisingVO response-body fmz200
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_SmartPush url response-body pushData response-body fmz200
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/jingxiAd.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/jingxiAd.js
 
 # > 京东金融
 # Hostname = %APPEND% m.360buyimg.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, appconf.mail.163.com, support.you.163.com
@@ -1348,15 +1348,15 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 屏蔽更新
 ^https?:\/\/api\.gotokeep\.com\/anno\/v\d\/upgrade\/check - - reject
 # 我的页面去推广
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/athena\/v\d\/people\/my$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/athena\/v\d\/people\/my$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
 # 应用底部栏净化
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/config\/v\d\/basic,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/config\/v\d\/basic,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
 # 发现页处理
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/homepage\/v\d\/tab,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/homepage\/v\d\/tab,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
 # 课程预览页广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/nuocha\/course\/v\d/\w+\/preview,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/nuocha\/course\/v\d/\w+\/preview,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
 # 我的运动页面去除下方推荐
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/sportpage\/sport\/v\d\/mysport,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gotokeep\.com\/sportpage\/sport\/v\d\/mysport,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js
 
 # > 快看
 # Hostname = %APPEND% api.kkmh.com
@@ -1365,22 +1365,22 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 
 # > 快手
 # Hostname = %APPEND% open.e.kuaishou.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/open\.e\.kuaishou\.com\/rest\/e\/v\d\/open\/univ$,requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/adsense.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/open\.e\.kuaishou\.com\/rest\/e\/v\d\/open\/univ$,requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/adsense.js
 
 # > 夸克
 # Hostname = %APPEND% open-cms-api.uc.cn, open-cms-api.quark.cn
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/open-cms-api\.(uc|quark)\.cn\/open-cms,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/quark.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/open-cms-api\.(uc|quark)\.cn\/open-cms,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/quark.js
 
 # > 酷我音乐
 # Hostname = %APPEND% audiobookpay.kuwo.cn, mgxhtj.kuwo.cn, nmobi.kuwo.cn, searchrecterm.kuwo.cn, musicpay.kuwo.cn, vip1.kuwo.cn
 # 广告
 ^https?:\/\/audiobookpay\.kuwo\.cn\/a\.p\?op=get_advertright_endtime - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/(mgxhtj|nmobi|searchrecterm)\.kuwo\.cn\/(mgxh|mobi|recterm)\.s,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/(mgxhtj|nmobi|searchrecterm)\.kuwo\.cn\/(mgxh|mobi|recterm)\.s,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
 # 会员
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/audiobookpay\.kuwo\.cn\/a\.p,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/musicpay\.kuwo\.cn\/music\.pay,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/vip1\.kuwo\.cn\/vip\/(enc\/user\/vip\?op=ui|v\d\/theme\?op=gd),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/vip1\.kuwo\.cn\/vip\/v\d\/user\/vip\?op=ui,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/audiobookpay\.kuwo\.cn\/a\.p,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/musicpay\.kuwo\.cn\/music\.pay,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/vip1\.kuwo\.cn\/vip\/(enc\/user\/vip\?op=ui|v\d\/theme\?op=gd),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/vip1\.kuwo\.cn\/vip\/v\d\/user\/vip\?op=ui,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/break/kuwo.js
 
 # > 看天下
 # Hostname = %APPEND% open3.vistastory.com
@@ -1402,7 +1402,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 
 # > 快手联盟,优量汇,穿山甲「广告联盟」
 # Hostname = %APPEND% api-access.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/(api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk\/get_ads|open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ$|mi\.gdt\.qq\.com\/gdt_mview\.fcg\?),requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/adsense.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/(api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk\/get_ads|open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ$|mi\.gdt\.qq\.com\/gdt_mview\.fcg\?),requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/adsense.js
 
 # > 口袋校园
 # Hostname = %APPEND% pocketuni.net
@@ -1415,9 +1415,9 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 酷安
 # Hostname = %APPEND% api.coolapk.com
 ^https?:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/feed\/(detail|replyList)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/main\/(dataList|indexV8|init),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/feed\/(detail|replyList)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/main\/(dataList|indexV8|init),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js
 
 # > 肯德基
 # Hostname = %APPEND% res.kfc.com.cn
@@ -1607,7 +1607,7 @@ https?:\/\/helper\.2bulu\.com\/(greenPea\/queryTasks|proSpecial\/allData|saveSpl
 # Hostname = %APPEND% creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com
 ^https?:\/\/creditcard\.bankcomm\.(com|cn)\/tfimg\/public00\/M00\/[a-zA-Z0-9]{2}\/[a-zA-Z0-9]{2}\/[a-zA-Z0-9-]{30}\.(jpg|jpeg) - - reject
 ^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interface\/common\/(qryPopAds|qryLaunchAds)\.do - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/rcg\/index\.html\?callbackurl=rcg\/index\.html&orclogin=1&,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/mdb.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/rcg\/index\.html\?callbackurl=rcg\/index\.html&orclogin=1&,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/mdb.js
 ^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/appInfo\/appNewestVersion - - reject
 
 # > 民生银行
@@ -1628,20 +1628,20 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 播放器界面
 ^https?:\/\/hb-boom\.api\.mgtv\.com\/release\/pullReleaseInfo - - reject
 # 我的页面
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/me\.bz\.mgtv\.com\/v3\/module\/list\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/me\.bz\.mgtv\.com\/v3\/module\/list\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 首页信息流,顶部tab
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/mob-st\.bz\.mgtv\.com\/odin\/c1\/channel\/index\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/dc2?\.bz\.mgtv\.com\/dynamic\/v1\/channel\/(index|vrsList)\/\w,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/mob-st\.bz\.mgtv\.com\/odin\/c1\/channel\/index\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/dc2?\.bz\.mgtv\.com\/dynamic\/v1\/channel\/(index|vrsList)\/\w,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 底部tab
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobile\.api\.mgtv\.com\/mobile\/config\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobile\.api\.mgtv\.com\/mobile\/config\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 升级弹窗
 ^https?:\/\/mobile\.api\.mgtv\.com\/v2\/mobile\/checkUpdate\? - - reject
 # 播放详情页
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobile\.api\.mgtv\.com\/v10\/video\/info\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobile-thor\.api\.mgtv\.com\/v1\/vod\/info\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobile\.api\.mgtv\.com\/v10\/video\/info\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobile-thor\.api\.mgtv\.com\/v1\/vod\/info\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 搜索框填充词
 ^https?:\/\/mobileso\.bz\.mgtv\.com\/spotlight\/search\/v1\? - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobileso\.bz\.mgtv\.com\/mobile\/recommend\/v2\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/mobileso\.bz\.mgtv\.com\/mobile\/recommend\/v2\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 
 # > 马蜂窝
 # Hostname = %APPEND% mapi.mafengwo.cn
@@ -1650,7 +1650,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?:\/\/mapi\.mafengwo\.cn\/system\/update\/check_update - - reject
 ^https?:\/\/mapi\.mafengwo\.cn\/system\/config\/(get|mark)_(push|alert)_config - - reject
 ^https?:\/\/mapi\.mafengwo\.cn\/system\/push\/get_local_push_config - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/mapi\.mafengwo\.cn\/user\/profile\/get_(list|profile),requires-body=1,script-path=https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/mafengwo.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/mapi\.mafengwo\.cn\/user\/profile\/get_(list|profile),requires-body=1,script-path=https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/mafengwo.js
 
 # > 马达出行
 # Hostname = %APPEND% mada-travel.17u.cn, ebk.17u.cn
@@ -1719,9 +1719,9 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 帖子文末推广卡片
 ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/go_gossip_darwin\/external\/v2\/query_flow_cards\? - - reject
 # 帖子末尾 - 看过此贴的用户也在看
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v6\/detail_recommend_feeds\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/maimai/maimai_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v6\/detail_recommend_feeds\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/maimai/maimai_ads.js
 # 移除信息流和评论区大块广告 - 信息流广告focus_feed / 评论区广告gossip_detail_comment / 评论区广告feed_detail_comment?
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/maimai/maimai_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/maimai/maimai_ads.js
 
 # > 麦当劳
 # Hostname = %APPEND% api.mcd.cn
@@ -1823,7 +1823,7 @@ https://access.mypikpak.com/access_controller/v1/area_accessible - - reject
 # > 朴朴超市
 # Hostname = %APPEND% j1.pupuapi.com, 54.222.159.138
 # 开屏广告 感谢【Ava阿檬】分享
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/banner\/v7\?position_types=2(%[A-Z0-9]+)+&store_id,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/PupuSplashAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/banner\/v7\?position_types=2(%[A-Z0-9]+)+&store_id,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/PupuSplashAds.js
 ^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/banner\/v7\?position_types=(?!2)(.*)&store_id - - reject
 ^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/banner\/v7\?position - - reject
 ^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/advertisement\/v1\? - - reject
@@ -1874,8 +1874,8 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 皮皮虾
 # Hostname = %APPEND% *.pipix.com
 # 净化 配合图层效果极佳 首页Tap精简 我的页面去除无用模块 感谢【怎么肥事】分享
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=#^https?:\/\/.+\.pipix\.com\/bds\/feed\/channel_list\/,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/PPX.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=#^https?:\/\/.+\.pipix\.com\/bds\/user\/check_in\/,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/PPX.js
+fmz200_chongxie = type=http-response,pattern=#^https?:\/\/.+\.pipix\.com\/bds\/feed\/channel_list\/,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/PPX.js
+fmz200_chongxie = type=http-response,pattern=#^https?:\/\/.+\.pipix\.com\/bds\/user\/check_in\/,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/PPX.js
 
 # > 皮皮搞笑评论区
 # Hostname = %APPEND% adapi.izuiyou.com
@@ -1917,12 +1917,12 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?://magev6.if.qidian.com/argus/api/v1/bookshelf/getad - - reject
 ^https?://magev6.if.qidian.com/argus/api/v4/client/getsplashscreen? - - reject
 # 起点开屏页广告,每日导读去除,冷启动强制跳转精选页去除,去除发现页弹出的活动弹窗,去除下方(精选 发现 中间的)活动时的tab,去除书架右下角的活动/广告的悬浮icon,搜索页可以搜索用户
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/(v4\/client\/getsplashscreen|v2\/deeplink\/geturl|v1\/(client\/getconf|adv\/getadvlistbatch\?positions=iOS_tab|dailyrecommend\/getdailyrecommend)),requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/qidian.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/(v4\/client\/getsplashscreen|v2\/deeplink\/geturl|v1\/(client\/getconf|adv\/getadvlistbatch\?positions=iOS_tab|dailyrecommend\/getdailyrecommend)),requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/qidian.js
 # 起点读书投票、章末免费领取章节卡等
 ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/adv - - reject
 ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/followsubscribe - - reject
 # 我的界面及活动按钮
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=#^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/(v1\/assembly\/toolbar|v3\/user\/getaccountpage),requires-body=1,script-path=https://github.com/Yu9191/Rewrite/raw/main/Qidian_my.js
+fmz200_chongxie = type=http-response,pattern=#^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/(v1\/assembly\/toolbar|v3\/user\/getaccountpage),requires-body=1,script-path=https://github.com/Yu9191/Rewrite/raw/main/Qidian_my.js
 # 我的界面内测推广
 ^http[s]?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/bookshelf\/refresh - - reject
 ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/adv\/getadvlistbatch - - reject
@@ -1991,7 +1991,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 去哒
 # Hostname = %APPEND% iqushangwang.8quan.com
 # 首页开屏广告 感谢【德克萨斯】分享
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/iqushangwang\.8quan\.com\/index\.php\/i\/index\/index,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/QuDa.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/iqushangwang\.8quan\.com\/index\.php\/i\/index\/index,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/QuDa.js
 
 
 
@@ -1999,7 +1999,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # Reddit
 # Hostname = %APPEND% gql.reddit.com, gql-fed.reddit.com
 # 过滤推广 关NSFW提示 感谢【xream】分享
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/gql(-fed)?\.reddit\.com,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/reddit.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/gql(-fed)?\.reddit\.com,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/reddit.js
 
 # > 人民日报
 # Hostname = %APPEND% app.peopleapp.com, stat.peopleapp.com, adstatic.peopleapp.com
@@ -2010,25 +2010,25 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 人人视频
 # Hostname = %APPEND% api.rr.tv
 # > RRTV_level_info
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/\w{3}\/level\/info,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/\w{3}\/level\/info,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
 # > RRTV_屏蔽軟件更新
 ^https?:\/\/api\.rr\.tv\/.*?Version - - reject
 # > RRTV_去除首頁廣告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https://api.rr.tv/v3plus/index/channel\?pageNum=1&position=CHANNEL_INDEX,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
+fmz200_chongxie = type=http-response,pattern=https://api.rr.tv/v3plus/index/channel\?pageNum=1&position=CHANNEL_INDEX,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
 # > RRTV_去除廣場tab
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/app\/config\/h5NativeBar,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/app\/config\/h5NativeBar,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
 # > RRTV_去除商城廣告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/v3plus\/index\/channel\?pageNum=1&position=CHANNEL_MY,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/v3plus\/index\/channel\?pageNum=1&position=CHANNEL_MY,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
 # > RRTV_Ad_List
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/user\/privilege\/list,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/user\/privilege\/list,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
 # > RRTV_Ad_All
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/ad\/getAll,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/ad\/getAll,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
 # > RRTV_Get_Drama
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/drama\/app\/get_combined_drama_detail,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.rr\.tv\/drama\/app\/get_combined_drama_detail,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
 # > RRTV_Watch_V4
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https://api.rr.tv/watch/v4,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
+fmz200_chongxie = type=http-response,pattern=https://api.rr.tv/watch/v4,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
 # > RRTV_User_Info
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https://api.rr.tv/user/profile,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
+fmz200_chongxie = type=http-response,pattern=https://api.rr.tv/user/profile,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js
 # > RRTV_屏蔽限時彈窗
 https://api.rr.tv/storage/business/rootName/app/homePage\?dataType=JSON - - reject
 
@@ -2073,34 +2073,34 @@ https://api.rr.tv/storage/business/rootName/app/homePage\?dataType=JSON - - reje
 # > Soul
 # Hostname = %APPEND% 47.110.187.87, ssp.soulapp.cn, chat-live.soulapp.cn, api-account.soulapp.cn, api-global.soulapp.me, api-a.soulapp.cn, api-pay.soulapp.cn, gateway-mobile-gray.soulapp.cn, api-chat.soulapp.cn, post.soulapp.cn, api-user.soulapp.cn, ssp.soulapp.cn
 # 替换信息收集
-fmz200_chongxie = type=http-request,pattern=fmz200_chongxie = type=http-request,pattern=^https:\/\/data-collector\.soulapp\.cn\/api\/data\/report\/v\d,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/template/req_replace_body.js
+fmz200_chongxie = type=http-request,pattern=^https:\/\/data-collector\.soulapp\.cn\/api\/data\/report\/v\d,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/template/req_replace_body.js
 # 信息流，帖子详情页等各种广告
 ^https?:\/\/ssp\.soulapp\.cn\/api\/q - - reject
 ^https?:\/\/ssp\.soulapp\.cn\/api\/ad\/config - - reject
 ^https?:\/\/chat-live\.soulapp\.cn\/live\/planet\/recListV2 - - reject
 ^https?:\/\/api-chat\.soulapp\.cn\/chat\/entrance\/first - - reject
 # 青少年模式弹窗
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-account\.soulapp\.cn\/teenager\/config,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-a\.soulapp\.cn\/v2\/post\/gift\/list,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-a\.soulapp\.cn\/official\/scene\/module,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-user\.soulapp\.cn\/furion\/position\/content,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-user\.soulapp\.cn\/v\d\/planet\/config,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-chat\.soulapp\.cn\/chat\/limitInfo,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/post\.soulapp\.cn\/hot\/soul\/rank,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/post\.soulapp\.cn\/v\d\/post\/homepage\/guide\/card,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/post\.soulapp\.cn\/v\d\/post\/recSquare\/subTabs,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/chat-live\.soulapp\.cn\/chatroom\/chatClassifyRoomList,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/gateway-mobile-gray\.soulapp\.cn\/mobile\/app\/version\/queryIos,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/47\.110\.187\.87\/winterfell\/v2\/getIpByDomain,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=#^https?:\/\/api-pay\.soulapp\.cn\/vip\/meet\/userInfo,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=#^https?:\/\/api-pay\.soulapp\.cn\/privilege\/supervip\/status,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-account\.soulapp\.cn\/teenager\/config,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-a\.soulapp\.cn\/v2\/post\/gift\/list,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-a\.soulapp\.cn\/official\/scene\/module,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-user\.soulapp\.cn\/furion\/position\/content,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-user\.soulapp\.cn\/v\d\/planet\/config,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api-chat\.soulapp\.cn\/chat\/limitInfo,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/post\.soulapp\.cn\/hot\/soul\/rank,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/post\.soulapp\.cn\/v\d\/post\/homepage\/guide\/card,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/post\.soulapp\.cn\/v\d\/post\/recSquare\/subTabs,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/chat-live\.soulapp\.cn\/chatroom\/chatClassifyRoomList,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/gateway-mobile-gray\.soulapp\.cn\/mobile\/app\/version\/queryIos,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/47\.110\.187\.87\/winterfell\/v2\/getIpByDomain,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=#^https?:\/\/api-pay\.soulapp\.cn\/vip\/meet\/userInfo,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
+fmz200_chongxie = type=http-response,pattern=#^https?:\/\/api-pay\.soulapp\.cn\/privilege\/supervip\/status,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js
 # 国际版Soul去广告
 https://api-global.soulapp.me/app/open/get - - reject
 
 # > Stay
 # Hostname = %APPEND% api.shenyin.name
 # 会导致视频下载转码失败
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=#^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/stay.js
+fmz200_chongxie = type=http-response,pattern=#^https?:\/\/api\.shenyin\.name\/stay-fork\/browse\/featured$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/stay.js
 
 # > 苏宁
 # Hostname = %APPEND% mpcs.suning.com, image.suning.com, luckman.suning.com
@@ -2128,7 +2128,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 苏打校园APP
 # Hostname = %APPEND% api.sodalife.xyz
 # 净化（需要卸载重装）感谢【TEXAS】分享
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.sodalife\.xyz\/v1\/posters\?location=SODA_APP%3AHOME%3ATOP,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soda.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.sodalife\.xyz\/v1\/posters\?location=SODA_APP%3AHOME%3ATOP,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/soda.js
 ^https?:\/\/api\.sodalife\.xyz\/v1\/posters\?location=SODA_APP%3AHOME%3ABOTTOM - - reject
 ^https?:\/\/api\.sodalife\.xyz\/v1\/posters\?location=SODA_APP%3AHOME%3ACENTER - - reject
 ^https?:\/\/api\.sodalife\.xyz\/v1\/posters\?location=SODA_APP%3AMINE%3ABOTTOM - - reject
@@ -2181,17 +2181,17 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 
 # > 什么值得买
 # Hostname = %APPEND% homepage-api.smzdm.com, haojia-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com, qianbao.smzdm.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=#^https?:\/\/app-api\.smzdm\.com\/util\/update,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/smzdm/smzdm_ads.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/user-api\.smzdm\.com\/vip\/creator_user_center,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/smzdm/smzdm_ads.js
+fmz200_chongxie = type=http-response,pattern=#^https?:\/\/app-api\.smzdm\.com\/util\/update,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/smzdm/smzdm_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/user-api\.smzdm\.com\/vip\/creator_user_center,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/smzdm/smzdm_ads.js
 # 感谢【怎么肥事】分享
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/update,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/user-api\.smzdm\.com\/vip,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/user-api\.smzdm\.com\/vip\/bottom_card_list,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/haojia-api\.smzdm\.com\/home\/list,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/homepage-api\.smzdm\.com\/v3\/home,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/article-api\.smzdm\.com\/publish\/get_bubble,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/qianbao\.smzdm\.com\/v\d\/app\/home,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/update,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/user-api\.smzdm\.com\/vip,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/user-api\.smzdm\.com\/vip\/bottom_card_list,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/haojia-api\.smzdm\.com\/home\/list,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/homepage-api\.smzdm\.com\/v3\/home,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/article-api\.smzdm\.com\/publish\/get_bubble,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/qianbao\.smzdm\.com\/v\d\/app\/home,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
 
 # > 神马
 # Hostname = %APPEND% editor.sm.cn
@@ -2304,7 +2304,7 @@ https://apis.lifeweek.com.cn/api/baseConfig/getIosNewConfig - - reject
 # Hostname = %APPEND% www.1314zhilv.com
 ^https?:\/\/www\.1314zhilv\.com\/ltsstnew\/(guideScenic\/getRecentlyUpdatedScenic|city\/getWeatherByCityName) - - reject
 # 首页北京城市导览图片,首页上方轮播图片净化
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/www\.1314zhilv\.com\/ltsstnew\/(common\/getJGQIconNew|city\/getAllBannelByCity),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/lvtusuishenting/ltsst-ad.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/www\.1314zhilv\.com\/ltsstnew\/(common\/getJGQIconNew|city\/getAllBannelByCity),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/lvtusuishenting/ltsst-ad.js
 
 # > 收钱吧 - 买单小程序
 # Hostname = %APPEND% api.pinduoduo.com
@@ -2327,7 +2327,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > TestFlight
 # Hostname = %APPEND% testflight.apple.com
 # TF账户管理 App更新时提示"APP不可用"问题，解决部分TF兑换错了区域的问题，例如Loon兑换到了国区
-fmz200_chongxie = type=http-request,pattern=fmz200_chongxie = type=http-request,pattern=^https?:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/,requires-body=1,script-path=https://github.com/NobyDa/Script/raw/master/TestFlight/TestFlightAccount.js
+fmz200_chongxie = type=http-request,pattern=^https?:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/,requires-body=1,script-path=https://github.com/NobyDa/Script/raw/master/TestFlight/TestFlightAccount.js
 
 # > TT语音
 # Hostname = %APPEND% ga-album-cdnqn.52tt.com
@@ -2475,8 +2475,8 @@ fmz200_chongxie = type=http-request,pattern=fmz200_chongxie = type=http-request,
 ^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome - - reject
 ^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources - - reject
 ^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/poplayer\.template\.alibaba\.com\/\w+\.json,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/poplayer\.template\.alibaba\.com\/\w+\.json,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
 
 # > 腾讯视频
 # Hostname = %APPEND% vv.video.qq.com
@@ -2515,7 +2515,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 #^https?:\/\/r\.inews\.qq\.com\/getSplash\?apptype=ios&startarticleid=&__qnr= - - reject
 ^https?:\/\/r\.inews\.qq\.com\/(adsBlacklist|getFullScreenPic|getQQNewsRemoteConfig) - - reject
 ^https?:\/\/r\.inews\.qq\.com\/(getBannerAds|getNewsRemoteConfig|getSplash|searchHotCatList|upLoadLoc) - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/(news\.ssp\.qq\.com\/app|r\.inews\.qq\.com\/(get(QQNewsUnreadList|TagFeedList)|gw\/page\/event_detail|news_feed\/hot_module_list)),requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/qq-news.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/(news\.ssp\.qq\.com\/app|r\.inews\.qq\.com\/(get(QQNewsUnreadList|TagFeedList)|gw\/page\/event_detail|news_feed\/hot_module_list)),requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/qq-news.js
 
 # > 腾讯体育
 # Hostname = %APPEND% news.ssp.qq.com, sports3.gtimg.com
@@ -2570,7 +2570,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > vgTime
 # Hostname = %APPEND% app02.vgtime.com
 # App去开屏广告(需全新应用). 若要去新闻列表广告需要搭配广告联盟模块
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/app02\.vgtime\.com:8080\/vgtime-app\/api\/v2\/init\/ad\.json,requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/vgtime.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/app02\.vgtime\.com:8080\/vgtime-app\/api\/v2\/init\/ad\.json,requires-body=1,script-path=https://github.com/app2smile/rules/raw/master/js/vgtime.js
 
 # > Vista看天下
 # Hostname = %APPEND% open3.vistastory.com
@@ -2621,7 +2621,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 公众号文章下方广告
 ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url response-body advertisement response-body fmz200
 # 微信跳过中间界面，支付宝链接、被封禁链接进行通知弹窗跳转，在微信中用快照显示被封禁的链接（可选），在微信中进行强制重定向（可选），群聊 / 扫码均可使用，可选项可在脚本 2、3 行更改，也可在 BoxJs 中更改。
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,script-path=https://github.com/zZPiglet/Task/raw/master/asset/UnblockURLinWeChat.js
+fmz200_chongxie = type=http-response,pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,requires-body=1,script-path=https://github.com/zZPiglet/Task/raw/master/asset/UnblockURLinWeChat.js
 # 微信公众号去除商品推广
 ^https?:\/\/mp\.weixin\.qq\.com\/mp\/cps_product_info\?action - - reject
 
@@ -2658,13 +2658,13 @@ https?:\/\/interface\d?\.music\.163\.com\/w?e?api\/(side-bar\/mini-program\/musi
 https?:\/\/interface\d?\.music\.163\.com\/eapi\/(resource\/comments?\/musiciansaid|community\/friends\/fans-group\/artist\/group\/get|user\/sub\/artist|music\/songshare\/text\/recommend\/get|mine\/applet\/redpoint|resniche\/position\/play\/new\/get) - - reject
 https?:\/\/interface\d?\.music\.163.com\/w?e?api\/(search\/(chart|default|rcmd\/keyword|specialkeyword)|resource-exposure\/|activity\/bonus\/playpage\/time\/query) - - reject
 https?:\/\/interface\d?\.music\.163.com\/eapi\/(mlivestream\/entrance\/playpage|link\/(position\/show\/strategy|scene\/show)|ios\/version|v\d\/content\/exposure\/comment\/banner) - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(batch|v\d\/resource\/comment\/floor\/get),requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/home\/framework\/tab,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(homepage\/block\/page|link\/page\/rcmd\/(resource\/show|block\/resource\/multi\/refresh)),requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/page\/discovery\/resource\/show,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/song\/play\/more\/list\/v\d,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/position\/show\/resource,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/user\/follow\/users\/mixed\/get,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
+fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(batch|v\d\/resource\/comment\/floor\/get),requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
+fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/home\/framework\/tab,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
+fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(homepage\/block\/page|link\/page\/rcmd\/(resource\/show|block\/resource\/multi\/refresh)),requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
+fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/page\/discovery\/resource\/show,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
+fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/song\/play\/more\/list\/v\d,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
+fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/position\/show\/resource,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
+fmz200_chongxie = type=http-response,pattern=https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/user\/follow\/users\/mixed\/get,requires-body=1,script-path=https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js
 
 # > 网易邮箱
 # Hostname = %APPEND% appconf.mail.163.com, client.mail.163.com, analytics.163.com
@@ -2695,7 +2695,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 网易有道词典
 # Hostname = %APPEND% dict.youdao.com, api-overmind.youdao.com, cdke.youdao.com, dictvip-business.youdao.com, dsp-impr2.youdao.com, impservice.dictapp.youdao.com, oral.youdao.com, oimage*.ydstatic.com
 # 首页净化，学习Tab界面净化，首页听读训练净化
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/dict\.youdao\.com\/(homepage\/promotion|course\/tab\/home|homepage\/tile),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/youdao/dict-youdao-ad.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/dict\.youdao\.com\/(homepage\/promotion|course\/tab\/home|homepage\/tile),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/youdao/dict-youdao-ad.js
 # 翻译广告
 ^https?:\/\/dict\.youdao\.com\/course\/tab\/translateTab - - reject
 # 听读训练
@@ -2767,7 +2767,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 
 # > 温尼伯站
 # Hostname = %APPEND% vue3-api.zhixiny.cn
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/vue3-api\.zhixiny\.cn\/v1\/initui\?key=index,requires-body=1,script-path=https://github.com/Sliverkiss/QuantumultX/raw/main/AdBlock/xmApp/wnbz.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/vue3-api\.zhixiny\.cn\/v1\/initui\?key=index,requires-body=1,script-path=https://github.com/Sliverkiss/QuantumultX/raw/main/AdBlock/xmApp/wnbz.js
 
 
 
@@ -2775,7 +2775,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # >>>>>>>>>>>>>>> ✅ X ✅ <<<<<<<<<<<<<<
 # > 小米商城
 # Hostname = %APPEND% api.m.mi.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.m\.mi\.com\/v1\/app\/start,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.m\.mi\.com\/v1\/app\/start,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js
 
 # > 小米有品
 # Hostname = %APPEND% shopapi.io.mi.com
@@ -2884,7 +2884,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # Hostname = %APPEND% ad.xiaotucc.com, mapi.xiaotucc.com
 # 小程序净化
 ^https?:\/\/ad\.xiaotucc\.com\/advert - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/mapi\.xiaotucc\.com\/(mall\/main|main_page\/index\/getActivity),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaotucc.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/mapi\.xiaotucc\.com\/(mall\/main|main_page\/index\/getActivity),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaotucc.js
 
 # > 小电充电 微信小程序
 # Hostname = %APPEND% smarket.dian.so, file.dian.so
@@ -2945,7 +2945,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 我的页面-
 https://mgesq.api.mgtv.com/v2/user/center/icon - - reject
 # 主页广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=https://mgesq.api.mgtv.com/dsl/index.+,requires-body=1,script-path=https://github.com/Sliverkiss/QuantumultX/raw/main/AdBlock/xmApp/xmApp.js
+fmz200_chongxie = type=http-response,pattern=https://mgesq.api.mgtv.com/dsl/index.+,requires-body=1,script-path=https://github.com/Sliverkiss/QuantumultX/raw/main/AdBlock/xmApp/xmApp.js
 # 搜索排行榜单
 ^https:\/\/mgesq\.api\.mgtv\.com\/search\/goods\/rank - - reject
 # 底部按钮、我的页面左上角
@@ -3055,17 +3055,17 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 拦截广告下发
 ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch %E9%97%B2%E9%B1%BC* url-and-header - reject
 # 首页顶部标签
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
 # 搜索栏填充词
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
 # 首页闲鱼币入口、底部发布球
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
 # 我的页面横幅
 ^https:\/\/dinamicx\.alibabausercontent\.com\/pub\/fish_home_top_kingkong_new\/ - - reject
 # 商品信息流广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
 # 定位地区页面的信息流广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.local\.home\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.local\.home\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xianyu/xianyu_ads.js
 # 搜索页面净化
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ - - reject
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.discover\/ - - reject
@@ -3080,7 +3080,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 
 # > 香蕉是一种水果
 # Hostname = %APPEND% *.pipiapps.com, *.fuliapps.com, *.xiangjiaoapps.com, *.xiangxiangapps.com
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/.+?\.(pipi|fuli|xiang(jiao|xiang))apps\.com\/(ucp\/index|getGlobalData|(\/|)vod\/reqplay\/),requires-body=1,script-path=https://github.com/NobyDa/Script/raw/master/QuantumultX/File/xjsp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/.+?\.(pipi|fuli|xiang(jiao|xiang))apps\.com\/(ucp\/index|getGlobalData|(\/|)vod\/reqplay\/),requires-body=1,script-path=https://github.com/NobyDa/Script/raw/master/QuantumultX/File/xjsp.js
 
 # > 小红书
 # Hostname = %APPEND% edith.xiaohongshu.com, www.xiaohongshu.com, ci.xiaohongshu.com
@@ -3088,21 +3088,21 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/surprisebox\/(get_style|open|submit_action) - - reject
 ^https?:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? - - reject
 # 详情页,小部件
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/widgets,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/widgets,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
 # 搜索页
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(banner|hot)_list,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(hint|trending)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/notes\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(banner|hot)_list,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(hint|trending)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/notes\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
 # 开屏广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config$,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
 # 图片水印,视频水印
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/(v\d\/note\/feed|v3\/note\/videofeed)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/(imagefeed|live_photo\/save),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/(v\d\/note\/feed|v3\/note\/videofeed)\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/(imagefeed|live_photo\/save),requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
 # 信息流
 ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/guide\? - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/followfeed\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/followfeed\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\?,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js
 ^https?:\/\/www\.xiaohongshu\.com\/api\/sns\/(v\d\/ads\/resource|v2\/hey\/\w+\/hey_gallery) - - reject
 # 评论区用户id置空 (实验功能可能无效)
 ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/comment\/list url response-body red_id response-body fmz200
@@ -3114,7 +3114,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 喜马拉雅
 # Hostname = %APPEND% *.xima*.*.com, *.xmcdn.*
 # 首页顶部去除直播
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/customCategories,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/customCategories,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
 # 修复轮播Ad失效Bug
 ^https?:\/\/.*\.xima.*\.com\/discovery-feed\/focus\/queryF - - reject
 # 播放页_Live
@@ -3154,13 +3154,13 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 屏蔽ting_Ad
 ^https?:\/\/.*\.xima.*\.com\/ting\/(loading|feed|home)? - - reject
 # 屏蔽首页横幅_Ad
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/focus-mobile\/focusPic,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/focus-mobile\/focusPic,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
 # 屏蔽首页动态_Ad
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/discovery-feed\/v\d\/mix,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/discovery-feed\/v\d\/mix,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
 # 屏蔽Tab页滚动_Ad
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/v\d/category,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/v\d/category,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
 # 去除我的页面Ad_Tag
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/mobile-user\/v\d\/homePage,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/mobile-user\/v\d\/homePage,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xmly_json.js
 
 
 
@@ -3168,9 +3168,9 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > YouTube
 # Hostname = %APPEND% rr*.googlevideo.com, youtubei.googleapis.com
 # 请求体
-fmz200_chongxie = type=http-request,pattern=fmz200_chongxie = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|get_watch|next|player|reel\/reel_watch_sequence),requires-body=1,script-path=https://github.com/Maasea/sgmodule/raw/master/Script/Youtube/dist/youtube.request.preview.js
+fmz200_chongxie = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|get_watch|next|player|reel\/reel_watch_sequence),requires-body=1,script-path=https://github.com/Maasea/sgmodule/raw/master/Script/Youtube/dist/youtube.request.preview.js
 # 响应体
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(account\/get_setting|browse|get_watch|guide|next|player|reel\/reel_watch_sequence|search),requires-body=1,script-path=https://github.com/Maasea/sgmodule/raw/master/Script/Youtube/dist/youtube.response.preview.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(account\/get_setting|browse|get_watch|guide|next|player|reel\/reel_watch_sequence|search),requires-body=1,script-path=https://github.com/Maasea/sgmodule/raw/master/Script/Youtube/dist/youtube.response.preview.js
 # 播放页广告
 ^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\? - - reject
 
@@ -3213,19 +3213,19 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 优酷
 # Hostname = %APPEND% acs.youku.com, push.m.youku.com, un-acs.youku.com
 # 播放详情页,首页信息流,顶部tab,我的页面,评论区
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.columbus\.(gateway\.new\.execute|home\.feed|home\.query|uc\.query|ycp\.query),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.columbus\.(gateway\.new\.execute|home\.feed|home\.query|uc\.query|ycp\.query),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 底部tab
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.haidai\.lantern\.appconfig\.get,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.haidai\.lantern\.appconfig\.get,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 青少年模式弹窗
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.huluwa\.dispatcher\.youthmode\.config2,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.huluwa\.dispatcher\.youthmode\.config2,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 播放页弹窗动图
 ^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.(pisp\.scripts\.get|xspace\.play\.position\.preload\.query|xspace\.poplayer\.position\.query) - - reject
 # 搜索列表
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.soku\.yksearch,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.soku\.yksearch,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 热剧弹窗
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/push\.m\.youku\.com\/collect-api\/get_push_interval_config_wx\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/push\.m\.youku\.com\/collect-api\/get_push_interval_config_wx\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 # 开屏广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/un-acs\.youku\.com\/gw\/mtop\.youku\.play\.ups\.appinfo\.get,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/un-acs\.youku\.com\/gw\/mtop\.youku\.play\.ups\.appinfo\.get,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js
 
 # > 游戏时光
 # Hostname = %APPEND% app02.vgtime.com, www.vgtime.com
@@ -3245,7 +3245,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?:\/\/api\.ulife\.group\/market\/frontEntrance\/getThirdAdvertising\?displayPort=1&type=15 - - reject
 ^https?:\/\/api\.ulife\.group\/market\/memberCard\/listMemberCard\?isShowSecondaryCard=1 - - reject
 ^https?:\/\/api\.ulife\.group\/auth\/account\/entrance - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.ulife\.group\/market\/homeIconDetail\/list\/v7,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/yx.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.ulife\.group\/market\/homeIconDetail\/list\/v7,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/yx.js
 
 # > 一淘
 # Hostname = %APPEND% acs.m.taobao.com
@@ -3501,9 +3501,9 @@ https?:\/\/m\.sd\.10086\.cn\/zapi\/app_common\/homeWelcome\/welcome.do - - rejec
 # 猜你喜欢
 ^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/config\/guessYouLike\/v - - reject
 # 主页面
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/config\/homeInit\/v,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/picc/picc_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/config\/homeInit\/v,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/picc/picc_ads.js
 # 我的页面
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/mpageconfig\/myPageConfigList\/v,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/picc/picc_ads.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/mpageconfig\/myPageConfigList\/v,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/picc/picc_ads.js
 
 # > 中油优途
 # Hostname = %APPEND% sichuan.95504.net
@@ -3554,18 +3554,18 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # > 知乎
 # Hostname = %APPEND% api.zhihu.com, www.zhihu.com, appcloud2.zhihu.com, m-cloud.zhihu.com, zhuanlan.zhihu.com, link.zhihu.com
 # 首页 悬浮图标,顶部横幅,开屏广告,关注页推荐,推荐信息流,热榜信息流,热榜直播,回答底部卡片
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/(answers|articles)\/v2\/\d+,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/commercial_api\/app_float_layer,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/(answers|articles)\/v2\/\d+,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/commercial_api\/app_float_layer,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 ^https:\/\/api\.zhihu\.com\/commercial_api\/(answer\/\d+\/bottom-v2|article\/\d+\/bottom-v2|banners_v3\/app_topstory_banner|launch_v2|real_time_launch_v2) - - reject
 ^https:\/\/api\.zhihu\.com\/content-distribution-core\/bubble\/common\/settings - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/feed\/render\/tab\/config\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/feed\/render\/tab\/config\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 ^https:\/\/api\.zhihu\.com\/(moments\/lastread|drama\/hot-drama-list) - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/(moments_v3|topstory\/hot-lists\/total|topstory\/recommend),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/(moments_v3|topstory\/hot-lists\/total|topstory\/recommend),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 ^https:\/\/api\.zhihu\.com\/root\/window - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/v2\/topstory\/hot-lists\/everyone-seeing\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/v2\/topstory\/hot-lists\/everyone-seeing\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 # 会员页面 弹窗,悬浮动图
 ^https:\/\/api\.zhihu\.com\/(bazaar\/float_window|market\/popovers_v2) - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 # 我的页面 项目列表,会员卡片
 ^https:\/\/api\.zhihu\.com\/me\/guides - - reject
 ^https:\/\/api\.zhihu\.com\/unlimited\/go\/my_card - - reject
@@ -3575,18 +3575,18 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https:\/\/www\.zhihu\.com\/api\/v4\/search\/related_queries\/(article|answer)\/\d+ - - reject
 # 回答详情页,评论区顶部,下一个回答
 ^https:\/\/api\.zhihu\.com\/comment_v5\/(articles|answers)\/\d+\/list-headers - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/next-(bff|data|render)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/next-(bff|data|render)\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 ^https:\/\/api\.zhihu\.com\/prague\/related_suggestion_native\/feed\? - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/questions\/\d+(\/answers|\/feeds|\?include=),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/api\.zhihu\.com\/questions\/\d+(\/answers|\/feeds|\?include=),requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 ^https:\/\/api\.zhihu\.com\/v5\.1\/topics\/answer\/\d+\/relation - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/www\.zhihu\.com\/api\/v4\/(articles|answers)\/\d+\/recommendations?\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/www\.zhihu\.com\/api\/v4\/(articles|answers)\/\d+\/recommendations?\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 # 其他,服务器推送配置
 ^https:\/\/api\.zhihu\.com\/ab\/api\/v1\/products\/zhihu\/platforms\/ios\/config - - reject
 ^https:\/\/api\.zhihu\.com\/ad-style-service\/request - - reject
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/appcloud2\.zhihu\.com\/v3\/config,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/appcloud2\.zhihu\.com\/v3\/config,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 ^https:\/\/appcloud2\.zhihu\.com\/v3\/resource\?group_name=mp - - reject
 ^https:\/\/link\.zhihu\.com\/\?target=(https?)?(%3A|:)?(\/\/|%2F%2F)?(.*?)(&source.*)?$ url 302 http://$4
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/m-cloud\.zhihu\.com\/api\/cloud\/config\/all\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/m-cloud\.zhihu\.com\/api\/cloud\/config\/all\?,requires-body=1,script-path=https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js
 # 网页版去广告
 ^https:\/\/api\.zhihu\.com\/distribute\/rhea\/qa_ad_card\/h5\/recommendation\? - - reject
 ^https:\/\/www\.zhihu\.com\/api\/v4\/hot_recommendation - - reject
@@ -3619,7 +3619,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 # 我的横幅广告
 ^https?:\/\/quanguo\.mygolbs\.com:8081\/MyBusServer\/servlet\/MyGoServer\.HttpPool\.HttpHandlerServlet - - reject
 # 小程序广告
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/wx\.mygolbs\.com\/WxBusServer\/ApiData\.do,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/zhangshanggongjiao.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/wx\.mygolbs\.com\/WxBusServer\/ApiData\.do,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/zhangshanggongjiao.js
 
 # > 掌上鹿城
 # Hostname = %APPEND% vapp.tmuyun.com
@@ -3652,7 +3652,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 ^https?:\/\/app\.zhuanzhuan\.com\/zz\/transfer\/userred\?scene=homePage - - reject
 ^https?:\/\/app\.zhuanzhuan\.com\/zz\/v2\/zzinfoshow\/getfeedflowinfo\? url response-body userRed response-body fmz200
 # “我的”页面去除冗余的模块
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.zhuanzhuan\.com\/zz\/transfer\/getmyprofilev3,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/zhuanzhuan/zhuanzhuan.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/app\.zhuanzhuan\.com\/zz\/transfer\/getmyprofilev3,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/zhuanzhuan/zhuanzhuan.js
 ^https?:\/\/app\.zhuanzhuan\.com\/zz\/v2\/zzinfoshow\/getchoicegoodsinfos url response-body infoData response-body fmz200
 
 # > 掌上英雄联盟
@@ -3715,7 +3715,7 @@ fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-respons
 
 # > 中国国际航空
 # Hostname = %APPEND% m.airchina.com.cn
-fmz200_chongxie = type=http-response,pattern=fmz200_chongxie = type=http-response,pattern=^https:\/\/m\.airchina\.com\.cn\/airchina\/gateway\/v\d(\.\d)*\/api\/services,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/airchina.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/m\.airchina\.com\.cn\/airchina\/gateway\/v\d(\.\d)*\/api\/services,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/airchina.js
 
 
 # >>>>>>>>>>>>>>> ✅ # ✅ <<<<<<<<<<<<<<

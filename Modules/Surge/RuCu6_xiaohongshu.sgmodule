@@ -18,27 +18,27 @@ AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), - reject
 
 [Script]
 # 详情页小部件、关注页感兴趣的人
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/(?:note\/widgets|user\/followings\/followfeed),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除详情页小部件
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/(?:note\/widgets|user\/followings\/followfeed),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 
 # 搜索页
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/(?:banner|hot)_list,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除搜索页广告
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/(?:hint|trending),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除搜索页广告
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v10\/search\/notes\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除搜索页广告
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/(?:banner|hot)_list,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/(?:hint|trending),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v10\/search\/notes\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 
 # 开屏广告
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/system_service\/config\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除开屏广告
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/system_service\/splash_config,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除开屏广告
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/system_service\/config\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/system_service\/splash_config,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 
 # 信息流、详情页感兴趣的人
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/followfeed\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除信息流广告
-RuCu6_xiaohongshu = type=http-response,pattern=http-response https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v5\/recommend\/user\/follow_recommend\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除详情页感兴趣的人
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v6\/homefeed\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除信息流广告
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/followfeed\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
+RuCu6_xiaohongshu = type=http-response,pattern=https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v5\/recommend\/user\/follow_recommend\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v6\/homefeed\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 
 # 移除图片和视频水印
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/note\/feed|v3\/note\/videofeed),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除图片和视频水印
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/note\/feed|v3\/note\/videofeed),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 
 # 移除图片和实况照片水印
-RuCu6_xiaohongshu = type=http-response,pattern=http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/note\/(?:imagefeed|live_photo\/save),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = 移除图片和实况照片水印
+RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/note\/(?:imagefeed|live_photo\/save),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 
 [MITM]
 Hostname = %APPEND% edith.xiaohongshu.com, www.xiaohongshu.com

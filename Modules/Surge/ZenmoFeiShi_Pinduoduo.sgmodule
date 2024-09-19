@@ -22,4 +22,4 @@ ZenmoFeiShi_Pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.co
 
 
 
-Hostname = %APPEND% api.pinduoduo.com
+hostname = api.pinduoduo.com

@@ -18,7 +18,7 @@
 特别说明:
 由于App内大部分活动都使用web-view嵌入H5的形式且链接不定, 故不对内部活动进行相关广告去除。
 ******************************************
-Hostname = %APPEND% client.app.coc.10086.cn, h.app.coc.10086.cn
+hostname = client.app.coc.10086.cn, h.app.coc.10086.cn
 # 启动页
 Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$,requires-body=1,script-path=https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js
 # 首页 - 下拉

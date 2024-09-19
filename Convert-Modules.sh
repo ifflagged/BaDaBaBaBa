@@ -46,12 +46,13 @@ $comment" \
     -e 's/, reject-video/, REJECT/Ig' \
     -e 's/, reject-replace/, REJECT/Ig' \
     -e 's/\(,\s\)reject\b/\1REJECT/Ig' \
-    -e 's/\(^\|\s\)reject-dict\b/\1- reject/Ig' \
-    -e 's/\(^\|\s\)reject-img\b/\1- reject/Ig' \
-    -e 's/\(^\|\s\)reject-array\b/\1- reject/Ig' \
-    -e 's/\(^\|\s\)reject-video\b/\1- reject/Ig' \
-    -e 's/\(^\|\s\)reject-replace\b/\1- reject/Ig' \
-    -e 's/\(^\|\s\)reject\b/\1- reject/Ig' \
+    -e 's/\([^,]\) reject-200/\1- reject/Ig' \
+    -e 's/\([^,]\) reject-img/\1- reject/Ig' \
+    -e 's/\([^,]\) reject-dict/\1- reject/Ig' \
+    -e 's/\([^,]\) reject-array/\1- reject/Ig' \
+    -e 's/\([^,]\) reject-video/\1- reject/Ig' \
+    -e 's/\([^,]\) reject-replace/\1- reject/Ig' \
+    -e 's/\(^[^,]*\b\)reject/\1- reject/Ig' \
     -e "s/http-response /${module_name} = type=http-response,pattern=/" \
     -e "s/http-request /${module_name} = type=http-request,pattern=/" \
     -e '/http-response/ s/, tag.*//' \

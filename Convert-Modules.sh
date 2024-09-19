@@ -1,84 +1,86 @@
 #!/bin/bash
-
-# Input parameters
 input_file=$1
 module_name=$2
 comment=$3
 
-# Output paths
-surge_output="Modules/Surge/${module_name}.sgmodule"
-loon_output="Modules/Loon/${module_name}.plugin"
+# Common replacements for both Surge and Loon
+sed_common="
+    /raw.githubusercontent.com/ s/\/main\//\/raw\/main\//Ig
+    /raw.githubusercontent.com/ s/\/master\//\/raw\/master\//Ig
+    s/raw.githubusercontent.com/github.com/Ig
+    s/HOST,/DOMAIN,/Ig
+    s/HOST-SUFFIX,/DOMAIN-SUFFIX,/Ig
+    s/HOST-KEYWORD,/DOMAIN-KEYWORD,/Ig
+    s/IP-CIDR,/IP-CIDR,/Ig
+    s/IP6-CIDR,/IP-CIDR6,/Ig
+    /IP-CIDR/ s/, REJECT/, REJECT, no-resolve/Ig
+"
 
-# Create directories if they don't exist
-mkdir -p "$(dirname "$surge_output")"
-mkdir -p "$(dirname "$loon_output")"
+# Surge conversion
+sed -e "1 i\\
+$comment" \
+    -e "$sed_common" \
+    -e "s/url reject-200/- reject/Ig" \
+    -e 's/url reject-img/- reject/Ig' \
+    -e 's/url reject-dict/- reject/Ig' \
+    -e 's/url reject-array/- reject/Ig' \
+    -e 's/url reject-video/- reject/Ig' \
+    -e 's/url reject-replace/- reject/Ig' \
+    -e 's/url reject/- reject/Ig' \
+    -e 's/, REJECT-DROP/, REJECT/Ig' \
+    -e "/url script-response-body/ s/^/${module_name} = type=http-response,pattern=/" \
+    -e "/url script-echo-response/ s/^/${module_name} = type=http-response,pattern=/" \
+    -e "/url script-response-header/ s/^/${module_name} = type=http-response,pattern=/" \
+    -e "/url script-request-body/ s/^/${module_name} = type=http-request,pattern=/" \
+    -e "/url script-request-header/ s/^/${module_name} = type=http-request,pattern=/" \
+    -e "/url script-analyze-echo-response/ s/^/${module_name} = type=http-request,pattern=/" \
+    -e 's/ url script-response-body /,requires-body=1,script-path=/Ig' \
+    -e 's/ url script-echo-response /,requires-body=1,script-path=/Ig' \
+    -e 's/ url script-response-header /,requires-body=1,script-path=/Ig' \
+    -e 's/ url script-request-body /,requires-body=1,script-path=/Ig' \
+    -e 's/ url script-analyze-echo-response /,requires-body=1,script-path=/Ig' \
+    -e 's/ url script-request-header /,requires-body=0,script-path=/Ig' \
+    -e "s/reject-200/- reject/Ig" \
+    -e 's/reject-img/- reject/Ig' \
+    -e 's/reject-dict/- reject/Ig' \
+    -e 's/reject-array/- reject/Ig' \
+    -e 's/reject-video/- reject/Ig' \
+    -e 's/reject-replace/- reject/Ig' \
+    -e 's/reject/- reject/Ig' \
+    -e "/http-response/ s/^/${module_name} = type=http-response,pattern=/" \
+    -e "/http-request/ s/^/${module_name} = type=http-request,pattern=/" \
+    -e 's/ script-path = /,script-path=/Ig' \
+    -e 's/hostname =/Hostname = %APPEND%/Ig' \
+    "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 
-# Initialize the output files
-echo "# Surge module: $module_name" > "$surge_output"
-echo "# Loon plugin: $module_name" > "$loon_output"
-
-# Processing function for each line of input
-process_line() {
-  local line="$1"
-  local surge_result=""
-  local loon_result=""
-
-  # Script-Type URL pattern handling
-  if [[ $line =~ $Script_Type ]]; then
-    script_url="${BASH_REMATCH[3]}"
-    if [[ ${BASH_REMATCH[2]} =~ (script-response-body|script-echo-response|script-response-header|script-analyze-echo-response) ]]; then
-      requires_body="1"
-      surge_type="http-response"
-    else
-      requires_body="0"
-      surge_type="http-request"
-    fi
-    # Surge format
-    surge_result="${module_name} = type=${surge_type},pattern=${BASH_REMATCH[1]},requires-body=${requires_body},script-path=${script_url}"
-    # Loon format
-    loon_result="${surge_type} ${BASH_REMATCH[1]} script-path=${script_url}, requires-body=${requires_body}, tag=${module_name}"
-
-  # URL Rewrite handling
-  elif [[ $line =~ $URL_Rewrite ]]; then
-    # Surge format
-    surge_result="${BASH_REMATCH[1]} - ${BASH_REMATCH[2]}"
-    # Loon format
-    loon_result="${BASH_REMATCH[1]} ${BASH_REMATCH[2]}"
-
-  # URL conversion handling
-  elif [[ $line =~ https://raw\.githubusercontent\.com ]]; then
-    # Surge & Loon both have the same URL conversion
-    surge_result=$(echo "$line" | sed -e 's/raw.githubusercontent.com/github.com/' -e 's/\/main\//\/raw\/main\//' -e 's/\/master\//\/raw\/master\//')
-    loon_result="$surge_result"
-
-  # MITM (hostname) handling
-  elif [[ $line =~ hostname ]]; then
-    # Surge format
-    surge_result="Hostname = %APPEND% ${line#*=}"
-    # Loon format
-    loon_result="Hostname = ${line#*=}"
-
-  # Rule conversion (Rule file format)
-  elif [[ $line =~ ^HOST ]]; then
-    # Surge format
-    surge_result=$(echo "$line" | sed 's/HOST/DOMAIN/' | sed 's/REJECT/& no-resolve/')
-    loon_result=$(echo "$line" | sed 's/HOST/DOMAIN/')
-  fi
-
-  # Write to output files
-  if [[ -n $surge_result ]]; then
-    echo "$surge_result" >> "$surge_output"
-  fi
-  if [[ -n $loon_result ]]; then
-    echo "$loon_result" >> "$loon_output"
-  fi
-}
-
-# Read and process the input file line by line
-while IFS= read -r line; do
-  process_line "$line"
-done < "$input_file"
-
-echo "Conversion complete. Output files generated:"
-echo "$surge_output"
-echo "$loon_output"
+# Loon conversion
+sed -e "1 i\\
+$comment" \
+    -e "$sed_common" \
+    -e "s/url reject-200/reject-200/Ig" \
+    -e 's/url reject-img/reject-img/Ig' \
+    -e 's/url reject-dict/reject-dict/Ig' \
+    -e 's/url reject-array/reject-array/Ig' \
+    -e 's/url reject-video/reject-video/Ig' \
+    -e 's/url reject-replace/reject-replace/Ig' \
+    -e 's/url reject/reject/Ig' \
+    -e "/url script-response-body/ s/^/http-response /" \
+    -e "/url script-echo-response/ s/^/http-response /" \
+    -e "/url script-response-header/ s/^/http-response /" \
+    -e "/url script-request-body/ s/^/http-request /" \
+    -e "/url script-request-header/ s/^/http-request /" \
+    -e "/url script-analyze-echo-response/ s/^/http-request /" \
+    -e "/script-response-body/ s/$/, requires-body = true, tag = ${module_name}/" \
+    -e "/script-echo-response/ s/$/, requires-body = true, tag = ${module_name}/" \
+    -e "/script-response-header/ s/$/, requires-body = true, tag = ${module_name}/" \
+    -e "/script-request-body/ s/$/, requires-body = true, tag = ${module_name}/" \
+    -e "/script-analyze-echo-response/ s/$/, requires-body = true, tag = ${module_name}/" \
+    -e "/script-request-header/ s/$/, requires-body = false, tag = ${module_name}/" \
+    -e 's/url script-response-body/script-path=/Ig' \
+    -e 's/url script-echo-response/script-path=/Ig' \
+    -e 's/url script-response-header/script-path=/Ig' \
+    -e 's/url script-request-body/script-path=/Ig' \
+    -e 's/url script-request-header/script-path=/Ig' \
+    -e 's/url script-analyze-echo-response/script-path=/Ig' \
+    -e 's/hostname =/Hostname =/Ig' \
+    "$input_file" > "Modules/Loon/${module_name}.plugin"

@@ -45,14 +45,14 @@ $comment" \
     -e 's/, reject-array/, REJECT/Ig' \
     -e 's/, reject-video/, REJECT/Ig' \
     -e 's/, reject-replace/, REJECT/Ig' \
-    -e 's/, reject/, REJECT/Ig' \
+    -e 's/\(,\s\)reject\b/\1REJECT/Ig' \
     -e 's/\([^,]\) reject-200/\1- reject/Ig' \
     -e 's/\([^,]\) reject-img/\1- reject/Ig' \
     -e 's/\([^,]\) reject-dict/\1- reject/Ig' \
     -e 's/\([^,]\) reject-array/\1- reject/Ig' \
     -e 's/\([^,]\) reject-video/\1- reject/Ig' \
     -e 's/\([^,]\) reject-replace/\1- reject/Ig' \
-    -e 's/\([^,]\) reject/\1- reject/Ig' \
+    -e 's/^\([^,]\+\)\breject\b/\1- reject/Ig' \
     -e "s/http-response /${module_name} = type=http-response,pattern=/" \
     -e "s/http-request /${module_name} = type=http-request,pattern=/" \
     -e '/http-response/ s/, tag.*//' \

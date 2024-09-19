@@ -20,7 +20,7 @@ sed_common="
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
-    -e "s/url reject-200/- reject/Ig" \
+    -e 's/url reject-200/- reject/Ig' \
     -e 's/url reject-img/- reject/Ig' \
     -e 's/url reject-dict/- reject/Ig' \
     -e 's/url reject-array/- reject/Ig' \
@@ -46,27 +46,21 @@ $comment" \
     -e 's/, reject-video/, REJECT/Ig' \
     -e 's/, reject-replace/, REJECT/Ig' \
     -e 's/\(,\s\)reject\b/\1REJECT/Ig' \
-    -e 's/\([^,]\) reject-200/\1- reject/Ig' \
-    -e 's/\([^,]\) reject-img/\1- reject/Ig' \
-    -e 's/\([^,]\) reject-dict/\1- reject/Ig' \
-    -e 's/\([^,]\) reject-array/\1- reject/Ig' \
-    -e 's/\([^,]\) reject-video/\1- reject/Ig' \
-    -e 's/\([^,]\) reject-replace/\1- reject/Ig' \
+    -e 's/^- reject-200$/- reject/Ig' \
+    -e 's/^- reject-img$/- reject/Ig' \
+    -e 's/^- reject-dict$/- reject/Ig' \
+    -e 's/^- reject-array$/- reject/Ig' \
+    -e 's/^- reject-video$/- reject/Ig' \
+    -e 's/^- reject-replace$/- reject/Ig' \
+    -e 's/^- reject$/- reject/Ig' \
     -e 's/\(^[^,]*\b\)reject/\1- reject/Ig' \
-    -e "s/http-response /${module_name} = type=http-response,pattern=/" \
-    -e "s/http-request /${module_name} = type=http-request,pattern=/" \
-    -e '/http-response/ s/, tag.*//' \
-    -e '/http-request/ s/, tag.*//' \
-    -e 's/ script-path = /,script-path=/Ig' \
-    -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/' \
-    -e 's/hostname =/Hostname = %APPEND%/Ig' \
     "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 
 # Loon conversion
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
-    -e "s/url reject-200/reject-200/Ig" \
+    -e 's/url reject-200/reject-200/Ig' \
     -e 's/url reject-img/reject-img/Ig' \
     -e 's/url reject-dict/reject-dict/Ig' \
     -e 's/url reject-array/reject-array/Ig' \

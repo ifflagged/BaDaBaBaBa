@@ -1,0 +1,44 @@
+http-request #!name script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request #!desc script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request #!author script-path=fmz200[https://github.com/fmz200], requires-body=false, tag=RuCu6_xiaohongshu
+http-request #!date script-path=14:20:28, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request [Rule] script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request AND, script-path=(DOMAIN-SUFFIX,, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request [Rewrite] script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request # script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action) script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request ^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request # script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/guide\/user_banner|v3\/note\/guide) script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request ^https:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v1\/ads\/resource|v2\/hey\/\w+\/hey_gallery) script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request [Script] script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request # script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request # script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request # script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request # script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request # script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request # script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request http-response script-path==, requires-body=false, tag=RuCu6_xiaohongshu
+http-request  script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request [MITM] script-path=, requires-body=false, tag=RuCu6_xiaohongshu
+http-request hostname script-path=www.xiaohongshu.com, requires-body=false, tag=RuCu6_xiaohongshu
+# # xiaohongshu // edith.xiaohongshu.com, www.xiaohongshu.com,

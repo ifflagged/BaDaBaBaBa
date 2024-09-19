@@ -13,4 +13,18 @@ ZenmoFeiShi_Smzdm = type=http-response,pattern=^https:\/\/qianbao\.smzdm\.com\/v
 ZenmoFeiShi_Smzdm = type=http-response,pattern=^https:\/\/s3\.zdmimg\.com\/third\/index,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
 ZenmoFeiShi_Smzdm = type=http-response,pattern=^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js
 ^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading - reject
-Hostname = %APPEND% haojia-api.smzdm.com, homepage-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com ,qianbao.smzdm.com,s3.zdmimg.com,post.m.smzdm.com,haojia.m.smzdm.com
+Hostname = %APPEND% haojia-api.smzdm.com, homepage-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com ,qianbao.smzdm.com,s3.zdmimg.com,post.m.smzdm.com,haojia.m.smzdm.com#!name - reject
+#!author - reject
+#!update - reject
+^https:\/\/app-api\.smzdm\.com\/util\/loading - reject
+^https:\/\/haojia-api\.smzdm\.com\/home\/list - reject
+^https:\/\/app-api\.smzdm\.com\/util\/update - reject
+^https:\/\/homepage-api\.smzdm\.com\/v3\/home - reject
+^https:\/\/user-api\.smzdm\.com\/vip - reject
+^https:\/\/user-api\.smzdm\.com\/vip\/bottom_card_list - reject
+^https:\/\/article-api\.smzdm\.com\/publish\/get_bubble - reject
+^https:\/\/qianbao\.smzdm\.com\/v\d\/app\/home - reject
+^https:\/\/s3\.zdmimg\.com\/third\/index - reject
+^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list - reject
+^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading - reject
+# # Smzdm // haojia-api.smzdm.com, homepage-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com ,qianbao.smzdm.com,s3.zdmimg.com,post.m.smzdm.com,haojia.m.smzdm.com,

@@ -12,13 +12,13 @@ IP-CIDR, 116.85.3.37/32, REJECT, no-resolve
 IP-CIDR, 139.199.240.15/32, REJECT, no-resolve
 */
 
-^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget -- reject
-^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds -- reject
-^https:\/\/freight\.xiaojukeji\.com\/gateway -- reject
-^https:\/\/daijia\.kuaidadi\.com:443\/gateway -- reject
-^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget -- reject
-^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast -- reject
-^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf -- reject
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget - - reject
+^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds - - reject
+^https:\/\/freight\.xiaojukeji\.com\/gateway - - reject
+^https:\/\/daijia\.kuaidadi\.com:443\/gateway - - reject
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget - - reject
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast - - reject
+^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf - - reject
 ZenmoFeiShi_Didichuxing = type=http-response,pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
 ZenmoFeiShi_Didichuxing = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
 ZenmoFeiShi_Didichuxing = type=http-response,pattern=^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js

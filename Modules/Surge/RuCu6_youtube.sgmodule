@@ -15,7 +15,7 @@ AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
 
 [Rewrite]
 # 使用reject-dict方法以减少开销
-^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\?-- reject
+^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\?- - reject
 
 [Script]
 # 请求体

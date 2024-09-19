@@ -4,118 +4,117 @@ input_file=$1
 module_name=$2
 comment=$3
 
-surge_output="Modules/Surge/${module_name}.sgmodule"
-loon_output="Modules/Loon/${module_name}.plugin"
+# 输出目录
+surge_output_dir="Modules/Surge"
+loon_output_dir="Modules/Loon"
 
-# Create output directories if they don't exist
-mkdir -p "Modules/Surge"
-mkdir -p "Modules/Loon"
+# 创建输出目录
+mkdir -p "$surge_output_dir"
+mkdir -p "$loon_output_dir"
 
-# Initialize output files
-echo "# Surge module for $module_name" > "$surge_output"
-echo "# Loon module for $module_name" > "$loon_output"
+# Surge 和 Loon 文件初始化
+surge_output_file="$surge_output_dir/${module_name}.sgmodule"
+loon_output_file="$loon_output_dir/${module_name}.plugin"
 
-# Function to process Header Rewrite
+# 清空或创建输出文件
+> "$surge_output_file"
+> "$loon_output_file"
+
+# 处理 Header Rewrite 的转换逻辑
 process_header_rewrite() {
-    local line="$1"
+  local line=$1
+  local url_regex
+  local script_url
+  local script_type
+  local requires_body
 
-    # Match and process Header Rewrite
-    if [[ $line =~ ^\^http ]]; then
-        url=$(echo "$line" | awk '{print $1}')
-        type=$(echo "$line" | awk '{print $2}')
-        script_url=$(echo "$line" | awk '{print $4}')
+  if [[ $line =~ (http-response|http-request) ]]; then
+    script_type=${BASH_REMATCH[1]}
+  elif [[ $line =~ script-response-body|script-echo-response|script-response-header ]]; then
+    script_type="http-response"
+  else
+    script_type="http-request"
+  fi
 
-        # Determine the type of request and requires-body
-        if [[ $type == "script-response-body" || $type == "script-echo-response" || $type == "script-response-header" ]]; then
-            echo "$module_name = type=http-response,pattern=${url},requires-body=1,script-path=${script_url}" >> "$surge_output"
-            echo "http-response ${url} script-path=${script_url}, requires-body = true, tag = $module_name" >> "$loon_output"
-        else
-            echo "$module_name = type=http-request,pattern=${url},requires-body=0,script-path=${script_url}" >> "$surge_output"
-            echo "http-request ${url} script-path=${script_url}, requires-body = false, tag = $module_name" >> "$loon_output"
-        fi
-    fi
+  url_regex=$(echo "$line" | grep -oP '^https?:\/\/[^\s]+')
+  script_url=$(echo "$line" | grep -oP 'https:\/\/[^\s]+')
+  requires_body="false"
+
+  if [[ $line =~ script-response-body|script-echo-response|script-response-header|script-request-body|script-analyze-echo-response ]]; then
+    requires_body="true"
+  fi
+
+  # Surge 格式输出
+  echo "type=$script_type,pattern=$url_regex,requires-body=$requires_body,script-path=$script_url" >> "$surge_output_file"
+  
+  # Loon 格式输出
+  echo "$script_type $url_regex script-path=$script_url, requires-body=$requires_body, tag=$module_name" >> "$loon_output_file"
 }
 
-# Function to process URL Rewrite
+# 处理 URL Rewrite 的转换逻辑
 process_url_rewrite() {
-    local line="$1"
+  local line=$1
+  local surge_rewrite
+  local loon_rewrite
 
-    # Match and process URL Rewrite
-    if [[ $line =~ ^\^https?: ]]; then
-        url=$(echo "$line" | awk '{print $1}')
-        reject_type=$(echo "$line" | awk '{print $3}')
+  surge_rewrite=$(echo "$line" | sed 's/ url reject/- reject/')
+  loon_rewrite=$(echo "$line" | sed 's/ url reject-/- reject-/')
 
-        # Process for Surge and Loon formats
-        echo "${url} - reject" >> "$surge_output"
-        echo "${url} $reject_type" >> "$loon_output"
-    fi
+  echo "$surge_rewrite" >> "$surge_output_file"
+  echo "$loon_rewrite" >> "$loon_output_file"
 }
 
-# Function to process Rule
+# 处理 Rule 的转换逻辑
 process_rule() {
-    local line="$1"
+  local line=$1
+  local surge_rule
+  local loon_rule
 
-    # Match and process Rule
-    if [[ $line =~ ^HOST ]]; then
-        echo "DOMAIN, ${line:6}, REJECT" >> "$surge_output"
-        echo "DOMAIN, ${line:6}, REJECT" >> "$loon_output"
-    elif [[ $line =~ ^HOST-SUFFIX ]]; then
-        echo "DOMAIN-SUFFIX, ${line:12}, REJECT" >> "$surge_output"
-        echo "DOMAIN-SUFFIX, ${line:12}, REJECT" >> "$loon_output"
-    elif [[ $line =~ ^HOST-KEYWORD ]]; then
-        echo "DOMAIN-KEYWORD, ${line:13}, REJECT" >> "$surge_output"
-        echo "DOMAIN-KEYWORD, ${line:13}, REJECT" >> "$loon_output"
-    elif [[ $line =~ ^IP-CIDR ]]; then
-        echo "IP-CIDR, ${line:8}, REJECT, no-resolve" >> "$surge_output"
-        echo "IP-CIDR, ${line:8}, REJECT" >> "$loon_output"
-    elif [[ $line =~ ^IP6-CIDR ]]; then
-        echo "IP-CIDR6, ${line:9}, REJECT" >> "$surge_output"
-        echo "IP-CIDR6, ${line:9}, REJECT" >> "$loon_output"
-    fi
+  surge_rule=$(echo "$line" | sed -e 's/HOST/DOMAIN/g' -e 's/HOST-SUFFIX/DOMAIN-SUFFIX/g' -e 's/HOST-KEYWORD/DOMAIN-KEYWORD/g' -e 's/IP6/IP-CIDR6/g' -e 's/^;/#/')
+  loon_rule=$(echo "$line" | sed -e 's/HOST/DOMAIN/g' -e 's/HOST-SUFFIX/DOMAIN-SUFFIX/g' -e 's/HOST-KEYWORD/DOMAIN-KEYWORD/g' -e 's/IP6/IP-CIDR6/g')
+
+  echo "$surge_rule" >> "$surge_output_file"
+  echo "$loon_rule" >> "$loon_output_file"
 }
 
-# Function to process URLs
+# 处理 URL 的转换逻辑
 process_url() {
-    local line="$1"
+  local line=$1
+  local surge_url
+  local loon_url
 
-    # Convert URL formats
-    if [[ $line =~ https ]]; then
-        new_url=$(echo "$line" | sed 's/raw.githubusercontent.com/github.com\/RuCu6\/QuanX\/raw/')
-        echo "$new_url" >> "$surge_output"
-        echo "$new_url" >> "$loon_output"
-    fi
+  surge_url=$(echo "$line" | sed 's/raw.githubusercontent.com/github.com\/RuCu6\/QuanX\/raw/g')
+  loon_url=$surge_url  # Loon 和 Surge 对 URL 的处理相同
+
+  echo "$surge_url" >> "$surge_output_file"
+  echo "$loon_url" >> "$loon_output_file"
 }
 
-# Function to process MITM
+# 处理 MITM 的转换逻辑
 process_mitm() {
-    local line="$1"
+  local line=$1
 
-    # Convert MITM format
-    if [[ $line =~ ^hostname ]]; then
-        mitm_domains=$(echo "$line" | sed 's/hostname = //')
-        echo "Hostname = %APPEND% $mitm_domains" >> "$surge_output"
-        echo "Hostname = $mitm_domains" >> "$loon_output"
-    fi
+  # Surge 输出
+  echo "Hostname = %APPEND% $line" >> "$surge_output_file"
+
+  # Loon 输出
+  echo "Hostname = $line" >> "$loon_output_file"
 }
 
-# Read the input file line by line and process it
+# 逐行读取文件并处理
 while IFS= read -r line; do
-    # Skip empty lines
-    [[ -z "$line" ]] && continue
+  # 跳过空行
+  [[ -z "$line" ]] && continue
 
-    if [[ $line =~ ^http ]]; then
-        process_header_rewrite "$line"
-    elif [[ $line =~ url ]]; then
-        process_url_rewrite "$line"
-    elif [[ $line =~ ^HOST || $line =~ ^IP || $line =~ ^";HOST" ]]; then
-        process_rule "$line"
-    elif [[ $line =~ ^https ]]; then
-        process_url "$line"
-    elif [[ $line =~ ^hostname ]]; then
-        process_mitm "$line"
-    fi
+  if [[ $line =~ ^http ]]; then
+    process_header_rewrite "$line"
+  elif [[ $line =~ url ]]; then
+    process_url_rewrite "$line"
+  elif [[ $line =~ ^HOST || $line =~ ^IP || $line =~ ^";HOST" ]]; then
+    process_rule "$line"
+  elif [[ $line =~ ^https ]]; then
+    process_url "$line"
+  elif [[ $line =~ ^hostname ]]; then
+    process_mitm "$line"
+  fi
 done < "$input_file"
-
-echo "Conversion complete. Output files:"
-echo "$surge_output"
-echo "$loon_output"

@@ -34,18 +34,25 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT
 
 [Script]
 # 移除播放页面视频列表广告
+RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(?:view|viewunite)\.v1\.View\/(?:View|ViewProgress)$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true
 
 # 移除搜索结果广告 - 待完善
+RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true
 
 # 移除评论区广告
+RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true
 
 # 移除动态页面广告 - 待完善
+RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true
 
 # 会员特效弹幕处理
+RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true
 
 # 移除交互式弹幕
+RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true
 
 # 移除青少年模式弹窗
+RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true
 
 # 上部为Proto处理,下部为JSON配置处理
 

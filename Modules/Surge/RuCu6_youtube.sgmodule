@@ -26,3 +26,27 @@ http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next
 
 [MITM]
 Hostname = %APPEND%  rr*.googlevideo.com, youtubei.googleapis.com
+#!name = YouTube
+#!desc = 移除广告。
+#!date = 2024-06-11 21:59:22
+#!select = 隐藏上传按钮, true, false
+#!select = 隐藏选段按钮, true, false
+#!select = 字幕翻译语言, zh-Hans, zh-Hant, ja, ko, en, off
+#!select = 歌词翻译语言, zh-Hans, zh-Hant, ja, ko, en, off
+#!select = 启用调试模式, true, false
+
+[Rule]
+AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
+
+[Rewrite]
+# 使用reject-dict方法以减少开销
+^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\? reject-dict
+
+[Script]
+# 请求体
+
+# 响应体
+
+[MITM]
+Hostname = %APPEND% = rr*.googlevideo.com, youtubei.googleapis.com

@@ -4,6 +4,7 @@ https://github.com/RuCu6/Loon/raw/main/Plugins/myblockads.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/weibo.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/xiaohongshu.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/youtube.plugin
+https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/BlockAdvertisers.plugin
 https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/DiDi_remove_ads.plugin
 https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/Remove_ads_by_keli.plugin
 https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/Umetrip_remove_ads.plugin

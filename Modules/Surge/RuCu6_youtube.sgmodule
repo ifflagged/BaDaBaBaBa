@@ -19,10 +19,10 @@ AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
 
 [Script]
 # 请求体
-RuCu6_youtube = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|reel\/reel_watch_sequence|get_watch),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/request.js, requires-body = true
+RuCu6_youtube = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|reel\/reel_watch_sequence|get_watch),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/request.js, requires-body = true, binary-body-mode = true
 
 # 响应体
-RuCu6_youtube = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/response.js, requires-body = true
+RuCu6_youtube = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/response.js, requires-body = true, binary-body-mode = true
 
 [MITM]
 Hostname = %APPEND% rr*.googlevideo.com, youtubei.googleapis.com

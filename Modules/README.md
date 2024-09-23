@@ -22,4 +22,4 @@ This directory contains converted modules from various sources, compatible with 
 - **Pinduoduo**: Converted from [ZenmoFeiShi Pinduoduo](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)
 - **Smzdm**: Converted from [ZenmoFeiShi Smzdm](https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet)
 - **NoAds**: Converted from [Yuheng0101 NoAds](https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js)
-- **dianPing**: Converted from [zirawell dianPing](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/D/大众点评/rewrite/dianPing.conf)
+- **dianPing**: Converted from [zirawell dianPing](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/D/%E5%A4%A7%E4%BC%97%E7%82%B9%E8%AF%84/rewrite/dianPing.conf)

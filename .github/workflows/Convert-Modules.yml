@@ -23,11 +23,16 @@ jobs:
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
           filename_no_ext=$(basename "$url" | cut -d'.' -f1)
-          # 创建作者文件夹
           mkdir -p "Original/$author"
-          # 下载文件
+          
+          # 下载文件到原始文件夹
           file_path="Original/$author/$filename"
           curl -L -o "$file_path" "$url"
+          
+          # 添加 hostname 检测和补全，在新行添加
+          if ! grep -q "hostname" "$file_path"; then
+            echo -e "\nhostname = 77" >> "$file_path"
+          fi
           
           # 准备README内容
           README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
@@ -57,9 +62,15 @@ jobs:
           [ -z "$file_info" ] && continue
           file_path=$(echo $file_info | cut -d';' -f1)
           author=$(echo $file_info | cut -d';' -f2)
-          filename=$(echo $file_info | cut -d';' -f3)
+          filename_no_ext=$(echo $file_info | cut -d';' -f3)
           comment=$(echo $file_info | cut -d';' -f4)
-          bash Convert-Modules.sh "$file_path" "${author}_${filename}" "$comment"
+          
+          # 生成 Surge 和 Loon 文件时检查重命名冲突，处理扩展名
+          output_filename="${author}_${filename_no_ext}"
+          if [ -f "Modules/${output_filename}.sgmodule" ]; then
+            output_filename="${author}_${filename_no_ext}_duplicate"
+          fi
+          bash Convert-Modules.sh "$file_path" "$output_filename" "$comment"
         done
 
     - name: Create README in Modules directory

@@ -41,11 +41,10 @@ jobs:
           FILES_LIST="${FILES_LIST}\n${file_path};${author};${filename_no_ext};${comment}"
         done < Modules-Links.txt
         
-        # 将 README 内容和文件列表输出到步骤的输出中，注意 EOF 处理
+        # 将 README 内容和文件列表输出到步骤的输出中
         echo "README_CONTENT<<EOF" >> $GITHUB_ENV
         echo -e "$README_CONTENT" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
-        
         echo "FILES_LIST<<EOF" >> $GITHUB_ENV
         echo -e "$FILES_LIST" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
@@ -106,7 +105,11 @@ jobs:
             MESSAGE="${MESSAGE}[${display_name}](${file_url})\n"
           done <<< "$UPDATED_FILES"
 
-          curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage -d chat_id=${{ secrets.TG_ID }} -d text="$MESSAGE" -d parse_mode=Markdown
+          # 使用 echo -e 处理换行符并发送通知
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.TG_ID }} \
+            -d text="$(echo -e "$MESSAGE")" \
+            -d parse_mode=Markdown
         else
           echo "No files were updated, no notification sent."
         fi

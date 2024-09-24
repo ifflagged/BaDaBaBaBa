@@ -23,22 +23,11 @@ jobs:
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
           filename_no_ext=$(basename "$url" | cut -d'.' -f1)
+          # 创建作者文件夹
           mkdir -p "Original/$author"
-          
-          # 检查是否存在同名文件，如果有重名则保留扩展名
-          file_path="Original/$author/$filename_no_ext"
-          if [ -f "$file_path" ]; then
-            # 保留扩展名
-            file_path="Original/$author/$filename"
-          fi
-
           # 下载文件
+          file_path="Original/$author/$filename"
           curl -L -o "$file_path" "$url"
-          
-          # 添加 hostname 检测和补全
-          if ! grep -q "hostname" "$file_path"; then
-            echo "hostname = 77" >> "$file_path"
-          fi
           
           # 准备README内容
           README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"

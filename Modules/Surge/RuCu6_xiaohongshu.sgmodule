@@ -2,6 +2,7 @@
 #!name = 小红书
 #!desc = 更舒服的生活指南。
 #!author = RuCu6[https://github.com/RuCu6], fmz200[https://github.com/fmz200]
+#!icon = https://github.com/RuCu6/Loon/raw/main/Icons/app/xiaohongshu.png
 #!date = 2024-04-13 14:20:28
 
 [Rule]

@@ -1,6 +1,7 @@
 https://github.com/RuCu6/Loon/raw/main/Plugins/amap.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/bilibili.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/myblockads.plugin
+https://github.com/RuCu6/Loon/raw/main/Plugins/pinduoduo.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/weibo.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/xiaohongshu.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/youtube.plugin

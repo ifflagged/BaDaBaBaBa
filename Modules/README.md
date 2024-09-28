@@ -8,6 +8,7 @@ This directory contains converted modules from various sources, compatible with 
 - **amap**: Converted from [RuCu6 amap](https://github.com/RuCu6/Loon/raw/main/Plugins/amap.plugin)
 - **bilibili**: Converted from [RuCu6 bilibili](https://github.com/RuCu6/Loon/raw/main/Plugins/bilibili.plugin)
 - **myblockads**: Converted from [RuCu6 myblockads](https://github.com/RuCu6/Loon/raw/main/Plugins/myblockads.plugin)
+- **pinduoduo**: Converted from [RuCu6 pinduoduo](https://github.com/RuCu6/Loon/raw/main/Plugins/pinduoduo.plugin)
 - **weibo**: Converted from [RuCu6 weibo](https://github.com/RuCu6/Loon/raw/main/Plugins/weibo.plugin)
 - **xiaohongshu**: Converted from [RuCu6 xiaohongshu](https://github.com/RuCu6/Loon/raw/main/Plugins/xiaohongshu.plugin)
 - **youtube**: Converted from [RuCu6 youtube](https://github.com/RuCu6/Loon/raw/main/Plugins/youtube.plugin)

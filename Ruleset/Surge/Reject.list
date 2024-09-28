@@ -1264,10 +1264,10 @@ DOMAIN-SUFFIX,gz-data.com
 DOMAIN-SUFFIX,giocdn.com
 DOMAIN-SUFFIX,growingio.com
 # > Huawei
-DOMAIN,browsercfg-drcn.cloud.dbankcloud.cn # 甚至想 DOMAIN-KEYWORD,drcn.cloud.dbankcloud.cn
+DOMAIN,browsercfg-drcn.cloud.dbankcloud.cn // 甚至想 DOMAIN-KEYWORD,drcn.cloud.dbankcloud.cn
 # > MI
 DOMAIN-SUFFIX,tracking.miui.com
-# DOMAIN,api.miwifi.com # 影响 Mi Wi-Fi(id859962702)，但建议注意 https:#www.v2ex.com/t/746094
+# DOMAIN,api.miwifi.com // 影响 Mi Wi-Fi(id859962702)，但建议注意 https:#www.v2ex.com/t/746094
 DOMAIN,data.mistat.xiaomi.com
 DOMAIN,flash.sec.miui.com
 DOMAIN,tracking.intl.miui.com

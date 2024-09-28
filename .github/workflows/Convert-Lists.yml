@@ -56,7 +56,7 @@ jobs:
             -e 's/IP-CIDR/IP-CIDR/Ig' \
             -e 's/IP6-CIDR/IP-CIDR6/Ig' \
             -e 's/REJECT/REJECT/Ig' \
-            -e 's@//@#@g' \
+            -e 's/\([^[:space:]]\)\/\/\(.*\)/\1#\2/g' \
             -e '/;/d' \
             Original/MergedList.list > Ruleset/Surge/Reject.list
 
@@ -69,7 +69,7 @@ jobs:
             -e 's/^DOMAIN-KEYWORD/  - DOMAIN-KEYWORD/Ig' \
             -e 's/^IP-CIDR/  - IP-CIDR/Ig' \
             -e 's/^IP-CIDR6/  - IP-CIDR6/Ig' \
-            -e 's@//@#@g' \
+            -e 's/\([^[:space:]]\)\/\/\(.*\)/\1#\2/g' \
             -e '/;/d' \
             Ruleset/Surge/Reject.list >> Ruleset/Clash/Reject.yaml
 

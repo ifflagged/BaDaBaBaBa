@@ -32,6 +32,7 @@ jobs:
         while IFS= read -r url; do
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
+          echo "" >> Original/MergedList.list
           echo "# Merging from $author/$filename" >> Original/MergedList.list
           cat "Original/$author/$filename" >> Original/MergedList.list
         done < Rulesets-Links.txt

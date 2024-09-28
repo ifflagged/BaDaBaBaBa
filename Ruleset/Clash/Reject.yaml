@@ -1,4 +1,5 @@
 payload:
+
 # Merging from ConnersHua/Advertising.list
 # Advertising
 # > General
@@ -1070,7 +1071,8 @@ USER-AGENT,AVOS*
   - IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,no-resolve
 # > ZOL
   - DOMAIN,apppv.zol.com.cn
-  - DOMAIN,pvnapp.zol.com.cn# Merging from ConnersHua/Malicious.list
+  - DOMAIN,pvnapp.zol.com.cn
+# Merging from ConnersHua/Malicious.list
 # > ZiTian
   - DOMAIN-SUFFIX,51.la
   - DOMAIN-SUFFIX,bootcdn.net
@@ -1171,7 +1173,8 @@ USER-AGENT,AVOS*
   - DOMAIN-SUFFIX,yihuifu.cn
   - DOMAIN-SUFFIX,yuanchengxiezuo.com
   - DOMAIN-SUFFIX,zbrushcn.com
-  - DOMAIN-SUFFIX,zhzzx.com# Merging from ConnersHua/Tracking.list
+  - DOMAIN-SUFFIX,zhzzx.com
+# Merging from ConnersHua/Tracking.list
 # Privacy
   - DOMAIN-SUFFIX,adjust.com
   - DOMAIN-SUFFIX,airpr.com
@@ -1282,7 +1285,8 @@ USER-AGENT,AVOS*
   - DOMAIN,safebrowsing.urlsec.qq.com
 # > Tenjin
   - DOMAIN,track.tenjin.com
-  - DOMAIN,track.tenjin.io# Merging from RuCu6/MyBlockAds.list
+  - DOMAIN,track.tenjin.io
+# Merging from RuCu6/MyBlockAds.list
 # 2024-09-17 22:35
 
 # ======= A ======= #
@@ -1426,6 +1430,7 @@ USER-AGENT,AVOS*
 # 字节跳动
   - DOMAIN, ad.zijieapi.com
   - DOMAIN-KEYWORD, -ad-sign.byteimg.com
+
 # Merging from RuCu6/PornAds.list
 # 2024-02-16 10:20
 

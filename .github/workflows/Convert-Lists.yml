@@ -27,12 +27,22 @@ jobs:
 
     - name: Merge all downloaded lists
       run: |
-        # Create a merged list by combining all lists from all authors
+        # Initialize merged list file
         touch Original/MergedList.list
+        first_link=true
         while IFS= read -r url; do
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
-          echo "" >> Original/MergedList.list
+
+          if [ "$first_link" = true ]; then
+            # No blank lines for the first link
+            first_link=false
+          else
+            # Add two blank lines before merging subsequent links
+            echo -e "\n\n" >> Original/MergedList.list
+          fi
+          
+          # Add merging comment and content
           echo "# Merging from $author/$filename" >> Original/MergedList.list
           cat "Original/$author/$filename" >> Original/MergedList.list
         done < Rulesets-Links.txt

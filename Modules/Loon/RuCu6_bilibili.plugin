@@ -3,7 +3,7 @@
 #!desc = 没有广告的哔哩哔哩更值得干杯。
 #!author = Maasea[https://github.com/Maasea], RuCu6[https://github.com/RuCu6], kokoryh[https://github.com/kokoryh], 可莉🅥[https://gitlab.com/lodepuly/vpn_tool]
 #!icon = https://github.com/RuCu6/Loon/raw/main/Icons/app/bilibili.png
-#!date = 2024-09-20 02:00
+#!date = 2024-09-28 13:15
 
 [Rule]
 # 开屏广告
@@ -67,13 +67,10 @@ http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.ap
 http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(?:brand\/list|event\/list2|list|show) script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = RuCu6_bilibili
 
 # 移除首页推荐广告
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = RuCu6_bilibili
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index(\/story)?\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = RuCu6_bilibili
 
 # 移除右上角活动入口
 http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/top\/activity\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = RuCu6_bilibili
-
-# 移除直播内容和大会员专享
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index\/story script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = RuCu6_bilibili
 
 # 精简首页顶部标签
 http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = RuCu6_bilibili

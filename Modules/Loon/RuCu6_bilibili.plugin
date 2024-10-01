@@ -1,4 +1,4 @@
-# bilibili // ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com,
+# bilibili // ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, *live.bilibili.com,
 #!name = 哔哩哔哩
 #!desc = 没有广告的哔哩哔哩更值得干杯。
 #!author = Maasea[https://github.com/Maasea], RuCu6[https://github.com/RuCu6], kokoryh[https://github.com/kokoryh], 可莉🅥[https://gitlab.com/lodepuly/vpn_tool]
@@ -40,17 +40,17 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 (^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) 302 $1
 
 [Script]
-# 移除播放页面视频列表广告
-http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(?:view|viewunite)\.v1\.View\/(?:View|ViewProgress)$ script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
-
-# 移除搜索结果广告
-http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$ script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
-
-# 移除评论区广告
-http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
-
 # 移除动态页面广告
 http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$ script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
+
+# 移除青少年模式弹窗
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
+
+# 移除热门话题
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.show\.v1\.Popular\/Index$ script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
+
+# 移除播放页面视频列表广告
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(?:view|viewunite)\.v1\.View\/(?:View|ViewProgress)$ script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
 
 # 会员特效弹幕处理
 http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
@@ -58,8 +58,11 @@ http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.co
 # 移除交互式弹幕
 http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
 
-# 移除青少年模式弹窗
-http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
+# 移除评论区广告
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
+
+# 移除搜索结果广告
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$ script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = RuCu6_bilibili
 
 # 上部为Proto处理,下部为JSON配置处理
 
@@ -91,4 +94,4 @@ http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? script-pa
 http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(?:mine(\/ipad)?|myinfo) script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = RuCu6_bilibili
 
 [MITM]
-Hostname = ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, live.bilibili.com
+Hostname = ap*.bilibili.com, grpc.biliapi.net, www.bilibili.com, m.bilibili.com, *live.bilibili.com

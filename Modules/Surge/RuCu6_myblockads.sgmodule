@@ -1,9 +1,9 @@
 # myblockads // ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, 2023.redircdn.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, adserviceretry.kglink.cn, gateway.kugou.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, osg-service.sgcc.com.cn, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com, mobilepaas.abchina.com.cn, ad.mcloud.139.com, jzts.cmpassport.com,
 #!name = MyBlockAds
-#!desc = 自用去广告插件，以下app请使用单独插件：高德地图,哔哩哔哩,网易云音乐,微博,YouTube,知乎。
+#!desc = 自用去广告插件, 以下app请使用单独插件: 高德地图, 哔哩哔哩, 网易云音乐, 微博, YouTube, 知乎。
 #!author = RuCu6[https://github.com/RuCu6]
 #!icon = https://github.com/RuCu6/Loon/raw/main/Icons/app/myblockads.png
-#!date = 2024-09-29 01:50
+#!date = 2024-10-01 10:20
 
 [Rule]
 # ======= 0 ======= #
@@ -87,6 +87,7 @@ DOMAIN, gdfp.gifshow.com, REJECT
 DOMAIN, init.supersonicads.com, REJECT
 #DOMAIN, is.snssdk.com, REJECT
 DOMAIN, janapi.jd.com, REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
 DOMAIN, mercury-gateway.ixiaochuan.cn, REJECT
 DOMAIN, open.e.kuaishou.com, REJECT
 DOMAIN, open.kuaishou.com, REJECT

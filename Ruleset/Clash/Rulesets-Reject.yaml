@@ -1,0 +1,7 @@
+payload:
+# Links for Rulesets-Reject
+https:#github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Reject/Advertising.list
+https:#github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Reject/Malicious.list
+https:#github.com/ConnersHua/RuleGo/raw/master/Surge/Ruleset/Extra/Reject/Tracking.list
+https:#github.com/RuCu6/Loon/raw/main/Rules/MyBlockAds.list
+https:#github.com/RuCu6/Loon/raw/main/Rules/PornAds.list

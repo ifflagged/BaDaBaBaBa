@@ -1,0 +1,12 @@
+payload:
+# Merging from ifflagged/Direct.list
+
+# Emby
+# > CC
+  - DOMAIN-SUFFIX,carryz.net
+
+# > Nanfilx
+  - DOMAIN-SUFFIX,nanflix.net
+
+# > 叔服
+  - DOMAIN,jz.mcjoker.xyz 

@@ -1,0 +1,147 @@
+name: Convert Lists
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  update-lists:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Download and categorize lists based on author
+      run: |
+        mkdir -p Original
+        for file in Rulesets-*.txt; do
+          while IFS= read -r url; do
+            author=$(echo "$url" | awk -F'/' '{print $4}')
+            mkdir -p "Original/$author"
+            filename=$(basename "$url")
+            curl -L -o "Original/$author/$filename" "$url"
+          done < "$file"
+        done
+
+    - name: Merge all lists
+      run: |
+        touch Original/MergedList.list
+        for file in Rulesets-*.txt; do
+          first_link=true
+          while IFS= read -r url; do
+            author=$(echo "$url" | awk -F'/' '{print $4}')
+            filename=$(basename "$url")
+
+            if [ "$first_link" = true ]; then
+              first_link=false
+            else
+              echo -e "\n\n" >> Original/MergedList.list
+            fi
+            
+            echo "# Merging from $author/$filename" >> Original/MergedList.list
+            cat "Original/$author/$filename" >> Original/MergedList.list
+          done < "$file"
+        done
+
+    - name: Generate lists for Surge
+      run: |
+        mkdir -p Ruleset/Surge
+        sed -e 's/HOST/DOMAIN/Ig' \
+            -e 's/HOSt-SUFFIX/DOMAIN-SUFFIX/Ig' \
+            -e 's/HOST-KEYWORD/DOMAIN-KEYWORD/Ig' \
+            -e 's/IP-CIDR/IP-CIDR/Ig' \
+            -e 's/IP6-CIDR/IP-CIDR6/Ig' \
+            -e 's/REJECT/REJECT/Ig' \
+            -e 's/\([^[:space:]]\)\/\/\(.*\)/\1#\2/g' \
+            -e '/;/d' \
+            Original/MergedList.list > Ruleset/Surge/Reject.list
+
+    - name: Generate Links and corresponding YAML files for Clash
+      run: |
+        for file in Rulesets-*.txt; do
+          base_name=$(basename "$file" .txt)
+          links_file="Ruleset/Surge/${base_name}.list"
+          yaml_file="Ruleset/Clash/${base_name}.yaml"
+
+          # Create the links list
+          touch "$links_file"
+          echo "# Links for $base_name" > "$links_file"
+          while IFS= read -r url; do
+            echo "$url" >> "$links_file"
+          done < "$file"
+
+          # Generate the YAML file
+          echo "payload:" > "$yaml_file"
+          sed -e 's/^DOMAIN/  - DOMAIN/Ig' \
+              -e 's/^DOMAIN-SUFFIX/  - DOMAIN-SUFFIX/Ig' \
+              -e 's/^DOMAIN-KEYWORD/  - DOMAIN-KEYWORD/Ig' \
+              -e 's/^IP-CIDR/  - IP-CIDR/Ig' \
+              -e 's/^IP-CIDR6/  - IP-CIDR6/Ig' \
+              -e 's/\([^[:space:]]\)\/\/\(.*\)/\1#\2/g' \
+              -e '/;/d' \
+              "$links_file" >> "$yaml_file"
+        done
+
+    - name: Clean up temporary files
+      run: |
+        rm Original/MergedList.list
+
+    - name: Create or update README with source links
+      run: |
+        echo "# Ruleset Sources" > Ruleset/README.md
+        echo "" >> Ruleset/README.md
+        echo "## Surge and Clash" >> Ruleset/README.md
+        echo "" >> Ruleset/README.md
+        for file in Rulesets-*.txt; do
+          while IFS= read -r url; do
+            echo "- $(basename "$url"): [$url]" >> Ruleset/README.md
+          done < "$file"
+        done
+
+    - name: Check for changes
+      id: changes
+      run: |
+        git add .
+        if git diff-index --quiet HEAD --; then
+          echo "::set-output name=result::No changes"
+        else
+          echo "::set-output name=result::Changes detected"
+        fi
+
+    - name: Commit changes if any
+      if: steps.changes.outputs.result == 'Changes detected'
+      run: |
+        git config --local user.name "ifflagged"
+        git config --local user.email "qibo.sign@outlook.com"
+        git commit -m "Update Reject list and Links"
+        git push
+
+    - name: Send Telegram notification if changes were committed
+      if: steps.changes.outputs.result == 'Changes detected'
+      run: |
+        # 检查是否存在上一个提交
+        if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
+          UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Ruleset/)
+        else
+          UPDATED_FILES=$(git diff --name-only HEAD Ruleset/)
+        fi
+
+        if [ -n "$UPDATED_FILES" ]; then
+          MESSAGE="The following files have been updated:\n"
+          GITHUB_URL="https://github.com/ifflagged/BaDaBaBaBa/blob/main/"
+          while read -r file; do
+            # 生成完整链接
+            file_url="${GITHUB_URL}${file}"
+            # 生成 markdown 格式的超链接
+            MESSAGE="${MESSAGE}[${file}](${file_url})\n"
+          done <<< "$UPDATED_FILES"
+
+          # 使用 echo -e 处理换行符并发送通知
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.TG_ID }} \
+            -d text="$(echo -e "$MESSAGE")" \
+            -d parse_mode=Markdown
+        else
+          echo "No files were updated, no notification sent."
+        fi

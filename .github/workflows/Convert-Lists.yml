@@ -45,7 +45,7 @@ jobs:
             cat "Original/$author/$filename" >> "Original/MergedList_$base_name.list"
           done < "$file"
 
-          # Generate lists for Surge
+          # Generate Rules for Surge
           mkdir -p "Ruleset/Surge"
           sed -e 's/HOST/DOMAIN/Ig' \
               -e 's/HOSt-SUFFIX/DOMAIN-SUFFIX/Ig' \
@@ -57,7 +57,7 @@ jobs:
               -e '/;/d' \
               "Original/MergedList_$base_name.list" > "Ruleset/Surge/$base_name.list"
 
-          # Generate Reject.yaml for Clash
+          # Generate Rules for Clash
           mkdir -p "Ruleset/Clash"
           echo "payload:" > "Ruleset/Clash/$base_name.yaml"
           sed -e 's/^DOMAIN/  - DOMAIN/Ig' \
@@ -91,13 +91,13 @@ jobs:
       run: |
         git add .
         if git diff-index --quiet HEAD --; then
-          echo "::set-output name=result::No changes"
+          echo "result=No changes" >> $GITHUB_ENV
         else
-          echo "::set-output name=result::Changes detected"
+          echo "result=Changes detected" >> $GITHUB_ENV
         fi
 
     - name: Commit changes if any
-      if: steps.changes.outputs.result == 'Changes detected'
+      if: env.result == 'Changes detected'
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
@@ -105,7 +105,7 @@ jobs:
         git push
 
     - name: Send Telegram notification if changes were committed
-      if: steps.changes.outputs.result == 'Changes detected'
+      if: env.result == 'Changes detected'
       run: |
         if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
           UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Ruleset/)

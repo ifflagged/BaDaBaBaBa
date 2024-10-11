@@ -8,6 +8,8 @@ on:
 jobs:
   update-lists:
     runs-on: ubuntu-latest
+    container:
+      image: node:20
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3

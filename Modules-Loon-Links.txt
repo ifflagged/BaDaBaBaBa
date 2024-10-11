@@ -1,7 +1,0 @@
-https://github.com/RuCu6/Loon/raw/main/Plugins/amap.plugin
-https://github.com/RuCu6/Loon/raw/main/Plugins/bilibili.plugin
-https://github.com/RuCu6/Loon/raw/main/Plugins/myblockads.plugin
-https://github.com/RuCu6/Loon/raw/main/Plugins/weibo.plugin
-https://github.com/RuCu6/Loon/raw/main/Plugins/xiaohongshu.plugin
-https://github.com/RuCu6/Loon/raw/main/Plugins/youtube.plugin
-https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Plugin/Remove_ads_by_keli.plugin

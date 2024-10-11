@@ -46,7 +46,7 @@ jobs:
           done < "$file"
 
           # Generate Rules for Surge
-          mkdir -p "Ruleset/Surge"
+          mkdir -p "Rulesets/Surge"
           sed -e 's/HOST/DOMAIN/Ig' \
               -e 's/HOSt-SUFFIX/DOMAIN-SUFFIX/Ig' \
               -e 's/HOST-KEYWORD/DOMAIN-KEYWORD/Ig' \
@@ -55,11 +55,11 @@ jobs:
               -e 's/REJECT/REJECT/Ig' \
               -e 's/\([^[:space:]]\)\/\/\(.*\)/\1#\2/g' \
               -e '/;/d' \
-              "Original/MergedList_$base_name.list" > "Ruleset/Surge/$base_name.list"
+              "Original/MergedList_$base_name.list" > "Rulesets/Surge/$base_name.list"
 
           # Generate Rules for Clash
-          mkdir -p "Ruleset/Clash"
-          echo "payload:" > "Ruleset/Clash/$base_name.yaml"
+          mkdir -p "Rulesets/Clash"
+          echo "payload:" > "Rulesets/Clash/$base_name.yaml"
           sed -e 's/^DOMAIN/  - DOMAIN/Ig' \
               -e 's/^DOMAIN-SUFFIX/  - DOMAIN-SUFFIX/Ig' \
               -e 's/^DOMAIN-KEYWORD/  - DOMAIN-KEYWORD/Ig' \
@@ -67,7 +67,7 @@ jobs:
               -e 's/^IP-CIDR6/  - IP-CIDR6/Ig' \
               -e 's/\([^[:space:]]\)\/\/\(.*\)/\1#\2/g' \
               -e '/;/d' \
-              "Ruleset/Surge/$base_name.list" >> "Ruleset/Clash/$base_name.yaml"
+              "Rulesets/Surge/$base_name.list" >> "Rulesets/Clash/$base_name.yaml"
         done
 
     - name: Clean up temporary files
@@ -76,13 +76,15 @@ jobs:
 
     - name: Create or update README with source links
       run: |
-        echo "# Ruleset Sources" > Ruleset/README.md
-        echo "" >> Ruleset/README.md
-        echo "## Surge and Clash" >> Ruleset/README.md
-        echo "" >> Ruleset/README.md
+        echo "# Rulesets for Surge and Clash" > Rulesets/README.md
+        echo "" >> Rulesets/README.md
+        echo "This directory contains rulesets converted from various sources, compatible with Surge and Clash." >> Rulesets/README.md
+        echo "" >> Rulesets/README.md
+        echo "## Sources" >> Rulesets/README.md
+        echo "" >> Rulesets/README.md
         for file in Rulesets-*.txt; do
           while IFS= read -r url; do
-            echo "- $(basename "$url"): [$url]" >> Ruleset/README.md
+            echo "- $(basename "$url"): [$url]" >> Rulesets/README.md
           done < "$file"
         done
 
@@ -108,9 +110,9 @@ jobs:
       if: env.result == 'Changes detected'
       run: |
         if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
-          UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Ruleset/)
+          UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Rulesets/)
         else
-          UPDATED_FILES=$(git diff --name-only HEAD Ruleset/)
+          UPDATED_FILES=$(git diff --name-only HEAD Rulesets/)
         fi
 
         if [ -n "$UPDATED_FILES" ]; then

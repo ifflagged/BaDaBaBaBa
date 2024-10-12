@@ -11,6 +11,5 @@
 # Placeholder for [Script]
 
 [MITM]
-
-# Placeholder for [MITM]
+Hostname = client.app.coc.10086.cn, h.app.coc.10086.cn
 

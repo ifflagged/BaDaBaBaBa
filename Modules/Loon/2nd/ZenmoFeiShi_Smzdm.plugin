@@ -11,6 +11,5 @@
 # Placeholder for [Script]
 
 [MITM]
-
-# Placeholder for [MITM]
+Hostname = haojia-api.smzdm.com, homepage-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com ,qianbao.smzdm.com,s3.zdmimg.com,post.m.smzdm.com,haojia.m.smzdm.com
 

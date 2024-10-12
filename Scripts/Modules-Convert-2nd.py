@@ -16,18 +16,24 @@ def extract_rules(content, file_type):
 
     for line in content.splitlines():
         line = line.strip()
+        print(f"Processing line: {line}")  # 调试信息
         if not line:
             continue  # 跳过空行
         if rule_pattern.search(line):
             rules.append(line)
+            print(f"Matched Rule: {line}")  # 调试信息
         if file_type == 'sgmodule' and rewrite_pattern.search(line):
             rewrites.append(line)
+            print(f"Matched Rewrite: {line}")  # 调试信息
         elif file_type == 'plugin' and rewrite_pattern.search(line):
             rewrites.append(line)
+            print(f"Matched Rewrite: {line}")  # 调试信息
         if script_pattern.search(line):
             scripts.append(line)
+            print(f"Matched Script: {line}")  # 调试信息
         if mitm_pattern.search(line):
             mitm.append(line)
+            print(f"Matched MITM: {line}")  # 调试信息
 
     return rules, rewrites, scripts, mitm
 

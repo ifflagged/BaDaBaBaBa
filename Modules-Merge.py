@@ -47,9 +47,13 @@ def merge_modules(input_file):
         if module_scripts:
             scripts += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_scripts
 
+        # 提取 Hostname 部分
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            mitm_hosts.add(mitm_section[0].replace("Hostname =", "").strip())
+            for line in mitm_section:
+                if line.startswith("Hostname = %APPEND%"):
+                    hosts = line.replace("Hostname = %APPEND%", "").strip()
+                    mitm_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
 
     # 生成 Hostname 字符串
     if mitm_hosts:

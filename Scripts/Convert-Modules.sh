@@ -2,6 +2,8 @@
 input_file=$1
 module_name=$2
 comment=$3
+
+# 定义输出目录
 output_dir="Modules"
 
 # 创建目标目录

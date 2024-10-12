@@ -24,7 +24,7 @@ jobs:
 
       - name: Run merge script
         run: |
-          python Modules-Merge.py Merge-Modules-*.txt
+          python Scripts/Modules-Merge.py Links/Merge-Modules-*.txt
 
       - name: Check for changes
         id: changes

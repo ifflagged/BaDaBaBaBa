@@ -6,15 +6,15 @@ def extract_section(content, section_name):
     lines = content.splitlines()
     in_section = False
     section_lines = []
-    section_name_lower = section_name.lower()  # 将 section_name 转为小写
+    section_name_lower = section_name.lower()
 
     for line in lines:
-        line_lower = line.lower()  # 将当前行转换为小写
-        if line_lower.startswith(f"[{section_name_lower}]"):  # 比较时不区分大小写
+        line_lower = line.lower()
+        if line_lower.startswith(f"[{section_name_lower}]"):
             in_section = True
         elif line_lower.startswith("[") and in_section:
             break
-        elif in_section and (not line.startswith("#")):  # 忽略注释行
+        elif in_section and (not line.startswith("#")):
             section_lines.append(line.strip())
     
     return section_lines
@@ -23,7 +23,7 @@ def merge_modules(input_file, output_type, module_urls):
     rules = []
     rewrites = []
     scripts = []
-    mitm_hosts = set()  # 使用集合来去重
+    mitm_hosts = set()
 
     for module_url in module_urls:
         response = requests.get(module_url)
@@ -33,7 +33,6 @@ def merge_modules(input_file, output_type, module_urls):
         
         content = response.text
 
-        # 提取不同部分
         module_rules = extract_section(content, "Rule")
         if module_rules:
             rules += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rules
@@ -46,19 +45,17 @@ def merge_modules(input_file, output_type, module_urls):
         if module_scripts:
             scripts += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_scripts
 
-        # 提取 Hostname 部分
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
             if output_type == 'sgmodule':
                 for line in mitm_section:
-                    if line.lower().startswith("hostname = %append%"):  # 比较时不区分大小写
+                    if line.lower().startswith("hostname = %append%"):
                         hosts = line.replace("Hostname = %APPEND%", "").strip()
                         mitm_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
-            else:  # 对于 .plugin 文件
+            else:
                 for line in mitm_section:
                     mitm_hosts.update(line.strip().split(","))
 
-    # 生成 Hostname 字符串
     if output_type == 'sgmodule':
         combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
     else:
@@ -84,7 +81,10 @@ def merge_modules(input_file, output_type, module_urls):
         output_file.write("[Rule]\n")
         output_file.write("\n".join(rules) + "\n\n")
 
-        output_file.write("[Rewrite]\n")
+        if output_type == 'sgmodule':
+            output_file.write("[URL Rewrite]\n")  # 修改这里
+        else:
+            output_file.write("[Rewrite]\n")
         output_file.write("\n".join(rewrites) + "\n\n")
 
         output_file.write("[Script]\n")

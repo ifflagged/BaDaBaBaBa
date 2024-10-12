@@ -49,9 +49,9 @@ def merge_modules(input_file, output_type, module_urls):
             module_rewrites = extract_section(content, "Rewrite")
             module_url_rewrites = extract_section(content, "URL Rewrite")
             if module_rewrites:
-                rewrites += [f"# {module_url.split('/')[-1].split('.')[0]} [Rewrite]"] + module_rewrites
+                rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites
             if module_url_rewrites:
-                rewrites += [f"# {module_url.split('/')[-1].split('.')[0]} [URL Rewrite]"] + module_url_rewrites
+                rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_url_rewrites
         else:
             # 对于 Loon，保留 [Rewrite]
             module_rewrites = extract_section(content, "Rewrite")
@@ -109,7 +109,7 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("[Rule]\n")
             output_file.write("\n".join(rules) + "\n\n")
 
-        # 将 [Rewrite] 和 [URL Rewrite] 合并到 [URL Rewrite]
+        # 将 [Rewrite] 和 [URL Rewrite] 合并到 [URL Rewrite]，且不再在注释中标注类型
         if rewrites and any(rewrite.strip() for rewrite in rewrites):
             output_file.write("[URL Rewrite]\n" if output_type == 'sgmodule' else "[Rewrite]\n")
             output_file.write("\n".join(rewrites) + "\n\n")

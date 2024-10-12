@@ -22,3 +22,11 @@ jobs:
 
       - name: Run Merge Script
         run: python Modules-Merge.py Modules-Tools.txt  # 这里传入包含模块链接的文件
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "ifflagged"
+          git config --local user.email "qibo.sign@outlook.com"
+          git add Modules/Surge/*
+          git commit -m "Update merged modules" || echo "No changes to commit"
+          git push

@@ -40,11 +40,21 @@ def process_file(file_path):
     return extract_rules(file_content)
 
 def save_extracted_data(rules, output_dir, module_type):
+    if module_type == 'Surge':
+        base_path = os.path.join(output_dir, 'Surge/2nd/')
+        extension = '.sgmodule'
+    elif module_type == 'Loon':
+        base_path = os.path.join(output_dir, 'Loon/2nd/')
+        extension = '.plugin'
+    else:
+        print(f"Error: Unsupported module type '{module_type}'")
+        return
+
     for category, entries in rules.items():
         if entries:
-            category_dir = os.path.join(output_dir, category)
+            category_dir = os.path.join(base_path, category)
             os.makedirs(category_dir, exist_ok=True)
-            output_file = os.path.join(category_dir, f'{module_type}.txt')
+            output_file = os.path.join(category_dir, f'{module_type}{extension}')
             with open(output_file, 'a', encoding='utf-8') as f:
                 f.write('\n'.join(entries) + '\n')
 

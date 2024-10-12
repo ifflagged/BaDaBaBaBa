@@ -1,3 +1,7 @@
+import requests
+import os
+import sys
+
 def extract_section(content, section_name):
     lines = content.splitlines()
     in_section = False

@@ -1070,7 +1070,7 @@ USER-AGENT,AVOS*
   - IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,no-resolve
 # > ZOL
   - DOMAIN,apppv.zol.com.cn
-  - DOMAIN,pvnapp.zol.com.cn-e 
+  - DOMAIN,pvnapp.zol.com.cn
 
 
 # Merging from ConnersHua/Malicious.list
@@ -1174,7 +1174,7 @@ USER-AGENT,AVOS*
   - DOMAIN-SUFFIX,yihuifu.cn
   - DOMAIN-SUFFIX,yuanchengxiezuo.com
   - DOMAIN-SUFFIX,zbrushcn.com
-  - DOMAIN-SUFFIX,zhzzx.com-e 
+  - DOMAIN-SUFFIX,zhzzx.com
 
 
 # Merging from ConnersHua/Tracking.list
@@ -1288,7 +1288,7 @@ USER-AGENT,AVOS*
   - DOMAIN,safebrowsing.urlsec.qq.com
 # > Tenjin
   - DOMAIN,track.tenjin.com
-  - DOMAIN,track.tenjin.io-e 
+  - DOMAIN,track.tenjin.io
 
 
 # Merging from RuCu6/MyBlockAds.list
@@ -1435,7 +1435,7 @@ USER-AGENT,AVOS*
 # 字节跳动
   - DOMAIN, ad.zijieapi.com
   - DOMAIN-KEYWORD, -ad-sign.byteimg.com
--e 
+
 
 
 # Merging from RuCu6/PornAds.list

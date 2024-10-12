@@ -16,32 +16,20 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # 设置所需的 Python 版本
+          python-version: '3.8'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
 
-      - name: Run conversion scripts
+      - name: Run conversion script
         run: |
-          # 确定模块类型，根据文件扩展名传递
-          if [[ ${{ github.ref }} == *.sgmodule ]]; then
-            module_type="Surge"
-          else
-            module_type="Loon"
-          fi
-          python Scripts/Modules-Convert-2nd.py Links/2nd-Convert.txt output_dir $module_type
+          python Modules-Convert-2nd.py
 
-      - name: Check for changes
+      - name: Commit and push changes
         run: |
-          git status  # Debug output
-          if [[ $(git status --porcelain) ]]; then
-            git config --local user.name "ifflagged"
-            git config --local user.email "qibo.sign@outlook.com"
-            git add .
-            git commit -m "Automated module conversion"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+          git config --local user.name "ifflagged"
+          git config --local user.email "qibo.sign@outlook.com"
+          git add .
+          git commit -m "Automated conversion of modules"
+          git push

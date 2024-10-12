@@ -9,7 +9,7 @@ def extract_rules(content, file_type):
     mitm = []
 
     # 正则表达式匹配
-    rule_pattern = re.compile(r'(?i)(,\s*DIRECT|,\s*REJECT)')
+    rule_pattern = re.compile(r'(?i),\s*DIRECT|,\s*REJECT')
     rewrite_pattern = re.compile(r'^\^http.*?(- reject|\$1 302)', re.IGNORECASE)
     script_pattern = re.compile(r'pattern=|script-path=')
     mitm_pattern = re.compile(r'(?i)Hostname\s*=')

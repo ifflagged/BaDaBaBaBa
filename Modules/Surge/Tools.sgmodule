@@ -522,7 +522,7 @@ AND, ((IP-ASN, 63646, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
 URL-REGEX, ^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native, REJECT
 
 
-[Rewrite]
+[URL Rewrite]
 # RuCu6_amap
 
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? - reject

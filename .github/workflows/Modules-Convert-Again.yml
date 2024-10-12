@@ -38,5 +38,5 @@ jobs:
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
           git add .
-          git commit -m "Convert Modules Again"
+          git commit -m "Converting Non-conforming Modules"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git

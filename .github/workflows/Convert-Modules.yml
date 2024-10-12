@@ -30,17 +30,37 @@ jobs:
           curl -L -o "$file_path" "$url"
           
           # 准备README内容
-          README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from ${url}"
-          FILES_LIST="${FILES_LIST}\n${filename_no_ext}"
+          README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
+          
+          # 提取非注释行中的 hostname 信息
+          hostnames=$(grep -v '^#' "$file_path" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
+          # 生成注释内容
+          comment="# ${filename_no_ext} // ${hostnames}"
+          
+          # 将文件信息追加到 FILES_LIST
+          FILES_LIST="${FILES_LIST}\n${file_path};${author};${filename_no_ext};${comment}"
         done < Links/Modules-Links.txt
-        echo -e "$README_CONTENT" > Modules/README.md
-        echo -e "$FILES_LIST" > files_list.txt
+        
+        # 将 README 内容和文件列表输出到步骤的输出中
+        echo "README_CONTENT<<EOF" >> $GITHUB_ENV
+        echo -e "$README_CONTENT" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+        echo "FILES_LIST<<EOF" >> $GITHUB_ENV
+        echo -e "$FILES_LIST" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
 
-    - name: Run Convert Modules script
+    - name: Convert snippets
       run: |
-        while read -r filename; do
-          Scripts/Convert-Modules.sh "Original/${filename}.txt" "${filename}"
-        done < files_list.txt
+        IFS=$'\n'
+        for file_info in $FILES_LIST; do
+          # 跳过空行
+          [ -z "$file_info" ] && continue
+          file_path=$(echo $file_info | cut -d';' -f1)
+          author=$(echo $file_info | cut -d';' -f2)
+          filename=$(echo $file_info | cut -d';' -f3)
+          comment=$(echo $file_info | cut -d';' -f4)
+          bash Convert-Modules.sh "$file_path" "${author}_${filename}" "$comment"
+        done
 
     - name: Create README in Modules directory
       run: |

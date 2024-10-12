@@ -445,7 +445,7 @@ IP-CIDR, 101.32.16.204/32, REJECT, no-resolve
 IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 
 [URL Rewrite]
-# Tools [URL Rewrite]
+# Tools
 ^https?:\/\/elemecdn\.com\/.+\/sitemap - reject
 ^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/640\/h\/\d{3,4} - reject
 ^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/750\/h\/\d{3,4} - reject
@@ -476,7 +476,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^http:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams\/ - reject
 ^https?:\/\/tfsmy\.chengdu\.gov\.cn\/api\/v5\/core\/version - reject
 ^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd - reject
-# RuCu6_amap [Rewrite]
+# RuCu6_amap
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? - reject
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) - reject
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? - reject
@@ -488,7 +488,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/m5\.amap\.com\/ws\/valueadded\/weather\/v2\? - reject
 ^https:\/\/sns\.amap\.com\/ws\/msgbox\/pull_mp\? - reject
 ^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:order\/car\/king_toolbox_car_bubble|tips\/onscene_visual_optimization) - reject
-# RuCu6_bilibili [Rewrite]
+# RuCu6_bilibili
 ^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) - reject
 ^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? - reject
 ^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? - reject
@@ -499,7 +499,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp - reject
 (^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
 (^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
-# RuCu6_myblockads [Rewrite]
+# RuCu6_myblockads
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
 ^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders - reject
 ^https:\/\/member\.alipan\.com\/v2\/activity\/sign_in_luckyBottle - reject
@@ -538,7 +538,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) - reject
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) - reject
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
-# RuCu6_pinduoduo [Rewrite]
+# RuCu6_pinduoduo
 ^https:\/\/api\.(?:pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash\? - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up\? - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide - reject
@@ -550,7 +550,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data - reject
 ^https:\/\/api\.pinduoduo\.com\/search response-body-json-del expansion
 ^https:\/\/api\.pinduoduo\.com\/search_hotquery\? - reject
-# RuCu6_weibo [Rewrite]
+# RuCu6_weibo
 ^https:\/\/api\.weibo\.cn\/2\/(?:ug\/checkin\/list|push\/daily) - reject
 ^https:\/\/api\.weibo\.cn\/2\/!\/live\/media_homelist\? - reject
 ^https:\/\/api\.weibo\.cn\/2\/comments\/bullet_screens\? - reject
@@ -568,7 +568,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) - reject
 ^https:\/\/card\.weibo\.com\/article\/m\/aj\/(?:reward|uvead) - reject
 ^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) - reject
-# RuCu6_xianyu [Rewrite]
+# RuCu6_xianyu
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ - reject
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.recommend\.list\/ - reject
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.resell\.recommendorhotcate\/ - reject
@@ -580,17 +580,17 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ - reject
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ - reject
 ^https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/[\w-]*search[\w-]*\/pages\/ - reject
-# RuCu6_xiaohongshu [Rewrite]
+# RuCu6_xiaohongshu
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action) - reject
 ^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? - reject
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/guide\/user_banner|v3\/note\/guide) - reject
 ^https:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v1\/ads\/resource|v2\/hey\/\w+\/hey_gallery) - reject
-# luestr_BlockAdvertisers [Rewrite]
+# luestr_BlockAdvertisers
 ^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
 ^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union - reject
 ^https:\/\/images\.pinduoduo\.com\/mrk\/ reject
 ^https:\/\/images\.pinduoduo\.com\/marketing_api\/ reject
-# luestr_DiDi_remove_ads [Rewrite]
+# luestr_DiDi_remove_ads
 ^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget - reject
 ^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds - reject
 ^https:\/\/daijia\.kuaidadi\.com\/gateway - reject
@@ -598,15 +598,15 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget - reject
 ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast - reject
 ^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf - reject
-# Yuheng0101_NoAds [URL Rewrite]
+# Yuheng0101_NoAds
 ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject
-# ZenmoFeiShi_Smzdm [URL Rewrite]
+# ZenmoFeiShi_Smzdm
 ^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading - reject
-# ddgksf2013_SmzdmAds [URL Rewrite]
+# ddgksf2013_SmzdmAds
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul - reject
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul - reject
-# zirawell_dianPing-2 [URL Rewrite]
+# zirawell_dianPing-2
 ^https?:\/\/103\.37\.155\.60\/fetch - reject
 ^https?:\/\/mapi\.dianping\.com\/mapi\/operating\/(indexopsmodules|loadsplashconfig) - reject
 ^https?:\/\/mapi\.dianping\.com\/mapi\/intelliindex - reject

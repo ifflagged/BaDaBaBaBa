@@ -97,6 +97,7 @@ jobs:
     - name: Check for changes
       id: changes
       run: |
+        git config --global --add safe.directory /__w/BaDaBaBaBa/BaDaBaBaBa
         git add .
         if git diff-index --quiet HEAD --; then
           echo "::set-output name=result::No changes"

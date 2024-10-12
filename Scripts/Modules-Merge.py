@@ -24,8 +24,7 @@ def extract_section(content, section_name):
 def merge_modules(input_file, output_type, module_urls):
     general = []
     rules = []
-    rewrites = []
-    url_rewrites = []  # 新增用于存储 [URL Rewrite] 部分
+    url_rewrites = []  # 用于存储合并后的 [URL Rewrite] 部分
     scripts = []
     mitm_hosts = set()
 
@@ -45,16 +44,20 @@ def merge_modules(input_file, output_type, module_urls):
         if module_rules:
             rules += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rules
 
-        # 提取 [Rewrite] 部分，适用于所有模块类型
-        module_rewrites = extract_section(content, "Rewrite")
-        if module_rewrites:
-            rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites
-
-        # 如果是 Surge 模块，额外提取 [URL Rewrite] 部分
+        # 提取并合并 [Rewrite] 和 [URL Rewrite] 部分
         if output_type == 'sgmodule':
+            # 处理 Surge 模块，将 [Rewrite] 和 [URL Rewrite] 合并到 [URL Rewrite]
+            module_rewrites = extract_section(content, "Rewrite")
             module_url_rewrites = extract_section(content, "URL Rewrite")
+            if module_rewrites:
+                url_rewrites += [f"# {module_url.split('/')[-1].split('.')[0]} [Rewrite]"] + module_rewrites
             if module_url_rewrites:
-                url_rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_url_rewrites
+                url_rewrites += [f"# {module_url.split('/')[-1].split('.')[0]} [URL Rewrite]"] + module_url_rewrites
+        else:
+            # 处理 Loon 模块，保留 [Rewrite]
+            module_rewrites = extract_section(content, "Rewrite")
+            if module_rewrites:
+                url_rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites
 
         module_scripts = extract_section(content, "Script")
         if module_scripts:
@@ -107,12 +110,7 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("[Rule]\n")
             output_file.write("\n".join(rules) + "\n\n")
 
-        # Rewrite 部分（适用于 Surge 和 Loon）
-        if rewrites and any(rewrite.strip() for rewrite in rewrites):
-            output_file.write("[Rewrite]\n")
-            output_file.write("\n".join(rewrites) + "\n\n")
-
-        # Surge 专属的 URL Rewrite 部分
+        # 合并后的 URL Rewrite 部分 (包括 [Rewrite] 和 [URL Rewrite])
         if url_rewrites and any(url_rewrite.strip() for url_rewrite in url_rewrites):
             output_file.write("[URL Rewrite]\n")
             output_file.write("\n".join(url_rewrites) + "\n\n")

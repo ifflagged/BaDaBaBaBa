@@ -44,7 +44,12 @@ def merge_modules(input_file, output_type, module_urls):
         if module_rules:
             rules += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rules
 
-        module_rewrites = extract_section(content, "Rewrite")
+        # 区分 Surge 的 [URL Rewrite] 和其他的 [Rewrite]
+        if output_type == 'sgmodule':
+            module_rewrites = extract_section(content, "URL Rewrite")
+        else:
+            module_rewrites = extract_section(content, "Rewrite")
+            
         if module_rewrites:
             rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites
 
@@ -99,7 +104,7 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("[Rule]\n")
             output_file.write("\n".join(rules) + "\n\n")
 
-        # Rewrite 部分
+        # Rewrite 或 URL Rewrite 部分
         if rewrites and any(rewrite.strip() for rewrite in rewrites):
             output_file.write("[URL Rewrite]\n" if output_type == 'sgmodule' else "[Rewrite]\n")
             output_file.write("\n".join(rewrites) + "\n\n")

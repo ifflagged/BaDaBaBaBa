@@ -20,26 +20,12 @@ jobs:
       - name: Install requests library
         run: pip install requests
 
-      - name: List root directory
-        run: ls -la
-
-      - name: List Links directory
-        run: ls -la Links/
-
-      - name: Set input file path
-        run: echo "INPUT_FILE=Links/2nd-Convert.txt" >> $GITHUB_ENV
-
       - name: Run conversion script
         id: conversion
         run: |
           python Scripts/Modules-Convert-2nd.py
           echo "FILES_GENERATED=$(if [ -n \"\$(ls -A Modules/Surge/2nd/)\" ]; then echo 'YES'; else echo 'NO'; fi)" >> $GITHUB_ENV
 
-      - name: List output files
-        run: |
-          ls -la Modules/Surge/2nd/
-          ls -la Modules/Loon/2nd/
-          
       - name: Commit changes if any
         if: env.FILES_GENERATED == 'YES'
         run: |

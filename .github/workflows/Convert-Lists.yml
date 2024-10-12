@@ -43,8 +43,12 @@ jobs:
               echo -e "\n\n" >> "Original/MergedList_$base_name.list"
             fi
             
-            echo "# Merging from $author/$filename" >> "Original/MergedList_$base_name.list"
-            cat "Original/$author/$filename" >> "Original/MergedList_$base_name.list"
+            if [ -f "Original/$author/$filename" ]; then
+              echo "# Merging from $author/$filename" >> "Original/MergedList_$base_name.list"
+              cat "Original/$author/$filename" >> "Original/MergedList_$base_name.list"
+            else
+              echo "Warning: File not found: Original/$author/$filename"
+            fi
           done < "$file"
 
           # Generate Rules for Surge
@@ -101,15 +105,15 @@ jobs:
         fi
 
     - name: Commit changes if any
-      if: env.result == 'Changes detected'
+      if: steps.changes.outputs.result == 'Changes detected'
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
         git commit -m "Update Rulesets"
-        git push
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git
 
     - name: Send Telegram notification if changes were committed
-      if: env.result == 'Changes detected'
+      if: steps.changes.outputs.result == 'Changes detected'
       run: |
         if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
           UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Rulesets/)

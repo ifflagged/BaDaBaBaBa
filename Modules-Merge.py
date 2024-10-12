@@ -60,9 +60,9 @@ def merge_modules(input_file, output_type, module_urls):
 
     # 生成 Hostname 字符串
     if output_type == 'sgmodule':
-        combined_mitmh = "Hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
+        combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
     else:
-        combined_mitmh = "Hostname = " + ", ".join(sorted(mitm_hosts))
+        combined_mitmh = "hostname = " + ", ".join(sorted(mitm_hosts))
 
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"

@@ -1,4 +1,4 @@
-name: Modules Convert 2nd
+name: Converting non-conforming modules
 
 on:
   schedule:

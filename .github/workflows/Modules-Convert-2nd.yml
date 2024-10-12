@@ -1,10 +1,9 @@
 name: Modules Convert 2nd
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  schedule:
+    - cron: '0 5 * * *' # 每天执行一次
+  workflow_dispatch: # 手动触发
 
 jobs:
   convert:
@@ -41,3 +40,11 @@ jobs:
         run: |
           ls -la Modules/Surge/2nd/
           ls -la Modules/Loon/2nd/
+          
+      - name: Commit changes if any
+        if: steps.changes.outputs.result == 'Changes detected'
+        run: |
+          git config --local user.name "ifflagged"
+          git config --local user.email "qibo.sign@outlook.com"
+          git commit -m "Covert Modules Again"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git

@@ -229,6 +229,7 @@ AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 
 
 [Rewrite]
+# RuCu6_amap
 
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? - reject
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) - reject
@@ -244,6 +245,7 @@ AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 
 ^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:order\/car\/king_toolbox_car_bubble|tips\/onscene_visual_optimization) - reject
 
+# RuCu6_bilibili
 ^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) - reject
 
 ^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? - reject
@@ -263,6 +265,7 @@ AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 
 (^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
 
+# RuCu6_myblockads
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
 
 ^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders - reject
@@ -322,6 +325,7 @@ AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
 
+# RuCu6_pinduoduo
 ^https:\/\/api\.(?:pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash\? - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up\? - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide - reject
@@ -334,6 +338,7 @@ AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 ^https:\/\/api\.pinduoduo\.com\/search response-body-json-del expansion
 ^https:\/\/api\.pinduoduo\.com\/search_hotquery\? - reject
 
+# RuCu6_weibo
 ^https:\/\/api\.weibo\.cn\/2\/(?:ug\/checkin\/list|push\/daily) - reject
 ^https:\/\/api\.weibo\.cn\/2\/!\/live\/media_homelist\? - reject
 
@@ -356,6 +361,7 @@ AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 ^https:\/\/card\.weibo\.com\/article\/m\/aj\/(?:reward|uvead) - reject
 ^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) - reject
 
+# RuCu6_xiaohongshu
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action) - reject
 ^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? - reject
 
@@ -364,6 +370,7 @@ AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 
 
 [Script]
+# RuCu6_amap
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/bus\/plan\/integrate\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/c3frontend\/af-(?:hotel|launch)\/page\/main\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
@@ -386,6 +393,7 @@ RuCu6_amap = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_car_tips\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 
+# RuCu6_bilibili
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
 
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
@@ -421,6 +429,7 @@ RuCu6_bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/re
 
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(?:mine(\/ipad)?|myinfo),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
 
+# RuCu6_myblockads
 RuCu6_myblockads = type=http-request,pattern=^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/12306.js, requires-body = true
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/header.js
 
@@ -451,8 +460,10 @@ RuCu6_myblockads = type=http-request,pattern=^https:\/\/mobilepaas\.abchina\.com
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\/,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/cloud139.js, requires-body = true
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/cloud139.js, requires-body = true
 
+# RuCu6_pinduoduo
 RuCu6_pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/pdd.js, requires-body = true
 
+# RuCu6_weibo
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/groups\/allgroups\/v2\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 
@@ -478,6 +489,7 @@ RuCu6_weibo = type=http-response,pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:p
 
 RuCu6_weibo = type=http-response,pattern=^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/list\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 
+# RuCu6_xiaohongshu
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/(?:note\/widgets|user\/followings\/followfeed),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/(?:banner|hot)_list,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true

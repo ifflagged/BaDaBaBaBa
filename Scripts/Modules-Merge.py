@@ -82,15 +82,15 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n")
 
-        if rules:
+        if rules and any(rule.strip() for rule in rules):
             output_file.write("[Rule]\n")
             output_file.write("\n".join(rules) + "\n\n")
 
-        if rewrites:
+        if rewrites and any(rewrite.strip() for rewrite in rewrites):
             output_file.write("[URL Rewrite]\n" if output_type == 'sgmodule' else "[Rewrite]\n")
             output_file.write("\n".join(rewrites) + "\n\n")
 
-        if scripts:
+        if scripts and any(script.strip() for script in scripts):
             output_file.write("[Script]\n")
             output_file.write("\n".join(scripts) + "\n\n")
 

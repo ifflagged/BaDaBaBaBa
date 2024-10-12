@@ -125,5 +125,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     for module_file in sys.argv[1:]:
-        download_modules("Links/" + module_file)
-
+        download_modules(module_file)

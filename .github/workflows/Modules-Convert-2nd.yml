@@ -23,7 +23,7 @@ jobs:
       - name: Run conversion script
         id: conversion
         run: |
-          python Scripts/Modules-Convert-2nd.py
+          python Scripts/Modules-Convert-2nd.py Links/2nd-Convert.txt
           echo "FILES_GENERATED=$(if [ -n \"\$(ls -A Modules/Surge/2nd/)\" ]; then echo 'YES'; else echo 'NO'; fi)" >> $GITHUB_ENV
 
       - name: Commit changes if any

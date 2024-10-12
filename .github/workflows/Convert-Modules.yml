@@ -59,7 +59,7 @@ jobs:
           author=$(echo "$file_info" | cut -d';' -f2)
           filename=$(echo "$file_info" | cut -d';' -f3)
           comment=$(echo "$file_info" | cut -d';' -f4)
-          python3 Scripts/convert_modules.py "$file_path" "${author}_${filename}" "$comment"
+          python3 Scripts/Convert-Modules.py "$file_path" "${author}_${filename}" "$comment"
         done
 
     - name: Create README in Modules directory

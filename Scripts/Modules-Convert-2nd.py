@@ -1,5 +1,6 @@
 import os
 import requests
+import re
 
 # 定义需要的部分
 required_sections = ['[Rule]', '[Rewrite]', '[Script]', '[MITM]']
@@ -10,21 +11,30 @@ def download_file(url):
     return response.text if response.status_code == 200 else None
 
 # 检查和分类各部分内容
-def parse_sections(content):
+def check_and_add_sections(content):
     sections = {section: '' for section in required_sections}
-    current_section = None
     
-    for line in content.splitlines():
-        line = line.strip()
-        if line in required_sections:
-            current_section = line
-        elif current_section:
-            sections[current_section] += line + '\n'
-    
-    return sections
+    # 检查内容
+    lines = content.splitlines()
+    has_direct_reject = any(re.search(r',\s*DIRECT\s*', line, re.IGNORECASE) or re.search(r',\s*REJECT\s*', line, re.IGNORECASE) for line in lines)
+    has_http_reject = any('^http' in line and '- reject' in line for line in lines)
+    has_http_302 = any('302' in line and '$1' in line for line in lines)
+    has_pattern_script = any('pattern=' in line and 'script-path=' in line for line in lines)
+    has_hostname = any('Hostname =' in line for line in lines)
 
-# 检查和添加缺失部分
-def check_and_add_sections(sections):
+    # 根据条件添加到相应部分
+    if has_direct_reject:
+        sections['[Rule]'] += '\n'.join(line for line in lines if re.search(r',\s*DIRECT\s*', line, re.IGNORECASE) or re.search(r',\s*REJECT\s*', line, re.IGNORECASE)) + '\n'
+
+    if has_http_reject and has_http_302:
+        sections['[Rewrite]'] += '\n'.join(line for line in lines if '^http' in line and '- reject' in line or '302' in line) + '\n'
+
+    if has_pattern_script:
+        sections['[Script]'] += '\n'.join(line for line in lines if 'pattern=' in line and 'script-path=' in line) + '\n'
+
+    if has_hostname:
+        sections['[MITM]'] += '\n'.join(line for line in lines if 'Hostname =' in line) + '\n'
+
     modified_content = ''
     for section in required_sections:
         modified_content += section + '\n'
@@ -43,8 +53,7 @@ def save_file(filepath, content):
 def process_module(url, output_directory):
     content = download_file(url)
     if content:
-        sections = parse_sections(content)
-        modified_content = check_and_add_sections(sections)
+        modified_content = check_and_add_sections(content)
         output_filename = os.path.basename(url)  # 提取文件名
         output_path = os.path.join(output_directory, output_filename)  # 生成输出文件路径
         save_file(output_path, modified_content)

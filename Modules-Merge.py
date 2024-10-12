@@ -72,11 +72,11 @@ def merge_modules(input_file, output_type, module_urls):
 
     with open(output_path, "w") as output_file:
         if output_type == 'sgmodule':
-            output_file.write(f"#!name= 🧰 {name}\n")
+            output_file.write(f"#!name= 🧰 Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
             output_file.write("#!category=Jacob\n\n")
         else:
-            output_file.write(f"#!name= {name}\n")
+            output_file.write(f"#!name= Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Loon\n")
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n")

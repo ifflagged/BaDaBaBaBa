@@ -8,8 +8,6 @@ on:
 jobs:
   update-lists:
     runs-on: ubuntu-latest
-    container:
-      image: node:20
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -97,7 +95,6 @@ jobs:
     - name: Check for changes
       id: changes
       run: |
-        git config --global --add safe.directory /__w/BaDaBaBaBa/BaDaBaBaBa
         git add .
         if git diff-index --quiet HEAD --; then
           echo "::set-output name=result::No changes"

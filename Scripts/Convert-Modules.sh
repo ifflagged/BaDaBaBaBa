@@ -3,6 +3,10 @@ input_file=$1
 module_name=$2
 comment=$3
 
+# 确保 Surge 和 Loon 目录存在
+mkdir -p Modules/Surge
+mkdir -p Modules/Loon
+
 # Common replacements for both Surge and Loon
 sed_common="
     /raw.githubusercontent.com/ s/\/main\//\/raw\/main\//Ig

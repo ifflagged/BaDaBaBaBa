@@ -50,12 +50,12 @@ def merge_modules(input_file, output_type, module_urls):
             if output_type == 'sgmodule':
                 for line in mitm_section:
                     if line.lower().startswith("hostname = %append%"):
-                        hosts = line.replace("Hostname = %APPEND%", "").strip()
+                        hosts = line.lower().replace("hostname = %append%", "").strip()
                         mitm_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
             else:
                 for line in mitm_section:
                     if line.lower().startswith("hostname ="):
-                        hosts = line.replace("Hostname =", "").strip()
+                        hosts = line.lower().replace("hostname =", "").strip()
                         mitm_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
                     else:
                         mitm_hosts.update(line.strip().split(","))

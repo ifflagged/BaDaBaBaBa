@@ -21,10 +21,20 @@ jobs:
         run: pip install requests
 
       - name: Run Merge Script for Surge
-        run: python Modules-Merge.py Modules-Tools.txt  # 处理 Surge 的模块链接
+        run: |
+          python Modules-Merge.py Modules-Tools.txt
 
-      - name: Run Merge Script for Loon
-        run: python Modules-Merge.py Modules-Loon.txt  # 处理 Loon 的模块链接（如有）
+      - name: Check updated files
+        id: check_updates
+        run: |
+          # 检查是否存在上一个提交
+          if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
+            UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
+          else
+            UPDATED_FILES=$(git diff --name-only HEAD Modules/)
+          fi
+          echo "Updated files: $UPDATED_FILES"
+          echo "::set-output name=updated_files::$UPDATED_FILES"
 
       - name: Commit and push changes
         run: |
@@ -33,17 +43,11 @@ jobs:
           git add Modules/Surge/*
           git add Modules/Loon/*
           git commit -m "Update merged modules" || echo "No changes to commit"
-          git push
+          git push --force
 
       - name: Send TG Notification
         run: |
-          # 检查是否存在上一个提交
-          if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
-            UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
-          else
-            UPDATED_FILES=$(git diff --name-only HEAD Modules/)
-          fi
-
+          UPDATED_FILES="${{ steps.check_updates.outputs.updated_files }}"
           if [ -n "$UPDATED_FILES" ]; then
             MESSAGE="The following files have been updated:\n"
             GITHUB_URL="https://github.com/ifflagged/BaDaBaBaBa/blob/main/"

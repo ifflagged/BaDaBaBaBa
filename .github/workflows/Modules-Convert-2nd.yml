@@ -17,7 +17,12 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-
+          
+      - name: Create output directories
+        run: |
+          mkdir -p Modules/Surge/2nd/
+          mkdir -p Modules/Loon/2nd/
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip

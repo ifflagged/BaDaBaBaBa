@@ -30,6 +30,7 @@ def merge_modules(input_file, is_loon=False):
         response = requests.get(module_url)
         
         if response.status_code != 200:
+            print(f"Skipping {module_url} due to error: {response.status_code}")
             continue
         
         content = response.text
@@ -60,12 +61,13 @@ def merge_modules(input_file, is_loon=False):
         output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".plugin"
         name = output_file_name.replace(".plugin", "").capitalize()
         header = f"# !name= {name}\n# !desc = Merger {name} for Loon\n# !author = Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n# !icon = https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n"
+        output_path = f"Modules/Loon/{output_file_name}"
     else:
         output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".sgmodule"
         name = output_file_name.replace(".sgmodule", "").capitalize()
         header = f"# !name= 🧰 {name}\n# !desc= Merger {name} for Surge & Shadowrocket\n# !category=Jacob\n\n"
+        output_path = f"Modules/Surge/{output_file_name}"
 
-    output_path = f"Modules/Surge/{output_file_name}"
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "w") as output_file:
@@ -102,6 +104,9 @@ def download_modules(module_file):
             filename = url.split('/')[-1]
             with open(filename, 'wb') as module_file:
                 module_file.write(response.content)
+            print(f"Downloaded: {filename}")
+        else:
+            print(f"Failed to download {url}: {response.status_code}")
 
 # 示例使用
 if __name__ == "__main__":
@@ -116,3 +121,5 @@ if __name__ == "__main__":
         elif module_file.endswith('.plugin'):
             download_modules(module_file)
             merge_modules(module_file, is_loon=True)
+        else:
+            print(f"Unsupported file type: {module_file}. Please provide .sgmodule or .plugin files.")

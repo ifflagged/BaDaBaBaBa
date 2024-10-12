@@ -17,10 +17,7 @@ def extract_section(content, section_name):
     
     return section_lines
 
-def merge_modules(input_file, output_type):
-    with open(input_file, 'r') as f:
-        module_urls = f.read().splitlines()
-
+def merge_modules(input_file, output_type, module_urls):
     rules = []
     rewrites = []
     scripts = []
@@ -65,22 +62,16 @@ def merge_modules(input_file, output_type):
     else:
         combined_mitmh = ", ".join(sorted(mitm_hosts))  # 直接合并，不加 %APPEND%
 
-    output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "")
-    if output_type == 'sgmodule':
-        output_file_name += ".sgmodule"
-        name = output_file_name.replace(".sgmodule", "").capitalize()
-        output_path = f"Modules/Surge/{output_file_name}"
-    else:
-        output_file_name += ".plugin"
-        name = output_file_name.replace(".plugin", "").capitalize()
-        output_path = f"Modules/Loon/{output_file_name}"
+    name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "").capitalize()
+    output_file_name = f"Merged_{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
+    output_path = f"Modules/{'Surge' if output_type == 'sgmodule' else 'Loon'}/{output_file_name}"
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "w") as output_file:
         if output_type == 'sgmodule':
             output_file.write(f"# !name= 🧰 {name}\n")
-            output_file.write("# !desc= Merger {name} for Surge & Shadowrocket\n")
+            output_file.write(f"# !desc= Merger {name} for Surge & Shadowrocket\n")
             output_file.write("# !category=Jacob\n\n")
         else:
             output_file.write(f"#!name= {name}\n")
@@ -106,12 +97,19 @@ def download_modules(module_file):
     with open(module_file, 'r') as f:
         module_urls = f.read().splitlines()
 
+    surge_urls = []
+    loon_urls = []
+
     for url in module_urls:
-        response = requests.get(url)
-        if response.status_code == 200:
-            filename = url.split('/')[-1]
-            with open(filename, 'wb') as module_file:
-                module_file.write(response.content)
+        if ".sgmodule" in url:
+            surge_urls.append(url)
+        elif ".plugin" in url:
+            loon_urls.append(url)
+
+    if surge_urls:
+        merge_modules(module_file, 'sgmodule', surge_urls)
+    if loon_urls:
+        merge_modules(module_file, 'plugin', loon_urls)
 
 # 示例使用
 if __name__ == "__main__":
@@ -121,9 +119,3 @@ if __name__ == "__main__":
 
     for module_file in sys.argv[1:]:
         download_modules(module_file)
-        
-        # 根据文件后缀决定合并方式
-        if module_file.startswith("Modules-") and module_file.endswith('.txt'):
-            merge_modules(module_file, 'sgmodule')
-        elif module_file.startswith("Loon-") and module_file.endswith('.txt'):
-            merge_modules(module_file, 'plugin')

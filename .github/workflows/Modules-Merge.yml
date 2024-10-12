@@ -20,13 +20,47 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Run Merge Script
-        run: python Modules-Merge.py Modules-Tools.txt  # 这里传入包含模块链接的文件
+      - name: Run Merge Script for Surge
+        run: python Modules-Merge.py Modules-Tools.txt  # 处理 Surge 的模块链接
+
+      - name: Run Merge Script for Loon
+        run: python Modules-Merge.py Modules-Loon.txt  # 处理 Loon 的模块链接（如有）
 
       - name: Commit and push changes
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
           git add Modules/Surge/*
+          git add Modules/Loon/*
           git commit -m "Update merged modules" || echo "No changes to commit"
           git push
+
+      - name: Send TG Notification
+        run: |
+          # 检查是否存在上一个提交
+          if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
+            UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
+          else
+            UPDATED_FILES=$(git diff --name-only HEAD Modules/)
+          fi
+
+          if [ -n "$UPDATED_FILES" ]; then
+            MESSAGE="The following files have been updated:\n"
+            GITHUB_URL="https://github.com/ifflagged/BaDaBaBaBa/blob/main/"
+            while read -r file; do
+              # 去掉 'Modules/' 前缀
+              display_name=$(echo "$file" | sed 's/Modules\///')
+              # 生成完整链接
+              file_url="${GITHUB_URL}${file}"
+              # 生成 markdown 格式的超链接
+              MESSAGE="${MESSAGE}[${display_name}](${file_url})\n"
+            done <<< "$UPDATED_FILES"
+
+            # 使用 echo -e 处理换行符并发送通知
+            curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
+              -d chat_id=${{ secrets.TG_ID }} \
+              -d text="$(echo -e "$MESSAGE")" \
+              -d parse_mode=Markdown
+          else
+            echo "No files were updated, no notification sent."
+          fi

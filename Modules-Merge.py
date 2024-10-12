@@ -43,7 +43,12 @@ def merge_modules(input_file):
     output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".sgmodule"
     name = output_file_name.replace(".sgmodule", "").capitalize()  # 获取名称
 
-    with open(output_file_name, "w") as output_file:
+    output_path = f"Modules/Surge/{output_file_name}"
+
+    # 创建目录如果不存在
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+    with open(output_path, "w") as output_file:
         output_file.write(f"# !name= 🧰 {name}\n")
         output_file.write("# !desc= Tools for Surge & Shadowrocket\n")
         output_file.write("# !category=Jacob\n\n")
@@ -60,7 +65,7 @@ def merge_modules(input_file):
         output_file.write("[MITM]\n")
         output_file.write(combined_mitmh + "\n")
 
-    print(f"合并完成！生成的文件为 {output_file_name}")
+    print(f"合并完成！生成的文件为 {output_path}")
 
 def download_modules(module_file):
     with open(module_file, 'r') as f:

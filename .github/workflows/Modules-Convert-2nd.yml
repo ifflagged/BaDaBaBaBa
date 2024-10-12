@@ -25,7 +25,7 @@ jobs:
 
       - name: Run conversion script
         run: |
-          python Scripts/Modules-Convert-2nd.py
+          python Scripts/Modules-Convert-2nd.py Links/2nd-Convert.txt Modules/Surge/2nd Surge
 
       - name: Commit and push changes
         run: |

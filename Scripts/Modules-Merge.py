@@ -61,11 +61,11 @@ def merge_modules(input_file, output_type, module_urls):
                         mitm_hosts.update(line.strip().split(","))
 
     if output_type == 'sgmodule':
-        combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
+        combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(mitm_hosts)) if mitm_hosts else ""
     else:
-        combined_mitmh = "hostname = " + ", ".join(sorted(mitm_hosts))
+        combined_mitmh = "hostname = " + ", ".join(sorted(mitm_hosts)) if mitm_hosts else ""
 
-    name = os.path.splitext(os.path.basename(input_file))[0].replace("Links/Merge-Modules-", "").capitalize()
+    name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
     output_path = f"Modules/{'Surge' if output_type == 'sgmodule' else 'Loon'}/{output_file_name}"
 
@@ -82,20 +82,21 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n")
 
-        output_file.write("[Rule]\n")
-        output_file.write("\n".join(rules) + "\n\n")
+        if rules:
+            output_file.write("[Rule]\n")
+            output_file.write("\n".join(rules) + "\n\n")
 
-        if output_type == 'sgmodule':
-            output_file.write("[URL Rewrite]\n")
-        else:
-            output_file.write("[Rewrite]\n")
-        output_file.write("\n".join(rewrites) + "\n\n")
+        if rewrites:
+            output_file.write("[URL Rewrite]\n" if output_type == 'sgmodule' else "[Rewrite]\n")
+            output_file.write("\n".join(rewrites) + "\n\n")
 
-        output_file.write("[Script]\n")
-        output_file.write("\n".join(scripts) + "\n\n")
+        if scripts:
+            output_file.write("[Script]\n")
+            output_file.write("\n".join(scripts) + "\n\n")
 
-        output_file.write("[MITM]\n")
-        output_file.write(combined_mitmh + "\n")
+        if mitm_hosts:
+            output_file.write("[MITM]\n")
+            output_file.write(combined_mitmh + "\n")
 
     print(f"合并完成！生成的文件为 {output_path}")
 
@@ -124,4 +125,5 @@ if __name__ == "__main__":
         sys.exit(1)
 
     for module_file in sys.argv[1:]:
-        download_modules(module_file)
+        download_modules("Links/" + module_file)
+

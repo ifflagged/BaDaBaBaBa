@@ -90,18 +90,14 @@ jobs:
           done < "$file"
         done
 
-    - name: Configure safe directory
-      run: |
-        git config --global --add safe.directory /__w/BaDaBaBaBa/BaDaBaBaBa
-
     - name: Check for changes
       id: changes
       run: |
         git add .
         if git diff-index --quiet HEAD --; then
-          echo "result=No changes" >> $GITHUB_ENV
+          echo "::set-output name=result::No changes"
         else
-          echo "result=Changes detected" >> $GITHUB_ENV
+          echo "::set-output name=result::Changes detected"
         fi
 
     - name: Commit changes if any

@@ -25,6 +25,7 @@ def merge_modules(input_file, output_type, module_urls):
     general = []
     rules = []
     rewrites = []
+    url_rewrites = []  # 新增用于存储 [URL Rewrite] 部分
     scripts = []
     mitm_hosts = set()
 
@@ -44,14 +45,16 @@ def merge_modules(input_file, output_type, module_urls):
         if module_rules:
             rules += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rules
 
-        # 区分 Surge 的 [URL Rewrite] 和其他的 [Rewrite]
-        if output_type == 'sgmodule':
-            module_rewrites = extract_section(content, "URL Rewrite")
-        else:
-            module_rewrites = extract_section(content, "Rewrite")
-            
+        # 提取 [Rewrite] 部分，适用于所有模块类型
+        module_rewrites = extract_section(content, "Rewrite")
         if module_rewrites:
             rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites
+
+        # 如果是 Surge 模块，额外提取 [URL Rewrite] 部分
+        if output_type == 'sgmodule':
+            module_url_rewrites = extract_section(content, "URL Rewrite")
+            if module_url_rewrites:
+                url_rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_url_rewrites
 
         module_scripts = extract_section(content, "Script")
         if module_scripts:
@@ -104,10 +107,15 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("[Rule]\n")
             output_file.write("\n".join(rules) + "\n\n")
 
-        # Rewrite 或 URL Rewrite 部分
+        # Rewrite 部分（适用于 Surge 和 Loon）
         if rewrites and any(rewrite.strip() for rewrite in rewrites):
-            output_file.write("[URL Rewrite]\n" if output_type == 'sgmodule' else "[Rewrite]\n")
+            output_file.write("[Rewrite]\n")
             output_file.write("\n".join(rewrites) + "\n\n")
+
+        # Surge 专属的 URL Rewrite 部分
+        if url_rewrites and any(url_rewrite.strip() for url_rewrite in url_rewrites):
+            output_file.write("[URL Rewrite]\n")
+            output_file.write("\n".join(url_rewrites) + "\n\n")
 
         # Script 部分
         if scripts and any(script.strip() for script in scripts):

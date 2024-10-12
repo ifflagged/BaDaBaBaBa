@@ -51,7 +51,11 @@ def merge_modules(input_file):
         if mitm_section:
             mitm_hosts.add(mitm_section[0].replace("Hostname =", "").strip())
 
-    combined_mitmh = "Hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
+    # 生成 Hostname 字符串
+    if mitm_hosts:
+        combined_mitmh = "Hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
+    else:
+        combined_mitmh = "Hostname = %APPEND%"  # 如果没有主机名，保留格式
 
     output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".sgmodule"
     name = output_file_name.replace(".sgmodule", "").capitalize()

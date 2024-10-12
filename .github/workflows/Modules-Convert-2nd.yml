@@ -33,8 +33,14 @@ jobs:
         run: echo "INPUT_FILE=Links/2nd-Convert.txt" >> $GITHUB_ENV
 
       - name: Run conversion script
+        id: conversion
         run: |
           python Scripts/Modules-Convert-2nd.py
+          if [ -n "$(ls -A Modules/Surge/2nd/)" ]; then
+            echo "FILES_GENERATED=YES" >> $GITHUB_ENV
+          else
+            echo "FILES_GENERATED=NO" >> $GITHUB_ENV
+          fi
 
       - name: List output files
         run: |
@@ -42,9 +48,10 @@ jobs:
           ls -la Modules/Loon/2nd/
           
       - name: Commit changes if any
-        if: steps.changes.outputs.result == 'Changes detected'
+        if: env.FILES_GENERATED == 'YES'
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git commit -m "Covert Modules Again"
+          git add .
+          git commit -m "Convert Modules Again"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git

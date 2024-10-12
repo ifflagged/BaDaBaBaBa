@@ -444,8 +444,39 @@ DOMAIN, tte.meituan.com, REJECT
 IP-CIDR, 101.32.16.204/32, REJECT, no-resolve
 IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 
-[Rewrite]
-# RuCu6_amap
+[URL Rewrite]
+# Tools [URL Rewrite]
+^https?:\/\/elemecdn\.com\/.+\/sitemap - reject
+^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/640\/h\/\d{3,4} - reject
+^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/750\/h\/\d{3,4} - reject
+^https?:\/\/fuss10\.elemecdn\.com\/.+?\.mp4 - reject
+^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_1\d{3},h_2\d{3}\/format,webp\/ - reject
+^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_6\d{2},h_8\d{2}\/format,webp\/ - reject
+^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{3},h_\d{4}\/format,webp\/ - reject
+^https?:\/\/cube\.elemecdn\.com\/\w\/\w{2}\/\w+mp4\.mp4\? - reject
+^https?:\/\/www1\.elecfans\.com\/www\/delivery\/ - reject
+^https?:\/\/(nr-op|cube)\.elemecdn\.com\/.+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{4,},h_\d{4,}\/($|format,webp\/$) - reject
+^https?:\/\/cdn\.133\.cn\/md\/gtgj\/.+\/.+720x1280 - reject
+^https?:\/\/[a-z]*\.rsscc\.com\/[a-z]*\/adver - reject
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising - reject
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getWidgetV1052 - reject
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/(richpop|home\/splash) - reject
+^https:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity - reject
+^https?:\/\/qde\.qunar\.com\/preload - reject
+^https?:\/\/homefront\.qunar\.com\/front\/splash\/ad - reject
+^https?:\/\/client\.qunar\.com\/pitcher-proxy\?qrt=p_splashAd - reject
+^https?://(|www\.)router\.com http://{{{GATEWAY_ADDRESS}}} 302
+^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/sams-user\/(window\/getGoUpPlus|screen_promotion\/get) - reject
+^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/channel\/portal\/AdgroupData - reject
+^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/configuration\/personCenterEntrance\/query - reject
+^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/trade\/order\/getOftenBuyGoods - reject
+^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/goods-portal\/spu\/searchRecommendPool - reject
+^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/configuration\/appVersionUpdate\/getAppVersionUpdateInfo - reject
+^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v1\/sams\/configuration\/portal\/beUpdate - reject
+^http:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams\/ - reject
+^https?:\/\/tfsmy\.chengdu\.gov\.cn\/api\/v5\/core\/version - reject
+^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd - reject
+# RuCu6_amap [Rewrite]
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? - reject
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) - reject
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? - reject
@@ -457,7 +488,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/m5\.amap\.com\/ws\/valueadded\/weather\/v2\? - reject
 ^https:\/\/sns\.amap\.com\/ws\/msgbox\/pull_mp\? - reject
 ^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:order\/car\/king_toolbox_car_bubble|tips\/onscene_visual_optimization) - reject
-# RuCu6_bilibili
+# RuCu6_bilibili [Rewrite]
 ^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) - reject
 ^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? - reject
 ^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? - reject
@@ -468,7 +499,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp - reject
 (^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
 (^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
-# RuCu6_myblockads
+# RuCu6_myblockads [Rewrite]
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
 ^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders - reject
 ^https:\/\/member\.alipan\.com\/v2\/activity\/sign_in_luckyBottle - reject
@@ -507,7 +538,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) - reject
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) - reject
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
-# RuCu6_pinduoduo
+# RuCu6_pinduoduo [Rewrite]
 ^https:\/\/api\.(?:pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash\? - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up\? - reject
 ^https:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide - reject
@@ -519,7 +550,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data - reject
 ^https:\/\/api\.pinduoduo\.com\/search response-body-json-del expansion
 ^https:\/\/api\.pinduoduo\.com\/search_hotquery\? - reject
-# RuCu6_weibo
+# RuCu6_weibo [Rewrite]
 ^https:\/\/api\.weibo\.cn\/2\/(?:ug\/checkin\/list|push\/daily) - reject
 ^https:\/\/api\.weibo\.cn\/2\/!\/live\/media_homelist\? - reject
 ^https:\/\/api\.weibo\.cn\/2\/comments\/bullet_screens\? - reject
@@ -537,7 +568,7 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) - reject
 ^https:\/\/card\.weibo\.com\/article\/m\/aj\/(?:reward|uvead) - reject
 ^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) - reject
-# RuCu6_xianyu
+# RuCu6_xianyu [Rewrite]
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ - reject
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.recommend\.list\/ - reject
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.resell\.recommendorhotcate\/ - reject
@@ -549,17 +580,17 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ - reject
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ - reject
 ^https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/[\w-]*search[\w-]*\/pages\/ - reject
-# RuCu6_xiaohongshu
+# RuCu6_xiaohongshu [Rewrite]
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action) - reject
 ^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? - reject
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/guide\/user_banner|v3\/note\/guide) - reject
 ^https:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v1\/ads\/resource|v2\/hey\/\w+\/hey_gallery) - reject
-# luestr_BlockAdvertisers
+# luestr_BlockAdvertisers [Rewrite]
 ^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
 ^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union - reject
 ^https:\/\/images\.pinduoduo\.com\/mrk\/ reject
 ^https:\/\/images\.pinduoduo\.com\/marketing_api\/ reject
-# luestr_DiDi_remove_ads
+# luestr_DiDi_remove_ads [Rewrite]
 ^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget - reject
 ^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds - reject
 ^https:\/\/daijia\.kuaidadi\.com\/gateway - reject
@@ -567,48 +598,15 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget - reject
 ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast - reject
 ^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf - reject
-
-[URL Rewrite]
-# Tools
-^https?:\/\/elemecdn\.com\/.+\/sitemap - reject
-^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/640\/h\/\d{3,4} - reject
-^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/750\/h\/\d{3,4} - reject
-^https?:\/\/fuss10\.elemecdn\.com\/.+?\.mp4 - reject
-^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_1\d{3},h_2\d{3}\/format,webp\/ - reject
-^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_6\d{2},h_8\d{2}\/format,webp\/ - reject
-^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{3},h_\d{4}\/format,webp\/ - reject
-^https?:\/\/cube\.elemecdn\.com\/\w\/\w{2}\/\w+mp4\.mp4\? - reject
-^https?:\/\/www1\.elecfans\.com\/www\/delivery\/ - reject
-^https?:\/\/(nr-op|cube)\.elemecdn\.com\/.+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{4,},h_\d{4,}\/($|format,webp\/$) - reject
-^https?:\/\/cdn\.133\.cn\/md\/gtgj\/.+\/.+720x1280 - reject
-^https?:\/\/[a-z]*\.rsscc\.com\/[a-z]*\/adver - reject
-^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising - reject
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getWidgetV1052 - reject
-^https?:\/\/api\.mcd\.cn\/bff\/portal\/(richpop|home\/splash) - reject
-^https:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity - reject
-^https?:\/\/qde\.qunar\.com\/preload - reject
-^https?:\/\/homefront\.qunar\.com\/front\/splash\/ad - reject
-^https?:\/\/client\.qunar\.com\/pitcher-proxy\?qrt=p_splashAd - reject
-^https?://(|www\.)router\.com http://{{{GATEWAY_ADDRESS}}} 302
-^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/sams-user\/(window\/getGoUpPlus|screen_promotion\/get) - reject
-^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/channel\/portal\/AdgroupData - reject
-^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/configuration\/personCenterEntrance\/query - reject
-^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/trade\/order\/getOftenBuyGoods - reject
-^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/goods-portal\/spu\/searchRecommendPool - reject
-^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/configuration\/appVersionUpdate\/getAppVersionUpdateInfo - reject
-^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v1\/sams\/configuration\/portal\/beUpdate - reject
-^http:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams\/ - reject
-^https?:\/\/tfsmy\.chengdu\.gov\.cn\/api\/v5\/core\/version - reject
-^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd - reject
-# Yuheng0101_NoAds
+# Yuheng0101_NoAds [URL Rewrite]
 ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject
-# ZenmoFeiShi_Smzdm
+# ZenmoFeiShi_Smzdm [URL Rewrite]
 ^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading - reject
-# ddgksf2013_SmzdmAds
+# ddgksf2013_SmzdmAds [URL Rewrite]
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul - reject
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul - reject
-# zirawell_dianPing-2
+# zirawell_dianPing-2 [URL Rewrite]
 ^https?:\/\/103\.37\.155\.60\/fetch - reject
 ^https?:\/\/mapi\.dianping\.com\/mapi\/operating\/(indexopsmodules|loadsplashconfig) - reject
 ^https?:\/\/mapi\.dianping\.com\/mapi\/intelliindex - reject

@@ -2,6 +2,7 @@
 input_file=$1
 module_name=$2
 comment=$3
+output_dir="Modules"
 
 # Common replacements for both Surge and Loon
 sed_common="
@@ -16,7 +17,25 @@ sed_common="
     /IP-CIDR/ s/\(REJECT\)\([^,]*$\)/\1, no-resolve/Ig
 "
 
+# Function to create unique file names
+create_unique_filename() {
+    local base_name=$1
+    local extension=$2
+    local dir=$3
+    local counter=1
+    local new_name="${base_name}${extension}"
+
+    while [[ -e "$dir/$new_name" ]]; do
+        new_name="${base_name}-${counter}${extension}"
+        counter=$((counter + 1))
+    done
+
+    echo "$new_name"
+}
+
 # Surge conversion
+surge_base_name="${module_name}.sgmodule"
+surge_output=$(create_unique_filename "$surge_base_name" "" "$output_dir/Surge")
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
@@ -60,9 +79,11 @@ $comment" \
     -e 's/ script-path = /,script-path=/Ig' \
     -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
-    "$input_file" > "Modules/Surge/${module_name}.sgmodule"
+    "$input_file" > "$surge_output"
 
 # Loon conversion
+loon_base_name="${module_name}.plugin"
+loon_output=$(create_unique_filename "$loon_base_name" "" "$output_dir/Loon")
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
@@ -93,4 +114,4 @@ $comment" \
     -e 's/url script-analyze-echo-response/script-path=/Ig' \
     -e 's/, tag.*/\, tag = '"${module_name}"'/' \
     -e 's/hostname =/Hostname =/Ig' \
-    "$input_file" > "Modules/Loon/${module_name}.plugin"
+    "$input_file" > "$loon_output"

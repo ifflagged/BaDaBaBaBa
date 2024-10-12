@@ -15,7 +15,9 @@ def extract_section(content, section_name):
         elif line_lower.startswith("[") and in_section:
             break
         elif in_section and (not line.startswith("#")):
-            section_lines.append(line.strip())
+            stripped_line = line.strip()
+            if stripped_line:  # 过滤掉空行和仅有空格的行
+                section_lines.append(stripped_line)
     
     return section_lines
 
@@ -82,6 +84,7 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n")
 
+        # 检查是否包含实际内容后再写入
         if rules and any(rule.strip() for rule in rules):
             output_file.write("[Rule]\n")
             output_file.write("\n".join(rules) + "\n\n")

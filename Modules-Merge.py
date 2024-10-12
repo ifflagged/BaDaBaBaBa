@@ -27,10 +27,21 @@ def merge_modules(input_file):
     mitm_hosts = []
 
     for module_url in module_urls:
+        print(f"Processing module: {module_url}")  # 调试信息
         response = requests.get(module_url)
+        if response.status_code != 200:
+            print(f"Failed to download {module_url}: {response.status_code}")
+            continue
+        
         content = response.text
 
-        rules += [f"# {module_url.split('/')[-1].split('.')[0]}"] + extract_section(content, "Rule")
+        module_rules = extract_section(content, "Rule")
+        if module_rules:
+            rules += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rules
+            print(f"Extracted {len(module_rules)} rules from {module_url}")  # 调试信息
+        else:
+            print(f"No rules found in {module_url}")  # 调试信息
+
         rewrites += extract_section(content, "Rewrite")
         scripts += extract_section(content, "Script")
         mitm_section = extract_section(content, "MITM")

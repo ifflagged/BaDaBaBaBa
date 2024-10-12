@@ -32,7 +32,15 @@ def process_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
+    print(f"Processing file: {file_path}")
+    print(f"File type: {file_type}")
+
     rules, rewrites, scripts, mitm = extract_rules(content, file_type)
+
+    print(f"Extracted Rules: {rules}")
+    print(f"Extracted Rewrites: {rewrites}")
+    print(f"Extracted Scripts: {scripts}")
+    print(f"Extracted MITM: {mitm}")
 
     return {
         'rules': rules,

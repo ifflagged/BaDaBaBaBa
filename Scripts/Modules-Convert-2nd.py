@@ -1,96 +1,71 @@
 import os
-import requests
 import re
 
-# 定义需要的部分
-required_sections = ['[Rule]', '[Rewrite]', '[Script]', '[MITM]']
+def extract_rules(file_content):
+    rules = {
+        'Rule': [],
+        'URL Rewrite': [],
+        'Rewrite': [],
+        'Script': [],
+        'MITM': []
+    }
 
-# 下载文件函数
-def download_file(url):
-    response = requests.get(url)
-    return response.text if response.status_code == 200 else None
-
-# 检查和分类各部分内容
-def check_and_add_sections(content):
-    sections = {section: '' for section in required_sections}
-    
-    lines = content.splitlines()
-
-    # 检查条件
-    has_direct_reject = any(re.search(r',\s*DIRECT\s*', line, re.IGNORECASE) or re.search(r',\s*REJECT\s*', line, re.IGNORECASE) for line in lines)
-    
-    has_rewrite = any(re.search(r'^http.*- reject', line) for line in lines) or any(re.search(r'^\$1\s+302', line) for line in lines)
-
-    has_pattern_script = any('pattern=' in line and 'script-path=' in line for line in lines)
-    has_hostname = any('Hostname =' in line for line in lines)
-
-    # 分类内容
+    lines = file_content.splitlines()
     for line in lines:
-        line = line.strip()
+        line_lower = line.lower()
         
-        # 对于 [Rule]
-        if has_direct_reject and (re.search(r'URL-REGEX|DOMAIN|IP-CIDR', line) or re.search(r'AND', line)):
-            sections['[Rule]'] += line + '\n'
+        # 检查 Rule
+        if re.search(r',\s*dIRECT\s*,\s*REJECT\s*,\s*dIRECT\s*,\s*REJECT', line_lower):
+            rules['Rule'].append(line)
         
-        # 对于 [Rewrite]
-        if has_rewrite and (re.search(r'^http.*- reject', line) or re.search(r'^http.*reject', line)):
-            sections['[Rewrite]'] += line + '\n'
+        # 针对 .sgmodule 文件的 URL Rewrite
+        if '^http*' in line:
+            if '- reject' in line or '$1 302' in line:
+                rules['URL Rewrite'].append(line)
         
-        # 对于 [Script]
-        if has_pattern_script and 'pattern=' in line and 'script-path=' in line:
-            sections['[Script]'] += line + '\n'
+        # 针对 .plugin 文件的 Rewrite
+        if '^http*' in line:
+            if 'reject' in line or '302 $1' in line:
+                rules['Rewrite'].append(line)
         
-        # 对于 [MITM]
-        if has_hostname:
-            if 'Hostname =' in line:
-                sections['[MITM]'] += line + '\n'
-
-    modified_content = ''
-    for section in required_sections:
-        modified_content += section + '\n'
-        modified_content += sections[section] + '\n'
-        if not sections[section]:  # 如果该部分没有内容，添加一个占位符
-            modified_content += '# Placeholder for ' + section + '\n\n'
+        # 检查 Script
+        if 'pattern=' in line and 'script-path=' in line:
+            rules['Script'].append(line)
+        
+        # 检查 MITM
+        if 'hostname =' in line_lower:
+            rules['MITM'].append(line)
     
-    return modified_content
+    return rules
 
-# 保存文件
-def save_file(filepath, content):
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(content)
+def process_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        file_content = f.read()
+    
+    return extract_rules(file_content)
 
-# 处理模块
-def process_module(url, output_directory):
-    content = download_file(url)
-    if content:
-        modified_content = check_and_add_sections(content)
-        output_filename = os.path.basename(url)  # 提取文件名
-        output_path = os.path.join(output_directory, output_filename)  # 生成输出文件路径
-        save_file(output_path, modified_content)
-        print(f"Processed and saved: {output_path}")
-    else:
-        print(f"Failed to download: {url}")
+def save_extracted_data(rules, output_dir, module_type):
+    for category, entries in rules.items():
+        if entries:
+            category_dir = os.path.join(output_dir, category)
+            os.makedirs(category_dir, exist_ok=True)
+            output_file = os.path.join(category_dir, f'{module_type}.txt')
+            with open(output_file, 'a', encoding='utf-8') as f:
+                f.write('\n'.join(entries) + '\n')
 
-# 主函数
-def main(urls_file_path):
-    # 创建输出目录（如果不存在）
-    surge_directory = 'Modules/Surge/2nd/'
-    loon_directory = 'Modules/Loon/2nd/'
-    os.makedirs(surge_directory, exist_ok=True)
-    os.makedirs(loon_directory, exist_ok=True)
+def main(input_dir, output_dir):
+    for file_name in os.listdir(input_dir):
+        file_path = os.path.join(input_dir, file_name)
 
-    # 从文件读取 URLs
-    with open(urls_file_path, 'r', encoding='utf-8') as urls_file:
-        module_urls = [line.strip() for line in urls_file if line.strip()]  # 读取非空行
+        if file_name.endswith('.sgmodule'):
+            rules = process_file(file_path)
+            save_extracted_data(rules, os.path.join(output_dir, 'Surge/2nd'), 'Surge')
+        
+        elif file_name.endswith('.plugin'):
+            rules = process_file(file_path)
+            save_extracted_data(rules, os.path.join(output_dir, 'Loon/2nd'), 'Loon')
 
-    # 处理每个 URL
-    for url in module_urls:
-        if url.endswith('.sgmodule'):
-            process_module(url, surge_directory)
-        elif url.endswith('.plugin'):
-            process_module(url, loon_directory)
-
-# 示例使用
-if __name__ == "__main__":
-    urls_file_path = 'Links/2nd-Convert.txt'  # 设置保存路径
-    main(urls_file_path)
+if __name__ == '__main__':
+    input_directory = 'Links/2nd-Convert.txt'  # 输入文件夹路径
+    output_directory = 'Modules'  # 输出文件夹路径
+    main(input_directory, output_directory)

@@ -30,6 +30,10 @@ def extract_rules(file_content):
         
         if 'hostname =' in line_lower:
             rules['MITM'].append(line)
+
+    # Debug output for rule counts
+    for category, entries in rules.items():
+        print(f"{category}: {len(entries)} entries")
     
     return rules
 
@@ -57,6 +61,7 @@ def save_extracted_data(rules, output_dir, module_type):
             output_file = os.path.join(category_dir, f'{module_type}{extension}')
             with open(output_file, 'a', encoding='utf-8') as f:
                 f.write('\n'.join(entries) + '\n')
+            print(f"Saved to: {output_file}")  # Debug output
 
 def main(input_file, output_dir, module_type):
     if os.path.isfile(input_file):

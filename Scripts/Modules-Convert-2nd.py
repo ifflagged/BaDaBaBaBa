@@ -1,5 +1,6 @@
 import os
 import re
+import requests
 
 def extract_rules(content, file_type):
     rules = []
@@ -7,7 +8,6 @@ def extract_rules(content, file_type):
     scripts = []
     mitm = []
 
-    # 定义正则表达式
     rule_pattern = re.compile(r'(?i)\bDIRECT\b|\bREJECT\b')
     rewrite_pattern = re.compile(r'^\^http.*?(- reject|\$1 302)', re.IGNORECASE)
     script_pattern = re.compile(r'pattern=|script-path=')
@@ -27,14 +27,8 @@ def extract_rules(content, file_type):
 
     return rules, rewrites, scripts, mitm
 
-def process_file(file_path):
-    file_type = file_path.split('.')[-1]
-    print(f"Processing file: {file_path}")
-
-    with open(file_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    print(f"File content:\n{content}\n")
+def process_file(content, file_type):
+    print(f"Processing {file_type} content...")
 
     rules, rewrites, scripts, mitm = extract_rules(content, file_type)
 
@@ -64,30 +58,36 @@ def save_to_file(data, output_path, file_type):
             f.write('[Script]\n' + '\n'.join(data['scripts']) + '\n')
             f.write('[MITM]\n' + '\n'.join(data['mitm']) + '\n')
 
+def download_file(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.text
+
 def main():
-    input_dir = 'Modules/Surge/2nd/'
+    input_file = os.getenv('INPUT_FILE')  # 从环境变量获取输入文件路径
     output_surge_dir = 'Modules/Surge/2nd/'
     output_loon_dir = 'Modules/Loon/2nd/'
 
-    print("Listing input files...")
-    try:
-        files = os.listdir(input_dir)
-        if files:
-            for filename in files:
-                print(f"Found file: {filename}")
-        else:
-            print("No files found in input directory.")
-    except Exception as e:
-        print(f"Error accessing input directory: {e}")
-        return
+    print(f"Reading links from {input_file}...")
+    with open(input_file, 'r', encoding='utf-8') as f:
+        links = f.readlines()
 
-    for filename in files:
-        if filename.endswith('.sgmodule'):
-            data = process_file(os.path.join(input_dir, filename))
-            save_to_file(data, os.path.join(output_surge_dir, filename), 'sgmodule')
-        elif filename.endswith('.plugin'):
-            data = process_file(os.path.join(input_dir, filename))
-            save_to_file(data, os.path.join(output_loon_dir, filename), 'plugin')
+    for link in links:
+        link = link.strip()
+        if link.endswith('.sgmodule'):
+            try:
+                content = download_file(link)
+                data = process_file(content, 'sgmodule')
+                save_to_file(data, os.path.join(output_surge_dir, os.path.basename(link)), 'sgmodule')
+            except Exception as e:
+                print(f"Error processing {link}: {e}")
+        elif link.endswith('.plugin'):
+            try:
+                content = download_file(link)
+                data = process_file(content, 'plugin')
+                save_to_file(data, os.path.join(output_loon_dir, os.path.basename(link)), 'plugin')
+            except Exception as e:
+                print(f"Error processing {link}: {e}")
 
 if __name__ == '__main__':
     main()

@@ -69,11 +69,18 @@ def main():
     output_loon_dir = 'Modules/Loon/2nd/'
 
     print(f"Reading links from {input_file}...")
-    with open(input_file, 'r', encoding='utf-8') as f:
-        links = f.readlines()
+    try:
+        with open(input_file, 'r', encoding='utf-8') as f:
+            links = f.readlines()
+    except Exception as e:
+        print(f"Error reading input file: {e}")
+        return
 
     for link in links:
         link = link.strip()
+        if not link:
+            continue  # 跳过空行
+        print(f"Processing link: {link}")
         if link.endswith('.sgmodule'):
             try:
                 content = download_file(link)
@@ -88,6 +95,8 @@ def main():
                 save_to_file(data, os.path.join(output_loon_dir, os.path.basename(link)), 'plugin')
             except Exception as e:
                 print(f"Error processing {link}: {e}")
+
+    print("Processing completed.")
 
 if __name__ == '__main__':
     main()

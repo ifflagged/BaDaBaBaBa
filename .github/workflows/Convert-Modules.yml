@@ -19,29 +19,30 @@ jobs:
         README_CONTENT=""
         FILES_LIST=""
         while read -r url; do
-          # 提取作者名称和文件名
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
           filename_no_ext=$(basename "$url" | cut -d'.' -f1)
-          # 创建作者文件夹
           mkdir -p "Original/$author"
-          # 下载文件
           file_path="Original/$author/$filename"
           curl -L -o "$file_path" "$url"
-
-          # 准备README内容
+          
           README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
           
-          # 提取非注释行中的 hostname 信息
           hostnames=$(grep -v '^#' "$file_path" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
-          # 生成注释内容
           comment="# ${filename_no_ext} // ${hostnames}"
-          
-          # 将文件信息追加到 FILES_LIST
-          FILES_LIST="${FILES_LIST}\n${file_path};${author};${filename_no_ext};${comment}"
+
+          # 处理重命名
+          base_module_name="${author}_${filename_no_ext}"
+          module_name="${base_module_name}"
+          count=1
+          while [[ -e "Modules/Surge/${module_name}.sgmodule" || -e "Modules/Loon/${module_name}.plugin" ]]; do
+            module_name="${base_module_name}-${count}"
+            ((count++))
+          done
+
+          FILES_LIST="${FILES_LIST}\n${file_path};${author};${module_name};${comment}"
         done < Links/Modules-Links.txt
         
-        # 将 README 内容和文件列表输出到步骤的输出中
         echo "README_CONTENT<<EOF" >> $GITHUB_ENV
         echo -e "$README_CONTENT" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
@@ -53,13 +54,12 @@ jobs:
       run: |
         IFS=$'\n'
         for file_info in $FILES_LIST; do
-          # 跳过空行
           [ -z "$file_info" ] && continue
-          file_path=$(echo "$file_info" | cut -d';' -f1)
-          author=$(echo "$file_info" | cut -d';' -f2)
-          filename=$(echo "$file_info" | cut -d';' -f3)
-          comment=$(echo "$file_info" | cut -d';' -f4)
-          python3 Scripts/Convert-Modules.py "$file_path" "${author}_${filename}" "$comment"
+          file_path=$(echo $file_info | cut -d';' -f1)
+          author=$(echo $file_info | cut -d';' -f2)
+          module_name=$(echo $file_info | cut -d';' -f3)
+          comment=$(echo $file_info | cut -d';' -f4)
+          bash Scripts/Convert-Modules.sh "$file_path" "$module_name" "$comment" "Modules"
         done
 
     - name: Create README in Modules directory

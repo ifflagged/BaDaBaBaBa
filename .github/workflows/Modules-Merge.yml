@@ -31,7 +31,7 @@ jobs:
           echo "Generated files in Modules/Loon:"
           ls -la Modules/Loon/
 
-      - name: Check updated files
+      - name: Check updated files and commit changes
         id: check_updates
         run: |
           # 检查是否存在上一个提交
@@ -40,22 +40,20 @@ jobs:
           else
             UPDATED_FILES=$(git diff --name-only HEAD Modules/)
           fi
-          echo "Updated files: $UPDATED_FILES"
-          echo "::set-output name=updated_files::$UPDATED_FILES"
-
-      - name: Check git status
-        run: |
-          git status
-          git diff
-
-      - name: Commit and push changes
-        run: |
-          git config --local user.name "ifflagged"
-          git config --local user.email "qibo.sign@outlook.com"
-          git add Modules/Surge/*
-          git add Modules/Loon/*
-          git commit -m "Update merged modules" || echo "No changes to commit"
-          git push
+          
+          if [ -n "$UPDATED_FILES" ]; then
+            echo "Updated files: $UPDATED_FILES"
+            echo "::set-output name=updated_files::$UPDATED_FILES"
+            git config --local user.name "ifflagged"
+            git config --local user.email "qibo.sign@outlook.com"
+            git add Modules/Surge/*
+            git add Modules/Loon/*
+            git commit -m "Update merged modules"
+            git push
+          else
+            echo "No changes to commit."
+            echo "::set-output name=updated_files::"
+          fi
 
       - name: Send TG Notification
         run: |
@@ -64,15 +62,12 @@ jobs:
             MESSAGE="The following files have been updated:\n"
             GITHUB_URL="https://github.com/ifflagged/BaDaBaBaBa/blob/main/"
             while read -r file; do
-              # 去掉 'Modules/' 前缀
               display_name=$(echo "$file" | sed 's/Modules\///')
-              # 生成完整链接
               file_url="${GITHUB_URL}${file}"
-              # 生成 markdown 格式的超链接
               MESSAGE="${MESSAGE}[${display_name}](${file_url})\n"
             done <<< "$UPDATED_FILES"
 
-            # 使用 echo -e 处理换行符并发送通知
+            # 发送通知
             curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
               -d chat_id=${{ secrets.TG_ID }} \
               -d text="$(echo -e "$MESSAGE")" \

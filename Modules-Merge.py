@@ -58,7 +58,7 @@ def merge_modules(input_file, output_type):
             else:  # 对于 .plugin 文件
                 for line in mitm_section:
                     mitm_hosts.update(line.strip().split(","))
-    
+
     # 生成 Hostname 字符串
     if output_type == 'sgmodule':
         combined_mitmh = "Hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
@@ -120,10 +120,10 @@ if __name__ == "__main__":
         sys.exit(1)
 
     for module_file in sys.argv[1:]:
-        if module_file.endswith('.txt'):
-            download_modules(module_file)
-            # 根据文件后缀决定合并方式
-            if module_file.startswith("Modules-"):
-                merge_modules(module_file, 'sgmodule')
-            else:
-                merge_modules(module_file, 'plugin')
+        download_modules(module_file)
+        
+        # 根据文件后缀决定合并方式
+        if module_file.startswith("Modules-") and module_file.endswith('.txt'):
+            merge_modules(module_file, 'sgmodule')
+        elif module_file.startswith("Loon-") and module_file.endswith('.txt'):
+            merge_modules(module_file, 'plugin')

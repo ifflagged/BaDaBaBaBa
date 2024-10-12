@@ -25,10 +25,11 @@ jobs:
 
       - name: Run conversion scripts
         run: |
-          python Scripts/Modules-Convert-2nd.py Links/2nd-Convert.txt
+          python Scripts/Modules-Convert-2nd.py Links/2nd-Convert.txt output_dir module_type
 
       - name: Check for changes
         run: |
+          git status  # Debug output
           if [[ $(git status --porcelain) ]]; then
             git config --local user.name "ifflagged"
             git config --local user.email "qibo.sign@outlook.com"

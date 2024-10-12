@@ -8,22 +8,26 @@ def extract_rules(content, file_type):
     scripts = []
     mitm = []
 
-    rule_pattern = re.compile(r'(?i)\bDIRECT\b|\bREJECT\b')
+    # 正则表达式匹配
+    rule_pattern = re.compile(r'(?i)(,\s*DIRECT|,\s*REJECT)')
     rewrite_pattern = re.compile(r'^\^http.*?(- reject|\$1 302)', re.IGNORECASE)
     script_pattern = re.compile(r'pattern=|script-path=')
     mitm_pattern = re.compile(r'(?i)Hostname\s*=')
 
     for line in content.splitlines():
+        line = line.strip()
+        if not line:
+            continue  # 跳过空行
         if rule_pattern.search(line):
-            rules.append(line.strip())
+            rules.append(line)
         if file_type == 'sgmodule' and rewrite_pattern.search(line):
-            rewrites.append(line.strip())
+            rewrites.append(line)
         elif file_type == 'plugin' and rewrite_pattern.search(line):
-            rewrites.append(line.strip())
+            rewrites.append(line)
         if script_pattern.search(line):
-            scripts.append(line.strip())
+            scripts.append(line)
         if mitm_pattern.search(line):
-            mitm.append(line.strip())
+            mitm.append(line)
 
     return rules, rewrites, scripts, mitm
 

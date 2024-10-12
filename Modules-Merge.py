@@ -8,13 +8,12 @@ def extract_section(content, section_name):
     section_lines = []
 
     for line in lines:
-        # 检查是否进入特定部分
         if line.startswith(f"[{section_name}]"):
             in_section = True
         elif line.startswith("[") and in_section:
             break
         elif in_section and (not line.startswith("#")):  # 忽略注释行
-            section_lines.append(line.strip())  # 去除前后空格
+            section_lines.append(line.strip())
     
     return section_lines
 
@@ -28,39 +27,37 @@ def merge_modules(input_file):
     mitm_hosts = []
 
     for module_url in module_urls:
-        print(f"Processing module: {module_url}")  # 调试信息
         response = requests.get(module_url)
         
         if response.status_code != 200:
-            print(f"Failed to download {module_url}: {response.status_code}")
             continue
         
         content = response.text
-        print(f"Content of {module_url}:\n{content[:200]}")  # 输出前200个字符进行调试
 
         # 提取不同部分
         module_rules = extract_section(content, "Rule")
         if module_rules:
             rules += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rules
-            print(f"Extracted {len(module_rules)} rules from {module_url}")  # 调试信息
-        else:
-            print(f"No rules found in {module_url}")  # 调试信息
 
-        rewrites += extract_section(content, "Rewrite")
-        scripts += extract_section(content, "Script")
+        module_rewrites = extract_section(content, "Rewrite")
+        if module_rewrites:
+            rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites
+
+        module_scripts = extract_section(content, "Script")
+        if module_scripts:
+            scripts += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_scripts
+
         mitm_section = extract_section(content, "MITM")
-
         if mitm_section:
             mitm_hosts.append(mitm_section[0].replace("Hostname =", "").strip())
 
     combined_mitmh = "Hostname = %APPEND% " + ", ".join(mitm_hosts)
 
     output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".sgmodule"
-    name = output_file_name.replace(".sgmodule", "").capitalize()  # 获取名称
+    name = output_file_name.replace(".sgmodule", "").capitalize()
 
     output_path = f"Modules/Surge/{output_file_name}"
 
-    # 创建目录如果不存在
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "w") as output_file:
@@ -92,9 +89,6 @@ def download_modules(module_file):
             filename = url.split('/')[-1]
             with open(filename, 'wb') as module_file:
                 module_file.write(response.content)
-            print(f"下载完成：{filename}")
-        else:
-            print(f"下载失败：{url}")
 
 # 示例使用
 if __name__ == "__main__":

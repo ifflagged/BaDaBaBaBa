@@ -1,5 +1,6 @@
 import os
 import re
+import requests
 
 def extract_rules(file_content, module_type):
     rules = {
@@ -42,11 +43,30 @@ def extract_rules(file_content, module_type):
     
     return rules
 
-def process_file(file_path, module_type):
-    with open(file_path, 'r', encoding='utf-8') as f:
-        file_content = f.read()
-    
-    return extract_rules(file_content, module_type)
+def fetch_and_process_links(links):
+    all_rules = {
+        'Rule': [],
+        'URL Rewrite': [],
+        'Rewrite': [],
+        'Script': [],
+        'MITM': []
+    }
+
+    for link in links:
+        try:
+            response = requests.get(link)
+            response.raise_for_status()
+            file_content = response.text
+            module_type = 'Surge' if link.endswith('.sgmodule') else 'Loon'
+            rules = extract_rules(file_content, module_type)
+
+            for category, entries in rules.items():
+                all_rules[category].extend(entries)
+
+        except requests.RequestException as e:
+            print(f"Error fetching {link}: {e}")
+
+    return all_rules
 
 def save_extracted_data(rules, output_dir, module_type):
     if module_type == 'Surge':
@@ -68,19 +88,21 @@ def save_extracted_data(rules, output_dir, module_type):
                 f.write('\n'.join(entries) + '\n')
             print(f"Saved to: {output_file}")  # Debug output
 
-def main(input_file, output_dir, module_type):
+def main(input_file, output_dir):
     if os.path.isfile(input_file):
-        rules = process_file(input_file, module_type)
-        save_extracted_data(rules, output_dir, module_type)
+        with open(input_file, 'r', encoding='utf-8') as f:
+            links = f.read().splitlines()
+        
+        rules = fetch_and_process_links(links)
+        save_extracted_data(rules, output_dir, 'Surge')  # or 'Loon' based on your logic
     else:
         print(f"Error: {input_file} is not a valid file.")
 
 if __name__ == '__main__':
     import sys
-    if len(sys.argv) != 4:
-        print("进行插件二次转换")
+    if len(sys.argv) != 3:
+        print("Usage: python script.py input_file output_directory")
     else:
         input_file = sys.argv[1]
         output_directory = sys.argv[2]
-        module_type = sys.argv[3]
-        main(input_file, output_directory, module_type)
+        main(input_file, output_directory)

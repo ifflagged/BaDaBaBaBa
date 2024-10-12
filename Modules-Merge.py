@@ -63,7 +63,7 @@ def merge_modules(input_file, output_type, module_urls):
         combined_mitmh = ", ".join(sorted(mitm_hosts))  # 直接合并，不加 %APPEND%
 
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "").capitalize()
-    output_file_name = f"Merged_{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
+    output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
     output_path = f"Modules/{'Surge' if output_type == 'sgmodule' else 'Loon'}/{output_file_name}"
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)

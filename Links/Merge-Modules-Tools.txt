@@ -10,6 +10,12 @@ https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/luestr_BlockAdver
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/luestr_DiDi_remove_ads.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/luestr_Umetrip_remove_ads.sgmodule
 
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/Yuheng0101_NoAds.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/ZenmoFeiShi_Smzdm.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/ddgksf2013_SmzdmAds.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_dianPing.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_dianPing-2.sgmodule
+
 https://github.com/ifflagged/Neverflagged/blob/main/Loon/Plugin/Tools.plugin?raw=true
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/RuCu6_amap.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/RuCu6_bilibili.plugin
@@ -22,3 +28,9 @@ https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/RuCu6_youtube.plug
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/luestr_BlockAdvertisers.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/luestr_DiDi_remove_ads.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/luestr_Umetrip_remove_ads.plugin
+
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/Yuheng0101_NoAds.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/ZenmoFeiShi_Smzdm.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/ddgksf2013_SmzdmAds.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_dianPing.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_dianPing-2.plugin

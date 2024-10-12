@@ -2,12 +2,17 @@ import sys
 import re
 import os
 
-def process_file(input_file, module_name, comment, output_dir, file_extension, is_surge=True):
+def apply_replacements(content, replacements):
+    for pattern, repl in replacements:
+        content = [re.sub(pattern, repl, line, flags=re.IGNORECASE) for line in content]
+    return content
+
+def process_file(input_file, module_name, comment, output_dir, is_surge=True):
     with open(input_file, 'r') as file:
         content = file.readlines()
 
     # Common replacements
-    sed_common = [
+    common_replacements = [
         (r'raw\.githubusercontent\.com/(main|master)/', r'raw/\1/'),
         (r'raw\.githubusercontent\.com/github\.com', 'github.com'),
         (r'HOST,', 'DOMAIN,'),
@@ -18,13 +23,10 @@ def process_file(input_file, module_name, comment, output_dir, file_extension, i
         (r'(\bREJECT\b)([^,]*)$', r'\1, no-resolve'),
     ]
 
-    for pattern, repl in sed_common:
-        content = [re.sub(pattern, repl, line, flags=re.IGNORECASE) for line in content]
+    content = apply_replacements(content, common_replacements)
 
-    # Surge conversion
-    if is_surge:
-        surge_content = [f"{comment}\n"] + content
-        surge_replacements = [
+    replacements = {
+        'surge': [
             (r'url reject-200', r'- reject'),
             (r'url reject-img', r'- reject'),
             (r'url reject-dict', r'- reject'),
@@ -64,19 +66,8 @@ def process_file(input_file, module_name, comment, output_dir, file_extension, i
             (r' script-path = ', r',script-path='),
             (r'(\S*) 302 (\S*)', r'\1 \2 302'),
             (r'hostname =', r'Hostname = %APPEND%'),
-        ]
-
-        for pattern, repl in surge_replacements:
-            surge_content = [re.sub(pattern, repl, line, flags=re.IGNORECASE) for line in surge_content]
-
-        surge_output_path = os.path.join(output_dir, f"{module_name}.sgmodule")
-        with open(surge_output_path, 'w') as output_file:
-            output_file.writelines(surge_content)
-
-    # Loon conversion
-    else:
-        loon_content = [f"{comment}\n"] + content
-        loon_replacements = [
+        ],
+        'loon': [
             (r'url reject-200', r'reject-200'),
             (r'url reject-img', r'reject-img'),
             (r'url reject-dict', r'reject-dict'),
@@ -90,12 +81,12 @@ def process_file(input_file, module_name, comment, output_dir, file_extension, i
             (r'url script-request-body', r'http-request '),
             (r'url script-request-header', r'http-request '),
             (r'url script-analyze-echo-response', r'http-request '),
-            (r'/script-response-body/', r', requires-body = true, tag = {module_name}'),
-            (r'/script-echo-response/', r', requires-body = true, tag = {module_name}'),
-            (r'/script-response-header/', r', requires-body = true, tag = {module_name}'),
-            (r'/script-request-body/', r', requires-body = true, tag = {module_name}'),
-            (r'/script-analyze-echo-response/', r', requires-body = true, tag = {module_name}'),
-            (r'/script-request-header/', r', requires-body = false, tag = {module_name}'),
+            (r'/script-response-body/', r', requires-body = true, tag = ' + module_name),
+            (r'/script-echo-response/', r', requires-body = true, tag = ' + module_name),
+            (r'/script-response-header/', r', requires-body = true, tag = ' + module_name),
+            (r'/script-request-body/', r', requires-body = true, tag = ' + module_name),
+            (r'/script-analyze-echo-response/', r', requires-body = true, tag = ' + module_name),
+            (r'/script-request-header/', r', requires-body = false, tag = ' + module_name),
             (r'url script-response-body', r'script-path='),
             (r'url script-echo-response', r'script-path='),
             (r'url script-response-header', r'script-path='),
@@ -104,19 +95,24 @@ def process_file(input_file, module_name, comment, output_dir, file_extension, i
             (r'url script-analyze-echo-response', r'script-path='),
             (r', tag.*', f', tag = {module_name}'),
             (r'hostname =', r'Hostname ='),
-        ]
+        ],
+    }
 
-        for pattern, repl in loon_replacements:
-            loon_content = [re.sub(pattern, repl, line, flags=re.IGNORECASE) for line in loon_content]
+    if is_surge:
+        content = apply_replacements(content, replacements['surge'])
+        output_file_name = f"{module_name}.sgmodule"
+    else:
+        content = apply_replacements(content, replacements['loon'])
+        output_file_name = f"{module_name}.plugin"
 
-        loon_output_path = os.path.join(output_dir, f"{module_name}.plugin")
-        with open(loon_output_path, 'w') as output_file:
-            output_file.writelines(loon_content)
+    output_path = os.path.join(output_dir, output_file_name)
+    with open(output_path, 'w') as output_file:
+        output_file.writelines(content)
 
 if __name__ == "__main__":
     input_file = sys.argv[1]
     module_name = sys.argv[2]
     comment = sys.argv[3]
     
-    process_file(input_file, module_name, comment, 'Modules/Surge', 'sgmodule', is_surge=True)
-    process_file(input_file, module_name, comment, 'Modules/Loon', 'plugin', is_surge=False)
+    process_file(input_file, module_name, comment, 'Modules/Surge', is_surge=True)
+    process_file(input_file, module_name, comment, 'Modules/Loon', is_surge=False)

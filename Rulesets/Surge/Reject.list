@@ -1069,7 +1069,7 @@ IP-CIDR,118.89.204.198/32,no-resolve
 IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,no-resolve
 # > ZOL
 DOMAIN,apppv.zol.com.cn
-DOMAIN,pvnapp.zol.com.cn
+DOMAIN,pvnapp.zol.com.cn-e 
 
 
 # Merging from ConnersHua/Malicious.list
@@ -1173,7 +1173,7 @@ DOMAIN-SUFFIX,xshellcn.com
 DOMAIN-SUFFIX,yihuifu.cn
 DOMAIN-SUFFIX,yuanchengxiezuo.com
 DOMAIN-SUFFIX,zbrushcn.com
-DOMAIN-SUFFIX,zhzzx.com
+DOMAIN-SUFFIX,zhzzx.com-e 
 
 
 # Merging from ConnersHua/Tracking.list
@@ -1287,7 +1287,7 @@ DOMAIN-SUFFIX,udrig.com
 DOMAIN,safebrowsing.urlsec.qq.com
 # > Tenjin
 DOMAIN,track.tenjin.com
-DOMAIN,track.tenjin.io
+DOMAIN,track.tenjin.io-e 
 
 
 # Merging from RuCu6/MyBlockAds.list
@@ -1434,7 +1434,7 @@ IP-CIDR6, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, no-resolve
 # 字节跳动
 DOMAIN, ad.zijieapi.com
 DOMAIN-KEYWORD, -ad-sign.byteimg.com
-
+-e 
 
 
 # Merging from RuCu6/PornAds.list

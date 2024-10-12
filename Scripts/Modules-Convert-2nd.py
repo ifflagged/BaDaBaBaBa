@@ -7,7 +7,6 @@ def extract_rules(content, file_type):
     scripts = []
     mitm = []
 
-    # 定义正则表达式
     rule_pattern = re.compile(r'(?i)\bDIRECT\b|\bREJECT\b')
     rewrite_pattern = re.compile(r'^\^http.*?(- reject|\$1 302)', re.IGNORECASE)
     script_pattern = re.compile(r'pattern=|script-path=')
@@ -29,11 +28,12 @@ def extract_rules(content, file_type):
 
 def process_file(file_path):
     file_type = file_path.split('.')[-1]
+    print(f"Processing file: {file_path}")
+
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
-
-    print(f"Processing file: {file_path}")
-    print(f"File type: {file_type}")
+    
+    print(f"File content:\n{content}\n")
 
     rules, rewrites, scripts, mitm = extract_rules(content, file_type)
 
@@ -57,7 +57,7 @@ def save_to_file(data, output_path, file_type):
             f.write('[URL Rewrite]\n' + '\n'.join(data['rewrites']) + '\n')
             f.write('[Script]\n' + '\n'.join(data['scripts']) + '\n')
             f.write('[MITM]\n' + '\n'.join(data['mitm']) + '\n')
-        else:  # plugin
+        else:
             f.write('[Rule]\n' + '\n'.join(data['rules']) + '\n')
             f.write('[Rewrite]\n' + '\n'.join(data['rewrites']) + '\n')
             f.write('[Script]\n' + '\n'.join(data['scripts']) + '\n')
@@ -68,7 +68,9 @@ def main():
     output_surge_dir = 'Modules/Surge/2nd/'
     output_loon_dir = 'Modules/Loon/2nd/'
 
+    print("Listing input files...")
     for filename in os.listdir(input_dir):
+        print(f"Found file: {filename}")
         if filename.endswith('.sgmodule'):
             data = process_file(os.path.join(input_dir, filename))
             save_to_file(data, os.path.join(output_surge_dir, filename), 'sgmodule')

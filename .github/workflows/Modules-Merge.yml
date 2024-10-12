@@ -24,6 +24,13 @@ jobs:
         run: |
           python Modules-Merge.py Modules-Tools.txt
 
+      - name: List generated files
+        run: |
+          echo "Generated files in Modules/Surge:"
+          ls -la Modules/Surge/
+          echo "Generated files in Modules/Loon:"
+          ls -la Modules/Loon/
+
       - name: Check updated files
         id: check_updates
         run: |
@@ -36,6 +43,11 @@ jobs:
           echo "Updated files: $UPDATED_FILES"
           echo "::set-output name=updated_files::$UPDATED_FILES"
 
+      - name: Check git status
+        run: |
+          git status
+          git diff
+
       - name: Commit and push changes
         run: |
           git config --local user.name "ifflagged"
@@ -43,7 +55,7 @@ jobs:
           git add Modules/Surge/*
           git add Modules/Loon/*
           git commit -m "Update merged modules" || echo "No changes to commit"
-          git push --force
+          git push
 
       - name: Send TG Notification
         run: |

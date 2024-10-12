@@ -27,9 +27,11 @@ def merge_modules(input_file, is_loon=False):
     mitm_hosts = set()
 
     for module_url in module_urls:
-        response = requests.get(module_url)
-        
-        if response.status_code != 200:
+        try:
+            response = requests.get(module_url)
+            response.raise_for_status()  # 检查请求是否成功
+        except requests.RequestException as e:
+            print(f"跳过无效链接: {module_url}，错误: {e}")
             continue
         
         content = response.text
@@ -64,7 +66,7 @@ def merge_modules(input_file, is_loon=False):
     else:
         output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".sgmodule"
         name = output_file_name.replace(".sgmodule", "").capitalize()
-        header = f"# !name= 🧰 {name}\n# !desc= Merger {name} for Surge & Shadowrocket\n# !category=Jacob\n\n"
+        header = f"# !name= 🧰 {name}\n# !desc= Tools for Surge & Shadowrocket\n# !category=Jacob\n\n"
         output_path = f"Modules/Surge/{output_file_name}"  # Surge 文件保存路径
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -97,11 +99,14 @@ def download_modules(module_file):
         module_urls = f.read().splitlines()
 
     for url in module_urls:
-        response = requests.get(url)
-        if response.status_code == 200:
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # 检查请求是否成功
             filename = url.split('/')[-1]
             with open(filename, 'wb') as module_file:
                 module_file.write(response.content)
+        except requests.RequestException as e:
+            print(f"跳过无效链接: {url}，错误: {e}")
 
 # 示例使用
 if __name__ == "__main__":

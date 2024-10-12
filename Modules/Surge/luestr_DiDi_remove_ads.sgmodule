@@ -1,4 +1,3 @@
-# DiDi_remove_ads // common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*,116.85.2.*, 116.85.3.*, 139.199.240.84,
 #!name = 滴滴出行去广告
 #!desc = 移除开屏广告、精简首页、底栏和我的页面。
 #!openUrl = https://apps.apple.com/app/id554499054
@@ -8,34 +7,22 @@
 #!system_version = 
 #!loon_version = 3.2.1(749)
 #!homepage = https://github.com/luestr/ProxyResource/blob/main/README.md
-#!icon = https://github.com/luestr/IconResource/raw/main/App_icon/120px/DiDi.png
+#!icon = https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DiDi.png
 #!date = 2024-09-08 22:05:03
 
 [Rule]
 # 拦截HTTPDNS
-DOMAIN, hd.xiaojukeji.com, REJECT
-
+DOMAIN, hd.xiaojukeji.com, REJECT, no-resolve
 # 拦截广告下发
-DOMAIN, gwp.xiaojukeji.com, REJECT
-AND, ((IP-ASN, 45090, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
-AND, ((IP-ASN, 63646, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
-# DOMAIN, img-ys011.didistatic.com, REJECT
-
+DOMAIN, gwp.xiaojukeji.com, REJECT, no-resolveAND, ((IP-ASN, 45090, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT, no-resolveAND, ((IP-ASN, 63646, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT, no-resolve# DOMAIN, img-ys011.didistatic.com, REJECT, no-resolve
 [Rewrite]
-^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget - reject
-^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds - reject
-^https:\/\/daijia\.kuaidadi\.com\/gateway - reject
-^https:\/\/freight\.xiaojukeji\.com\/gateway - reject
-^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget - reject
-^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast - reject
-^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf - reject
-
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpge - reject, no-resolve^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feed - reject, no-resolve^https:\/\/daijia\.kuaidadi\.com\/gatewa - reject, no-resolve^https:\/\/freight\.xiaojukeji\.com\/gatewa - reject, no-resolve^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mge - reject, no-resolve^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fas - reject, no-resolve^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/con - reject, no-resolve
 [Script]
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
+luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body = true
+luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body = true
+luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body = true
+luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body = true
+luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body = true
 
 [MitM]
 Hostname = %APPEND% common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*,116.85.2.*, 116.85.3.*, 139.199.240.84

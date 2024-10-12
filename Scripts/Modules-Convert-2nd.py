@@ -73,5 +73,5 @@ def main(urls_file_path):
 
 # 示例使用
 if __name__ == "__main__":
-    urls_file_path = '/Links/2nd-Convert.txt'  # 设置保存路径
+    urls_file_path = 'Links/2nd-Convert.txt'  # 设置保存路径
     main(urls_file_path)

@@ -3,4 +3,13 @@ https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/RuCu6_bilibili.sg
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/RuCu6_myblockads.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/RuCu6_pinduoduo.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/RuCu6_weibo.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/RuCu6_xianyu.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/RuCu6_xiaohongshu.sgmodule
+https://github.com/RuCu6/Loon/blob/main/Plugins/myblockads.plugin
+https://github.com/RuCu6/Loon/blob/main/Plugins/amap.plugin
+https://github.com/RuCu6/Loon/blob/main/Plugins/bilibili.plugin
+https://github.com/RuCu6/Loon/blob/main/Plugins/pinduoduo.plugin
+https://github.com/RuCu6/Loon/blob/main/Plugins/weibo.plugin
+https://github.com/RuCu6/Loon/blob/main/Plugins/xianyu.plugin
+https://github.com/RuCu6/Loon/blob/main/Plugins/xiaohongshu.plugin
+https://github.com/RuCu6/Loon/blob/main/Plugins/youtube.plugin

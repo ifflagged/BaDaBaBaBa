@@ -3,6 +3,7 @@ https://github.com/RuCu6/Loon/raw/main/Plugins/bilibili.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/myblockads.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/pinduoduo.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/weibo.plugin
+https://github.com/RuCu6/Loon/raw/main/Plugins/xianyu.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/xiaohongshu.plugin
 https://github.com/RuCu6/Loon/raw/main/Plugins/youtube.plugin
 https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/BlockAdvertisers.plugin

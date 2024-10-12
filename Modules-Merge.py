@@ -24,7 +24,7 @@ def merge_modules(input_file):
     rules = []
     rewrites = []
     scripts = []
-    mitm_hosts = []
+    mitm_hosts = set()  # 使用集合来去重
 
     for module_url in module_urls:
         response = requests.get(module_url)
@@ -49,9 +49,9 @@ def merge_modules(input_file):
 
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            mitm_hosts.append(mitm_section[0].replace("Hostname =", "").strip())
+            mitm_hosts.add(mitm_section[0].replace("Hostname =", "").strip())
 
-    combined_mitmh = "Hostname = %APPEND% " + ", ".join(mitm_hosts)
+    combined_mitmh = "Hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
 
     output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".sgmodule"
     name = output_file_name.replace(".sgmodule", "").capitalize()

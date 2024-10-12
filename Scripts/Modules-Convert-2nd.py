@@ -53,19 +53,20 @@ def save_extracted_data(rules, output_dir, module_type):
             with open(output_file, 'a', encoding='utf-8') as f:
                 f.write('\n'.join(entries) + '\n')
 
-def main(input_dir, output_dir):
-    for file_name in os.listdir(input_dir):
-        file_path = os.path.join(input_dir, file_name)
+def main(input_file, output_dir):
+    # 处理指定的文件
+    if os.path.isfile(input_file):
+        rules = process_file(input_file)
 
-        if file_name.endswith('.sgmodule'):
-            rules = process_file(file_path)
+        # 根据文件扩展名保存到相应的输出目录
+        if input_file.endswith('.sgmodule'):
             save_extracted_data(rules, os.path.join(output_dir, 'Surge/2nd'), 'Surge')
-        
-        elif file_name.endswith('.plugin'):
-            rules = process_file(file_path)
+        elif input_file.endswith('.plugin'):
             save_extracted_data(rules, os.path.join(output_dir, 'Loon/2nd'), 'Loon')
+    else:
+        print(f"Error: {input_file} is not a valid file.")
 
 if __name__ == '__main__':
-    input_directory = 'Links/2nd-Convert.txt'  # 输入文件夹路径
+    input_file = 'Links/2nd-Convert.txt'  # 输入文件路径
     output_directory = 'Modules'  # 输出文件夹路径
-    main(input_directory, output_directory)
+    main(input_file, output_directory)

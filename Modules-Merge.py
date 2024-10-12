@@ -8,12 +8,13 @@ def extract_section(content, section_name):
     section_lines = []
 
     for line in lines:
+        # 检查是否进入特定部分
         if line.startswith(f"[{section_name}]"):
             in_section = True
         elif line.startswith("[") and in_section:
             break
-        elif in_section and not line.startswith("#"):
-            section_lines.append(line)
+        elif in_section and (not line.startswith("#")):  # 忽略注释行
+            section_lines.append(line.strip())  # 去除前后空格
     
     return section_lines
 
@@ -29,12 +30,15 @@ def merge_modules(input_file):
     for module_url in module_urls:
         print(f"Processing module: {module_url}")  # 调试信息
         response = requests.get(module_url)
+        
         if response.status_code != 200:
             print(f"Failed to download {module_url}: {response.status_code}")
             continue
         
         content = response.text
+        print(f"Content of {module_url}:\n{content[:200]}")  # 输出前200个字符进行调试
 
+        # 提取不同部分
         module_rules = extract_section(content, "Rule")
         if module_rules:
             rules += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rules

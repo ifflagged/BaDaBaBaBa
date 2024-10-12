@@ -1,0 +1,24 @@
+name: Download and Merge Modules
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天执行一次
+  workflow_dispatch: # 手动触发
+
+jobs:
+  download_and_merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Run Merge Script
+        run: python Modules-Merge.py modules.txt  # 这里传入包含模块链接的文件

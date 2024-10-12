@@ -22,6 +22,7 @@ def extract_section(content, section_name):
     return section_lines
 
 def merge_modules(input_file, output_type, module_urls):
+    general = []
     rules = []
     rewrites = []
     scripts = []
@@ -34,6 +35,10 @@ def merge_modules(input_file, output_type, module_urls):
             continue
         
         content = response.text
+
+        module_general = extract_section(content, "General")
+        if module_general:
+            general += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_general
 
         module_rules = extract_section(content, "Rule")
         if module_rules:
@@ -84,19 +89,27 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n")
 
-        # 检查是否包含实际内容后再写入
+        # General 部分
+        if general and any(gen.strip() for gen in general):
+            output_file.write("[General]\n")
+            output_file.write("\n".join(general) + "\n\n")
+
+        # Rule 部分
         if rules and any(rule.strip() for rule in rules):
             output_file.write("[Rule]\n")
             output_file.write("\n".join(rules) + "\n\n")
 
+        # Rewrite 部分
         if rewrites and any(rewrite.strip() for rewrite in rewrites):
             output_file.write("[URL Rewrite]\n" if output_type == 'sgmodule' else "[Rewrite]\n")
             output_file.write("\n".join(rewrites) + "\n\n")
 
+        # Script 部分
         if scripts and any(script.strip() for script in scripts):
             output_file.write("[Script]\n")
             output_file.write("\n".join(scripts) + "\n\n")
 
+        # MITM 部分
         if mitm_hosts:
             output_file.write("[MITM]\n")
             output_file.write(combined_mitmh + "\n")

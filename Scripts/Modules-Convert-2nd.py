@@ -1,7 +1,7 @@
 import os
 import re
 
-def extract_rules(file_content):
+def extract_rules(file_content, module_type):
     rules = {
         'Rule': [],
         'URL Rewrite': [],
@@ -14,20 +14,24 @@ def extract_rules(file_content):
     for line in lines:
         line_lower = line.lower()
         
+        # Rule extraction
         if re.search(r',\s*dIRECT\s*,\s*REJECT\s*,\s*dIRECT\s*,\s*REJECT', line_lower):
             rules['Rule'].append(line)
         
+        # URL Rewrite or Rewrite extraction based on module type
         if '^http*' in line:
-            if '- reject' in line or '$1 302' in line:
-                rules['URL Rewrite'].append(line)
+            if module_type == 'Surge':
+                if '- reject' in line or '$1 302' in line:
+                    rules['URL Rewrite'].append(line)
+            elif module_type == 'Loon':
+                if 'reject' in line or '302 $1' in line:
+                    rules['Rewrite'].append(line)
         
-        if '^http*' in line:
-            if 'reject' in line or '302 $1' in line:
-                rules['Rewrite'].append(line)
-        
+        # Script extraction
         if 'pattern=' in line and 'script-path=' in line:
             rules['Script'].append(line)
         
+        # MITM extraction
         if 'hostname =' in line_lower:
             rules['MITM'].append(line)
 
@@ -37,11 +41,11 @@ def extract_rules(file_content):
     
     return rules
 
-def process_file(file_path):
+def process_file(file_path, module_type):
     with open(file_path, 'r', encoding='utf-8') as f:
         file_content = f.read()
     
-    return extract_rules(file_content)
+    return extract_rules(file_content, module_type)
 
 def save_extracted_data(rules, output_dir, module_type):
     if module_type == 'Surge':
@@ -65,7 +69,7 @@ def save_extracted_data(rules, output_dir, module_type):
 
 def main(input_file, output_dir, module_type):
     if os.path.isfile(input_file):
-        rules = process_file(input_file)
+        rules = process_file(input_file, module_type)
         save_extracted_data(rules, output_dir, module_type)
     else:
         print(f"Error: {input_file} is not a valid file.")

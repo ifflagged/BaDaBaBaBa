@@ -1,14 +1,14 @@
-name: Convert Modules 2nd
+name: Modules Convert 2nd
 
 on:
-  schedule:
-    - cron: '0 5 * * *' # 每天执行一次
-  workflow_dispatch: # 手动触发
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   convert:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -17,24 +17,27 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-          
-      - name: Create output directories
+
+      - name: Install requests library
         run: |
-          mkdir -p Modules/Surge/2nd/
-          mkdir -p Modules/Loon/2nd/
-          
-      - name: Install dependencies
+          pip install requests
+
+      - name: List root directory
         run: |
-          python -m pip install --upgrade pip
+          ls -la
+
+      - name: List Links directory
+        run: |
+          ls -la Links/
+
+      - name: Set input file path
+        run: echo "INPUT_FILE=Links/2nd-Convert.txt" >> $GITHUB_ENV
 
       - name: Run conversion script
         run: |
           python Scripts/Modules-Convert-2nd.py
 
-      - name: Commit and push changes
+      - name: List output files
         run: |
-          git config --local user.name "ifflagged"
-          git config --local user.email "qibo.sign@outlook.com"
-          git add .
-          git commit -m "Automated conversion of modules"
-          git push
+          ls -la Modules/Surge/2nd/
+          ls -la Modules/Loon/2nd/

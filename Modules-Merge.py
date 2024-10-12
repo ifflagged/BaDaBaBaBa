@@ -60,13 +60,12 @@ def merge_modules(input_file, is_loon=False):
         output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".plugin"
         name = output_file_name.replace(".plugin", "").capitalize()
         header = f"# !name= {name}\n# !desc = Merger {name} for Loon\n# !author = Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n# !icon = https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n"
-        output_path = f"Modules/Loon/{output_file_name}"  # Loon 文件保存路径
     else:
         output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".sgmodule"
         name = output_file_name.replace(".sgmodule", "").capitalize()
         header = f"# !name= 🧰 {name}\n# !desc= Merger {name} for Surge & Shadowrocket\n# !category=Jacob\n\n"
-        output_path = f"Modules/Surge/{output_file_name}"  # Surge 文件保存路径
 
+    output_path = f"Modules/Surge/{output_file_name}"
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "w") as output_file:
@@ -82,6 +81,7 @@ def merge_modules(input_file, is_loon=False):
         output_file.write("\n".join(scripts) + "\n\n")
 
         if is_loon:
+            # 对于 Loon，不加 %APPEND%
             combined_mitmh = ", ".join(sorted(mitm_hosts)) if mitm_hosts else ""
             output_file.write("[MITM]\n")
             output_file.write(combined_mitmh + "\n")

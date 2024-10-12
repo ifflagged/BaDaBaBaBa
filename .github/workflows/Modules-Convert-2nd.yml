@@ -23,14 +23,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run conversion script
+      - name: Run conversion scripts
         run: |
-          python Scripts/Modules-Convert-2nd.py Links/2nd-Convert.txt Modules/Surge/2nd Surge
+          python Scripts/Modules-Convert-2nd.py Links/2nd-Convert.txt
 
-      - name: Commit and push changes
+      - name: Check for changes
         run: |
-          git config --local user.name "ifflagged"
-          git config --local user.email "qibo.sign@outlook.com"
-          git add .
-          git commit -m "Automated module conversion"
-          git push
+          if [[ $(git status --porcelain) ]]; then
+            git config --local user.name "ifflagged"
+            git config --local user.email "qibo.sign@outlook.com"
+            git add .
+            git commit -m "Automated module conversion"
+            git push
+          else
+            echo "No changes to commit."
+          fi

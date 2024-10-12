@@ -1,3 +1,4 @@
+https://github.com/ifflagged/BaDaBaBaBa/blob/main/Modules/Surge/Tools.sgmodule?raw=true
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/RuCu6_amap.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/RuCu6_bilibili.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/RuCu6_myblockads.sgmodule
@@ -9,6 +10,7 @@ https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/luestr_BlockAdver
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/luestr_DiDi_remove_ads.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/luestr_Umetrip_remove_ads.sgmodule
 
+https://github.com/ifflagged/Neverflagged/blob/main/Loon/Plugin/Tools.plugin?raw=true
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/RuCu6_amap.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/RuCu6_bilibili.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/RuCu6_myblockads.plugin

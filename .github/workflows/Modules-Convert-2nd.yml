@@ -1,0 +1,36 @@
+name: Convert Modules 2ns
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # 每天执行一次
+  workflow_dispatch: # 手动触发
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # 设置所需的 Python 版本
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run conversion script
+        run: |
+          python Modules-Convert-2nd.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "ifflagged"
+          git config --local user.email "qibo.sign@outlook.com"
+          git add .
+          git commit -m "Automated module conversion"
+          git push

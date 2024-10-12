@@ -2,6 +2,7 @@
 input_file=$1
 module_name=$2
 comment=$3
+output_dir=$4
 
 # Common replacements for both Surge and Loon
 sed_common="
@@ -60,7 +61,7 @@ $comment" \
     -e 's/ script-path = /,script-path=/Ig' \
     -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
-    "$input_file" > "Modules/Surge/${module_name}.sgmodule"
+    "$input_file" > "$output_dir/${module_name}.sgmodule"
 
 # Loon conversion
 sed -e "1 i\\
@@ -93,4 +94,4 @@ $comment" \
     -e 's/url script-analyze-echo-response/script-path=/Ig' \
     -e 's/, tag.*/\, tag = '"${module_name}"'/' \
     -e 's/hostname =/Hostname =/Ig' \
-    "$input_file" > "Modules/Loon/${module_name}.plugin"
+    "$input_file" > "$output_dir/${module_name}.plugin"

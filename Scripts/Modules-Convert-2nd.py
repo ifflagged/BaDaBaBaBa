@@ -13,7 +13,8 @@ def extract_rules(file_content, module_type):
     lines = file_content.splitlines()
     for line in lines:
         line_lower = line.lower()
-        
+        print(f"Processing line: {line}")  # Debug output
+
         # Rule extraction
         if re.search(r',\s*dIRECT\s*,\s*REJECT\s*,\s*dIRECT\s*,\s*REJECT', line_lower):
             rules['Rule'].append(line)

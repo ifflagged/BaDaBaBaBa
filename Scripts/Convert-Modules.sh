@@ -16,24 +16,17 @@ sed_common="
     /IP-CIDR/ s/\(REJECT\)\([^,]*$\)/\1, no-resolve/Ig
 "
 
-# Function to generate unique filenames with incrementing suffixes
-generate_unique_filename() {
-    local base_name=$1
-    local ext=$2
-    local counter=2
-
-    if [ ! -e "$base_name.$ext" ]; then
-        echo "$base_name.$ext"
-    else
-        while [ -e "$base_name-$counter.$ext" ]; do
-            ((counter++))
-        done
-        echo "$base_name-$counter.$ext"
-    fi
-}
+# Check if Surge file exists, and append -2, -3, etc. for duplicates
+surge_output="Modules/Surge/${module_name}.sgmodule"
+if [[ -f "$surge_output" ]]; then
+  i=2
+  while [[ -f "Modules/Surge/${module_name}-${i}.sgmodule" ]]; do
+    ((i++))
+  done
+  surge_output="Modules/Surge/${module_name}-${i}.sgmodule"
+fi
 
 # Surge conversion
-surge_output=$(generate_unique_filename "Modules/Surge/${module_name}" "sgmodule")
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
@@ -79,8 +72,17 @@ $comment" \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
     "$input_file" > "$surge_output"
 
+# Check if Loon file exists, and append -2, -3, etc. for duplicates
+loon_output="Modules/Loon/${module_name}.plugin"
+if [[ -f "$loon_output" ]]; then
+  i=2
+  while [[ -f "Modules/Loon/${module_name}-${i}.plugin" ]]; do
+    ((i++))
+  done
+  loon_output="Modules/Loon/${module_name}-${i}.plugin"
+fi
+
 # Loon conversion
-loon_output=$(generate_unique_filename "Modules/Loon/${module_name}" "plugin")
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \

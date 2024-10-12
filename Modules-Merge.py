@@ -66,7 +66,7 @@ def merge_modules(input_file, is_loon=False):
     else:
         output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".sgmodule"
         name = output_file_name.replace(".sgmodule", "").capitalize()
-        header = f"# !name= 🧰 {name}\n# !desc= Tools for Surge & Shadowrocket\n# !category=Jacob\n\n"
+        header = f"# !name= 🧰 {name}\n# !desc= Merger {name} for Surge & Shadowrocket\n# !category=Jacob\n\n"
         output_path = f"Modules/Surge/{output_file_name}"  # Surge 文件保存路径
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)

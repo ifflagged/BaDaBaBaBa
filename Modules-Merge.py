@@ -27,11 +27,9 @@ def merge_modules(input_file, is_loon=False):
     mitm_hosts = set()
 
     for module_url in module_urls:
-        try:
-            response = requests.get(module_url)
-            response.raise_for_status()  # 检查请求是否成功
-        except requests.RequestException as e:
-            print(f"跳过无效链接: {module_url}，错误: {e}")
+        response = requests.get(module_url)
+        
+        if response.status_code != 200:
             continue
         
         content = response.text
@@ -99,14 +97,11 @@ def download_modules(module_file):
         module_urls = f.read().splitlines()
 
     for url in module_urls:
-        try:
-            response = requests.get(url)
-            response.raise_for_status()  # 检查请求是否成功
+        response = requests.get(url)
+        if response.status_code == 200:
             filename = url.split('/')[-1]
             with open(filename, 'wb') as module_file:
                 module_file.write(response.content)
-        except requests.RequestException as e:
-            print(f"跳过无效链接: {url}，错误: {e}")
 
 # 示例使用
 if __name__ == "__main__":

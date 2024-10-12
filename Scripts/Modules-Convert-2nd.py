@@ -14,26 +14,36 @@ def download_file(url):
 def check_and_add_sections(content):
     sections = {section: '' for section in required_sections}
     
-    # 检查内容
     lines = content.splitlines()
+
+    # 检查条件
     has_direct_reject = any(re.search(r',\s*DIRECT\s*', line, re.IGNORECASE) or re.search(r',\s*REJECT\s*', line, re.IGNORECASE) for line in lines)
-    has_http_reject = any('^http' in line and '- reject' in line for line in lines)
-    has_http_302 = any('302' in line and '$1' in line for line in lines)
+    
+    has_rewrite = any(re.search(r'^http.*- reject', line) for line in lines) or any(re.search(r'^\$1\s+302', line) for line in lines)
+
     has_pattern_script = any('pattern=' in line and 'script-path=' in line for line in lines)
     has_hostname = any('Hostname =' in line for line in lines)
 
-    # 根据条件添加到相应部分
-    if has_direct_reject:
-        sections['[Rule]'] += '\n'.join(line for line in lines if re.search(r',\s*DIRECT\s*', line, re.IGNORECASE) or re.search(r',\s*REJECT\s*', line, re.IGNORECASE)) + '\n'
-
-    if has_http_reject and has_http_302:
-        sections['[Rewrite]'] += '\n'.join(line for line in lines if '^http' in line and '- reject' in line or '302' in line) + '\n'
-
-    if has_pattern_script:
-        sections['[Script]'] += '\n'.join(line for line in lines if 'pattern=' in line and 'script-path=' in line) + '\n'
-
-    if has_hostname:
-        sections['[MITM]'] += '\n'.join(line for line in lines if 'Hostname =' in line) + '\n'
+    # 分类内容
+    for line in lines:
+        line = line.strip()
+        
+        # 对于 [Rule]
+        if has_direct_reject and (re.search(r'URL-REGEX|DOMAIN|IP-CIDR', line) or re.search(r'AND', line)):
+            sections['[Rule]'] += line + '\n'
+        
+        # 对于 [Rewrite]
+        if has_rewrite and (re.search(r'^http.*- reject', line) or re.search(r'^http.*reject', line)):
+            sections['[Rewrite]'] += line + '\n'
+        
+        # 对于 [Script]
+        if has_pattern_script and 'pattern=' in line and 'script-path=' in line:
+            sections['[Script]'] += line + '\n'
+        
+        # 对于 [MITM]
+        if has_hostname:
+            if 'Hostname =' in line:
+                sections['[MITM]'] += line + '\n'
 
     modified_content = ''
     for section in required_sections:

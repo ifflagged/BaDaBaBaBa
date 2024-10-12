@@ -6,11 +6,13 @@ def extract_section(content, section_name):
     lines = content.splitlines()
     in_section = False
     section_lines = []
+    section_name_lower = section_name.lower()  # 将 section_name 转为小写
 
     for line in lines:
-        if line.startswith(f"[{section_name}]"):
+        line_lower = line.lower()  # 将当前行转换为小写
+        if line_lower.startswith(f"[{section_name_lower}]"):  # 比较时不区分大小写
             in_section = True
-        elif line.startswith("[") and in_section:
+        elif line_lower.startswith("[") and in_section:
             break
         elif in_section and (not line.startswith("#")):  # 忽略注释行
             section_lines.append(line.strip())
@@ -49,7 +51,7 @@ def merge_modules(input_file, output_type, module_urls):
         if mitm_section:
             if output_type == 'sgmodule':
                 for line in mitm_section:
-                    if line.startswith("Hostname = %APPEND%"):
+                    if line.lower().startswith("hostname = %append%"):  # 比较时不区分大小写
                         hosts = line.replace("Hostname = %APPEND%", "").strip()
                         mitm_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
             else:  # 对于 .plugin 文件

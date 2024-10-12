@@ -7,6 +7,7 @@ def extract_rules(content, file_type):
     scripts = []
     mitm = []
 
+    # 定义正则表达式
     rule_pattern = re.compile(r'(?i)\bDIRECT\b|\bREJECT\b')
     rewrite_pattern = re.compile(r'^\^http.*?(- reject|\$1 302)', re.IGNORECASE)
     script_pattern = re.compile(r'pattern=|script-path=')
@@ -69,8 +70,18 @@ def main():
     output_loon_dir = 'Modules/Loon/2nd/'
 
     print("Listing input files...")
-    for filename in os.listdir(input_dir):
-        print(f"Found file: {filename}")
+    try:
+        files = os.listdir(input_dir)
+        if files:
+            for filename in files:
+                print(f"Found file: {filename}")
+        else:
+            print("No files found in input directory.")
+    except Exception as e:
+        print(f"Error accessing input directory: {e}")
+        return
+
+    for filename in files:
         if filename.endswith('.sgmodule'):
             data = process_file(os.path.join(input_dir, filename))
             save_to_file(data, os.path.join(output_surge_dir, filename), 'sgmodule')

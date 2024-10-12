@@ -1,7 +1,7 @@
 [Rule]
 
 [Rewrite]
-
+^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading reject-dict
 [Script]
 http-response ^https:\/\/app-api\.smzdm\.com\/util\/loading script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js, requires-body = true, tag = ZenmoFeiShi_Smzdm
 http-response ^https:\/\/haojia-api\.smzdm\.com\/home\/list script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.js, requires-body = true, tag = ZenmoFeiShi_Smzdm

@@ -1,7 +1,9 @@
 [Rule]
 
 [Rewrite]
-
+^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul reject-200
+^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul reject-200
+^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul reject-200
 [Script]
 http-response ^https?:\/\/s-api.smzdm\.com\/sou\/search_default_keyword script-path= https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js, requires-body = true, tag = ddgksf2013_SmzdmAds
 http-response ^https?:\/\/app-api\.smzdm\.com\/util\/loading script-path= https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js, requires-body = true, tag = ddgksf2013_SmzdmAds

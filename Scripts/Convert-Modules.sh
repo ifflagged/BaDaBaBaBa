@@ -3,12 +3,6 @@ input_file=$1
 module_name=$2
 comment=$3
 
-# 定义输出目录
-output_dir="Modules"
-
-# 创建目标目录
-mkdir -p "$output_dir/Surge" "$output_dir/Loon"
-
 # Common replacements for both Surge and Loon
 sed_common="
     /raw.githubusercontent.com/ s/\/main\//\/raw\/main\//Ig
@@ -22,25 +16,25 @@ sed_common="
     /IP-CIDR/ s/\(REJECT\)\([^,]*$\)/\1, no-resolve/Ig
 "
 
-# Function to create unique file names
-create_unique_filename() {
-    local base_name=$1
-    local extension=$2
-    local dir=$3
-    local counter=1
-    local new_name="${base_name}${extension}"
-
-    while [[ -e "$dir/$new_name" ]]; do
-        new_name="${base_name}-${counter}${extension}"
-        counter=$((counter + 1))
-    done
-
-    echo "$new_name"
+# Function to handle duplicate filenames
+get_unique_filename() {
+  base_name="$1"
+  ext="$2"
+  counter=2
+  while [[ -f "$base_name$ext" ]]; do
+    base_name_with_counter="${base_name}-${counter}"
+    if [[ ! -f "${base_name_with_counter}${ext}" ]]; then
+      echo "${base_name_with_counter}${ext}"
+      return
+    fi
+    counter=$((counter + 1))
+  done
+  echo "${base_name}${ext}"
 }
 
 # Surge conversion
-surge_base_name="${module_name}.sgmodule"
-surge_output=$(create_unique_filename "$surge_base_name" "" "$output_dir/Surge")
+output_file="Modules/Surge/${module_name}.sgmodule"
+unique_output_file=$(get_unique_filename "Modules/Surge/${module_name}" ".sgmodule")
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
@@ -70,25 +64,11 @@ $comment" \
     -e 's/, reject-video/, REJECT/Ig' \
     -e 's/, reject-replace/, REJECT/Ig' \
     -e 's/\(,\s\)reject\b/\1REJECT/Ig' \
-    -e 's/reject-200/- reject/Ig' \
-    -e 's/reject-img/- reject/Ig' \
-    -e 's/reject-dict/- reject/Ig' \
-    -e 's/reject-array/- reject/Ig' \
-    -e 's/reject-video/- reject/Ig' \
-    -e 's/reject-replace/- reject/Ig' \
-    -e '/[^,-] reject/ { s/\b reject\b/ - reject/Ig }' \
-    -e "s/http-response /${module_name} = type=http-response,pattern=/" \
-    -e "s/http-request /${module_name} = type=http-request,pattern=/" \
-    -e '/http-response/ s/, tag.*//' \
-    -e '/http-request/ s/, tag.*//' \
-    -e 's/ script-path = /,script-path=/Ig' \
-    -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/' \
-    -e 's/hostname =/Hostname = %APPEND%/Ig' \
-    "$input_file" > "$surge_output"
+    "$input_file" > "$unique_output_file"
 
 # Loon conversion
-loon_base_name="${module_name}.plugin"
-loon_output=$(create_unique_filename "$loon_base_name" "" "$output_dir/Loon")
+output_file="Modules/Loon/${module_name}.plugin"
+unique_output_file=$(get_unique_filename "Modules/Loon/${module_name}" ".plugin")
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
@@ -116,7 +96,4 @@ $comment" \
     -e 's/url script-response-header/script-path=/Ig' \
     -e 's/url script-request-body/script-path=/Ig' \
     -e 's/url script-request-header/script-path=/Ig' \
-    -e 's/url script-analyze-echo-response/script-path=/Ig' \
-    -e 's/, tag.*/\, tag = '"${module_name}"'/' \
-    -e 's/hostname =/Hostname =/Ig' \
-    "$input_file" > "$loon_output"
+    "$input_file" > "$unique_output_file"

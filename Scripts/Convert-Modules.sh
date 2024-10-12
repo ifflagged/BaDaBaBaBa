@@ -16,25 +16,24 @@ sed_common="
     /IP-CIDR/ s/\(REJECT\)\([^,]*$\)/\1, no-resolve/Ig
 "
 
-# Function to handle duplicate filenames
-get_unique_filename() {
-  base_name="$1"
-  ext="$2"
-  counter=2
-  while [[ -f "$base_name$ext" ]]; do
-    base_name_with_counter="${base_name}-${counter}"
-    if [[ ! -f "${base_name_with_counter}${ext}" ]]; then
-      echo "${base_name_with_counter}${ext}"
-      return
+# Function to generate unique filenames with incrementing suffixes
+generate_unique_filename() {
+    local base_name=$1
+    local ext=$2
+    local counter=2
+
+    if [ ! -e "$base_name.$ext" ]; then
+        echo "$base_name.$ext"
+    else
+        while [ -e "$base_name-$counter.$ext" ]; do
+            ((counter++))
+        done
+        echo "$base_name-$counter.$ext"
     fi
-    counter=$((counter + 1))
-  done
-  echo "${base_name}${ext}"
 }
 
 # Surge conversion
-output_file="Modules/Surge/${module_name}.sgmodule"
-unique_output_file=$(get_unique_filename "Modules/Surge/${module_name}" ".sgmodule")
+surge_output=$(generate_unique_filename "Modules/Surge/${module_name}" "sgmodule")
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
@@ -64,11 +63,24 @@ $comment" \
     -e 's/, reject-video/, REJECT/Ig' \
     -e 's/, reject-replace/, REJECT/Ig' \
     -e 's/\(,\s\)reject\b/\1REJECT/Ig' \
-    "$input_file" > "$unique_output_file"
+    -e 's/reject-200/- reject/Ig' \
+    -e 's/reject-img/- reject/Ig' \
+    -e 's/reject-dict/- reject/Ig' \
+    -e 's/reject-array/- reject/Ig' \
+    -e 's/reject-video/- reject/Ig' \
+    -e 's/reject-replace/- reject/Ig' \
+    -e '/[^,-] reject/ { s/\b reject\b/ - reject/Ig }' \
+    -e "s/http-response /${module_name} = type=http-response,pattern=/" \
+    -e "s/http-request /${module_name} = type=http-request,pattern=/" \
+    -e '/http-response/ s/, tag.*//' \
+    -e '/http-request/ s/, tag.*//' \
+    -e 's/ script-path = /,script-path=/Ig' \
+    -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/' \
+    -e 's/hostname =/Hostname = %APPEND%/Ig' \
+    "$input_file" > "$surge_output"
 
 # Loon conversion
-output_file="Modules/Loon/${module_name}.plugin"
-unique_output_file=$(get_unique_filename "Modules/Loon/${module_name}" ".plugin")
+loon_output=$(generate_unique_filename "Modules/Loon/${module_name}" "plugin")
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
@@ -96,4 +108,7 @@ $comment" \
     -e 's/url script-response-header/script-path=/Ig' \
     -e 's/url script-request-body/script-path=/Ig' \
     -e 's/url script-request-header/script-path=/Ig' \
-    "$input_file" > "$unique_output_file"
+    -e 's/url script-analyze-echo-response/script-path=/Ig' \
+    -e 's/, tag.*/\, tag = '"${module_name}"'/' \
+    -e 's/hostname =/Hostname =/Ig' \
+    "$input_file" > "$loon_output"

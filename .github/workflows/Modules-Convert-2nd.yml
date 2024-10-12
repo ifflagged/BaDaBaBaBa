@@ -25,7 +25,13 @@ jobs:
 
       - name: Run conversion scripts
         run: |
-          python Scripts/Modules-Convert-2nd.py Links/2nd-Convert.txt output_dir module_type
+          # 确定模块类型，根据文件扩展名传递
+          if [[ ${{ github.ref }} == *.sgmodule ]]; then
+            module_type="Surge"
+          else
+            module_type="Loon"
+          fi
+          python Scripts/Modules-Convert-2nd.py Links/2nd-Convert.txt output_dir $module_type
 
       - name: Check for changes
         run: |

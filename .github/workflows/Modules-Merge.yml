@@ -21,4 +21,4 @@ jobs:
         run: pip install requests
 
       - name: Run Merge Script
-        run: python Modules-Merge.py modules.txt  # 这里传入包含模块链接的文件
+        run: python Modules-Merge.py Modules-Tools.txt  # 这里传入包含模块链接的文件

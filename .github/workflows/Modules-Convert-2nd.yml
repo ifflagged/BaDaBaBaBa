@@ -25,7 +25,7 @@ jobs:
 
       - name: Run conversion script
         run: |
-          python Modules-Convert-2nd.py
+          python /Scripts/Modules-Convert-2nd.py
 
       - name: Commit and push changes
         run: |

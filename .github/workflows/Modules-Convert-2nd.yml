@@ -1,4 +1,4 @@
-name: Convert Modules 2ns
+name: Convert Modules 2nd
 
 on:
   schedule:
@@ -25,7 +25,7 @@ jobs:
 
       - name: Run conversion script
         run: |
-          python /Scripts/Modules-Convert-2nd.py
+          python Scripts/Modules-Convert-2nd.py
 
       - name: Commit and push changes
         run: |

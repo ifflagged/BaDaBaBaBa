@@ -1,15 +1,13 @@
 [Rule]
-
-# Placeholder for [Rule]
-
+^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail reject-200
 [Rewrite]
 
-# Placeholder for [Rewrite]
-
 [Script]
-
-# Placeholder for [Script]
-
+http-response ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$ script-path= https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js, requires-body = true, tag = Yuheng0101_NoAds
+http-response ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/newTopPullSecond\/getNewTopPullList script-path= https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js, requires-body = true, tag = Yuheng0101_NoAds
+http-response ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/emotionMarket\/getEmotionMarketNew script-path= https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js, requires-body = true, tag = Yuheng0101_NoAds
+http-response ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/homeArea\/getTopAreaList script-path= https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js, requires-body = true, tag = Yuheng0101_NoAds
+http-response ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/navigation\/getNavigationNewInfo script-path= https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js, requires-body = true, tag = Yuheng0101_NoAds
+http-response ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/friendShake\/getShakeList script-path= https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js, requires-body = true, tag = Yuheng0101_NoAds
 [MITM]
 Hostname = client.app.coc.10086.cn, h.app.coc.10086.cn
-

@@ -1,7 +1,5 @@
 [Rule]
-^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject
-^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul - reject
-^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul - reject
+
 [URL Rewrite]
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul - reject

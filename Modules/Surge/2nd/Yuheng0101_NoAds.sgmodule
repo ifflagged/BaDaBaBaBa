@@ -1,5 +1,5 @@
 [Rule]
-^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject
+
 [URL Rewrite]
 ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject
 [Script]

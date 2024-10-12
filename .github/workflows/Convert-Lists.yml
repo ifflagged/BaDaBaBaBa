@@ -90,6 +90,10 @@ jobs:
           done < "$file"
         done
 
+    - name: Configure safe directory
+      run: |
+        git config --global --add safe.directory /__w/BaDaBaBaBa/BaDaBaBaBa
+
     - name: Check for changes
       id: changes
       run: |

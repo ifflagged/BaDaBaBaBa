@@ -17,20 +17,19 @@ def extract_section(content, section_name):
     
     return section_lines
 
-def merge_modules(input_file, is_loon=False):
+def merge_modules(input_file, output_type):
     with open(input_file, 'r') as f:
         module_urls = f.read().splitlines()
 
     rules = []
     rewrites = []
     scripts = []
-    mitm_hosts = set()
+    mitm_hosts = set()  # 使用集合来去重
 
     for module_url in module_urls:
         response = requests.get(module_url)
         
         if response.status_code != 200:
-            print(f"Skipping {module_url} due to error: {response.status_code}")
             continue
         
         content = response.text
@@ -51,27 +50,43 @@ def merge_modules(input_file, is_loon=False):
         # 提取 Hostname 部分
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            for line in mitm_section:
-                if line.startswith("Hostname ="):
-                    hosts = line.split("=", 1)[1].strip()
-                    mitm_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
-
-    # 根据插件类型生成输出文件名和内容
-    if is_loon:
-        output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".plugin"
-        name = output_file_name.replace(".plugin", "").capitalize()
-        header = f"# !name= {name}\n# !desc = Merger {name} for Loon\n# !author = Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n# !icon = https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n"
-        output_path = f"Modules/Loon/{output_file_name}"
+            if output_type == 'sgmodule':
+                for line in mitm_section:
+                    if line.startswith("Hostname = %APPEND%"):
+                        hosts = line.replace("Hostname = %APPEND%", "").strip()
+                        mitm_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
+            else:  # 对于 .plugin 文件
+                for line in mitm_section:
+                    mitm_hosts.update(line.strip().split(","))
+    
+    # 生成 Hostname 字符串
+    if output_type == 'sgmodule':
+        combined_mitmh = "Hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
     else:
-        output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "") + ".sgmodule"
+        combined_mitmh = ", ".join(sorted(mitm_hosts))  # 直接合并，不加 %APPEND%
+
+    output_file_name = os.path.splitext(os.path.basename(input_file))[0].replace("Modules-", "")
+    if output_type == 'sgmodule':
+        output_file_name += ".sgmodule"
         name = output_file_name.replace(".sgmodule", "").capitalize()
-        header = f"# !name= 🧰 {name}\n# !desc= Merger {name} for Surge & Shadowrocket\n# !category=Jacob\n\n"
         output_path = f"Modules/Surge/{output_file_name}"
+    else:
+        output_file_name += ".plugin"
+        name = output_file_name.replace(".plugin", "").capitalize()
+        output_path = f"Modules/Loon/{output_file_name}"
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "w") as output_file:
-        output_file.write(header)
+        if output_type == 'sgmodule':
+            output_file.write(f"# !name= 🧰 {name}\n")
+            output_file.write("# !desc= Merger {name} for Surge & Shadowrocket\n")
+            output_file.write("# !category=Jacob\n\n")
+        else:
+            output_file.write(f"#!name= {name}\n")
+            output_file.write(f"#!desc= Merger {name} for Loon\n")
+            output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
+            output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n")
 
         output_file.write("[Rule]\n")
         output_file.write("\n".join(rules) + "\n\n")
@@ -82,15 +97,8 @@ def merge_modules(input_file, is_loon=False):
         output_file.write("[Script]\n")
         output_file.write("\n".join(scripts) + "\n\n")
 
-        if is_loon:
-            # 对于 Loon，不加 %APPEND%
-            combined_mitmh = ", ".join(sorted(mitm_hosts)) if mitm_hosts else ""
-            output_file.write("[MITM]\n")
-            output_file.write(combined_mitmh + "\n")
-        else:
-            combined_mitmh = "Hostname = %APPEND% " + ", ".join(sorted(mitm_hosts))
-            output_file.write("[MITM]\n")
-            output_file.write(combined_mitmh + "\n")
+        output_file.write("[MITM]\n")
+        output_file.write(combined_mitmh + "\n")
 
     print(f"合并完成！生成的文件为 {output_path}")
 
@@ -104,9 +112,6 @@ def download_modules(module_file):
             filename = url.split('/')[-1]
             with open(filename, 'wb') as module_file:
                 module_file.write(response.content)
-            print(f"Downloaded: {filename}")
-        else:
-            print(f"Failed to download {url}: {response.status_code}")
 
 # 示例使用
 if __name__ == "__main__":
@@ -115,11 +120,10 @@ if __name__ == "__main__":
         sys.exit(1)
 
     for module_file in sys.argv[1:]:
-        if module_file.endswith('.sgmodule'):
+        if module_file.endswith('.txt'):
             download_modules(module_file)
-            merge_modules(module_file, is_loon=False)
-        elif module_file.endswith('.plugin'):
-            download_modules(module_file)
-            merge_modules(module_file, is_loon=True)
-        else:
-            print(f"Unsupported file type: {module_file}. Please provide .sgmodule or .plugin files.")
+            # 根据文件后缀决定合并方式
+            if module_file.startswith("Modules-"):
+                merge_modules(module_file, 'sgmodule')
+            else:
+                merge_modules(module_file, 'plugin')

@@ -3,12 +3,13 @@ input_file=$1
 module_name=$2
 comment=$3
 
-# 确保 Surge 和 Loon 目录存在
+# Ensure Surge and Loon directories exist
 mkdir -p Modules/Surge
 mkdir -p Modules/Loon
 
-# 保持当前运行的文件名记录，避免在同一次运行时重复命名
+# Keep track of the output files for deduplication
 declare -A surge_files loon_files
+declare -A surge_content loon_content
 
 # Common replacements for both Surge and Loon
 sed_common="
@@ -35,7 +36,7 @@ else
 fi
 
 # Surge conversion
-sed -e "1 i\\
+surge_content="$(sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
     -e 's/url reject-200/- reject/Ig' \
@@ -78,7 +79,19 @@ $comment" \
     -e 's/ script-path = /,script-path=/Ig' \
     -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
-    "$input_file" > "$surge_output"
+    "$input_file")"
+
+# Check if Surge content already exists
+if [[ "${surge_content}" == "${surge_content[${surge_output}]}" ]]; then
+  # Increment the file number if the content is the same
+  surge_output="${surge_output%.sgmodule}-${surge_files[$surge_output]}.sgmodule"
+  ((surge_files[$surge_output]++))
+else
+  surge_files[$surge_output]=2
+fi
+
+# Write to Surge output
+echo "$surge_content" > "$surge_output"
 
 # Loon file checking logic
 loon_output="Modules/Loon/${module_name}.plugin"
@@ -92,7 +105,7 @@ else
 fi
 
 # Loon conversion
-sed -e "1 i\\
+loon_content="$(sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
     -e 's/url reject-200/reject-200/Ig' \
@@ -122,4 +135,16 @@ $comment" \
     -e 's/url script-analyze-echo-response/script-path=/Ig' \
     -e 's/, tag.*/\, tag = '"${module_name}"'/' \
     -e 's/hostname =/Hostname =/Ig' \
-    "$input_file" > "$loon_output"
+    "$input_file")"
+
+# Check if Loon content already exists
+if [[ "${loon_content}" == "${loon_content[${loon_output}]}" ]]; then
+  # Increment the file number if the content is the same
+  loon_output="${loon_output%.plugin}-${loon_files[$loon_output]}.plugin"
+  ((loon_files[$loon_output]++))
+else
+  loon_files[$loon_output]=2
+fi
+
+# Write to Loon output
+echo "$loon_content" > "$loon_output"

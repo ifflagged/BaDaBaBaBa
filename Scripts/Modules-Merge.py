@@ -167,6 +167,7 @@ def merge_modules(input_file, output_type, module_urls):
                 if section_name == "MITM":
                     output_file.write("[MITM]\n")
                     output_file.write(combined_mitmh + "\n")
+                    break  # 结束写入，跳过后续的内容
                 else:
                     output_file.write(f"[{section_name}]\n")
                     output_file.write("\n".join(content_list) + "\n\n")

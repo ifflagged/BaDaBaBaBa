@@ -1,3 +1,4 @@
+
 import requests
 import os
 import sys
@@ -59,7 +60,7 @@ def merge_modules(input_file, output_type, module_urls):
         content = response.text
         module_name = module_url.split('/')[-1].split('.')[0]
 
-        # 提取各个部分并去重
+        # 提取 General 部分并去重
         module_general = extract_section(content, "General")
         if module_general:
             module_content["General"].append(f"# {module_name}")
@@ -67,6 +68,7 @@ def merge_modules(input_file, output_type, module_urls):
                 line for line in module_general if line not in module_content["General"]
             )
 
+        # 提取 Rule 部分并去重
         module_rules = extract_section(content, "Rule")
         if module_rules:
             module_content["Rule"].append(f"# {module_name}")
@@ -74,6 +76,7 @@ def merge_modules(input_file, output_type, module_urls):
                 line for line in module_rules if line not in module_content["Rule"]
             )
 
+        # 提取 Rewrite 部分并去重
         module_rewrites = extract_section(content, "Rewrite")
         module_url_rewrites = extract_section(content, "URL Rewrite")
         if module_rewrites or module_url_rewrites:
@@ -94,6 +97,7 @@ def merge_modules(input_file, output_type, module_urls):
                         line for line in module_rewrites if line not in module_content["Rewrite"]
                     )
 
+        # 提取 Script 部分并去重
         module_scripts = extract_section(content, "Script")
         if module_scripts:
             module_content["Script"].append(f"# {module_name}")
@@ -101,6 +105,7 @@ def merge_modules(input_file, output_type, module_urls):
                 line for line in module_scripts if line not in module_content["Script"]
             )
 
+        # 提取 MITM 部分并去重
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
             if output_type == 'sgmodule':
@@ -116,6 +121,7 @@ def merge_modules(input_file, output_type, module_urls):
                     else:
                         module_content["MITM"].update(line.strip().split(","))
 
+        # 提取 arguments 和 select 内容并去重
         arguments, arguments_desc = extract_arguments(content)
         if output_type == 'sgmodule':
             module_content["Arguments"].update(arguments)
@@ -177,11 +183,8 @@ def merge_modules(input_file, output_type, module_urls):
                     output_file.write(combined_mitmh + "\n")
                     break  # 结束写入，跳过后续内容
                 else:
-                    if any(line.strip() for line in content_list):  # 检查内容是否为空
-                        output_file.write(f"[{section_name}]\n")
-                        output_file.write("\n".join(content_list) + "\n\n")
-                    else:
-                        continue  # 跳过空内容
+                    output_file.write(f"[{section_name}]\n")
+                    output_file.write("\n".join(content_list) + "\n\n")
 
     print(f"合并完成！生成的文件为 {output_path}")
 

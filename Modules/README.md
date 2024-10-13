@@ -37,4 +37,4 @@ This directory contains converted modules from various sources, compatible with 
 - **SAMsClub**: Converted from [zirawell SAMsClub](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/S/%E5%B1%B1%E5%A7%86%E4%BC%9A%E5%91%98%E5%95%86%E5%BA%97/rewrite/SAMsClub.conf)
 - **tfsmy**: Converted from [zirawell tfsmy](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/T/%E5%A4%A9%E5%BA%9C%E5%B8%82%E6%B0%91%E4%BA%91/rewrite/tfsmy.conf)
 - **tft**: Converted from [zirawell tft](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/T/%E5%A4%A9%E5%BA%9C%E9%80%9A/rewrite/tft.conf)
-- **baiduCloud.adblock**: Converted from [ddgksf2013 baiduCloud.adblock](https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js)
+- **baiduCloud**: Converted from [ddgksf2013 baiduCloud](https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js)

@@ -47,9 +47,9 @@ def merge_modules(input_file, output_type, module_urls):
         "Rewrite": [],
         "Script": [],
         "MITM": set(),
-        "Arguments": set(),
+        "Arguments": (),
         "ArgumentsDesc": [],
-        "Select": set()
+        "Select": ()
     }
 
     for module_url in module_urls:

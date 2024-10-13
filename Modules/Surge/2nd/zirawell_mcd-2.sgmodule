@@ -1,0 +1,9 @@
+[Rule]
+
+[URL Rewrite]
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity - reject
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/richpop - reject
+[Script]
+
+[MITM]
+Hostname = %APPEND% api.mcd.cn

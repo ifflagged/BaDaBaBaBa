@@ -1,0 +1,8 @@
+[Rule]
+
+[Rewrite]
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/(home\/splash|richpop) reject-200
+[Script]
+
+[MITM]
+Hostname = api.mcd.cn

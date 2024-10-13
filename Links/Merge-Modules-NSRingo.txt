@@ -1,0 +1,5 @@
+https://github.com/NSRingo/GeoServices/releases/download/Location.sgmodule
+https://github.com/NSRingo/GeoServices/releases/download/Maps.sgmodule
+
+https://github.com/NSRingo/GeoServices/releases/download/Location.plugin
+https://github.com/NSRingo/GeoServices/releases/download/Maps.plugin

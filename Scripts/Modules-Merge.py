@@ -39,16 +39,16 @@ def extract_select(content):
     return selects
 
 def merge_modules(input_file, output_type, module_urls):
-    # 定义各部分内容
+    # 定义各部分内容，并确保去重
     module_content = {
         "General": [],
         "Rule": [],
         "Rewrite": [],
         "Script": [],
         "MITM": [],
-        "Arguments": [],  # 改为列表
+        "Arguments": [],
         "ArgumentsDesc": [],
-        "Select": []  # 改为列表
+        "Select": []
     }
 
     for module_url in module_urls:
@@ -107,37 +107,23 @@ def merge_modules(input_file, output_type, module_urls):
         # 提取 MITM 部分并去重
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            if output_type == 'sgmodule':
-                for line in mitm_section:
-                    if line.lower().startswith("hostname = %append%"):
-                        hosts = line.lower().replace("hostname = %append%", "").strip()
-                        module_content["MITM"].extend(host.strip() for host in hosts.split(",") if host.strip() and host.strip() not in module_content["MITM"])
-            else:
-                for line in mitm_section:
-                    if line.lower().startswith("hostname ="):
-                        hosts = line.lower().replace("hostname =", "").strip()
-                        module_content["MITM"].extend(host.strip() for host in hosts.split(",") if host.strip() and host.strip() not in module_content["MITM"])
-                    else:
-                        module_content["MITM"].extend(line.strip().split(",") if line.strip() not in module_content["MITM"])
+            for line in mitm_section:
+                if line.lower().startswith("hostname = %append%"):
+                    hosts = line.lower().replace("hostname = %append%", "").strip()
+                    module_content["MITM"].extend(host.strip() for host in hosts.split(",") if host.strip())
+                elif line.lower().startswith("hostname ="):
+                    hosts = line.lower().replace("hostname =", "").strip()
+                    module_content["MITM"].extend(host.strip() for host in hosts.split(",") if host.strip())
+                else:
+                    module_content["MITM"].append(line.strip())
 
-        # 提取 arguments 和 select 内容并去重
+        # 提取 arguments 和 select 内容
         arguments, arguments_desc = extract_arguments(content)
-        if output_type == 'sgmodule':
-            module_content["Arguments"].extend(arg for arg in arguments if arg not in module_content["Arguments"])
-            for desc in arguments_desc:
-                desc_with_newline = desc.replace("\n", r"\n")
-                module_content["ArgumentsDesc"].append(f"# {module_name}\\n{desc_with_newline}")
-        else:
-            selects = extract_select(content)
-            if selects:
-                module_content["Select"].append(f"# {module_name}")
-                module_content["Select"].extend(select for select in selects if select not in module_content["Select"])
+        module_content["Arguments"].extend(arguments)
+        module_content["ArgumentsDesc"].extend(arguments_desc)
 
-    # 处理并合并 MITM 主机名
-    if output_type == 'sgmodule':
-        combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(set(module_content["MITM"]))) if module_content["MITM"] else ""
-    else:
-        combined_mitmh = "hostname = " + ", ".join(sorted(set(module_content["MITM"]))) if module_content["MITM"] else ""
+        selects = extract_select(content)
+        module_content["Select"].extend(selects)
 
     # 输出文件路径
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
@@ -179,8 +165,7 @@ def merge_modules(input_file, output_type, module_urls):
             if content_list and any(line.strip() for line in content_list):
                 if section_name == "MITM":
                     output_file.write("[MITM]\n")
-                    output_file.write(combined_mitmh + "\n")
-                    break  # 结束写入，跳过后续内容
+                    output_file.write("hostname = " + ", ".join(sorted(module_content["MITM"])) + "\n")
                 else:
                     output_file.write(f"[{section_name}]\n")
                     output_file.write("\n".join(content_list) + "\n\n")

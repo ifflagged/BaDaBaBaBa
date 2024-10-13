@@ -20,6 +20,9 @@ jobs:
         FILES_LIST=""
 
         while read -r url; do
+          # 忽略空行和以 '#' 开头的注释行
+          [[ -z "$url" || "$url" =~ ^# ]] && continue
+          
           # 提取作者名称和文件名
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")

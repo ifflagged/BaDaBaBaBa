@@ -45,6 +45,7 @@ def merge_modules(input_file, output_type, module_urls):
     scripts = []
     mitm_hosts = set()
 
+    # 定义一个字典来存储各部分的内容，每个部分按模块顺序保存
     module_content = {
         "General": [],
         "Rule": [],
@@ -109,18 +110,22 @@ def merge_modules(input_file, output_type, module_urls):
                     else:
                         module_content["MITM"].update(line.strip().split(","))
 
+        # 提取 arguments 和 select 内容
         arguments, arguments_desc = extract_arguments(content)
         if output_type == 'sgmodule':
             module_content["Arguments"].extend(arguments)
             for desc in arguments_desc:
+                # 将 '\n' 保留为文本而不是换行
                 desc_with_newline = desc.replace("\n", r"\n")
                 module_content["ArgumentsDesc"].append(f"# {module_url.split('/')[-1].split('.')[0]}\\n{desc_with_newline}")
         else:
             selects = extract_select(content)
             if selects:
+                # 确保只插入一次 URL 注释
                 module_content["Select"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
                 module_content["Select"].extend(selects)
 
+    # 去重并保持每个模块下内容的顺序
     if output_type == 'sgmodule':
         combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
     else:
@@ -132,6 +137,7 @@ def merge_modules(input_file, output_type, module_urls):
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
+    # 写入合并结果
     with open(output_path, "w") as output_file:
         if output_type == 'sgmodule':
             output_file.write(f"#!name= 🧰 Merged {name}\n")
@@ -144,7 +150,8 @@ def merge_modules(input_file, output_type, module_urls):
             
             if module_content["ArgumentsDesc"]:
                 arguments_desc_line = " ".join(module_content["ArgumentsDesc"])
-                output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")
+                output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")  # 空一行
+
         else:
             output_file.write(f"#!name= Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Loon\n")
@@ -152,14 +159,14 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
 
             if module_content["Select"]:
-                output_file.write("\n".join(module_content["Select"]) + "\n")
+                output_file.write("\n".join(module_content["Select"]) + "\n\n")  # 空一行
 
+        # 逐一写入各部分内容，并按模块顺序保持去重后的内容在注释下面
         for section_name, content_list in module_content.items():
             if content_list and any(line.strip() for line in content_list):
                 if section_name == "MITM":
                     output_file.write("[MITM]\n")
                     output_file.write(combined_mitmh + "\n")
-                    break  # 结束写入，跳过后续的内容
                 else:
                     output_file.write(f"[{section_name}]\n")
                     output_file.write("\n".join(content_list) + "\n\n")

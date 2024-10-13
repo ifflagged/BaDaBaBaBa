@@ -44,15 +44,14 @@ jobs:
 
           # 处理文件名以避免冲突
           if [[ -z "${filename_count["$author/$filename_no_ext"]}" ]]; then
-            filename_count["$author/$filename_no_ext"]=1
-          else
-            filename_count["$author/$filename_no_ext"]=$((filename_count["$author/$filename_no_ext"] + 1))
+            filename_count["$author/$filename_no_ext"]=0
           fi
 
           # 生成新的模块名称
           module_name="${author}_${filename_no_ext}"
-          if [[ ${filename_count["$author/$filename_no_ext"]} -gt 1 ]]; then
-            module_name="${module_name}-$((${filename_count["$author/$filename_no_ext"]} + 1))"
+          if [[ -f "Modules/Surge/${module_name}.sgmodule" || -f "Modules/Loon/${module_name}.plugin" ]]; then
+            filename_count["$author/$filename_no_ext"]=$((filename_count["$author/$filename_no_ext"] + 1))
+            module_name="${module_name}-$((${filename_count["$author/$filename_no_ext"]} + 2))"  # 从-2开始
           fi
 
           # 将文件信息追加到 FILES_LIST

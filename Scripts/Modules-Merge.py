@@ -39,93 +39,122 @@ def extract_select(content):
     return selects
 
 def merge_modules(input_file, output_type, module_urls):
-    # 定义各部分内容，并确保去重
+    general = []
+    rules = []
+    rewrites = []
+    scripts = []
+    mitm_hosts = set()
+
+    # 定义一个字典来存储各部分的内容，每个部分按模块顺序保存
     module_content = {
         "General": [],
         "Rule": [],
         "Rewrite": [],
         "Script": [],
-        "MITM": [],
+        "MITM": set(),
         "Arguments": [],
         "ArgumentsDesc": [],
         "Select": []
     }
 
+    # 添加用于去重的集合
+    added_general = set()
+    added_rules = set()
+    added_rewrites = set()
+    added_scripts = set()
+
     for module_url in module_urls:
         response = requests.get(module_url)
+
         if response.status_code != 200:
             continue
-        
-        content = response.text
-        module_name = module_url.split('/')[-1].split('.')[0]
 
-        # 提取 General 部分并去重
+        content = response.text
+
+        # 提取 General
         module_general = extract_section(content, "General")
         if module_general:
-            module_content["General"].append(f"# {module_name}")
-            module_content["General"].extend(
-                line for line in module_general if line not in module_content["General"]
-            )
+            module_content["General"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
+            for line in module_general:
+                if line not in added_general:
+                    added_general.add(line)  # 添加到已添加集合中
+                    module_content["General"].append(line)
 
-        # 提取 Rule 部分并去重
+        # 提取 Rule
         module_rules = extract_section(content, "Rule")
         if module_rules:
-            module_content["Rule"].append(f"# {module_name}")
-            module_content["Rule"].extend(
-                line for line in module_rules if line not in module_content["Rule"]
-            )
+            module_content["Rule"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
+            for line in module_rules:
+                if line not in added_rules:
+                    added_rules.add(line)
+                    module_content["Rule"].append(line)
 
-        # 提取 Rewrite 部分并去重
+        # 提取 Rewrite
         module_rewrites = extract_section(content, "Rewrite")
         module_url_rewrites = extract_section(content, "URL Rewrite")
         if module_rewrites or module_url_rewrites:
             if output_type == 'sgmodule':
-                module_content["Rewrite"].append(f"# {module_name}")
-                if module_rewrites:
-                    module_content["Rewrite"].extend(
-                        line for line in module_rewrites if line not in module_content["Rewrite"]
-                    )
-                if module_url_rewrites:
-                    module_content["Rewrite"].extend(
-                        line for line in module_url_rewrites if line not in module_content["Rewrite"]
-                    )
+                module_content["Rewrite"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
+                for line in module_rewrites:
+                    if line not in added_rewrites:
+                        added_rewrites.add(line)
+                        module_content["Rewrite"].append(line)
+                for line in module_url_rewrites:
+                    if line not in added_rewrites:
+                        added_rewrites.add(line)
+                        module_content["Rewrite"].append(line)
             else:
-                if module_rewrites:
-                    module_content["Rewrite"].append(f"# {module_name}")
-                    module_content["Rewrite"].extend(
-                        line for line in module_rewrites if line not in module_content["Rewrite"]
-                    )
+                for line in module_rewrites:
+                    if line not in added_rewrites:
+                        added_rewrites.add(line)
+                        module_content["Rewrite"].append(line)
 
-        # 提取 Script 部分并去重
+        # 提取 Script
         module_scripts = extract_section(content, "Script")
         if module_scripts:
-            module_content["Script"].append(f"# {module_name}")
-            module_content["Script"].extend(
-                line for line in module_scripts if line not in module_content["Script"]
-            )
+            module_content["Script"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
+            for line in module_scripts:
+                if line not in added_scripts:
+                    added_scripts.add(line)
+                    module_content["Script"].append(line)
 
-        # 提取 MITM 部分并去重
+        # 提取 MITM
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            for line in mitm_section:
-                if line.lower().startswith("hostname = %append%"):
-                    hosts = line.lower().replace("hostname = %append%", "").strip()
-                    module_content["MITM"].extend(host.strip() for host in hosts.split(",") if host.strip())
-                elif line.lower().startswith("hostname ="):
-                    hosts = line.lower().replace("hostname =", "").strip()
-                    module_content["MITM"].extend(host.strip() for host in hosts.split(",") if host.strip())
-                else:
-                    module_content["MITM"].append(line.strip())
+            if output_type == 'sgmodule':
+                for line in mitm_section:
+                    if line.lower().startswith("hostname = %append%"):
+                        hosts = line.lower().replace("hostname = %append%", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+            else:
+                for line in mitm_section:
+                    if line.lower().startswith("hostname ="):
+                        hosts = line.lower().replace("hostname =", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+                    else:
+                        module_content["MITM"].update(line.strip().split(","))
 
         # 提取 arguments 和 select 内容
         arguments, arguments_desc = extract_arguments(content)
-        module_content["Arguments"].extend(arguments)
-        module_content["ArgumentsDesc"].extend(arguments_desc)
+        if output_type == 'sgmodule':
+            module_content["Arguments"].extend(arguments)
+            for desc in arguments_desc:
+                # 将 '\n' 保留为文本而不是换行
+                desc_with_newline = desc.replace("\n", r"\n")
+                module_content["ArgumentsDesc"].append(f"# {module_url.split('/')[-1].split('.')[0]}\\n{desc_with_newline}")
+        else:
+            selects = extract_select(content)
+            if selects:
+                # 确保只插入一次 URL 注释
+                module_content["Select"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
+                module_content["Select"].extend(selects)
 
-        selects = extract_select(content)
-        module_content["Select"].extend(selects)
+    # 去重并保持每个模块下内容的顺序
+    if output_type == 'sgmodule':
+        combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
+    else:
+        combined_mitmh = "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
 
-    # 输出文件路径
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
     output_path = f"Modules/{'Surge' if output_type == 'sgmodule' else 'Loon'}/{output_file_name}"
@@ -145,9 +174,9 @@ def merge_modules(input_file, output_type, module_urls):
             
             if module_content["ArgumentsDesc"]:
                 arguments_desc_line = " ".join(module_content["ArgumentsDesc"])
-                output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")
+                output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")  # 空一行
             else:
-                output_file.write("\n")  # 保持空行
+                output_file.write("\n")  # 如果没有ArgumentsDesc，仍然空一行
 
         else:
             output_file.write(f"#!name= Merged {name}\n")
@@ -156,16 +185,17 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
 
             if module_content["Select"]:
-                output_file.write("\n".join(module_content["Select"]) + "\n\n")
+                output_file.write("\n".join(module_content["Select"]) + "\n\n")  # 如果有select部分，输出并空一行
             else:
-                output_file.write("\n")
+                output_file.write("\n")  # 如果没有select部分，仍然空一行
 
-        # 逐一写入各部分内容，并保持去重后的内容顺序
+        # 逐一写入各部分内容，并按模块顺序保持去重后的内容在注释下面
         for section_name, content_list in module_content.items():
             if content_list and any(line.strip() for line in content_list):
                 if section_name == "MITM":
                     output_file.write("[MITM]\n")
-                    output_file.write("hostname = " + ", ".join(sorted(module_content["MITM"])) + "\n")
+                    output_file.write(combined_mitmh + "\n")
+                    break  # 结束写入，跳过后续的内容
                 else:
                     output_file.write(f"[{section_name}]\n")
                     output_file.write("\n".join(content_list) + "\n\n")

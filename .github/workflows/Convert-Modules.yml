@@ -43,16 +43,16 @@ jobs:
           comment="# ${filename_no_ext} // ${hostnames}"
 
           # 处理文件名以避免冲突
-          if [[ -z "${filename_count["$author/$filename"]}" ]]; then
-            filename_count["$author/$filename"]=1
+          if [[ -z "${filename_count["$author/$filename_no_ext"]}" ]]; then
+            filename_count["$author/$filename_no_ext"]=1
           else
-            filename_count["$author/$filename"]=$((filename_count["$author/$filename"] + 1))
+            filename_count["$author/$filename_no_ext"]=$((filename_count["$author/$filename_no_ext"] + 1))
           fi
 
-          if [[ ${filename_count["$author/$filename"]} -gt 1 ]]; then
-            module_name="${author}_${filename_no_ext}-$((${filename_count["$author/$filename"]} - 1))"
-          else
-            module_name="${author}_${filename_no_ext}"
+          # 生成新的模块名称
+          module_name="${author}_${filename_no_ext}"
+          if [[ ${filename_count["$author/$filename_no_ext"]} -gt 1 ]]; then
+            module_name="${module_name}-$((${filename_count["$author/$filename_no_ext"]} - 1))"
           fi
 
           # 将文件信息追加到 FILES_LIST

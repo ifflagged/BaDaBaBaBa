@@ -1,6 +1,6 @@
 #!name= 🧰 Merged Nsringo
 #!desc= Merger Nsringo for Surge & Shadowrocket
-#!category= Jacob
+#!category=Jacob
 #!arguments= PEP.GCC:US
 #!arguments-desc= # Location\nPEP.GCC: 国家或地区代码
 
@@ -25,9 +25,3 @@ DOMAIN,gspe19-cn-ssl.ls.apple.com,DIRECT
 
 [MITM]
 hostname = %APPEND% configuration.ls.apple.com, gspe1-ssl.ls.apple.com, gspe35-ssl.ls.apple.com
-[Arguments]
-PEP.GCC:US
-
-[ArgumentsDesc]
-# Location\nPEP.GCC: 国家或地区代码
-

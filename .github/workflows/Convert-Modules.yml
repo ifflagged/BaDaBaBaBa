@@ -52,7 +52,7 @@ jobs:
           # 生成新的模块名称
           module_name="${author}_${filename_no_ext}"
           if [[ ${filename_count["$author/$filename_no_ext"]} -gt 1 ]]; then
-            module_name="${module_name}-$((${filename_count["$author/$filename_no_ext"]} - 1))"
+            module_name="${module_name}-$((${filename_count["$author/$filename_no_ext"]} + 1))"
           fi
 
           # 将文件信息追加到 FILES_LIST

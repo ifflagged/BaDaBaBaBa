@@ -3,11 +3,7 @@ input_file=$1
 module_name=$2
 comment=$3
 
-# 创建 Surge 和 Loon 文件夹
-mkdir -p "Modules/Surge"
-mkdir -p "Modules/Loon"
-
-# 通用替换规则
+# Common replacements for both Surge and Loon
 sed_common="
     /raw.githubusercontent.com/ s/\/main\//\/raw\/main\//Ig
     /raw.githubusercontent.com/ s/\/master\//\/raw\/master\//Ig
@@ -20,7 +16,7 @@ sed_common="
     /IP-CIDR/ s/\(REJECT\)\([^,]*$\)/\1, no-resolve/Ig
 "
 
-# Surge 转换
+# Surge conversion
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \
@@ -66,7 +62,7 @@ $comment" \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
     "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 
-# Loon 转换
+# Loon conversion
 sed -e "1 i\\
 $comment" \
     -e "$sed_common" \

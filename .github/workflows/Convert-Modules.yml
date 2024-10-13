@@ -62,11 +62,13 @@ jobs:
         for file_info in $FILES_LIST; do
           # 跳过空行
           [ -z "$file_info" ] && continue
-          file_path=$(echo $file_info | cut -d';' -f1)
-          author=$(echo $file_info | cut -d';' -f2)
-          new_filename=$(echo $file_info | cut -d';' -f3)
-          comment=$(echo $file_info | cut -d';' -f4
-          original_filename=$(echo $file_info | cut -d';' -f5)
+          file_path=$(echo "$file_info" | cut -d';' -f1)
+          author=$(echo "$file_info" | cut -d';' -f2)
+          new_filename=$(echo "$file_info" | cut -d';' -f3)
+          comment=$(echo "$file_info" | cut -d';' -f4)
+          original_filename=$(echo "$file_info" | cut -d';' -f5)
+          
+          # 确保脚本调用的参数都传递正确
           bash Scripts/Convert-Modules.sh "$file_path" "${author}_${new_filename}" "$comment" "$original_filename"
         done
 

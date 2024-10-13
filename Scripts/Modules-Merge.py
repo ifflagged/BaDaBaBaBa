@@ -14,7 +14,7 @@ def extract_section(content, section_name):
             in_section = True
         elif line_lower.startswith("[") and in_section:
             break
-        elif in_section:
+        elif in_section and (not line.startswith("#")):  # 要保留原来的#则修改为 elif in_section and (not line.startswith("#")):
             stripped_line = line.strip()
             if stripped_line:  # 过滤掉空行和仅有空格的行
                 section_lines.append(stripped_line)

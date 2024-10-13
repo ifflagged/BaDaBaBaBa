@@ -1,8 +1,6 @@
 #!name= 🧰 Merged Nsringo
 #!desc= Merger Nsringo for Surge & Shadowrocket
 #!category=Jacob
-#!arguments= PEP.GCC:US
-#!arguments-desc= # Location\nPEP.GCC: 国家或地区代码
 
 [Rule]
 # Location

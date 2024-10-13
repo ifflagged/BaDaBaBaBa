@@ -2,6 +2,7 @@
 #!desc= Merger Tools for Loon
 #!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]
 #!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png
+
 [Rule]
 # RuCu6_amap
 AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, AMapiPhone*)), REJECT

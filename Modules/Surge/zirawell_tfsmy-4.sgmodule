@@ -1,6 +1,0 @@
-# tfsmy-4 // tfsmy.chengdu.gov.cn, tft-app.cdtft.cn,
-# > 天府市民云 - TFSMY
-^https?:\/\/tfsmy\.chengdu\.gov\.cn\/api\/v\d\/core\/version - reject
-^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd url response-body officialAdvertResultVo response-body random-response
-
-Hostname = %APPEND% tfsmy.chengdu.gov.cn, tft-app.cdtft.cn

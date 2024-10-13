@@ -1,5 +1,0 @@
-# tft-4 // ams-cdn.cdtft.cn,
-# > 天府通 - TFT
-^https?:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams - reject
-
-Hostname = %APPEND% ams-cdn.cdtft.cn

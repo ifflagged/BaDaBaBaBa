@@ -1,8 +1,0 @@
-[Rule]
-
-[Rewrite]
-^https?:\/\/tfsmy\.chengdu\.gov\.cn\/api\/v\d\/core\/version reject-200
-[Script]
-
-[MITM]
-Hostname = tfsmy.chengdu.gov.cn, tft-app.cdtft.cn

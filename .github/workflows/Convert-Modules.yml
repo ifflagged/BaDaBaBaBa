@@ -18,7 +18,6 @@ jobs:
         mkdir -p Original
         README_CONTENT=""
         FILES_LIST=""
-        declare -A filename_counter  # 声明一个关联数组来记录文件名的计数
 
         while read -r url; do
           # 提取作者名称和文件名
@@ -30,22 +29,20 @@ jobs:
           # 创建作者文件夹
           mkdir -p "Original/$author"
 
-          # 检查是否存在相同文件名，并根据重复情况追加后缀
-          if [[ -v "filename_counter[$filename_no_ext]" ]]; then
-            count=${filename_counter[$filename_no_ext]}
+          # 检查文件名冲突，手动进行重命名
+          count=1
+          new_filename="$filename"
+          while [[ -e "Original/$author/$new_filename" ]]; do
             count=$((count+1))
-            filename_no_ext="${filename_no_ext}-${count}"
-            filename="${filename_no_ext}.${extension}"
-            filename_counter[$filename_no_ext]=$count
-          else
-            filename_counter[$filename_no_ext]=1
-          fi
-
+            new_filename="${filename_no_ext}-${count}.${extension}"
+          done
+          
           # 下载文件
-          file_path="Original/$author/$filename"
+          file_path="Original/$author/$new_filename"
           curl -L -o "$file_path" "$url"
           
           # 准备README内容
+          filename_no_ext=$(basename "$new_filename" | cut -d'.' -f1)  # 更新文件名变量
           README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
           
           # 提取非注释行中的 hostname 信息

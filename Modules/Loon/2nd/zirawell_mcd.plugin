@@ -1,0 +1,9 @@
+[Rule]
+
+[Rewrite]
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity reject-dict
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/richpop reject-dict
+[Script]
+
+[MITM]
+Hostname = api.mcd.cn

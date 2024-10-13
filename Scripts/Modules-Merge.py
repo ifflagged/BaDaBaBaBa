@@ -21,6 +21,23 @@ def extract_section(content, section_name):
     
     return section_lines
 
+def extract_arguments(content):
+    arguments = []
+    arguments_desc = []
+    select_lines = []
+
+    lines = content.splitlines()
+    for line in lines:
+        line = line.strip()
+        if line.startswith("#!arguments="):
+            arguments.append(line.replace("#!arguments=", "").strip())
+        elif line.startswith("#!arguments-desc="):
+            arguments_desc.append(f"# {line.replace('#!arguments-desc=', '').strip()}")
+        elif line.startswith("#!select=") or line.startswith("#!select ="):
+            select_lines.append(f"# {line}")
+
+    return arguments, arguments_desc, select_lines
+
 def merge_modules(input_file, output_type, module_urls):
     general = []
     rules = []
@@ -34,7 +51,10 @@ def merge_modules(input_file, output_type, module_urls):
         "Rule": [],
         "Rewrite": [],
         "Script": [],
-        "MITM": set()
+        "MITM": set(),
+        "Arguments": [],
+        "ArgumentsDesc": [],
+        "Select": []
     }
 
     for module_url in module_urls:
@@ -90,6 +110,15 @@ def merge_modules(input_file, output_type, module_urls):
                     else:
                         module_content["MITM"].update(line.strip().split(","))
 
+        # 提取 arguments, arguments-desc 和 select
+        arguments, arguments_desc, select_lines = extract_arguments(content)
+        if arguments:
+            module_content["Arguments"].append(", ".join(arguments))
+        if arguments_desc:
+            module_content["ArgumentsDesc"].extend(arguments_desc)
+        if select_lines:
+            module_content["Select"].extend(select_lines)
+
     # 去重并保持每个模块下内容的顺序
     if output_type == 'sgmodule':
         combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
@@ -107,16 +136,28 @@ def merge_modules(input_file, output_type, module_urls):
         if output_type == 'sgmodule':
             output_file.write(f"#!name= 🧰 Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
-            output_file.write("#!category=Jacob\n\n")
+            output_file.write("#!category=Jacob\n")
+            
+            # 添加合并后的 arguments 和 arguments-desc
+            if module_content["Arguments"]:
+                output_file.write(f"#!arguments= {', '.join(module_content['Arguments'])}\n")
+            if module_content["ArgumentsDesc"]:
+                output_file.write(f"#!arguments-desc=\n")
+                output_file.write("\n".join(module_content["ArgumentsDesc"]) + "\n")
+
         else:
             output_file.write(f"#!name= Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Loon\n")
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
-            output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n")
+            output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
+
+            # 添加合并后的 select
+            if module_content["Select"]:
+                output_file.write("\n".join(module_content["Select"]) + "\n")
 
         # 逐一写入各部分内容，并按模块顺序保持去重后的内容在注释下面
         for section_name, content_list in module_content.items():
-            if content_list and any(line.strip() for line in content_list):
+            if section_name not in ["Arguments", "ArgumentsDesc", "Select"] and content_list and any(line.strip() for line in content_list):
                 if section_name == "MITM":
                     output_file.write("[MITM]\n")
                     output_file.write(combined_mitmh + "\n")

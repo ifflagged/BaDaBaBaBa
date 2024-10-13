@@ -27,12 +27,7 @@ jobs:
           mkdir -p "Original/$author"
           # 下载文件
           file_path="Original/$author/$filename"
-          if curl -L -o "$file_path" "$url"; then
-            echo "Downloaded $filename successfully."
-          else
-            echo "Failed to download $filename from $url."
-            continue # 跳过下载失败的文件
-          fi
+          curl -L -o "$file_path" "$url"
           
           # 准备README内容
           README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
@@ -80,19 +75,8 @@ jobs:
             file_tracker[$base_name]=2  # 设置下次重命名起点
           fi
 
-          # 检查转换脚本是否存在，若不存在则跳过
-          if [ ! -f Scripts/Convert-Modules.sh ]; then
-            echo "Convert-Modules.sh script not found."
-            exit 1
-          fi
-          
           # 调用转换脚本
           bash Scripts/Convert-Modules.sh "$file_path" "$new_name" "$comment"
-          if [ $? -ne 0 ]; then
-            echo "Conversion failed for $file_path"
-          else
-            echo "Conversion successful for $file_path"
-          fi
         done
         
     - name: Create README in Modules directory
@@ -109,7 +93,15 @@ jobs:
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
+        
+        # 暂存未提交的更改
+        git stash -u
+        
         git pull origin main --rebase
+        
+        # 恢复暂存的更改
+        git stash pop || true
+        
         git add .
         if git diff --cached --quiet; then
           echo "No changes detected"

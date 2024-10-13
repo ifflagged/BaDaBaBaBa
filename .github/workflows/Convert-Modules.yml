@@ -26,7 +26,7 @@ jobs:
           # 提取作者名称和文件名
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
-          filename_no_ext=$(basename "$url" | cut -d'.' -f1)
+          filename_no_ext="${filename%.*}"  # 去掉扩展名
           extension="${filename##*.}"
           
           # 创建作者文件夹
@@ -66,7 +66,6 @@ jobs:
           fi
 
           # 准备README内容
-          filename_no_ext=$(basename "$new_filename" | cut -d'.' -f1)  # 更新文件名变量
           README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
           
           # 提取非注释行中的 hostname 信息
@@ -96,7 +95,7 @@ jobs:
           author=$(echo $file_info | cut -d';' -f2)
           filename=$(echo $file_info | cut -d';' -f3)
           comment=$(echo $file_info | cut -d';' -f4)
-          bash Scripts/Convert-Modules.sh "$file_path" "${author}_${filename}" "$comment"
+          bash Scripts/Convert-Modules.sh "$file_path" "$author" "$comment"  # 只传递 author 和 comment
         done
 
     - name: Create README in Modules directory

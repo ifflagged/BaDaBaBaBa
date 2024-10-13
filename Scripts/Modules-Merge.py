@@ -59,7 +59,7 @@ def merge_modules(input_file, output_type, module_urls):
         content = response.text
         module_name = module_url.split('/')[-1].split('.')[0]
 
-        # 提取 General 部分并去重
+        # 提取各部分并去重
         module_general = extract_section(content, "General")
         if module_general:
             module_content["General"].append(f"# {module_name}")
@@ -67,7 +67,6 @@ def merge_modules(input_file, output_type, module_urls):
                 line for line in module_general if line not in module_content["General"]
             )
 
-        # 提取 Rule 部分并去重
         module_rules = extract_section(content, "Rule")
         if module_rules:
             module_content["Rule"].append(f"# {module_name}")
@@ -75,7 +74,6 @@ def merge_modules(input_file, output_type, module_urls):
                 line for line in module_rules if line not in module_content["Rule"]
             )
 
-        # 提取 Rewrite 部分并去重
         module_rewrites = extract_section(content, "Rewrite")
         module_url_rewrites = extract_section(content, "URL Rewrite")
         if module_rewrites or module_url_rewrites:
@@ -96,7 +94,6 @@ def merge_modules(input_file, output_type, module_urls):
                         line for line in module_rewrites if line not in module_content["Rewrite"]
                     )
 
-        # 提取 Script 部分并去重
         module_scripts = extract_section(content, "Script")
         if module_scripts:
             module_content["Script"].append(f"# {module_name}")
@@ -104,7 +101,6 @@ def merge_modules(input_file, output_type, module_urls):
                 line for line in module_scripts if line not in module_content["Script"]
             )
 
-        # 提取 MITM 部分并去重
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
             if output_type == 'sgmodule':
@@ -120,7 +116,6 @@ def merge_modules(input_file, output_type, module_urls):
                     else:
                         module_content["MITM"].update(line.strip().split(","))
 
-        # 提取 arguments 和 select 内容并去重
         arguments, arguments_desc = extract_arguments(content)
         if output_type == 'sgmodule':
             module_content["Arguments"].update(arguments)
@@ -133,11 +128,7 @@ def merge_modules(input_file, output_type, module_urls):
                 module_content["Select"].add(f"# {module_name}")
                 module_content["Select"].update(selects)
 
-    # 处理并合并 MITM 主机名
-    if output_type == 'sgmodule':
-        combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
-    else:
-        combined_mitmh = "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
+    combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(module_content["MITM"])) if output_type == 'sgmodule' and module_content["MITM"] else "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
 
     # 输出文件路径
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
@@ -180,10 +171,11 @@ def merge_modules(input_file, output_type, module_urls):
                 if section_name == "MITM":
                     output_file.write("[MITM]\n")
                     output_file.write(combined_mitmh + "\n")
-                    break  # 结束写入，跳过后续内容
                 else:
-                    output_file.write(f"[{section_name}]\n")
-                    output_file.write("\n".join(content_list) + "\n\n")
+                    # 只有当内容不为空时才写入模块名称
+                    if content_list:
+                        output_file.write(f"[{section_name}]\n")
+                        output_file.write("\n".join(content_list) + "\n\n")
 
     print(f"合并完成！生成的文件为 {output_path}")
 

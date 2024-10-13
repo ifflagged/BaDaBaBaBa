@@ -151,6 +151,8 @@ def merge_modules(input_file, output_type, module_urls):
             if module_content["ArgumentsDesc"]:
                 arguments_desc_line = " ".join(module_content["ArgumentsDesc"])
                 output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")  # 空一行
+            else:
+                output_file.write("\n")  # 如果没有ArgumentsDesc，仍然空一行
 
         else:
             output_file.write(f"#!name= Merged {name}\n")
@@ -159,7 +161,9 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
 
             if module_content["Select"]:
-                output_file.write("\n".join(module_content["Select"]) + "\n\n")  # 空一行
+                output_file.write("\n".join(module_content["Select"]) + "\n\n")  # 如果有select部分，输出并空一行
+            else:
+                output_file.write("\n")  # 如果没有select部分，仍然空一行
 
         # 逐一写入各部分内容，并按模块顺序保持去重后的内容在注释下面
         for section_name, content_list in module_content.items():

@@ -1,121 +1,42 @@
-name: Convert Modules
+- name: Download snippets and prepare variables
+  id: download-and-prepare
+  run: |
+    mkdir -p Original
+    README_CONTENT=""
+    FILES_LIST=""
+    declare -A file_count
+    while read -r url; do
+      # 跳过空行和注释行
+      [[ -z "$url" || "$url" =~ ^# ]] && continue
 
-on:
-  schedule:
-    - cron: '0 0 * * *' # 每天执行一次
-  workflow_dispatch: # 手动触发
+      # 提取作者名称和文件名
+      author=$(echo "$url" | awk -F'/' '{print $4}')
+      filename=$(basename "$url")
+      filename_no_ext=$(basename "$url" | cut -d'.' -f1)
 
-jobs:
-  update-snippet:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Download snippets and prepare variables
-      id: download-and-prepare
-      run: |
-        mkdir -p Original
-        README_CONTENT=""
-        FILES_LIST=""
-        declare -A file_count
-        while read -r url; do
-          # 跳过空行和注释
-          [[ -z "$url" || "$url" =~ ^# ]] && continue
-          author=$(echo "$url" | awk -F'/' '{print $4}')
-          filename=$(basename "$url")
-          filename_no_ext=$(basename "$url" | cut -d'.' -f1)
-
-          # 检查文件名冲突并重命名
-          if [[ -n "${file_count[$author:$filename_no_ext]}" ]]; then
-            count=${file_count[$author:$filename_no_ext]}
-            new_filename="${filename_no_ext}-$(($count + 1)).${filename##*.}"
-            file_count[$author:$filename_no_ext]=$count+1
-          else
-            new_filename="$filename"
-            file_count[$author:$filename_no_ext]=1
-          fi
-          
-          mkdir -p "Original/$author"
-          file_path="Original/$author/$new_filename"
-          
-          # 下载文件
-          curl -L -o "$file_path" "$url"
-          
-          # 准备README内容
-          README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
-          
-          # 提取非注释行中的 hostname 信息
-          hostnames=$(grep -v '^#' "$file_path" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
-          comment="# ${filename_no_ext} // ${hostnames}"
-          
-          # 将文件信息追加到 FILES_LIST
-          FILES_LIST="${FILES_LIST}\n${file_path};${author};${filename_no_ext};${comment}"
-        done < Links/Modules-Links.txt
-        
-        # 将 README 内容和文件列表输出到步骤的输出中
-        echo "README_CONTENT<<EOF" >> $GITHUB_ENV
-        echo -e "$README_CONTENT" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
-        echo "FILES_LIST<<EOF" >> $GITHUB_ENV
-        echo -e "$FILES_LIST" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
-
-    - name: Convert snippets
-      run: |
-        IFS=$'\n'
-        for file_info in $FILES_LIST; do
-          [ -z "$file_info" ] && continue
-          file_path=$(echo $file_info | cut -d';' -f1)
-          author=$(echo $file_info | cut -d';' -f2)
-          filename=$(echo $file_info | cut -d';' -f3)
-          comment=$(echo $file_info | cut -d';' -f4)
-          bash Scripts/Convert-Modules.sh "$file_path" "${author}_${filename}" "$comment"
-        done
-
-    - name: Create README in Modules directory
-      run: |
-        echo "# Modules for Surge and Loon" > Modules/README.md
-        echo "" >> Modules/README.md
-        echo "This directory contains converted modules from various sources, compatible with Surge and Loon." >> Modules/README.md
-        echo "" >> Modules/README.md
-        echo "## Sources" >> Modules/README.md
-        echo "" >> Modules/README.md
-        echo -e "$README_CONTENT" >> Modules/README.md
-
-    - name: Commit and Push changes
-      run: |
-        git config --local user.name "ifflagged"
-        git config --local user.email "qibo.sign@outlook.com"
-        git add .
-        if git diff --cached --quiet; then
-          echo "No changes detected"
-        else
-          git commit -m "Update Modules"
-          git push
-        fi
-
-    - name: Send TG Notification
-      run: |
-        if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
-          UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
-        else
-          UPDATED_FILES=$(git diff --name-only HEAD Modules/)
-        fi
-
-        if [ -n "$UPDATED_FILES" ]; then
-          MESSAGE="The following files have been updated:\n"
-          GITHUB_URL="https://github.com/ifflagged/BaDaBaBaBa/blob/main/"
-          while read -r file; do
-            display_name=$(echo "$file" | sed 's/Modules\///')
-            file_url="${GITHUB_URL}${file}"
-            MESSAGE="${MESSAGE}[${display_name}](${file_url})\n"
-          done <<< "$UPDATED_FILES"
-
-          curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
-            -d chat_id=${{ secrets.TG_ID }} \
-            -d text="$(echo -e "$MESSAGE")" \
-            -d parse_mode=Markdown
-        else
-          echo "No files were updated, no notification sent."
-        fi
+      # 处理文件重命名
+      if [[ -n "${file_count[$author:$filename_no_ext]}" ]]; then
+        count=${file_count[$author:$filename_no_ext]}
+        filename_no_ext="${filename_no_ext}-${count}"
+        ((file_count[$author:$filename_no_ext]=count+1))
+      else
+        file_count[$author:$filename_no_ext]=1
+      fi
+      
+      # 创建作者文件夹
+      mkdir -p "Original/$author"
+      # 下载文件
+      file_path="Original/$author/$filename_no_ext.${filename##*.}"
+      curl -L -o "$file_path" "$url"
+      
+      # 准备README内容
+      README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
+      
+      # 提取非注释行中的 hostname 信息
+      hostnames=$(grep -v '^#' "$file_path" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
+      # 生成注释内容
+      comment="# ${filename_no_ext} // ${hostnames}"
+      
+      # 将文件信息追加到 FILES_LIST
+      FILES_LIST="${FILES_LIST}\n${file_path};${author};${filename_no_ext};${comment}"
+    done < Links/Modules-Links.txt

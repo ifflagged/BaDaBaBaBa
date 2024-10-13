@@ -18,11 +18,11 @@ jobs:
  
       - name: Delete .sgmodule and .plugin files in Modules folder
         run: |
-          find ./Modules -maxdepth 1 -name "*-2.sgmodule" -type f -delete
-          find ./Modules -maxdepth 1 -name "*-3.sgmodule" -type f -delete
-          find ./Modules -maxdepth 1 -name "*-2.plugin" -type f -delete
-          find ./Modules -maxdepth 1 -name "*-3.plugin" -type f -delete
-
+          find ./Modules -name "*-2.sgmodule" -type f -delete
+          find ./Modules -name "*-3.sgmodule" -type f -delete
+          find ./Modules -name "*-2.plugin" -type f -delete
+          find ./Modules -name "*-3.plugin" -type f -delete
+          
       - name: Commit changes
         run: |
           git config --local user.name "ifflagged"

@@ -2,6 +2,7 @@ https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/Yuheng0101_NoAds.
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/ZenmoFeiShi_Smzdm.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/ddgksf2013_SmzdmAds.sgmodule
 
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/ddgksf2013_baiduCloud.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/zirawell_SAMsClub.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/zirawell_dianPing.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/zirawell_dianPing-2.sgmodule
@@ -17,6 +18,7 @@ https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/Yuheng0101_NoAds.p
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/ZenmoFeiShi_Smzdm.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/ddgksf2013_SmzdmAds.plugin
 
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/ddgksf2013_baiduCloud.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/zirawell_SAMsClub.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/zirawell_dianPing.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/zirawell_dianPing-2.plugin

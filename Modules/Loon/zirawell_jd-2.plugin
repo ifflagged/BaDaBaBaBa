@@ -1,4 +1,4 @@
-# jd // *.jddebug.com, api.m.jd.com, storage.360buyimg.com, img*.360buyimg.com, ms.jr.jd.com,
+# jd-2 // *.jddebug.com, api.m.jd.com, storage.360buyimg.com, img*.360buyimg.com, ms.jr.jd.com,
 # > 京东 - JD
 ^https?:\/\/\w{32}\.jddebug\.com\/diagnose\? reject
 http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path= https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/jd.js, requires-body = true, tag = zirawell_jd-2

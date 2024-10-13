@@ -142,7 +142,7 @@ def merge_modules(input_file, output_type, module_urls):
         if output_type == 'sgmodule':
             output_file.write(f"#!name= 🧰 Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
-            output_file.write("#!category=Jacob\n")
+            output_file.write("#!category= Jacob\n")
 
             if module_content["Arguments"]:
                 arguments_line = f"#!arguments= " + ", ".join(module_content["Arguments"])

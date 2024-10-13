@@ -1,0 +1,9 @@
+[Rule]
+
+[Rewrite]
+^https?:\/\/[a-z]*\.rsscc\.com\/[a-z]*\/adver reject
+^https?:\/\/cdn\.133\.cn\/md\/gtgj\/.+\/.+720x1280 reject-dict
+[Script]
+
+[MITM]
+Hostname = *.rsscc.com, cdn.133.cn

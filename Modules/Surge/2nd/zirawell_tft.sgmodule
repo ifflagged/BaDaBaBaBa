@@ -1,0 +1,8 @@
+[Rule]
+
+[URL Rewrite]
+^https?:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams - reject
+[Script]
+
+[MITM]
+Hostname = %APPEND% ams-cdn.cdtft.cn

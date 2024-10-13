@@ -115,11 +115,15 @@ def merge_modules(input_file, output_type, module_urls):
         if output_type == 'sgmodule':
             module_content["Arguments"].extend(arguments)
             for desc in arguments_desc:
-                module_content["ArgumentsDesc"].append(f"# {module_url.split('/')[-1].split('.')[0]}\n{desc}")
+                # 将 '\n' 保留为文本而不是换行
+                desc_with_newline = desc.replace("\n", r"\n")
+                module_content["ArgumentsDesc"].append(f"# {module_url.split('/')[-1].split('.')[0]}\\n{desc_with_newline}")
         else:
             selects = extract_select(content)
-            for select in selects:
-                module_content["Select"].append(f"# {module_url.split('/')[-1].split('.')[0]}\n{select}")
+            if selects:
+                # 确保只插入一次 URL 注释
+                module_content["Select"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
+                module_content["Select"].extend(selects)
 
     # 去重并保持每个模块下内容的顺序
     if output_type == 'sgmodule':
@@ -138,7 +142,7 @@ def merge_modules(input_file, output_type, module_urls):
         if output_type == 'sgmodule':
             output_file.write(f"#!name= 🧰 Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
-            output_file.write("#!category= Jacob\n")
+            output_file.write("#!category=Jacob\n")
 
             if module_content["Arguments"]:
                 arguments_line = f"#!arguments= " + ", ".join(module_content["Arguments"])

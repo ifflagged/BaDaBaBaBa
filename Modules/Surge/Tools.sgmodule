@@ -206,6 +206,7 @@ AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
 AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT //误杀
 AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
 AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
 AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
 AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -access-), (DOMAIN-SUFFIX, pangle.io)), REJECT
 AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -log-), (DOMAIN-SUFFIX, pangle.io)), REJECT
@@ -214,6 +215,7 @@ AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssd
 AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
 URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
 DOMAIN, mon.zijieapi.com, REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
 DOMAIN, i.snssdk.com, REJECT
 DOMAIN, is.snssdk.com, REJECT
 DOMAIN, bds.snssdk.com, REJECT
@@ -232,9 +234,12 @@ DOMAIN, mssdk.volces.com, REJECT
 DOMAIN, pangolin.snssdk.com, REJECT
 DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
 DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
 DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
 DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
 DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
 DOMAIN-KEYWORD, iflyad.bj.openstorage.cn, REJECT
 DOMAIN-KEYWORD, bjimp.voiceads.cn, REJECT
 DOMAIN, sdk.1rtb.net, REJECT
@@ -246,10 +251,16 @@ DOMAIN, sdktmp.hubcloud.com.cn, REJECT
 DOMAIN, v.adx.hubcloud.com.cn, REJECT
 DOMAIN, config.inmobi.cn, REJECT
 DOMAIN, ztoken.uyunad.com, REJECT
+DOMAIN, aaid.uyunad.com, REJECT
+DOMAIN, gdfp.gifshow.com, REJECT
+DOMAIN, open.e.kuaishou.com, REJECT
+DOMAIN-SUFFIX, adukwai.com, REJECT
+DOMAIN, init.supersonicads.com, REJECT
 DOMAIN, st.appsad.cn, REJECT
 DOMAIN, sdk.beizi.biz, REJECT
 DOMAIN, api-htp.beizi.biz, REJECT
 DOMAIN, admaster.com.cn, REJECT
+DOMAIN-SUFFIX, miaozhen.com, REJECT
 DOMAIN, monitor.ssp.admobile.top, REJECT
 DOMAIN, sdk.ssp.admobile.top, REJECT
 DOMAIN, ax.admobile.top, REJECT
@@ -291,33 +302,52 @@ DOMAIN, click-bes.baidu.com, REJECT
 DOMAIN, eclick.baidu.com, REJECT
 DOMAIN, mobads-logs.baidu.com, REJECT
 DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
 DOMAIN, nadvideo2.baidu.com, REJECT
 DOMAIN, wn.pos.baidu.com, REJECT
 DOMAIN, miniapp-ad.cdn.bcebos.com, REJECT
 DOMAIN-SUFFIX, union.baidu.cn, REJECT
 DOMAIN-SUFFIX, union.baidu.com, REJECT
+DOMAIN, adsmind.gdtimg.com, REJECT
 DOMAIN, adsmind.ugdtimg.com, REJECT
 DOMAIN, c2.gdt.qq.com, REJECT
 DOMAIN, huatuocode.huatuo.qq.com, REJECT
+DOMAIN, info4.video.qq.com, REJECT
+DOMAIN, info6.video.qq.com, REJECT
 DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, ios.video.mpush.qq.com, REJECT
 DOMAIN, mi.gdt.qq.com, REJECT
+DOMAIN, otheve.beacon.qq.com, REJECT
+DOMAIN, pgdt.gtimg.cn, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
 DOMAIN, qzs.gdtimg.com, REJECT
 DOMAIN, qzs.qq.com, REJECT
 DOMAIN, rmonitor.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
 DOMAIN, sdkconfig.video.qq.com, REJECT
 DOMAIN, t.gdt.qq.com, REJECT
+DOMAIN, tmead.y.qq.com, REJECT
+DOMAIN, tmeadbak.y.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, tpns.qq.com, REJECT
 DOMAIN, v.gdt.qq.com, REJECT
 DOMAIN, v2.gdt.qq.com, REJECT
 DOMAIN, win.gdt.qq.com, REJECT
 DOMAIN, wup.imtt.qq.com, REJECT
 DOMAIN, tpstelemetry.tencent.com, REJECT
 DOMAIN, ii.gdt.qq.com, REJECT
+DOMAIN-KEYWORD, trace.qq.com, REJECT
+DOMAIN-KEYWORD, trace.video.qq.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+DOMAIN-SUFFIX, l.qq.com, REJECT
 DOMAIN-SUFFIX, ugdtimg.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
 DOMAIN-SUFFIX, openinstall.io, REJECT
 DOMAIN, b-gtc.getui.net, REJECT
 DOMAIN, c-gtc.getui.net, REJECT
 DOMAIN, c-hzgt2.getui.com, REJECT
 DOMAIN, c-ido.getui.net, REJECT
+DOMAIN, c-gtc.getui.net, REJECT
 DOMAIN, dnms.getui.com, REJECT
 DOMAIN, ido.getui.net, REJECT
 DOMAIN, sdk-conf.getui.com, REJECT
@@ -337,6 +367,7 @@ DOMAIN, plbslog.umeng.com, REJECT
 DOMAIN, log.umtrack.com, REJECT
 DOMAIN, aaid.umeng.com, REJECT
 DOMAIN, log.umsns.com, REJECT
+DOMAIN, adtracker.adfunlink.com, REJECT
 DOMAIN, sdk.tianmu.mobi, REJECT
 DOMAIN, tracker.tianmu.mobi, REJECT
 DOMAIN, e-u1.ubixioe.com, REJECT
@@ -344,6 +375,10 @@ DOMAIN, sdk-data.ubixioe.com, REJECT
 DOMAIN, tower.ubixioe.com, REJECT
 DOMAIN, tx-cfg-u1.ubixioe.com, REJECT
 DOMAIN, tx-data-u1.ubixioe.com, REJECT
+DOMAIN, ossgw.alicdn.com, REJECT
+DOMAIN, ems.youku.com, REJECT
+DOMAIN, hudong.alicdn.com, REJECT
+DOMAIN, et.tanx.com, REJECT
 DOMAIN, beacon-api.aliyuncs.com, REJECT
 DOMAIN, adash.man.aliyuncs.com, REJECT
 DOMAIN, applog.uc.cn, REJECT
@@ -355,11 +390,16 @@ DOMAIN, api.anythinktech.com, REJECT
 DOMAIN, tk.anythinktech.com, REJECT
 DOMAIN, da.anythinktech.com, REJECT
 DOMAIN, gorgon.youdao.com, REJECT
+DOMAIN, sdkconfig.ad.xiaomi.com, REJECT
 DOMAIN, al-log.d.meituan.net, REJECT
 DOMAIN, babel-statistics-android.d.meituan.net, REJECT
+DOMAIN, maplocatesdksnapshot.d.meituan.net, REJECT
+DOMAIN, metrics-picture.d.meituan.net, REJECT
 DOMAIN, route-stats.d.meituan.net, REJECT
+DOMAIN, dsp-x.jd.com, REJECT
 DOMAIN, im-x.jd.com, REJECT
 DOMAIN, xlog.jd.com, REJECT
+DOMAIN, janapi.jd.com, REJECT
 DOMAIN, api.mosspf.com, REJECT
 DOMAIN, da.mosspf.com, REJECT
 DOMAIN, mores.toponad.com, REJECT
@@ -590,6 +630,8 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https?:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity - reject
 ^https?:\/\/api\.mcd\.cn\/bff\/portal\/richpop - reject
 # zirawell_mcd
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity - reject
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/richpop - reject
 # zirawell_qunar
 ^https?:\/\/qde\.qunar\.com\/preload - reject
 ^https?:\/\/homefront\.qunar\.com\/front\/splash\/ad - reject
@@ -754,9 +796,3 @@ zirawell_dianPing-2 = type=http-response,pattern=^https?:\/\/img\.meituan\.net\/
 
 [MITM]
 hostname = %APPEND% *.dianping.com, *.m.goofish.com, *.rsscc.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, *live.bilibili.com, 103.37.155.60, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 2023.redircdn.com, acs-m.freshippo.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, afd.baidu.com, ams-cdn.cdtft.cn, ap*.bilibili.com, api-sams.walmartmobile.cn, api.coolapk.com, api.douban.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.revenuecat.com, api.udache.com, api.yangkeduo.com, app-api.smzdm.com, article-api.smzdm.com, awp-assets.meituan.net, baike-api.smzdm.com, boxjs.com, boxjs.net, cdn.133.cn, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, daijia.kuaidadi.com, ddplus.meituan.net, edith.xiaohongshu.com, elemecdn.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, gab.122.gov.cn, gateway.kugou.com, grpc.biliapi.net, guide-acs.m.taobao.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, image.mybank.icbc.com.cn, images.pinduoduo.com, img.meituan.net, img3.doubanio.com, ios.prod.ftl.netflix.com, jzts.cmpassport.com, list-app-m.i4.cn, m.bilibili.com, m5-zb.amap.com, m5.amap.com, mars.meituan.com, mb3admin.com, member.alipan.com, mobile.12306.cn, mobilepaas.abchina.com.cn, mp.weixin.qq.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss.amap.com, p*.meituan.net, p.meituan.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, res.xiaojukeji.com, rms.meituan.com, router.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, user-api.smzdm.com, video-dsp.pddpic.com, wallet.95516.com, weibo.com, weixin110.qq.com, www.bilibili.com, www.dpfile.com, www.router.com, www.washpayer.com, www.xiaohongshu.com, www.zhihu.com, www1.elecfans.com, youtubei.googleapis.com, zhiyou.m.smzdm.com, zhuanlan.zhihu.com
-[Arguments]
-YouTube 屏蔽上传按钮:true,YouTube 屏蔽选段按钮:true,YouTube 字幕翻译语言:zh-Hans,YouTube 歌词翻译语言:zh-Hans,YouTube 脚本执行引擎:jsc,YouTube 启用调试模式:false
-
-[ArgumentsDesc]
-# Tools\n- YouTube 屏蔽参数：[true, false] \n- YouTube 翻译参数：[语言代码, off] \n- YouTube 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志
-

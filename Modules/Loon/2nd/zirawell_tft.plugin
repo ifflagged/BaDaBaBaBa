@@ -1,8 +1,0 @@
-[Rule]
-
-[Rewrite]
-^https?:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams reject-dict
-[Script]
-
-[MITM]
-Hostname = ams-cdn.cdtft.cn

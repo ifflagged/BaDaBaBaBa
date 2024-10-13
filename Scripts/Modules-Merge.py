@@ -130,7 +130,7 @@ def merge_modules(input_file, output_type, module_urls):
         else:
             selects = extract_select(content)
             if selects:
-                module_content["Select"].add(f"# {module_name}")
+                module_content["Select"].add(f"# {module_name}")  # 在这里添加模块名的注释
                 module_content["Select"].update(selects)
 
     # 处理并合并 MITM 主机名
@@ -171,9 +171,9 @@ def merge_modules(input_file, output_type, module_urls):
 
             # 写入 Select 部分，# 注释在上方
             if module_content["Select"]:
-                output_file.write("\n".join(module_content["Select"]) + "\n\n")
-            else:
-                output_file.write("\n")
+                for select in module_content["Select"]:
+                    output_file.write(select + "\n")  # 写入 # 注释
+                output_file.write("\n")  # 添加一个空行
 
         # 逐一写入各部分内容，并保持去重后的内容顺序
         for section_name, content_list in module_content.items():

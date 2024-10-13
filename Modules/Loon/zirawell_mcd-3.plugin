@@ -1,6 +1,0 @@
-# mcd-3 // api.mcd.cn,
-# > 麦当劳<微信小程序> - MCD
-^https?:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity reject-dict
-^https?:\/\/api\.mcd\.cn\/bff\/portal\/richpop reject-dict
-
-Hostname = api.mcd.cn

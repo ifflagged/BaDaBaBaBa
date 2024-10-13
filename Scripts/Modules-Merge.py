@@ -169,6 +169,7 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
 
+            # 写入 Select 部分，# 注释在上方
             if module_content["Select"]:
                 output_file.write("\n".join(module_content["Select"]) + "\n\n")
             else:

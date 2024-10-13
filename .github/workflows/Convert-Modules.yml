@@ -55,7 +55,7 @@ jobs:
           
           # 将文件信息追加到 FILES_LIST
           FILES_LIST="${FILES_LIST}\n${file_path};${author};${filename_no_ext};${comment}"
-        done < Modules-Links.txt
+        done < Links/Modules-Links.txt
         
         # 将 README 内容和文件列表输出到步骤的输出中
         echo "README_CONTENT<<EOF" >> $GITHUB_ENV

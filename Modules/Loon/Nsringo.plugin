@@ -5,28 +5,20 @@
 
 [Rule]
 # Location
-# 📍 Country Code
 DOMAIN,gspe1-ssl.ls.apple.com,DIRECT
 # Maps
-# 🗺️ Tiles
 DOMAIN,gspe19-cn-ssl.ls.apple.com,DIRECT
-# 🗺️ Dispatcher
 DOMAIN,dispatcher.is.autonavi.com,DIRECT
-# 🗺️ Directions & ETA
 DOMAIN,direction2.is.autonavi.com,DIRECT
 
 [Script]
 # Location
-# 📍 Country Code
 http-response ^https?:\/\/gspe1-ssl\.ls\.apple\.com\/pep\/gcc script-path=https://github.com/NSRingo/GeoServices/releases/latest/download/response.js, requires-body=1, tag=📍 Location.pep.gcc.response, argument=[{PEP.GCC}]
 # Maps
-# 🗺️ Network Defaults
 http-request ^https?:\/\/configuration\.ls\.apple\.com\/config\/defaults script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/request.js, tag=🗺️ Maps.config.defaults.request, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
 http-response ^https?:\/\/configuration\.ls\.apple\.com\/config\/defaults script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/response.js, requires-body=1, tag=🗺️ Maps.config.defaults.response, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
-# 🗺️ Announcements
 http-request ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/config\/announcements script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/request.js, tag=🗺️ Maps.config.announcements.request, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
 http-response ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/config\/announcements script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/response.js, requires-body=1, binary-body-mode=1, tag=🗺️ Maps.config.announcements.response, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
-# 🗺️ Resource Manifest
 http-request ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/geo_manifest\/dynamic\/config script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/request.js, tag=🗺️ Maps.config.announcements.request, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
 http-response ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/geo_manifest\/dynamic\/config script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/response.js, requires-body=1, binary-body-mode=1, tag=🗺️ Maps.geo_manifest.dynamic.config.response, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
 

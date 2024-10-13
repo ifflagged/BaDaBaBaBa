@@ -14,7 +14,7 @@ def extract_section(content, section_name):
             in_section = True
         elif line_lower.startswith("[") and in_section:
             break
-        elif in_section and (not line.startswith("#")):
+        elif in_section:
             stripped_line = line.strip()
             if stripped_line:  # 过滤掉空行和仅有空格的行
                 section_lines.append(stripped_line)
@@ -93,21 +93,15 @@ def merge_modules(input_file, output_type, module_urls):
         module_rewrites = extract_section(content, "Rewrite")
         module_url_rewrites = extract_section(content, "URL Rewrite")
         if module_rewrites or module_url_rewrites:
-            if output_type == 'sgmodule':
-                module_content["Rewrite"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
-                for line in module_rewrites:
-                    if line not in added_rewrites:
-                        added_rewrites.add(line)
-                        module_content["Rewrite"].append(line)
-                for line in module_url_rewrites:
-                    if line not in added_rewrites:
-                        added_rewrites.add(line)
-                        module_content["Rewrite"].append(line)
-            else:
-                for line in module_rewrites:
-                    if line not in added_rewrites:
-                        added_rewrites.add(line)
-                        module_content["Rewrite"].append(line)
+            module_content["Rewrite"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
+            for line in module_rewrites:
+                if line not in added_rewrites:
+                    added_rewrites.add(line)
+                    module_content["Rewrite"].append(line)
+            for line in module_url_rewrites:
+                if line not in added_rewrites:
+                    added_rewrites.add(line)
+                    module_content["Rewrite"].append(line)
 
         # 提取 Script
         module_scripts = extract_section(content, "Script")

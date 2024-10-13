@@ -1,4 +1,4 @@
-name: Merge Modules
+name: Merge and Deduplicate Modules
 
 on:
   schedule:
@@ -26,6 +26,12 @@ jobs:
         run: |
           python Scripts/Modules-Merge.py Links/Merge-Modules-*.txt
 
+      - name: Deduplicate merged modules
+        run: |
+          # 假设合并后的模块文件为 Merged-Modules.sgmodule
+          sort Merged-Modules.sgmodule | uniq > Deduplicated-Modules.sgmodule
+          mv Deduplicated-Modules.sgmodule Merged-Modules.sgmodule
+
       - name: Check for changes
         id: changes
         run: |
@@ -41,7 +47,7 @@ jobs:
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git commit -m "Update merged modules"
+          git commit -m "Update merged and deduplicated modules"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git
 
       - name: Send Telegram notification if changes were committed
@@ -67,4 +73,3 @@ jobs:
               -d parse_mode=Markdown
           else
             echo "No files were updated, no notification sent."
-          fi

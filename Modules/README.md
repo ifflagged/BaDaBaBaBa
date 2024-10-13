@@ -29,6 +29,8 @@ This directory contains converted modules from various sources, compatible with 
 - **dianPing**: Converted from [zirawell dianPing](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/D/%E5%A4%A7%E4%BC%97%E7%82%B9%E8%AF%84/rewrite/dianPing.conf)
 - **eleme**: Converted from [zirawell eleme](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/E/%E9%A5%BF%E4%BA%86%E4%B9%88/rewrite/eleme.conf)
 - **rsscc**: Converted from [zirawell rsscc](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/G/%E9%AB%98%E9%93%81%E7%AE%A1%E5%AE%B6/rewrite/rsscc.conf)
+- **jd**: Converted from [zirawell jd](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/J/%E4%BA%AC%E4%B8%9C/filter/jd.list)
+- **jd**: Converted from [zirawell jd](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/J/%E4%BA%AC%E4%B8%9C/rewrite/jd.conf)
 - **mcd**: Converted from [zirawell mcd](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/M/%E9%BA%A6%E5%BD%93%E5%8A%B3/rewrite/mcd.conf)
 - **mcd**: Converted from [zirawell mcd](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/Applet/Wechat/M/%E9%BA%A6%E5%BD%93%E5%8A%B3/rewrite/mcd.conf)
 - **qunar**: Converted from [zirawell qunar](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/Q/%E5%8E%BB%E5%93%AA%E5%84%BF/rewrite/qunar.conf)

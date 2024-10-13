@@ -2,7 +2,6 @@
 #!desc= Merger Nsringo for Loon
 #!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]
 #!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png
-
 [Rule]
 # Location
 DOMAIN,gspe1-ssl.ls.apple.com,DIRECT

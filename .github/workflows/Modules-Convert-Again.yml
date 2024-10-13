@@ -21,6 +21,8 @@ jobs:
         run: pip install requests
 
       - name: Run conversion script
+        env:
+          INPUT_FILE: Links/2nd-Convert.txt
         run: |
           python Scripts/Modules-Convert-2nd.py
           if [[ $(git status --porcelain) ]]; then

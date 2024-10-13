@@ -6,26 +6,38 @@
 
 [General]
 # Tools
+# Router
 force-http-engine-hosts=%APPEND% router.com, www.router.com
 
 [Rule]
 # Tools
+# ➡️ Y ⬅️ #
+# YouTube
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)), REJECT
 AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)), REJECT
 # RuCu6_amap
+# 移除广告下发请求
 AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, AMapiPhone*)), REJECT
 # RuCu6_bilibili
+# 开屏广告
 URL-REGEX, ^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH, REJECT
 URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT
 # RuCu6_myblockads
+# ======= 0 ======= #
+# 12306
 DOMAIN, ad.12306.cn, DIRECT
+# ======= A ======= #
+# 阿里巴巴
 DOMAIN-SUFFIX, ut.taobao.com, REJECT
 DOMAIN, dns.alidns.com, REJECT
 DOMAIN, ems.youku.com, REJECT
 DOMAIN, hudong.alicdn.com, REJECT
 DOMAIN, ossgw.alicdn.com, REJECT
+# 阿里云盘
 IP-CIDR, 203.107.1.1/24, REJECT, no-resolve
+# 爱奇艺
 DOMAIN, api.iqiyi.com, REJECT
+# Apple
 DOMAIN, ca.iadsdk.apple.com, DIRECT
 DOMAIN-SUFFIX, advp.apple.com, REJECT
 DOMAIN-SUFFIX, iad-apple.com, REJECT
@@ -41,27 +53,41 @@ DOMAIN, iadmoo.apple.com, REJECT
 DOMAIN, iadworkbench.apple.com, REJECT
 DOMAIN, launch.apple.com, REJECT
 DOMAIN, qwapi.apple.com, REJECT
+# 安全浏览限制解除
 DOMAIN-KEYWORD, safebrowsing., REJECT
 DOMAIN-SUFFIX, u3.ucweb.com, REJECT
 DOMAIN, lookup.api.bsb.baidu.com, REJECT
+# ======= B ======= #
+# 百度
 DOMAIN-SUFFIX, pos.baidu.com, REJECT
 DOMAIN, mobads.baidu.com, REJECT
+# 百度地图
 DOMAIN, afd.baidu.com, REJECT
 DOMAIN, afdconf.baidu.com, REJECT
 DOMAIN, lc.map.baidu.com, REJECT
 IP-CIDR, 180.76.76.112/32, REJECT, no-resolve
 IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
+# ======= C ======= #
+# 昌原云充
 DOMAIN, m.adyounger.com, REJECT
+# Clue 智库
 DOMAIN, api.helloclue.com, REJECT
 DOMAIN, brahe.apptimize.com, REJECT
 DOMAIN, collector.clue.run, REJECT
 DOMAIN, images.ctfassets.net, REJECT
 DOMAIN, mapi.apptimize.com, REJECT
 DOMAIN, md-i-s.apptimize.com, REJECT
+# ======= D ======= #
+# DNS 无响应
 DOMAIN, adttrackingprd.hwwt8.com, REJECT
+# ======= F ======= #
+# 放松双眼
 DOMAIN, adservice.sigmob.cn, REJECT
+# ======= G ======= #
+# 工商银行
 DOMAIN-SUFFIX, mall.icbc.com.cn, REJECT
 DOMAIN, pageviewp.icbc.com.cn, REJECT
+# 广告联盟
 AND, ((OR,((DOMAIN-SUFFIX, amemv.com), (DOMAIN-SUFFIX, zijieapi.com))), (DOMAIN-KEYWORD,-misc-)), REJECT
 DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
 DOMAIN-KEYWORD, ads.g.doubleclick, REJECT
@@ -103,23 +129,37 @@ DOMAIN, sdk.e.qq.com, REJECT
 DOMAIN, tangram.e.qq.com, REJECT
 DOMAIN, ws.tapjoyads.com, REJECT
 DOMAIN, www.googleadservices.com, REJECT
+# ======= H ======= #
+# 海尔智家
 DOMAIN-SUFFIX, ehaier.com, REJECT
+# 盒马
 AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, Hema4iPhone*)), REJECT
+# httpdns
 DOMAIN-KEYWORD, httpdns., REJECT
 DOMAIN-KEYWORD, httpdns-, REJECT
 DOMAIN, hdns.ksyun.com, REJECT
+# ======= J ======= #
+# 建设银行
 DOMAIN-KEYWORD, adv.ccb.com, REJECT
+# 京东
 DOMAIN, dns.jd.com, REJECT
 IP-CIDR, 101.124.19.122/32, REJECT, no-resolve
 IP-CIDR6, 2402:db40:5100:1011::5/128, REJECT, no-resolve
+# ======= K ======= #
+# 酷狗音乐
 DOMAIN, adserviceretry.kglink.cn, DIRECT
 DOMAIN, ads.service.kugou.com, REJECT
 DOMAIN, adserviceretry.kugou.com, REJECT
+# 酷我音乐
 DOMAIN, ad.tencentmusic.com, REJECT
 DOMAIN, g.koowo.com, REJECT
 DOMAIN, mobilead.kuwo.cn, REJECT
 DOMAIN, rich.kuwo.cn, REJECT
+# ======= L ======= #
+# 蓝奏云
 DOMAIN, statics.woozooo.com, REJECT
+# ======= M ======= #
+# 芒果TV
 DOMAIN-SUFFIX, da.mgtv.com, REJECT
 DOMAIN, credits.bz.mgtv.com, REJECT
 DOMAIN, credits2.bz.mgtv.com, REJECT
@@ -133,21 +173,34 @@ DOMAIN, rc-topic-api.bz.mgtv.com, REJECT
 DOMAIN, rprain.bz.mgtv.com, REJECT
 DOMAIN, rprain.log.mgtv.com, REJECT
 DOMAIN, vip.bz.mgtv.com, REJECT
+# 美团
 DOMAIN, maplocatesdksnapshot.d.meituan.net, REJECT
 DOMAIN, metrics-picture.d.meituan.net, REJECT
 IP-CIDR, 103.37.155.60/32, REJECT, no-resolve
+# 美颜相机
 DOMAIN, aaid.uyunad.com, REJECT
 DOMAIN, adui.tg.meitu.com, REJECT
+# ======= O ======= #
+# Outlook
 DOMAIN, acdn.adnxs.com, REJECT
 DOMAIN, mediation.adnxs.com, REJECT
 DOMAIN, sin3-ib.adnxs.com, REJECT
+# ======= Q ======= #
+# 其他
 DOMAIN, affcpatrk.com, REJECT
+# ======= S ======= #
+# 什么值得买
 DOMAIN, api.zuihuimai.com, REJECT
+# 数字联盟
 DOMAIN-SUFFIX, shuzilm.cn, REJECT
+# Speedtest
 DOMAIN-KEYWORD, -adsystem.com, REJECT
 DOMAIN, ads.pubmatic.com, REJECT
 DOMAIN, id.hadron.ad.gt, REJECT
+# ======= T ======= #
+# 太平洋保险
 DOMAIN, a.cpic.com.cn, REJECT
+# 腾讯
 DOMAIN-KEYWORD, trace.qq.com, REJECT
 DOMAIN-KEYWORD, trace.video.qq.com, REJECT
 DOMAIN-SUFFIX, gdt.qq.com, REJECT
@@ -164,19 +217,36 @@ DOMAIN, tmeadbak.y.qq.com, REJECT
 DOMAIN, tmeadcomm.y.qq.com, REJECT
 DOMAIN, tpns.qq.com, REJECT
 IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
+# ======= W ======= #
+# 微信
 DOMAIN-SUFFIX, wxs.qq.com, REJECT
 DOMAIN, badjs.weixinbridge.com, REJECT
 DOMAIN, dns.weixin.qq.com.cn, REJECT
+# ======= X ======= #
+# 小米
 DOMAIN, sdkconfig.ad.xiaomi.com, REJECT
+# 迅雷 解除版权限制
+#DOMAIN, hub5btmain.v6.shub.sandai.net, REJECT
+#DOMAIN, hub5emu.v6.shub.sandai.net, REJECT
+#DOMAIN, hub5idx.v6.shub.sandai.net, REJECT
+# ======= Y ======= #
+# 移花宫
 DOMAIN, tong.8888888888.bid, REJECT
 AND, ((OR, ((DOMAIN-KEYWORD, kc.), (DOMAIN-KEYWORD, kcc.), (DOMAIN-KEYWORD, kg.))), (DEST-PORT, 8008)), REJECT
+# 云闪付 开屏广告
 DOMAIN, ads.95516.com, REJECT
 DOMAIN, switch.cup.com.cn, REJECT
+# Yandex
 DOMAIN, yandexmetrica.com, REJECT
+# ======= REGEX ======= #
 URL-REGEX, ^http:\/\/\w{32}\.jddebug\.com\/diagnose\?, REJECT
 # RuCu6_pinduoduo
+# 拦截HTTPDNS
 AND, ((URL-REGEX, ^http:\/\/((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/d), (USER-AGENT, *com.xunmeng.pinduoduo*)), REJECT
 AND, ((URL-REGEX, ^http:\/\/\[s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*\]\/d), (USER-AGENT, *com.xunmeng.pinduoduo*)), REJECT
+# DOMAIN, apm-a.pinduoduo.com, REJECT
+# DOMAIN, apm.pinduoduo.com, REJECT
+# DOMAIN, m.pinduoduo.net, REJECT
 DOMAIN, ta-a.pinduoduo.com, REJECT
 DOMAIN, ta.pinduoduo.com, REJECT
 DOMAIN, th-a.pinduoduo.com, REJECT
@@ -184,7 +254,10 @@ DOMAIN, th-b.pinduoduo.com, REJECT
 DOMAIN, th.pinduoduo.com, REJECT
 DOMAIN, titan.pinduoduo.com, REJECT
 # RuCu6_weibo
+# 请求放行
 DOMAIN-SUFFIX, uve.weibo.com, DIRECT
+# 请求拦截
+# 微博开屏广告
 DOMAIN, huodong.weibo.cn, REJECT
 DOMAIN-SUFFIX, biz.weibo.com, REJECT
 # RuCu6_xianyu
@@ -192,7 +265,9 @@ AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-A
 # RuCu6_xiaohongshu
 AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 # luestr_BlockAdvertisers
+# 字节跳动广告
 AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
+# AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com)), REJECT
 AND, ((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)), REJECT
 AND, ((DOMAIN-KEYWORD, ssdk-), (DOMAIN-SUFFIX, pangle.io)), REJECT
 AND, ((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
@@ -201,6 +276,7 @@ AND, ((DOMAIN-KEYWORD, v), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJ
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
 AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJECT
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
+# AND, ((DOMAIN-KEYWORD, p), (DOMAIN-KEYWORD, -be-pack-sign.pglstatp-toutiao.com)), REJECT // 被更精细的规则替代
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
 AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT //误杀
@@ -235,26 +311,39 @@ DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
 DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
 DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
 DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+# 讯飞AI营销
 DOMAIN-KEYWORD, iflyad.bj.openstorage.cn, REJECT
 DOMAIN-KEYWORD, bjimp.voiceads.cn, REJECT
+# 美数科技
 DOMAIN, sdk.1rtb.net, REJECT
 DOMAIN, cdn.1rtb.com, REJECT
+# 嗨量科技 - 海贝巨量
 DOMAIN, adx.halomobi.com, REJECT
+# 钧云 - ADHUB
 DOMAIN, api.htp.hubcloud.com.cn, REJECT
 DOMAIN, res1.hubcloud.com.cn, REJECT
 DOMAIN, sdktmp.hubcloud.com.cn, REJECT
 DOMAIN, v.adx.hubcloud.com.cn, REJECT
+# InMobi - 邑盟信息技术（上海）有限公司
 DOMAIN, config.inmobi.cn, REJECT
+# 北京锐讯灵通科技有限公司
 DOMAIN, ztoken.uyunad.com, REJECT
+# 快手联盟 - 广告服务商
+# SupersonicAds
+# APPSAD
 DOMAIN, st.appsad.cn, REJECT
+# 上海倍孜
 DOMAIN, sdk.beizi.biz, REJECT
 DOMAIN, api-htp.beizi.biz, REJECT
+# 秒针系统 - 广告服务商
 DOMAIN, admaster.com.cn, REJECT
+# 艾狄墨搏 - 广告服务商
 DOMAIN, monitor.ssp.admobile.top, REJECT
 DOMAIN, sdk.ssp.admobile.top, REJECT
 DOMAIN, ax.admobile.top, REJECT
 DOMAIN, jump.admobile.top, REJECT
 DOMAIN-SUFFIX, admobile.top, REJECT
+# 袤博 - 广告服务商
 DOMAIN, api-c.dutils.com, REJECT
 DOMAIN, api-d.dutils.com, REJECT
 DOMAIN, api-p0.yksdks.com, REJECT
@@ -267,6 +356,7 @@ DOMAIN, api.share.mob.com, REJECT
 DOMAIN, api.verify.mob.com, REJECT
 DOMAIN, log-verify.mob.com, REJECT
 DOMAIN, sdk.push.mob.com, REJECT
+# 极光 - 广告服务商
 DOMAIN, ali-stats.jpush.cn, REJECT
 DOMAIN, ce3e75d5.jpush.cn, REJECT
 DOMAIN, config-junion.jpush.cn, REJECT
@@ -283,6 +373,7 @@ DOMAIN, user.jpush.cn, REJECT
 DOMAIN-SUFFIX, jiguang.cn, REJECT
 DOMAIN-SUFFIX, jpush.cn, REJECT
 DOMAIN-SUFFIX, jpush.io, REJECT
+# 百度联盟 - 广告服务商
 DOMAIN, als.baidu.com, REJECT
 DOMAIN, bgg.baidu.com, REJECT
 DOMAIN, cpro.baidustatic.com, REJECT
@@ -300,7 +391,9 @@ DOMAIN, adsmind.ugdtimg.com, REJECT
 DOMAIN, c2.gdt.qq.com, REJECT
 DOMAIN, huatuocode.huatuo.qq.com, REJECT
 DOMAIN, ios.bugly.qq.com, REJECT
+# DOMAIN, mazu.m.qq.com, REJECT // 误杀
 DOMAIN, mi.gdt.qq.com, REJECT
+# DOMAIN, qzonestyle.gtimg.cn, REJECT // 误杀
 DOMAIN, qzs.gdtimg.com, REJECT
 DOMAIN, qzs.qq.com, REJECT
 DOMAIN, rmonitor.qq.com, REJECT
@@ -313,7 +406,9 @@ DOMAIN, wup.imtt.qq.com, REJECT
 DOMAIN, tpstelemetry.tencent.com, REJECT
 DOMAIN, ii.gdt.qq.com, REJECT
 DOMAIN-SUFFIX, ugdtimg.com, REJECT
+# 分秒网络
 DOMAIN-SUFFIX, openinstall.io, REJECT
+# 个推
 DOMAIN, b-gtc.getui.net, REJECT
 DOMAIN, c-gtc.getui.net, REJECT
 DOMAIN, c-hzgt2.getui.com, REJECT
@@ -325,6 +420,7 @@ DOMAIN, sdk-open-phone.getui.com, REJECT
 DOMAIN-SUFFIX, mobileservice.cn, REJECT
 DOMAIN-SUFFIX, getui.com, REJECT
 DOMAIN-SUFFIX, igexin.com, REJECT
+# 友盟
 DOMAIN, cnlogs.umeng.com, REJECT
 DOMAIN, errlog.umeng.com, REJECT
 DOMAIN, errnewlog.umeng.com, REJECT
@@ -337,8 +433,11 @@ DOMAIN, plbslog.umeng.com, REJECT
 DOMAIN, log.umtrack.com, REJECT
 DOMAIN, aaid.umeng.com, REJECT
 DOMAIN, log.umsns.com, REJECT
+# FUNLINK - 北京泛连科技
+# 天目 - 广告服务商
 DOMAIN, sdk.tianmu.mobi, REJECT
 DOMAIN, tracker.tianmu.mobi, REJECT
+# 上海优比客思科技有限公司 - 广告服务商
 DOMAIN, e-u1.ubixioe.com, REJECT
 DOMAIN, sdk-data.ubixioe.com, REJECT
 DOMAIN, tower.ubixioe.com, REJECT
@@ -348,6 +447,7 @@ DOMAIN, beacon-api.aliyuncs.com, REJECT
 DOMAIN, adash.man.aliyuncs.com, REJECT
 DOMAIN, applog.uc.cn, REJECT
 AND, ((DOMAIN-KEYWORD, adash), (DOMAIN-SUFFIX, ut.taobao.com)), REJECT
+# 网易
 DOMAIN, nex.163.com, REJECT
 DOMAIN, iad.g.163.com, REJECT
 DOMAIN, adx-bj.anythinktech.com, REJECT
@@ -360,6 +460,7 @@ DOMAIN, babel-statistics-android.d.meituan.net, REJECT
 DOMAIN, route-stats.d.meituan.net, REJECT
 DOMAIN, im-x.jd.com, REJECT
 DOMAIN, xlog.jd.com, REJECT
+# 聚次方 - TopOn
 DOMAIN, api.mosspf.com, REJECT
 DOMAIN, da.mosspf.com, REJECT
 DOMAIN, mores.toponad.com, REJECT
@@ -367,24 +468,39 @@ DOMAIN, api.toponadss.com, REJECT
 DOMAIN, da.toponadss.com, REJECT
 DOMAIN, tk.toponadss.com, REJECT
 DOMAIN, adx-os.toponadss.com, REJECT
+# 塔酷信息
 DOMAIN, mores.motowoo.com, REJECT
 DOMAIN-SUFFIX, motowoo.com, REJECT
+# 变现猫
 DOMAIN, guide2.bianxianmao.com, REJECT
+# 章鱼移动
 DOMAIN, caid.adintl.cn, REJECT
 DOMAIN, sv.adintl.cn, REJECT
 DOMAIN, v.adintl.cn, REJECT
 DOMAIN, oss.cdn.adintl.cn, REJECT
+# 上海泰之菩信息科技有限公司
 DOMAIN, adx.adtaipo.com, REJECT
+# 浙江翼信科技有限公司
 DOMAIN, adx.yixin.im, REJECT
+# 天津快易科技有限公司
 DOMAIN, adx.kuaiyiad.com, REJECT
+# 天脉移动广告平台
 DOMAIN, adreport.adtianmai.com, REJECT
+# 数萤技术
 DOMAIN, adxapi.readgps.com, REJECT
+# 方麟数字营销
 DOMAIN, t.fanglinad.com, REJECT
+# 益起广告
 DOMAIN, trk1.17admob.com, REJECT
+# 北京上量优选科技有限公司
 DOMAIN, nfy.slyxmobi.com, REJECT
+# 新义互联
 DOMAIN, api.mobrtb.com, REJECT
+# 枫岚互联
 DOMAIN, ssp.maplehaze.cn, REJECT
+# 北京腾云天下科技有限公司
 DOMAIN-SUFFIX, lnk0.com, REJECT
+# 布里奇信息科技有限公司
 DOMAIN, tk.bridgeoos.com, REJECT
 DOMAIN, da.bridgeoos.com, REJECT
 DOMAIN, api.bridgeoos.com, REJECT
@@ -393,9 +509,11 @@ DOMAIN, adx-sg-req.bridgeoos.com, REJECT
 DOMAIN-SUFFIX, bridgeoos.com, REJECT
 # luestr_DiDi_remove_ads
 DOMAIN, hd.xiaojukeji.com, REJECT
+# 拦截广告下发
 DOMAIN, gwp.xiaojukeji.com, REJECT
 AND, ((IP-ASN, 45090, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
 AND, ((IP-ASN, 63646, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
+# DOMAIN, img-ys011.didistatic.com, REJECT
 # luestr_Umetrip_remove_ads
 URL-REGEX, ^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native, REJECT
 # zirawell_dianPing
@@ -408,36 +526,58 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 
 [Rewrite]
 # Tools
+# ➡️ J ⬅️ #
+# fmz200
+# 京东 //api.m.jd.com
 ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising - reject
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getWidgetV1052 - reject
+# ➡️ R ⬅️ #
+# Router //router.com, www.router.com
 ^https?://(|www\.)router\.com http://{{{GATEWAY_ADDRESS}}} 302
 # RuCu6_amap
+# 此条可以屏蔽首次进入的天气动效图层 但是会导致足迹不显示地图数据
+#^https:\/\/mps\.amap\.com\/ws\/mps\/scene\? - reject
+# 导航详情页 - 路线规划、地点详情页、搜索详情页、导航结束页
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? - reject
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) - reject
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? - reject
 ^https:\/\/oss\.amap\.com\/ws\/banner\/lists\/\? - reject
+# 首页 - 推广卡片、红点角标、右上角动图、搜索框热词、左下角天气、消息横幅
 ^https:\/\/m5\.amap\.com\/ws\/aos\/main\/page\/product\/list\? - reject
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(?:main-page-assets|main-page-location|ridewalk-end-fc) - reject
 ^https:\/\/m5\.amap\.com\/ws\/(?:mapapi\/hint_text\/offline_data|message\/notice\/list|shield\/search\/new_hotword) - reject
 ^https:\/\/m5\.amap\.com\/ws\/shield\/scene\/recommend\? - reject
 ^https:\/\/m5\.amap\.com\/ws\/valueadded\/weather\/v2\? - reject
 ^https:\/\/sns\.amap\.com\/ws\/msgbox\/pull_mp\? - reject
+# 打车页 - 红点角标、弹窗、天气图标、推广卡片
 ^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:order\/car\/king_toolbox_car_bubble|tips\/onscene_visual_optimization) - reject
 # RuCu6_bilibili
+# 开屏广告
 ^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) - reject
+# 满意度调研
 ^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? - reject
+# 大会员广告
 ^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? - reject
+# 直播广告
 ^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? - reject
+# 屏蔽默认搜索框关键词
 ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords - reject
+# 流量卡推荐
 ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo - reject
+# IP请求、地理位置请求 //api.bilibili.com
 ^https:\/\/app\.bilibili\.com\/x\/resource\/ip - reject
 ^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp - reject
+# 移除视频链接跟踪参数
 (^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
+# 移除直播间链接跟踪参数
 (^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
 # RuCu6_myblockads
+# 爱思助手 //list-app-m.i4.cn
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
+# 阿里云盘 //*api.alipan.com, member.alipan.com
 ^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders - reject
 ^https:\/\/member\.alipan\.com\/v2\/activity\/sign_in_luckyBottle - reject
+# 阿里巴巴 //acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict) - reject
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv - reject
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise - reject
@@ -449,29 +589,46 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/heic\.alicdn\.com\/imgextra\/i\d\/\d*\/?[\w!]+-\d-(?:octopus|tps-1125-1602|tps-1080-1920)\.(?:jpg|png)_(?:1\d{3}|9\d{2})x(?:1\d{3}|9\d{2})q[59]0 - reject
 ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad - reject
 ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) - reject
+# 百度云 //pan.baidu.com
 ^https:\/\/pan\.baidu\.com\/(?:act\/|aipic\/|aisearch\/|api\/getsyscfg\?|rest\/) - reject
+# 昌原云充 五代十路 //www.washpayer.com
 ^https:\/\/www\.washpayer\.com\/(?:ad\/getBannerAd|ad\/user-adword|user\/getBannerList) - reject
+# 豆瓣 //api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ - reject
 ^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ - reject
+# 工商银行 //image.mybank.icbc.com.cn
+# 和风天气 //hfapp-service.qweather.net
 ^https:\/\/hfapp-service\.qweather\.net\/v2\.0\/app\/ad\/list\? - reject
+# 盒马
 ^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querysinglepage\/ - reject
+# 建设银行
 ^http:\/\/image1\.ccb\.com\/newsinfo\/eBranch\/check\/(?:nf\/newfin\/activity|po\/poortheme\/activity)\/\w+\.png - reject
 ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:searchBoxWord|stationPullService|uniformRecommend[06]) - reject
+# 交管12123 //gab.122.gov.cn
 ^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery\/adver - reject
+# 酷安 //api.coolapk.com
 ^https:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch - reject
+# 猫眼 //p0.pipi.cn
 ^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.jpg\?imageMogr2\/quality\/ - reject
 ^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.(?:jpg|png)\?imageMogr2\/thumbnail\/(?:860x0|!165x165|!1049x1169) - reject
+# 每日万年历
 ^http:\/\/app-cdn\.2q10\.com\/app\/ical\/honored\? - reject
+# 美团 & 美团外卖 //flowplus.meituan.net, img.meituan.net, s3plus.meituan.net
 ^http:\/\/wmapi\.meituan\.com\/api\/v7\/(?:loadInfo|openscreen|startpicture) - reject
 ^https:\/\/flowplus\.meituan\.net\/v1\/mss_\w+\/linglong\/\d+\.jpg - reject
 ^https:\/\/img\.meituan\.net\/bizad\/bizad_brandCpt_\d+\.jpg - reject
 ^https:\/\/s3plus\.meituan\.net\/ocean-blk-index\/index\/blk_conf_\d+\.json - reject
 ^https:\/\/s3plus\.meituan\.net\/v1\/mss_\w+\/(?:brandcpt-vedio|waimai-alita)\/\w+\.zip$ - reject
+# 网上国网 //osg-service.sgcc.com.cn
 ^https:\/\/osg-service\.sgcc\.com\.cn:18600\/emss-pfa-appset-front\/bootpageoutter\/ - reject
+# 微信 //mp.weixin.qq.com
 ^https:\/\/mp\.weixin\.qq\.com\/mp\/(?:cps_product_info|getappmsgad|jsmonitor|masonryfeed|relatedarticle) - reject
+# 小米商城 //api.m.mi.com, shop-api.retail.mi.com
 ^https:\/\/api\.m\.mi\.com\/(?:v1\/(?:app\/popup_info|home\/page_feed|misearch\/search_input)|v2\/search\/search_default) - reject
 ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) - reject
+# 米家 //home.mi.com
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) - reject
+# 云闪付 //wallet.95516.com
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
 # RuCu6_pinduoduo
 ^https:\/\/api\.(?:pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash\? - reject
@@ -486,8 +643,10 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/api\.pinduoduo\.com\/search response-body-json-del expansion
 ^https:\/\/api\.pinduoduo\.com\/search_hotquery\? - reject
 # RuCu6_weibo
+# 首页 - 签到、发布按钮、侧边栏、右上角红包、顶部标签页、侧边栏提醒、超话标签页悬浮、顶部直播
 ^https:\/\/api\.weibo\.cn\/2\/(?:ug\/checkin\/list|push\/daily) - reject
 ^https:\/\/api\.weibo\.cn\/2\/!\/live\/media_homelist\? - reject
+# 详情页 - 超话、评论区、看图界面、个人主页、我的页面、信息流、商品橱窗、视频流、视频号、视频调查、话题卡片
 ^https:\/\/api\.weibo\.cn\/2\/comments\/bullet_screens\? - reject
 ^https:\/\/api\.weibo\.cn\/2\/photo\/info\? - reject
 ^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:container_positive|push_info) - reject
@@ -495,32 +654,46 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/api\.weibo\.cn\/2\/!\/chaohua\/discovery\/home_bottom\/switch\? - reject
 ^https:\/\/api\.weibo\.cn\/2\/!\/huati\/(?:discovery_home_bottom_getdotinfo|mobile_discovery_searchchange) - reject
 ^https:\/\/api\.weibo\.cn\/2\/!\/wbox\/\w+\/(?:home_bottom_modal|interest_category) - reject
+# 发现页 - 热门微博信息流、搜索列表、热搜提醒、猜你想搜、视频流红包
 ^https:\/\/api\.weibo\.cn\/2\/search\/container_discover\? - reject
 ^https:\/\/api\.weibo\.cn\/2\/hot\/hours_spotlight\? - reject
 ^https:\/\/api\.weibo\.cn\/2\/video\/redpacket\? - reject
 ^https:\/\/api\.weibo\.cn\/!\/sug\/list\/finderchange\? - reject
+# 开屏广告 //*.uve.weibo.com
 ^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime - reject
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) - reject
+# 微博长文章推广
 ^https:\/\/card\.weibo\.com\/article\/m\/aj\/(?:reward|uvead) - reject
 ^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) - reject
 # RuCu6_xianyu
+# 首页顶部标签
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ - reject
+# 商品详情为你推荐
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.recommend\.list\/ - reject
+# 这些宝贝超好卖
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.resell\.recommendorhotcate\/ - reject
+# 消息列表推广
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.playboy\.recommend\/ - reject
+# 我的页面
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.topic\.banner\/ - reject
+# 首页动画样式
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/ - reject
+# 用闲鱼币买更便宜
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.idle\.coin\.nextfresh\/ - reject
+# 搜索列表
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.discover\/ - reject
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ - reject
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ - reject
 ^https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/[\w-]*search[\w-]*\/pages\/ - reject
 # RuCu6_xiaohongshu
+# 惊喜弹窗
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action) - reject
 ^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? - reject
+# 信息流
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/guide\/user_banner|v3\/note\/guide) - reject
 ^https:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v1\/ads\/resource|v2\/hey\/\w+\/hey_gallery) - reject
 # luestr_BlockAdvertisers
+# 拼多多广告平台
 ^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
 ^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union - reject
 ^https:\/\/images\.pinduoduo\.com\/mrk\/ reject
@@ -605,16 +778,30 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 
 [Script]
 # Tools
+# ➡️ B ⬅️ #
+# BoxJs //boxjs.com, boxjs.net
 BoxJs = type=http-request,pattern=https?:\/\/boxjs\.(com|net),requires-body=1,script-path=https://github.com/chavyleung/scripts/raw/master/box/chavy.boxjs.js
+# ➡️ E ⬅️ #
+# Emby //mb3admin.com
 EmbyPremiere = type=http-response,pattern=^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice,requires-body=1,max-size=0,script-path=https://github.com/rartv/SurgeScript/raw/main/EmbyPremiere/EmbyPremiere.js
+# ➡️ N ⬅️ #
+# Netflix //ios-*.prod.ftl.netflix.com, ios.prod.ftl.netflix.com
 Netflix Rating = type=http-request,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://github.com/yichahucha/surge/raw/master/nf_rating.js
 Netflix Rating = type=http-response,requires-body=1,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://github.com/yichahucha/surge/raw/master/nf_rating.js
 Netflix Rating for single episode = type=http-response,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/warmer/.+type=show-ath,requires-body=1,max-size=0,script-path=https://github.com/yichahucha/surge/raw/master/nf_rating_season.js
+# ➡️ S ⬅️ #
+# Spark //api.revenuecat.com
 Unlock SparkMail = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/(\$RCAnonymousID%)?(\w)*$),requires-body=1,max-size=0,script-path=https://github.com/89996462/Quantumult-X/raw/main/ycdz/SparkMail.js
+# ➡️ Y ⬅️ #
+# Youtube //*.googlevideo.com, youtubei.googleapis.com
+# RuCu6 & Maasea
 YouTube Request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine={{{YouTube 脚本执行引擎}}},script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/request.js
 YouTube Response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine={{{YouTube 脚本执行引擎}}},script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/youtube/response.js,argument="{"lyricLang":"{{{YouTube 歌词翻译语言}}}","captionLang":"{{{YouTube 字幕翻译语言}}}","blockUpload":{{{YouTube 屏蔽上传按钮}}},"immersive":{{{YouTube 屏蔽选段按钮}}},"debug":{{{YouTube 启用调试模式}}}}"
+# ➡️ Z ⬅️ #
+# Zhihu //www.zhihu.com, zhuanlan.zhihu.com
 Look directly for Zhihu = type=http-response,pattern=https://(www\.zhihu\.com/question|zhuanlan\.zhihu\.com/p)/,requires-body=1,max-size=0,script-path=https://github.com/id77/QuantumultX/raw/master/Script/zhihu.js
 # RuCu6_amap
+# 导航详情页 - 路线规划、地点详情页、搜索详情页、导航结束页
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/bus\/plan\/integrate\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/c3frontend\/af-(?:hotel|launch)\/page\/main\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
@@ -623,56 +810,93 @@ RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/se
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_bff\/hotword\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(?:homepage|mps|search\/sp|sug|tips_operation_location),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
+# 首页 - 推广卡片、红点角标、右上角动图、搜索框热词、左下角天气、消息横幅
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(?:card-service-plan-home|main-page),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable\/1\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
+# 我的页面 - 个人主页、推广卡片
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaasv3\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
+# 附近页
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search\/nearbyrec_smart\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
+# 开屏广告
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
+# 打车页 - 红点角标、弹窗、天气图标、推广卡片
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:car\/order\/content_info|order_web\/friendly_information),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 RuCu6_amap = type=http-response,pattern=^https:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_car_tips\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/amap.js, requires-body = true
 # RuCu6_bilibili
+# 移除动态页面广告
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
+# 移除青少年模式弹窗
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
+# 移除热门话题
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.show\.v1\.Popular\/Index$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
+# 移除播放页面视频列表广告
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(?:view|viewunite)\.v1\.View\/(?:View|ViewProgress)$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
+# 会员特效弹幕处理
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
+# 移除交互式弹幕
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
+# 移除评论区广告
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
+# 移除搜索结果广告
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true
+# 上部为Proto处理,下部为JSON配置处理
+# 移除开屏广告
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(?:brand\/list|event\/list2|list|show),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
+# 移除首页推荐广告
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index(\/story)?\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
+# 移除右上角活动入口
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/resource\/top\/activity\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
+# 精简首页顶部标签
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
+# 移除热搜广告
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/search\/square,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
+# 移除观影页广告
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/api\.bilibili\.com\/pgc\/page\/(?:bangumi|cinema\/tab),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
+# 移除直播间广告
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
+# 移除皮肤推送
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
+# 精简我的页面
 RuCu6_bilibili = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(?:mine(\/ipad)?|myinfo),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/bilibili/json.js, requires-body = true
 # RuCu6_myblockads
+# 12306 //ad.12306.cn, mobile.12306.cn
 RuCu6_myblockads = type=http-request,pattern=^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/12306.js, requires-body = true
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/header.js
+# 阿里云盘 //*api.alipan.com, member.alipan.com
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/(biz)?api\.alipan\.com\/apps\/v\d\/users?\/home\/(?:news|widgets),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/adrive.js, requires-body = true
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/adrive.js, requires-body = true
+# 阿里巴巴 //acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/myBlockAds.js, requires-body = true
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/myBlockAds.js, requires-body = true
+# 草榴社区 //2023.redircdn.com
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/2023\.redircdn\.com\/web\/mob_post\.js\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/myBlockAds.js, requires-body = true
+# 昌原云充 五代十路 //www.washpayer.com
 RuCu6_myblockads = type=http-response,pattern=^http:\/\/ad\.5tao5ai\.com\/common\/getReceipt\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/changyuan.js, requires-body = true
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/www\.washpayer\.com\/(?:common\/getReceipt|user\/message\/equipmentPara),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/changyuan.js, requires-body = true
+# 京东 //api.m.jd.com
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/jingdong.js, requires-body = true
+# 酷安 //api.coolapk.com
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/api\.coolapk\.com\/v6\/(?:feed\/detail|feed\/replyList|page\/dataList|main\/dataList|main\/indexV8|main\/init),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/coolapk.js, requires-body = true
+# 酷狗音乐 //adserviceretry.kglink.cn, gateway.kugou.com
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/gateway\.kugou\.com\/(?:adp\/ad\/v1\/mine_top_banner|ads\.gateway\/v2\/home_card),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/kugou.js, requires-body = true
 RuCu6_myblockads = type=http-response,pattern=^https?:\/\/adserviceretry\.kglink\.cn\/v\d\/mobile\w+,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/kugou.js, requires-body = true
+# 微信封禁页面 //weixin110.qq.com, security.wechat.com
 RuCu6_myblockads = type=http-response,pattern=^https\:\/\/(?:weixin110\.qq|security\.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/wechat/unlockUrls.js, requires-body = true
+# 小米商城 //api.m.mi.com, shop-api.retail.mi.com
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/api\.m\.mi\.com\/v1\/(?:app\/start|order\/expressView),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/myBlockAds.js, requires-body = true
+# 中国农业银行 //mobilepaas.abchina.com.cn
 RuCu6_myblockads = type=http-request,pattern=^https:\/\/mobilepaas\.abchina\.com\.cn:441\/mgw\.htm$,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/header.js
+# 中国移动云盘 //ad.mcloud.139.com, jzts.cmpassport.com
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\/,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/cloud139.js, requires-body = true
 RuCu6_myblockads = type=http-response,pattern=^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/cloud139.js, requires-body = true
 # RuCu6_pinduoduo
 RuCu6_pinduoduo = type=http-response,pattern=^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/pdd.js, requires-body = true
 # RuCu6_weibo
+# 首页 - 签到、发布按钮、侧边栏、右上角红包、顶部标签页、侧边栏提醒、超话标签页悬浮、顶部直播
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/groups\/allgroups\/v2\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
+# 详情页 - 超话、评论区、看图界面、个人主页、我的页面、信息流、商品橱窗、视频流、视频号、视频调查、话题卡片
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/(?:cardlist|page),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/comments\/build_comments\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/(?:container\/asyn|flowlist|flowpage),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
@@ -682,30 +906,43 @@ RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/statuses\
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:extend|show),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/video\/tiny_stream_video_list\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/!\/huati\/discovery_home_bottom_channels\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
+# 消息页
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/direct_messages\/user_list\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/messageflow\/notice\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
+# 发现页 - 热门微博信息流、搜索列表、热搜提醒、猜你想搜、视频流红包
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/search\/(?:container_timeline|finder),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/2\/searchall\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
+# 开屏广告 //*.uve.weibo.com
 RuCu6_weibo = type=http-response,pattern=^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 RuCu6_weibo = type=http-response,pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
+# 会员图标
 RuCu6_weibo = type=http-response,pattern=^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/list\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/weibo.js, requires-body = true
 # RuCu6_xianyu
+# 我的页面
 RuCu6_xianyu = type=http-response,pattern=^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xianyu.js, requires-body = true
+# 首页信息流
 RuCu6_xianyu = type=http-response,pattern=^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xianyu.js, requires-body = true
+# 首页顶部标签
 RuCu6_xianyu = type=http-response,pattern=^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.circle\.list\/,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xianyu.js, requires-body = true
+# 搜索结果广告
 RuCu6_xianyu = type=http-response,pattern=^https:\/\/g-acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\/,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xianyu.js, requires-body = true
 # RuCu6_xiaohongshu
+# 详情页小部件、关注页感兴趣的人
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/(?:note\/widgets|user\/followings\/followfeed),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
+# 搜索页
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/(?:banner|hot)_list,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/(?:hint|trending),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v10\/search\/notes\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/system_service\/config\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/system_service\/splash_config,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
+# 信息流、详情页感兴趣的人
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/followfeed\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 RuCu6_xiaohongshu = type=http-response,pattern=https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v5\/recommend\/user\/follow_recommend\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v6\/homefeed\?,script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
+# 移除图片和视频水印
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/note\/feed|v3\/note\/videofeed),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
+# 移除图片和实况照片水印
 RuCu6_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/note\/(?:imagefeed|live_photo\/save),script-path=https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true
 # luestr_DiDi_remove_ads
 luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true

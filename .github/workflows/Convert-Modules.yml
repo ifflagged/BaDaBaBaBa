@@ -51,8 +51,6 @@ jobs:
 
     - name: Convert snippets
       run: |
-        declare -A file_tracker  # 创建文件追踪器
-
         IFS=$'\n'
         for file_info in $FILES_LIST; do
           # 跳过空行
@@ -62,22 +60,7 @@ jobs:
           filename=$(echo $file_info | cut -d';' -f3)
           comment=$(echo $file_info | cut -d';' -f4)
 
-          base_name="${author}_${filename}"
-          
-          # 如果文件名已经出现过，则对该文件进行重命名
-          if [[ -n "${file_tracker[$base_name]}" ]]; then
-            i=${file_tracker[$base_name]}
-            new_name="${base_name}-${i}"
-            ((i++))
-            file_tracker[$base_name]=$i
-          else
-            new_name="${base_name}"
-            file_tracker[$base_name]=2  # 设置下次重命名起点
-          fi
-
-          # 调用转换脚本
-          bash Scripts/Convert-Modules.sh "$file_path" "$new_name" "$comment"
-        done
+          bash Scripts/Convert-Modules.sh "$file_path" "${author}_${filename}" "$comment"
 
     - name: Create README in Modules directory
       run: |

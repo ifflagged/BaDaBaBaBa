@@ -18,34 +18,44 @@ jobs:
         mkdir -p Original
         README_CONTENT=""
         FILES_LIST=""
-        while read -r url; do
-          # 跳过空行
-          [ -z "$url" ] && continue
+        declare -A filename_counter  # 声明一个关联数组来记录文件名的计数
 
+        while read -r url; do
           # 提取作者名称和文件名
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
           filename_no_ext=$(basename "$url" | cut -d'.' -f1)
-
+          extension="${filename##*.}"
+          
           # 创建作者文件夹
           mkdir -p "Original/$author"
+
+          # 检查是否存在相同文件名，并根据重复情况追加后缀
+          if [[ -v "filename_counter[$filename_no_ext]" ]]; then
+            count=${filename_counter[$filename_no_ext]}
+            count=$((count+1))
+            filename_no_ext="${filename_no_ext}-${count}"
+            filename="${filename_no_ext}.${extension}"
+            filename_counter[$filename_no_ext]=$count
+          else
+            filename_counter[$filename_no_ext]=1
+          fi
 
           # 下载文件
           file_path="Original/$author/$filename"
           curl -L -o "$file_path" "$url"
-
-          # 准备 README 内容
+          
+          # 准备README内容
           README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
-
+          
           # 提取非注释行中的 hostname 信息
           hostnames=$(grep -v '^#' "$file_path" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
-          
           # 生成注释内容
           comment="# ${filename_no_ext} // ${hostnames}"
-
+          
           # 将文件信息追加到 FILES_LIST
           FILES_LIST="${FILES_LIST}\n${file_path};${author};${filename_no_ext};${comment}"
-        done < Links/Modules-Links.txt
+        done < Modules-Links.txt
         
         # 将 README 内容和文件列表输出到步骤的输出中
         echo "README_CONTENT<<EOF" >> $GITHUB_ENV
@@ -57,8 +67,6 @@ jobs:
 
     - name: Convert snippets
       run: |
-        declare -A file_tracker  # 创建文件追踪器
-
         IFS=$'\n'
         for file_info in $FILES_LIST; do
           # 跳过空行
@@ -67,24 +75,9 @@ jobs:
           author=$(echo $file_info | cut -d';' -f2)
           filename=$(echo $file_info | cut -d';' -f3)
           comment=$(echo $file_info | cut -d';' -f4)
-
-          base_name="${author}_${filename}"
-          
-          # 如果文件名已经出现过，则对该文件进行重命名
-          if [[ -n "${file_tracker[$base_name]}" ]]; then
-            i=${file_tracker[$base_name]}
-            new_name="${base_name}-${i}"
-            ((i++))
-            file_tracker[$base_name]=$i
-          else
-            new_name="${base_name}"
-            file_tracker[$base_name]=2  # 设置下次重命名起点
-          fi
-
-          # 调用转换脚本
-          bash Scripts/Convert-Modules.sh "$file_path" "$new_name" "$comment"
+          bash Convert-Modules.sh "$file_path" "${author}_${filename}" "$comment"
         done
-        
+
     - name: Create README in Modules directory
       run: |
         echo "# Modules for Surge and Loon" > Modules/README.md
@@ -99,15 +92,6 @@ jobs:
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
-        
-        # 暂存未提交的更改
-        git stash -u
-        
-        git pull origin main --rebase
-        
-        # 恢复暂存的更改
-        git stash pop || true
-        
         git add .
         if git diff --cached --quiet; then
           echo "No changes detected"

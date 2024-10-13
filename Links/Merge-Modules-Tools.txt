@@ -13,8 +13,16 @@ https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/luestr_Umetrip_re
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/Yuheng0101_NoAds.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/ZenmoFeiShi_Smzdm.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/ddgksf2013_SmzdmAds.sgmodule
-https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_dianPing.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_SAMsClub.sgmodule
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_dianPing-2.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_dianPing.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_eleme.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_mcd-2.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_mcd.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_qunar.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_rsscc.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_tfsmy.sgmodule
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Surge/2nd/zirawell_tft.sgmodule
 
 https://github.com/ifflagged/Neverflagged/blob/main/Loon/Plugin/Tools.plugin?raw=true
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/RuCu6_amap.plugin
@@ -32,5 +40,13 @@ https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/luestr_Umetrip_rem
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/Yuheng0101_NoAds.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/ZenmoFeiShi_Smzdm.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/ddgksf2013_SmzdmAds.plugin
-https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_dianPing.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_SAMsClub.plugin
 https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_dianPing-2.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_dianPing.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_eleme.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_mcd-2.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_mcd.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_qunar.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_rsscc.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_tfsmy.plugin
+https://github.com/ifflagged/BaDaBaBaBa/raw/main/Modules/Loon/2nd/zirawell_tft.plugin

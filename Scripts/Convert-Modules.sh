@@ -2,7 +2,6 @@
 input_file=$1
 module_name=$2
 comment=$3
-original_filename=$4  # 新增参数，原始文件名
 
 # 创建目标目录
 mkdir -p Modules/Surge

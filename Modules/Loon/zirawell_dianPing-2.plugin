@@ -6,7 +6,7 @@
 ^https?:\/\/mapi\.dianping\.com\/wdrpreload\/userprediction reject
 ^https?:\/\/mapi\.dianping\.com\/adshopping reject
 ^https?:\/\/img\.meituan\.net\/goodsawardpic reject-img
-http-response ^https?:\/\/img\.meituan\.net\/dpmobile\/ script-path= https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/dianping.js, requires-body = true, tag = zirawell_dianPing
+http-response ^https?:\/\/img\.meituan\.net\/dpmobile\/ script-path= https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/dianping.js, requires-body = true, tag = zirawell_dianPing-2
 ^https?:\/\/p\.meituan\.com\/api\/privacy\/config reject
 ^https?:\/\/rms\.meituan\.com\/api\/v\d\/rmsmina\/c\/queryWechatAdvertisement reject-dict
 ^https?:\/\/www\.dpfile\.com\/app\/fecommonservice-lottie\/ugc-write-done\/media reject

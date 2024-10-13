@@ -7,6 +7,9 @@ comment=$3
 mkdir -p Modules/Surge
 mkdir -p Modules/Loon
 
+# 保持当前运行的文件名记录，避免在同一次运行时重复命名
+declare -A surge_files loon_files
+
 # Common replacements for both Surge and Loon
 sed_common="
     /raw.githubusercontent.com/ s/\/main\//\/raw\/main\//Ig
@@ -20,14 +23,15 @@ sed_common="
     /IP-CIDR/ s/\(REJECT\)\([^,]*$\)/\1, no-resolve/Ig
 "
 
-# Check if Surge file exists, and append -2, -3, etc. for duplicates
+# Surge file checking logic
 surge_output="Modules/Surge/${module_name}.sgmodule"
-if [[ -f "$surge_output" ]]; then
-  i=2
-  while [[ -f "Modules/Surge/${module_name}-${i}.sgmodule" ]]; do
-    ((i++))
-  done
+if [[ -n "${surge_files[$surge_output]}" ]]; then
+  i="${surge_files[$surge_output]}"
   surge_output="Modules/Surge/${module_name}-${i}.sgmodule"
+  ((i++))
+  surge_files[$surge_output]=$i
+else
+  surge_files[$surge_output]=2
 fi
 
 # Surge conversion
@@ -76,14 +80,15 @@ $comment" \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
     "$input_file" > "$surge_output"
 
-# Check if Loon file exists, and append -2, -3, etc. for duplicates
+# Loon file checking logic
 loon_output="Modules/Loon/${module_name}.plugin"
-if [[ -f "$loon_output" ]]; then
-  i=2
-  while [[ -f "Modules/Loon/${module_name}-${i}.plugin" ]]; do
-    ((i++))
-  done
+if [[ -n "${loon_files[$loon_output]}" ]]; then
+  i="${loon_files[$loon_output]}"
   loon_output="Modules/Loon/${module_name}-${i}.plugin"
+  ((i++))
+  loon_files[$loon_output]=$i
+else
+  loon_files[$loon_output]=2
 fi
 
 # Loon conversion

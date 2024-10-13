@@ -3,13 +3,6 @@ input_file=$1
 module_name=$2
 comment=$3
 
-# 确保 Surge 和 Loon 目录存在
-mkdir -p Modules/Surge
-mkdir -p Modules/Loon
-
-# 保持当前运行的文件名记录，避免在同一次运行时重复命名
-declare -A surge_files loon_files
-
 # Common replacements for both Surge and Loon
 sed_common="
     /raw.githubusercontent.com/ s/\/main\//\/raw\/main\//Ig
@@ -22,17 +15,6 @@ sed_common="
     s/IP6-CIDR,/IP-CIDR6,/Ig
     /IP-CIDR/ s/\(REJECT\)\([^,]*$\)/\1, no-resolve/Ig
 "
-
-# Surge file checking logic
-surge_output="Modules/Surge/${module_name}.sgmodule"
-if [[ -n "${surge_files[$surge_output]}" ]]; then
-  i="${surge_files[$surge_output]}"
-  surge_output="Modules/Surge/${module_name}-${i}.sgmodule"
-  ((i++))
-  surge_files[$surge_output]=$i
-else
-  surge_files[$surge_output]=2
-fi
 
 # Surge conversion
 sed -e "1 i\\
@@ -78,18 +60,7 @@ $comment" \
     -e 's/ script-path = /,script-path=/Ig' \
     -e '/302/ s/\(.*\) 302 \(.*\)/\1 \2 302/' \
     -e 's/hostname =/Hostname = %APPEND%/Ig' \
-    "$input_file" > "$surge_output"
-
-# Loon file checking logic
-loon_output="Modules/Loon/${module_name}.plugin"
-if [[ -n "${loon_files[$loon_output]}" ]]; then
-  i="${loon_files[$loon_output]}"
-  loon_output="Modules/Loon/${module_name}-${i}.plugin"
-  ((i++))
-  loon_files[$loon_output]=$i
-else
-  loon_files[$loon_output]=2
-fi
+    "$input_file" > "Modules/Surge/${module_name}.sgmodule"
 
 # Loon conversion
 sed -e "1 i\\
@@ -122,4 +93,4 @@ $comment" \
     -e 's/url script-analyze-echo-response/script-path=/Ig' \
     -e 's/, tag.*/\, tag = '"${module_name}"'/' \
     -e 's/hostname =/Hostname =/Ig' \
-    "$input_file" > "$loon_output"
+    "$input_file" > "Modules/Loon/${module_name}.plugin"

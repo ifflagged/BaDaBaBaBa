@@ -18,47 +18,36 @@ jobs:
         mkdir -p Original
         README_CONTENT=""
         FILES_LIST=""
-        declare -A file_count
-
+        count=0
         while read -r url; do
           # 忽略空行和注释行
           [[ -z "$url" || "$url" =~ ^# ]] && continue
-          
-          # 提取作者名称和文件名
+
+          # 提取作者名称和带后缀的文件名
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
           filename_no_ext=$(basename "$url" | cut -d'.' -f1)
-          extension="${filename##*.}"
 
           # 创建作者文件夹
           mkdir -p "Original/$author"
-
-          # 生成文件路径
-          base_file_path="Original/$author/$filename"
-          count=1
-
-          # 检查文件是否已经存在并重命名
-          while [[ -f "$base_file_path" ]]; do
-            new_filename="${filename_no_ext}-${count}.${extension}"
-            base_file_path="Original/$author/$new_filename"
-            count=$((count + 1))
-          done
-
           # 下载文件
-          curl -L -o "$base_file_path" "$url"
-          
+          file_path="Original/$author/$filename"
+          curl -L -o "$file_path" "$url"
+
           # 准备README内容
           README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
-          
+
           # 提取非注释行中的 hostname 信息
-          hostnames=$(grep -v '^#' "$base_file_path" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
+          hostnames=$(grep -v '^#' "$file_path" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
           # 生成注释内容
           comment="# ${filename_no_ext} // ${hostnames}"
-          
-          # 将文件信息追加到 FILES_LIST
-          FILES_LIST="${FILES_LIST}\n${base_file_path};${author};${filename_no_ext};${comment}"
+
+          # 重命名文件并追加到 FILES_LIST
+          new_filename="${filename_no_ext}-$(($count + 2))"
+          FILES_LIST="${FILES_LIST}\n${file_path};${author};${new_filename};${comment};${filename}"
+          count=$((count + 1))
         done < Links/Modules-Links.txt
-        
+
         # 将 README 内容和文件列表输出到步骤的输出中
         echo "README_CONTENT<<EOF" >> $GITHUB_ENV
         echo -e "$README_CONTENT" >> $GITHUB_ENV
@@ -71,12 +60,14 @@ jobs:
       run: |
         IFS=$'\n'
         for file_info in $FILES_LIST; do
+          # 跳过空行
           [ -z "$file_info" ] && continue
           file_path=$(echo $file_info | cut -d';' -f1)
           author=$(echo $file_info | cut -d';' -f2)
-          filename=$(echo $file_info | cut -d';' -f3)
-          comment=$(echo $file_info | cut -d';' -f4)
-          bash Scripts/Convert-Modules.sh "$file_path" "${author}_${filename}" "$comment"
+          new_filename=$(echo $file_info | cut -d';' -f3)
+          comment=$(echo $file_info | cut -d';' -f4
+          original_filename=$(echo $file_info | cut -d';' -f5)
+          bash Scripts/Convert-Modules.sh "$file_path" "${author}_${new_filename}" "$comment" "$original_filename"
         done
 
     - name: Create README in Modules directory

@@ -1,12 +1,21 @@
-# jd // *.jddebug.com, api.m.jd.com, storage.360buyimg.com, img*.360buyimg.com, ms.jr.jd.com,
+# jd // 
 # > 京东 - JD
-^https?:\/\/\w{32}\.jddebug\.com\/diagnose\? reject
-http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path= https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/jd.js, requires-body = true, tag = zirawell_jd
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|xview2Config|stationPullService|getWidget|widget|hybrid|jdDiscoveryRedPoint|queryMaterialAdverts) reject-200
-^https?:\/\/storage\.360buyimg\.com\/app\.m\.jd\.com\/lottie reject
-^https?:\/\/storage\.360buyimg\.com\/dynamicConfig\/binary reject
-^https?:\/\/img\d+\.360buyimg\.com\/jddjadvertise\/ reject
-^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/base\/na\/m\/adInfo reject-200
-^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/na\/m\/getLoadingPicture reject-200
-
-Hostname = *.jddebug.com, api.m.jd.com, storage.360buyimg.com, img*.360buyimg.com, ms.jr.jd.com
+DOMAIN, dns.jd.com, reject
+DOMAIN, waapdg.jd.com, reject
+DOMAIN, dsp-x.jd.com, reject
+DOMAIN, xlog.jd.com, reject
+DOMAIN, janapi.jd.com, reject
+DOMAIN, jdqd.jd.com, reject
+DOMAIN, dgstatic.jd.com, reject
+DOMAIN-SUFFIX, jzt.jd.com, reject
+DOMAIN-SUFFIX, img-x.jd.com, reject
+DOMAIN-SUFFIX, du.jd.com, reject
+DOMAIN-SUFFIX, c-nfa.jd.com, reject
+DOMAIN-SUFFIX, cm.jd.com, reject
+DOMAIN-KEYWORD, policy.jd.com, reject
+DOMAIN-KEYWORD, kepler.jd.com, reject
+DOMAIN-KEYWORD, bdsp.x.jd.com, reject
+DOMAIN-KEYWORD, keplerapi.jd.com, reject
+DOMAIN-KEYWORD, mapi.m.jd.com, reject
+IP-CIDR, 101.124.19.122/32, reject, no-resolve
+IP-CIDR6, 2402:db40:5100:1011::5/128, reject, no-resolve

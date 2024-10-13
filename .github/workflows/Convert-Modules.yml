@@ -42,17 +42,18 @@ jobs:
           # 生成注释内容
           comment="# ${filename_no_ext} // ${hostnames}"
 
-          # 处理文件名以避免冲突
+          # 初始化文件名计数
           if [[ -z "${filename_count["$author/$filename_no_ext"]}" ]]; then
             filename_count["$author/$filename_no_ext"]=0
           fi
 
-          # 生成新的模块名称
+          # 生成模块名称
           module_name="${author}_${filename_no_ext}"
-          if [[ -f "Modules/Surge/${module_name}.sgmodule" || -f "Modules/Loon/${module_name}.plugin" ]]; then
+          # 检查文件是否存在并进行重命名
+          while [[ -f "Modules/Surge/${module_name}.sgmodule" || -f "Modules/Loon/${module_name}.plugin" ]]; do
             filename_count["$author/$filename_no_ext"]=$((filename_count["$author/$filename_no_ext"] + 1))
-            module_name="${module_name}-$((${filename_count["$author/$filename_no_ext"]} + 2))"  # 从-2开始
-          fi
+            module_name="${author}_${filename_no_ext}-$((${filename_count["$author/$filename_no_ext"]} + 2))"  # 从-2开始
+          done
 
           # 将文件信息追加到 FILES_LIST
           FILES_LIST="${FILES_LIST}\n${file_path};${author};${module_name};${comment}"

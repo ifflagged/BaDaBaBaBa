@@ -18,54 +18,40 @@ jobs:
         mkdir -p Original
         README_CONTENT=""
         FILES_LIST=""
-        declare -A filename_count # 用于跟踪每个文件名的计数
+        declare -A file_map
         while read -r url; do
-          # 忽略空行和注释
-          [[ -z "$url" || "$url" =~ ^# ]] && continue
-
-          # 提取作者名称和文件名
+          [[ "$url" =~ ^#.*$ || -z "$url" ]] && continue  # 忽略空行和注释
+          
           author=$(echo "$url" | awk -F'/' '{print $4}')
           filename=$(basename "$url")
           filename_no_ext=$(basename "$url" | cut -d'.' -f1)
-
+          extension="${filename##*.}"
+          
+          # 处理文件重命名
+          if [[ -n "${file_map["$author/$filename_no_ext"]}" ]]; then
+            count=2
+            new_filename="${filename_no_ext}-${count}.${extension}"
+            while [[ -n "${file_map["$author/$new_filename"]}" ]]; do
+              count=$((count + 1))
+              new_filename="${filename_no_ext}-${count}.${extension}"
+            done
+            filename="$new_filename"
+          fi
+          
           # 创建作者文件夹
           mkdir -p "Original/$author"
-          # 下载文件
           file_path="Original/$author/$filename"
           curl -L -o "$file_path" "$url"
           
-          # 准备README内容
+          # 更新文件名映射
+          file_map["$author/$filename_no_ext"]="$file_path"
+
           README_CONTENT="${README_CONTENT}\n- **${filename_no_ext}**: Converted from [${author} ${filename_no_ext}](${url})"
-
-          # 提取非注释行中的 hostname 信息
+          
           hostnames=$(grep -v '^#' "$file_path" | grep 'hostname = ' | awk -F'hostname = ' '{print $2}' | tr '\n' ', ' | sed 's/, $//')
-          # 生成注释内容
           comment="# ${filename_no_ext} // ${hostnames}"
-
-          # 初始化文件名计数
-          if [[ -z "${filename_count["$author/$filename_no_ext"]}" ]]; then
-            filename_count["$author/$filename_no_ext"]=0
-          fi
-
-          # 生成模块名称
-          module_name="${author}_${filename_no_ext}"
-          # 检查文件是否存在并进行重命名
-          while [[ -f "Modules/Surge/${module_name}.sgmodule" || -f "Modules/Loon/${module_name}.plugin" ]]; do
-            filename_count["$author/$filename_no_ext"]=$((filename_count["$author/$filename_no_ext"] + 1))
-            module_name="${author}_${filename_no_ext}-$((${filename_count["$author/$filename_no_ext"]} + 2))"  # 从-2开始
-          done
-
-          # 将文件信息追加到 FILES_LIST
-          FILES_LIST="${FILES_LIST}\n${file_path};${author};${module_name};${comment}"
+          FILES_LIST="${FILES_LIST}\n${file_path};${author};${filename_no_ext};${comment}"
         done < Links/Modules-Links.txt
-        
-        # 将 README 内容和文件列表输出到步骤的输出中
-        echo "README_CONTENT<<EOF" >> $GITHUB_ENV
-        echo -e "$README_CONTENT" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
-        echo "FILES_LIST<<EOF" >> $GITHUB_ENV
-        echo -e "$FILES_LIST" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
 
     - name: Convert snippets
       run: |

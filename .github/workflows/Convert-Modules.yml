@@ -33,18 +33,19 @@ jobs:
           # 创建作者文件夹
           mkdir -p "Original/$author"
 
-          # 检查文件名冲突并重命名
-          if [[ -z "${file_count["$author-$filename_no_ext"]}" ]]; then
-            new_filename="$filename"
-            file_count["$author-$filename_no_ext"]=1
-          else
+          # 检查文件是否已经存在并重命名
+          file_path="Original/$author/$filename"
+          if [[ -f "$file_path" ]]; then
             count=${file_count["$author-$filename_no_ext"]}
+            if [[ -z "$count" ]]; then
+              count=1
+            fi
             new_filename="${filename_no_ext}-${count}.$extension"
+            file_path="Original/$author/$new_filename"
             file_count["$author-$filename_no_ext"]=$((count + 1))
           fi
 
           # 下载文件
-          file_path="Original/$author/$new_filename"
           curl -L -o "$file_path" "$url"
           
           # 准备README内容

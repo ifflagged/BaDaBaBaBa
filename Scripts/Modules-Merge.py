@@ -22,10 +22,10 @@ def extract_section(content, section_name):
     return section_lines
 
 def merge_modules(input_file, output_type, module_urls):
-    general = []
-    rules = []
-    rewrites = []
-    scripts = []
+    general = set()  # 使用 set 去重
+    rules = set()
+    rewrites = set()
+    scripts = set()
     mitm_hosts = set()
 
     for module_url in module_urls:
@@ -38,29 +38,29 @@ def merge_modules(input_file, output_type, module_urls):
 
         module_general = extract_section(content, "General")
         if module_general:
-            general += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_general
+            general.update([f"# {module_url.split('/')[-1].split('.')[0]}"] + module_general)
 
         module_rules = extract_section(content, "Rule")
         if module_rules:
-            rules += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rules
+            rules.update([f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rules)
 
         # 提取 [Rewrite] 和 [URL Rewrite]，并将其合并到 Surge 的 [URL Rewrite] 部分
         if output_type == 'sgmodule':
             module_rewrites = extract_section(content, "Rewrite")
             module_url_rewrites = extract_section(content, "URL Rewrite")
             if module_rewrites:
-                rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites
+                rewrites.update([f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites)
             if module_url_rewrites:
-                rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_url_rewrites
+                rewrites.update([f"# {module_url.split('/')[-1].split('.')[0]}"] + module_url_rewrites)
         else:
             # 对于 Loon，保留 [Rewrite]
             module_rewrites = extract_section(content, "Rewrite")
             if module_rewrites:
-                rewrites += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites
+                rewrites.update([f"# {module_url.split('/')[-1].split('.')[0]}"] + module_rewrites)
 
         module_scripts = extract_section(content, "Script")
         if module_scripts:
-            scripts += [f"# {module_url.split('/')[-1].split('.')[0]}"] + module_scripts
+            scripts.update([f"# {module_url.split('/')[-1].split('.')[0]}"] + module_scripts)
 
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
@@ -100,24 +100,24 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n\n")
 
         # General 部分
-        if general and any(gen.strip() for gen in general):
+        if general:
             output_file.write("[General]\n")
-            output_file.write("\n".join(general) + "\n\n")
+            output_file.write("\n".join(sorted(general)) + "\n\n")
 
         # Rule 部分
-        if rules and any(rule.strip() for rule in rules):
+        if rules:
             output_file.write("[Rule]\n")
-            output_file.write("\n".join(rules) + "\n\n")
+            output_file.write("\n".join(sorted(rules)) + "\n\n")
 
         # 将 [Rewrite] 和 [URL Rewrite] 合并到 [URL Rewrite]，且不再在注释中标注类型
-        if rewrites and any(rewrite.strip() for rewrite in rewrites):
+        if rewrites:
             output_file.write("[URL Rewrite]\n" if output_type == 'sgmodule' else "[Rewrite]\n")
-            output_file.write("\n".join(rewrites) + "\n\n")
+            output_file.write("\n".join(sorted(rewrites)) + "\n\n")
 
         # Script 部分
-        if scripts and any(script.strip() for script in scripts):
+        if scripts:
             output_file.write("[Script]\n")
-            output_file.write("\n".join(scripts) + "\n\n")
+            output_file.write("\n".join(sorted(scripts)) + "\n\n")
 
         # MITM 部分
         if mitm_hosts:

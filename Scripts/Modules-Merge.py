@@ -10,7 +10,7 @@ def extract_section(content, section_name):
 
     for line in lines:
         line_lower = line.lower()
-        if line_lower.startswith(f"[{section_name_lower}]"):
+        if line_lower.startswith(f"[{section_name_lower}]"): # 要保留原来的#则修改为 elif in_section and (not line.startswith("#")):
             in_section = True
         elif line_lower.startswith("[") and in_section:
             break
@@ -33,22 +33,7 @@ def extract_arguments_and_select(content):
     return arguments, arguments_desc, selects
 
 def merge_modules(input_file, output_type, module_urls):
-    module_content = {
-        "Argument": [],
-        "General": [],
-        "Rule": [],
-        "Rewrite": [],
-        "URL Rewrite": [],
-        "Header Rewrite": [],
-        "Host": [],
-        "Map Local": [],
-        "SSID Setting": [],
-        "Script": [],
-        "MITM": set(),
-    }
-
-    added_sets = {section: set() for section in module_content if section != "MITM"}
-
+    ...
     for module_url in module_urls:
         response = requests.get(module_url)
         if response.status_code != 200:
@@ -118,12 +103,12 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!category= Jacob\n")
 
             # Extract Arguments and Descriptions
-            all_arguments, all_arguments_desc = [], []
+            all_arguments, all_arguments_desc, all_selects = [], [], []
             for module_url in module_urls:
                 response = requests.get(module_url)
                 if response.status_code == 200:
                     content = response.text
-                    arguments, arguments_desc = extract_arguments_and_select(content)
+                    arguments, arguments_desc, _ = extract_arguments_and_select(content)
                     all_arguments.extend(arguments)
                     all_arguments_desc.append(f"# {module_url.split('/')[-1].split('.')[0]} " + " ".join(arguments_desc))
 

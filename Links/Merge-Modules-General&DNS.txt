@@ -10,6 +10,6 @@ https://github.com/VirgilClyne/GetSomeFries/raw/main/sgmodule/DNS.sgmodule
 # General Settings Enhanced
 https://github.com/VirgilClyne/GetSomeFries/raw/main/plugin/General.plugin
 # Block HTTPDNS
-https://github.com/VirgilClyne/GetSomeFries/raw/main/sgmodule/HTTPDNS.Block.sgmodule
+https://github.com/VirgilClyne/GetSomeFries/raw/main/plugin/HTTPDNS.Block.plugin
 # DNS for Router and Companys
 https://github.com/VirgilClyne/GetSomeFries/raw/main/plugin/DNS.plugin

@@ -12,7 +12,6 @@ force-http-engine-hosts = %APPEND% 119.29.29.29:80, dns.weixin.qq.com:80, dns.we
 use-local-host-item-for-proxy = true
 encrypted-dns-follow-outbound-mode = false
 # HTTPDNS
-
 [Rule]
 # HTTPDNS
 DOMAIN,httpdns.alicdn.com,REJECT,extended-matching
@@ -78,7 +77,6 @@ IP-CIDR6,240e:928:1400:10::25/128,REJECT,no-resolve
 IP-CIDR,118.89.204.198/23,REJECT,no-resolve
 IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,REJECT,no-resolve
 # HTTPDNS
-
 [URL Rewrite]
 # HTTPDNS
 ^https?:\/\/amdc\.alipay\.com\/s?query - reject
@@ -131,7 +129,6 @@ IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,REJECT,no-resolve
 ^http:\/\/182\.254\.118\.119\/d - reject
 ^http:\/\/103\.41\.167\.237\/v2\/resolv - reject
 # HTTPDNS
-
 [Host]
 # DNS
 ip6-localhost = ::1 // IPv6 Localhost
@@ -359,14 +356,12 @@ upos-sz-upcdntx.bilivideo.com = server:https://doh.pub/dns-query // BiliBili upo
 *.tw = server:https://dns.twnic.tw/dns-query // TWNIC DNS
 *.taipei = server:https://dns.twnic.tw/dns-query // TWNIC DNS
 *.he.net = server:https://ordns.he.net/dns-query // HE.net
-
 [SSID Setting]
 # DNS
 SSID:Jacob dns-server=system,encrypted-dns-server=off
 SSID:McDonald's dns-server=system,encrypted-dns-server=off
-
 [MITM]
-hostname = %append%, *.httpdns.pro, 119.29.29.98, 119.29.29.99, amdc-sibling.alipay.com.cn, amdc.alipay.com, dns.jd.com
-hostname = %insert%, -*.facebook.com, -*.instagram.com, -*.pstatp.com, -*.snssdk.com, -*.twitter.com
-hostname-disabled = %insert%, buy.itunes.apple.com, gateway.icloud.com, gateway.icloud.com.cn, weather-data.apple.com
 
+hostname = %append%, *.httpdns.pro, 119.29.29.98, 119.29.29.99, amdc-sibling.alipay.com.cn, amdc.alipay.com, dns.jd.com
+hostname = %append%, -*.facebook.com, -*.instagram.com, -*.pstatp.com, -*.snssdk.com, -*.twitter.com
+hostname-disabled = %insert%, buy.itunes.apple.com, gateway.icloud.com, gateway.icloud.com.cn, weather-data.apple.com

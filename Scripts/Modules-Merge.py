@@ -57,7 +57,7 @@ def merge_modules(input_file, output_type, module_urls):
         content = response.text
 
         # Extract various sections
-        sections = ["General", "Rule", "Header Rewrite", "Host", "Map Local", "SSID Setting", "Script"]
+        sections = ["Argument", "General", "Rule", "Header Rewrite", "Host", "Map Local", "SSID Setting", "Script"]
         
         for section in sections:
             section_content = extract_section(content, section)
@@ -117,41 +117,25 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
             output_file.write("#!category= Jacob\n")
 
-        # Extract Arguments and Select sections
-        arguments, arguments_desc, selects = extract_arguments_and_select(content)  # 确保这里调用的是正确的函数
-        arguments_line = []  # 初始化 arguments_line
+        # Extract Arguments and Select sections from all modules
+        all_arguments, all_arguments_desc, all_selects = [], [], []
+        for module_url in module_urls:
+            response = requests.get(module_url)
+            if response.status_code == 200:
+                content = response.text
+                arguments, arguments_desc, selects = extract_arguments_and_select(content)
+                all_arguments.extend(arguments)
+                all_arguments_desc.extend(arguments_desc)
+                all_selects.extend(selects)
 
-        if output_type == 'sgmodule':
-            for desc in arguments_desc:
-                desc_with_newline = desc.replace("\n", r"\n")
-                arguments_line.append(f"# {module_url.split('/')[-1].split('.')[0]}\\n{desc_with_newline}")
+        # Write arguments and descriptions
+        if all_arguments:
+            output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
+        if all_arguments_desc:
+            output_file.write(f"#!arguments-desc= " + " ".join(all_arguments_desc) + "\n")
+        if all_selects:
+            output_file.write("\n".join(all_selects) + "\n")
 
-            if arguments:
-                arguments_line = f"#!arguments= " + ", ".join(arguments)
-                output_file.write(arguments_line + "\n")
-        
-            if arguments_desc:
-                arguments_desc_line = " ".join(arguments_desc)  # 修复了多余的右括号
-                output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")
-            else:
-                output_file.write("\n")
-    
-        else:
-            output_file.write(f"#!name= Merged {name}\n")
-            output_file.write(f"#!desc= Merger {name} for Loon\n")
-            output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
-            output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
-
-            arguments, arguments_desc, selects = extract_arguments_and_select(content)  # 确保这个函数是定义过的
-            if selects:
-                selects.append(f"# {module_url.split('/')[-1].split('.')[0]}")
-                selects.extend(selects)
-
-            if selects:  # 这里需要确保有 "Select" 这个键
-                output_file.write("\n".join(selects) + "\n\n")
-            else:
-                output_file.write("\n")
-    
         # Write each section, deduplicated
         for section_name, content_list in module_content.items():
             if content_list and any(line.strip() for line in content_list):
@@ -159,13 +143,11 @@ def merge_modules(input_file, output_type, module_urls):
                 if section_name == "MITM":
                     combined_mitmh = "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
                     output_file.write(combined_mitmh + "\n")
-                    break
                 else:
                     output_file.write("\n".join(content_list) + "\n")
                 output_file.write("\n")
 
     print(f"Merged content written to {output_path}")
-
 
 def download_modules(module_file):
     with open(module_file, 'r') as f:

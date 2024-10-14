@@ -207,11 +207,19 @@ def merge_modules(input_file, output_type, module_urls):
         for section_name, content_list in module_content.items():
             if content_list and any(line.strip() for line in content_list):
                 output_file.write(f"[{section_name}]\n")
+        
                 if section_name == "MITM":
-                    combined_mitmh = "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
-                    output_file.write(combined_mitmh + "\n")
+                    # Handle .sgmodule case
+                    if output_type == 'sgmodule':
+                        # Collect all unique entries for hostname
+                        mitm_entries = sorted(content_list)  # Assuming content_list has already unique entries
+                        output_file.write("\n".join(mitm_entries) + "\n")
+                    else:  # For .plugin case
+                        combined_hosts = "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
+                        output_file.write(combined_hosts + "\n")
                 else:
                     output_file.write("\n".join(content_list) + "\n")
+        
                 output_file.write("\n")
 
     print(f"Merged content written to {output_path}")

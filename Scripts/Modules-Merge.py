@@ -145,14 +145,17 @@ def merge_modules(input_file, output_type, module_urls):
 
             # Extract selects
             all_selects = []
+            added_selects = set()  # 新增集合以追踪已添加的引用
             for module_url in module_urls:
                 response = requests.get(module_url)
                 if response.status_code == 200:
                     content = response.text
                     _, _, selects = extract_arguments_and_select(content)
-                    if selects:  # 只有在有引用的情况下添加注释
-                        formatted_selects = "\n".join(f"# {module_url.split('/')[-1].split('.')[0]}\n" + select for select in selects)
-                        all_selects.append(formatted_selects)
+                    for select in selects:
+                        if select not in added_selects:  # 只在未添加的情况下添加
+                            formatted_select = f"# {module_url.split('/')[-1].split('.')[0]}\n{select}"
+                            all_selects.append(formatted_select)
+                            added_selects.add(select)  # 添加到集合中
 
             if all_selects:
                 output_file.write("#!select= " + "\n".join(all_selects) + "\n")

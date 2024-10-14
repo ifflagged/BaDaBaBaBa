@@ -117,7 +117,7 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write(f"#!name= 🧰 Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
             output_file.write("#!category= Jacob\n")
-
+            
             # Extract Arguments and Descriptions
             all_arguments, all_arguments_desc = [], []
             for module_url in module_urls:
@@ -130,15 +130,16 @@ def merge_modules(input_file, output_type, module_urls):
                     # Format arguments-desc
                     if arguments_desc:
                         module_name = f"# {module_url.split('/')[-1].split('.')[0]}"
-                        formatted_desc = f"{module_name}\n" + "\n".join(arguments_desc)
+                        # Format the description to include literal \n
+                        formatted_desc = f"{module_name}\\n" + "\\n".join(arguments_desc) + "\\n"
                         all_arguments_desc.append(formatted_desc)
 
             if all_arguments:
                 output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
 
             if all_arguments_desc:
-                # Join formatted descriptions with the specified double newline
-                output_file.write(f"#!arguments-desc= " + "\n\n".join(all_arguments_desc) + "\n")
+                # Join formatted descriptions with the specified double newline, also with literal \n
+                output_file.write(f"#!arguments-desc= " + "\\n\\n".join(all_arguments_desc) + "\n")
             else:
                 output_file.write("\n")
 

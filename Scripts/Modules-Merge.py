@@ -10,32 +10,27 @@ def extract_section(content, section_name):
 
     for line in lines:
         line_lower = line.lower()
-        if line_lower.startswith(f"[{section_name_lower}]"): # 要保留原来的#则修改为 elif in_section and (not line.startswith("#")):
+        if line_lower.startswith(f"[{section_name_lower}]"):
             in_section = True
         elif line_lower.startswith("[") and in_section:
             break
-        elif in_section and not line.startswith("#"):
+        elif in_section and (not line.startswith("#")):  # 要保留原来"#"部分，则修改为 elif in_section and (not line.startswith("#")):
             stripped_line = line.strip()
             if stripped_line:
                 section_lines.append(stripped_line)
 
     return section_lines
 
-def extract_arguments(content):
-    arguments, arguments_desc = [], []
+def extract_arguments_and_select(content):
+    arguments, arguments_desc, selects = [], [], []
     for line in content.splitlines():
         if line.startswith("#!arguments="):
             arguments.append(line.replace("#!arguments=", "").strip())
         elif line.startswith("#!arguments-desc="):
             arguments_desc.append(line.replace("#!arguments-desc=", "").strip())
-    return arguments, arguments_desc
-
-def extract_select(content):
-    selects = []
-    for line in content.splitlines():
-        if line.startswith("#!select"):
+        elif line.startswith("#!select"):
             selects.append(line.strip())
-    return selects
+    return arguments, arguments_desc, selects
 
 def merge_modules(input_file, output_type, module_urls):
     module_content = {
@@ -48,17 +43,14 @@ def merge_modules(input_file, output_type, module_urls):
         "Map Local": [],
         "SSID Setting": [],
         "Script": [],
-        "MITM": set(),
+        "MITM": set()
     }
 
     added_sets = {section: set() for section in module_content if section != "MITM"}
 
     for module_url in module_urls:
-        try:
-            response = requests.get(module_url)
-            response.raise_for_status()  # 引发HTTPError异常
-        except requests.RequestException as e:
-            print(f"请求模块失败: {module_url}, 错误: {e}")
+        response = requests.get(module_url)
+        if response.status_code != 200:
             continue
 
         content = response.text
@@ -97,15 +89,18 @@ def merge_modules(input_file, output_type, module_urls):
         # Extract MITM section
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            for line in mitm_section:
-                if line.lower().startswith("hostname = %append%"):
-                    hosts = line.lower().replace("hostname = %append%", "").strip()
-                    module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
-                elif line.lower().startswith("hostname ="):
-                    hosts = line.lower().replace("hostname =", "").strip()
-                    module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
-                else:
-                    module_content["MITM"].update(line.strip().split(","))
+            if output_type == 'sgmodule':
+                for line in mitm_section:
+                    if line.lower().startswith("hostname = %append%"):
+                        hosts = line.lower().replace("hostname = %append%", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+            else:
+                for line in mitm_section:
+                    if line.lower().startswith("hostname ="):
+                        hosts = line.lower().replace("hostname =", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+                    else:
+                        module_content["MITM"].update(line.strip().split(","))
 
         # Extract Arguments and Select sections
         arguments, arguments_desc = extract_arguments(content)
@@ -119,7 +114,7 @@ def merge_modules(input_file, output_type, module_urls):
             if selects:
                 module_content["Select"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
                 module_content["Select"].extend(selects)
-
+                
     # Construct output file path
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
@@ -158,17 +153,15 @@ def merge_modules(input_file, output_type, module_urls):
             if module_content["Arguments"]:
                 output_file.write("[Argument]\n")
                 output_file.write("\n".join(module_content["Arguments"]) + "\n\n")
-                
+
         # Write each section, deduplicated
         for section_name, content_list in module_content.items():
             if content_list and any(line.strip() for line in content_list):
                 output_file.write(f"[{section_name}]\n")
                 if section_name == "MITM":
-                    hosts_line = ", ".join(sorted(module_content["MITM"]))
-                    if output_type == 'sgmodule':
-                        output_file.write(f"hostname = %APPEND% {hosts_line}\n")
-                    else:
-                        output_file.write(f"hostname = {hosts_line}\n")
+                    output_file.write("[MITM]\n")
+                    output_file.write(combined_mitmh + "\n")
+                    break
                 else:
                     output_file.write("\n".join(content_list) + "\n")
                 output_file.write("\n")

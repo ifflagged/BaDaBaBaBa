@@ -10,7 +10,7 @@ def extract_section(content, section_name):
 
     for line in lines:
         line_lower = line.lower()
-        if line_lower.startswith(f"[{section_name_lower}]"):
+        if line_lower.startswith(f"[{section_name_lower}]"): # 要保留原来的#则修改为 elif in_section and (not line.startswith("#")):
             in_section = True
         elif line_lower.startswith("[") and in_section:
             break
@@ -102,6 +102,19 @@ def merge_modules(input_file, output_type, module_urls):
                 else:
                     module_content["MITM"].update(line.strip().split(","))
 
+        # Extract Arguments and Select sections
+        arguments, arguments_desc = extract_arguments(content)
+        if output_type == 'sgmodule':
+            module_content["Arguments"].extend(arguments)
+            for desc in arguments_desc:
+                desc_with_newline = desc.replace("\n", r"\n")
+                module_content["ArgumentsDesc"].append(f"# {module_url.split('/')[-1].split('.')[0]}\\n{desc_with_newline}")
+        else:
+            selects = extract_select(content)
+            if selects:
+                module_content["Select"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
+                module_content["Select"].extend(selects)
+
     # Construct output file path
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
@@ -116,21 +129,39 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
             output_file.write("#!category= Jacob\n")
 
+            if module_content["Arguments"]:
+                arguments_line = f"#!arguments= " + ", ".join(module_content["Arguments"])
+                output_file.write(arguments_line + "\n")
+            
+            if module_content["ArgumentsDesc"]:
+                arguments_desc_line = " ".join(module_content["ArgumentsDesc"])
+                output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")
+            else:
+                output_file.write("\n")
+
         else:
             output_file.write(f"#!name= Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Loon\n")
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
 
+            if module_content["Select"]:
+                output_file.write("\n".join(module_content["Select"]) + "\n\n")
+            else:
+                output_file.write("\n")
+
+            if module_content["Arguments"]:
+                output_file.write("[Argument]\n")
+                output_file.write("\n".join(module_content["Arguments"]) + "\n\n")
+                
         # Write each section, deduplicated
         for section_name, content_list in module_content.items():
             if content_list and any(line.strip() for line in content_list):
                 output_file.write(f"[{section_name}]\n")
                 if section_name == "MITM":
-                    # 将所有 hostname 连接成一行
                     hosts_line = ", ".join(sorted(module_content["MITM"]))
                     if output_type == 'sgmodule':
-                        output_file.write(f"hostname = %append% {hosts_line}\n")
+                        output_file.write(f"hostname = %APPEND% {hosts_line}\n")
                     else:
                         output_file.write(f"hostname = {hosts_line}\n")
                 else:

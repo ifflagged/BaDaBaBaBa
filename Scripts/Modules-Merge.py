@@ -91,39 +91,22 @@ def merge_modules(input_file, output_type, module_urls):
         # Extract MITM section
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            # 处理 hostname = %append% 和 hostname = %insert%
-            append_hosts = []
-            insert_hosts = []
-
-            for line in mitm_section:
-                if line.lower().startswith("hostname = %append%"):
-                    hosts = line.lower().replace("hostname = %append%", "").strip()
-                    append_hosts.extend(host.strip() for host in hosts.split(",") if host.strip())
-                elif line.lower().startswith("hostname = %insert%"):
-                    hosts = line.lower().replace("hostname = %insert%", "").strip()
-                    insert_hosts.extend(host.strip() for host in hosts.split(",") if host.strip())
-
-            # 去重并合并主机名
             if output_type == 'sgmodule':
-                if append_hosts:
-                    module_content["MITM"].update(sorted(set(append_hosts)))
-                if insert_hosts:
-                    module_content["MITM"].update(sorted(set(insert_hosts)))
-
-            # 处理 hostname-disabled = %insert%
-            for line in mitm_section:
-                if line.lower().startswith("hostname-disabled = %insert%"):
-                    disabled_hosts = line.lower().replace("hostname-disabled = %insert%", "").strip()
-                    module_content["MITM"].update(host.strip() for host in disabled_hosts.split(",") if host.strip())
-                    
+                for line in mitm_section:
+                    if line.lower().startswith("hostname = %append%") or line.lower().startswith("hostname = %insert%"):
+                        hosts = line.lower().replace("hostname = %append%", "").replace("hostname = %insert%", "").strip()
+                        module_content["MITM"]["hostname-nomal"] = {host.strip() for host in hosts.split(",") if host.strip()}
+                    elif line.lower().startswith("hostname-disabled = %insert%"):
+                        hosts = line.lower().replace("hostname-disabled = %insert%", "").strip()
+                        module_content["MITM"]["hostname-disabled"] = {host.strip() for host in hosts.split(",") if host.strip()}
             else:
-               for line in mitm_section:
-                   if line.lower().startswith("hostname ="):
-                       hosts = line.lower().replace("hostname =", "").strip()
-                       module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
-                   else:
-                       module_content["MITM"].update(line.strip().split(","))  
-    
+                for line in mitm_section:
+                    if line.lower().startswith("hostname ="):
+                        hosts = line.lower().replace("hostname =", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+                    else:
+                        module_content["MITM"].update(line.strip().split(","))
+                
     # Construct output file path
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
@@ -198,15 +181,27 @@ def merge_modules(input_file, output_type, module_urls):
             if content_list and any(line.strip() for line in content_list):
                 output_file.write(f"[{section_name}]\n")
                 if section_name == "MITM":
-                    combined_mitmh = "hostname = %APPEND% " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
-                    output_file.write(combined_mitmh + "\n")
-                    if module_content["MITM"]:
-                        disabled_hosts = "hostname-disabled = %INSERT% " + ", ".join(sorted(module_content["MITM"]))
-                        output_file.write(disabled_hosts + "\n")
+                    if output_type == 'sgmodule':
+                        hostname_normal = ", ".join(sorted(module_content["MITM"].get("hostname-nomal", [])))
+                        hostname_disabled = ", ".join(sorted(module_content["MITM"].get("hostname-disabled", [])))
+
+                        combined_mitmh = f"hostname = %APPEND% {hostname_normal}" if hostname_normal else ""
+                        combined_mitmh += f"\nhostname-disabled = %INSERT% {hostname_disabled}" if hostname_disabled else ""
+
+                        if combined_mitmh:
+                            output_file.write(combined_mitmh + "\n")
+                    else:
+                        combined_mitmh = "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
+                        if combined_mitmh:
+                            output_file.write(combined_mitmh + "\n")
                 else:
                     output_file.write("\n".join(content_list) + "\n")
                 output_file.write("\n")
-            
+        
+    # 这里假设 content_list 已定义并包含内容
+    output_file.write("\n".join(content_list) + "\n")
+    output_file.write("\n")
+
     print(f"Merged content written to {output_path}")
 
 def download_modules(module_file):

@@ -2,6 +2,7 @@
 #!desc= Merger Nsringo for Loon
 #!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]
 #!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png
+
 [Argument]
 # Location
 PEP.GCC = select,"US","AUTO","HK","TW","SG","US","JP","AU","GB","KR","CA","IE",tag=[地区检测]地理国家或地区代码,desc=要更改为的地区或国家，此选项影响Wi-Fi或有线网络下国家和地区检测的结果。

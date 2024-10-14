@@ -131,7 +131,7 @@ def merge_modules(input_file, output_type, module_urls):
                     if arguments_desc:
                         module_name = f"# {module_url.split('/')[-1].split('.')[0]}"
                         # Format the description to include literal \n
-                        formatted_desc = f"{module_name}" + "\\n".join(arguments_desc)
+                        formatted_desc = f"{module_name}\\n" + "\\n".join(arguments_desc)
                         all_arguments_desc.append(formatted_desc)
 
             if all_arguments:

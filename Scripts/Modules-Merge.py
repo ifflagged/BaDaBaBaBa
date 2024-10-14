@@ -131,7 +131,6 @@ def merge_modules(input_file, output_type, module_urls):
                     # Format arguments-desc
                     if arguments_desc:
                         module_name = f"# {module_url.split('/')[-1].split('.')[0]}"
-                        # Format the description to include literal \n
                         formatted_desc = f"{module_name}\\n" + "\\n".join(arguments_desc)
                         all_arguments_desc.append(formatted_desc)
 
@@ -139,7 +138,6 @@ def merge_modules(input_file, output_type, module_urls):
                 output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
 
             if all_arguments_desc:
-                # Join formatted descriptions with double newline, but ensure no trailing newline at the end
                 output_file.write(f"#!arguments-desc= " + "\\n\\n".join(all_arguments_desc) + "\n\n")
             else:
                 output_file.write("\n")
@@ -152,14 +150,13 @@ def merge_modules(input_file, output_type, module_urls):
 
             # Extract selects
             all_selects = []
-            added_selects = set()  # Track already added selects
+            added_selects = set()
             for module_url in module_urls:
                 response = requests.get(module_url)
                 if response.status_code == 200:
                     content = response.text
                     _, _, selects = extract_arguments_and_select(content)
                     if selects:
-                        # Add the reference comment only once before selects from this URL
                         reference_comment = f"# {module_url.split('/')[-1].split('.')[0]}"
                         if any(select not in added_selects for select in selects):
                             all_selects.append(reference_comment)
@@ -167,7 +164,7 @@ def merge_modules(input_file, output_type, module_urls):
                         for select in selects:
                             if select not in added_selects:
                                 all_selects.append(select)
-                                added_selects.add(select)  # Add select to the set
+                                added_selects.add(select)
 
             if all_selects:
                 output_file.write("\n".join(all_selects) + "\n\n")
@@ -189,17 +186,13 @@ def merge_modules(input_file, output_type, module_urls):
                         if combined_mitmh:
                             output_file.write(combined_mitmh + "\n")
                     else:
-                        combined_mitmh = "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
+                        combined_mitmh = "hostname = " + ", ".join(sorted(module_content["MITM"]["hostname-nomal"])) if module_content["MITM"]["hostname-nomal"] else ""
                         if combined_mitmh:
                             output_file.write(combined_mitmh + "\n")
                 else:
                     output_file.write("\n".join(content_list) + "\n")
                 output_file.write("\n")
         
-    # 这里假设 content_list 已定义并包含内容
-    output_file.write("\n".join(content_list) + "\n")
-    output_file.write("\n")
-
     print(f"Merged content written to {output_path}")
 
 def download_modules(module_file):

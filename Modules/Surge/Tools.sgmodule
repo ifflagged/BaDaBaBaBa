@@ -2,7 +2,7 @@
 #!desc= Merger Tools for Surge & Shadowrocket
 #!category= Jacob
 #!arguments= YouTube 屏蔽上传按钮:true,YouTube 屏蔽选段按钮:true,YouTube 字幕翻译语言:zh-Hans,YouTube 歌词翻译语言:zh-Hans,YouTube 脚本执行引擎:jsc,YouTube 启用调试模式:false
-#!arguments-desc= # Tools\n- YouTube 屏蔽参数：[true, false] \n- YouTube 翻译参数：[语言代码, off] \n- YouTube 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志\n
+#!arguments-desc= # Tools- YouTube 屏蔽参数：[true, false] \n- YouTube 翻译参数：[语言代码, off] \n- YouTube 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志
 [General]
 # Tools
 force-http-engine-hosts=%APPEND% router.com, www.router.com

@@ -89,23 +89,23 @@ def merge_modules(input_file, output_type, module_urls):
                         module_content["Rewrite"].append(line)
 
         # Extract MITM section
-        mitm_section = extract_section(content, "MITM")
-        if mitm_section:
+        module_content["MITM"] = {
+            "hostname-nomal": set(),
+            "hostname-disabled": set()
+        }
+
+        for line in mitm_section:
             if output_type == 'sgmodule':
-                for line in mitm_section:
-                    if line.lower().startswith("hostname = %append%") or line.lower().startswith("hostname = %insert%"):
-                        hosts = line.lower().replace("hostname = %append%", "").replace("hostname = %insert%", "").strip()
-                        module_content["MITM"]["hostname-nomal"] = {host.strip() for host in hosts.split(",") if host.strip()}
-                    elif line.lower().startswith("hostname-disabled = %insert%"):
-                        hosts = line.lower().replace("hostname-disabled = %insert%", "").strip()
-                        module_content["MITM"]["hostname-disabled"] = {host.strip() for host in hosts.split(",") if host.strip()}
+                if line.lower().startswith("hostname = %append%") or line.lower().startswith("hostname = %insert%"):
+                    hosts = line.lower().replace("hostname = %append%", "").replace("hostname = %insert%", "").strip()
+                    module_content["MITM"]["hostname-nomal"].update(host.strip() for host in hosts.split(",") if host.strip())
+                elif line.lower().startswith("hostname-disabled = %insert%"):
+                    hosts = line.lower().replace("hostname-disabled = %insert%", "").strip()
+                    module_content["MITM"]["hostname-disabled"].update(host.strip() for host in hosts.split(",") if host.strip())
             else:
-                for line in mitm_section:
-                    if line.lower().startswith("hostname ="):
-                        hosts = line.lower().replace("hostname =", "").strip()
-                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
-                    else:
-                        module_content["MITM"].update(line.strip().split(","))
+                if line.lower().startswith("hostname ="):
+                    hosts = line.lower().replace("hostname =", "").strip()
+                    module_content["MITM"]["hostname-nomal"].update(host.strip() for host in hosts.split(",") if host.strip())
                 
     # Construct output file path
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()

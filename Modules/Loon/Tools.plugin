@@ -8,6 +8,7 @@
 #!select = 字幕翻译语言, zh-Hans, zh-Hant, ja, ko, en, off
 #!select = 歌词翻译语言, zh-Hans, zh-Hant, ja, ko, en, off
 #!select = 启用调试模式, true, false
+
 [Rule]
 # RuCu6_amap
 AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, AMapiPhone*)), REJECT

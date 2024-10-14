@@ -16,6 +16,7 @@ UrlInfoSet.LocationShift = select,"AUTO","AutoNavi","Apple",tag=[URL信息集]�
 TileSet.Satellite = select,"HYBRID","AUTO","CN","XX",tag=[瓦片数据集]卫星图像,desc=此选项影响所列位图、影像与模型数据。
 TileSet.Flyover = select,"XX","AUTO","CN",tag=[瓦片数据集]飞行俯瞰,desc=此选项影响飞行俯瞰全球各地的主要地标和城市功能。
 TileSet.Munin = select,"XX","AUTO","CN",tag=[瓦片数据集]四处看看,desc=此选项影响 360 度全景视角在某些地点四处看看功能。
+
 [Rule]
 # Location
 DOMAIN,gspe1-ssl.ls.apple.com,DIRECT
@@ -23,6 +24,7 @@ DOMAIN,gspe1-ssl.ls.apple.com,DIRECT
 DOMAIN,gspe19-cn-ssl.ls.apple.com,DIRECT
 DOMAIN,dispatcher.is.autonavi.com,DIRECT
 DOMAIN,direction2.is.autonavi.com,DIRECT
+
 [Script]
 # Location
 http-response ^https?:\/\/gspe1-ssl\.ls\.apple\.com\/pep\/gcc script-path=https://github.com/NSRingo/GeoServices/releases/latest/download/response.js, requires-body=1, tag=📍 Location.pep.gcc.response, argument=[{PEP.GCC}]
@@ -33,5 +35,7 @@ http-request ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/config\/announcements 
 http-response ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/config\/announcements script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/response.js, requires-body=1, binary-body-mode=1, tag=🗺️ Maps.config.announcements.response, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
 http-request ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/geo_manifest\/dynamic\/config script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/request.js, tag=🗺️ Maps.config.announcements.request, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
 http-response ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/geo_manifest\/dynamic\/config script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/response.js, requires-body=1, binary-body-mode=1, tag=🗺️ Maps.geo_manifest.dynamic.config.response, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
+
 [MITM]
 hostname = configuration.ls.apple.com, gspe1-ssl.ls.apple.com, gspe35-ssl.ls.apple.com
+

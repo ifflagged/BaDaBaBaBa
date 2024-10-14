@@ -37,6 +37,6 @@ http-request ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/geo_manifest\/dynamic\
 http-response ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/geo_manifest\/dynamic\/config script-path=https://github.com/NSRingo/GeoServices/releases/download/v4.0.9/response.js, requires-body=1, binary-body-mode=1, tag=🗺️ Maps.geo_manifest.dynamic.config.response, argument=[{GeoManifest.Dynamic.Config.CountryCode.default},{GeoManifest.Dynamic.Config.CountryCode.watchOS},{UrlInfoSet.Dispatcher},{UrlInfoSet.Directions},{UrlInfoSet.RAP},{UrlInfoSet.LocationShift},{TileSet.Satellite},{TileSet.Flyover},{TileSet.Munin}]
 
 [MITM]
-hostname = %APPEND%, configuration.ls.apple.com, gspe1-ssl.ls.apple.com, gspe35-ssl.ls.apple.com
-hostname-disabled = %INSERT%, configuration.ls.apple.com, gspe1-ssl.ls.apple.com, gspe35-ssl.ls.apple.com
+hostname = %APPEND% configuration.ls.apple.com, gspe1-ssl.ls.apple.com, gspe35-ssl.ls.apple.com
+hostname-disabled = %INSERT% configuration.ls.apple.com, gspe1-ssl.ls.apple.com, gspe35-ssl.ls.apple.com
 

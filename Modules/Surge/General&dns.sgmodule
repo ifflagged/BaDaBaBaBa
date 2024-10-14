@@ -366,6 +366,6 @@ SSID:Jacob dns-server=system,encrypted-dns-server=off
 SSID:McDonald's dns-server=system,encrypted-dns-server=off
 
 [MITM]
-hostname = %APPEND%  buy.itunes.apple.com,  gateway.icloud.com.cn,  weather-data.apple.com, %append% 119.29.29.98, %insert% -*.facebook.com, *.httpdns.pro, -*.facebook.com, -*.instagram.com, -*.pstatp.com, -*.snssdk.com, -*.twitter.com, 119.29.29.98, 119.29.29.99, amdc-sibling.alipay.com.cn, amdc.alipay.com, buy.itunes.apple.com, dns.jd.com, gateway.icloud.com, gateway.icloud.com.cn, hostname-disabled = %INSERT% gateway.icloud.com, weather-data.apple.com
-hostname-disabled = %INSERT%  buy.itunes.apple.com,  gateway.icloud.com.cn,  weather-data.apple.com, %append% 119.29.29.98, %insert% -*.facebook.com, *.httpdns.pro, -*.facebook.com, -*.instagram.com, -*.pstatp.com, -*.snssdk.com, -*.twitter.com, 119.29.29.98, 119.29.29.99, amdc-sibling.alipay.com.cn, amdc.alipay.com, buy.itunes.apple.com, dns.jd.com, gateway.icloud.com, gateway.icloud.com.cn, hostname-disabled = %INSERT% gateway.icloud.com, weather-data.apple.com
+hostname = %APPEND% *.httpdns.pro, -*.facebook.com, -*.instagram.com, -*.pstatp.com, -*.snssdk.com, -*.twitter.com, 119.29.29.98, 119.29.29.99, amdc-sibling.alipay.com.cn, amdc.alipay.com, dns.jd.com
+hostname-disabled = %INSERT% buy.itunes.apple.com, gateway.icloud.com, gateway.icloud.com.cn, weather-data.apple.com
 

@@ -139,7 +139,7 @@ def merge_modules(input_file, output_type, module_urls):
 
             if all_arguments_desc:
                 # Join formatted descriptions with double newline, but ensure no trailing newline at the end
-                output_file.write(f"#!arguments-desc= " + "\\n\\n".join(all_arguments_desc) + "\n")
+                output_file.write(f"#!arguments-desc= " + "\\n\\n".join(all_arguments_desc) + "\n\n")
             else:
                 output_file.write("\n")
 
@@ -169,7 +169,7 @@ def merge_modules(input_file, output_type, module_urls):
                                 added_selects.add(select)  # Add select to the set
 
             if all_selects:
-                output_file.write("\n".join(all_selects) + "\n")
+                output_file.write("\n".join(all_selects) + "\n\n")
             else:
                 output_file.write("\n")
 

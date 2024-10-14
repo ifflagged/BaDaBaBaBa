@@ -91,37 +91,48 @@ def merge_modules(input_file, output_type, module_urls):
         # Extract MITM section
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            append_hosts = set()
-            insert_hosts = set()
-            disabled_hosts = set()
-
-            for line in mitm_section:
-                line_lower = line.lower()
-                if line_lower.startswith("hostname = %append%"):
-                    hosts = line_lower.replace("hostname = %append%", "").strip()
-                    append_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
-                elif line_lower.startswith("hostname = %insert%"):
-                    hosts = line_lower.replace("hostname = %insert%", "").strip()
-                    insert_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
-                elif line_lower.startswith("hostname-disabled = %insert%"):
-                    hosts = line_lower.replace("hostname-disabled = %insert%", "").strip()
-                    disabled_hosts.update(host.strip() for host in hosts.split(",") if host.strip())
-
             if output_type == 'sgmodule':
-                # Add append and insert hosts to MITM section
-                if append_hosts:
-                    module_content["MITM"].update(append_hosts)
-                if insert_hosts:
-                    module_content["MITM"].update(insert_hosts)
+                append_hosts = []
+                insert_hosts = []
+                disabled_hosts = []
+                
+                for line in mitm_section:
+                    if line.lower().startswith("hostname = %append%"):
+                        hosts = line.lower().replace("hostname = %append%", "").strip()
+                        append_hosts.extend(host.strip() for host in hosts.split(",") if host.strip())
+                    elif line.lower().startswith("hostname = %insert%"):
+                        hosts = line.lower().replace("hostname = %insert%", "").strip()
+                        insert_hosts.extend(host.strip() for host in hosts.split(",") if host.strip())
+                    elif line.lower().startswith("hostname-disabled = %insert%"):
+                        hosts = line.lower().replace("hostname-disabled = %insert%", "").strip()
+                        disabled_hosts.extend(host.strip() for host in hosts.split(",") if host.strip())
+                
+                # Deduplicate and format hosts
+                unique_append_hosts = sorted(set(append_hosts))
+                unique_insert_hosts = sorted(set(insert_hosts))
+                unique_disabled_hosts = sorted(set(disabled_hosts))
 
-                # Create the combined hostname line
-                combined_hosts = "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
-                module_content["MITM"].add(combined_hosts)
+                if unique_append_hosts:
+                    module_content["MITM"].add(f"hostname = %append%, {', '.join(unique_append_hosts)}")
 
-                # Handle disabled hosts, if any
-                if disabled_hosts:
-                    disabled_combined = "hostname-disabled = " + ", ".join(sorted(disabled_hosts))
-                    module_content["MITM"].add(disabled_combined)
+                if unique_insert_hosts:
+                    module_content["MITM"].add(f"hostname = %insert%, {', '.join(unique_insert_hosts)}")
+
+                if unique_disabled_hosts:
+                    module_content["MITM"].add(f"hostname-disabled = %insert%, {', '.join(unique_disabled_hosts)}")
+                    # Add disabled hosts to the next line after the append
+                    if unique_append_hosts:
+                        module_content["MITM"].add("")  # Add a blank line for separation
+                        module_content["MITM"].add(f"hostname-disabled = %insert%, {', '.join(unique_disabled_hosts)}")
+
+            else:
+                # Original logic for plugin handling
+                for line in mitm_section:
+                    if line.lower().startswith("hostname ="):
+                        hosts = line.lower().replace("hostname =", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+                    else:
+                        module_content["MITM"].update(line.strip().split(","))
 
     # Construct output file path
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
@@ -149,6 +160,7 @@ def merge_modules(input_file, output_type, module_urls):
                     # Format arguments-desc
                     if arguments_desc:
                         module_name = f"# {module_url.split('/')[-1].split('.')[0]}"
+                        # Format the description to include literal \n
                         formatted_desc = f"{module_name}\\n" + "\\n".join(arguments_desc)
                         all_arguments_desc.append(formatted_desc)
 
@@ -156,6 +168,7 @@ def merge_modules(input_file, output_type, module_urls):
                 output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
 
             if all_arguments_desc:
+                # Join formatted descriptions with double newline, but ensure no trailing newline at the end
                 output_file.write(f"#!arguments-desc= " + "\\n\\n".join(all_arguments_desc) + "\n\n")
             else:
                 output_file.write("\n")
@@ -175,6 +188,7 @@ def merge_modules(input_file, output_type, module_urls):
                     content = response.text
                     _, _, selects = extract_arguments_and_select(content)
                     if selects:
+                        # Add the reference comment only once before selects from this URL
                         reference_comment = f"# {module_url.split('/')[-1].split('.')[0]}"
                         if any(select not in added_selects for select in selects):
                             all_selects.append(reference_comment)
@@ -182,7 +196,7 @@ def merge_modules(input_file, output_type, module_urls):
                         for select in selects:
                             if select not in added_selects:
                                 all_selects.append(select)
-                                added_selects.add(select)
+                                added_selects.add(select)  # Add select to the set
 
             if all_selects:
                 output_file.write("\n".join(all_selects) + "\n\n")

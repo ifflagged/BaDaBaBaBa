@@ -33,6 +33,7 @@ def extract_arguments_and_select(content):
     return arguments, arguments_desc, selects
 
 def merge_modules(input_file, output_type, module_urls):
+    # Initialize module_content
     module_content = {
         "Argument": [],
         "General": [],
@@ -150,7 +151,8 @@ def merge_modules(input_file, output_type, module_urls):
                     content = response.text
                     _, _, selects = extract_arguments_and_select(content)
                     if selects:  # 只有在有引用的情况下添加注释
-                        all_selects.append(f"# {module_url.split('/')[-1].split('.')[0]} " + " ".join(selects))
+                        formatted_selects = "\n".join(f"# {module_url.split('/')[-1].split('.')[0]}\n" + select for select in selects)
+                        all_selects.append(formatted_selects)
 
             if all_selects:
                 output_file.write("#!select= " + "\n".join(all_selects) + "\n")

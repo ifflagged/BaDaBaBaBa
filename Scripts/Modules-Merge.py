@@ -34,16 +34,17 @@ def extract_arguments_and_select(content):
 
 def merge_modules(input_file, output_type, module_urls):
     module_content = {
+        "Arguments": [],
         "General": [],
         "Rule": [],
         "Rewrite": [],
+        "URL Rewrite": [],
         "Header Rewrite": [],
         "Host": [],
         "Map Local": [],
         "SSID Setting": [],
         "Script": [],
         "MITM": set(),
-        "Arguments": [],
         "ArgumentsDesc": [],
         "Select": []
     }
@@ -58,7 +59,7 @@ def merge_modules(input_file, output_type, module_urls):
         content = response.text
 
         # Extract various sections
-        sections = ["General", "Rule", "Header Rewrite", "Host", "Map Local", "SSID Setting", "Script"]
+        sections = ["Arguments", "General", "Rule", "Header Rewrite", "Host", "Map Local", "SSID Setting", "Script"]
         
         for section in sections:
             section_content = extract_section(content, section)
@@ -94,13 +95,15 @@ def merge_modules(input_file, output_type, module_urls):
             for line in mitm_section:
                 module_content["MITM"].update(line.strip().split(","))
 
-        # Extract Arguments and Select sections
+        # Extract Arguments, Arguments Desc, and Select sections
         arguments, arguments_desc, selects = extract_arguments_and_select(content)
+
         if output_type == 'sgmodule':
             module_content["Arguments"].extend(arguments)
             for desc in arguments_desc:
                 desc_with_newline = desc.replace("\n", r"\n")
                 module_content["ArgumentsDesc"].append(f"# {module_url.split('/')[-1].split('.')[0]}\\n{desc_with_newline}")
+
         else:
             if selects:
                 module_content["Select"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
@@ -121,9 +124,13 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!category= Jacob\n")
 
             if module_content["Arguments"]:
-                output_file.write(f"# Arguments: {', '.join(module_content['Arguments'])}\n")
+                arguments_line = f"#!arguments= " + ", ".join(sorted(set(module_content["Arguments"])))
+                output_file.write(arguments_line + "\n")
+            
             if module_content["ArgumentsDesc"]:
-                output_file.write(f"# Arguments Desc: {' '.join(module_content['ArgumentsDesc'])}\n\n")
+                arguments_desc_line = " ".join(module_content["ArgumentsDesc"])
+                output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")
+
         else:
             output_file.write(f"#!name= Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Loon\n")
@@ -131,17 +138,17 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
 
             if module_content["Select"]:
-                output_file.write("\n".join(module_content["Select"]) + "\n\n")
-            if module_content["Arguments"]:
-                output_file.write("[Argument]\n")
-                output_file.write("\n".join(module_content["Arguments"]) + "\n\n")
+                output_file.write("\n".join(sorted(set(module_content["Select"]))) + "\n\n")
 
         # Write each section, deduplicated
         for section_name, content_list in module_content.items():
             if content_list and any(line.strip() for line in content_list):
                 output_file.write(f"[{section_name}]\n")
                 if section_name == "MITM":
-                    output_file.write("hostname = " + ", ".join(sorted(module_content["MITM"])) + "\n")
+                    if output_type == 'sgmodule':
+                        output_file.write("hostname = %APPEND% " + ", ".join(sorted(module_content["MITM"])) + "\n")
+                    else:
+                        output_file.write("hostname = " + ", ".join(sorted(module_content["MITM"])) + "\n")
                 else:
                     output_file.write("\n".join(content_list) + "\n")
                 output_file.write("\n")

@@ -10,8 +10,8 @@ def extract_rules(content, file_type):
     mitm = []
 
     rule_pattern = re.compile(r',\s*DIRECT|,\s*REJECT', re.IGNORECASE)
-    url_rewrite_pattern = re.compile(r'^\^http.*?(- reject|\$1 302)', re.IGNORECASE)
-    rewrite_pattern = re.compile(r'^\^http.*?(reject|\$1 302)', re.IGNORECASE)
+    url_rewrite_pattern = re.compile(r'^\^http.*?(- reject|header|302|302)', re.IGNORECASE)
+    rewrite_pattern = re.compile(r'^\^http.*?(reject|302|307|header|response-body|request-body)', re.IGNORECASE)
     script_pattern = re.compile(r'pattern=|script-path=', re.IGNORECASE)
     mitm_pattern = re.compile(r'Hostname\s*=', re.IGNORECASE)
 

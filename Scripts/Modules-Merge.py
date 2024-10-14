@@ -93,7 +93,7 @@ def merge_modules(input_file, output_type, module_urls):
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
             for line in mitm_section:
-                if output_type == 'sgmodule' and line.lower().startswith("hostname = %append%"):
+                if line.lower().startswith("hostname = %append%"):
                     hosts = line.lower().replace("hostname = %append%", "").strip()
                     module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
                 elif line.lower().startswith("hostname ="):
@@ -127,7 +127,12 @@ def merge_modules(input_file, output_type, module_urls):
             if content_list and any(line.strip() for line in content_list):
                 output_file.write(f"[{section_name}]\n")
                 if section_name == "MITM":
-                    output_file.write("\n".join(module_content["MITM"]) + "\n")
+                    # 将所有 hostname 连接成一行
+                    hosts_line = ", ".join(sorted(module_content["MITM"]))
+                    if output_type == 'sgmodule':
+                        output_file.write(f"hostname = %append% {hosts_line}\n")
+                    else:
+                        output_file.write(f"hostname = {hosts_line}\n")
                 else:
                     output_file.write("\n".join(content_list) + "\n")
                 output_file.write("\n")

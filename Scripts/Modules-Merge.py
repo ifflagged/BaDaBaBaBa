@@ -136,6 +136,8 @@ def merge_modules(input_file, output_type, module_urls):
                 output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
             if all_arguments_desc:
                 output_file.write(f"#!arguments-desc= " + "".join(all_arguments_desc) + "\n")
+            else:
+                output_file.write("\n")
 
         else:  # for plugin
             output_file.write(f"#!name= Merged {name}\n")
@@ -164,6 +166,8 @@ def merge_modules(input_file, output_type, module_urls):
 
             if all_selects:
                 output_file.write("\n".join(all_selects) + "\n")
+            else:
+                output_file.write("\n")
 
         # Write each section, deduplicated
         for section_name, content_list in module_content.items():

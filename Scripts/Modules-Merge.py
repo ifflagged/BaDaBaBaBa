@@ -33,6 +33,7 @@ def extract_arguments_and_select(content):
     return arguments, arguments_desc, selects
 
 def merge_modules(input_file, output_type, module_urls):
+    # Initialize module_content
     module_content = {
         "Argument": [],
         "General": [],
@@ -44,11 +45,7 @@ def merge_modules(input_file, output_type, module_urls):
         "Map Local": [],
         "SSID Setting": [],
         "Script": [],
-        "MITM": {
-            "append": set(),
-            "insert": set(),
-            "disabled": set()
-        },
+        "MITM": set(),
     }
 
     added_sets = {section: set() for section in module_content if section != "MITM"}
@@ -60,6 +57,7 @@ def merge_modules(input_file, output_type, module_urls):
 
         content = response.text
 
+        # Extract various sections
         sections = ["Argument", "General", "Rule", "Header Rewrite", "Host", "Map Local", "SSID Setting", "Script"]
         
         for section in sections:
@@ -71,6 +69,7 @@ def merge_modules(input_file, output_type, module_urls):
                         added_sets[section].add(line)
                         module_content[section].append(line)
 
+        # Extract Rewrite and URL Rewrite sections
         module_rewrites = extract_section(content, "Rewrite")
         module_url_rewrites = extract_section(content, "URL Rewrite")
 
@@ -89,34 +88,43 @@ def merge_modules(input_file, output_type, module_urls):
                         added_sets["Rewrite"].add(line)
                         module_content["Rewrite"].append(line)
 
+        # Extract MITM section
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            for line in mitm_section:
-                line_lower = line.lower()
-                if line_lower.startswith("hostname = %append%"):
-                    hosts = line_lower.replace("hostname = %append%", "").strip()
-                    module_content["MITM"]["append"].update(host.strip() for host in hosts.split(",") if host.strip())
-                elif line_lower.startswith("hostname = %insert%"):
-                    hosts = line_lower.replace("hostname = %insert%", "").strip()
-                    module_content["MITM"]["insert"].update(host.strip() for host in hosts.split(",") if host.strip())
-                elif line_lower.startswith("hostname-disabled = %insert%"):
-                    hosts = line_lower.replace("hostname-disabled = %insert%", "").strip()
-                    module_content["MITM"]["disabled"].update(host.strip() for host in hosts.split(",") if host.strip())
-                else:
-                    module_content["MITM"]["append"].update(line.strip().split(","))
-
+            if output_type == 'sgmodule':
+                for line in mitm_section:
+                    if line.lower().startswith("hostname = %append%"):
+                        hosts = line.lower().replace("hostname = %append%", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+                    elif line.lower().startswith("hostname = %insert%"):
+                        hosts = line.lower().replace("hostname = %insert%", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+                    elif line.lower().startswith("hostname-disabled = %insert%"):
+                        disabled_hosts = line.lower().replace("hostname-disabled = %insert%", "").strip()
+                        module_content["MITM"].update(host.strip() for host in disabled_hosts.split(",") if host.strip())
+            else:
+                for line in mitm_section:
+                    if line.lower().startswith("hostname ="):
+                        hosts = line.lower().replace("hostname =", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+                    else:
+                        module_content["MITM"].update(line.strip().split(","))
+                        
+    # Construct output file path
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
     output_path = f"Modules/{'Surge' if output_type == 'sgmodule' else 'Loon'}/{output_file_name}"
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
+    # Write merged content to file
     with open(output_path, "w") as output_file:
         if output_type == 'sgmodule':
             output_file.write(f"#!name= 🧰 Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
             output_file.write("#!category= Jacob\n")
 
+            # Extract Arguments and Descriptions
             all_arguments, all_arguments_desc = [], []
             for module_url in module_urls:
                 response = requests.get(module_url)
@@ -125,8 +133,10 @@ def merge_modules(input_file, output_type, module_urls):
                     arguments, arguments_desc, _ = extract_arguments_and_select(content)
                     all_arguments.extend(arguments)
 
+                    # Format arguments-desc
                     if arguments_desc:
                         module_name = f"# {module_url.split('/')[-1].split('.')[0]}"
+                        # Format the description to include literal \n
                         formatted_desc = f"{module_name}\\n" + "\\n".join(arguments_desc)
                         all_arguments_desc.append(formatted_desc)
 
@@ -134,6 +144,7 @@ def merge_modules(input_file, output_type, module_urls):
                 output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
 
             if all_arguments_desc:
+                # Join formatted descriptions with double newline, but ensure no trailing newline at the end
                 output_file.write(f"#!arguments-desc= " + "\\n\\n".join(all_arguments_desc) + "\n\n")
             else:
                 output_file.write("\n")
@@ -144,14 +155,16 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
 
+            # Extract selects
             all_selects = []
-            added_selects = set()
+            added_selects = set()  # Track already added selects
             for module_url in module_urls:
                 response = requests.get(module_url)
                 if response.status_code == 200:
                     content = response.text
                     _, _, selects = extract_arguments_and_select(content)
                     if selects:
+                        # Add the reference comment only once before selects from this URL
                         reference_comment = f"# {module_url.split('/')[-1].split('.')[0]}"
                         if any(select not in added_selects for select in selects):
                             all_selects.append(reference_comment)
@@ -159,7 +172,7 @@ def merge_modules(input_file, output_type, module_urls):
                         for select in selects:
                             if select not in added_selects:
                                 all_selects.append(select)
-                                added_selects.add(select)
+                                added_selects.add(select)  # Add select to the set
 
             if all_selects:
                 output_file.write("\n".join(all_selects) + "\n\n")
@@ -171,16 +184,11 @@ def merge_modules(input_file, output_type, module_urls):
             if content_list and any(line.strip() for line in content_list):
                 output_file.write(f"[{section_name}]\n")
                 if section_name == "MITM":
-                    if output_type == 'sgmodule':
-                        combined_mitmh = "hostname = %append% " + ", ".join(sorted(module_content["MITM"]["append"]))
-                        combined_mitmh_insert = "hostname = %insert% " + ", ".join(sorted(module_content["MITM"]["insert"]))
-                        combined_mitmh_disabled = "hostname-disabled = %insert% " + ", ".join(sorted(module_content["MITM"]["disabled"]))
-                        output_file.write(combined_mitmh + "\n")
-                        output_file.write(combined_mitmh_insert + "\n")
-                        output_file.write(combined_mitmh_disabled + "\n")
-                    else:  # for plugin
-                        combined_mitmh = "hostname = " + ", ".join(sorted(module_content["MITM"]["append"]))
-                        output_file.write(combined_mitmh + "\n")
+                    combined_mitmh = "hostname = %APPEND%, " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
+                    output_file.write(combined_mitmh + "\n")
+                    if module_content["MITM"]:
+                        disabled_hosts = "hostname-disabled = %INSERT%, " + ", ".join(sorted(module_content["MITM"]))
+                        output_file.write(disabled_hosts + "\n")
                 else:
                     output_file.write("\n".join(content_list) + "\n")
                 output_file.write("\n")
@@ -205,6 +213,7 @@ def download_modules(module_file):
     if loon_urls:
         merge_modules(module_file, 'plugin', loon_urls)
 
+# 示例使用
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("请提供要处理的模块文件路径")

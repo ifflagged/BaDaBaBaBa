@@ -129,13 +129,16 @@ def merge_modules(input_file, output_type, module_urls):
 
                     # Format arguments-desc
                     if arguments_desc:
-                        formatted_desc = f"# {module_url.split('/')[-1].split('.')[0]}\n" + "\n".join(arguments_desc) + "\n\n"
+                        module_name = f"# {module_url.split('/')[-1].split('.')[0]}"
+                        formatted_desc = f"{module_name}\n" + "\n".join(arguments_desc)
                         all_arguments_desc.append(formatted_desc)
 
             if all_arguments:
                 output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
+
             if all_arguments_desc:
-                output_file.write(f"#!arguments-desc= " + "".join(all_arguments_desc) + "\n")
+                # Join formatted descriptions with the specified double newline
+                output_file.write(f"#!arguments-desc= " + "\n\n".join(all_arguments_desc) + "\n")
             else:
                 output_file.write("\n")
 

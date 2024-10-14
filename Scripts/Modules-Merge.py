@@ -14,7 +14,7 @@ def extract_section(content, section_name):
             in_section = True
         elif line_lower.startswith("[") and in_section:
             break
-        elif in_section and not line.startswith("#"):
+        elif in_section and (not line.startswith("#")): # 要保留原来的#则修改为 elif in_section and (not line.startswith("#")):
             stripped_line = line.strip()
             if stripped_line:
                 section_lines.append(stripped_line)
@@ -34,7 +34,7 @@ def extract_arguments_and_select(content):
 
 def merge_modules(input_file, output_type, module_urls):
     module_content = {
-        "Arguments": [],
+        "Argument": [],
         "General": [],
         "Rule": [],
         "Rewrite": [],
@@ -45,8 +45,6 @@ def merge_modules(input_file, output_type, module_urls):
         "SSID Setting": [],
         "Script": [],
         "MITM": set(),
-        "ArgumentsDesc": [],
-        "Select": []
     }
 
     added_sets = {section: set() for section in module_content if section != "MITM"}
@@ -59,7 +57,7 @@ def merge_modules(input_file, output_type, module_urls):
         content = response.text
 
         # Extract various sections
-        sections = ["Arguments", "General", "Rule", "Header Rewrite", "Host", "Map Local", "SSID Setting", "Script"]
+        sections = ["General", "Rule", "Header Rewrite", "Host", "Map Local", "SSID Setting", "Script"]
         
         for section in sections:
             section_content = extract_section(content, section)
@@ -92,22 +90,18 @@ def merge_modules(input_file, output_type, module_urls):
         # Extract MITM section
         mitm_section = extract_section(content, "MITM")
         if mitm_section:
-            for line in mitm_section:
-                module_content["MITM"].update(line.strip().split(","))
-
-        # Extract Arguments, Arguments Desc, and Select sections
-        arguments, arguments_desc, selects = extract_arguments_and_select(content)
-
-        if output_type == 'sgmodule':
-            module_content["Arguments"].extend(arguments)
-            for desc in arguments_desc:
-                desc_with_newline = desc.replace("\n", r"\n")
-                module_content["ArgumentsDesc"].append(f"# {module_url.split('/')[-1].split('.')[0]}\\n{desc_with_newline}")
-
-        else:
-            if selects:
-                module_content["Select"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
-                module_content["Select"].extend(selects)
+            if output_type == 'sgmodule':
+                for line in mitm_section:
+                    if line.lower().startswith("hostname = %append%"):
+                        hosts = line.lower().replace("hostname = %append%", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+            else:
+                for line in mitm_section:
+                    if line.lower().startswith("hostname ="):
+                        hosts = line.lower().replace("hostname =", "").strip()
+                        module_content["MITM"].update(host.strip() for host in hosts.split(",") if host.strip())
+                    else:
+                        module_content["MITM"].update(line.strip().split(","))
 
     # Construct output file path
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
@@ -123,37 +117,55 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
             output_file.write("#!category= Jacob\n")
 
-            if module_content["Arguments"]:
-                arguments_line = f"#!arguments= " + ", ".join(sorted(set(module_content["Arguments"])))
-                output_file.write(arguments_line + "\n")
-            
-            if module_content["ArgumentsDesc"]:
-                arguments_desc_line = " ".join(module_content["ArgumentsDesc"])
-                output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")
+        # Extract Arguments and Select sections
+        arguments, arguments_desc, selects = extract_arguments_and_select(content)  # 确保这里调用的是正确的函数
+        arguments_line = []  # 初始化 arguments_line
 
+        if output_type == 'sgmodule':
+            for desc in arguments_desc:
+                desc_with_newline = desc.replace("\n", r"\n")
+                arguments_line.append(f"# {module_url.split('/')[-1].split('.')[0]}\\n{desc_with_newline}")
+
+            if arguments:
+                arguments_line = f"#!arguments= " + ", ".join(arguments)
+                output_file.write(arguments_line + "\n")
+        
+            if arguments_desc:
+                arguments_desc_line = " ".join(arguments_desc)  # 修复了多余的右括号
+                output_file.write(f"#!arguments-desc= {arguments_desc_line}\n\n")
+            else:
+                output_file.write("\n")
+    
         else:
             output_file.write(f"#!name= Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Loon\n")
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
 
-            if module_content["Select"]:
-                output_file.write("\n".join(sorted(set(module_content["Select"]))) + "\n\n")
+            selects = extract_select(content)  # 确保这个函数是定义过的
+            if selects:
+                selects.append(f"# {module_url.split('/')[-1].split('.')[0]}")
+                selects.extend(selects)
 
+            if module_content["Select"]:  # 这里需要确保有 "Select" 这个键
+                output_file.write("\n".join(selects) + "\n\n")
+            else:
+                output_file.write("\n")
+    
         # Write each section, deduplicated
         for section_name, content_list in module_content.items():
             if content_list and any(line.strip() for line in content_list):
                 output_file.write(f"[{section_name}]\n")
                 if section_name == "MITM":
-                    if output_type == 'sgmodule':
-                        output_file.write("hostname = %APPEND% " + ", ".join(sorted(module_content["MITM"])) + "\n")
-                    else:
-                        output_file.write("hostname = " + ", ".join(sorted(module_content["MITM"])) + "\n")
+                    combined_mitmh = "hostname = " + ", ".join(sorted(module_content["MITM"])) if module_content["MITM"] else ""
+                    output_file.write(combined_mitmh + "\n")
+                    break
                 else:
                     output_file.write("\n".join(content_list) + "\n")
                 output_file.write("\n")
 
     print(f"Merged content written to {output_path}")
+
 
 def download_modules(module_file):
     with open(module_file, 'r') as f:

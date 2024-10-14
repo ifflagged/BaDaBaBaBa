@@ -108,22 +108,16 @@ def merge_modules(input_file, output_type, module_urls):
                         disabled_hosts.extend(host.strip() for host in hosts.split(",") if host.strip())
                 
                 # Deduplicate and format hosts
-                unique_append_hosts = sorted(set(append_hosts))
-                unique_insert_hosts = sorted(set(insert_hosts))
+                unique_append_hosts = sorted(set(append_hosts + insert_hosts))
                 unique_disabled_hosts = sorted(set(disabled_hosts))
 
                 if unique_append_hosts:
                     module_content["MITM"].add(f"hostname = %append%, {', '.join(unique_append_hosts)}")
 
-                if unique_insert_hosts:
-                    module_content["MITM"].add(f"hostname = %insert%, {', '.join(unique_insert_hosts)}")
-
                 if unique_disabled_hosts:
                     module_content["MITM"].add(f"hostname-disabled = %insert%, {', '.join(unique_disabled_hosts)}")
                     # Add disabled hosts to the next line after the append
-                    if unique_append_hosts:
-                        module_content["MITM"].add("")  # Add a blank line for separation
-                        module_content["MITM"].add(f"hostname-disabled = %insert%, {', '.join(unique_disabled_hosts)}")
+                    module_content["MITM"].add("")  # Add a blank line for separation
 
             else:
                 # Original logic for plugin handling
@@ -207,11 +201,9 @@ def merge_modules(input_file, output_type, module_urls):
         for section_name, content_list in module_content.items():
             if content_list and any(line.strip() for line in content_list):
                 output_file.write(f"[{section_name}]\n")
-        
+            
                 if section_name == "MITM":
-                    # Handle .sgmodule case
                     if output_type == 'sgmodule':
-                        # Collect all unique entries for hostname
                         mitm_entries = sorted(content_list)  # Assuming content_list has already unique entries
                         output_file.write("\n".join(mitm_entries) + "\n")
                     else:  # For .plugin case
@@ -219,8 +211,6 @@ def merge_modules(input_file, output_type, module_urls):
                         output_file.write(combined_hosts + "\n")
                 else:
                     output_file.write("\n".join(content_list) + "\n")
-        
-                output_file.write("\n")
 
     print(f"Merged content written to {output_path}")
 

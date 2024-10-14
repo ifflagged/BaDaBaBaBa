@@ -1,7 +1,16 @@
-#!name= Merged Nsringo
-#!desc= Merger Nsringo for Loon
-#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]
-#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png
+[Argument]
+# Location
+PEP.GCC = select,"US","AUTO","HK","TW","SG","US","JP","AU","GB","KR","CA","IE",tag=[地区检测]地理国家或地区代码,desc=要更改为的地区或国家，此选项影响Wi-Fi或有线网络下国家和地区检测的结果。
+# Maps
+GeoManifest.Dynamic.Config.CountryCode.default = select,"CN","AUTO","HK","TW","SG","US","JP","AU","GB","KR","CA","IE",tag=[全局 动态配置]资源清单的国家或地区代码,desc=此选项影响“地图”整体配置内容，包括以下的地图功能与服务。
+GeoManifest.Dynamic.Config.CountryCode.watchOS = select,"US","AUTO","CN","HK","TW","SG","JP","AU","GB","KR","CA","IE",tag=[watchOS 动态配置]资源清单的国家或地区代码,desc=此选项影响 watchOS “地图”整体配置内容，包括以下的地图功能与服务。
+UrlInfoSet.Dispatcher = select,"AutoNavi","AUTO","Apple",tag=[URL信息集]调度器,desc=地点数据接口，此选项影响公共指南，兴趣点(POI)与位置信息等功能。
+UrlInfoSet.Directions = select,"AutoNavi","AUTO","Apple",tag=[URL信息集]导航与ETA,desc=导航与ETA服务接口，此选项影响导航与ETA(到达时间)等功能。
+UrlInfoSet.RAP = select,"Apple","AUTO","AutoNavi",tag=[URL信息集]评分和照片,desc=评分和照片服务接口，此选项影响评分和照片服务以及照片使用。
+UrlInfoSet.LocationShift = select,"AUTO","AutoNavi","Apple",tag=[URL信息集]定位漂移,desc=定位漂移修正服务接口，控制定位漂移和🧭指南针与📍坐标的经纬度。
+TileSet.Satellite = select,"HYBRID","AUTO","CN","XX",tag=[瓦片数据集]卫星图像,desc=此选项影响所列位图、影像与模型数据。
+TileSet.Flyover = select,"XX","AUTO","CN",tag=[瓦片数据集]飞行俯瞰,desc=此选项影响飞行俯瞰全球各地的主要地标和城市功能。
+TileSet.Munin = select,"XX","AUTO","CN",tag=[瓦片数据集]四处看看,desc=此选项影响 360 度全景视角在某些地点四处看看功能。
 
 [Rule]
 # Location
@@ -24,3 +33,4 @@ http-response ^https?:\/\/gspe35-ssl\.ls\.apple\.(com|cn)\/geo_manifest\/dynamic
 
 [MITM]
 hostname = configuration.ls.apple.com, gspe1-ssl.ls.apple.com, gspe35-ssl.ls.apple.com
+

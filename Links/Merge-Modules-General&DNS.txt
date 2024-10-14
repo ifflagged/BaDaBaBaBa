@@ -1,0 +1,8 @@
+# Using Router’s DNS
+https://github.com/ifflagged/Neverflagged/blob/main/Surge/Module/DNS.sgmodule?raw=true
+# General Settings Enhanced (iOS)
+https://github.com/VirgilClyne/GetSomeFries/blob/main/sgmodule/General.sgmodule?raw=true
+# Block HTTPDNS
+https://github.com/VirgilClyne/GetSomeFries/blob/main/sgmodule/HTTPDNS.Block.sgmodule?raw=true
+# DNS for Router and Companys
+https://github.com/VirgilClyne/GetSomeFries/blob/main/sgmodule/DNS.sgmodule?raw=true

@@ -37,7 +37,6 @@ def merge_modules(input_file, output_type, module_urls):
         "General": [],
         "Rule": [],
         "Rewrite": [],
-        "URL Rewrite": [],
         "Header Rewrite": [],
         "Host": [],
         "Map Local": [],

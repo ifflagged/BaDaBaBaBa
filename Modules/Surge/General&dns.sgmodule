@@ -11,7 +11,6 @@ force-http-engine-hosts = %APPEND% 119.29.29.29:80, dns.weixin.qq.com:80, dns.we
 # DNS
 use-local-host-item-for-proxy = true
 encrypted-dns-follow-outbound-mode = false
-# HTTPDNS
 
 [Rule]
 # HTTPDNS
@@ -77,7 +76,6 @@ IP-CIDR6,2402:4e00:1900:1700:0:9554:1ad9:c3a/128,REJECT,no-resolve
 IP-CIDR6,240e:928:1400:10::25/128,REJECT,no-resolve
 IP-CIDR,118.89.204.198/23,REJECT,no-resolve
 IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,REJECT,no-resolve
-# HTTPDNS
 
 [URL Rewrite]
 # HTTPDNS
@@ -130,7 +128,6 @@ IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,REJECT,no-resolve
 ^http:\/\/182\.254\.116\.117\/d - reject
 ^http:\/\/182\.254\.118\.119\/d - reject
 ^http:\/\/103\.41\.167\.237\/v2\/resolv - reject
-# HTTPDNS
 
 [Host]
 # DNS

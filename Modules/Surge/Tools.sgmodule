@@ -2,55 +2,10 @@
 #!desc= Merger Tools for Surge & Shadowrocket
 #!category= Jacob
 #!arguments= YouTube 屏蔽上传按钮:true,YouTube 屏蔽选段按钮:true,YouTube 字幕翻译语言:zh-Hans,YouTube 歌词翻译语言:zh-Hans,YouTube 脚本执行引擎:jsc,YouTube 启用调试模式:false
-#!arguments-desc= # Tools - YouTube 屏蔽参数：[true, false] \n- YouTube 翻译参数：[语言代码, off] \n- YouTube 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志
+#!arguments-desc= # Tools
+- YouTube 屏蔽参数：[true, false] \n- YouTube 翻译参数：[语言代码, off] \n- YouTube 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志
 
-# RuCu6_amap 
 
-# RuCu6_bilibili 
-
-# RuCu6_myblockads 
-
-# RuCu6_pinduoduo 
-
-# RuCu6_weibo 
-
-# RuCu6_xianyu 
-
-# RuCu6_xiaohongshu 
-
-# luestr_BlockAdvertisers 
-
-# luestr_DiDi_remove_ads 
-
-# luestr_Umetrip_remove_ads 
-
-# Yuheng0101_NoAds 
-
-# ZenmoFeiShi_Smzdm 
-
-# ddgksf2013_SmzdmAds 
-
-# ddgksf2013_baiduCloud 
-
-# zirawell_SAMsClub 
-
-# zirawell_dianPing-2 
-
-# zirawell_dianPing 
-
-# zirawell_eleme 
-
-# zirawell_mcd-2 
-
-# zirawell_mcd 
-
-# zirawell_qunar 
-
-# zirawell_rsscc 
-
-# zirawell_tfsmy 
-
-# zirawell_tft 
 [General]
 # Tools
 force-http-engine-hosts=%APPEND% router.com, www.router.com

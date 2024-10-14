@@ -2,32 +2,7 @@
 #!desc= Merger Tools for Loon
 #!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]
 #!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png
-#!select= # Tools 
-# RuCu6_amap 
-# RuCu6_bilibili 
-# RuCu6_myblockads 
-# RuCu6_pinduoduo 
-# RuCu6_weibo 
-# RuCu6_xianyu 
-# RuCu6_xiaohongshu 
-# RuCu6_youtube #!select = 隐藏上传按钮, true, false #!select = 隐藏选段按钮, true, false #!select = 字幕翻译语言, zh-Hans, zh-Hant, ja, ko, en, off #!select = 歌词翻译语言, zh-Hans, zh-Hant, ja, ko, en, off #!select = 启用调试模式, true, false
-# luestr_BlockAdvertisers 
-# luestr_DiDi_remove_ads 
-# luestr_Umetrip_remove_ads 
-# Yuheng0101_NoAds 
-# ZenmoFeiShi_Smzdm 
-# ddgksf2013_SmzdmAds 
-# ddgksf2013_baiduCloud 
-# zirawell_SAMsClub 
-# zirawell_dianPing-2 
-# zirawell_dianPing 
-# zirawell_eleme 
-# zirawell_mcd-2 
-# zirawell_mcd 
-# zirawell_qunar 
-# zirawell_rsscc 
-# zirawell_tfsmy 
-# zirawell_tft 
+#!select= # RuCu6_youtube #!select = 隐藏上传按钮, true, false #!select = 隐藏选段按钮, true, false #!select = 字幕翻译语言, zh-Hans, zh-Hant, ja, ko, en, off #!select = 歌词翻译语言, zh-Hans, zh-Hant, ja, ko, en, off #!select = 启用调试模式, true, false
 [Rule]
 # RuCu6_amap
 AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, AMapiPhone*)), REJECT

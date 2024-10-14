@@ -118,7 +118,7 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!category= Jacob\n")
 
         # Extract Arguments and Select sections
-        arguments, arguments_desc, selects = extract_arguments_and_select(content)  # 确保这里调用的是正确的函数
+        arguments, arguments_desc = extract_arguments_and_select(content)  # 确保这里调用的是正确的函数
         arguments_line = []  # 初始化 arguments_line
 
         if output_type == 'sgmodule':
@@ -142,7 +142,7 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]\n")
             output_file.write("#!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Universal/Reject.orig.png\n")
 
-            selects = extract_select(content)  # 确保这个函数是定义过的
+            selects = extract_arguments_and_select(content)  # 确保这个函数是定义过的
             if selects:
                 selects.append(f"# {module_url.split('/')[-1].split('.')[0]}")
                 selects.extend(selects)

@@ -14,7 +14,7 @@ def extract_section(content, section_name):
             in_section = True
         elif line_lower.startswith("[") and in_section:
             break
-        elif in_section and (not line.startswith("#")):
+        elif in_section and (not line.startswith("#")): # 要保留原来的#则修改为 elif in_section and (not line.startswith("#")):
             stripped_line = line.strip()
             if stripped_line:
                 section_lines.append(stripped_line)
@@ -33,7 +33,6 @@ def extract_arguments_and_select(content):
     return arguments, arguments_desc, selects
 
 def merge_modules(input_file, output_type, module_urls):
-    # Initialize module_content
     module_content = {
         "Argument": [],
         "General": [],
@@ -119,19 +118,23 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write("#!category= Jacob\n")
 
             # Extract Arguments and Descriptions
-            all_arguments, all_arguments_desc, _ = [], [], []
+            all_arguments, all_arguments_desc = [], []
             for module_url in module_urls:
                 response = requests.get(module_url)
                 if response.status_code == 200:
                     content = response.text
                     arguments, arguments_desc, _ = extract_arguments_and_select(content)
                     all_arguments.extend(arguments)
-                    all_arguments_desc.append(f"# {module_url.split('/')[-1].split('.')[0]} " + " ".join(arguments_desc))
+
+                    # Format arguments-desc
+                    if arguments_desc:
+                        formatted_desc = f"# {module_url.split('/')[-1].split('.')[0]}\n" + "\n".join(arguments_desc) + "\n\n"
+                        all_arguments_desc.append(formatted_desc)
 
             if all_arguments:
                 output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
             if all_arguments_desc:
-                output_file.write(f"#!arguments-desc= " + "\n\n".join(all_arguments_desc) + "\n")
+                output_file.write(f"#!arguments-desc= " + "".join(all_arguments_desc) + "\n")
 
         else:  # for plugin
             output_file.write(f"#!name= Merged {name}\n")
@@ -146,7 +149,8 @@ def merge_modules(input_file, output_type, module_urls):
                 if response.status_code == 200:
                     content = response.text
                     _, _, selects = extract_arguments_and_select(content)
-                    all_selects.append(f"# {module_url.split('/')[-1].split('.')[0]} " + " ".join(selects))
+                    if selects:  # 只有在有引用的情况下添加注释
+                        all_selects.append(f"# {module_url.split('/')[-1].split('.')[0]} " + " ".join(selects))
 
             if all_selects:
                 output_file.write("#!select= " + "\n".join(all_selects) + "\n")

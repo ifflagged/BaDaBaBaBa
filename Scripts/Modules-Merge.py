@@ -45,7 +45,7 @@ def merge_modules(input_file, output_type, module_urls):
         "Map Local": [],
         "SSID Setting": [],
         "Script": [],
-        "MITM": set(),
+        "MITM": {"hostname-nomal": set(), "hostname-disabled": set()},
     }
 
     added_sets = {section: set() for section in module_content if section != "MITM"}
@@ -89,11 +89,9 @@ def merge_modules(input_file, output_type, module_urls):
                         module_content["Rewrite"].append(line)
 
         # Extract MITM section
-        module_content["MITM"] = {
-            "hostname-nomal": set(),
-            "hostname-disabled": set()
-        }
+        mitm_section = extract_section(content, "MITM")
 
+        # Add MITM section handling logic
         for line in mitm_section:
             if output_type == 'sgmodule':
                 if line.lower().startswith("hostname = %append%") or line.lower().startswith("hostname = %insert%"):
@@ -106,7 +104,7 @@ def merge_modules(input_file, output_type, module_urls):
                 if line.lower().startswith("hostname ="):
                     hosts = line.lower().replace("hostname =", "").strip()
                     module_content["MITM"]["hostname-nomal"].update(host.strip() for host in hosts.split(",") if host.strip())
-                
+    
     # Construct output file path
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"

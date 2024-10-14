@@ -21,16 +21,21 @@ def extract_section(content, section_name):
 
     return section_lines
 
-def extract_arguments_and_select(content):
-    arguments, arguments_desc, selects = [], [], []
+def extract_arguments(content):
+    arguments, arguments_desc = [], []
     for line in content.splitlines():
         if line.startswith("#!arguments="):
             arguments.append(line.replace("#!arguments=", "").strip())
         elif line.startswith("#!arguments-desc="):
             arguments_desc.append(line.replace("#!arguments-desc=", "").strip())
-        elif line.startswith("#!select"):
+    return arguments, arguments_desc
+
+def extract_select(content):
+    selects = []
+    for line in content.splitlines():
+        if line.startswith("#!select"):
             selects.append(line.strip())
-    return arguments, arguments_desc, selects
+    return selects
 
 def merge_modules(input_file, output_type, module_urls):
     module_content = {

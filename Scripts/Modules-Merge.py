@@ -145,20 +145,25 @@ def merge_modules(input_file, output_type, module_urls):
 
             # Extract selects
             all_selects = []
-            added_selects = set()  # 新增集合以追踪已添加的引用
+            added_selects = set()  # Track already added selects
             for module_url in module_urls:
                 response = requests.get(module_url)
                 if response.status_code == 200:
                     content = response.text
                     _, _, selects = extract_arguments_and_select(content)
-                    for select in selects:
-                        if select not in added_selects:  # 只在未添加的情况下添加
-                            formatted_select = f"# {module_url.split('/')[-1].split('.')[0]}\n{select}"
-                            all_selects.append(formatted_select)
-                            added_selects.add(select)  # 添加到集合中
+                    if selects:
+                        # Add the reference comment only once before selects from this URL
+                        reference_comment = f"# {module_url.split('/')[-1].split('.')[0]}"
+                        if any(select not in added_selects for select in selects):
+                            all_selects.append(reference_comment)
+
+                        for select in selects:
+                            if select not in added_selects:
+                                all_selects.append(select)
+                                added_selects.add(select)  # Add select to the set
 
             if all_selects:
-                output_file.write("#!select= " + "\n".join(all_selects) + "\n")
+                output_file.write("\n".join(all_selects) + "\n")
 
         # Write each section, deduplicated
         for section_name, content_list in module_content.items():

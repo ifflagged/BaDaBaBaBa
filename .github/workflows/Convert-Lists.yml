@@ -15,7 +15,7 @@ jobs:
     - name: Download and categorize lists based on author
       run: |
         mkdir -p Original
-        for file in Links/Ruleset/Rulesets-*.txt; do
+        for file in Links/Rulesets/Rulesets-*.txt; do
           while IFS= read -r url; do
             author=$(echo "$url" | awk -F'/' '{print $4}')
             mkdir -p "Original/$author"
@@ -26,8 +26,8 @@ jobs:
 
     - name: Merge all downloaded lists and generate files
       run: |
-        for file in Links/Ruleset/Rulesets-*.txt; do
-          base_name=$(echo "$file" | sed 's/^Links\/Ruleset\/Rulesets-//;s/\.txt$//')
+        for file in Links/Rulesets/Rulesets-*.txt; do
+          base_name=$(echo "$file" | sed 's/^Links\/Rulesets\/Rulesets-//;s/\.txt$//')
           touch "Original/MergedList_$base_name.list"
           first_link=true
 

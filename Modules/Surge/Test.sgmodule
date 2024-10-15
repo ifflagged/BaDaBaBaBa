@@ -1,8 +1,8 @@
 #!name= 🧰 Merged Test
 #!desc= Merger Test for Surge & Shadowrocket
 #!category= Jacob
-#!arguments= PEP.GCC:US,PEP.GCC:CN,PEP.GCC:HK, PEP.GCC:US,PEP.GCC:CN,PEP.GCC:HK
-#!arguments-desc= # Test1\nPEP.GCC: 国家或地区代码\n国家或地区代码你知道吧？\n\n# Test1\nPEP.GCC: 国家或地区代码\n国家或地区代码你知道吧？
+#!arguments= PEP.GCC:US,PEP.GCC:CN,PEP.GCC:HK, PEP.GCC:US,PEP.GCC:CN,PEP.GCC:HK, GCC:US,GCC:CN,GCC:HK
+#!arguments-desc= # Test1\nPEP.GCC: 国家或地区代码\n国家或地区代码你知道吧？\n\n# Test1\nPEP.GCC: 国家或地区代码\n国家或地区代码你知道吧？\n\n# Test3\nCC: 国家或地区代码\n国家或地区代码你知道吧？
 
 [MITM]
 

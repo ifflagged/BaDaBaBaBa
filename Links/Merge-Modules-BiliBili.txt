@@ -1,0 +1,9 @@
+# sgmodule
+https://github.com/BiliUniverse/ADBlock/blob/main/modules/BiliBili.ADBlock.sgmodule?raw=true
+https://github.com/BiliUniverse/Enhanced/blob/main/modules/BiliBili.Enhanced.sgmodule?raw=true
+https://github.com/BiliUniverse/Redirect/blob/main/modules/BiliBili.Redirect.sgmodule?raw=true
+
+# Plugin
+https://github.com/BiliUniverse/ADBlock/blob/main/modules/BiliBili.ADBlock.plugin?raw=true
+https://github.com/BiliUniverse/Enhanced/blob/main/modules/BiliBili.Enhanced.plugin?raw=true
+https://github.com/BiliUniverse/Redirect/blob/main/modules/BiliBili.Redirect.plugin?raw=true

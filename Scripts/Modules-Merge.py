@@ -26,11 +26,11 @@ def extract_arguments_and_select(content):
     arguments, arguments_desc, selects = [], [], []
     for line in content.splitlines():
         if re.match(r"#!arguments\s*=", line):
-            arguments.append(line.replace("#!arguments=", "").strip())
+            arguments.append(re.sub(r"#!arguments\s*=", "", line).strip())
         elif re.match(r"#!arguments-desc\s*=", line):
-            arguments_desc.append(line.replace("#!arguments-desc=", "").strip())
+            arguments_desc.append(re.sub(r"#!arguments-desc\s*=", "", line).strip())
         elif re.match(r"#!select\s*=", line):
-            selects.append(line.replace("#!select =", "").strip())
+            selects.append(re.sub(r"#!select\s*=", "", line).strip())
     return arguments, arguments_desc, selects
 
 def merge_modules(input_file, output_type, module_urls):

@@ -4,10 +4,6 @@
 #!arguments= PEP.GCC:US
 #!arguments-desc= # Location\nPEP.GCC: 国家或地区代码
 
-[Argument]
-# Location
-PEP.GCC:US
-
 [Rule]
 # Location
 DOMAIN,gspe1-ssl.ls.apple.com,DIRECT

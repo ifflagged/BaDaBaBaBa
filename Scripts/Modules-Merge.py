@@ -24,11 +24,11 @@ def extract_section(content, section_name):
 def extract_arguments_and_select(content):
     arguments, arguments_desc, selects = [], [], []
     for line in content.splitlines():
-        if line.startswith("#!arguments\s*="):
+        if re.match(r"#!arguments\s*=", line):
             arguments.append(line.replace("#!arguments=", "").strip())
-        elif line.startswith("#!arguments-desc\s*="):
+        elif re.match(r"#!arguments-desc\s*=", line):
             arguments_desc.append(line.replace("#!arguments-desc=", "").strip())
-        elif line.startswith("#!select\s*="):
+        elif re.match(r"#!select\s*=", line):
             selects.append(line.strip())
     return arguments, arguments_desc, selects
 

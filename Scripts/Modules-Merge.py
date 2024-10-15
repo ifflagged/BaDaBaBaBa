@@ -118,7 +118,7 @@ def merge_modules(input_file, output_type, module_urls):
     # Write merged content to file
     with open(output_path, "w") as output_file:
         if output_type == 'sgmodule':
-            output_file.write(f"#!name= 🧰 Merged {name}\n")
+            output_file.write(f"#!name=  Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
             output_file.write("#!category= Jacob\n")
 

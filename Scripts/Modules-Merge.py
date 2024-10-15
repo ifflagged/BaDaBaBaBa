@@ -138,6 +138,7 @@ def merge_modules(input_file, output_type, module_urls):
                 output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
 
             if all_arguments_desc:
+                # Join each module's arguments-desc with two \\n between modules
                 output_file.write(f"#!arguments-desc= " + "\\n\\n".join(all_arguments_desc) + "\n\n")
             else:
                 output_file.write("\n")

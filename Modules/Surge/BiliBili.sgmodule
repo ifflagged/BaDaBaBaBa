@@ -1,4 +1,4 @@
-#!name= 🧰 Merged BiliBili
+#!name=  Merged BiliBili
 #!desc= Merger BiliBili for Surge & Shadowrocket
 #!category= Jacob
 #!arguments= Host.Akamaized:upos-sz-mirrorali.bilivideo.com,Host.BStar:upos-sz-mirrorali.bilivideo.com,Host.PCDN:upos-sz-mirrorali.bilivideo.com,Host.MCDN:proxy-tf-all-ws.bilivideo.com

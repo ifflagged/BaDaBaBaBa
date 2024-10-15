@@ -1,4 +1,4 @@
-#!name= 🧰 Merged NSRingo
+#!name=  Merged NSRingo
 #!desc= Merger NSRingo for Surge & Shadowrocket
 #!category= Jacob
 #!arguments= PEP.GCC:US, GeoManifest.Dynamic.Config.CountryCode.default:"CN",GeoManifest.Dynamic.Config.CountryCode.watchOS:"US",UrlInfoSet.Dispatcher:"AutoNavi",UrlInfoSet.Directions:"AutoNavi",UrlInfoSet.RAP:"Apple",UrlInfoSet.LocationShift:"AUTO",TileSet.Satellite:"HYBRID",TileSet.Flyover:"XX",TileSet.Munin:"XX"

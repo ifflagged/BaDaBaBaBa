@@ -1,4 +1,4 @@
-#!name= 🧰 Merged Tools
+#!name=  Merged Tools
 #!desc= Merger Tools for Surge & Shadowrocket
 #!category= Jacob
 #!arguments= YouTube 屏蔽上传按钮:true,YouTube 屏蔽选段按钮:true,YouTube 字幕翻译语言:zh-Hans,YouTube 歌词翻译语言:zh-Hans,YouTube 脚本执行引擎:jsc,YouTube 启用调试模式:false

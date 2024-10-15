@@ -30,6 +30,9 @@ def extract_arguments_and_select(content):
             arguments_desc.append(line.replace("#!arguments-desc=", "").strip())
         elif line.startswith("#!select"):
             selects.append(line.strip())
+    # Debugging: Print extracted arguments and descriptions
+    print("Extracted arguments:", arguments)
+    print("Extracted arguments descriptions:", arguments_desc)
     return arguments, arguments_desc, selects
 
 def merge_modules(input_file, output_type, module_urls):
@@ -53,9 +56,13 @@ def merge_modules(input_file, output_type, module_urls):
     for module_url in module_urls:
         response = requests.get(module_url)
         if response.status_code != 200:
+            print(f"Failed to download {module_url}: {response.status_code}")
             continue
 
         content = response.text
+        # Debugging: Print content length or a snippet
+        print(f"Content length for {module_url}: {len(content)}")
+        print(f"Content snippet for {module_url}:\n{content[:100]}")  # Print first 100 characters
 
         # Extract various sections
         sections = ["Argument", "General", "Rule", "Header Rewrite", "Host", "Map Local", "SSID Setting", "Script"]
@@ -126,6 +133,9 @@ def merge_modules(input_file, output_type, module_urls):
                 if response.status_code == 200:
                     content = response.text
                     arguments, arguments_desc, _ = extract_arguments_and_select(content)
+                    # Debugging: Print after extraction
+                    print(f"Arguments from {module_url}: {arguments}")
+                    print(f"Arguments descriptions from {module_url}: {arguments_desc}")
                     all_arguments.extend(arguments)
 
                     # Format arguments-desc

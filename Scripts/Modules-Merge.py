@@ -170,7 +170,9 @@ def merge_modules(input_file, output_type, module_urls):
                                 added_selects.add(select)
 
             if all_selects:
-                output_file.write("\n".join(f"#!select = {select}" for select in all_selects if not select.startswith("#!select =")) + "\n\n")
+                output_file.write("\n".join(
+                    f"#!select = {select}" if not select.startswith("#") else select for select in all_selects
+                ) + "\n\n")
             else:
                 output_file.write("\n")
 

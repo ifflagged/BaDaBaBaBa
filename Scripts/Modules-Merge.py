@@ -30,7 +30,7 @@ def extract_arguments_and_select(content):
         elif re.match(r"#!arguments-desc\s*=", line):
             arguments_desc.append(line.replace("#!arguments-desc=", "").strip())
         elif re.match(r"#!select\s*=", line):
-            selects.append(line.strip())
+            selects.append(line.replace("#!select =", "").strip())
     return arguments, arguments_desc, selects
 
 def merge_modules(input_file, output_type, module_urls):

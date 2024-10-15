@@ -1,6 +1,7 @@
 import requests
 import os
 import sys
+import re
 
 def extract_section(content, section_name):
     lines = content.splitlines()
@@ -106,10 +107,12 @@ def merge_modules(input_file, output_type, module_urls):
                     module_content["MITM"]["hostname-nomal"].update(host.strip() for host in hosts.split(",") if host.strip())
     
     # Construct output file path
-    name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
+    name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "")
+    if name:
+        name = name[0].upper() + name[1:]
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
     output_path = f"Modules/{'Surge' if output_type == 'sgmodule' else 'Loon'}/{output_file_name}"
-
+  
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     # Write merged content to file

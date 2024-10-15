@@ -50,6 +50,9 @@ def merge_modules(input_file, output_type, module_urls):
 
     added_sets = {section: set() for section in module_content if section != "MITM"}
 
+    # 用来存储完整的 arguments-desc，后续整体去重
+    all_arguments_desc = []
+
     for module_url in module_urls:
         response = requests.get(module_url)
         if response.status_code != 200:
@@ -86,7 +89,6 @@ def merge_modules(input_file, output_type, module_urls):
                 for line in module_rewrites:
                     if line not in added_sets["Rewrite"]:
                         added_sets["Rewrite"].add(line)
-                        module_content["Rewrite"].append(line)
 
         # Extract MITM section
         mitm_section = extract_section(content, "MITM")
@@ -104,7 +106,24 @@ def merge_modules(input_file, output_type, module_urls):
                 if line.lower().startswith("hostname ="):
                     hosts = line.lower().replace("hostname =", "").strip()
                     module_content["MITM"]["hostname-nomal"].update(host.strip() for host in hosts.split(",") if host.strip())
-    
+
+        # Extract arguments and arguments-desc
+        arguments, arguments_desc, _ = extract_arguments_and_select(content)
+        
+        # 如果 arguments 存在，加入 Arguments 部分
+        if arguments:
+            module_content["Argument"].append(f"# {module_url.split('/')[-1].split('.')[0]}")
+            module_content["Argument"].extend(arguments)
+        
+        # 保存完整的 arguments-desc 段落，供后续处理
+        if arguments_desc:
+            module_name = f"# {module_url.split('/')[-1].split('.')[0]}"
+            formatted_desc = f"{module_name}\\n" + "\\n".join(arguments_desc)
+            all_arguments_desc.append(formatted_desc)
+
+    # 去重：对完整的段落去重而不是逐行去重
+    all_arguments_desc = list(dict.fromkeys(all_arguments_desc))
+
     # Construct output file path
     name = os.path.splitext(os.path.basename(input_file))[0].replace("Merge-Modules-", "").capitalize()
     output_file_name = f"{name}.{'sgmodule' if output_type == 'sgmodule' else 'plugin'}"
@@ -119,30 +138,22 @@ def merge_modules(input_file, output_type, module_urls):
             output_file.write(f"#!desc= Merger {name} for Surge & Shadowrocket\n")
             output_file.write("#!category= Jacob\n")
 
-            # Extract Arguments and Descriptions
-            all_arguments, all_arguments_desc = [], []
+            # Write arguments
+            all_arguments = set()
             for module_url in module_urls:
                 response = requests.get(module_url)
                 if response.status_code == 200:
                     content = response.text
-                    arguments, arguments_desc, _ = extract_arguments_and_select(content)
-                    all_arguments.extend(arguments)
-
-                    # Format arguments-desc
-                    if arguments_desc:
-                        module_name = f"# {module_url.split('/')[-1].split('.')[0]}"
-                        formatted_desc = f"{module_name}\\n" + "\\n".join(arguments_desc)
-                        all_arguments_desc.append(formatted_desc)
-
+                    arguments, _, _ = extract_arguments_and_select(content)
+                    all_arguments.update(arguments)
+            
             if all_arguments:
-                output_file.write(f"#!arguments= " + ", ".join(all_arguments) + "\n")
+                output_file.write(f"#!arguments= " + ", ".join(sorted(all_arguments)) + "\n")
 
             if all_arguments_desc:
-                # Join each module's arguments-desc with two \\n between modules
                 output_file.write(f"#!arguments-desc= " + "\\n\\n".join(all_arguments_desc) + "\n\n")
             else:
                 output_file.write("\n")
-
         else:  # for plugin
             output_file.write(f"#!name= Merged {name}\n")
             output_file.write(f"#!desc= Merger {name} for Loon\n")

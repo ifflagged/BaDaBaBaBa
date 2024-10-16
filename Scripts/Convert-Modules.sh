@@ -96,12 +96,23 @@ $comment" \
     -e 's/url script-request-header/script-path=/Ig' \
     -e 's/url script-analyze-echo-response/script-path=/Ig' \
     -e 's/, tag.*/\, tag = '"${module_name}"'/' \
+    -e 's/header-add.*/- reject/' \
+    -e 's/header-del.*/- reject/' \
+    -e 's/header-replace.*/- reject/' \
+    -e 's/header-replace-regex.*/- reject/' \
+    -e 's/request-body-replace-regex.*/- reject/' \
+    -e 's/request-body-json-add.*/- reject/' \
+    -e 's/request-body-json-replace.*/- reject/' \
+    -e 's/request-body-json-del.*/- reject/' \
+    -e 's/mock-request-body.*/- reject/' \
+    -e 's/response-header-add.*/- reject/' \
+    -e 's/response-header-del.*/- reject/' \
+    -e 's/response-header-replace.*/- reject/' \
+    -e 's/response-header-replace-regex.*/- reject/' \
+    -e 's/response-body-replace-regex.*/- reject/' \
+    -e 's/response-body-json-add.*/- reject/' \
+    -e 's/response-body-json-replace.*/- reject/' \
+    -e 's/response-body-json-del.*/- reject/' \
+    -e 's/mock-response-body.*/- reject/' \
     -e 's/hostname =/Hostname =/Ig' \
-    -e '/^\(header-add\|header-del\|header-replace\|header-replace-regex\|request-body-replace-regex\|request-body-json-add\|request-body-json-replace\|request-body-json-del\|mock-request-body\|response-header-add\|response-header-del\|response-header-replace\|response-header-replace-regex\|response-body-replace-regex\|response-body-json-add\|response-body-json-replace\|response-body-json-del\|mock-response-body\)/ { 
-        s/\(.*\)/\1 - reject/; 
-        :a; 
-        N; 
-        /\n$/!ba; 
-        s/\(.*\n\).*/\1/; 
-    }' \
     "$input_file" > "Modules/Loon/${module_name}.plugin"

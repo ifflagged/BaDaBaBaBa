@@ -18,18 +18,6 @@ const script_start = Date.now()
 const JS_NAME = 'Script Hub: 重写转换'
 const $ = new Env(JS_NAME)
 
-const args = process.argv.slice(2);
-const params = {};
-
-args.forEach(arg => {
-  const [key, value] = arg.split('=');
-  params[key.replace('--', '')] = value;
-});
-
-// 现在可以通过 params 对象访问传入的参数
-const target = params.target;
-const url = params.url;
-
 let arg
 if (typeof $argument != 'undefined') {
   arg = Object.fromEntries($argument.split('&').map(item => item.split('=')))
@@ -39,10 +27,20 @@ if (typeof $argument != 'undefined') {
 // 超时设置 与 script-converter.js 相同
 const HTTP_TIMEOUT = ($.getval('Parser_http_timeout') ?? 20) * 1000
 
-const req = url.split(/file\/_start_\//)[1].split(/\/_end_\//)[0]
-const reqArr = req.match('%F0%9F%98%82') ? req.split('%F0%9F%98%82') : [req]
-//$.log("原始链接：" + req);
-const urlArg = url.split(/\/_end_\//)[1]
+// 获取传入的 URL
+const url = process.argv[2]; // 获取命令行参数
+if (!url) {
+    console.error("No URL provided.");
+    process.exit(1);
+}
+
+const req = url.split(/file\/_start_\//)[1].split(/\/_end_\//)[0];
+const reqArr = req.match('%F0%9F%98%82') ? req.split('%F0%9F%98%82') : [req];
+// console.log("原始链接：" + req);
+const urlArg = url.split(/\/_end_\//)[1];
+
+// 其他逻辑...
+
 
 //获取参数
 const queryObject = parseQueryString(urlArg)

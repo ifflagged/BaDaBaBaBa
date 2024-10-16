@@ -1,9 +1,7 @@
 name: Process Links
 
 on:
-  push:
-    paths:
-      - 'Links/Modules-Links.txt'
+  workflow_dispatch:  # 允许手动触发工作流
 
 jobs:
   process_links:

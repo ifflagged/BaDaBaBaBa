@@ -56,8 +56,8 @@ jobs:
           fi
 
           # Run the script with generated URLs
-          for url in ${{ env.urls }}; do
+          IFS=' ' read -r -a url_array <<< "${{ env.urls }}"
+          for url in "${url_array[@]}"; do
             echo "Processing URL: $url"
             node Rewrite-Parser.js "$url"
           done
-

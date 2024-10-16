@@ -14,103 +14,40 @@
 https://github.com/Script-Hub-Org/Script-Hub
 ***************************/
 
-const script_start = Date.now();
-const JS_NAME = 'Script Hub: 重写转换';
-const $ = new Env(JS_NAME);
+const script_start = Date.now()
+const JS_NAME = 'Script Hub: 重写转换'
+const $ = new Env(JS_NAME)
 
-let sourceUrl, targetType;
-const args = process.argv.slice(2);  // 获取命令行参数
-args.forEach(arg => {
-  if (arg.startsWith('--url')) {
-    sourceUrl = arg.split('=')[1];
-  }
-  if (arg.startsWith('--target')) {
-    targetType = arg.split('=')[1];
-  }
-});
+const sourceUrl = process.argv[2]; // 来源链接
+const targetApp = process.argv[3]; // 目标应用
+const outputFilePath = process.argv[4]; // 输出路径
 
-console.log(`来源链接: ${sourceUrl}`);
-console.log(`目标文件类型: ${targetType}`);
-
-// 请求并读取 txt 文件
-const fetchTxtFile = async (url) => {
-  const response = await $.http.get(url);
-  if (response.status !== 200) {
-    throw new Error(`无法获取TXT文件: ${url}`);
-  }
-  return response.body;
-};
-
-// 将 .txt 文件中的内容逐行解析为 URL 数组
-const parseTxtFile = (txtContent) => {
-  return txtContent.split(/\r?\n/).filter(line => line.trim() !== '');
-};
-
-// 对每个链接执行解析逻辑
-const processLink = async (link) => {
-  console.log(`处理链接: ${link}`);
-  // 在这里继续对每个链接执行你原有的逻辑，例如获取和解析内容
-  try {
-    let res = await $.http.get(link);
-    if (res.status === 200) {
-      let body = res.body;
-      console.log(`成功处理: ${link}`);
-      // 这里继续处理 body 的内容...
-    } else {
-      console.log(`链接获取失败: ${link}`);
-    }
-  } catch (error) {
-    console.log(`处理链接时出错: ${error.message}`);
-  }
-};
-
-// 主流程
-!(async () => {
-  try {
-    // 如果提供的 URL 是指向 txt 文件的链接
-    if (sourceUrl.endsWith('.txt')) {
-      const txtContent = await fetchTxtFile(sourceUrl);
-      const linkList = parseTxtFile(txtContent);
-
-      // 遍历每个链接，依次处理
-      for (let link of linkList) {
-        await processLink(link); // 对每个链接执行你的处理逻辑
-      }
-    } else {
-      // 单个链接的处理逻辑（非 .txt 文件）
-      await processLink(sourceUrl);
-    }
-  } catch (error) {
-    console.log(`处理过程中出错: ${error.message}`);
-  }
-})();
-
-let arg;
+let arg
 if (typeof $argument != 'undefined') {
-  arg = Object.fromEntries($argument.split('&').map(item => item.split('=')));
+  arg = Object.fromEntries($argument.split('&').map(item => item.split('=')))
 } else {
-  arg = {};
+  arg = {}
 }
 // 超时设置 与 script-converter.js 相同
-const HTTP_TIMEOUT = ($.getval('Parser_http_timeout') ?? 20) * 1000;
+const HTTP_TIMEOUT = ($.getval('Parser_http_timeout') ?? 20) * 1000
 
-const url = $request.url;
-const req = url.split(/file\/_start_\//)[1].split(/\/_end_\//)[0];
-const reqArr = req.match('%F0%9F%98%82') ? req.split('%F0%9F%98%82') : [req];
+const url = $request.url
+const req = url.split(/file\/_start_\//)[1].split(/\/_end_\//)[0]
+const reqArr = req.match('%F0%9F%98%82') ? req.split('%F0%9F%98%82') : [req]
 //$.log("原始链接：" + req);
-const urlArg = url.split(/\/_end_\//)[1];
+const urlArg = url.split(/\/_end_\//)[1]
 
-// 获取参数
-const queryObject = parseQueryString(urlArg);
+//获取参数
+const queryObject = parseQueryString(urlArg)
 //$.log("参数:" + $.toStr(queryObject));
 
-// 目标app
-const targetApp = queryObject.target;
-const app = targetApp.split('-')[0];
-const isSurgeiOS = targetApp == 'surge-module';
-const isStashiOS = targetApp == 'stash-stoverride';
-const isLooniOS = targetApp == 'loon-plugin';
-const isShadowrocket = targetApp == 'shadowrocket-module';
+//目标app
+const targetApp = queryObject.target
+const app = targetApp.split('-')[0]
+const isSurgeiOS = targetApp == 'surge-module'
+const isStashiOS = targetApp == 'stash-stoverride'
+const isLooniOS = targetApp == 'loon-plugin'
+const isShadowrocket = targetApp == 'shadowrocket-module'
 
 const evJsori = queryObject.evalScriptori
 const evJsmodi = queryObject.evalScriptmodi

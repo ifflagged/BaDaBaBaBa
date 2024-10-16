@@ -1,17 +1,18 @@
 name: Manual Run Test
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # 允许手动触发工作流
 
 jobs:
   run-test:
-    runs-on: node:14  # 或你需要的 Node.js 版本
+    runs-on: node:14  # 设置运行环境为 Node.js 14
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # 检出代码库的内容
 
       - name: Install dependencies
-        run: npm install
+        run: npm install  # 安装项目依赖
 
       - name: Run Test Script
-        run: node Scripts/Test.js
+        run: node Scripts/Test.js  # 运行指定的测试脚本

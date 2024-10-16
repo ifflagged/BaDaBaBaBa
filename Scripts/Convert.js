@@ -42,13 +42,12 @@ const queryObject = parseQueryString(urlArg)
 //$.log("参数:" + $.toStr(queryObject));
 
 //目标app
-let targetApp;  // 确保只声明一次
-targetApp = queryObject.target;  // 直接赋值
-const app = targetApp.split('-')[0];
-const isSurgeiOS = targetApp == 'surge-module';
-const isStashiOS = targetApp == 'stash-stoverride';
-const isLooniOS = targetApp == 'loon-plugin';
-const isShadowrocket = targetApp == 'shadowrocket-module';
+let targetApp = queryObject.target
+const app = targetApp.split('-')[0]
+const isSurgeiOS = targetApp == 'surge-module'
+const isStashiOS = targetApp == 'stash-stoverride'
+const isLooniOS = targetApp == 'loon-plugin'
+const isShadowrocket = targetApp == 'shadowrocket-module'
 
 const evJsori = queryObject.evalScriptori
 const evJsmodi = queryObject.evalScriptmodi

@@ -551,7 +551,7 @@ http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.nbfriend\.message\.
 # Hostname = 182.92.244.70, ad.myfriday.cn
 # 开屏广告 由【jinlvei】分享
 ^https?:\/\/182\.92\.244\.70\/d\/json reject-dict
-http:\/\/ad\.myfriday\.cn\/d\/json\/1\.1 - reject
+http:\/\/ad\.myfriday\.cn\/d\/json\/1\.1 reject
 
 # > 潮玩宇宙
 # Hostname = ios-api.lucklyworld.com
@@ -985,7 +985,7 @@ http-response ^https?:\/\/tiku\.fenbi\.com\/activity\/app\/launcher\? script-pat
 
 # > 怪兽充电
 # Hostname = awg.enmonster.com
-https?:\/\/awg\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert\/skin) - reject
+https?:\/\/awg\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert\/skin) reject-dict
 
 # > 盖得排行
 # Hostname = zone.guiderank-app.com
@@ -1421,35 +1421,35 @@ http-response ^https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\? script-path= h
 # >>>>>>>>>>>>>>> ✅ L ✅ <<<<<<<<<<<<<<
 # > Line
 # Hostname = a.line.me, ad.line-scdn.net, buy.line.me, cix.line-apps.com, crs-event.line.me, d.line-scdn.net, gw.line.naver.jp, legy.line-apps.com, nelo2-col.linecorp.com, obs.line-scdn.net, scdn.line-apps.com, sch.line.me, static.line-scdn.net, uts-front.line-apps.com, w.line.me
-https:\/\/a\.line\.me\/er\/lads\/v\d\/ei\? - reject
-https:\/\/a\.line\.me\/er\/l.*\/v\d\/event\/image - reject
-https:\/\/a\.line\.me\/lass\/api\/v\d\/ads$ - reject
-https:\/\/a\.line\.me\/oa\/v\d\/e$ - reject
-https:\/\/a\.line\.me\/cs\/v\d\/oa$ - reject
-https:\/\/ad\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ - reject
-https:\/\/gw\.line\.naver\.jp\/ext\/lgfp\/lad\/v1$ - reject
-https:\/\/gw\.line\.naver\.jp\/lass\/api\/v1\/ads$ - reject
-https:\/\/gw\.line\.naver\.jp\/tr\/event$ - reject
-https:\/\/legy\.line-apps\.com\/ext\/lgfp\/lad\/v1$ - reject
-https:\/\/legy\.line-apps\.com\/ext\/smartch\/banner\/sch\/v1$ - reject
-https:\/\/legy\.line-apps\.com\/tr\/event$ - reject
-https:\/\/w\.line\.me\/adp\/api\/ad\/v\d\/ - reject
-https:\/\/buy\.line\.me\/api\/graphql\?variables - reject
-https:\/\/crs-event\.line\.me\/v\d\/imp - reject
-https:\/\/obs\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ - reject
-https:\/\/obs\.line-scdn\.net\/0hGH\d - reject
-https:\/\/obs\.line-scdn\.net\/0h.+\/\d+p\.mp4$ - reject
-https:\/\/obs\.line-scdn\.net\/r\/linecrs\/.+\/m180x180$ - reject
-https:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(jpg|jpeg|png) - reject
-https:\/\/cix\.line-apps\.com\/R4\? - reject
-https:\/\/scdn\.line-apps\.com\/appresources\/moretab\/list\.json - reject
-https:\/\/scdn\.line-apps\.com\/lan\/image\/line\/bannerImageEvent\/ - reject
-https:\/\/scdn\.line-apps\.com\/lan\/document\/pageEvent\/line\/ios\/ - reject
-https:\/\/sch\.line\.me\/api\/v\d\/ads$ - reject
-https:\/\/uts-front\.line-apps\.com\/event$ - reject
-https:\/\/uts-front\.line-apps\.com\/settings$ - reject
-https:\/\/static\.line-scdn\.net\/ad-sdk\/ - reject
-https:\/\/nelo2-col\.linecorp\.com\/_store$ - reject
+https:\/\/a\.line\.me\/er\/lads\/v\d\/ei\? reject-img
+https:\/\/a\.line\.me\/er\/l.*\/v\d\/event\/image reject-img
+https:\/\/a\.line\.me\/lass\/api\/v\d\/ads$ reject
+https:\/\/a\.line\.me\/oa\/v\d\/e$ reject
+https:\/\/a\.line\.me\/cs\/v\d\/oa$ reject
+https:\/\/ad\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ reject-img
+https:\/\/gw\.line\.naver\.jp\/ext\/lgfp\/lad\/v1$ reject
+https:\/\/gw\.line\.naver\.jp\/lass\/api\/v1\/ads$ reject
+https:\/\/gw\.line\.naver\.jp\/tr\/event$ reject
+https:\/\/legy\.line-apps\.com\/ext\/lgfp\/lad\/v1$ reject
+https:\/\/legy\.line-apps\.com\/ext\/smartch\/banner\/sch\/v1$ reject
+https:\/\/legy\.line-apps\.com\/tr\/event$ reject
+https:\/\/w\.line\.me\/adp\/api\/ad\/v\d\/ reject
+https:\/\/buy\.line\.me\/api\/graphql\?variables reject
+https:\/\/crs-event\.line\.me\/v\d\/imp reject
+https:\/\/obs\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ reject
+https:\/\/obs\.line-scdn\.net\/0hGH\d reject
+https:\/\/obs\.line-scdn\.net\/0h.+\/\d+p\.mp4$ reject
+https:\/\/obs\.line-scdn\.net\/r\/linecrs\/.+\/m180x180$ reject-img
+https:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(jpg|jpeg|png) reject-img
+https:\/\/cix\.line-apps\.com\/R4\? reject
+https:\/\/scdn\.line-apps\.com\/appresources\/moretab\/list\.json reject
+https:\/\/scdn\.line-apps\.com\/lan\/image\/line\/bannerImageEvent\/ reject
+https:\/\/scdn\.line-apps\.com\/lan\/document\/pageEvent\/line\/ios\/ reject
+https:\/\/sch\.line\.me\/api\/v\d\/ads$ reject
+https:\/\/uts-front\.line-apps\.com\/event$ reject
+https:\/\/uts-front\.line-apps\.com\/settings$ reject
+https:\/\/static\.line-scdn\.net\/ad-sdk\/ reject
+https:\/\/nelo2-col\.linecorp\.com\/_store$ reject
 
 # > 拉卡拉
 # Hostname = lamb.lakala.com, wallet.lakala.com
@@ -1540,7 +1540,7 @@ https:\/\/nelo2-col\.linecorp\.com\/_store$ - reject
 
 # > 两步路
 # Hostname = helper.2bulu.com
-https?:\/\/helper\.2bulu\.com\/(greenPea\/queryTasks|proSpecial\/allData|saveSplashFrequencyStatistics|getPopInfo|getAppEntranceConfig|promote\/list|getSplash|outing\/reqFoundNewList|outing\/reqIndex) - reject
+https?:\/\/helper\.2bulu\.com\/(greenPea\/queryTasks|proSpecial\/allData|saveSplashFrequencyStatistics|getPopInfo|getAppEntranceConfig|promote\/list|getSplash|outing\/reqFoundNewList|outing\/reqIndex) reject
 
 # > 猎聘
 # Hostname = api-ac.liepin.com, api-wanda.liepin.com
@@ -1790,7 +1790,7 @@ http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(fo
 # >>>>>>>>>>>>>>> ✅ P ✅ <<<<<<<<<<<<<<
 # > pikpak
 # Hostname = access.mypikpak.com
-https://access.mypikpak.com/access_controller/v1/area_accessible - reject
+https://access.mypikpak.com/access_controller/v1/area_accessible reject
 
 # > PushPlus微信推送广告
 # Hostname = image.pushplus.plus, www.pushplus.plus
@@ -2030,7 +2030,7 @@ http-response https://api.rr.tv/watch/v4 script-path= https://github.com/fmz200/
 # > RRTV_User_Info
 http-response https://api.rr.tv/user/profile script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js, requires-body = true, tag = fmz200_chongxie
 # > RRTV_屏蔽限時彈窗
-https://api.rr.tv/storage/business/rootName/app/homePage\?dataType=JSON - reject
+https://api.rr.tv/storage/business/rootName/app/homePage\?dataType=JSON reject-dict
 
 # > 日日煮
 # Hostname = cms.daydaycook.com.cn, api.daydaycook.com.cn
@@ -2095,7 +2095,7 @@ http-response ^https?:\/\/47\.110\.187\.87\/winterfell\/v2\/getIpByDomain script
 http-response #^https?:\/\/api-pay\.soulapp\.cn\/vip\/meet\/userInfo script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js, requires-body = true, tag = fmz200_chongxie
 http-response #^https?:\/\/api-pay\.soulapp\.cn\/privilege\/supervip\/status script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js, requires-body = true, tag = fmz200_chongxie
 # 国际版Soul去广告
-https://api-global.soulapp.me/app/open/get - reject
+https://api-global.soulapp.me/app/open/get reject
 
 # > Stay
 # Hostname = api.shenyin.name
@@ -2220,7 +2220,7 @@ http-response ^https?:\/\/qianbao\.smzdm\.com\/v\d\/app\/home script-path= https
 
 # > 少数派
 # Hostname = ios.sspai.com
-https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
+https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal reject
 
 # > 书旗小说
 # Hostname = ut2.shuqistat.com, dsp.toutiao.com, sf3-be-pack.pglstatp-toutiao.com, api-access.pangolin-sdk-toutiao.com, sq.sljkj.com, ocean.shuqireader.com, img-tailor.11222.cn, message.shuqireader.com, feedback.uc.cn, *.shuqireader.com, 101.91.69.26
@@ -2261,7 +2261,7 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 
 # > 三联中读
 # Hostname = apis.lifeweek.com.cn
-https://apis.lifeweek.com.cn/api/baseConfig/getIosNewConfig - reject
+https://apis.lifeweek.com.cn/api/baseConfig/getIosNewConfig reject
 
 # > 识货
 # Hostname = sh-gateway.shihuo.cn, static.shihuocdn.cn
@@ -2636,7 +2636,7 @@ http-response ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspams
 # > 网易严选
 # Hostname = support.you.163.com, m.you.163.com, yanxuan.nosdn.127.net
 ^https?:\/\/support\.you\.163\.com\/xhr\/boot\/getBootMedia\.json reject-200
-https://support.you.163.com/appversync/check.do - reject
+https://support.you.163.com/appversync/check.do reject
 ^https?:\/\/m\.you\.163\.com\/activity\/popWindow reject
 ^https?:\/\/yanxuan\.nosdn\.127\.net\/.*\.mp4 reject
 
@@ -2653,11 +2653,11 @@ https://support.you.163.com/appversync/check.do - reject
 
 # > 网易云音乐
 # Hostname = interface.music.163.com, interface?.music.163.com, ipv4.music.163.com
-https?:\/\/(ipv4|interface\d?)\.music\.163.com\/e?api\/ad - reject
-https?:\/\/interface\d?\.music\.163\.com\/w?e?api\/(side-bar\/mini-program\/music-service\/account|delivery\/(batch-deliver|deliver)|moment\/tab\/info\/get|yunbei\/account\/entrance\/get) - reject
-https?:\/\/interface\d?\.music\.163\.com\/eapi\/(resource\/comments?\/musiciansaid|community\/friends\/fans-group\/artist\/group\/get|user\/sub\/artist|music\/songshare\/text\/recommend\/get|mine\/applet\/redpoint|resniche\/position\/play\/new\/get) - reject
-https?:\/\/interface\d?\.music\.163.com\/w?e?api\/(search\/(chart|default|rcmd\/keyword|specialkeyword)|resource-exposure\/|activity\/bonus\/playpage\/time\/query) - reject
-https?:\/\/interface\d?\.music\.163.com\/eapi\/(mlivestream\/entrance\/playpage|link\/(position\/show\/strategy|scene\/show)|ios\/version|v\d\/content\/exposure\/comment\/banner) - reject
+https?:\/\/(ipv4|interface\d?)\.music\.163.com\/e?api\/ad reject-dict
+https?:\/\/interface\d?\.music\.163\.com\/w?e?api\/(side-bar\/mini-program\/music-service\/account|delivery\/(batch-deliver|deliver)|moment\/tab\/info\/get|yunbei\/account\/entrance\/get) reject-dict
+https?:\/\/interface\d?\.music\.163\.com\/eapi\/(resource\/comments?\/musiciansaid|community\/friends\/fans-group\/artist\/group\/get|user\/sub\/artist|music\/songshare\/text\/recommend\/get|mine\/applet\/redpoint|resniche\/position\/play\/new\/get) reject-dict
+https?:\/\/interface\d?\.music\.163.com\/w?e?api\/(search\/(chart|default|rcmd\/keyword|specialkeyword)|resource-exposure\/|activity\/bonus\/playpage\/time\/query) reject-dict
+https?:\/\/interface\d?\.music\.163.com\/eapi\/(mlivestream\/entrance\/playpage|link\/(position\/show\/strategy|scene\/show)|ios\/version|v\d\/content\/exposure\/comment\/banner) reject-dict
 http-response https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(batch|v\d\/resource\/comment\/floor\/get) script-path= https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js, requires-body = true, tag = fmz200_chongxie
 http-response https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/home\/framework\/tab script-path= https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js, requires-body = true, tag = fmz200_chongxie
 http-response https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(homepage\/block\/page|link\/page\/rcmd\/(resource\/show|block\/resource\/multi\/refresh)) script-path= https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js, requires-body = true, tag = fmz200_chongxie
@@ -2939,7 +2939,7 @@ http-response ^https?:\/\/mapi\.xiaotucc\.com\/(mall\/main|main_page\/index\/get
 # 我的页面-猜你喜欢
 ^https:\/\/mgesq\.api\.mgtv\.com\/v2\/goods\/guess_you_like reject-dict
 # 我的页面-
-https://mgesq.api.mgtv.com/v2/user/center/icon - reject
+https://mgesq.api.mgtv.com/v2/user/center/icon reject-dict
 # 主页广告
 http-response https://mgesq.api.mgtv.com/dsl/index.+ script-path= https://github.com/Sliverkiss/QuantumultX/raw/main/AdBlock/xmApp/xmApp.js, requires-body = true, tag = fmz200_chongxie
 # 搜索排行榜单
@@ -3451,7 +3451,7 @@ http-response ^https?:\/\/api\.ulife\.group\/market\/homeIconDetail\/list\/v7 sc
 
 # > 中国移动 山东
 # Hostname = m.sd.10086.cn
-https?:\/\/m\.sd\.10086\.cn\/zapi\/app_common\/homeWelcome\/welcome.do - reject
+https?:\/\/m\.sd\.10086\.cn\/zapi\/app_common\/homeWelcome\/welcome.do reject-dict
 
 # > 中国移动云盘
 # Hostname = mcmm.caiyun.feixin.10086.cn, mrp.mcloud.139.com, ad.mcloud.139.com, middle.yun.139.com

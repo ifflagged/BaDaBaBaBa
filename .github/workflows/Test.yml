@@ -2,7 +2,6 @@ name: Rewrite Parser
 
 on:
   workflow_dispatch:  # 允许手动触发工作流
-  pull_request:
 
 jobs:
   analyze_links:
@@ -39,15 +38,18 @@ jobs:
               type="qx-rewrite"
             fi
 
-            url="http://script.hub/file/_start_/${link}/_end_/${filename}?type=${type}&target=${type}"
+            url="http://script.hub/file/_start_/${link}_end_/${filename}?type=${type}&target=${type}"
             urls+=("$url")
           done
           echo "urls=${urls[*]}" >> $GITHUB_ENV
 
-      - name: Process URLs
+      - name: Fetch and Run Script
         run: |
+          script_url="https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js"
+          # Fetch the script
+          curl -o Rewrite-Parser.js "$script_url"
+          
+          # Run the script with generated URLs
           for url in ${{ env.urls }}; do
-            curl -X POST -H "Content-Type: application/json" \
-            -d "{\"url\": \"$url\"}" \
-            https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js
+            node Rewrite-Parser.js "$url"
           done

@@ -50,7 +50,6 @@ const parseTxtFile = (txtContent) => {
 const processLink = async (link) => {
   console.log(`处理链接: ${link}`);
   // 在这里继续对每个链接执行你原有的逻辑，例如获取和解析内容
-  // 下面是示例逻辑，假设你已经有了针对每个链接的处理代码：
   try {
     let res = await $.http.get(link);
     if (res.status === 200) {
@@ -86,33 +85,32 @@ const processLink = async (link) => {
   }
 })();
 
-
-let arg
+let arg;
 if (typeof $argument != 'undefined') {
-  arg = Object.fromEntries($argument.split('&').map(item => item.split('=')))
+  arg = Object.fromEntries($argument.split('&').map(item => item.split('=')));
 } else {
-  arg = {}
+  arg = {};
 }
 // 超时设置 与 script-converter.js 相同
-const HTTP_TIMEOUT = ($.getval('Parser_http_timeout') ?? 20) * 1000
+const HTTP_TIMEOUT = ($.getval('Parser_http_timeout') ?? 20) * 1000;
 
-const url = $request.url
-const req = url.split(/file\/_start_\//)[1].split(/\/_end_\//)[0]
-const reqArr = req.match('%F0%9F%98%82') ? req.split('%F0%9F%98%82') : [req]
+const url = $request.url;
+const req = url.split(/file\/_start_\//)[1].split(/\/_end_\//)[0];
+const reqArr = req.match('%F0%9F%98%82') ? req.split('%F0%9F%98%82') : [req];
 //$.log("原始链接：" + req);
-const urlArg = url.split(/\/_end_\//)[1]
+const urlArg = url.split(/\/_end_\//)[1];
 
-//获取参数
-const queryObject = parseQueryString(urlArg)
+// 获取参数
+const queryObject = parseQueryString(urlArg);
 //$.log("参数:" + $.toStr(queryObject));
 
-//目标app
-const targetApp = queryObject.target
-const app = targetApp.split('-')[0]
-const isSurgeiOS = targetApp == 'surge-module'
-const isStashiOS = targetApp == 'stash-stoverride'
-const isLooniOS = targetApp == 'loon-plugin'
-const isShadowrocket = targetApp == 'shadowrocket-module'
+// 目标app
+const targetApp = queryObject.target;
+const app = targetApp.split('-')[0];
+const isSurgeiOS = targetApp == 'surge-module';
+const isStashiOS = targetApp == 'stash-stoverride';
+const isLooniOS = targetApp == 'loon-plugin';
+const isShadowrocket = targetApp == 'shadowrocket-module';
 
 const evJsori = queryObject.evalScriptori
 const evJsmodi = queryObject.evalScriptmodi

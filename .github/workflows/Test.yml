@@ -33,3 +33,10 @@ jobs:
         env:
           SOURCE_URL: "Links/Modules-Links.txt"  # 指向包含多个链接的 .txt 文件
           TARGET_TYPE: "surge-module"
+
+      - name: Run Rewrite Parser
+        run: |
+          node Scripts/Convert.js \
+          'https://https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js' \
+          target=surge-module \
+          output=/Test/output-file.conf

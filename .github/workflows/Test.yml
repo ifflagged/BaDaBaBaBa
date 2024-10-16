@@ -60,5 +60,5 @@ jobs:
           IFS=' ' read -r -a url_array <<< "${{ env.urls }}"
           for url in "${url_array[@]}"; do
             echo "Processing URL: $url"
-            node Rewrite-Parser.js "$url"
+            node Scripts/Convert.js "$url"
           done

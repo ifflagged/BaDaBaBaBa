@@ -28,16 +28,22 @@ if (typeof $argument != 'undefined') {
 const HTTP_TIMEOUT = ($.getval('Parser_http_timeout') ?? 20) * 1000
 
 // 获取传入的 URL
-const url = process.argv[2]; // 获取命令行参数
+const url = process.argv[2]; // 获取传入的 URL
 if (!url) {
     console.error("No URL provided.");
     process.exit(1);
 }
 
+console.log("Processing URL:", url); // 输出 URL 以确认
+
 const req = url.split(/file\/_start_\//)[1].split(/\/_end_\//)[0];
-const reqArr = req.match('%F0%9F%98%82') ? req.split('%F0%9F%98%82') : [req];
-// console.log("原始链接：" + req);
 const urlArg = url.split(/\/_end_\//)[1];
+
+// 确保在使用 urlArg 之前，它是有效的
+if (!urlArg) {
+    console.error("URL argument is undefined.");
+    process.exit(1);
+}
 
 // 其他逻辑...
 

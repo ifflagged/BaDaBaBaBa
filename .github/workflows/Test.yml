@@ -35,8 +35,7 @@ jobs:
           node Rewrite-Parser.js \
             --target surge-module \
             --n "$links" \
-            --noNtf true \
-            --headers "Authorization: Bearer YOUR_TOKEN" > Text/surge_output.txt
+            --noNtf "false"
 
       - name: Run Rewrite Parser for Loon
         run: |
@@ -44,14 +43,12 @@ jobs:
           node Rewrite-Parser.js \
             --target loon-plugin \
             --n "$links" \
-            --noNtf true \
-            --headers "Authorization: Bearer YOUR_TOKEN" > Text/loon_output.txt
-
+            --noNtf "false"
+            
       - name: Run Rewrite Parser for Shadowrocket
         run: |
           links=$(cat Links/Modules-Links.txt | tr '\n' '😂')
           node Rewrite-Parser.js \
             --target shadowrocket-module \
             --n "$links" \
-            --noNtf true \
-            --headers "Authorization: Bearer YOUR_TOKEN" > Text/shadowrocket_output.txt
+            --noNtf "false"

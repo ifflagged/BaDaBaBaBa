@@ -29,7 +29,6 @@ args.forEach(arg => {
 // 现在可以通过 params 对象访问传入的参数
 const target = params.target;
 const url = params.url;
-const noNtf = params.noNtf === 'true'; // 将字符串转换为布尔值
 
 let arg
 if (typeof $argument != 'undefined') {

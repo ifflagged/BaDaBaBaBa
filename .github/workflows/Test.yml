@@ -31,6 +31,5 @@ jobs:
         env:
           TARGET: surge-module
           URL: 'https://https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js'
-          NOTIFICATION: true
         run: |
           node Scripts/Convert.js --target $TARGET --url $URL --noNtf $NOTIFICATION

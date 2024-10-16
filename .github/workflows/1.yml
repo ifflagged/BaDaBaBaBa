@@ -1,0 +1,17 @@
+name: Manual Run Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-test:
+    runs-on: node:14  # 或你需要的 Node.js 版本
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Test Script
+        run: node Scripts/Test.js

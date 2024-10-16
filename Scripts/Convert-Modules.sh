@@ -96,6 +96,6 @@ $comment" \
     -e 's/url script-request-header/script-path=/Ig' \
     -e 's/url script-analyze-echo-response/script-path=/Ig' \
     -e 's/, tag.*/\, tag = '"${module_name}"'/' \
-    -e '/^http.*\(reject\|302\|307\|header\|request-\(header\|body\)\|response-\(header\|body\)\|header-\(del\|add\|replace\|replace-regex\)\)/ { /script-path/! s/^\(http.*\)\s.*/\1 - reject/ }' \
+    -e '/^\^http.*\(reject\|302\|307\|header\|request-\(header\|body\)\|response-\(header\|body\)\|header-\(del\|add\|replace\|replace-regex\)\)/ { /script-path/! s/^\(http.*\)\s.*/\1 - reject/ }' \
     -e 's/hostname =/Hostname =/Ig' \
     "$input_file" > "Modules/Loon/${module_name}.plugin"

@@ -38,7 +38,7 @@ jobs:
               type="qx-rewrite"
             fi
 
-            url="http://script.hub/file/_start_/${link}_end_/${filename}?type=${type}&target=${type}"
+            url="http://script.hub/file/_start_/${link}/_end_/${filename}?type=${type}&target=${type}"
             urls+=("$url")
           done
           echo "urls=${urls[*]}" >> $GITHUB_ENV

@@ -27,28 +27,9 @@ jobs:
         run: |
           curl -o Rewrite-Parser.js https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js
 
-      - name: Run Rewrite Parser for Surge
+      - name: Run Rewrite-Parser for Multiple Links
         run: |
-          # 读取 Links/Modules-Links.txt 文件内容
-          links=$(cat Links/Modules-Links.txt | tr '\n' '😂')  # 用😂替换换行符
-          # 运行脚本并将结果输出到 Text 文件夹
-          node Rewrite-Parser.js \
-            --target surge-module \
-            --n "$links" \
-            --noNtf "false"
-
-      - name: Run Rewrite Parser for Loon
-        run: |
-          links=$(cat Links/Modules-Links.txt | tr '\n' '😂')
-          node Rewrite-Parser.js \
-            --target loon-plugin \
-            --n "$links" \
-            --noNtf "false"
-            
-      - name: Run Rewrite Parser for Shadowrocket
-        run: |
-          links=$(cat Links/Modules-Links.txt | tr '\n' '😂')
-          node Rewrite-Parser.js \
-            --target shadowrocket-module \
-            --n "$links" \
-            --noNtf "false"
+          node Scripts/Convert.js --url $links --target surge-module
+        env:
+          SOURCE_URL: "Links/Modules-Links.txt"  # 指向包含多个链接的 .txt 文件
+          TARGET_TYPE: "surge-module"

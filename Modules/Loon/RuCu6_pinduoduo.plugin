@@ -34,7 +34,7 @@ DOMAIN, titan.pinduoduo.com, REJECT
 ^https:\/\/api\.pinduoduo\.com\/search_hotquery\? reject-dict
 
 [Script]
-http-response ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/pdd.js, requires-body = true, tag = RuCu6_pinduoduo
+http-response ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\? - reject
 
 [MITM]
 Hostname = api.pinduoduo.com, api.yangkeduo.com

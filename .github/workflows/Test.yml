@@ -2,6 +2,8 @@ name: Process Links
 
 on:
   workflow_dispatch:  # 允许手动触发工作流
+name: Process Links
+
 
 jobs:
   process_links:
@@ -20,8 +22,7 @@ jobs:
           while IFS= read -r line; do
             filename=$(basename "$line")
             extension="${filename##*.}"
-            base="${filename%.*}"
-
+            
             # 根据文件后缀设置type
             if [[ "$extension" == "sgmodule" ]]; then
               type="surge-module"
@@ -42,4 +43,18 @@ jobs:
 
       - name: Run Rewrite-Parser.js
         run: |
-          node -e "const fs = require('fs'); const { execSync } = require('child_process'); execSync('node Rewrite-Parser.js', { stdio: 'inherit' })"
+          # 使用生成的链接作为$request参数
+          links=$(cat Links/Processed-Links.txt)
+          for link in $links; do
+            # 这里调用 Node.js 执行 Rewrite-Parser.js
+            # 注意，$request.url 需要模拟
+            node -e "
+              const url = '$link';
+              const req = url.split(/file\/_start_\//)[1].split(/\/_end_\//)[0];
+              const reqArr = req.match('%F0%9F%98%82') ? req.split('%F0%9F%98%82') : [req];
+              const urlArg = url.split(/\/_end_\//)[1];
+              console.log('Processed URL:', url);
+              console.log('Request Array:', reqArr);
+              console.log('URL Argument:', urlArg);
+            "
+          done

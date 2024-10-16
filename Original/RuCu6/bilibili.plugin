@@ -2,7 +2,10 @@
 #!desc = 没有广告的哔哩哔哩更值得干杯。
 #!author = Maasea[https://github.com/Maasea], RuCu6[https://github.com/RuCu6], kokoryh[https://github.com/kokoryh], 可莉🅥[https://gitlab.com/lodepuly/vpn_tool]
 #!icon = https://raw.githubusercontent.com/RuCu6/Loon/main/Icons/app/bilibili.png
-#!date = 2024-09-28 13:15
+#!date = 2024-10-15 22:45
+
+[General]
+force-http-engine-hosts = :8000
 
 [Rule]
 # 开屏广告
@@ -21,6 +24,13 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 
 # 直播广告
 ^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? reject-dict
+
+# 移除皮肤推送
+^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? response-body-json-del data.common_equip
+
+# 移除右上角活动入口
+^https:\/\/app\.bilibili\.com\/x\/resource\/top\/activity\? mock-response-body data-type=json status-code=200 data="{ "code": -404, "message": "啥都木有", "ttl": 1, "data": null }"
+
 
 # 屏蔽默认搜索框关键词
 ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords reject-dict
@@ -71,23 +81,17 @@ http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(?:brand\/list|event
 # 移除首页推荐广告
 http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index(\/story)?\? script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js, requires-body = true, tag = 移除首页推荐广告
 
-# 移除右上角活动入口
-http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/top\/activity\? script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js, requires-body = true, tag = 移除右上角活动入口
-
 # 精简首页顶部标签
 http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\? script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js, requires-body = true, tag = 精简首页顶部标签
 
 # 移除热搜广告
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/search\/square script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js, requires-body = true, tag = 移除热搜广告
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/search\/square\? script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js, requires-body = true, tag = 移除热搜广告
 
 # 移除观影页广告
 http-response ^https:\/\/api\.bilibili\.com\/pgc\/page\/(?:bangumi|cinema\/tab) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js, requires-body = true, tag = 移除观影页广告
 
 # 移除直播间广告
 http-response ^https:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\? script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js, requires-body = true, tag = 移除直播间广告
-
-# 移除皮肤推送
-http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js, requires-body = true, tag = 移除皮肤推送
 
 # 精简我的页面
 http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(?:mine(\/ipad)?|myinfo) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/bilibili/json.js, requires-body = true, tag = 精简我的页面

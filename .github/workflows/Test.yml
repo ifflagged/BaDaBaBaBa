@@ -2,8 +2,6 @@ name: Process Links
 
 on:
   workflow_dispatch:  # 允许手动触发工作流
-name: Process Links
-
 
 jobs:
   process_links:

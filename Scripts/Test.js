@@ -27,7 +27,7 @@ if (typeof $argument != 'undefined') {
 // 超时设置 与 script-converter.js 相同
 const HTTP_TIMEOUT = ($.getval('Parser_http_timeout') ?? 20) * 1000
 
-const url = $request.url
+const url = $request.http://script.hub/file/_start_/https://raw.githubusercontent.com/luestr/ProxyResource/main/Tool/Loon/Plugin/Spotify_remove_ads.plugin/_end_/Spotify_remove_ads.sgmodule?type=loon-plugin&target=shadowrocket-module&del=true
 const req = url.split(/file\/_start_\//)[1].split(/\/_end_\//)[0]
 const reqArr = req.match('%F0%9F%98%82') ? req.split('%F0%9F%98%82') : [req]
 //$.log("原始链接：" + req);

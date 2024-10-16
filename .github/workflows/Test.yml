@@ -27,13 +27,6 @@ jobs:
         run: |
           curl -o Rewrite-Parser.js https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js
 
-      - name: Run Rewrite-Parser for Multiple Links
-        run: |
-          node Scripts/Convert.js ---url ${{ inputs.source_url }} --target ${{ inputs.target_type }}
-        env:
-          SOURCE_URL: "Links/Modules-Links.txt"  # 指向包含多个链接的 .txt 文件
-          TARGET_TYPE: "surge-module"
-
       - name: Run Rewrite Parser
         run: |
           node Scripts/Convert.js \

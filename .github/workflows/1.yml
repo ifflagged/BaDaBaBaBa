@@ -16,6 +16,9 @@ jobs:
         with:
           node-version: '14'  # 设置 Node.js 版本为 14
 
+      - name: Download package.json
+        run: curl -o package.json https://github.com/Script-Hub-Org/Script-Hub/raw/main/package.json
+
       - name: Install dependencies
         run: npm install  # 安装项目依赖
 

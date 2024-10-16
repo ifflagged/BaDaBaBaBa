@@ -168,34 +168,34 @@ http-response ^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list script-pat
 # 播放页开通会员提示
 ^https?:\/\/act\.vip\.iqiyi\.com\/interact\/api\/v2\/show\? reject-dict
 # 首页信息流广告
-http-response ^https?:\/\/[\d\.]+\/3f1\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? - reject
-http-response ^https?:\/\/access\.if\.iqiyi\.com\/3f1\/cards\.iqiyi\.com\/(views_category\/3\.0\/category_home|views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? - reject
-http-response ^https?:\/\/cards\.iqiyi\.com\/views_category\/3\.0\/(category_home|categorylib_content|film_hybrid)\? - reject
-http-response ^https?:\/\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? - reject
+http-response ^https?:\/\/[\d\.]+\/3f1\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/access\.if\.iqiyi\.com\/3f1\/cards\.iqiyi\.com\/(views_category\/3\.0\/category_home|views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/cards\.iqiyi\.com\/views_category\/3\.0\/(category_home|categorylib_content|film_hybrid)\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 播放详情页
-http-response ^https?:\/\/cards\.iqiyi\.com\/views_plt\/3\.0\/player_tabs_v2\? - reject
+http-response ^https?:\/\/cards\.iqiyi\.com\/views_plt\/3\.0\/player_tabs_v2\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 搜索页列表
-http-response ^https?:\/\/cards\.iqiyi\.com\/views_search\/3\.0\/(hot_query_)?search\? - reject
+http-response ^https?:\/\/cards\.iqiyi\.com\/views_search\/3\.0\/(hot_query_)?search\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 评论区
-http-response ^https?:\/\/comment-card\.iqiyi\.com\/views_comment\/3\.0\/long_video_comments\? - reject
+http-response ^https?:\/\/comment-card\.iqiyi\.com\/views_comment\/3\.0\/long_video_comments\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 我的页面菜单
-http-response ^https?:\/\/iface2\.iqiyi\.com\/aggregate\/3\.0\/getMyMenus\? - reject
+http-response ^https?:\/\/iface2\.iqiyi\.com\/aggregate\/3\.0\/getMyMenus\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 首页左上角天气
-http-response ^https?:\/\/iface2\.iqiyi\.com\/control\/3\.0\/init_proxy\? - reject
+http-response ^https?:\/\/iface2\.iqiyi\.com\/control\/3\.0\/init_proxy\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 通用控制,各tab页二楼
-http-response ^https?:\/\/iface2\.iqiyi\.com\/fusion\/3\.0\/common_switch\? - reject
+http-response ^https?:\/\/iface2\.iqiyi\.com\/fusion\/3\.0\/common_switch\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 播放页多余动效
 ^https?:\/\/iface2\.iqiyi\.com\/ivos\/interact\/video\/data\? reject-dict
 # 播放页升级白金会员按钮
 ^https?:\/\/iface2\.iqiyi\.com\/video\/3\.0\/v_interface_proxy\? reject-dict
 # 底部tab,顶部tab
-http-response ^https?:\/\/iface2\.iqiyi\.com\/views\/3\.0\/(bottom_theme|home_top_menu)\? - reject
+http-response ^https?:\/\/iface2\.iqiyi\.com\/views\/3\.0\/(bottom_theme|home_top_menu)\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 青少年弹窗
 ^https?:\/\/iface2\.iqiyi\.com\/views_pop\/3\.0\/pop_control\? reject-dict
 # 搜索框填充词
-http-response ^https?:\/\/search\.video\.iqiyi\.com\/q\? - reject
+http-response ^https?:\/\/search\.video\.iqiyi\.com\/q\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 开屏广告,播放广告
-http-response ^https?:\/\/(kjp|t7z)\.cupid\.iqiyi\.com\/mixer\? - reject
+http-response ^https?:\/\/(kjp|t7z)\.cupid\.iqiyi\.com\/mixer\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 
 # > 爱企查
 # Hostname = b2baifanfan.baidu.com
@@ -369,21 +369,21 @@ http-response ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.mai
 http-response ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/protoA.js, requires-body = true, tag = fmz200_chongxie
 # 观影页,直播间商品广告浮窗,搜索框填充词,首页信息流,热搜发现,右上角活动,标签页
 http-response ^https?:\/\/api\.bilibili\.com\/pgc\/page\/(bangumi|cinema\/tab\?) script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = fmz200_chongxie
-http-response ^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\? - reject
+http-response ^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = fmz200_chongxie
 ^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? reject-dict
 ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords reject-dict
-http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/(feed\/index(\/story)?|search\/square)\? - reject
-http-response ^https?:\/\/app\.bilibili\.com\/x\/resource\/(top\/activity|show\/tab\/v2)\? - reject
+http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/(feed\/index(\/story)?|search\/square)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/app\.bilibili\.com\/x\/resource\/(top\/activity|show\/tab\/v2)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = fmz200_chongxie
 # 满意度调研
 ^https?:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? reject-dict
 # 开屏广告 //app.bilibili.com
 ^https?:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH reject-dict
 ^https?:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH reject-dict
 ^https?:\/\/api\.bilibili\.com\/x\/mengqi\/v1\/resource\? reject-dict
-http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/splash\/(brand\/list|event\/list2|list|show)\? - reject
+http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/splash\/(brand\/list|event\/list2|list|show)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = fmz200_chongxie
 # 我的页面 解锁1080P高码率,4K画质,皮肤推送 //app.bilibili.com
-http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine(\/ipad)?|myinfo)\? - reject
-http-response ^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? - reject
+http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine(\/ipad)?|myinfo)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bilibili/json.js, requires-body = true, tag = fmz200_chongxie
 # IP请求,地理位置请求 //api.bilibili.com
 ^https?:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp reject-dict
 ^https?:\/\/app\.bilibili\.com\/x\/resource\/ip reject-dict
@@ -462,7 +462,7 @@ http-response ^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.User\/GetInitI
 # Hostname = api.boohee.com, bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn, lego.boohee.com, status.boohee.com
 # 感谢【可莉】分享
 # 记录 - 大家都在看data.recom_cards / 底部按钮data.recom_btns
-http-response ^https:\/\/api\.boohee\.com\/meta-interface\/v2\/index\? - reject
+http-response ^https:\/\/api\.boohee\.com\/meta-interface\/v2\/index\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bohe/bohe_ads.js, requires-body = true, tag = fmz200_chongxie
 # 记录 - 悬浮部件
 ^https:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/page_float_bubbles\? reject-dict
 # 记录 - 发布
@@ -474,7 +474,7 @@ http-response ^https:\/\/api\.boohee\.com\/meta-interface\/v2\/index\? - reject
 # 弹窗配置
 ^https:\/\/bohe\.sfo-tx-shanghai-01\.saas\.sensorsdata\.cn\/api\/v2\/sfo\/user_popup_configs\? reject-dict
 # 广场 - 推荐 - 红标data.tabs[1].badge /轮播图data.recommend_ads
-http-response ^https:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/plaza\? - reject
+http-response ^https:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/plaza\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bohe/bohe_ads.js, requires-body = true, tag = fmz200_chongxie
 # 代谢中心 - 顶部轮播图top_banner / 免费问诊推广diagnos_config / 合作医疗机构partner_hospital / 医患问答question_answer / 热门商品product / 品牌大事件brand_story
 http-response ^https:\/\/api\.boohee\.com\/open-interface\/v1\/string\/market_page\?title=metabolism_config$ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/bohe/bohe_ads.js, requires-body = true, tag = fmz200_chongxie
 # 绑定设备 - 横幅推广
@@ -551,7 +551,7 @@ http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.nbfriend\.message\.
 # Hostname = 182.92.244.70, ad.myfriday.cn
 # 开屏广告 由【jinlvei】分享
 ^https?:\/\/182\.92\.244\.70\/d\/json reject-dict
-http:\/\/ad\.myfriday\.cn\/d\/json\/1\.1 reject
+http:\/\/ad\.myfriday\.cn\/d\/json\/1\.1 - reject
 
 # > 潮玩宇宙
 # Hostname = ios-api.lucklyworld.com
@@ -711,7 +711,7 @@ http-response ^https?:\/\/img\.meituan\.net\/dpmobile\/ script-path= https://git
 # Hostname = api.gamer.com.tw
 ^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d\/anime_get_question\.php reject-dict
 # (黑屏25秒)
-http-response ^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d/(token|m3u8).php\? - reject
+http-response ^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d/(token|m3u8).php\? script-path= https://github.com/NobyDa/Script/raw/master/Bahamut/BahamutAnimeAds.js, requires-body = true, tag = fmz200_chongxie
 
 # > 滴滴出行
 # Hostname = res.xiaojukeji.com, common.diditaxi.com.cn, hd.xiaojukeji.com, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, conf.diditaxi.com.cn
@@ -895,7 +895,7 @@ http-response ^https?:\/\/www\.flyert\.com(\.cn)?\/.*plugin script-path= https:/
 # > 粉笔
 # Hostname = tiku.fenbi.com
 # 开屏广告
-http-response ^https?:\/\/tiku\.fenbi\.com\/activity\/app\/launcher\? - reject
+http-response ^https?:\/\/tiku\.fenbi\.com\/activity\/app\/launcher\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/fenbi.js, requires-body = true, tag = fmz200_chongxie
 
 
 
@@ -985,7 +985,7 @@ http-response ^https?:\/\/tiku\.fenbi\.com\/activity\/app\/launcher\? - reject
 
 # > 怪兽充电
 # Hostname = awg.enmonster.com
-https?:\/\/awg\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert\/skin) reject-dict
+https?:\/\/awg\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert\/skin) - reject
 
 # > 盖得排行
 # Hostname = zone.guiderank-app.com
@@ -1405,9 +1405,9 @@ http-response ^https:\/\/(api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\
 # > 酷安
 # Hostname = api.coolapk.com
 ^https?:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch reject-dict
-http-response ^https?:\/\/api\.coolapk\.com\/v6\/feed\/(detail|replyList)\? - reject
+http-response ^https?:\/\/api\.coolapk\.com\/v6\/feed\/(detail|replyList)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js, requires-body = true, tag = fmz200_chongxie
 http-response ^https?:\/\/api\.coolapk\.com\/v6\/main\/(dataList|indexV8|init) script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js, requires-body = true, tag = fmz200_chongxie
-http-response ^https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\? - reject
+http-response ^https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js, requires-body = true, tag = fmz200_chongxie
 
 # > 肯德基
 # Hostname = res.kfc.com.cn
@@ -1422,34 +1422,34 @@ http-response ^https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\? - reject
 # > Line
 # Hostname = a.line.me, ad.line-scdn.net, buy.line.me, cix.line-apps.com, crs-event.line.me, d.line-scdn.net, gw.line.naver.jp, legy.line-apps.com, nelo2-col.linecorp.com, obs.line-scdn.net, scdn.line-apps.com, sch.line.me, static.line-scdn.net, uts-front.line-apps.com, w.line.me
 https:\/\/a\.line\.me\/er\/lads\/v\d\/ei\? - reject
-https:\/\/a\.line\.me\/er\/l.*\/v\d\/event\/image reject-img
-https:\/\/a\.line\.me\/lass\/api\/v\d\/ads$ reject
-https:\/\/a\.line\.me\/oa\/v\d\/e$ reject
-https:\/\/a\.line\.me\/cs\/v\d\/oa$ reject
-https:\/\/ad\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ reject-img
-https:\/\/gw\.line\.naver\.jp\/ext\/lgfp\/lad\/v1$ reject
-https:\/\/gw\.line\.naver\.jp\/lass\/api\/v1\/ads$ reject
-https:\/\/gw\.line\.naver\.jp\/tr\/event$ reject
-https:\/\/legy\.line-apps\.com\/ext\/lgfp\/lad\/v1$ reject
-https:\/\/legy\.line-apps\.com\/ext\/smartch\/banner\/sch\/v1$ reject
-https:\/\/legy\.line-apps\.com\/tr\/event$ reject
-https:\/\/w\.line\.me\/adp\/api\/ad\/v\d\/ reject
-https:\/\/buy\.line\.me\/api\/graphql\?variables reject
-https:\/\/crs-event\.line\.me\/v\d\/imp reject
-https:\/\/obs\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ reject
-https:\/\/obs\.line-scdn\.net\/0hGH\d reject
-https:\/\/obs\.line-scdn\.net\/0h.+\/\d+p\.mp4$ reject
-https:\/\/obs\.line-scdn\.net\/r\/linecrs\/.+\/m180x180$ reject-img
-https:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(jpg|jpeg|png) reject-img
+https:\/\/a\.line\.me\/er\/l.*\/v\d\/event\/image - reject
+https:\/\/a\.line\.me\/lass\/api\/v\d\/ads$ - reject
+https:\/\/a\.line\.me\/oa\/v\d\/e$ - reject
+https:\/\/a\.line\.me\/cs\/v\d\/oa$ - reject
+https:\/\/ad\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ - reject
+https:\/\/gw\.line\.naver\.jp\/ext\/lgfp\/lad\/v1$ - reject
+https:\/\/gw\.line\.naver\.jp\/lass\/api\/v1\/ads$ - reject
+https:\/\/gw\.line\.naver\.jp\/tr\/event$ - reject
+https:\/\/legy\.line-apps\.com\/ext\/lgfp\/lad\/v1$ - reject
+https:\/\/legy\.line-apps\.com\/ext\/smartch\/banner\/sch\/v1$ - reject
+https:\/\/legy\.line-apps\.com\/tr\/event$ - reject
+https:\/\/w\.line\.me\/adp\/api\/ad\/v\d\/ - reject
+https:\/\/buy\.line\.me\/api\/graphql\?variables - reject
+https:\/\/crs-event\.line\.me\/v\d\/imp - reject
+https:\/\/obs\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ - reject
+https:\/\/obs\.line-scdn\.net\/0hGH\d - reject
+https:\/\/obs\.line-scdn\.net\/0h.+\/\d+p\.mp4$ - reject
+https:\/\/obs\.line-scdn\.net\/r\/linecrs\/.+\/m180x180$ - reject
+https:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(jpg|jpeg|png) - reject
 https:\/\/cix\.line-apps\.com\/R4\? - reject
-https:\/\/scdn\.line-apps\.com\/appresources\/moretab\/list\.json reject
-https:\/\/scdn\.line-apps\.com\/lan\/image\/line\/bannerImageEvent\/ reject
-https:\/\/scdn\.line-apps\.com\/lan\/document\/pageEvent\/line\/ios\/ reject
-https:\/\/sch\.line\.me\/api\/v\d\/ads$ reject
-https:\/\/uts-front\.line-apps\.com\/event$ reject
-https:\/\/uts-front\.line-apps\.com\/settings$ reject
-https:\/\/static\.line-scdn\.net\/ad-sdk\/ reject
-https:\/\/nelo2-col\.linecorp\.com\/_store$ reject
+https:\/\/scdn\.line-apps\.com\/appresources\/moretab\/list\.json - reject
+https:\/\/scdn\.line-apps\.com\/lan\/image\/line\/bannerImageEvent\/ - reject
+https:\/\/scdn\.line-apps\.com\/lan\/document\/pageEvent\/line\/ios\/ - reject
+https:\/\/sch\.line\.me\/api\/v\d\/ads$ - reject
+https:\/\/uts-front\.line-apps\.com\/event$ - reject
+https:\/\/uts-front\.line-apps\.com\/settings$ - reject
+https:\/\/static\.line-scdn\.net\/ad-sdk\/ - reject
+https:\/\/nelo2-col\.linecorp\.com\/_store$ - reject
 
 # > 拉卡拉
 # Hostname = lamb.lakala.com, wallet.lakala.com
@@ -1540,7 +1540,7 @@ https:\/\/nelo2-col\.linecorp\.com\/_store$ reject
 
 # > 两步路
 # Hostname = helper.2bulu.com
-https?:\/\/helper\.2bulu\.com\/(greenPea\/queryTasks|proSpecial\/allData|saveSplashFrequencyStatistics|getPopInfo|getAppEntranceConfig|promote\/list|getSplash|outing\/reqFoundNewList|outing\/reqIndex) reject
+https?:\/\/helper\.2bulu\.com\/(greenPea\/queryTasks|proSpecial\/allData|saveSplashFrequencyStatistics|getPopInfo|getAppEntranceConfig|promote\/list|getSplash|outing\/reqFoundNewList|outing\/reqIndex) - reject
 
 # > 猎聘
 # Hostname = api-ac.liepin.com, api-wanda.liepin.com
@@ -1618,20 +1618,20 @@ http-response ^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/rcg\/index\.html\?c
 # 播放器界面
 ^https?:\/\/hb-boom\.api\.mgtv\.com\/release\/pullReleaseInfo reject-dict
 # 我的页面
-http-response ^https?:\/\/me\.bz\.mgtv\.com\/v3\/module\/list\? - reject
+http-response ^https?:\/\/me\.bz\.mgtv\.com\/v3\/module\/list\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 首页信息流,顶部tab
-http-response ^https?:\/\/mob-st\.bz\.mgtv\.com\/odin\/c1\/channel\/index\? - reject
+http-response ^https?:\/\/mob-st\.bz\.mgtv\.com\/odin\/c1\/channel\/index\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 http-response ^https?:\/\/dc2?\.bz\.mgtv\.com\/dynamic\/v1\/channel\/(index|vrsList)\/\w script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 底部tab
-http-response ^https?:\/\/mobile\.api\.mgtv\.com\/mobile\/config\? - reject
+http-response ^https?:\/\/mobile\.api\.mgtv\.com\/mobile\/config\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 升级弹窗
 ^https?:\/\/mobile\.api\.mgtv\.com\/v2\/mobile\/checkUpdate\? reject-dict
 # 播放详情页
-http-response ^https?:\/\/mobile\.api\.mgtv\.com\/v10\/video\/info\? - reject
-http-response ^https?:\/\/mobile-thor\.api\.mgtv\.com\/v1\/vod\/info\? - reject
+http-response ^https?:\/\/mobile\.api\.mgtv\.com\/v10\/video\/info\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/mobile-thor\.api\.mgtv\.com\/v1\/vod\/info\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 搜索框填充词
 ^https?:\/\/mobileso\.bz\.mgtv\.com\/spotlight\/search\/v1\? reject-dict
-http-response ^https?:\/\/mobileso\.bz\.mgtv\.com\/mobile\/recommend\/v2\? - reject
+http-response ^https?:\/\/mobileso\.bz\.mgtv\.com\/mobile\/recommend\/v2\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 
 # > 马蜂窝
 # Hostname = mapi.mafengwo.cn
@@ -1709,9 +1709,9 @@ http-response ^https?:\/\/mapi\.mafengwo\.cn\/user\/profile\/get_(list|profile) 
 # 帖子文末推广卡片
 ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/go_gossip_darwin\/external\/v2\/query_flow_cards\? reject-dict
 # 帖子末尾 - 看过此贴的用户也在看
-http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v6\/detail_recommend_feeds\? - reject
+http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v6\/detail_recommend_feeds\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/maimai/maimai_ads.js, requires-body = true, tag = fmz200_chongxie
 # 移除信息流和评论区大块广告 - 信息流广告focus_feed / 评论区广告gossip_detail_comment / 评论区广告feed_detail_comment?
-http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\? - reject
+http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/maimai/maimai_ads.js, requires-body = true, tag = fmz200_chongxie
 
 # > 麦当劳
 # Hostname = api.mcd.cn
@@ -1790,7 +1790,7 @@ http-response ^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(fo
 # >>>>>>>>>>>>>>> ✅ P ✅ <<<<<<<<<<<<<<
 # > pikpak
 # Hostname = access.mypikpak.com
-https://access.mypikpak.com/access_controller/v1/area_accessible reject
+https://access.mypikpak.com/access_controller/v1/area_accessible - reject
 
 # > PushPlus微信推送广告
 # Hostname = image.pushplus.plus, www.pushplus.plus
@@ -2030,7 +2030,7 @@ http-response https://api.rr.tv/watch/v4 script-path= https://github.com/fmz200/
 # > RRTV_User_Info
 http-response https://api.rr.tv/user/profile script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/rrtv_json.js, requires-body = true, tag = fmz200_chongxie
 # > RRTV_屏蔽限時彈窗
-https://api.rr.tv/storage/business/rootName/app/homePage\?dataType=JSON reject-dict
+https://api.rr.tv/storage/business/rootName/app/homePage\?dataType=JSON - reject
 
 # > 日日煮
 # Hostname = cms.daydaycook.com.cn, api.daydaycook.com.cn
@@ -2095,7 +2095,7 @@ http-response ^https?:\/\/47\.110\.187\.87\/winterfell\/v2\/getIpByDomain script
 http-response #^https?:\/\/api-pay\.soulapp\.cn\/vip\/meet\/userInfo script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js, requires-body = true, tag = fmz200_chongxie
 http-response #^https?:\/\/api-pay\.soulapp\.cn\/privilege\/supervip\/status script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/soul/soul_ads.js, requires-body = true, tag = fmz200_chongxie
 # 国际版Soul去广告
-https://api-global.soulapp.me/app/open/get reject
+https://api-global.soulapp.me/app/open/get - reject
 
 # > Stay
 # Hostname = api.shenyin.name
@@ -2220,7 +2220,7 @@ http-response ^https?:\/\/qianbao\.smzdm\.com\/v\d\/app\/home script-path= https
 
 # > 少数派
 # Hostname = ios.sspai.com
-https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal reject
+https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 
 # > 书旗小说
 # Hostname = ut2.shuqistat.com, dsp.toutiao.com, sf3-be-pack.pglstatp-toutiao.com, api-access.pangolin-sdk-toutiao.com, sq.sljkj.com, ocean.shuqireader.com, img-tailor.11222.cn, message.shuqireader.com, feedback.uc.cn, *.shuqireader.com, 101.91.69.26
@@ -2261,7 +2261,7 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal reject
 
 # > 三联中读
 # Hostname = apis.lifeweek.com.cn
-https://apis.lifeweek.com.cn/api/baseConfig/getIosNewConfig reject
+https://apis.lifeweek.com.cn/api/baseConfig/getIosNewConfig - reject
 
 # > 识货
 # Hostname = sh-gateway.shihuo.cn, static.shihuocdn.cn
@@ -2621,7 +2621,7 @@ http-response ^https?:\/\/app02\.vgtime\.com:8080\/vgtime-app\/api\/v2\/init\/ad
 # 公众号文章下方广告
 ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url response-body advertisement response-body fmz200
 # 微信跳过中间界面，支付宝链接、被封禁链接进行通知弹窗跳转，在微信中用快照显示被封禁的链接（可选），在微信中进行强制重定向（可选），群聊 / 扫码均可使用，可选项可在脚本 2、3 行更改，也可在 BoxJs 中更改。
-http-response ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? - reject
+http-response ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? script-path= https://github.com/zZPiglet/Task/raw/master/asset/UnblockURLinWeChat.js, requires-body = true, tag = fmz200_chongxie
 # 微信公众号去除商品推广
 ^https?:\/\/mp\.weixin\.qq\.com\/mp\/cps_product_info\?action reject-dict
 
@@ -2636,7 +2636,7 @@ http-response ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspams
 # > 网易严选
 # Hostname = support.you.163.com, m.you.163.com, yanxuan.nosdn.127.net
 ^https?:\/\/support\.you\.163\.com\/xhr\/boot\/getBootMedia\.json reject-200
-https://support.you.163.com/appversync/check.do reject
+https://support.you.163.com/appversync/check.do - reject
 ^https?:\/\/m\.you\.163\.com\/activity\/popWindow reject
 ^https?:\/\/yanxuan\.nosdn\.127\.net\/.*\.mp4 reject
 
@@ -2653,11 +2653,11 @@ https://support.you.163.com/appversync/check.do reject
 
 # > 网易云音乐
 # Hostname = interface.music.163.com, interface?.music.163.com, ipv4.music.163.com
-https?:\/\/(ipv4|interface\d?)\.music\.163.com\/e?api\/ad reject-dict
-https?:\/\/interface\d?\.music\.163\.com\/w?e?api\/(side-bar\/mini-program\/music-service\/account|delivery\/(batch-deliver|deliver)|moment\/tab\/info\/get|yunbei\/account\/entrance\/get) reject-dict
-https?:\/\/interface\d?\.music\.163\.com\/eapi\/(resource\/comments?\/musiciansaid|community\/friends\/fans-group\/artist\/group\/get|user\/sub\/artist|music\/songshare\/text\/recommend\/get|mine\/applet\/redpoint|resniche\/position\/play\/new\/get) reject-dict
-https?:\/\/interface\d?\.music\.163.com\/w?e?api\/(search\/(chart|default|rcmd\/keyword|specialkeyword)|resource-exposure\/|activity\/bonus\/playpage\/time\/query) reject-dict
-https?:\/\/interface\d?\.music\.163.com\/eapi\/(mlivestream\/entrance\/playpage|link\/(position\/show\/strategy|scene\/show)|ios\/version|v\d\/content\/exposure\/comment\/banner) reject-dict
+https?:\/\/(ipv4|interface\d?)\.music\.163.com\/e?api\/ad - reject
+https?:\/\/interface\d?\.music\.163\.com\/w?e?api\/(side-bar\/mini-program\/music-service\/account|delivery\/(batch-deliver|deliver)|moment\/tab\/info\/get|yunbei\/account\/entrance\/get) - reject
+https?:\/\/interface\d?\.music\.163\.com\/eapi\/(resource\/comments?\/musiciansaid|community\/friends\/fans-group\/artist\/group\/get|user\/sub\/artist|music\/songshare\/text\/recommend\/get|mine\/applet\/redpoint|resniche\/position\/play\/new\/get) - reject
+https?:\/\/interface\d?\.music\.163.com\/w?e?api\/(search\/(chart|default|rcmd\/keyword|specialkeyword)|resource-exposure\/|activity\/bonus\/playpage\/time\/query) - reject
+https?:\/\/interface\d?\.music\.163.com\/eapi\/(mlivestream\/entrance\/playpage|link\/(position\/show\/strategy|scene\/show)|ios\/version|v\d\/content\/exposure\/comment\/banner) - reject
 http-response https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(batch|v\d\/resource\/comment\/floor\/get) script-path= https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js, requires-body = true, tag = fmz200_chongxie
 http-response https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/home\/framework\/tab script-path= https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js, requires-body = true, tag = fmz200_chongxie
 http-response https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(homepage\/block\/page|link\/page\/rcmd\/(resource\/show|block\/resource\/multi\/refresh)) script-path= https://github.com/Keywos/rule/raw/main/script/wy/js/wyres.js, requires-body = true, tag = fmz200_chongxie
@@ -2939,7 +2939,7 @@ http-response ^https?:\/\/mapi\.xiaotucc\.com\/(mall\/main|main_page\/index\/get
 # 我的页面-猜你喜欢
 ^https:\/\/mgesq\.api\.mgtv\.com\/v2\/goods\/guess_you_like reject-dict
 # 我的页面-
-https://mgesq.api.mgtv.com/v2/user/center/icon reject-dict
+https://mgesq.api.mgtv.com/v2/user/center/icon - reject
 # 主页广告
 http-response https://mgesq.api.mgtv.com/dsl/index.+ script-path= https://github.com/Sliverkiss/QuantumultX/raw/main/AdBlock/xmApp/xmApp.js, requires-body = true, tag = fmz200_chongxie
 # 搜索排行榜单
@@ -3088,18 +3088,18 @@ http-response ^https?:\/\/.+?\.(pipi|fuli|xiang(jiao|xiang))apps\.com\/(ucp\/ind
 http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/widgets script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
 # 搜索页
 http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(banner|hot)_list script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(hint|trending)\? - reject
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/notes\? - reject
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/(hint|trending)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/notes\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
 # 开屏广告
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\? - reject
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/config\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
 http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/system_service\/splash_config$ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
 # 图片水印,视频水印
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/(v\d\/note\/feed|v3\/note\/videofeed)\? - reject
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/(v\d\/note\/feed|v3\/note\/videofeed)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
 http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/(imagefeed|live_photo\/save) script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
 # 信息流
 ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/guide\? reject-dict
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/followfeed\? - reject
-http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\? - reject
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/followfeed\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/homefeed\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body = true, tag = fmz200_chongxie
 ^https?:\/\/www\.xiaohongshu\.com\/api\/sns\/(v\d\/ads\/resource|v2\/hey\/\w+\/hey_gallery) reject-dict
 # 评论区用户id置空 (实验功能可能无效)
 ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/note\/comment\/list url response-body red_id response-body fmz200
@@ -3220,7 +3220,7 @@ http-response ^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.huluwa\.dispatcher\.
 # 搜索列表
 http-response ^https?:\/\/acs\.youku\.com\/gw\/mtop\.youku\.soku\.yksearch script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 热剧弹窗
-http-response ^https?:\/\/push\.m\.youku\.com\/collect-api\/get_push_interval_config_wx\? - reject
+http-response ^https?:\/\/push\.m\.youku\.com\/collect-api\/get_push_interval_config_wx\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 # 开屏广告
 http-response ^https?:\/\/un-acs\.youku\.com\/gw\/mtop\.youku\.play\.ups\.appinfo\.get script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cnftp.js, requires-body = true, tag = fmz200_chongxie
 
@@ -3451,7 +3451,7 @@ http-response ^https?:\/\/api\.ulife\.group\/market\/homeIconDetail\/list\/v7 sc
 
 # > 中国移动 山东
 # Hostname = m.sd.10086.cn
-https?:\/\/m\.sd\.10086\.cn\/zapi\/app_common\/homeWelcome\/welcome.do reject-dict
+https?:\/\/m\.sd\.10086\.cn\/zapi\/app_common\/homeWelcome\/welcome.do - reject
 
 # > 中国移动云盘
 # Hostname = mcmm.caiyun.feixin.10086.cn, mrp.mcloud.139.com, ad.mcloud.139.com, middle.yun.139.com
@@ -3554,14 +3554,14 @@ http-response ^https:\/\/api\.zhihu\.com\/(answers|articles)\/v2\/\d+ script-pat
 http-response ^https:\/\/api\.zhihu\.com\/commercial_api\/app_float_layer script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 ^https:\/\/api\.zhihu\.com\/commercial_api\/(answer\/\d+\/bottom-v2|article\/\d+\/bottom-v2|banners_v3\/app_topstory_banner|launch_v2|real_time_launch_v2) reject-dict
 ^https:\/\/api\.zhihu\.com\/content-distribution-core\/bubble\/common\/settings reject-dict
-http-response ^https:\/\/api\.zhihu\.com\/feed\/render\/tab\/config\? - reject
+http-response ^https:\/\/api\.zhihu\.com\/feed\/render\/tab\/config\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 ^https:\/\/api\.zhihu\.com\/(moments\/lastread|drama\/hot-drama-list) reject-dict
 http-response ^https:\/\/api\.zhihu\.com\/(moments_v3|topstory\/hot-lists\/total|topstory\/recommend) script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 ^https:\/\/api\.zhihu\.com\/root\/window reject-dict
-http-response ^https:\/\/api\.zhihu\.com\/v2\/topstory\/hot-lists\/everyone-seeing\? - reject
+http-response ^https:\/\/api\.zhihu\.com\/v2\/topstory\/hot-lists\/everyone-seeing\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 # 会员页面 弹窗,悬浮动图
 ^https:\/\/api\.zhihu\.com\/(bazaar\/float_window|market\/popovers_v2) reject-dict
-http-response ^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\? - reject
+http-response ^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 # 我的页面 项目列表,会员卡片
 ^https:\/\/api\.zhihu\.com\/me\/guides reject-dict
 ^https:\/\/api\.zhihu\.com\/unlimited\/go\/my_card reject
@@ -3571,18 +3571,18 @@ http-response ^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\? - reject
 ^https:\/\/www\.zhihu\.com\/api\/v4\/search\/related_queries\/(article|answer)\/\d+ reject-dict
 # 回答详情页,评论区顶部,下一个回答
 ^https:\/\/api\.zhihu\.com\/comment_v5\/(articles|answers)\/\d+\/list-headers reject-dict
-http-response ^https:\/\/api\.zhihu\.com\/next-(bff|data|render)\? - reject
+http-response ^https:\/\/api\.zhihu\.com\/next-(bff|data|render)\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 ^https:\/\/api\.zhihu\.com\/prague\/related_suggestion_native\/feed\? reject-dict
 http-response ^https:\/\/api\.zhihu\.com\/questions\/\d+(\/answers|\/feeds|\?include=) script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 ^https:\/\/api\.zhihu\.com\/v5\.1\/topics\/answer\/\d+\/relation reject-dict
-http-response ^https:\/\/www\.zhihu\.com\/api\/v4\/(articles|answers)\/\d+\/recommendations?\? - reject
+http-response ^https:\/\/www\.zhihu\.com\/api\/v4\/(articles|answers)\/\d+\/recommendations?\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 # 其他,服务器推送配置
 ^https:\/\/api\.zhihu\.com\/ab\/api\/v1\/products\/zhihu\/platforms\/ios\/config reject
 ^https:\/\/api\.zhihu\.com\/ad-style-service\/request reject-dict
 http-response ^https:\/\/appcloud2\.zhihu\.com\/v3\/config script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 ^https:\/\/appcloud2\.zhihu\.com\/v3\/resource\?group_name=mp reject-dict
 ^https:\/\/link\.zhihu\.com\/\?target=(https?)?(%3A|:)?(\/\/|%2F%2F)?(.*?)(&source.*)?$ url 302 http://$4
-http-response ^https:\/\/m-cloud\.zhihu\.com\/api\/cloud\/config\/all\? - reject
+http-response ^https:\/\/m-cloud\.zhihu\.com\/api\/cloud\/config\/all\? script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/zhihu.js, requires-body = true, tag = fmz200_chongxie
 # 网页版去广告
 ^https:\/\/api\.zhihu\.com\/distribute\/rhea\/qa_ad_card\/h5\/recommendation\? reject-dict
 ^https:\/\/www\.zhihu\.com\/api\/v4\/hot_recommendation reject

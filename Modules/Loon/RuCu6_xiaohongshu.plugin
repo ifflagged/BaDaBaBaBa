@@ -28,16 +28,16 @@ AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/(?:note\/widgets|user\/followings\/followfeed) script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = RuCu6_xiaohongshu
 
 # 搜索页
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v10\/search\/notes\? - reject
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v10\/search\/notes\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = RuCu6_xiaohongshu
 
 # 开屏广告
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/system_service\/config\? - reject
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/system_service\/config\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = RuCu6_xiaohongshu
 http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/system_service\/splash_config script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = RuCu6_xiaohongshu
 
 # 信息流、详情页感兴趣的人
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/followfeed\? - reject
-http-response https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v5\/recommend\/user\/follow_recommend\? - reject
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v6\/homefeed\? - reject
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/followfeed\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = RuCu6_xiaohongshu
+http-response https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v5\/recommend\/user\/follow_recommend\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = RuCu6_xiaohongshu
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v6\/homefeed\? script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = RuCu6_xiaohongshu
 
 # 移除图片和视频水印
 http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/note\/feed|v3\/note\/videofeed) script-path = https://github.com/RuCu6/Loon/raw/main/Scripts/xiaohongshu.js, requires-body = true, tag = RuCu6_xiaohongshu

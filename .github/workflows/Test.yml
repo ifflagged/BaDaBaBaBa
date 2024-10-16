@@ -13,7 +13,7 @@ jobs:
       - name: Read Links from file
         id: read_links
         run: |
-          file="Links/Modules-Links.txt"
+          file="Links/Test.txt"
           links=()
           while IFS= read -r line; do
             links+=("$line")

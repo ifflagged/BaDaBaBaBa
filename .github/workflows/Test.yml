@@ -1,0 +1,43 @@
+name: Rewrite Parser
+
+on:
+  workflow_dispatch:  # 允许手动触发工作流
+  pull_request:
+
+jobs:
+  run-parser:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # 根据需要选择合适的 Node.js 版本
+
+      - name: Install dependencies
+        run: |
+          npm install axios  # 如果需要其他依赖，添加在这里
+
+      - name: Create Test directory
+        run: mkdir -p Test
+
+      - name: Download Rewrite-Parser.js
+        run: |
+          curl -o Rewrite-Parser.js https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js
+
+      - name: Download Didichuxing.snippet
+        run: |
+          curl -o Didichuxing.snippet https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.snippet
+
+      - name: Run Rewrite-Parser.js
+        run: |
+          node Rewrite-Parser.js Didichuxing.snippet > Test/output.txt  # 将输出重定向到 Test 文件夹
+
+      - name: Upload result
+        uses: actions/upload-artifact@v2
+        with:
+          name: rewritten-file
+          path: Test/output.txt

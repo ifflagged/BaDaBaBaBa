@@ -1,35 +1,30 @@
-name: Rewrite Parser
+name: Process Links
 
 on:
-  workflow_dispatch:  # 允许手动触发工作流
+  push:
+    paths:
+      - 'Links/Modules-Links.txt'
 
 jobs:
-  analyze_links:
+  process_links:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Read Links from file
-        id: read_links
+      
+      - name: Read links and generate new links
+        id: generate_links
         run: |
           file="Links/Modules-Links.txt"
-          links=()
+          output="Links/Processed-Links.txt"
+          echo "" > $output
+
           while IFS= read -r line; do
-            links+=("$line")
-          done < "$file"
-          echo "links=${links[*]}" >> $GITHUB_ENV
-
-      - name: Generate URLs
-        id: generate_urls
-        run: |
-          urls=()
-          IFS=' ' read -r -a links <<< "$links"
-          for link in "${links[@]}"; do
-            filename=$(basename "$link")
+            filename=$(basename "$line")
             extension="${filename##*.}"
-            filename_no_ext="${filename%.*}"
+            base="${filename%.*}"
 
+            # 根据文件后缀设置type
             if [[ "$extension" == "sgmodule" ]]; then
               type="surge-module"
             elif [[ "$extension" == "plugin" ]]; then
@@ -38,26 +33,15 @@ jobs:
               type="qx-rewrite"
             fi
 
-            url="http://script.hub/file/_start_/${link}_end_/${filename}?type=${type}&target=${type}"
-            urls+=("$url")
-          done
-          echo "urls=${urls[*]}" >> $GITHUB_ENV
+            # 生成新链接
+            new_link="http://script.hub/file/_start_/$line/_end_/$filename?type=$type&target=$type"
+            echo "$new_link" >> $output
+          done < "$file"
 
-      - name: Fetch and Run Script
+      - name: Fetch Rewrite-Parser.js
         run: |
-          script_url="https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js"
-          # Fetch the script
-          curl -o Rewrite-Parser.js "$script_url"
-          
-          # Check if Node.js is installed
-          if ! command -v node &> /dev/null; then
-            echo "Node.js could not be found. Please install Node.js."
-            exit 1
-          fi
+          curl -O https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js
 
-          # Run the script with generated URLs
-          IFS=' ' read -r -a url_array <<< "${{ env.urls }}"
-          for url in "${url_array[@]}"; do
-            echo "Processing URL: $url"
-            node Rewrite-Parser.js "$url"
-          done
+      - name: Run Rewrite-Parser.js
+        run: |
+          node -e "const fs = require('fs'); const { execSync } = require('child_process'); execSync('node Rewrite-Parser.js', { stdio: 'inherit' })"

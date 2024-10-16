@@ -18,9 +18,18 @@ const script_start = Date.now()
 const JS_NAME = 'Script Hub: 重写转换'
 const $ = new Env(JS_NAME)
 
-const sourceUrl = process.argv[2]; // 来源链接
-const targetApp = process.argv[3]; // 目标应用
-const outputFilePath = process.argv[4]; // 输出路径
+const args = process.argv.slice(2);
+const params = {};
+
+args.forEach(arg => {
+  const [key, value] = arg.split('=');
+  params[key.replace('--', '')] = value;
+});
+
+// 现在可以通过 params 对象访问传入的参数
+const target = params.target;
+const url = params.url;
+const noNtf = params.noNtf === 'true'; // 将字符串转换为布尔值
 
 let arg
 if (typeof $argument != 'undefined') {
@@ -42,7 +51,7 @@ const queryObject = parseQueryString(urlArg)
 //$.log("参数:" + $.toStr(queryObject));
 
 //目标app
-let targetApp = queryObject.target
+const targetApp = queryObject.target
 const app = targetApp.split('-')[0]
 const isSurgeiOS = targetApp == 'surge-module'
 const isStashiOS = targetApp == 'stash-stoverride'

@@ -10,10 +10,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '14'  # 根据需要选择合适的 Node.js 版本
 
@@ -32,12 +32,15 @@ jobs:
         run: |
           curl -o Didichuxing.snippet https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.snippet
 
+      - name: Create Test directory
+        run: mkdir -p Test
+
       - name: Run Rewrite-Parser.js
         run: |
           node Rewrite-Parser.js Didichuxing.snippet > Test/output.txt  # 将输出重定向到 Test 文件夹
 
       - name: Upload result
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # 更新为 v3
         with:
           name: rewritten-file
           path: Test/output.txt

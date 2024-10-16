@@ -13,7 +13,7 @@ jobs:
       - name: Read Links from file
         id: read_links
         run: |
-          file="Links/Test.txt"
+          file="Links/Modules-Links.txt"
           links=()
           while IFS= read -r line; do
             links+=("$line")
@@ -38,7 +38,7 @@ jobs:
               type="qx-rewrite"
             fi
 
-            url="http://script.hub/file/_start_/${link}/_end_/${filename}?type=${type}&target=${type}"
+            url="http://script.hub/file/_start_/${link}_end_/${filename}?type=${type}&target=${type}"
             urls+=("$url")
           done
           echo "urls=${urls[*]}" >> $GITHUB_ENV
@@ -49,7 +49,15 @@ jobs:
           # Fetch the script
           curl -o Rewrite-Parser.js "$script_url"
           
+          # Check if Node.js is installed
+          if ! command -v node &> /dev/null; then
+            echo "Node.js could not be found. Please install Node.js."
+            exit 1
+          fi
+
           # Run the script with generated URLs
           for url in ${{ env.urls }}; do
+            echo "Processing URL: $url"
             node Rewrite-Parser.js "$url"
           done
+

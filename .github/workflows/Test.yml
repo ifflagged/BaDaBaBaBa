@@ -5,31 +5,49 @@ on:
   pull_request:
 
 jobs:
-  run-parser:
+  analyze_links:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'  # 根据需要选择合适的 Node.js 版本
-
-      - name: Install dependencies
-        run: npm install  # 安装脚本所需的依赖
-
-      - name: Create Test directory
-        run: mkdir -p Test
-
-      - name: Download Rewrite-Parser.js
+      - name: Read Links from file
+        id: read_links
         run: |
-          curl -o Rewrite-Parser.js https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js
+          file="Links/Modules-Links.txt"
+          links=()
+          while IFS= read -r line; do
+            links+=("$line")
+          done < "$file"
+          echo "links=${links[*]}" >> $GITHUB_ENV
 
-      - name: Set up environment variables
-        env:
-          TARGET: surge-module
-          URL: 'https://https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js'
+      - name: Generate URLs
+        id: generate_urls
         run: |
-          node Scripts/Convert.js --target $TARGET --url $URL --noNtf $NOTIFICATION
+          urls=()
+          IFS=' ' read -r -a links <<< "$links"
+          for link in "${links[@]}"; do
+            filename=$(basename "$link")
+            extension="${filename##*.}"
+            filename_no_ext="${filename%.*}"
+
+            if [[ "$extension" == "sgmodule" ]]; then
+              type="surge-module"
+            elif [[ "$extension" == "plugin" ]]; then
+              type="loon-plugin"
+            else
+              type="qx-rewrite"
+            fi
+
+            url="http://script.hub/file/_start_/${link}_end_/${filename}?type=${type}&target=${type}"
+            urls+=("$url")
+          done
+          echo "urls=${urls[*]}" >> $GITHUB_ENV
+
+      - name: Process URLs
+        run: |
+          for url in ${{ env.urls }}; do
+            curl -X POST -H "Content-Type: application/json" \
+            -d "{\"url\": \"$url\"}" \
+            https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js
+          done

@@ -96,6 +96,12 @@ $comment" \
     -e 's/url script-request-header/script-path=/Ig' \
     -e 's/url script-analyze-echo-response/script-path=/Ig' \
     -e 's/, tag.*/\, tag = '"${module_name}"'/' \
-    -e '/\(header-add\|header-del\|header-replace\|header-replace-regex\|request-body-replace-regex\|request-body-json-add\|request-body-json-replace\|request-body-json-del\|mock-request-body\|response-header-add\|response-header-del\|response-header-replace\|response-header-replace-regex\|response-body-replace-regex\|response-body-json-add\|response-body-json-replace\|response-body-json-del\|mock-response-body\)/ s/.*/- reject/Ig' \
     -e 's/hostname =/Hostname =/Ig' \
+    -e '/^\(header-add\|header-del\|header-replace\|header-replace-regex\|request-body-replace-regex\|request-body-json-add\|request-body-json-replace\|request-body-json-del\|mock-request-body\|response-header-add\|response-header-del\|response-header-replace\|response-header-replace-regex\|response-body-replace-regex\|response-body-json-add\|response-body-json-replace\|response-body-json-del\|mock-response-body\)/ { 
+        s/\(.*\)/\1 - reject/; 
+        :a; 
+        N; 
+        /\n$/!ba; 
+        s/\(.*\n\).*/\1/; 
+    }' \
     "$input_file" > "Modules/Loon/${module_name}.plugin"

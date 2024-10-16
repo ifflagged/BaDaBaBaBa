@@ -18,8 +18,7 @@ jobs:
           node-version: '14'  # 根据需要选择合适的 Node.js 版本
 
       - name: Install dependencies
-        run: |
-          npm install axios  # 如果需要其他依赖，添加在这里
+        run: npm install  # 安装脚本所需的依赖
 
       - name: Create Test directory
         run: mkdir -p Test
@@ -28,19 +27,31 @@ jobs:
         run: |
           curl -o Rewrite-Parser.js https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js
 
-      - name: Download Didichuxing.snippet
+      - name: Run Rewrite Parser for Surge
         run: |
-          curl -o Didichuxing.snippet https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.snippet
+          # 读取 Links/Modules-Links.txt 文件内容
+          links=$(cat Links/Modules-Links.txt | tr '\n' '😂')  # 用😂替换换行符
+          # 运行脚本并将结果输出到 Text 文件夹
+          node Rewrite-Parser.js \
+            --target surge-module \
+            --n "$links" \
+            --noNtf true \
+            --headers "Authorization: Bearer YOUR_TOKEN" > Text/surge_output.txt
 
-      - name: Create Test directory
-        run: mkdir -p Test
-
-      - name: Run Rewrite-Parser.js
+      - name: Run Rewrite Parser for Loon
         run: |
-          node Rewrite-Parser.js Didichuxing.snippet > Test/output.txt  # 将输出重定向到 Test 文件夹
+          links=$(cat Links/Modules-Links.txt | tr '\n' '😂')
+          node Rewrite-Parser.js \
+            --target loon-plugin \
+            --n "$links" \
+            --noNtf true \
+            --headers "Authorization: Bearer YOUR_TOKEN" > Text/loon_output.txt
 
-      - name: Upload result
-        uses: actions/upload-artifact@v3  # 更新为 v3
-        with:
-          name: rewritten-file
-          path: Test/output.txt
+      - name: Run Rewrite Parser for Shadowrocket
+        run: |
+          links=$(cat Links/Modules-Links.txt | tr '\n' '😂')
+          node Rewrite-Parser.js \
+            --target shadowrocket-module \
+            --n "$links" \
+            --noNtf true \
+            --headers "Authorization: Bearer YOUR_TOKEN" > Text/shadowrocket_output.txt

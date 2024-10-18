@@ -208,6 +208,9 @@ def download_modules(module_file):
     loon_urls = []
 
     for url in module_urls:
+        if not url or url.startswith('#'):
+            continue
+            
         if ".sgmodule" in url:
             surge_urls.append(url)
         elif ".plugin" in url:

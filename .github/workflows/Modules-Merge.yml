@@ -27,7 +27,14 @@ jobs:
       run: |
         # 使用通配符找到所有符合 Merge-Modules-*.txt 的文件并执行合并脚本
         for file in Links/Merge-Modules-*.txt; do
-          python Scripts/Modules-Merge.py "$file"
+          # 忽略空行和以 # 开头的行
+          while IFS= read -r line || [ -n "$line" ]; do
+            # 跳过空行和注释行
+            if [ -z "$line" ] || [[ "$line" =~ ^# ]]; then
+              continue
+            fi
+            python Scripts/Modules-Merge.py "$line"
+          done < "$file"
         done
 
     - name: Check for changes

@@ -6,18 +6,25 @@ https://github.com/ifflagged/nBlock/raw/main/Walalala/Plugins/weibo.plugin
 https://github.com/ifflagged/nBlock/raw/main/Walalala/Plugins/xianyu.plugin
 https://github.com/ifflagged/nBlock/raw/main/Walalala/Plugins/xiaohongshu.plugin
 https://github.com/ifflagged/nBlock/raw/main/Walalala/Plugins/youtube.plugin
+
 https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/BlockAdvertisers.plugin
 https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/DiDi_remove_ads.plugin
 https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/Remove_ads_by_keli.plugin
 https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/smzdm_remove_ads.plugin
 https://github.com/luestr/ProxyResource/raw/main/Tool/Loon/Plugin/Umetrip_remove_ads.plugin
+
 https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
 https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/StartUp.conf
+
 https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt
+https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/cleanup.snippet
+
 https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet
 https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet
 https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet
+
 https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js
+
 https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/D/%E5%A4%A7%E4%BC%97%E7%82%B9%E8%AF%84/filter/dianPing.list
 https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/D/%E5%A4%A7%E4%BC%97%E7%82%B9%E8%AF%84/rewrite/dianPing.conf
 https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/E/%E9%A5%BF%E4%BA%86%E4%B9%88/rewrite/eleme.conf
@@ -32,3 +39,7 @@ https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/T/%E5%A4%A9%
 https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/T/%E5%A4%A9%E5%BA%9C%E9%80%9A/rewrite/tft.conf
 
 https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js
+
+# 纯规则
+https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list
+https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliuxiuzheng.list

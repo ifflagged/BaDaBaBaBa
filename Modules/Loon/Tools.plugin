@@ -2,8 +2,200 @@
 #!desc= Merger Tools for Loon
 #!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]
 #!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Social_Media/Apple.png
+# ifflagged_youtube
+#!select = 隐藏上传按钮, true, false
+#!select = 隐藏选段按钮, true, false
+#!select = 字幕翻译语言, zh-Hans, zh-Hant, ja, ko, en, off
+#!select = 歌词翻译语言, zh-Hans, zh-Hant, ja, ko, en, off
+#!select = 启用调试模式, true, false
+
+[General]
+# ifflagged_bilibili
+force-http-engine-hosts = :8000
 
 [Rule]
+# ifflagged_amap
+AND, ((URL-REGEX, ^http:\/\/(?:[\d\.]+|amdc\.m\.taobao\.com)\/amdc\/mobileDispatch), (USER-AGENT, AMapiPhone*)), REJECT
+# ifflagged_bilibili
+URL-REGEX, ^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH, REJECT-DICT
+URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
+# ifflagged_myblockads
+DOMAIN, ad.12306.cn, DIRECT
+DOMAIN-SUFFIX, ut.taobao.com, REJECT
+DOMAIN, dns.alidns.com, REJECT
+DOMAIN, ems.youku.com, REJECT
+DOMAIN, hudong.alicdn.com, REJECT
+DOMAIN, ossgw.alicdn.com, REJECT
+IP-CIDR, 203.107.1.1/24, REJECT, no-resolve
+DOMAIN, api.iqiyi.com, REJECT
+DOMAIN, ca.iadsdk.apple.com, DIRECT
+DOMAIN-SUFFIX, advp.apple.com, REJECT
+DOMAIN-SUFFIX, iad-apple.com, REJECT
+DOMAIN-SUFFIX, iadsdk.apple.com, REJECT
+DOMAIN, advertising.apple.com, REJECT
+DOMAIN, api-adservices.apple.com, REJECT
+DOMAIN, apple.comscoreresearch.com, REJECT
+DOMAIN, banners.itunes.apple.com, REJECT
+DOMAIN, iad.apple.com, REJECT
+DOMAIN, iadcontent.apple.com, REJECT
+DOMAIN, iadctest.qwapi.com, REJECT
+DOMAIN, iadmoo.apple.com, REJECT
+DOMAIN, iadworkbench.apple.com, REJECT
+DOMAIN, launch.apple.com, REJECT
+DOMAIN, qwapi.apple.com, REJECT
+DOMAIN-KEYWORD, safebrowsing., REJECT
+DOMAIN-SUFFIX, u3.ucweb.com, REJECT
+DOMAIN, lookup.api.bsb.baidu.com, REJECT
+DOMAIN-SUFFIX, pos.baidu.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
+DOMAIN, afd.baidu.com, REJECT
+DOMAIN, afdconf.baidu.com, REJECT
+DOMAIN, lc.map.baidu.com, REJECT
+IP-CIDR, 180.76.76.112/32, REJECT, no-resolve
+IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
+DOMAIN, m.adyounger.com, REJECT
+DOMAIN, api.helloclue.com, REJECT
+DOMAIN, brahe.apptimize.com, REJECT
+DOMAIN, collector.clue.run, REJECT
+DOMAIN, images.ctfassets.net, REJECT
+DOMAIN, mapi.apptimize.com, REJECT
+DOMAIN, md-i-s.apptimize.com, REJECT
+DOMAIN, adttrackingprd.hwwt8.com, REJECT
+DOMAIN, adservice.sigmob.cn, REJECT
+DOMAIN-SUFFIX, mall.icbc.com.cn, REJECT
+DOMAIN, pageviewp.icbc.com.cn, REJECT
+AND, ((OR,((DOMAIN-SUFFIX, amemv.com), (DOMAIN-SUFFIX, zijieapi.com))), (DOMAIN-KEYWORD,-misc-)), REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
+DOMAIN-KEYWORD, ads.g.doubleclick, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
+DOMAIN-KEYWORD, pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, pangolin.snssdk.com, REJECT
+DOMAIN-KEYWORD, pglstatp-toutiao, REJECT
+DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
+DOMAIN-SUFFIX, ads.linkedin.com, REJECT
+DOMAIN-SUFFIX, ads.vungle.com, REJECT
+DOMAIN-SUFFIX, adservice.google.com, REJECT
+DOMAIN-SUFFIX, adukwai.com, REJECT
+DOMAIN-SUFFIX, applovin.com, REJECT
+DOMAIN-SUFFIX, applvn.com, REJECT
+DOMAIN-SUFFIX, appsflyer.com, REJECT
+DOMAIN-SUFFIX, appsflyersdk.com, REJECT
+DOMAIN-SUFFIX, kuaishouzt.com, REJECT
+DOMAIN-SUFFIX, miaozhen.com, REJECT
+DOMAIN-SUFFIX, ubixioe.com, REJECT
+DOMAIN-SUFFIX, unityads.unity3d.com, REJECT
+DOMAIN-SUFFIX, v.smtcdns.com, REJECT
+DOMAIN, ad.zijieapi.com, REJECT
+DOMAIN, adapi.izuiyou.com, REJECT
+DOMAIN, adtracker.adfunlink.com, REJECT
+DOMAIN, dig.bdurl.net, REJECT
+DOMAIN, dsp-x.jd.com, REJECT
+DOMAIN, et.tanx.com, REJECT
+DOMAIN, gdfp.gifshow.com, REJECT
+DOMAIN, init.supersonicads.com, REJECT
+DOMAIN, janapi.jd.com, REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
+DOMAIN, mercury-gateway.ixiaochuan.cn, REJECT
+DOMAIN, mon.toutiaocloud.com, REJECT
+DOMAIN, open.e.kuaishou.com, REJECT
+DOMAIN, open.kuaishou.com, REJECT
+DOMAIN, pagead2.googlesyndication-cn.com, REJECT
+DOMAIN, pagead2.googlesyndication.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN, tangram.e.qq.com, REJECT
+DOMAIN, ws.tapjoyads.com, REJECT
+DOMAIN, www.googleadservices.com, REJECT
+DOMAIN-SUFFIX, ehaier.com, REJECT
+AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, Hema4iPhone*)), REJECT
+DOMAIN-KEYWORD, httpdns., REJECT
+DOMAIN-KEYWORD, httpdns-, REJECT
+DOMAIN, hdns.ksyun.com, REJECT
+DOMAIN-KEYWORD, adv.ccb.com, REJECT
+DOMAIN, dns.jd.com, REJECT
+IP-CIDR, 101.124.19.122/32, REJECT, no-resolve
+IP-CIDR6, 2402:db40:5100:1011::5/128, REJECT, no-resolve
+DOMAIN, adserviceretry.kglink.cn, DIRECT
+DOMAIN, ads.service.kugou.com, REJECT
+DOMAIN, adserviceretry.kugou.com, REJECT
+DOMAIN, ad.tencentmusic.com, REJECT
+DOMAIN, g.koowo.com, REJECT
+DOMAIN, mobilead.kuwo.cn, REJECT
+DOMAIN, rich.kuwo.cn, REJECT
+DOMAIN, statics.woozooo.com, REJECT
+DOMAIN-SUFFIX, da.mgtv.com, REJECT
+DOMAIN, credits.bz.mgtv.com, REJECT
+DOMAIN, credits2.bz.mgtv.com, REJECT
+DOMAIN, credits3.bz.mgtv.com, REJECT
+DOMAIN, dflow.bz.mgtv.com, REJECT
+DOMAIN, encounter.bz.mgtv.com, REJECT
+DOMAIN, floor.bz.mgtv.com, REJECT
+DOMAIN, layer.bz.mgtv.com, REJECT
+DOMAIN, mob.bz.mgtv.com, REJECT
+DOMAIN, rc-topic-api.bz.mgtv.com, REJECT
+DOMAIN, rprain.bz.mgtv.com, REJECT
+DOMAIN, rprain.log.mgtv.com, REJECT
+DOMAIN, vip.bz.mgtv.com, REJECT
+DOMAIN, maplocatesdksnapshot.d.meituan.net, REJECT
+DOMAIN, metrics-picture.d.meituan.net, REJECT
+IP-CIDR, 103.37.155.60/32, REJECT, no-resolve
+DOMAIN, aaid.uyunad.com, REJECT
+DOMAIN, adui.tg.meitu.com, REJECT
+DOMAIN, acdn.adnxs.com, REJECT
+DOMAIN, mediation.adnxs.com, REJECT
+DOMAIN, sin3-ib.adnxs.com, REJECT
+DOMAIN, affcpatrk.com, REJECT
+DOMAIN, api.zuihuimai.com, REJECT
+DOMAIN-SUFFIX, shuzilm.cn, REJECT
+DOMAIN-KEYWORD, -adsystem.com, REJECT
+DOMAIN, ads.pubmatic.com, REJECT
+DOMAIN, id.hadron.ad.gt, REJECT
+DOMAIN, a.cpic.com.cn, REJECT
+DOMAIN-KEYWORD, trace.qq.com, REJECT
+DOMAIN-KEYWORD, trace.video.qq.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+DOMAIN-SUFFIX, l.qq.com, REJECT
+DOMAIN, adsmind.gdtimg.com, REJECT
+DOMAIN, info4.video.qq.com, REJECT
+DOMAIN, info6.video.qq.com, REJECT
+DOMAIN, ios.video.mpush.qq.com, REJECT
+DOMAIN, otheve.beacon.qq.com, REJECT
+DOMAIN, pgdt.gtimg.cn, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
+DOMAIN, tmead.y.qq.com, REJECT
+DOMAIN, tmeadbak.y.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, tpns.qq.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
+DOMAIN-SUFFIX, wxs.qq.com, REJECT
+DOMAIN, badjs.weixinbridge.com, REJECT
+DOMAIN, dns.weixin.qq.com.cn, REJECT
+DOMAIN, sdkconfig.ad.xiaomi.com, REJECT
+DOMAIN, tong.8888888888.bid, REJECT
+AND, ((OR, ((DOMAIN-KEYWORD, kc.), (DOMAIN-KEYWORD, kcc.), (DOMAIN-KEYWORD, kg.))), (DEST-PORT, 8008)), REJECT
+DOMAIN, ads.95516.com, REJECT
+DOMAIN, switch.cup.com.cn, REJECT
+DOMAIN, yandexmetrica.com, REJECT
+URL-REGEX, ^http:\/\/\w{32}\.jddebug\.com\/diagnose\?, REJECT
+# ifflagged_pinduoduo
+AND, ((URL-REGEX, ^http:\/\/((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(http:\/\/[\d\.]+)?\/d4?\?), (USER-AGENT, *com.xunmeng.pinduoduo*)), REJECT
+AND, ((URL-REGEX, ^http:\/\/\[((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))\]\/d4\?), (USER-AGENT, *com.xunmeng.pinduoduo*)), REJECT
+DOMAIN, ta-a.pinduoduo.com, REJECT
+DOMAIN, ta.pinduoduo.com, REJECT
+DOMAIN, th-a.pinduoduo.com, REJECT
+DOMAIN, th-b.pinduoduo.com, REJECT
+DOMAIN, th.pinduoduo.com, REJECT
+DOMAIN, titan.pinduoduo.com, REJECT
+# ifflagged_weibo
+DOMAIN-SUFFIX, uve.weibo.com, DIRECT
+DOMAIN, huodong.weibo.cn, REJECT
+DOMAIN-SUFFIX, biz.weibo.com, REJECT
+# ifflagged_xianyu
+AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, %E9%97%B2%E9%B1%BC*)), REJECT
+# ifflagged_xiaohongshu
+AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
+# ifflagged_youtube
+AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
 # luestr_BlockAdvertisers
 AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
 AND, ((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)), REJECT
@@ -27,7 +219,6 @@ AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssd
 AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
 URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
 DOMAIN, mon.zijieapi.com, REJECT
-DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
 DOMAIN, i.snssdk.com, REJECT
 DOMAIN, is.snssdk.com, REJECT
 DOMAIN, bds.snssdk.com, REJECT
@@ -46,12 +237,9 @@ DOMAIN, mssdk.volces.com, REJECT
 DOMAIN, pangolin.snssdk.com, REJECT
 DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
 DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
-DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
 DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
 DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
 DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
-DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
-DOMAIN-KEYWORD, asiad.byteactivity, REJECT
 DOMAIN-KEYWORD, iflyad.bj.openstorage.cn, REJECT
 DOMAIN-KEYWORD, bjimp.voiceads.cn, REJECT
 DOMAIN, sdk.1rtb.net, REJECT
@@ -63,16 +251,10 @@ DOMAIN, sdktmp.hubcloud.com.cn, REJECT
 DOMAIN, v.adx.hubcloud.com.cn, REJECT
 DOMAIN, config.inmobi.cn, REJECT
 DOMAIN, ztoken.uyunad.com, REJECT
-DOMAIN, aaid.uyunad.com, REJECT
-DOMAIN, gdfp.gifshow.com, REJECT
-DOMAIN, open.e.kuaishou.com, REJECT
-DOMAIN-SUFFIX, adukwai.com, REJECT
-DOMAIN, init.supersonicads.com, REJECT
 DOMAIN, st.appsad.cn, REJECT
 DOMAIN, sdk.beizi.biz, REJECT
 DOMAIN, api-htp.beizi.biz, REJECT
 DOMAIN, admaster.com.cn, REJECT
-DOMAIN-SUFFIX, miaozhen.com, REJECT
 DOMAIN, monitor.ssp.admobile.top, REJECT
 DOMAIN, sdk.ssp.admobile.top, REJECT
 DOMAIN, ax.admobile.top, REJECT
@@ -114,46 +296,28 @@ DOMAIN, click-bes.baidu.com, REJECT
 DOMAIN, eclick.baidu.com, REJECT
 DOMAIN, mobads-logs.baidu.com, REJECT
 DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
-DOMAIN, mobads.baidu.com, REJECT
 DOMAIN, nadvideo2.baidu.com, REJECT
 DOMAIN, wn.pos.baidu.com, REJECT
 DOMAIN, miniapp-ad.cdn.bcebos.com, REJECT
 DOMAIN-SUFFIX, union.baidu.cn, REJECT
 DOMAIN-SUFFIX, union.baidu.com, REJECT
-DOMAIN, adsmind.gdtimg.com, REJECT
 DOMAIN, adsmind.ugdtimg.com, REJECT
 DOMAIN, c2.gdt.qq.com, REJECT
 DOMAIN, huatuocode.huatuo.qq.com, REJECT
-DOMAIN, info4.video.qq.com, REJECT
-DOMAIN, info6.video.qq.com, REJECT
 DOMAIN, ios.bugly.qq.com, REJECT
-DOMAIN, ios.video.mpush.qq.com, REJECT
 DOMAIN, mi.gdt.qq.com, REJECT
-DOMAIN, otheve.beacon.qq.com, REJECT
-DOMAIN, pgdt.gtimg.cn, REJECT
-DOMAIN, pgdt.ugdtimg.com, REJECT
 DOMAIN, qzs.gdtimg.com, REJECT
 DOMAIN, qzs.qq.com, REJECT
 DOMAIN, rmonitor.qq.com, REJECT
-DOMAIN, sdk.e.qq.com, REJECT
 DOMAIN, sdkconfig.video.qq.com, REJECT
 DOMAIN, t.gdt.qq.com, REJECT
-DOMAIN, tmead.y.qq.com, REJECT
-DOMAIN, tmeadbak.y.qq.com, REJECT
-DOMAIN, tmeadcomm.y.qq.com, REJECT
-DOMAIN, tpns.qq.com, REJECT
 DOMAIN, v.gdt.qq.com, REJECT
 DOMAIN, v2.gdt.qq.com, REJECT
 DOMAIN, win.gdt.qq.com, REJECT
 DOMAIN, wup.imtt.qq.com, REJECT
 DOMAIN, tpstelemetry.tencent.com, REJECT
 DOMAIN, ii.gdt.qq.com, REJECT
-DOMAIN-KEYWORD, trace.qq.com, REJECT
-DOMAIN-KEYWORD, trace.video.qq.com, REJECT
-DOMAIN-SUFFIX, gdt.qq.com, REJECT
-DOMAIN-SUFFIX, l.qq.com, REJECT
 DOMAIN-SUFFIX, ugdtimg.com, REJECT
-IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
 DOMAIN-SUFFIX, openinstall.io, REJECT
 DOMAIN, b-gtc.getui.net, REJECT
 DOMAIN, c-gtc.getui.net, REJECT
@@ -178,7 +342,6 @@ DOMAIN, plbslog.umeng.com, REJECT
 DOMAIN, log.umtrack.com, REJECT
 DOMAIN, aaid.umeng.com, REJECT
 DOMAIN, log.umsns.com, REJECT
-DOMAIN, adtracker.adfunlink.com, REJECT
 DOMAIN, sdk.tianmu.mobi, REJECT
 DOMAIN, tracker.tianmu.mobi, REJECT
 DOMAIN, e-u1.ubixioe.com, REJECT
@@ -186,10 +349,6 @@ DOMAIN, sdk-data.ubixioe.com, REJECT
 DOMAIN, tower.ubixioe.com, REJECT
 DOMAIN, tx-cfg-u1.ubixioe.com, REJECT
 DOMAIN, tx-data-u1.ubixioe.com, REJECT
-DOMAIN, ossgw.alicdn.com, REJECT
-DOMAIN, ems.youku.com, REJECT
-DOMAIN, hudong.alicdn.com, REJECT
-DOMAIN, et.tanx.com, REJECT
 DOMAIN, beacon-api.aliyuncs.com, REJECT
 DOMAIN, adash.man.aliyuncs.com, REJECT
 DOMAIN, applog.uc.cn, REJECT
@@ -201,16 +360,11 @@ DOMAIN, api.anythinktech.com, REJECT
 DOMAIN, tk.anythinktech.com, REJECT
 DOMAIN, da.anythinktech.com, REJECT
 DOMAIN, gorgon.youdao.com, REJECT
-DOMAIN, sdkconfig.ad.xiaomi.com, REJECT
 DOMAIN, al-log.d.meituan.net, REJECT
 DOMAIN, babel-statistics-android.d.meituan.net, REJECT
-DOMAIN, maplocatesdksnapshot.d.meituan.net, REJECT
-DOMAIN, metrics-picture.d.meituan.net, REJECT
 DOMAIN, route-stats.d.meituan.net, REJECT
-DOMAIN, dsp-x.jd.com, REJECT
 DOMAIN, im-x.jd.com, REJECT
 DOMAIN, xlog.jd.com, REJECT
-DOMAIN, janapi.jd.com, REJECT
 DOMAIN, api.mosspf.com, REJECT
 DOMAIN, da.mosspf.com, REJECT
 DOMAIN, mores.toponad.com, REJECT
@@ -261,6 +415,130 @@ IP-CIDR, 119.29.126.137/32, reject, no-resolve
 # Tools
 ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising reject-dict
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getWidgetV1052 reject
+# ifflagged_amap
+^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? reject-dict
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) reject-dict
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\? - reject
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/homepage\? - reject
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? reject-dict
+^https:\/\/oss\.amap\.com\/ws\/banner\/lists\/\? reject-dict
+^https:\/\/m5\.amap\.com\/ws\/aos\/main\/page\/product\/list\? reject-dict
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(?:main-page-assets|main-page-location|ridewalk-end-fc) reject-dict
+^https:\/\/m5\.amap\.com\/ws\/(?:mapapi\/hint_text\/offline_data|message\/notice\/list|shield\/search\/new_hotword) reject-dict
+^https:\/\/m5\.amap\.com\/ws\/shield\/scene\/recommend\? reject-dict
+^https:\/\/m5\.amap\.com\/ws\/valueadded\/weather\/v2\? reject-dict
+^https:\/\/sns\.amap\.com\/ws\/msgbox\/pull_mp\? reject-dict
+^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:order\/car\/king_toolbox_car_bubble|tips\/onscene_visual_optimization) reject-dict
+^https:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_car_tips\? - reject
+# ifflagged_bilibili
+^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) reject-dict
+^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? reject-dict
+^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? reject-dict
+^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? reject-dict
+^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? - reject
+^https:\/\/app\.bilibili\.com\/x\/resource\/top\/activity\? - reject
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords reject-dict
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo reject-dict
+^https:\/\/app\.bilibili\.com\/x\/resource\/ip reject-dict
+^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp reject-dict
+(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) 302 $1
+(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) 302 $1
+# ifflagged_myblockads
+^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml reject
+^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders reject-dict
+^https:\/\/member\.alipan\.com\/v2\/activity\/sign_in_luckyBottle reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict) reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimusic\.common\.mobileservice\.startinit reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.etao\.noah\.query\/.+tao_splash reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryadvertise reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources reject-dict
+^https:\/\/heic\.alicdn\.com\/imgextra\/i\d\/\d*\/?[\w!]+-\d-(?:octopus|tps-1125-1602|tps-1080-1920)\.(?:jpg|png)_(?:1\d{3}|9\d{2})x(?:1\d{3}|9\d{2})q[59]0 reject-dict
+^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad reject-dict
+^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) reject-dict
+^https:\/\/pan\.baidu\.com\/(?:act\/|aipic\/|aisearch\/|api\/getsyscfg\?|rest\/) reject-dict
+^http:\/\/ad\.5tao5ai\.com\/common\/getReceipt\? - reject
+^https:\/\/www\.washpayer\.com\/(?:ad\/getBannerAd|ad\/user-adword|user\/getBannerList) reject-dict
+^https:\/\/www\.washpayer\.com\/common\/getReceipt - reject
+^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
+^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ reject-dict
+^https:\/\/hfapp-service\.qweather\.net\/v2\.0\/app\/ad\/list\? reject-dict
+^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querysinglepage\/ reject-dict
+^http:\/\/image1\.ccb\.com\/newsinfo\/eBranch\/check\/(?:nf\/newfin\/activity|po\/poortheme\/activity)\/\w+\.png reject
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:searchBoxWord|stationPullService|uniformRecommend[06]) reject-dict
+^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery\/adver reject-dict
+^https:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch reject-dict
+^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.jpg\?imageMogr2\/quality\/ reject-dict
+^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.(?:jpg|png)\?imageMogr2\/thumbnail\/(?:860x0|!165x165|!1049x1169) reject-dict
+^http:\/\/app-cdn\.2q10\.com\/app\/ical\/honored\? reject-dict
+^http:\/\/wmapi\.meituan\.com\/api\/v7\/(?:loadInfo|openscreen|startpicture) reject-dict
+^https:\/\/flowplus\.meituan\.net\/v1\/mss_\w+\/linglong\/\d+\.jpg reject-dict
+^https:\/\/img\.meituan\.net\/bizad\/bizad_brandCpt_\d+\.jpg reject-dict
+^https:\/\/s3plus\.meituan\.net\/ocean-blk-index\/index\/blk_conf_\d+\.json reject-dict
+^https:\/\/s3plus\.meituan\.net\/v1\/mss_\w+\/(?:brandcpt-vedio|waimai-alita)\/\w+\.zip$ reject-dict
+^https:\/\/osg-service\.sgcc\.com\.cn:18600\/emss-pfa-appset-front\/bootpageoutter\/ reject-dict
+^https:\/\/mp\.weixin\.qq\.com\/mp\/(?:cps_product_info|getappmsgad|jsmonitor|masonryfeed|relatedarticle) reject-dict
+^https:\/\/api\.m\.mi\.com\/v1\/order\/expressView - reject
+^https:\/\/api\.m\.mi\.com\/(?:v1\/(?:app\/popup_info|home\/page_feed|misearch\/search_input)|v2\/search\/search_default) reject-dict
+^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) reject-dict
+^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) reject-dict
+^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 reject
+# ifflagged_pinduoduo
+^https:\/\/api\.(?:pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash\? reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up\? reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/aquarius\/hungary\/global\/homepage\? reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/(?:likes|my_order_group|new_chat_group|order_express_group|personal) reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/flow\/hungary\/window\/global\/v2\? reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render - reject
+^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub\? - reject
+^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data reject-dict
+^https:\/\/api\.pinduoduo\.com\/search - reject
+^https:\/\/api\.pinduoduo\.com\/search_hotquery\? reject-dict
+# ifflagged_weibo
+^https:\/\/api\.weibo\.cn\/2\/(?:ug\/checkin\/list|push\/daily) reject-dict
+^https:\/\/api\.weibo\.cn\/2\/!\/live\/media_homelist\? reject-dict
+^https:\/\/api\.weibo\.cn\/2\/comments\/bullet_screens\? reject-dict
+^https:\/\/api\.weibo\.cn\/2\/photo\/info\? reject-dict
+^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:container_positive|push_info) reject-dict
+^https:\/\/api\.weibo\.cn\/2\/vote\/get_vote_detail\? reject-dict
+^https:\/\/api\.weibo\.cn\/2\/!\/chaohua\/discovery\/home_bottom\/switch\? reject-dict
+^https:\/\/api\.weibo\.cn\/2\/!\/huati\/(?:discovery_home_bottom_getdotinfo|mobile_discovery_searchchange) reject-dict
+^https:\/\/api\.weibo\.cn\/2\/!\/wbox\/\w+\/(?:home_bottom_modal|interest_category) reject-dict
+^https:\/\/api\.weibo\.cn\/2\/search\/container_discover\? reject-dict
+^https:\/\/api\.weibo\.cn\/2\/hot\/hours_spotlight\? reject-dict
+^https:\/\/api\.weibo\.cn\/2\/video\/redpacket\? reject-dict
+^https:\/\/api\.weibo\.cn\/!\/sug\/list\/finderchange\? reject-dict
+^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime reject-dict
+^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) reject-dict
+^https:\/\/card\.weibo\.com\/article\/m\/aj\/(?:reward|uvead) reject-dict
+^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) reject-dict
+# ifflagged_xianyu
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.recommend\.list\/ reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.resell\.recommendorhotcate\/ reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.playboy\.recommend\/ reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.topic\.banner\/ reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/ reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.idle\.coin\.nextfresh\/ reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.discover\/ reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ reject-dict
+^https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/[\w-]*search[\w-]*\/pages\/ reject-200
+# ifflagged_xiaohongshu
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action) reject-dict
+^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? reject-dict
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/guide\/user_banner|v3\/note\/guide) reject-dict
+^https:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v1\/ads\/resource|v2\/hey\/\w+\/hey_gallery) reject-dict
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/banner_list$ - reject
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/hot_list$ - reject
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/hint - reject
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/trending\? - reject
+# ifflagged_youtube
+^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\? reject-dict
 # luestr_BlockAdvertisers
 ^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
 ^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union reject
@@ -325,6 +603,95 @@ IP-CIDR, 119.29.126.137/32, reject, no-resolve
 ^https?:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams reject-dict
 
 [Script]
+# ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/bus\/plan\/integrate\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/c3frontend\/af-(?:hotel|launch)\/page\/main\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/perception\/drive\/(?:routeInfo|routePlan) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/(?:common\/coupon\/info|poi\/detail) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search_bff\/hotword\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(?:mps|search\/sp|sug|tips_operation_location) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(?:card-service-plan-home|main-page) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable\/1\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaasv3\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/nearbyrec_smart\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:car\/order\/content_info|order_web\/friendly_information) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+http-response ^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/amap.js, requires-body = true, tag = ifflagged_amap
+# ifflagged_bilibili
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = ifflagged_bilibili
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = ifflagged_bilibili
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.show\.v1\.Popular\/Index$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = ifflagged_bilibili
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(?:view|viewunite)\.v1\.View\/(?:View|ViewProgress)$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = ifflagged_bilibili
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = ifflagged_bilibili
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = ifflagged_bilibili
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = ifflagged_bilibili
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/protoC.js, requires-body = true, binary-body-mode = true, tag = ifflagged_bilibili
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(?:brand\/list|event\/list2|list|show) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/json.js, requires-body = true, tag = ifflagged_bilibili
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index(\/story)?\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/json.js, requires-body = true, tag = ifflagged_bilibili
+http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/json.js, requires-body = true, tag = ifflagged_bilibili
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/search\/square\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/json.js, requires-body = true, tag = ifflagged_bilibili
+http-response ^https:\/\/api\.bilibili\.com\/pgc\/page\/(?:bangumi|cinema\/tab) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/json.js, requires-body = true, tag = ifflagged_bilibili
+http-response ^https:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/json.js, requires-body = true, tag = ifflagged_bilibili
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(?:mine(\/ipad)?|myinfo) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/bilibili/json.js, requires-body = true, tag = ifflagged_bilibili
+# ifflagged_myblockads
+http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/12306.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/header.js, tag = ifflagged_myblockads
+http-response ^https:\/\/(biz)?api\.alipan\.com\/apps\/v\d\/users?\/home\/(?:news|widgets) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/adrive.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/adrive.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/myBlockAds.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/myBlockAds.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/2023\.redircdn\.com\/web\/mob_post\.js\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/myBlockAds.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/www\.washpayer\.com\/user\/message\/equipmentPara\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/changyuan.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/jingdong.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/api\.coolapk\.com\/v6\/(?:feed\/detail|feed\/replyList|page\/dataList|main\/dataList|main\/indexV8|main\/init) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/coolapk.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/gateway\.kugou\.com\/(?:adp\/ad\/v1\/mine_top_banner|ads\.gateway\/v2\/home_card) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/kugou.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https?:\/\/adserviceretry\.kglink\.cn\/v\d\/mobile\w+ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/kugou.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https\:\/\/(?:weixin110\.qq|security\.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/wechat/unlockUrls.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/api\.m\.mi\.com\/v1\/app\/start script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/myBlockAds.js, requires-body = true, tag = ifflagged_myblockads
+http-request ^https:\/\/mobilepaas\.abchina\.com\.cn:441\/mgw\.htm$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/header.js, tag = ifflagged_myblockads
+http-response ^https:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\/ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/cloud139.js, requires-body = true, tag = ifflagged_myblockads
+http-response ^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/cloud139.js, requires-body = true, tag = ifflagged_myblockads
+# ifflagged_pinduoduo
+http-response ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/pdd.js, requires-body = true, tag = ifflagged_pinduoduo
+# ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/groups\/allgroups\/v2\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/(?:cardlist|page) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/comments\/build_comments\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/(?:container\/asyn|flowlist|flowpage) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/friendships\/(?:create|destroy) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/profile\/(?:container_timeline|dealatt|me|statuses\/tab|userinfo) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:container_timeline(?:_hot|_topic|_topicpage|_unread)?|unread_hot_timeline) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:extend|show) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/video\/tiny_stream_video_list\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/!\/huati\/discovery_home_bottom_channels\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/direct_messages\/user_list\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/messageflow\/notice\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/search\/(?:container_timeline|finder) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/api\.weibo\.cn\/2\/searchall\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+http-response ^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/list\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/weibo.js, requires-body = true, tag = ifflagged_weibo
+# ifflagged_xianyu
+http-response ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xianyu.js, requires-body = true, tag = ifflagged_xianyu
+http-response ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xianyu.js, requires-body = true, tag = ifflagged_xianyu
+http-response ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.circle\.list\/ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xianyu.js, requires-body = true, tag = ifflagged_xianyu
+http-response ^https:\/\/g-acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\/ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xianyu.js, requires-body = true, tag = ifflagged_xianyu
+# ifflagged_xiaohongshu
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/(?:note\/widgets|user\/followings\/followfeed) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true, tag = ifflagged_xiaohongshu
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v10\/search\/notes\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true, tag = ifflagged_xiaohongshu
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/system_service\/config\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true, tag = ifflagged_xiaohongshu
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/system_service\/splash_config script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true, tag = ifflagged_xiaohongshu
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/followfeed\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true, tag = ifflagged_xiaohongshu
+http-response https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v5\/recommend\/user\/follow_recommend\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true, tag = ifflagged_xiaohongshu
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v6\/homefeed\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true, tag = ifflagged_xiaohongshu
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/note\/feed|v3\/note\/videofeed) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true, tag = ifflagged_xiaohongshu
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/note\/(?:imagefeed|live_photo\/save) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true, tag = ifflagged_xiaohongshu
+# ifflagged_youtube
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|reel\/reel_watch_sequence|get_watch) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/youtube/request.js, requires-body = true, binary-body-mode = true, tag = ifflagged_youtube
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/youtube/response.js, requires-body = true, binary-body-mode = true, tag = ifflagged_youtube
 # luestr_DiDi_remove_ads
 http-response ^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me script-path = https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = luestr_DiDi_remove_ads
 http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core script-path = https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = luestr_DiDi_remove_ads
@@ -369,5 +736,5 @@ http-response ^https:\/\/pan\.baidu\.com\/rest\/.*\/membership\/user\?method=gam
 http-response ^https:\/\/pan\.baidu\.com\/feed\/cardinfos script-path= https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js, requires-body = true, tag = ddgksf2013_baiduCloud
 
 [MITM]
-hostname = *.zdmimg.com, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, afd.baidu.com, ams-cdn.cdtft.cn, api-sams.walmartmobile.cn, api.m.jd.com, api.mcd.cn, api.udache.com, app-api.smzdm.com, article-api.smzdm.com, baike-api.smzdm.com, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, daijia.kuaidadi.com, elemecdn.com, freight.xiaojukeji.com, fuss10.elemecdn.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, images.pinduoduo.com, nr-op.elemecdn.com, pan.baidu.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, res.xiaojukeji.com, s-api.smzdm.com, s3.zdmimg.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, user-api.smzdm.com, video-dsp.pddpic.com, www1.elecfans.com, zhiyou.m.smzdm.com
+hostname = *.m.goofish.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, *live.bilibili.com, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 2023.redircdn.com, acs-m.freshippo.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, afd.baidu.com, ams-cdn.cdtft.cn, ap*.bilibili.com, api-sams.walmartmobile.cn, api.coolapk.com, api.douban.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.udache.com, api.yangkeduo.com, app-api.smzdm.com, article-api.smzdm.com, baike-api.smzdm.com, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, daijia.kuaidadi.com, edith.xiaohongshu.com, elemecdn.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, gab.122.gov.cn, gateway.kugou.com, grpc.biliapi.net, guide-acs.m.taobao.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, image.mybank.icbc.com.cn, images.pinduoduo.com, img.meituan.net, img3.doubanio.com, jzts.cmpassport.com, list-app-m.i4.cn, m.bilibili.com, m5-zb.amap.com, m5.amap.com, member.alipan.com, mobile.12306.cn, mobilepaas.abchina.com.cn, mp.weixin.qq.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss.amap.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, res.xiaojukeji.com, rr*.googlevideo.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, user-api.smzdm.com, video-dsp.pddpic.com, wallet.95516.com, weibo.com, weixin110.qq.com, www.bilibili.com, www.washpayer.com, www.xiaohongshu.com, www1.elecfans.com, youtubei.googleapis.com, zhiyou.m.smzdm.com
 

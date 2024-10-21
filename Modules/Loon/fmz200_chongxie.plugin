@@ -152,7 +152,7 @@ http-response ^https?:\/\/cupid\.51job(app)?\.com\/open\/noauth\/recommend\/job-
 ^https:\/\/heic\.alicdn\.com\/imgextra\/i\d\/\d*\/?[\w!]+-\d-(octopus|tps-1125-1602|tps-1080-1920)\.(jp|pn)g_(1\d{3}|9\d{2})x(1\d{3}|9\d{2})q[59]0 reject-dict
 ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad reject-dict
 ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) reject-dict
-http-response ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/cainiao/cainiao.js, requires-body = true, tag = fmz200_chongxie
 http-response ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get) script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js, requires-body = true, tag = fmz200_chongxie
 http-response ^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/myBlockAds.js, requires-body = true, tag = fmz200_chongxie
 
@@ -511,13 +511,13 @@ http-response ^https?:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$ script-pat
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.adkeyword\.get\.cn reject-dict
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.cncommunity\.my\.station\.query\.cn reject-dict
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(batch\.show\.v2|index)\.cn reject-dict
-http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.m?show\.cn script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.m?show\.cn script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/cainiao/cainiao.js, requires-body = true, tag = fmz200_chongxie
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbopen\.miniapp\.recommend\.cpc\.cn reject-dict
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbmensa\.research\.researchservice\.(acquire|event|close)\.cn reject-dict
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.(homepage\.merge|tabbar\.marketing)\.get\.cn reject-dict
-http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.(pickup\.empty\.page|protocol\.homepage)\.get\.cn script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.(pickup\.empty\.page|protocol\.homepage)\.get\.cn script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/cainiao/cainiao.js, requires-body = true, tag = fmz200_chongxie
 # 消息中心
-http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.nbfriend\.message\.conversation\.list\.cn script-path= https://github.com/RuCu6/QuanX/raw/main/Scripts/cainiao.js, requires-body = true, tag = fmz200_chongxie
+http-response ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.nbfriend\.message\.conversation\.list\.cn script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/cainiao/cainiao.js, requires-body = true, tag = fmz200_chongxie
 # 发现页 数字角标 裹裹券
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.com\.cainiao\.cnactivitycenter reject-dict
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.com\.cainiao\.cncreditmarket\.hit\.getactivityhit\.cn reject-dict

@@ -86,7 +86,7 @@ jobs:
         echo "" >> Rulesets/README.md
         echo "## Sources" >> Rulesets/README.md
         echo "" >> Rulesets/README.md
-        for file in Rulesets-*.txt; do
+        for file in Links/Rulesets/Rulesets-*.txt; do
           while IFS= read -r url; do
             echo "- $(basename "$url"): [$url]" >> Rulesets/README.md
           done < "$file"

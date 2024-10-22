@@ -21,6 +21,7 @@ This directory contains converted modules from various sources, compatible with 
 - **SmzdmAds**: Converted from [ddgksf2013 SmzdmAds](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf)
 - **StartUp**: Converted from [ddgksf2013 StartUp](https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/StartUp.conf)
 - **chongxie**: Converted from [fmz200 chongxie](https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/chongxie.txt)
+- **cleanup**: Converted from [fmz200 cleanup](https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/rewrite/cleanup.snippet)
 - **Didichuxing**: Converted from [ZenmoFeiShi Didichuxing](https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.snippet)
 - **Pinduoduo**: Converted from [ZenmoFeiShi Pinduoduo](https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.snippet)
 - **Smzdm**: Converted from [ZenmoFeiShi Smzdm](https://github.com/ZenmoFeiShi/Qx/raw/main/Smzdm.snippet)
@@ -38,3 +39,5 @@ This directory contains converted modules from various sources, compatible with 
 - **tfsmy**: Converted from [zirawell tfsmy](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/T/%E5%A4%A9%E5%BA%9C%E5%B8%82%E6%B0%91%E4%BA%91/rewrite/tfsmy.conf)
 - **tft**: Converted from [zirawell tft](https://github.com/zirawell/R-Store/raw/main/Rule/QuanX/Adblock/App/T/%E5%A4%A9%E5%BA%9C%E9%80%9A/rewrite/tft.conf)
 - **baiduCloud**: Converted from [ddgksf2013 baiduCloud](https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js)
+- **fenliu**: Converted from [fmz200 fenliu](https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list)
+- **fenliuxiuzheng**: Converted from [fmz200 fenliuxiuzheng](https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliuxiuzheng.list)

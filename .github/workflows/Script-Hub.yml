@@ -1,5 +1,3 @@
-# https://github.com/QingRex/LoonKissSurge/blob/main/.github/workflows/scheduled_script.yml
-
 name: Scheduled Script Execution
 
 on:
@@ -9,7 +7,7 @@ on:
   push:
     paths:
       - '.github/workflows/Script-Hub.yml'  # 监听 GitHub Actions 工作流文件的变化
-      - 'Scripts/*.py'          # 监听 Scripts 文件夹下的 Python 文件
+      - 'Scripts/Script-Hub-*.py'          # 监听 Scripts 文件夹下的 Python 文件
 
 permissions:
   contents: write
@@ -47,9 +45,10 @@ jobs:
     - name: Check Docker logs for issues
       run: docker logs $(docker ps -q --filter ancestor=xream/script-hub:latest)
 
-    - name: Run Python script
+    - name: Run Python scripts
       run: |
         for script in Scripts/Script-Hub-*.py; do
+          echo "Running script: $script"
           python "$script"
         done
 

@@ -30,12 +30,25 @@ jobs:
           cp private-repo/Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin
           cp private-repo/Modules/Loon/Kelee/航旅纵横去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
 
+      - name: Verify copied files
+        run: |
+          echo "Files in Modules/Surge/Kelee:"
+          ls -l Modules/Surge/Kelee/
+          echo "Files in Modules/Loon/Kelee:"
+          ls -l Modules/Loon/Kelee/
+
+      - name: Check working directory
+        run: |
+          pwd
+          ls -R
+
       - name: Check for changes
         id: changes
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
           git add Modules/Surge/Kelee/高德地图去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Loon/Kelee/高德地图去广告.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
+          git status
           git diff --cached --quiet || echo "Changes detected"
 
       - name: Commit changes if any

@@ -40,8 +40,8 @@ def request_and_save_plugins(links_and_titles):
 
         response = requests.get(url)
         if response.status_code == 200:
-            # 保存返回的结果为 title.sgmodule
-            file_name = f"{title}.sgmodule"
+            # 保存返回的结果为 title.plugin
+            file_name = f"{title}.plugin"
             with open(file_name, 'w', encoding='utf-8') as file:
                 file.write(response.text)
             print(f"插件 {title} 已保存为 {file_name}")

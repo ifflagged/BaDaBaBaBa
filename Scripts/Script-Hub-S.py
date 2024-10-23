@@ -36,7 +36,7 @@ def extract_links_and_titles(md_file_path):
 def request_and_save_plugins(links_and_titles):
     for title, plugin_link in links_and_titles:
         # 构造请求URL
-        url = f"http://localhost:9101/file/_start_/{plugin_link}/_end_/Weibo_remove_ads.sgmodule.txt?type=loon-plugin&target=surge-module&sni=%20%2C%20&del=true&pm=REJECT&category=iKeLee"
+        url = f"http://localhost:9101/file/_start_/{plugin_link}/_end_/Weibo_remove_ads.sgmodule.txt?type=loon-plugin&target=surge-module&sni=%20%2C%20&del=true&pm=REJECT"
 
         response = requests.get(url)
         if response.status_code == 200:

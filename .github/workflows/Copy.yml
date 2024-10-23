@@ -19,13 +19,10 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKENS }}  # 使用你的 GitHub Token
           path: private-repo  # 临时路径
 
-      - name: List files in private repo
-        run: ls -R private-repo/
-
       - name: Copy specific files
         run: |
-          mkdir -p Modules/Surge/Kelee/
-          mkdir -p Modules/Loon/Kelee/
+          mkdir -p Modules/Surge/Kelee
+          mkdir -p Modules/Loon/Kelee
           cp private-repo/Modules/Surge/Kelee/高德地图去广告.sgmodule Modules/Surge/Kelee/高德地图去广告.sgmodule
           cp private-repo/Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule
           cp private-repo/Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule
@@ -38,13 +35,13 @@ jobs:
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git add Modules/Surge/Kelee/* Modules/Loon/Kelee/*
-          git diff --cached --quiet || echo "Changes detected" # 检查是否有更改
+          git add Modules/Surge/Kelee/高德地图去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Loon/Kelee/高德地图去广告.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
+          git diff --cached --quiet || echo "Changes detected"
 
       - name: Commit changes if any
         if: steps.changes.outputs.result == 'Changes detected'
         run: |
-          git commit -m "Update Some modules"
+          git commit -m "Update merged modules"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git
 
       - name: Send Telegram notification if changes were committed
@@ -52,9 +49,9 @@ jobs:
         run: |
           # 获取最近的提交中的更新文件
           if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
-            UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
+            UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/Surge/Kelee/ Modules/Loon/Kelee/)
           else
-            UPDATED_FILES=$(git diff --name-only HEAD Modules/)
+            UPDATED_FILES=$(git diff --name-only HEAD Modules/Surge/Kelee/ Modules/Loon/Kelee/)
           fi
 
           # 如果有更新文件，则发送通知

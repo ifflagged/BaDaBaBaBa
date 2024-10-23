@@ -23,10 +23,10 @@ jobs:
         run: |
           mkdir -p Modules/Surge/Kelee
           mkdir -p Modules/Loon/Kelee
-          cp private-repo/Modules/Surge/Kelee/高德地图去广告.sgmodule Modules/Surge/Kelee/高德地图去广告.sgmodule
+          cp private-repo/Modules/Surge/Kelee/广告平台拦截器.sgmodule Modules/Surge/Kelee/广告平台拦截器.sgmodule
           cp private-repo/Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule
           cp private-repo/Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule
-          cp private-repo/Modules/Loon/Kelee/高德地图去广告.plugin Modules/Loon/Kelee/高德地图去广告.plugin
+          cp private-repo/Modules/Loon/Kelee/广告平台拦截器.plugin Modules/Loon/Kelee/广告平台拦截器.plugin
           cp private-repo/Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin
           cp private-repo/Modules/Loon/Kelee/航旅纵横去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
 
@@ -42,7 +42,7 @@ jobs:
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git add Modules/Surge/Kelee/高德地图去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Loon/Kelee/高德地图去广告.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
+          git add Modules/Surge/Kelee/广告平台拦截器.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Loon/Kelee/广告平台拦截器.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
           git status
           if git diff --cached --quiet; then
             echo "No changes detected."

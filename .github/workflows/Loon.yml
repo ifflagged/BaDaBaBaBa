@@ -18,7 +18,7 @@ jobs:
           curl -H "Referer: https://www.nsloon.com" -o Test/BlockAdvertisers.plugin https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin
           
       - name: Upload Plugin
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # 更新为 v3
         with:
           name: BlockAdvertisers.plugin
           path: Test/BlockAdvertisers.plugin

@@ -37,11 +37,6 @@ jobs:
           echo "Files in Modules/Loon/Kelee:"
           ls -l Modules/Loon/Kelee/
 
-      - name: Check working directory
-        run: |
-          pwd
-          ls -R
-
       - name: Check for changes
         id: changes
         run: |
@@ -49,16 +44,22 @@ jobs:
           git config --local user.email "qibo.sign@outlook.com"
           git add Modules/Surge/Kelee/高德地图去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Loon/Kelee/高德地图去广告.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
           git status
-          git diff --cached --quiet || echo "Changes detected"
+          if git diff --cached --quiet; then
+            echo "No changes detected."
+            echo "changes=false" >> $GITHUB_ENV
+          else
+            echo "Changes detected."
+            echo "changes=true" >> $GITHUB_ENV
+          fi
 
       - name: Commit changes if any
-        if: steps.changes.outputs.result == 'Changes detected'
+        if: env.changes == 'true'
         run: |
           git commit -m "Update merged modules"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git
 
       - name: Send Telegram notification if changes were committed
-        if: steps.changes.outputs.result == 'Changes detected'
+        if: env.changes == 'true'
         run: |
           # 获取最近的提交中的更新文件
           if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then

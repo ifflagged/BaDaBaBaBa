@@ -21,8 +21,8 @@ jobs:
 
       - name: Copy specific files
         run: |
-          mkdir -p Modules/Surge
-          mkdir -p Modules/Loon
+          mkdir -p Modules/Surge/Kelee/
+          mkdir -p Modules/Loon/Kelee/
           cp private-repo/Modules/Surge/Kelee/高德地图去广告.sgmodule Modules/Surge/Kelee/高德地图去广告.sgmodule
           cp private-repo/Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule
           cp private-repo/Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule

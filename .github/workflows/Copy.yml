@@ -19,6 +19,9 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKENS }}  # 使用你的 GitHub Token
           path: private-repo  # 临时路径
 
+      - name: List files in private repo
+        run: ls -R private-repo
+
       - name: Copy specific files
         run: |
           mkdir -p Modules/Surge

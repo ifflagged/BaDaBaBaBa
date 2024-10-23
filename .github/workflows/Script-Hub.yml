@@ -1,3 +1,5 @@
+# https://github.com/QingRex/LoonKissSurge/blob/main/.github/workflows/scheduled_script.yml
+
 name: Scheduled Script Execution
 
 on:

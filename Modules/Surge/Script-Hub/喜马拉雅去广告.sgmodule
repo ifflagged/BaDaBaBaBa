@@ -2,14 +2,14 @@
 #!desc=过滤喜马拉雅广告
 #!author=佚名
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Himalaya.png
-#!category=iKeLee
+#!keyword=iKeLee
 #!openUrl=https://apps.apple.com/app/id876336838
 #!tag=去广告
 #!loon_version=3.2.1(749)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
 #!date=2023-10-29 13:48:55
 
-[URL Rewrite]
+[Rewrite]
 # 修复轮播广告失效
 ^https?:\/\/.*\.xima.*\.com\/discovery-feed\/focus\/queryF - reject
 # 播放页直播
@@ -49,20 +49,20 @@
 
 [Script]
 # 首页顶部去除直播
-移除首页直播推广 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/customCategories, script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true
+http-response ^https?:\/\/.*\.xima.*\.com\/discovery-category\/customCategories script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true, tag=移除首页直播推广
 
 # 屏蔽首页横幅广告
-移除首页横幅广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/focus-mobile\/focusPic, script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true
+http-response ^https?:\/\/.*\.xima.*\.com\/focus-mobile\/focusPic script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true, tag=移除首页横幅广告
 
 # 屏蔽首页动态广告
-移除首页动态广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/discovery-feed\/v\d\/mix, script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true
+http-response ^https?:\/\/.*\.xima.*\.com\/discovery-feed\/v\d\/mix script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true, tag=移除首页动态广告
 
 # 屏蔽标签页滚动广告
-移除标签页滚动广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/discovery-category\/v\d/category, script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true
+http-response ^https?:\/\/.*\.xima.*\.com\/discovery-category\/v\d/category script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true, tag=移除标签页滚动广告
 
 # 去除我的页面广告标签
-移除我的页面广告 = type=http-response, pattern=^https?:\/\/.*\.xima.*\.com\/mobile-user\/v\d\/homePage, script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true
+http-response ^https?:\/\/.*\.xima.*\.com\/mobile-user\/v\d\/homePage script-path=https://kelee.one/Resource/Script/Himalaya/Himalaya_remove_ads.js, requires-body=true, tag=移除我的页面广告
 
 [MITM]
-hostname = %APPEND% *.xima*.*, *.xmcdn.*
+hostname = *.xima*.*, *.xmcdn.*
 

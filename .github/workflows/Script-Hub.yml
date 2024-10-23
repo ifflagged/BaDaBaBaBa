@@ -2,7 +2,7 @@
 
 name: Scheduled Script Execution
 
-on:
+#on:
 #  schedule:
 #    - cron: '0 19 * * *'  # 每天早上3点（上海时间）
 #    - cron: '0 8 * * *'    # 每天下午4点（上海时间）

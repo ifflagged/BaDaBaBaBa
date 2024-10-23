@@ -1,13 +1,15 @@
-# Didichuxing // common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*,116.85.2.*, 116.85.3.*, 139.199.240.84,
+# Didichuxing // common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, 162.14.157.*, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*,116.85.2.*, 116.85.3.*, 139.199.240.84,
 /*
 #!name = 滴滴出行
 #!author = 怎么肥事
-#!update = 2024-09-08 21:09
+#!update = 2024-10-22 21:56
 #! ps = 需要分流禁用掉以下ip地址⬇️
 IP-CIDR, 123.207.209.39/32, reject, no-resolve
 IP-CIDR, 123.207.209.60/32, reject, no-resolve
 IP-CIDR, 139.199.240.12/32, reject, no-resolve
 IP-CIDR, 116.85.3.37/32, reject, no-resolve
+IP-CIDR, 162.14.157.2/32, reject, no-resolve
+IP-CIDR, 162.14.157.24/32, reject, no-resolve
 群友EDDA分享
 IP-CIDR, 139.199.240.15/32, reject, no-resolve
 */
@@ -24,8 +26,8 @@ http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core script-pat
 http-response ^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = ZenmoFeiShi_Didichuxing
 http-response ^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = ZenmoFeiShi_Didichuxing
 http-response ^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = ZenmoFeiShi_Didichuxing
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/other\/slow reject-dict
 
 
 
-
-Hostname = common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*,116.85.2.*, 116.85.3.*, 139.199.240.84
+Hostname = common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, 162.14.157.*, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*,116.85.2.*, 116.85.3.*, 139.199.240.84

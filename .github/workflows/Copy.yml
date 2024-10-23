@@ -29,9 +29,9 @@ jobs:
           cp private-repo/Modules/Surge/Kelee/高德地图去广告.sgmodule Modules/Surge/Kelee/高德地图去广告.sgmodule
           cp private-repo/Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule
           cp private-repo/Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule
-          cp private-repo/Modules/Loon/Kelee/高德地图去广告.plugin Modules/Surge/Kelee/高德地图去广告.plugin
-          cp private-repo/Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Surge/Kelee/滴滴出行去广告.plugin
-          cp private-repo/Modules/Loon/Kelee/航旅纵横去广告.plugin Modules/Surge/Kelee/航旅纵横去广告.plugin
+          cp private-repo/Modules/Loon/Kelee/高德地图去广告.plugin Modules/Loon/Kelee/高德地图去广告.plugin
+          cp private-repo/Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin
+          cp private-repo/Modules/Loon/Kelee/航旅纵横去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
 
       - name: Check for changes
         id: changes

@@ -65,8 +65,10 @@ jobs:
 
     - name: Upload generated files to repository
       run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "ifflagged"
+        git config --local user.email "qibo.sign@outlook.com"
+#        git config --global user.name "github-actions[bot]"
+#        git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git restore README.md
         git add Modules/*/Script-Hub/*
 

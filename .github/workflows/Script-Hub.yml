@@ -2,10 +2,11 @@
 
 name: Scheduled Script Execution
 
-#on:
+on:
 #  schedule:
 #    - cron: '0 19 * * *'  # 每天早上3点（上海时间）
 #    - cron: '0 8 * * *'    # 每天下午4点（上海时间）
+  workflow_dispatch:     # 手动触发
 #  push:
 #    paths:
 #      - '.github/workflows/Script-Hub.yml'  # 监听 GitHub Actions 工作流文件的变化

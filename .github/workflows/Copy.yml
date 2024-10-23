@@ -23,12 +23,12 @@ jobs:
         run: |
           mkdir -p Modules/Surge
           mkdir -p Modules/Loon
-          cp private-repo/Modules/Surge/Kelee/%E5%B9%BF%E5%91%8A%E5%B9%B3%E5%8F%B0%E6%8B%A6%E6%88%AA%E5%99%A8.sgmodule Modules/Surge/Kelee/%E5%B9%BF%E5%91%8A%E5%B9%B3%E5%8F%B0%E6%8B%A6%E6%88%AA%E5%99%A8.sgmodule
-          cp private-repo/Modules/Surge/Kelee/%E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A.sgmodule Modules/Surge/Kelee/%E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A.sgmodule
-          cp private-repo/Modules/Surge/Kelee/%E8%88%AA%E6%97%85%E7%BA%B5%E6%A8%AA%E5%8E%BB%E5%B9%BF%E5%91%8A.sgmodule Modules/Surge/Kelee/%E8%88%AA%E6%97%85%E7%BA%B5%E6%A8%AA%E5%8E%BB%E5%B9%BF%E5%91%8A.sgmodule
-          cp private-repo/Modules/Loon/Kelee/%E5%B9%BF%E5%91%8A%E5%B9%B3%E5%8F%B0%E6%8B%A6%E6%88%AA%E5%99%A8.plugin Modules/Surge/Kelee/%E5%B9%BF%E5%91%8A%E5%B9%B3%E5%8F%B0%E6%8B%A6%E6%88%AA%E5%99%A8.plugin
-          cp private-repo/Modules/Loon/Kelee/%E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A.plugin Modules/Surge/Kelee/%E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A.plugin
-          cp private-repo/Modules/Loon/Kelee/%E8%88%AA%E6%97%85%E7%BA%B5%E6%A8%AA%E5%8E%BB%E5%B9%BF%E5%91%8A.plugin Modules/Surge/Kelee/%E8%88%AA%E6%97%85%E7%BA%B5%E6%A8%AA%E5%8E%BB%E5%B9%BF%E5%91%8A.plugin
+          cp private-repo/Modules/Surge/Kelee/高德地图去广告.sgmodule Modules/Surge/Kelee/高德地图去广告.sgmodule
+          cp private-repo/Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule
+          cp private-repo/Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule
+          cp private-repo/Modules/Loon/Kelee/高德地图去广告.plugin Modules/Surge/Kelee/高德地图去广告.plugin
+          cp private-repo/Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Surge/Kelee/滴滴出行去广告.plugin
+          cp private-repo/Modules/Loon/Kelee/航旅纵横去广告.plugin Modules/Surge/Kelee/航旅纵横去广告.plugin
 
       - name: Check for changes
         id: changes

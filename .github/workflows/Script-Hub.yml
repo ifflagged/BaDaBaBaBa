@@ -67,7 +67,6 @@ jobs:
       run: |
         git config --local user.name "ifflagged"
         git config --local user.email "qibo.sign@outlook.com"
-        git restore README.md
         git add Modules/*/Script-Hub/*
 
         if git diff --cached --quiet; then

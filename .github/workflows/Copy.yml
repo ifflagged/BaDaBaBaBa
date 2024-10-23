@@ -26,7 +26,43 @@ jobs:
           cp private-repo/Modules/Surge/Tools.sgmodule Modules/Surge/Tools.sgmodule
           cp private-repo/Modules/Loon/Tools.plugin Modules/Loon/Tools.plugin
 
-      - name: List copied files
+      - name: Check for changes
+        id: changes
         run: |
-          ls Modules/Surge
-          ls Modules/Loon
+          git config --local user.name "ifflagged"
+          git config --local user.email "qibo.sign@outlook.com"
+          git add Modules/Surge/Tools.sgmodule Modules/Loon/Tools.plugin
+          git diff --cached --quiet || echo "Changes detected" # 检查是否有更改
+
+      - name: Commit changes if any
+        if: steps.changes.outputs.result == 'Changes detected'
+        run: |
+          git commit -m "Update merged modules"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git
+
+      - name: Send Telegram notification if changes were committed
+        if: steps.changes.outputs.result == 'Changes detected'
+        run: |
+          # 获取最近的提交中的更新文件
+          if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
+            UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
+          else
+            UPDATED_FILES=$(git diff --name-only HEAD Modules/)
+          fi
+
+          # 如果有更新文件，则发送通知
+          if [ -n "$UPDATED_FILES" ]; then
+            MESSAGE="The following files have been updated:\n"
+            GITHUB_URL="https://github.com/ifflagged/BaDaBaBaBa/blob/main/"
+            while read -r file; do
+              file_url="${GITHUB_URL}${file}"
+              MESSAGE="${MESSAGE}[${file}](${file_url})\n"
+            done <<< "$UPDATED_FILES"
+
+            curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
+              -d chat_id=${{ secrets.TG_ID }} \
+              -d text="$(echo -e "$MESSAGE")" \
+              -d parse_mode=Markdown
+          else
+            echo "No files were updated, no notification sent."
+          fi

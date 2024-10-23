@@ -38,7 +38,7 @@ jobs:
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git add .
+          git add Modules/Surge/Kelee/* Modules/Loon/Kelee/*
           git diff --cached --quiet || echo "Changes detected" # 检查是否有更改
 
       - name: Commit changes if any

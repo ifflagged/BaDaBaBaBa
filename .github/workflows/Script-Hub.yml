@@ -1,0 +1,101 @@
+name: Scheduled Script Execution
+
+on:
+  schedule:
+    - cron: '0 19 * * *'  # 每天早上3点（上海时间）
+    - cron: '0 8 * * *'    # 每天下午4点（上海时间）
+  push:
+    paths:
+      - '.github/workflows/Script-Hub.yml'  # 监听 GitHub Actions 工作流文件的变化
+      - 'Scripts/*.py'          # 监听 Scripts 文件夹下的 Python 文件
+
+permissions:
+  contents: write
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: xream/script-hub:latest
+        ports:
+          - 9100:9100
+          - 9101:9101
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install requests
+
+    - name: Wait for Docker service to be ready
+      run: sleep 10
+
+    - name: Check Docker service status
+      run: docker ps -a
+
+    - name: Check Docker logs for issues
+      run: docker logs $(docker ps -q --filter ancestor=xream/script-hub:latest)
+
+    - name: Run Python script
+      run: |
+        for script in Scripts/Script-Hub-*.py; do
+          python "$script"
+        done
+
+    - name: Move generated files to appropriate folder
+      run: |
+        if [ -f "Scripts/Script-Hub-S.py" ]; then
+          mkdir -p Modules/Surge/Script-Hub
+          mv *.sgmodule Modules/Surge/Script-Hub/
+        elif [ -f "Scripts/Script-Hub-L.py" ]; then
+          mkdir -p Modules/Loon/Script-Hub
+          mv *.plugin Modules/Loon/Script-Hub/
+        fi
+
+    - name: Upload generated files to repository
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git restore README.md
+        git add Modules/*/Script-Hub/*
+
+        if git diff --cached --quiet; then
+          echo "No changes detected"
+        else
+          git commit -m "Add generated plugin files to appropriate folders"
+          git push
+        fi
+
+    - name: Send TG Notification
+      run: |
+        if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
+          UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
+        else
+          UPDATED_FILES=$(git diff --name-only HEAD Modules/)
+        fi
+
+        if [ -n "$UPDATED_FILES" ]; then
+          MESSAGE="The following files have been updated:\n"
+          GITHUB_URL="https://github.com/ifflagged/BaDaBaBaBa/blob/main/"
+          while read -r file; do
+            display_name=$(echo "$file" | sed 's/Modules\///')
+            file_url="${GITHUB_URL}${file}"
+            MESSAGE="${MESSAGE}[${display_name}](${file_url})\n"
+          done <<< "$UPDATED_FILES"
+
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.TG_ID }} \
+            -d text="$(echo -e "$MESSAGE")" \
+            -d parse_mode=Markdown
+        else
+          echo "No files were updated, no notification sent."
+        fi

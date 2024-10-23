@@ -193,213 +193,251 @@ DOMAIN-SUFFIX, biz.weibo.com, REJECT
 AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, %E9%97%B2%E9%B1%BC*)), REJECT
 # ifflagged_xiaohongshu
 AND, ((PROTOCOL, UDP), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
-# luestr_BlockAdvertisers
-AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
-AND, ((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)), REJECT
-AND, ((DOMAIN-KEYWORD, ssdk-), (DOMAIN-SUFFIX, pangle.io)), REJECT
-AND, ((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
-AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -short.bytetos.com)), REJECT
-AND, ((DOMAIN-KEYWORD, v), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
-AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
-AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJECT
-AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
-AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
-AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
-AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT //误杀
-AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
-AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
-AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
-AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -access-), (DOMAIN-SUFFIX, pangle.io)), REJECT
-AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -log-), (DOMAIN-SUFFIX, pangle.io)), REJECT
-AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -dual-event-), (DOMAIN-SUFFIX, pangle.io)), REJECT
-AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
-AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
-URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
-DOMAIN, mon.zijieapi.com, REJECT
-DOMAIN, i.snssdk.com, REJECT
-DOMAIN, is.snssdk.com, REJECT
-DOMAIN, bds.snssdk.com, REJECT
-DOMAIN, dm.bytedance.com, REJECT
-DOMAIN, dm.pstatp.com, REJECT
-DOMAIN, dm.toutiao.com, REJECT
-DOMAIN, log.snssdk.com, REJECT
-DOMAIN, s3a.pstatp.com, REJECT
-DOMAIN, sdfp.snssdk.com, REJECT
-DOMAIN, tosv.boe.byted.org, REJECT
-DOMAIN, tosv.byted.org, REJECT
-DOMAIN, extlog.snssdk.com, REJECT
-DOMAIN, mssdk-bu.bytedance.com, REJECT
-DOMAIN, toblog.ctobsnssdk.com, REJECT
-DOMAIN, mssdk.volces.com, REJECT
-DOMAIN, pangolin.snssdk.com, REJECT
-DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
-DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
-DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
-DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
-DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
-DOMAIN-KEYWORD, iflyad.bj.openstorage.cn, REJECT
-DOMAIN-KEYWORD, bjimp.voiceads.cn, REJECT
-DOMAIN, sdk.1rtb.net, REJECT
-DOMAIN, cdn.1rtb.com, REJECT
-DOMAIN, adx.halomobi.com, REJECT
-DOMAIN, api.htp.hubcloud.com.cn, REJECT
-DOMAIN, res1.hubcloud.com.cn, REJECT
-DOMAIN, sdktmp.hubcloud.com.cn, REJECT
-DOMAIN, v.adx.hubcloud.com.cn, REJECT
-DOMAIN, config.inmobi.cn, REJECT
-DOMAIN, ztoken.uyunad.com, REJECT
-DOMAIN, st.appsad.cn, REJECT
-DOMAIN, sdk.beizi.biz, REJECT
-DOMAIN, api-htp.beizi.biz, REJECT
-DOMAIN, admaster.com.cn, REJECT
-DOMAIN, monitor.ssp.admobile.top, REJECT
-DOMAIN, sdk.ssp.admobile.top, REJECT
-DOMAIN, ax.admobile.top, REJECT
-DOMAIN, jump.admobile.top, REJECT
-DOMAIN-SUFFIX, admobile.top, REJECT
-DOMAIN, api-c.dutils.com, REJECT
-DOMAIN, api-d.dutils.com, REJECT
-DOMAIN, api-p0.yksdks.com, REJECT
-DOMAIN, cache-verify.dutils.com, REJECT
-DOMAIN, cdn-api-verify.dutils.com, REJECT
-DOMAIN, devs-data.dutils.com, REJECT
-DOMAIN, log-verify.dutils.com, REJECT
-DOMAIN, m.mpl.dutils.com, REJECT
-DOMAIN, api.share.mob.com, REJECT
-DOMAIN, api.verify.mob.com, REJECT
-DOMAIN, log-verify.mob.com, REJECT
-DOMAIN, sdk.push.mob.com, REJECT
-DOMAIN, ali-stats.jpush.cn, REJECT
-DOMAIN, ce3e75d5.jpush.cn, REJECT
-DOMAIN, config-junion.jpush.cn, REJECT
-DOMAIN, config.jpush.cn, REJECT
-DOMAIN, fcapi-ipv6.jpush.cn, REJECT
-DOMAIN, gd-stats.jpush.cn, REJECT
-DOMAIN, s.jpush.cn, REJECT
-DOMAIN, sdk.verification.jiguang.cn, REJECT
-DOMAIN, sis-ipv6.jpush.cn, REJECT
-DOMAIN, smartop-sdkapi.jiguang.cn, REJECT
-DOMAIN, status-ipv6.jpush.cn, REJECT
-DOMAIN, tsis.jpush.cn, REJECT
-DOMAIN, user.jpush.cn, REJECT
-DOMAIN-SUFFIX, jiguang.cn, REJECT
-DOMAIN-SUFFIX, jpush.cn, REJECT
-DOMAIN-SUFFIX, jpush.io, REJECT
-DOMAIN, als.baidu.com, REJECT
-DOMAIN, bgg.baidu.com, REJECT
-DOMAIN, cpro.baidustatic.com, REJECT
-DOMAIN, feed-image.baidu.com, REJECT
-DOMAIN, click-bes.baidu.com, REJECT
-DOMAIN, eclick.baidu.com, REJECT
-DOMAIN, mobads-logs.baidu.com, REJECT
-DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
-DOMAIN, nadvideo2.baidu.com, REJECT
-DOMAIN, wn.pos.baidu.com, REJECT
-DOMAIN, miniapp-ad.cdn.bcebos.com, REJECT
-DOMAIN-SUFFIX, union.baidu.cn, REJECT
-DOMAIN-SUFFIX, union.baidu.com, REJECT
-DOMAIN, adsmind.ugdtimg.com, REJECT
-DOMAIN, c2.gdt.qq.com, REJECT
-DOMAIN, huatuocode.huatuo.qq.com, REJECT
-DOMAIN, ios.bugly.qq.com, REJECT
-DOMAIN, mi.gdt.qq.com, REJECT
-DOMAIN, qzs.gdtimg.com, REJECT
-DOMAIN, qzs.qq.com, REJECT
-DOMAIN, rmonitor.qq.com, REJECT
-DOMAIN, sdkconfig.video.qq.com, REJECT
-DOMAIN, t.gdt.qq.com, REJECT
-DOMAIN, v.gdt.qq.com, REJECT
-DOMAIN, v2.gdt.qq.com, REJECT
-DOMAIN, win.gdt.qq.com, REJECT
-DOMAIN, wup.imtt.qq.com, REJECT
-DOMAIN, tpstelemetry.tencent.com, REJECT
-DOMAIN, ii.gdt.qq.com, REJECT
-DOMAIN-SUFFIX, ugdtimg.com, REJECT
-DOMAIN-SUFFIX, openinstall.io, REJECT
-DOMAIN, b-gtc.getui.net, REJECT
-DOMAIN, c-gtc.getui.net, REJECT
-DOMAIN, c-hzgt2.getui.com, REJECT
-DOMAIN, c-ido.getui.net, REJECT
-DOMAIN, dnms.getui.com, REJECT
-DOMAIN, ido.getui.net, REJECT
-DOMAIN, sdk-conf.getui.com, REJECT
-DOMAIN, sdk-open-phone.getui.com, REJECT
-DOMAIN-SUFFIX, mobileservice.cn, REJECT
-DOMAIN-SUFFIX, getui.com, REJECT
-DOMAIN-SUFFIX, igexin.com, REJECT
-DOMAIN, cnlogs.umeng.com, REJECT
-DOMAIN, errlog.umeng.com, REJECT
-DOMAIN, errnewlog.umeng.com, REJECT
-DOMAIN, ucc.umeng.com, REJECT
-DOMAIN, ulogs.umeng.com, REJECT
-DOMAIN, utoken.umeng.com, REJECT
-DOMAIN, deeplink.umeng.com, REJECT
-DOMAIN, aspect-upush.umeng.com, REJECT
-DOMAIN, plbslog.umeng.com, REJECT
-DOMAIN, log.umtrack.com, REJECT
-DOMAIN, aaid.umeng.com, REJECT
-DOMAIN, log.umsns.com, REJECT
-DOMAIN, sdk.tianmu.mobi, REJECT
-DOMAIN, tracker.tianmu.mobi, REJECT
-DOMAIN, e-u1.ubixioe.com, REJECT
-DOMAIN, sdk-data.ubixioe.com, REJECT
-DOMAIN, tower.ubixioe.com, REJECT
-DOMAIN, tx-cfg-u1.ubixioe.com, REJECT
-DOMAIN, tx-data-u1.ubixioe.com, REJECT
-DOMAIN, beacon-api.aliyuncs.com, REJECT
-DOMAIN, adash.man.aliyuncs.com, REJECT
-DOMAIN, applog.uc.cn, REJECT
-AND, ((DOMAIN-KEYWORD, adash), (DOMAIN-SUFFIX, ut.taobao.com)), REJECT
-DOMAIN, nex.163.com, REJECT
-DOMAIN, iad.g.163.com, REJECT
-DOMAIN, adx-bj.anythinktech.com, REJECT
-DOMAIN, api.anythinktech.com, REJECT
-DOMAIN, tk.anythinktech.com, REJECT
-DOMAIN, da.anythinktech.com, REJECT
-DOMAIN, gorgon.youdao.com, REJECT
-DOMAIN, al-log.d.meituan.net, REJECT
-DOMAIN, babel-statistics-android.d.meituan.net, REJECT
-DOMAIN, route-stats.d.meituan.net, REJECT
-DOMAIN, im-x.jd.com, REJECT
-DOMAIN, xlog.jd.com, REJECT
-DOMAIN, api.mosspf.com, REJECT
-DOMAIN, da.mosspf.com, REJECT
-DOMAIN, mores.toponad.com, REJECT
-DOMAIN, api.toponadss.com, REJECT
-DOMAIN, da.toponadss.com, REJECT
-DOMAIN, tk.toponadss.com, REJECT
-DOMAIN, adx-os.toponadss.com, REJECT
-DOMAIN, mores.motowoo.com, REJECT
-DOMAIN-SUFFIX, motowoo.com, REJECT
-DOMAIN, guide2.bianxianmao.com, REJECT
-DOMAIN, caid.adintl.cn, REJECT
-DOMAIN, sv.adintl.cn, REJECT
-DOMAIN, v.adintl.cn, REJECT
-DOMAIN, oss.cdn.adintl.cn, REJECT
-DOMAIN, adx.adtaipo.com, REJECT
-DOMAIN, adx.yixin.im, REJECT
-DOMAIN, adx.kuaiyiad.com, REJECT
-DOMAIN, adreport.adtianmai.com, REJECT
-DOMAIN, adxapi.readgps.com, REJECT
-DOMAIN, t.fanglinad.com, REJECT
-DOMAIN, trk1.17admob.com, REJECT
-DOMAIN, nfy.slyxmobi.com, REJECT
-DOMAIN, api.mobrtb.com, REJECT
-DOMAIN, ssp.maplehaze.cn, REJECT
-DOMAIN-SUFFIX, lnk0.com, REJECT
-DOMAIN, tk.bridgeoos.com, REJECT
-DOMAIN, da.bridgeoos.com, REJECT
-DOMAIN, api.bridgeoos.com, REJECT
-DOMAIN, adx-os.bridgeoos.com, REJECT
-DOMAIN, adx-sg-req.bridgeoos.com, REJECT
-DOMAIN-SUFFIX, bridgeoos.com, REJECT
-# luestr_DiDi_remove_ads
-DOMAIN, hd.xiaojukeji.com, REJECT
-DOMAIN, gwp.xiaojukeji.com, REJECT
+# %E5%B9%BF%E5%91%8A%E5%B9%B3%E5%8F%B0%E6%8B%A6%E6%88%AA%E5%99%A8
+AND, ((DOMAIN-KEYWORD, -ad-,extended-matching), (DOMAIN-SUFFIX, byteimg.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, -ttam-,extended-matching), (DOMAIN-SUFFIX, ibyteimg.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, ssdk-,extended-matching), (DOMAIN-SUFFIX, pangle.io,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, pangolin,extended-matching), (DOMAIN-SUFFIX, sgsnssdk.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, lf,extended-matching), (DOMAIN-KEYWORD, -short.bytetos.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, v,extended-matching), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, sf,extended-matching), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, s,extended-matching), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, sf,extended-matching), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, sf,extended-matching), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, sf,extended-matching), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, if,extended-matching), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, if,extended-matching), (DOMAIN-KEYWORD, -analytics.bytescm.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, lf,extended-matching), (DOMAIN-KEYWORD, -analytics.bytescm.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, ads,extended-matching), (DOMAIN-KEYWORD, normal,extended-matching), (DOMAIN-SUFFIX, zijieapi.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, api,extended-matching), (DOMAIN-KEYWORD, -access-,extended-matching), (DOMAIN-SUFFIX, pangle.io,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, api,extended-matching), (DOMAIN-KEYWORD, -log-,extended-matching), (DOMAIN-SUFFIX, pangle.io,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, api,extended-matching), (DOMAIN-KEYWORD, -dual-event-,extended-matching), (DOMAIN-SUFFIX, pangle.io,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, api,extended-matching), (DOMAIN-KEYWORD, pangolin,extended-matching), (DOMAIN-SUFFIX, sgsnssdk.com,extended-matching)), REJECT,pre-matching
+AND, ((DOMAIN-KEYWORD, ads,extended-matching), (DOMAIN-KEYWORD, -normal-lq,extended-matching), (DOMAIN-SUFFIX, zijieapi.com,extended-matching)), REJECT,pre-matching
+URL-REGEX,^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/,REJECT,extended-matching
+DOMAIN,mon.zijieapi.com,REJECT,extended-matching,pre-matching
+DOMAIN,lf-ad-ies.bytecdn.cn,REJECT,extended-matching,pre-matching
+DOMAIN,i.snssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN,is.snssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN,bds.snssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN,dm.bytedance.com,REJECT,extended-matching,pre-matching
+DOMAIN,dm.pstatp.com,REJECT,extended-matching,pre-matching
+DOMAIN,dm.toutiao.com,REJECT,extended-matching,pre-matching
+DOMAIN,log.snssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN,s3a.pstatp.com,REJECT,extended-matching,pre-matching
+DOMAIN,sdfp.snssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN,tosv.boe.byted.org,REJECT,extended-matching,pre-matching
+DOMAIN,tosv.byted.org,REJECT,extended-matching,pre-matching
+DOMAIN,extlog.snssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN,mssdk-bu.bytedance.com,REJECT,extended-matching,pre-matching
+DOMAIN,toblog.ctobsnssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN,mssdk.volces.com,REJECT,extended-matching,pre-matching
+DOMAIN,pangolin.snssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN,gromore.pangolin-sdk-toutiao.com,REJECT,extended-matching,pre-matching
+DOMAIN,ether-pack.pangolin-sdk-toutiao.com,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,-ad-sign.byteimg.com,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,api-access.pangolin-sdk-toutiao,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,log-api.pangolin-sdk-toutiao,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,-ad.byteoversea.com,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,video-cn.snssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,asiad.byteactivity,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,iflyad.bj.openstorage.cn,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,bjimp.voiceads.cn,REJECT,extended-matching,pre-matching
+DOMAIN,sdk.1rtb.net,REJECT,extended-matching,pre-matching
+DOMAIN,cdn.1rtb.com,REJECT,extended-matching,pre-matching
+DOMAIN,adx.halomobi.com,REJECT,extended-matching,pre-matching
+DOMAIN,api.htp.hubcloud.com.cn,REJECT,extended-matching,pre-matching
+DOMAIN,res1.hubcloud.com.cn,REJECT,extended-matching,pre-matching
+DOMAIN,sdktmp.hubcloud.com.cn,REJECT,extended-matching,pre-matching
+DOMAIN,v.adx.hubcloud.com.cn,REJECT,extended-matching,pre-matching
+DOMAIN,config.inmobi.cn,REJECT,extended-matching,pre-matching
+DOMAIN,ztoken.uyunad.com,REJECT,extended-matching,pre-matching
+DOMAIN,aaid.uyunad.com,REJECT,extended-matching,pre-matching
+DOMAIN,gdfp.gifshow.com,REJECT,extended-matching,pre-matching
+DOMAIN,open.e.kuaishou.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,adukwai.com,REJECT,extended-matching,pre-matching
+DOMAIN,init.supersonicads.com,REJECT,extended-matching,pre-matching
+DOMAIN,st.appsad.cn,REJECT,extended-matching,pre-matching
+DOMAIN,sdk.beizi.biz,REJECT,extended-matching,pre-matching
+DOMAIN,api-htp.beizi.biz,REJECT,extended-matching,pre-matching
+DOMAIN,admaster.com.cn,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,miaozhen.com,REJECT,extended-matching,pre-matching
+DOMAIN,monitor.ssp.admobile.top,REJECT,extended-matching,pre-matching
+DOMAIN,sdk.ssp.admobile.top,REJECT,extended-matching,pre-matching
+DOMAIN,ax.admobile.top,REJECT,extended-matching,pre-matching
+DOMAIN,jump.admobile.top,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,admobile.top,REJECT,extended-matching,pre-matching
+DOMAIN,api-c.dutils.com,REJECT,extended-matching,pre-matching
+DOMAIN,api-d.dutils.com,REJECT,extended-matching,pre-matching
+DOMAIN,api-p0.yksdks.com,REJECT,extended-matching,pre-matching
+DOMAIN,cache-verify.dutils.com,REJECT,extended-matching,pre-matching
+DOMAIN,cdn-api-verify.dutils.com,REJECT,extended-matching,pre-matching
+DOMAIN,devs-data.dutils.com,REJECT,extended-matching,pre-matching
+DOMAIN,log-verify.dutils.com,REJECT,extended-matching,pre-matching
+DOMAIN,m.mpl.dutils.com,REJECT,extended-matching,pre-matching
+DOMAIN,api.share.mob.com,REJECT,extended-matching,pre-matching
+DOMAIN,api.verify.mob.com,REJECT,extended-matching,pre-matching
+DOMAIN,log-verify.mob.com,REJECT,extended-matching,pre-matching
+DOMAIN,sdk.push.mob.com,REJECT,extended-matching,pre-matching
+DOMAIN,ali-stats.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,ce3e75d5.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,config-junion.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,config.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,fcapi-ipv6.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,gd-stats.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,s.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,sdk.verification.jiguang.cn,REJECT,extended-matching,pre-matching
+DOMAIN,sis-ipv6.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,smartop-sdkapi.jiguang.cn,REJECT,extended-matching,pre-matching
+DOMAIN,status-ipv6.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,tsis.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN,user.jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,jiguang.cn,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,jpush.cn,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,jpush.io,REJECT,extended-matching,pre-matching
+DOMAIN,als.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,bgg.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,cpro.baidustatic.com,REJECT,extended-matching,pre-matching
+DOMAIN,feed-image.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,click-bes.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,eclick.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,mobads-logs.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,mobads-pre-config.cdn.bcebos.com,REJECT,extended-matching,pre-matching
+DOMAIN,mobads.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,nadvideo2.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,wn.pos.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,miniapp-ad.cdn.bcebos.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,union.baidu.cn,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,union.baidu.com,REJECT,extended-matching,pre-matching
+DOMAIN,adsmind.gdtimg.com,REJECT,extended-matching,pre-matching
+DOMAIN,adsmind.ugdtimg.com,REJECT,extended-matching,pre-matching
+DOMAIN,c2.gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,huatuocode.huatuo.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,info4.video.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,info6.video.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,ios.bugly.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,ios.video.mpush.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,mi.gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,otheve.beacon.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,pgdt.gtimg.cn,REJECT,extended-matching,pre-matching
+DOMAIN,pgdt.ugdtimg.com,REJECT,extended-matching,pre-matching
+DOMAIN,qzs.gdtimg.com,REJECT,extended-matching,pre-matching
+DOMAIN,qzs.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,rmonitor.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,sdk.e.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,sdkconfig.video.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,t.gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,tmead.y.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,tmeadbak.y.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,tmeadcomm.y.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,tpns.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,v.gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,v2.gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,win.gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,wup.imtt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,tpstelemetry.tencent.com,REJECT,extended-matching,pre-matching
+DOMAIN,ii.gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,trace.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,trace.video.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,l.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,ugdtimg.com,REJECT,extended-matching,pre-matching
+IP-CIDR,47.110.187.87/32,REJECT,no-resolve,pre-matching
+DOMAIN-SUFFIX,openinstall.io,REJECT,extended-matching,pre-matching
+DOMAIN,b-gtc.getui.net,REJECT,extended-matching,pre-matching
+DOMAIN,c-gtc.getui.net,REJECT,extended-matching,pre-matching
+DOMAIN,c-hzgt2.getui.com,REJECT,extended-matching,pre-matching
+DOMAIN,c-ido.getui.net,REJECT,extended-matching,pre-matching
+DOMAIN,dnms.getui.com,REJECT,extended-matching,pre-matching
+DOMAIN,ido.getui.net,REJECT,extended-matching,pre-matching
+DOMAIN,sdk-conf.getui.com,REJECT,extended-matching,pre-matching
+DOMAIN,sdk-open-phone.getui.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,mobileservice.cn,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,getui.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,igexin.com,REJECT,extended-matching,pre-matching
+DOMAIN,cnlogs.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,errlog.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,errnewlog.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,ucc.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,ulogs.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,utoken.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,deeplink.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,aspect-upush.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,plbslog.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,log.umtrack.com,REJECT,extended-matching,pre-matching
+DOMAIN,aaid.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,log.umsns.com,REJECT,extended-matching,pre-matching
+DOMAIN,adtracker.adfunlink.com,REJECT,extended-matching,pre-matching
+DOMAIN,sdk.tianmu.mobi,REJECT,extended-matching,pre-matching
+DOMAIN,tracker.tianmu.mobi,REJECT,extended-matching,pre-matching
+DOMAIN,e-u1.ubixioe.com,REJECT,extended-matching,pre-matching
+DOMAIN,sdk-data.ubixioe.com,REJECT,extended-matching,pre-matching
+DOMAIN,tower.ubixioe.com,REJECT,extended-matching,pre-matching
+DOMAIN,tx-cfg-u1.ubixioe.com,REJECT,extended-matching,pre-matching
+DOMAIN,tx-data-u1.ubixioe.com,REJECT,extended-matching,pre-matching
+DOMAIN,ossgw.alicdn.com,REJECT,extended-matching,pre-matching
+DOMAIN,ems.youku.com,REJECT,extended-matching,pre-matching
+DOMAIN,hudong.alicdn.com,REJECT,extended-matching,pre-matching
+DOMAIN,et.tanx.com,REJECT,extended-matching,pre-matching
+DOMAIN,beacon-api.aliyuncs.com,REJECT,extended-matching,pre-matching
+DOMAIN,adash.man.aliyuncs.com,REJECT,extended-matching,pre-matching
+DOMAIN,applog.uc.cn,REJECT,extended-matching,pre-matching
+AND, ((DOMAIN-KEYWORD, adash,extended-matching), (DOMAIN-SUFFIX, ut.taobao.com,extended-matching)), REJECT,pre-matching
+DOMAIN,nex.163.com,REJECT,extended-matching,pre-matching
+DOMAIN,iad.g.163.com,REJECT,extended-matching,pre-matching
+DOMAIN,adx-bj.anythinktech.com,REJECT,extended-matching,pre-matching
+DOMAIN,api.anythinktech.com,REJECT,extended-matching,pre-matching
+DOMAIN,tk.anythinktech.com,REJECT,extended-matching,pre-matching
+DOMAIN,da.anythinktech.com,REJECT,extended-matching,pre-matching
+DOMAIN,gorgon.youdao.com,REJECT,extended-matching,pre-matching
+DOMAIN,sdkconfig.ad.xiaomi.com,REJECT,extended-matching,pre-matching
+DOMAIN,al-log.d.meituan.net,REJECT,extended-matching,pre-matching
+DOMAIN,babel-statistics-android.d.meituan.net,REJECT,extended-matching,pre-matching
+DOMAIN,maplocatesdksnapshot.d.meituan.net,REJECT,extended-matching,pre-matching
+DOMAIN,metrics-picture.d.meituan.net,REJECT,extended-matching,pre-matching
+DOMAIN,route-stats.d.meituan.net,REJECT,extended-matching,pre-matching
+DOMAIN,dsp-x.jd.com,REJECT,extended-matching,pre-matching
+DOMAIN,im-x.jd.com,REJECT,extended-matching,pre-matching
+DOMAIN,xlog.jd.com,REJECT,extended-matching,pre-matching
+DOMAIN,janapi.jd.com,REJECT,extended-matching,pre-matching
+DOMAIN,api.mosspf.com,REJECT,extended-matching,pre-matching
+DOMAIN,da.mosspf.com,REJECT,extended-matching,pre-matching
+DOMAIN,mores.toponad.com,REJECT,extended-matching,pre-matching
+DOMAIN,api.toponadss.com,REJECT,extended-matching,pre-matching
+DOMAIN,da.toponadss.com,REJECT,extended-matching,pre-matching
+DOMAIN,tk.toponadss.com,REJECT,extended-matching,pre-matching
+DOMAIN,adx-os.toponadss.com,REJECT,extended-matching,pre-matching
+DOMAIN,mores.motowoo.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,motowoo.com,REJECT,extended-matching,pre-matching
+DOMAIN,guide2.bianxianmao.com,REJECT,extended-matching,pre-matching
+DOMAIN,caid.adintl.cn,REJECT,extended-matching,pre-matching
+DOMAIN,sv.adintl.cn,REJECT,extended-matching,pre-matching
+DOMAIN,v.adintl.cn,REJECT,extended-matching,pre-matching
+DOMAIN,oss.cdn.adintl.cn,REJECT,extended-matching,pre-matching
+DOMAIN,adx.adtaipo.com,REJECT,extended-matching,pre-matching
+DOMAIN,adx.yixin.im,REJECT,extended-matching,pre-matching
+DOMAIN,adx.kuaiyiad.com,REJECT,extended-matching,pre-matching
+DOMAIN,adreport.adtianmai.com,REJECT,extended-matching,pre-matching
+DOMAIN,adxapi.readgps.com,REJECT,extended-matching,pre-matching
+DOMAIN,t.fanglinad.com,REJECT,extended-matching,pre-matching
+DOMAIN,trk1.17admob.com,REJECT,extended-matching,pre-matching
+DOMAIN,nfy.slyxmobi.com,REJECT,extended-matching,pre-matching
+DOMAIN,api.mobrtb.com,REJECT,extended-matching,pre-matching
+DOMAIN,ssp.maplehaze.cn,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,lnk0.com,REJECT,extended-matching,pre-matching
+DOMAIN,tk.bridgeoos.com,REJECT,extended-matching,pre-matching
+DOMAIN,da.bridgeoos.com,REJECT,extended-matching,pre-matching
+DOMAIN,api.bridgeoos.com,REJECT,extended-matching,pre-matching
+DOMAIN,adx-os.bridgeoos.com,REJECT,extended-matching,pre-matching
+DOMAIN,adx-sg-req.bridgeoos.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,bridgeoos.com,REJECT,extended-matching,pre-matching
+# %E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A
+DOMAIN,hd.xiaojukeji.com,REJECT,extended-matching,pre-matching
+DOMAIN,gwp.xiaojukeji.com,REJECT,extended-matching,pre-matching
 AND, ((IP-ASN, 45090, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
 AND, ((IP-ASN, 63646, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
-# luestr_Umetrip_remove_ads
-URL-REGEX, ^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native, REJECT
+# %E8%88%AA%E6%97%85%E7%BA%B5%E6%A8%AA%E5%8E%BB%E5%B9%BF%E5%91%8A
+URL-REGEX,^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native,REJECT,extended-matching
 # zirawell_dianPing
 DOMAIN, dpmtpush.dianping.com, REJECT
 DOMAIN, dynamicf.sankuai.com, REJECT
@@ -535,19 +573,11 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/hot_list$ response-body-json-replace data.items []
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/hint response-body-json-replace data.hint_words []
 ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/trending\? response-body-json-replace data.queries [] data.hint_word {}
-# luestr_BlockAdvertisers
-^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
+# %E5%B9%BF%E5%91%8A%E5%B9%B3%E5%8F%B0%E6%8B%A6%E6%88%AA%E5%99%A8
+^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ - reject
 ^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union - reject
-^https:\/\/images\.pinduoduo\.com\/mrk\/ reject
-^https:\/\/images\.pinduoduo\.com\/marketing_api\/ reject
-# luestr_DiDi_remove_ads
-^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget - reject
-^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds - reject
-^https:\/\/daijia\.kuaidadi\.com\/gateway - reject
-^https:\/\/freight\.xiaojukeji\.com\/gateway - reject
-^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget - reject
-^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast - reject
-^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf - reject
+^https:\/\/images\.pinduoduo\.com\/mrk\/ - reject
+^https:\/\/images\.pinduoduo\.com\/marketing_api\/ - reject
 # Yuheng0101_NoAds
 ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject
 # ZenmoFeiShi_Smzdm
@@ -600,6 +630,15 @@ IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 [Map Local]
 # Tools
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
+# %E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget data-type=text data="{}" status-code=200
+^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds data-type=text data="{}" status-code=200
+^https:\/\/daijia\.kuaidadi\.com\/gateway data-type=text data="{}" status-code=200
+^https:\/\/freight\.xiaojukeji\.com\/gateway data-type=text data="{}" status-code=200
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget data-type=text data="{}" status-code=200
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast data-type=text data="{}" status-code=200
+^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf data-type=text data="{}" status-code=200
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/other\/slow data-type=text data="{}" status-code=200
 
 [Script]
 # Tools
@@ -698,14 +737,14 @@ ifflagged_xiaohongshu = type=http-response,pattern=https:\/\/edith\.xiaohongshu\
 ifflagged_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v6\/homefeed\?,script-path=https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true
 ifflagged_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/note\/feed|v3\/note\/videofeed),script-path=https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true
 ifflagged_xiaohongshu = type=http-response,pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/note\/(?:imagefeed|live_photo\/save),script-path=https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/xiaohongshu.js, requires-body = true
-# luestr_DiDi_remove_ads
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
-luestr_DiDi_remove_ads = type=http-response,pattern=^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true
-# luestr_Umetrip_remove_ads
-luestr_Umetrip_remove_ads = type=http-response,pattern=^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$,script-path=https://github.com/luestr/ProxyResource/raw/main/Resource/Script/Umetrip/Umetrip_remove_ads.js
+# %E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A
+移除广告 = type=http-response, pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
+移除广告 = type=http-response, pattern=^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
+移除广告 = type=http-response, pattern=^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
+移除广告 = type=http-response, pattern=^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
+移除广告 = type=http-response, pattern=^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
+# %E8%88%AA%E6%97%85%E7%BA%B5%E6%A8%AA%E5%8E%BB%E5%B9%BF%E5%91%8A
+移除首页广告 = type=http-response, pattern=^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$, script-path=https://kelee.one/Resource/Script/Umetrip/Umetrip_remove_ads.js
 # Yuheng0101_NoAds
 Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$,requires-body=1,script-path=https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js
 Yuheng0101_NoAds = type=http-response,pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/newTopPullSecond\/getNewTopPullList,requires-body=1,script-path=https://github.com/Yuheng0101/X/raw/main/Scripts/ChinaMobile/NoAds.js
@@ -742,4 +781,5 @@ ddgksf2013_baiduCloud = type=http-response,pattern=^https:\/\/pan\.baidu\.com\/r
 ddgksf2013_baiduCloud = type=http-response,pattern=^https:\/\/pan\.baidu\.com\/feed\/cardinfos,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js
 
 [MITM]
-hostname = %APPEND% *.m.goofish.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, *live.bilibili.com, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 2023.redircdn.com, acs-m.freshippo.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, afd.baidu.com, ams-cdn.cdtft.cn, ap*.bilibili.com, api-sams.walmartmobile.cn, api.coolapk.com, api.douban.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.revenuecat.com, api.udache.com, api.yangkeduo.com, app-api.smzdm.com, article-api.smzdm.com, baike-api.smzdm.com, boxjs.com, boxjs.net, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, daijia.kuaidadi.com, edith.xiaohongshu.com, elemecdn.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, gab.122.gov.cn, gateway.kugou.com, grpc.biliapi.net, guide-acs.m.taobao.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, image.mybank.icbc.com.cn, images.pinduoduo.com, img.meituan.net, img3.doubanio.com, ios.prod.ftl.netflix.com, jzts.cmpassport.com, list-app-m.i4.cn, m.bilibili.com, m5-zb.amap.com, m5.amap.com, mb3admin.com, member.alipan.com, mobile.12306.cn, mobilepaas.abchina.com.cn, mp.weixin.qq.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss.amap.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, res.xiaojukeji.com, router.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, user-api.smzdm.com, video-dsp.pddpic.com, wallet.95516.com, weibo.com, weixin110.qq.com, www.bilibili.com, www.router.com, www.washpayer.com, www.xiaohongshu.com, www.zhihu.com, www1.elecfans.com, youtubei.googleapis.com, zhiyou.m.smzdm.com, zhuanlan.zhihu.com
+hostname = %APPEND% *.m.goofish.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, *live.bilibili.com, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 162.14.157.*, 2023.redircdn.com, acs-m.freshippo.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, afd.baidu.com, ams-cdn.cdtft.cn, ap*.bilibili.com, api-sams.walmartmobile.cn, api.coolapk.com, api.douban.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.revenuecat.com, api.udache.com, api.yangkeduo.com, app-api.smzdm.com, article-api.smzdm.com, baike-api.smzdm.com, boxjs.com, boxjs.net, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, daijia.kuaidadi.com, edith.xiaohongshu.com, elemecdn.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, gab.122.gov.cn, gateway.kugou.com, grpc.biliapi.net, guide-acs.m.taobao.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, image.mybank.icbc.com.cn, images.pinduoduo.com, img.meituan.net, img3.doubanio.com, ios.prod.ftl.netflix.com, jzts.cmpassport.com, list-app-m.i4.cn, m.bilibili.com, m5-zb.amap.com, m5.amap.com, mb3admin.com, member.alipan.com, mobile.12306.cn, mobilepaas.abchina.com.cn, mp.weixin.qq.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss.amap.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, res.xiaojukeji.com, router.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, user-api.smzdm.com, video-dsp.pddpic.com, wallet.95516.com, weibo.com, weixin110.qq.com, www.bilibili.com, www.router.com, www.washpayer.com, www.xiaohongshu.com, www.zhihu.com, www1.elecfans.com, youtubei.googleapis.com, zhiyou.m.smzdm.com, zhuanlan.zhihu.com
+

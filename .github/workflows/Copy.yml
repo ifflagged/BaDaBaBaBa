@@ -1,0 +1,32 @@
+name: Get Specific Files from Private Repo
+
+on:
+  schedule:
+    - cron: '0 22 * * *' # 每天执行一次
+  workflow_dispatch:     # 手动触发
+
+jobs:
+  get-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v2
+
+      - name: Checkout the private repository
+        uses: actions/checkout@v2
+        with:
+          repository: ifflagged/ShalalaLala  # 私有库的路径
+          token: ${{ secrets.PERSONAL_TOKENS }}  # 使用你的 GitHub Token
+          path: private-repo  # 临时路径
+
+      - name: Copy specific files
+        run: |
+          mkdir -p Modules/Surge
+          mkdir -p Modules/Loon
+          cp private-repo/Modules/Surge/Tools.sgmodule Modules/Surge/Tools.sgmodule
+          cp private-repo/Modules/Loon/Tools.plugin Modules/Loon/Tools.plugin
+
+      - name: List copied files
+        run: |
+          ls Modules/Surge
+          ls Modules/Loon

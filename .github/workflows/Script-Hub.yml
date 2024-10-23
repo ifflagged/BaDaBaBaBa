@@ -1,3 +1,5 @@
+# https://github.com/QingRex/LoonKissSurge/blob/main/.github/workflows/scheduled_script.yml
+
 name: Scheduled Script Execution
 
 on:
@@ -54,13 +56,10 @@ jobs:
 
     - name: Move generated files to appropriate folder
       run: |
-        if [ -f "Scripts/Script-Hub-S.py" ]; then
           mkdir -p Modules/Surge/Script-Hub
           mv *.sgmodule Modules/Surge/Script-Hub/
-        elif [ -f "Scripts/Script-Hub-L.py" ]; then
           mkdir -p Modules/Loon/Script-Hub
           mv *.plugin Modules/Loon/Script-Hub/
-        fi
 
     - name: Upload generated files to repository
       run: |

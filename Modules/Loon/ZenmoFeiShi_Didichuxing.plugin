@@ -13,7 +13,8 @@ IP-CIDR, 162.14.157.24/32, reject, no-resolve
 群友EDDA分享
 IP-CIDR, 139.199.240.15/32, reject, no-resolve
 */
-
+# 小程序首页横幅
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/getMulti\? reject-dict
 ^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget reject-dict
 ^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds reject-dict
 ^https:\/\/freight\.xiaojukeji\.com\/gateway reject-dict

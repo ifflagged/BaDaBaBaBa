@@ -693,7 +693,7 @@ https://top-widgets-api.xiaozujian.com/api/ad/config - reject
 # > tangdong
 ^https?:\/\/td\.cgmcare\.cn\/api\/ad - reject
 # > taobao
-^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.splash\.awesome\.get - reject
+;^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.splash\.awesome\.get - reject
 # > tianmao
 ^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.fc\.resource\.tacdata\.get - reject
 # > tuantuanjiayou

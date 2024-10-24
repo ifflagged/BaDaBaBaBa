@@ -23,12 +23,12 @@ jobs:
         run: |
           mkdir -p Modules/Surge/Kelee
           mkdir -p Modules/Loon/Kelee
-          cp private-repo/Modules/Surge/Kelee/广告平台拦截器.sgmodule Modules/Surge/Kelee/广告平台拦截器.sgmodule
-          cp private-repo/Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule
-          cp private-repo/Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule
-          cp private-repo/Modules/Loon/Kelee/广告平台拦截器.plugin Modules/Loon/Kelee/广告平台拦截器.plugin
-          cp private-repo/Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin
-          cp private-repo/Modules/Loon/Kelee/航旅纵横去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
+          cp private-repo/Modules/Surge/Kelee/BlockAdvertisers.sgmodule Modules/Surge/Kelee/BlockAdvertisers.sgmodule
+          cp private-repo/Modules/Surge/Kelee/DiDi_remove_ads.sgmodule Modules/Surge/Kelee/DiDi_remove_ads.sgmodule
+          cp private-repo/Modules/Surge/Kelee/Umetrip_remove_ads.sgmodule Modules/Surge/Kelee/Umetrip_remove_ads.sgmodule
+          cp private-repo/Modules/Loon/Kelee/BlockAdvertisers.plugin Modules/Loon/Kelee/BlockAdvertisers.plugin
+          cp private-repo/Modules/Loon/Kelee/DiDi_remove_ads.plugin Modules/Loon/Kelee/DiDi_remove_ads.plugin
+          cp private-repo/Modules/Loon/Kelee/Umetrip_remove_ads.plugin Modules/Loon/Kelee/Umetrip_remove_ads.plugin
 
       - name: Verify copied files
         run: |
@@ -42,7 +42,7 @@ jobs:
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git add Modules/Surge/Kelee/广告平台拦截器.sgmodule Modules/Surge/Kelee/滴滴出行去广告.sgmodule Modules/Surge/Kelee/航旅纵横去广告.sgmodule Modules/Loon/Kelee/广告平台拦截器.plugin Modules/Loon/Kelee/滴滴出行去广告.plugin Modules/Loon/Kelee/航旅纵横去广告.plugin
+          git add Modules/Surge/Kelee/lee/*
           git status
           if git diff --cached --quiet; then
             echo "No changes detected."

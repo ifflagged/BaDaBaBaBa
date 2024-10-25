@@ -37,7 +37,11 @@ jobs:
           ls -l Modules/Loon/
           echo "Files in Modules/Shadowrocket:"
           ls -l Modules/Shadowrocket/
-
+          
+      - name: Remove private-repo folder
+        run: |
+          rm -rf private-repo
+          
       - name: Check for changes
         id: changes
         run: |

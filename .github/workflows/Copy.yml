@@ -25,9 +25,9 @@ jobs:
           mkdir -p Modules/Surge
           mkdir -p Modules/Loon
           mkdir -p Modules/Shadowrocket
-          cp private-repo/Modules/Surge/*.sgmodule Modules/Surge/*.sgmodule
-          cp private-repo/Modules/Loon/*.plugin Modules/Loon/*.plugin
-          cp private-repo/Modules/Shadowrocket/*.srmodule Modules/Shadowrocket/*.srmodule
+          cp private-repo/Modules/Surge/*.sgmodule Modules/Surge/
+          cp private-repo/Modules/Loon/*.plugin Modules/Loon/
+          cp private-repo/Modules/Shadowrocket/*.srmodule Modules/Shadowrocket/
 
       - name: Verify copied files
         run: |

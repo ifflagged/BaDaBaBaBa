@@ -1,5 +1,5 @@
 #!name=  Merged BiliBili
-#!desc= Merger BiliBili for Surge & Shadowrocket
+#!desc= Merger BiliBili for Surge
 #!category= Jacob
 #!arguments= Host.Akamaized:upos-sz-mirrorali.bilivideo.com,Host.BStar:upos-sz-mirrorali.bilivideo.com,Host.PCDN:upos-sz-mirrorali.bilivideo.com,Host.MCDN:proxy-tf-all-ws.bilivideo.com
 #!arguments-desc= # BiliBili\nHost.Akamaized: 重定向港澳台 CDN 主机名\nHost.BStar: 重定向国际版 CDN 主机名\nHost.PCDN: 重定向 PCDN 主机名\nHost.MCDN: 重定向 MCDN 主机名

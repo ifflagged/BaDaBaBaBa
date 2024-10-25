@@ -1,19 +1,14 @@
-#!name= Merged Tools
+#!name=  Merged Tools
 #!desc= Merger Tools for Shadowrocket
 #!category= Jacob
-#!arguments= YouTube 屏蔽上传按钮:true,YouTube 屏蔽选段按钮:true,YouTube 字幕翻译语言:zh-Hans,YouTube 歌词翻译语言:zh-Hans,YouTube 脚本执行引擎:auto,YouTube 启用调试模式:false, 屏蔽上传按钮:true,屏蔽选段按钮:true,字幕翻译语言:zh-Hans,歌词翻译语言:zh-Hans,脚本执行引擎:auto,启用调试模式:false
-#!arguments-desc= # Tools\n- YouTube 屏蔽参数：[true, false] \n- YouTube 翻译参数：[语言代码, off] \n- YouTube 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志\n\n# Maasea_YouTube\n- 屏蔽参数：[true, false] \n- 翻译参数：[语言代码, off] \n- 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志
+#!arguments= 屏蔽上传按钮:true,屏蔽选段按钮:true,字幕翻译语言:zh-Hans,歌词翻译语言:zh-Hans,脚本执行引擎:auto,启用调试模式:false
+#!arguments-desc= # Maasea_YouTube\n- 屏蔽参数：[true, false] \n- 翻译参数：[语言代码, off] \n- 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志
 
 [General]
-# Tools
-force-http-engine-hosts=%APPEND% router.com, www.router.com
 # Bilibili_remove_ads
 force-http-engine-hosts = %APPEND% :8000
 
 [Rule]
-# Tools
-AND, ((DOMAIN-SUFFIX, googlevideo.com), (PROTOCOL, UDP)), REJECT
-AND, ((DOMAIN, youtubei.googleapis.com), (PROTOCOL, UDP)), REJECT
 # ifflagged_myblockads
 DOMAIN, ad.12306.cn, DIRECT
 DOMAIN-SUFFIX, ut.taobao.com, REJECT
@@ -428,6 +423,8 @@ IP-CIDR, 39.97.128.148/32, REJECT, no-resolve
 URL-REGEX, ^http:\/\/api\.weibo\.cn\/2\/httpdns\/config, REJECT
 URL-REGEX, ^http:\/\/api\.weibo\.cn\/httpdns\/config, REJECT
 # Maasea_YouTube
+AND, ((DOMAIN-SUFFIX, googlevideo.com), (PROTOCOL, UDP)), REJECT
+AND, ((DOMAIN, youtubei.googleapis.com), (PROTOCOL, UDP)), REJECT
 # zirawell_dianPing
 DOMAIN, dpmtpush.dianping.com, REJECT
 DOMAIN, dynamicf.sankuai.com, REJECT
@@ -437,10 +434,6 @@ IP-CIDR, 101.32.16.204/32, REJECT
 IP-CIDR, 119.29.126.137/32, REJECT
 
 [URL Rewrite]
-# Tools
-^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising - reject
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getWidgetV1052 - reject
-^https?://(|www\.)router\.com http://{{{GATEWAY_ADDRESS}}} 302
 # ifflagged_myblockads
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
 ^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders - reject
@@ -543,8 +536,6 @@ IP-CIDR, 119.29.126.137/32, REJECT
 ^https?:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams - reject-dict
 
 [Map Local]
-# Tools
-^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
 # Amap_remove_ads
 ^https:\/\/m5\.amap\.com\/ws\/aos\/main\/page\/product\/list\? data-type=text data="{}" status-code=200
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? data-type=text data="{}" status-code=200
@@ -632,16 +623,6 @@ IP-CIDR, 119.29.126.137/32, REJECT
 ^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(reward|uvead)\? data-type=text data="{}" status-code=200
 
 [Script]
-# Tools
-BoxJs = type=http-request,pattern=https?:\/\/boxjs\.(com|net),requires-body=1,script-path=https://github.com/chavyleung/scripts/raw/master/box/chavy.boxjs.js
-EmbyPremiere = type=http-response,pattern=^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice,requires-body=1,max-size=0,script-path=https://github.com/rartv/SurgeScript/raw/main/EmbyPremiere/EmbyPremiere.js
-Netflix Rating = type=http-request,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://github.com/yichahucha/surge/raw/master/nf_rating.js
-Netflix Rating = type=http-response,requires-body=1,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://github.com/yichahucha/surge/raw/master/nf_rating.js
-Netflix Rating for single episode = type=http-response,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/warmer/.+type=show-ath,requires-body=1,max-size=0,script-path=https://github.com/yichahucha/surge/raw/master/nf_rating_season.js
-Unlock SparkMail = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/(\$RCAnonymousID%)?(\w)*$),requires-body=1,max-size=0,script-path=https://github.com/89996462/Quantumult-X/raw/main/ycdz/SparkMail.js
-YouTube Request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine={{{YouTube 脚本执行引擎}}},script-path=https://github.com/Maasea/sgmodule/raw/master/Script/Youtube/dist/youtube.request.preview.js
-YouTube Response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine={{{YouTube 脚本执行引擎}}},script-path=https://github.com/Maasea/sgmodule/raw/master/Script/Youtube/dist/youtube.response.preview.js,argument="{"lyricLang":"{{{YouTube 歌词翻译语言}}}","captionLang":"{{{YouTube 字幕翻译语言}}}","blockUpload":{{{YouTube 屏蔽上传按钮}}},"immersive":{{{YouTube 屏蔽选段按钮}}},"debug":{{{YouTube 启用调试模式}}}}"
-Look directly for Zhihu = type=http-response,pattern=https://(www\.zhihu\.com/question|zhuanlan\.zhihu\.com/p)/,requires-body=1,max-size=0,script-path=https://github.com/id77/QuantumultX/raw/master/Script/zhihu.js
 # ifflagged_myblockads
 ifflagged_myblockads = type=http-request,pattern=^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$,script-path=https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/12306.js, requires-body = true
 ifflagged_myblockads = type=http-response,pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$,script-path=https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/header.js
@@ -787,5 +768,5 @@ http-response ^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner scri
 http-response ^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/replace-body.js, requires-body=true, timeout=30, tag=replaceBody, argument=officialAdvertResultVo-%3Erandom-response
 
 [MITM]
-hostname = %APPEND% *.weibo.cn, *.weibo.com, *api.alipan.com, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 162.14.157.*, 180.76.76.112, 180.76.76.200, 2023.redircdn.com, acs-m.freshippo.com, acs.m.goofish.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, api.bilibili.com, api.coolapk.com, api.douban.com, api.live.bilibili.com, api.m.jd.com, api.m.mi.com, api.pinduoduo.com, api.revenuecat.com, api.udache.com, api.yangkeduo.com, app.bilibili.com, boxjs.com, boxjs.net, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, daijia.kuaidadi.com, edith.xiaohongshu.com, flowplus.meituan.net, freight.xiaojukeji.com, g-acs.m.goofish.com, gab.122.gov.cn, gateway.kugou.com, grpc.biliapi.net, guide-acs.m.taobao.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, image.mybank.icbc.com.cn, images.pinduoduo.com, img.meituan.net, img3.doubanio.com, ios.prod.ftl.netflix.com, jzts.cmpassport.com, list-app-m.i4.cn, live.bilibili.com, m.bilibili.com, m5-zb.amap.com, m5.amap.com, mb3admin.com, member.alipan.com, mobile.12306.cn, mobilepaas.abchina.com.cn, mp.weixin.qq.com, osg-service.sgcc.com.cn, oss.amap.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, qnmob3.doubanio.com, res.xiaojukeji.com, router.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, wallet.95516.com, weibo.com, weixin110.qq.com, www.bilibili.com, www.google.cn, www.router.com, www.washpayer.com, www.xiaohongshu.com, www.zhihu.com, youtubei.googleapis.com, zhuanlan.zhihu.com
+hostname = %APPEND% *.weibo.cn, *.weibo.com, *api.alipan.com, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 162.14.157.*, 180.76.76.112, 180.76.76.200, 2023.redircdn.com, acs-m.freshippo.com, acs.m.goofish.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, api.bilibili.com, api.coolapk.com, api.douban.com, api.live.bilibili.com, api.m.jd.com, api.m.mi.com, api.pinduoduo.com, api.udache.com, api.yangkeduo.com, app.bilibili.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, daijia.kuaidadi.com, edith.xiaohongshu.com, flowplus.meituan.net, freight.xiaojukeji.com, g-acs.m.goofish.com, gab.122.gov.cn, gateway.kugou.com, grpc.biliapi.net, guide-acs.m.taobao.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, image.mybank.icbc.com.cn, images.pinduoduo.com, img.meituan.net, img3.doubanio.com, jzts.cmpassport.com, list-app-m.i4.cn, live.bilibili.com, m.bilibili.com, m5-zb.amap.com, m5.amap.com, member.alipan.com, mobile.12306.cn, mobilepaas.abchina.com.cn, mp.weixin.qq.com, osg-service.sgcc.com.cn, oss.amap.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, qnmob3.doubanio.com, res.xiaojukeji.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, wallet.95516.com, weibo.com, weixin110.qq.com, www.bilibili.com, www.google.cn, www.washpayer.com, www.xiaohongshu.com
 

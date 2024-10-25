@@ -2,8 +2,9 @@ name: Get Specific Files from Private Repo
 
 on:
   schedule:
-    - cron: '0 22 * * *' # 每天执行一次
-  workflow_dispatch:     # 手动触发
+    - cron: '0 23 * * *'    # 每天早上7点（上海时间）
+    - cron: '0 13 * * *'    # 每天下午9点（上海时间）
+  workflow_dispatch:       # Manual trigger
 
 jobs:
   get-files:
@@ -21,21 +22,21 @@ jobs:
 
       - name: Copy specific files
         run: |
-          mkdir -p Modules/Surge/Kelee
-          mkdir -p Modules/Loon/Kelee
-          cp private-repo/Modules/Surge/Kelee/BlockAdvertisers.sgmodule Modules/Surge/Kelee/BlockAdvertisers.sgmodule
-          cp private-repo/Modules/Surge/Kelee/DiDi_remove_ads.sgmodule Modules/Surge/Kelee/DiDi_remove_ads.sgmodule
-          cp private-repo/Modules/Surge/Kelee/Umetrip_remove_ads.sgmodule Modules/Surge/Kelee/Umetrip_remove_ads.sgmodule
-          cp private-repo/Modules/Loon/Kelee/BlockAdvertisers.plugin Modules/Loon/Kelee/BlockAdvertisers.plugin
-          cp private-repo/Modules/Loon/Kelee/DiDi_remove_ads.plugin Modules/Loon/Kelee/DiDi_remove_ads.plugin
-          cp private-repo/Modules/Loon/Kelee/Umetrip_remove_ads.plugin Modules/Loon/Kelee/Umetrip_remove_ads.plugin
+          mkdir -p Modules/Surge
+          mkdir -p Modules/Loon
+          mkdir -p Modules/Shadowrocket
+          cp private-repo/Modules/Surge/Tools.sgmodule Modules/Surge/Tools.sgmodule
+          cp private-repo/Modules/Loon/Tools.plugin Modules/Loon/Tools.plugin
+          cp private-repo/Modules/Shadowrocket/Tools.sgmodule Modules/Shadowrocket/Tools.sgmodule
 
       - name: Verify copied files
         run: |
-          echo "Files in Modules/Surge/Kelee:"
-          ls -l Modules/Surge/Kelee/
-          echo "Files in Modules/Loon/Kelee:"
-          ls -l Modules/Loon/Kelee/
+          echo "Files in Modules/Surge:"
+          ls -l Modules/Surge/
+          echo "Files in Modules/Loon:"
+          ls -l Modules/Loon/
+          echo "Files in Modules/Shadowrocket:"
+          ls -l Modules/Shadowrocket/
 
       - name: Check for changes
         id: changes
@@ -63,9 +64,9 @@ jobs:
         run: |
           # 获取最近的提交中的更新文件
           if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
-            UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/Surge/Kelee/ Modules/Loon/Kelee/)
+            UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
           else
-            UPDATED_FILES=$(git diff --name-only HEAD Modules/Surge/Kelee/ Modules/Loon/Kelee/)
+            UPDATED_FILES=$(git diff --name-only HEAD Modules/)
           fi
 
           # 如果有更新文件，则发送通知

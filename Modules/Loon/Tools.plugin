@@ -3,9 +3,17 @@
 #!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]
 #!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Social_Media/Apple.png
 
-[General]
-# Bilibili_remove_ads
-force-http-engine-hosts = :8000
+[Argument]
+# Spotify
+Types = input,"Translate,External",tag=[歌词]启用类型（多选）,desc=请选择要添加的歌词选项，如果为多选，则会自动决定提供的歌词类型。
+Vendor = select,"Google","Microsoft",tag=[翻译器]服务商API,desc=请选择翻译器所使用的服务商API，更多翻译选项请使用BoxJs。
+LrcVendor = select,"NeteaseMusic","QQMusic","NeteaseMusicNodeJS",tag=[歌词]服务商API,desc=请选择外部源所使用的服务商API。
+# YouTube
+Type = select,"Official","Translate",tag=[字幕]启用类型,desc=请选择要使用的字幕，双语字幕将使用您选择类型呈现。
+Types = input,"Translate",tag=[歌词]启用类型,desc=请选择要添加的歌词选项，如果为多选，则会自动决定提供的歌词类型。
+AutoCC = switch,true,tag=[字幕]自动显示,desc=是否总是自动开启字幕显示。
+ShowOnly = switch,false,tag=[字幕]只显示“自动翻译”字幕,desc=是否仅显示“自动翻译”后的字幕，不显示源语言字幕。
+Position = select,"Forward","Reverse",tag=[字幕]主语言（源语言）字幕位置,desc=主语言（源语言）字幕的显示位置。
 
 [Rule]
 # ifflagged_myblockads
@@ -165,6 +173,9 @@ DOMAIN, ads.95516.com, REJECT
 DOMAIN, switch.cup.com.cn, REJECT
 DOMAIN, yandexmetrica.com, REJECT
 URL-REGEX, ^http:\/\/\w{32}\.jddebug\.com\/diagnose\?, REJECT
+# Maasea_YouTube
+AND, ((DOMAIN-SUFFIX, googlevideo.com), (PROTOCOL, UDP)), REJECT
+AND, ((DOMAIN, youtubei.googleapis.com), (PROTOCOL, UDP)), REJECT
 # 12306_remove_ads
 # Amap_remove_ads
 AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, AMapiPhone*)), REJECT
@@ -241,9 +252,6 @@ DOMAIN, cpro.baidustatic.com, REJECT
 DOMAIN, feed-image.baidu.com, REJECT
 DOMAIN-SUFFIX, union.baidu.cn, REJECT
 DOMAIN-SUFFIX, union.baidu.com, REJECT
-# Bilibili_remove_ads
-URL-REGEX, ^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH, REJECT-DICT
-URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 # BlockAdvertisers
 DOMAIN-KEYWORD, iflyad.bj.openstorage.cn, REJECT
 DOMAIN-KEYWORD, bjimp.voiceads.cn, REJECT
@@ -421,9 +429,6 @@ IP-CIDR, 39.97.130.51/32, REJECT, no-resolve
 IP-CIDR, 39.97.128.148/32, REJECT, no-resolve
 URL-REGEX, ^http:\/\/api\.weibo\.cn\/2\/httpdns\/config, REJECT
 URL-REGEX, ^http:\/\/api\.weibo\.cn\/httpdns\/config, REJECT
-# Maasea_YouTube
-AND, ((DOMAIN-SUFFIX, googlevideo.com), (PROTOCOL, UDP)), REJECT
-AND, ((DOMAIN, youtubei.googleapis.com), (PROTOCOL, UDP)), REJECT
 # zirawell_dianPing
 DOMAIN, dpmtpush.dianping.com, REJECT
 DOMAIN, dynamicf.sankuai.com, REJECT
@@ -478,6 +483,10 @@ IP-CIDR, 119.29.126.137/32, REJECT
 ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) reject-dict
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) reject-dict
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 reject
+# Maasea_YouTube
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-200
+# YouTube
+^https?:\/\/([\w-]+)\.googlevideo\.com\/initplayback(\?.*oad=.+)$ reject-img
 # Amap_remove_ads
 ^https:\/\/m5\.amap\.com\/ws\/aos\/main\/page\/product\/list\? - reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? - reject-dict
@@ -500,17 +509,6 @@ IP-CIDR, 119.29.126.137/32, REJECT
 ^https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user\?method=gamecenter - reject-dict
 ^https:\/\/pan\.baidu\.com\/act\/v2\/welfare\/list - reject-dict
 ^https:\/\/pan\.baidu\.com\/rest\/\d\.\d\/pcs\/adv - reject-dict
-# Bilibili_remove_ads
-^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) - reject-dict
-^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? - reject-dict
-^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? - reject-dict
-^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? - reject-dict
-^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords - reject-dict
-^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo - reject-dict
-^https:\/\/app\.bilibili\.com\/x\/resource\/ip - reject-dict
-^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp - reject-dict
-(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
-(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
 # BlockAdvertisers
 ^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ - reject
 ^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union - reject
@@ -575,8 +573,6 @@ IP-CIDR, 119.29.126.137/32, REJECT
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(get-lbs-cell-info\.php|sdkconfig\.php) - reject
 ^https:\/\/card\.weibo\.com\/article\/m\/aj\/(reward|uvead)\? - reject-dict
 ^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(reward|uvead)\? - reject-dict
-# Maasea_YouTube
-^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-200
 # Yuheng0101_NoAds
 ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject-200
 # ZenmoFeiShi_Smzdm
@@ -618,10 +614,6 @@ IP-CIDR, 119.29.126.137/32, REJECT
 # zirawell_tft
 ^https?:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams - reject-dict
 
-[Map Local]
-# Bilibili_remove_ads
-^https:\/\/app\.bilibili\.com\/x\/resource\/top\/activity\? mock-response-body data-type=json data="{ "code": -404, "message": "啥都木有", "ttl": 1, "data": null }" status-code=200
-
 [Script]
 # ifflagged_myblockads
 http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/12306.js, requires-body = true, tag = ifflagged_myblockads
@@ -641,6 +633,30 @@ http-response ^https:\/\/api\.m\.mi\.com\/v1\/app\/start script-path = https://g
 http-request ^https:\/\/mobilepaas\.abchina\.com\.cn:441\/mgw\.htm$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/header.js, tag = ifflagged_myblockads
 http-response ^https:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\/ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/cloud139.js, requires-body = true, tag = ifflagged_myblockads
 http-response ^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/cloud139.js, requires-body = true, tag = ifflagged_myblockads
+# Maasea_YouTube
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch) script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.preview.js, requires-body=true, binary-body-mode=true, tag=youtube.request
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.preview.js, requires-body=true, binary-body-mode=true, tag=youtube.response, argument="{"lyricLang":"zh-Hans","captionLang":"zh-Hans","blockUpload":true,"blockImmersive":true,"debug":false}"
+# Spotify
+http-response ^https?:\/\/api\.spotify\.com\/v1\/tracks\? requires-body=1, script-path=https://github.com/DualSubs/Spotify/releases/download/v1.9.1/response.bundle.js, tag=DualSubs.Spotify.Tracks.response.json, argument=[{Types},{Vendor},{LrcVendor}]
+http-request ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json requires-body=1, script-path=https://github.com/DualSubs/Spotify/releases/download/v1.9.1/request.bundle.js, tag=DualSubs.Spotify.Lyrics.request.json, argument=[{Types},{Vendor},{LrcVendor}]
+http-request ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*) requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/Spotify/releases/download/v1.9.1/request.bundle.js, tag=DualSubs.Spotify.Lyrics.request.proto, argument=[{Types},{Vendor},{LrcVendor}]
+http-response ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json(.*)subtype=Translate requires-body=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Translate.response.bundle.js, tag=DualSubs.Spotify.Translate.Lyrics.response.json, argument=[{Types},{Vendor},{LrcVendor}]
+http-response ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*)subtype=Translate requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Translate.response.bundle.js, tag=DualSubs.Spotify.Translate.Lyrics.response.proto, argument=[{Types},{Vendor},{LrcVendor}]
+http-response ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json(.*)subtype=External requires-body=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/External.Lyrics.response.bundle.js, tag=DualSubs.Spotify.External.Lyrics.response.json, argument=[{Types},{Vendor},{LrcVendor}]
+http-response ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*)subtype=External requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/External.Lyrics.response.bundle.js, tag=DualSubs.Spotify.External.Lyrics.response.proto, argument=[{Types},{Vendor},{LrcVendor}]
+# YouTube
+http-request ^https?:\/\/(www|m|tv)\.youtube\.com\/youtubei\/v1\/player(\?.+)?$ requires-body=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.3/request.bundle.js, tag=DualSubs.YouTube.Player.request.json, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-response ^https?:\/\/(www|m|tv)\.youtube\.com\/youtubei\/v1\/player(\?.+)?$ requires-body=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.3/response.bundle.js, tag=DualSubs.YouTube.Player.response.json, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-request ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player(\?.+)?$ requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.3/request.bundle.js, tag=DualSubs.YouTube.Player.request.proto, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-response ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player(\?.+)?$ requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.3/response.bundle.js, tag=DualSubs.YouTube.Player.response.proto, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-response ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/get_watch(\?.+)?$ requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.3/response.bundle.js, tag=DualSubs.YouTube.GetWatch.response.proto, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-request ^https?:\/\/(www|m)\.youtube\.com\/api\/timedtext(\?.+)?$ script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.3/request.bundle.js, tag=DualSubs.YouTube.TimedText.request, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-response ^https?:\/\/(www|m)\.youtube\.com\/api\/timedtext\?(.*)subtype=(Official|External) requires-body=1, script-path=https://raw.githubusercontent.com/DualSubs/Universal/main/js/Composite.Subtitles.response.js, tag=DualSubs.YouTube.Composite.TimedText.response, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-response ^https?:\/\/(www|m)\.youtube\.com\/api\/timedtext\?(.*)subtype=Translate requires-body=1, script-path=https://raw.githubusercontent.com/DualSubs/Universal/main/js/Translate.response.js, tag=DualSubs.YouTube.Translate.TimedText.response, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-request ^https?:\/\/music\.youtube\.com\/youtubei\/v1\/browse(\?.+)?$ requires-body=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.3/request.bundle.js, tag=DualSubs.YouTubeMusic.Browse.request.json, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-request ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse(\?.+)?$ requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.3/request.bundle.js, tag=DualSubs.YouTube.Browse.request.proto, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-response ^https?:\/\/music\.youtube\.com\/youtubei\/v1\/browse\?(.*)subtype=Translate requires-body=1, script-path=https://raw.githubusercontent.com/DualSubs/Universal/main/js/Translate.response.js, tag=DualSubs.YouTubeMusic.Translate.Lyrics.response.json, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
+http-response ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse\?(.*)subtype=Translate requires-body=1, binary-body-mode=1, script-path=https://raw.githubusercontent.com/DualSubs/Universal/main/js/Translate.response.js, tag=DualSubs.YouTubeMusic.Translate.Lyrics.response.proto, argument=[{Type},{Types},{AutoCC},{ShowOnly},{Position}]
 # 12306_remove_ads
 http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path=https://kelee.one/Resource/Script/12306/12306_remove_splashscreen_ads.js, requires-body=true, tag=移除12306开屏广告
 http-response ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ script-path=https://kelee.one/Resource/Script/12306/12306_remove_ads.js, tag=移除12306应用内广告
@@ -662,22 +678,6 @@ http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/nearbyrec_smart\? sc
 http-response ^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\? script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true, tag=移除开屏广告
 http-response ^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(car\/order\/content_info|order_web\/friendly_information) script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true, tag=移除打车页推广
 http-response ^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\? script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true, tag=移除打车页推广
-# Bilibili_remove_ads
-http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, timeout=30, tag=body_rewrite_38, argument=%5B%5B%22json-del%22%2C%5B%22data.common_equip%22%5D%5D%5D
-http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|ViewProgress)$ script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除播放页面视频列表广告
-http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$ script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除搜索结果广告
-http-response ^https:\/\/grpc\.biliapi\.net\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除评论区广告
-http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$ script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除动态页面广告
-http-response ^https:\/\/grpc\.biliapi\.net\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除交互式弹幕
-http-response ^https:\/\/grpc\.biliapi\.net\/bilibili\.community\.service\.dm\.v1\.DM\/DmView script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除交互式弹幕
-http-response ^https:\/\/grpc\.biliapi\.net\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除青少年弹窗
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(brand\/list|event\/list2|list|show)\? script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true, tag=移除开屏广告
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index(\/story)?\? script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true, tag=移除首页推荐广告
-http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\? script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true, tag=精简首页顶部标签
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/search\/square\? script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true, tag=移除热搜广告
-http-response ^https:\/\/api\.bilibili\.com\/pgc\/page\/(bangumi|cinema\/tab\?) script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true, tag=移除观影页广告
-http-response ^https:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\? script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true, tag=移除直播间广告
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine\?|mine\/ipad\?) script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true, tag=精简我的页面
 # DiDi_remove_ads
 http-response ^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true, tag=移除广告
 http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true, tag=移除广告
@@ -732,9 +732,6 @@ http-response ^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload script
 http-response ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true, tag=移除开屏广告
 http-response ^https:\/\/wbapp\.uve\.weibo\.com\/(preload\/get_ad|wbapplua\/wbpullad\.lua)\? script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true, tag=移除开屏广告
 http-response ^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/list\? script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true, tag=会员图标
-# Maasea_YouTube
-http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch) script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.preview.js, requires-body=true, binary-body-mode=true, tag=youtube.request
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.preview.js, requires-body=true, binary-body-mode=true, tag=youtube.response, argument="{"lyricLang":"zh-Hans","captionLang":"zh-Hans","blockUpload":true,"blockImmersive":true,"debug":false}"
 # Yuheng0101_NoAds
 http-response ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$ script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js, requires-body=true, timeout=60, tag=NoAds
 http-response ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/newTopPullSecond\/getNewTopPullList script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js, requires-body=true, timeout=60, tag=NoAds
@@ -768,5 +765,5 @@ http-response ^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner scri
 http-response ^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/replace-body.js, requires-body=true, timeout=30, tag=replaceBody, argument=officialAdvertResultVo-%3Erandom-response
 
 [MITM]
-hostname = *.googlevideo.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 162.14.157.*, 180.76.76.112, 180.76.76.200, 2023.redircdn.com, acs-m.freshippo.com, acs.m.goofish.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, ams-cdn.cdtft.cn, api-sams.walmartmobile.cn, api.bilibili.com, api.coolapk.com, api.douban.com, api.live.bilibili.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.udache.com, api.yangkeduo.com, app-api.smzdm.com, app.bilibili.com, article-api.smzdm.com, baike-api.smzdm.com, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, daijia.kuaidadi.com, edith.xiaohongshu.com, elemecdn.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, g-acs.m.goofish.com, gab.122.gov.cn, gateway.kugou.com, grpc.biliapi.net, guide-acs.m.taobao.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, image.mybank.icbc.com.cn, images.pinduoduo.com, img.meituan.net, img3.doubanio.com, jzts.cmpassport.com, list-app-m.i4.cn, live.bilibili.com, m.bilibili.com, m5-zb.amap.com, m5.amap.com, member.alipan.com, mobile.12306.cn, mobilepaas.abchina.com.cn, mp.weixin.qq.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss.amap.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, res.xiaojukeji.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, user-api.smzdm.com, video-dsp.pddpic.com, wallet.95516.com, weibo.com, weixin110.qq.com, www.bilibili.com, www.google.cn, www.washpayer.com, www.xiaohongshu.com, www1.elecfans.com, youtubei.googleapis.com, zhiyou.m.smzdm.com
+hostname = *.googlevideo.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, -redirector*.googlevideo.com, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 162.14.157.*, 180.76.76.112, 180.76.76.200, 2023.redircdn.com, acs-m.freshippo.com, acs.m.goofish.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, ams-cdn.cdtft.cn, api-sams.walmartmobile.cn, api.coolapk.com, api.douban.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.spotify.com, api.udache.com, api.yangkeduo.com, app-api.smzdm.com, article-api.smzdm.com, baike-api.smzdm.com, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, daijia.kuaidadi.com, edith.xiaohongshu.com, elemecdn.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, g-acs.m.goofish.com, gab.122.gov.cn, gateway.kugou.com, guide-acs.m.taobao.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, image.mybank.icbc.com.cn, images.pinduoduo.com, img.meituan.net, img3.doubanio.com, jzts.cmpassport.com, list-app-m.i4.cn, m.youtube.com, m5-zb.amap.com, m5.amap.com, member.alipan.com, mobile.12306.cn, mobilepaas.abchina.com.cn, mp.weixin.qq.com, music.youtube.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss.amap.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, res.xiaojukeji.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, spclient.wg.spotify.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, tv.youtube.com, user-api.smzdm.com, video-dsp.pddpic.com, wallet.95516.com, weibo.com, weixin110.qq.com, www.google.cn, www.washpayer.com, www.xiaohongshu.com, www.youtube.com, www1.elecfans.com, youtubei.googleapis.com, zhiyou.m.smzdm.com
 

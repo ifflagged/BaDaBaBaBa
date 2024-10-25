@@ -41,21 +41,18 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          git config --local user.name "ifflagged"
-          git config --local user.email "qibo.sign@outlook.com"
-          git add Modules/*/Kelee/*
-          git status
-          if git diff --cached --quiet; then
-            echo "No changes detected."
-            echo "changes=false" >> $GITHUB_ENV
+          git add .
+          if git diff-index --quiet HEAD --; then
+            echo "::set-output name=result::No changes"
           else
-            echo "Changes detected."
-            echo "changes=true" >> $GITHUB_ENV
+            echo "::set-output name=result::Changes detected"
           fi
 
       - name: Commit changes if any
-        if: env.changes == 'true'
+        if: steps.changes.outputs.result == 'Changes detected'
         run: |
+          git config --local user.name "ifflagged"
+          git config --local user.email "qibo.sign@outlook.com"
           git commit -m "Update merged modules"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git
 

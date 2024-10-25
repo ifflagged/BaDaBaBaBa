@@ -1,8 +1,8 @@
 name: Merge Modules
 
 on:
-#  schedule:
-#    - cron: '7 0 * * *'  # 每天执行一次
+  schedule:
+    - cron: '0 23 * * *'  # 每天执行一次
   workflow_dispatch:  # 手动触发
 
 jobs:

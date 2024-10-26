@@ -1,9 +1,9 @@
-name: Get Specific Files from Private Repo
+name: Get Private Files
 
 on:
   schedule:
-    - cron: '0 23 * * *'    # 每天早上7点（上海时间）
-    - cron: '0 13 * * *'    # 每天下午9点（上海时间）
+    - cron: '0 23 * * *'    # 每天早上7点（北京时间）
+    - cron: '0 13 * * *'    # 每天下午9点（北京时间）
   workflow_dispatch:       # Manual trigger
 
 jobs:
@@ -46,10 +46,12 @@ jobs:
         id: changes
         run: |
           git add .
-          if git diff-index --quiet HEAD --; then
-            echo "::set-output name=result::No changes"
-          else
+          git diff --cached --name-status > changes.txt
+          if [ -s changes.txt ]; then
             echo "::set-output name=result::Changes detected"
+            echo "::set-output name=status::$(cat changes.txt)"
+          else
+            echo "::set-output name=result::No changes"
           fi
 
       - name: Commit changes if any
@@ -57,7 +59,28 @@ jobs:
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git commit -m "Update merged modules"
+          
+          # 判断新增和更新的文件
+          added_files=0
+          updated_files=0
+
+          while read -r line; do
+            status=$(echo "$line" | cut -f1)
+            if [[ "$status" == "A" ]]; then
+              added_files=$((added_files + 1))
+            elif [[ "$status" == "M" ]]; then
+              updated_files=$((updated_files + 1))
+            fi
+          done < changes.txt
+
+          if [ $added_files -gt 0 ] && [ $updated_files -gt 0 ]; then
+            git commit -m "Add and Update merged files"
+          elif [ $added_files -gt 0 ]; then
+            git commit -m "Add merged files"
+          elif [ $updated_files -gt 0 ]; then
+            git commit -m "Update merged files"
+          fi
+
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git
 
       - name: Send TG Notification if changes were committed

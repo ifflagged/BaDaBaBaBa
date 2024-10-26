@@ -5,10 +5,8 @@
 #!arguments-desc= # BiliBili\nHost.Akamaized: 重定向港澳台 CDN 主机名\nHost.BStar: 重定向国际版 CDN 主机名\nHost.PCDN: 重定向 PCDN 主机名\nHost.MCDN: 重定向 MCDN 主机名
 
 [General]
-# Bilibili_remove_ads
-force-http-engine-hosts = %APPEND% :8000
-# BiliBili
-force-http-engine-hosts = %APPEND% *:4480, *.mcdn.bilivideo.cn:4483, *:8000, *:8082, *.mcdn.bilivideo.cn:9102
+# Bilibili_remove_ads & # BiliBili
+force-http-engine-hosts = %APPEND%  *.mcdn.bilivideo.cn:4483,  *.mcdn.bilivideo.cn:9102,  *:8000,  *:8082, *:4480
 
 [Rule]
 # Bilibili_remove_ads
@@ -43,8 +41,6 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-TINYGIF
 ^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? data="https://raw.githubusercontent.com/mieqq/mieqq/master/reject-dict.json"
 
 [Script]
-# ifflagged_BiliBili
-BiliBili Mystery Code = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine(?:\/ipad)?|myinfo), script-path=https://github.com/ifflagged/Neverflagged/raw/main/Surge/Scripts/BiliBili.js, requires-body=true
 # Bilibili_remove_ads
 body_rewrite_38 = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.common_equip%22%5D%5D%5D
 移除播放页面视频列表广告 = type=http-response, pattern=^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|ViewProgress)$, script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true
@@ -61,6 +57,8 @@ body_rewrite_38 = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/
 移除观影页广告 = type=http-response, pattern=^https:\/\/api\.bilibili\.com\/pgc\/page\/(bangumi|cinema\/tab\?), script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true
 移除直播间广告 = type=http-response, pattern=^https:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\?, script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true
 精简我的页面 = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine\?|mine\/ipad\?), script-path=https://kelee.one/Resource/Script/Bilibili/Bilibili_remove_ads.js, requires-body=true
+# ifflagged_BiliBili
+BiliBili Mystery Code = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine(?:\/ipad)?|myinfo), script-path=https://github.com/ifflagged/Neverflagged/raw/main/Surge/Scripts/BiliBili.js, requires-body=true
 # BiliBili
 BiliBili.ADBlock.request.json = type=http-request,pattern=^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/feed\/index\?, requires-body=0, script-path=https://raw.githubusercontent.com/BiliUniverse/ADBlock/main/js/archive/BiliBili.ADBlock.request.js
 BiliBili.ADBlock.response.json = type=http-response, pattern=^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/(splash\/(brand\/list|event\/list2|list|show)|feed\/index(\/story)?|search\/square), requires-body=1, script-path=https://raw.githubusercontent.com/BiliUniverse/ADBlock/main/js/archive/BiliBili.ADBlock.response.js

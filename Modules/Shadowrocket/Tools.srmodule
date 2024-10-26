@@ -6,7 +6,7 @@
 
 [General]
 # boxjs
-force-http-engine-hosts = %APPEND%boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net
+force-http-engine-hosts = %APPEND% boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net
 
 [Rule]
 # ifflagged_myblockads

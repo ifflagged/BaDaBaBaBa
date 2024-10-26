@@ -6,7 +6,7 @@
 
 [General]
 # Bilibili_remove_ads & # BiliBili
-force-http-engine-hosts = %APPEND%  *.mcdn.bilivideo.cn:4483,  *.mcdn.bilivideo.cn:9102,  *:8000,  *:8082, *:4480
+force-http-engine-hosts = %APPEND% :8000, %APPEND% *:4480, *.mcdn.bilivideo.cn:4483, *:8000, *:8082, *.mcdn.bilivideo.cn:9102
 
 [Rule]
 # Bilibili_remove_ads

@@ -39,6 +39,7 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 
 [Script]
 # ifflagged_BiliBili
+http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\? script-path=https://github.com/ifflagged/Neverflagged/raw/main/Surge/Scripts/BiliBili.js, requires-body=true, tag=精简首页顶部标签
 http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine(?:\/ipad)?|myinfo) script-path=https://github.com/ifflagged/Neverflagged/raw/main/Surge/Scripts/BiliBili.js, requires-body=true, tag=BiliBili Mystery Code
 # Bilibili_remove_ads
 http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, timeout=30, tag=body_rewrite_27, argument=%5B%5B%22json-del%22%2C%5B%22data.common_equip%22%5D%5D%5D

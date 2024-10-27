@@ -1,0 +1,21 @@
+# jd // 
+# > 京东 - JD
+DOMAIN, dns.jd.com, REJECT
+DOMAIN, waapdg.jd.com, REJECT
+DOMAIN, dsp-x.jd.com, REJECT
+DOMAIN, xlog.jd.com, REJECT
+DOMAIN, janapi.jd.com, REJECT
+DOMAIN, jdqd.jd.com, REJECT
+DOMAIN, dgstatic.jd.com, REJECT
+DOMAIN-SUFFIX, jzt.jd.com, REJECT
+DOMAIN-SUFFIX, img-x.jd.com, REJECT
+DOMAIN-SUFFIX, du.jd.com, REJECT
+DOMAIN-SUFFIX, c-nfa.jd.com, REJECT
+DOMAIN-SUFFIX, cm.jd.com, REJECT
+DOMAIN-KEYWORD, policy.jd.com, REJECT
+DOMAIN-KEYWORD, kepler.jd.com, REJECT
+DOMAIN-KEYWORD, bdsp.x.jd.com, REJECT
+DOMAIN-KEYWORD, keplerapi.jd.com, REJECT
+DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
+IP-CIDR, 101.124.19.122/32, REJECT, no-resolve
+IP-CIDR6, 2402:db40:5100:1011::5/128, REJECT, no-resolve

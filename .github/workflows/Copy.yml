@@ -68,14 +68,14 @@ jobs:
           if [ -n "$UPDATED_FILES" ]; then
             MESSAGE="The following files have been updated:\n"
             GITHUB_URL="https://github.com/ifflagged/BaDaBaBaBa/blob/main/"
-            echo "$UPDATED_FILES" | while read -r file; do
+            while IFS= read -r file; do
               # 去掉 'Modules/' 前缀
-              display_name=$(echo "$file" | sed 's|Modules/||')
+              display_name="${file#Modules/}"
               # 生成完整链接
               file_url="${GITHUB_URL}${file}"
               # 生成 markdown 格式的超链接
               MESSAGE="${MESSAGE}[${display_name}](${file_url})\n"
-            done
+            done <<< "$UPDATED_FILES"
 
             # 使用 echo -e 处理换行符并发送通知
             curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \

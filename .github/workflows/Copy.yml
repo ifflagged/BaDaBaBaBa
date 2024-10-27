@@ -2,9 +2,9 @@ name: Get Private Files
 
 on:
   schedule:
-    - cron: '0 23 * * *'    # 每天早上7点（北京时间）
-    - cron: '0 13 * * *'    # 每天下午9点（北京时间）
-  workflow_dispatch:       # Manual trigger
+    - cron: '0 23 * * *'   # 每天早上7点（北京时间）
+    - cron: '0 13 * * *'   # 每天下午9点（北京时间）
+  workflow_dispatch:       # 手动触发
 
 jobs:
   get-files:
@@ -37,21 +37,20 @@ jobs:
           ls -l Modules/Loon/
           echo "Files in Modules/Shadowrocket:"
           ls -l Modules/Shadowrocket/
-          
+
       - name: Remove private-repo folder
-        run: |
-          rm -rf private-repo
-          
+        run: rm -rf private-repo
+
       - name: Check for changes
         id: changes
         run: |
           git add .
-          git diff --cached --name-status > changes.txt
-          if [ -s changes.txt ]; then
-            echo "::set-output name=result::Changes detected"
-            echo "::set-output name=status::$(cat changes.txt)"
-          else
+          if git diff --cached --quiet; then
+            echo "No changes detected"
             echo "::set-output name=result::No changes"
+          else
+            echo "Changes detected"
+            echo "::set-output name=result::Changes detected"
           fi
 
       - name: Commit changes if any
@@ -59,45 +58,19 @@ jobs:
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          
-          # 判断新增和更新的文件
-          added_files=0
-          updated_files=0
-
-          while read -r line; do
-            status=$(echo "$line" | cut -f1)
-            if [[ "$status" == "A" ]]; then
-              added_files=$((added_files + 1))
-            elif [[ "$status" == "M" ]]; then
-              updated_files=$((updated_files + 1))
-            fi
-          done < changes.txt
-
-          if [ $added_files -gt 0 ] && [ $updated_files -gt 0 ]; then
-            git commit -m "Add and Update merged files"
-          elif [ $added_files -gt 0 ]; then
-            git commit -m "Add merged files"
-          elif [ $updated_files -gt 0 ]; then
-            git commit -m "Update merged files"
-          fi
-
+          git commit -m "Update generated files"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git
 
       - name: Send TG Notification if changes were committed
+        if: steps.changes.outputs.result == 'Changes detected'
         run: |
-          # 检查是否存在上一个提交
-          if git rev-parse --verify HEAD^1 >/dev/null 2>&1; then
-            UPDATED_FILES=$(git diff --name-only HEAD^1 HEAD Modules/)
-          else
-            UPDATED_FILES=$(git diff --name-only HEAD Modules/)
-          fi
-
+          UPDATED_FILES=$(git diff --name-only HEAD^ HEAD Modules/)
           if [ -n "$UPDATED_FILES" ]; then
             MESSAGE="The following files have been updated:\n"
             GITHUB_URL="https://github.com/ifflagged/BaDaBaBaBa/blob/main/"
             while read -r file; do
               # 去掉 'Modules/' 前缀
-              display_name=$(echo "$file" | sed 's/Modules\///')
+              display_name=$(echo "$file" | sed 's|Modules/||')
               # 生成完整链接
               file_url="${GITHUB_URL}${file}"
               # 生成 markdown 格式的超链接
@@ -111,4 +84,3 @@ jobs:
               -d parse_mode=Markdown
           else
             echo "No files were updated, no notification sent."
-          fi

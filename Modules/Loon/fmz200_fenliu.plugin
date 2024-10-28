@@ -641,6 +641,7 @@ DOMAIN-SUFFIX, img-x.jd.com, reject
 DOMAIN-SUFFIX, du.jd.com, reject
 DOMAIN-SUFFIX, c-nfa.jd.com, reject
 DOMAIN-SUFFIX, cm.jd.com, reject
+DOMAIN-SUFFIX, jddebug.com, reject
 DOMAIN-KEYWORD, policy.jd.com, reject
 DOMAIN-KEYWORD, kepler.jd.com, reject
 DOMAIN-KEYWORD, bdsp.x.jd.com, reject

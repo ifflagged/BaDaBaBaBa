@@ -431,8 +431,8 @@ DOMAIN, dpmtpush.dianping.com, REJECT
 DOMAIN, dynamicf.sankuai.com, REJECT
 DOMAIN-SUFFIX, lx.meituan.net, REJECT
 DOMAIN, tte.meituan.com, REJECT
-IP-CIDR, 101.32.16.204/32, REJECT
-IP-CIDR, 119.29.126.137/32, REJECT
+IP-CIDR, 101.32.16.204/32, REJECT, no-resolve
+IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 # zirawell_jd
 DOMAIN, waapdg.jd.com, REJECT
 DOMAIN, jdqd.jd.com, REJECT
@@ -447,8 +447,6 @@ DOMAIN-KEYWORD, kepler.jd.com, REJECT
 DOMAIN-KEYWORD, bdsp.x.jd.com, REJECT
 DOMAIN-KEYWORD, keplerapi.jd.com, REJECT
 DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
-IP-CIDR, 101.124.19.122/32, REJECT
-IP-CIDR6, 2402:db40:5100:1011::5/128, REJECT
 
 [URL Rewrite]
 # Tools

@@ -424,8 +424,21 @@ IP-CIDR, 39.97.130.51/32, REJECT, no-resolve
 IP-CIDR, 39.97.128.148/32, REJECT, no-resolve
 URL-REGEX, ^http:\/\/api\.weibo\.cn\/2\/httpdns\/config, REJECT
 URL-REGEX, ^http:\/\/api\.weibo\.cn\/httpdns\/config, REJECT
+# zirawell_alipay
+DOMAIN, adgw.alipay.com, REJECT
+DOMAIN, amdc.alipay.com, REJECT
+DOMAIN, amdc-sibling.alipay.com.cn, REJECT
+DOMAIN-SUFFIX, mdap.alipay.com, REJECT
+DOMAIN-SUFFIX, ynuf.alipay.com, REJECT
+DOMAIN-SUFFIX, loggw.alipay.com.cn, REJECT
+DOMAIN-SUFFIX, alipaydns.com, REJECT
+# zirawell_beautycam
+# zirawell_beautycam
 # zirawell_ccb
 DOMAIN, imageadv.ccb.com, DIRECT
+# zirawell_cmb
+DOMAIN, mbads.paas.cmbchina.com, REJECT
+DOMAIN, yl.zh.cmbchina.com, REJECT
 # zirawell_dianping
 DOMAIN, dpmtpush.dianping.com, REJECT
 DOMAIN, dynamicf.sankuai.com, REJECT
@@ -433,6 +446,7 @@ DOMAIN-SUFFIX, lx.meituan.net, REJECT
 DOMAIN, tte.meituan.com, REJECT
 IP-CIDR, 101.32.16.204/32, REJECT, no-resolve
 IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
+# zirawell_ehaier
 # zirawell_jd
 DOMAIN, waapdg.jd.com, REJECT
 DOMAIN, jdqd.jd.com, REJECT
@@ -447,6 +461,60 @@ DOMAIN-KEYWORD, kepler.jd.com, REJECT
 DOMAIN-KEYWORD, bdsp.x.jd.com, REJECT
 DOMAIN-KEYWORD, keplerapi.jd.com, REJECT
 DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
+# zirawell_meituan
+DOMAIN, flowplus.meituan.net, REJECT
+DOMAIN, lx0.meituan.com, REJECT
+DOMAIN, hlx.meituan.com, REJECT
+DOMAIN, w.meituan.net, REJECT
+DOMAIN-SUFFIX, httpdns.meituan.com, REJECT
+DOMAIN-SUFFIX, analytics.meituan.net, REJECT
+DOMAIN-SUFFIX, meituan.xn, REJECT
+DOMAIN-SUFFIX, meituan.yoga, REJECT
+DOMAIN-SUFFIX, meituangov.cn, REJECT
+DOMAIN-SUFFIX, wmlog.meituan.com, REJECT
+DOMAIN-SUFFIX, ad.e.waimai.sankuai.com, REJECT
+DOMAIN-SUFFIX, mads.meituan.com, REJECT
+DOMAIN-SUFFIX, d.meituan.net, REJECT
+DOMAIN-KEYWORD, report.meituan, REJECT
+# zirawell_miHome
+# zirawell_sgcc
+DOMAIN, mdap.mpaas.cn-hangzhou.aliyuncs.com, REJECT
+DOMAIN, csc-apm.sgcc.com.cn, REJECT
+# zirawell_taobao
+DOMAIN-SUFFIX, apoll.m.taobao.com, REJECT
+DOMAIN-SUFFIX, w.m.taobao.com, REJECT
+DOMAIN-SUFFIX, re.m.taobao.com, REJECT
+DOMAIN-SUFFIX, re.taobao.com, REJECT
+DOMAIN-SUFFIX, agoodm.m.taobao.com, REJECT
+DOMAIN-SUFFIX, ai.taobao.com, REJECT
+DOMAIN-SUFFIX, api.waptest.taobao.com, REJECT
+DOMAIN-SUFFIX, dsp.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, fav.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, m.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, mclick.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, redirect.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, simba.m.taobao.com, REJECT
+DOMAIN-SUFFIX, srd.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, temai.taobao.com, REJECT
+DOMAIN-SUFFIX, textlink.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, unitacs.m.taobao.com, REJECT
+DOMAIN-SUFFIX, adashx4yt.m.taobao.com, REJECT
+DOMAIN-SUFFIX, tns.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, click.mz.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, click.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, click.tz.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, stat.simba.taobao.com, REJECT
+DOMAIN-SUFFIX, m-adash.m.taobao.com, REJECT
+DOMAIN-SUFFIX, adashbc.m.taobao.com, REJECT
+DOMAIN-SUFFIX, tunion-api.m.taobao.com, REJECT
+DOMAIN-SUFFIX, acs4baichuan.m.taobao.com, REJECT
+# zirawell_umetrip
+DOMAIN, analytics.umetrip.com, REJECT
+DOMAIN, sensors.umetrip.com.cn, REJECT
+# zirawell_unionPay
+DOMAIN, ads.cup.com.cn, REJECT
+DOMAIN, analytics.95516.com, REJECT
+DOMAIN, tysdk.95516.com, REJECT
 
 [URL Rewrite]
 # Tools
@@ -541,8 +609,31 @@ DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
 ^https?:\/\/storage\.360buyimg\.com\/app\.m\.jd\.com\/lottie - reject
 ^https?:\/\/storage\.360buyimg\.com\/dynamicConfig\/binary - reject
 ^https?:\/\/img\d+\.360buyimg\.com\/jddjadvertise\/ - reject
+# zirawell_meituan
+^https?:\/\/apimobile\.meituan\.com\/appupdate - reject
+^https?:\/\/img\.meituan\.net\/bizad - reject
+^https?:\/\/p\d\.meituan\.net\/(display|mmc)\/ - reject
+^https?:\/\/apimobile\.meituan\.com\/appupdate\/mach\/checkUpdate? - reject
+^https?:\/\/apimobile\.meituan\.com\/group\/v\d\/recommend\/unity\/recommends - reject
+^https?:\/\/www\.meituan\.com\/api\/v\d\/appstatus\? - reject
+^https?:\/\/s3plus\.meituan\.net\/v\d\/mss_\w+\/waimai-alita\/\w+\.zip$ - reject
+^https?:\/\/s3plus\.meituan\.net\/v\d\/mss_\w+\/brandcpt - reject
+^https?:\/\/sqt\.meituan\.com\/s\/gateway\/mweb\/api\/marketingResource\/show - reject
+# zirawell_miHome
+^https?:\/\/home\.mi\.com\/cgi-op\/api\/v\d\/recommendation - reject
 # zirawell_qunar
 ^https?:\/\/client\.qunar\.com\/pitcher-proxy\?qrt=p_splashAd - reject
+# zirawell_sgcc
+^https?:\/\/(csc|osg)-service\.sgcc\.com\.cn:\d+\/emss-(?!bia|pfa).*-front\/ - reject
+^https?:\/\/(csc|osg)-service\.sgcc\.com\.cn:\d+\/emss-pfa-appset-front\/appSync\/getAppForceUpgrade - reject
+^https?:\/\/(csc|osg)-service\.sgcc\.com\.cn:\d+\/osg-omgmt0024\/inner\/cache - reject
+# zirawell_taobao
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.etao\.noah\.query\/.+tao_splash - reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise - reject
+# zirawell_umetrip
+^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject
+# zirawell_unionPay
+^https?:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
 # ifflagged_TikTok
 (?<=_region=)CN(?=&) {{{TikTok_Region}}} 307
 (?<=&mcc_mnc=)4 2 307
@@ -636,6 +727,10 @@ DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul data-type=text data=" " status-code=200
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul data-type=text data=" " status-code=200
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul data-type=text data=" " status-code=200
+# zirawell_51fanli
+^https?:\/\/l[0-9]{1}\.51fanli\.net\/app\/images\/splash\/2022\/0[4-9]{1}\/.*.jpg data-type=text data=" " status-code=200
+^https?:\/\/l[0-9]{1}\.51fanli\.net\/app\/images\/splash\/2022\/1[0-2]{1}\/.*.jpg data-type=text data=" " status-code=200
+^https?:\/\/l[0-9]{1}\.51fanli\.net\/app\/images\/splash\/202\d{1}\/\d{2}\/.*.jpg data-type=text data=" " status-code=200
 # zirawell_SAMsClub
 ^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/channel\/portal\/AdgroupData data-type=text data="{}" status-code=200
 ^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/configuration\/personCenterEntrance\/query data-type=text data="{}" status-code=200
@@ -647,6 +742,10 @@ DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
 ^https?:\/\/cache\.bydauto\.com\.cn\/dilink_user_upload\/20 data-type=text data=" " status-code=200
 # zirawell_ccb
 ^https?:\/\/cy\.cloud\.ccb\.com\/\/gateway\/user-server\/user\/qyCenter\/getCustomizedAdv data-type=text data="{}" status-code=200
+# zirawell_cmb
+^https?:\/\/webappcfg\.paas\.cmbchina\.com\/v\d\/func\/getmarketconfig data-type=text data=" " status-code=200
+^https?:\/\/webapp\.joyingtrip\.com\/cmbapp\/api\/hotel\/marketing\/adListNew data-type=text data="{}" status-code=200
+^https?:\/\/mobile\.cmbchina\.com\/dcardmanage\/salary-welfare\/get-recommend data-type=file data="https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Data/cmb.json"
 # zirawell_dianping
 ^https?:\/\/mapi\.dianping\.com\/mapi\/intelliindex data-type=text data="{}" status-code=200
 ^https?:\/\/img\.meituan\.net\/goodsawardpic data-type=tiny-gif status-code=200
@@ -657,8 +756,24 @@ DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
 ^https?:\/\/m\.dianping\.com\/mapi\/mgw\/growth\/queryhaima data-type=text data="{}" status-code=200
 ^https?:\/\/m\.dianping\.com\/wxmapi\/shop\/friendslike data-type=text data="{}" status-code=200
 ^https?:\/\/mapi\.dianping\.com\/mapi\/mgw\/growth\/clipboardquery data-type=text data="{}" status-code=200
+# zirawell_ehaier
+^https?:\/\/dualstack-(arestapi|restios)\.amap\.com\/v\d\/iasdkauth\?key= data-type=text data=" " status-code=200
+^https?:\/\/dualstack-logs\.amap\.com\/ws\/log\/upload\?product data-type=text data=" " status-code=200
+^https?:\/\/oss-zjrs\.haier\.net\/resource\/confFile\/\d{22}\.zip$ data-type=text data=" " status-code=200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/ad\/ data-type=text data=" " status-code=200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/servicePage\/start\/advertising\?approach data-type=text data=" " status-code=200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/servicePage\/visualize\/recommend\?dataType data-type=text data=" " status-code=200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/servicePage\/weather\/query\?areaId data-type=text data=" " status-code=200
+^https?:\/\/zj\.haier\.net\/api-gw\/upmapi\/appmanage\/publish\/getRecommendVersion$ data-type=text data=" " status-code=200
+^https?:\/\/zj\.haier\.net\/omsappapi\/ad\/ data-type=text data=" " status-code=200
+^https?:\/\/zj\.haier\.net\/omsappapi\/resource\/v\d\/resBagList$ data-type=text data=" " status-code=200
+^https?:\/\/zj\.haier\.net\/omssceneapi\/house\/v\d\/recommend\/listByRoom$ data-type=text data=" " status-code=200
+# zirawell_ejoy
+^https?:\/\/a\.sinopecsales\.com\/app\/cms data-type=text data="{}" status-code=200
 # zirawell_eleme
 ^https?:\/\/fuss10\.elemecdn\.com\/.+?\.mp4 data-type=tiny-gif status-code=200
+# zirawell_hilton
+^https?:\/\/wcprd\.hilton\.com\.cn\/app-middleware\/graphql\?type=splashAd data-type=text data=" " status-code=200
 # zirawell_jd
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|xview2Config|stationPullService|getWidget|widget|hybrid|jdDiscoveryRedPoint|queryMaterialAdverts) data-type=text data=" " status-code=200
 ^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/base\/na\/m\/adInfo data-type=text data=" " status-code=200
@@ -667,14 +782,37 @@ DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
 ^https?:\/\/api\.mcd\.cn\/bff\/portal\/(home\/splash|richpop) data-type=text data=" " status-code=200
 ^https?:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity data-type=text data="{}" status-code=200
 ^https?:\/\/api\.mcd\.cn\/bff\/portal\/richpop data-type=text data="{}" status-code=200
+# zirawell_meituan
+^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/.+\.(gif|jpg)\.webp$ data-type=tiny-gif status-code=200
+^https?:\/\/img\.meituan\.net\/groceryimages\/\w+\.gif data-type=tiny-gif status-code=200
+^https?:\/\/img\.meituan\.net\/groceryimages\/\w+\.png@220w_220h_1e_1l data-type=tiny-gif status-code=200
+^https?:\/\/p\d\.meituan\.net\/movie\/.+?\.jpg\?may_covertWebp data-type=tiny-gif status-code=200
+^https?:\/\/p[1-9]{1}\.meituan\.net\/linglong\/\w+(?!.*%(4088h_88w|40115h_115w)_1e_1l)\.(gif|jpg|webp|png)(?!.*@(100w_100h|150w_150h|1284w|1200w_0h)) data-type=tiny-gif status-code=200
+^https?:\/\/p\d\.meituan\.net\/linglong\/(?!88a67c|20ad6b|f084a7|1cc20d|c31784|3f03f8|374276|d1c1f6|5f7e3c|2bc17f|f35609|86c8cd|46c1cf|ad5446)\w+\.png\.webp@1284w_1l$ data-type=tiny-gif status-code=200
+^https?:\/\/p\d\.meituan\.net\/travelcube\/(?!1d4a663|52e9bfc|29a6227).+@100w_100h data-type=tiny-gif status-code=200
+^https?:\/\/p\d\.meituan\.net\/(\d+\.\d+\.\d+\/)?wmbanner\/(?!fb51b9d|4e9d3c4).+\.gif data-type=tiny-gif status-code=200
+^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/.+\.(gif|jpg|mp4) data-type=tiny-gif status-code=200
+^https?:\/\/portal-portm\.meituan\.com\/horn_ios data-type=text data="{}" status-code=200
 # zirawell_qunar
 ^https?:\/\/qde\.qunar\.com\/preload data-type=text data=" " status-code=200
 ^https?:\/\/homefront\.qunar\.com\/front\/splash\/ad data-type=text data="{}" status-code=200
 ^https?:\/\/qimgs\.qunarzz\.com\/wpf_newmpic_001\/06c3a131f53cca9a78dd26272e3e4cb3 data-type=tiny-gif status-code=200
+# zirawell_sgcc
+^https?:\/\/(csc|osg)-service\.sgcc\.com\.cn:\d+\/emss-pfa-appset-front\/bootpageoutter\/ data-type=text data="{}" status-code=200
+^https?:\/\/(csc|osg)-service\.sgcc\.com\.cn:\d+\/dtportal-app\/app_api\/selectInfoByCondition data-type=text data="{}" status-code=200
+# zirawell_taobao
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv data-type=text data="{}" status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimusic\.common\.mobileservice\.startinit data-type=text data="{}" status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get data-type=text data="{}" status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome data-type=text data="{}" status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources data-type=text data="{}" status-code=200
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) data-type=text data="{}" status-code=200
 # zirawell_tfsmy
 ^https?:\/\/tfsmy\.chengdu\.gov\.cn\/api\/v\d\/core\/version data-type=text data=" " status-code=200
 # zirawell_tft
 ^https?:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams data-type=text data="{}" status-code=200
+# zirawell_umetrip
+^https?:\/\/oss\.umetrip\.com\/fs\/advert\/polite data-type=text data="{}" status-code=200
 
 [Script]
 # Tools
@@ -832,15 +970,23 @@ smzdm_json = type=http-response, pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/fil
 smzdm_json = type=http-response, pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner, script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js, requires-body=true, max-size=-1, timeout=60
 # zirawell_dianping
 dianping = type=http-response, pattern=^https?:\/\/img\.meituan\.net\/dpmobile\/, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/dianping.js, requires-body=true, max-size=-1, timeout=60
+# zirawell_ehaier
+haier = type=http-response, pattern=^https?:\/\/oss-zjrs\.haier\.net\/resource\/confFile\/\d{22}\.json$, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/haier.js, requires-body=true, max-size=-1, timeout=60
+haier = type=http-response, pattern=^https?:\/\/zj\.haier\.net\/omsappapi\/resource\/v\d\/get\/resourceBag$, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/haier.js, requires-body=true, max-size=-1, timeout=60
 # zirawell_jd
 jd = type=http-response, pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/jd.js, requires-body=true, max-size=-1, timeout=60
+# zirawell_taobao
+taobao = type=http-response, pattern=^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get), script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/taobao.js, requires-body=true, max-size=-1, timeout=60
+taobao = type=http-response, pattern=^https?:\/\/poplayer\.template\.alibaba\.com\/\w+\.json, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/taobao.js, requires-body=true, max-size=-1, timeout=60
 # zirawell_tfsmy
 replaceBody = type=http-response, pattern=^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/replace-body.js, requires-body=true, max-size=-1, timeout=30, argument=officialAdvertResultVo-%3Erandom-response
+# zirawell_umetrip
+umetrip = type=http-response, pattern="^https?:\/\/(bkclient|umerp|home)\.umetrip\.com(\.cn){0,1}\/gateway\/api\/umetrip\/native", script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/umetrip.js, timeout=60
 # ifflagged_TikTok
 {{{TikTok_Watermark}}} = type=http-response, pattern=https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite), script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/Tiktok.js, requires-body=true, max-size=0, script-update-interval=0, timeout=30
 # boxjs
 Rewrite: BoxJs = type=http-request,pattern=^https?:\/\/(.+\.)?boxjs\.(com|net),script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, requires-body=true, timeout=120
 
 [MITM]
-hostname = %APPEND% *.boxjs.com, *.boxjs.net, *.byteoversea.com, *.dianping.com, *.googlevideo.com, *.jddebug.com, *.tik-tokapi.com, *.tiktokv.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, -redirector*.googlevideo.com, 103.37.155.60, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 162.14.157.*, 180.76.76.112, 180.76.76.200, 2023.redircdn.com, acs-m.freshippo.com, acs.m.goofish.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, ams-cdn.cdtft.cn, api-sams.walmartmobile.cn, api.coolapk.com, api.douban.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.revenuecat.com, api.spotify.com, api.udache.com, api.yangkeduo.com, app-api.smzdm.com, article-api.smzdm.com, awp-assets.meituan.net, baike-api.smzdm.com, boxjs.com, boxjs.net, cache.bydauto.com.cn, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, cy.cloud.ccb.com, daijia.kuaidadi.com, ddplus.meituan.net, edith.xiaohongshu.com, elemecdn.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, g-acs.m.goofish.com, gab.122.gov.cn, gateway.kugou.com, guide-acs.m.taobao.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, image.mybank.icbc.com.cn, image1.ccb.com, imageadv.ccb.com, images.pinduoduo.com, img*.360buyimg.com, img.meituan.net, img3.doubanio.com, ios.prod.ftl.netflix.com, jzts.cmpassport.com, list-app-m.i4.cn, m.dianping.com, m.youtube.com, m5-zb.amap.com, m5.amap.com, mapi.dianping.com, mars.meituan.com, mb3admin.com, member.alipan.com, mobile.12306.cn, mobilepaas.abchina.com.cn, mp.weixin.qq.com, ms.jr.jd.com, music.youtube.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss.amap.com, p*.meituan.net, p.meituan.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, res.xiaojukeji.com, rms.meituan.com, router.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, spclient.wg.spotify.com, storage.360buyimg.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, tv.youtube.com, user-api.smzdm.com, video-dsp.pddpic.com, wallet.95516.com, weibo.com, weixin110.qq.com, www.dpfile.com, www.google.cn, www.router.com, www.washpayer.com, www.xiaohongshu.com, www.youtube.com, www.zhihu.com, www1.elecfans.com, youtubei.googleapis.com, zhiyou.m.smzdm.com, zhuanlan.zhihu.com
+hostname = %APPEND% *.boxjs.com, *.boxjs.net, *.byteoversea.com, *.dianping.com, *.googlevideo.com, *.jddebug.com, *.tik-tokapi.com, *.tiktokv.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, -redirector*.googlevideo.com, 103.37.155.60, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 162.14.157.*, 180.76.76.112, 180.76.76.200, 2023.redircdn.com, a.sinopecsales.com, acs-m.freshippo.com, acs.m.goofish.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, ams-cdn.cdtft.cn, api-sams.walmartmobile.cn, api.coolapk.com, api.douban.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.revenuecat.com, api.spotify.com, api.udache.com, api.yangkeduo.com, apimobile.meituan.com, app-api.smzdm.com, article-api.smzdm.com, awp-assets.meituan.net, baike-api.smzdm.com, bkclient.umetrip.com.cn, boxjs.com, boxjs.net, cache.bydauto.com.cn, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, csc-service.sgcc.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, cy.cloud.ccb.com, daijia.kuaidadi.com, ddplus.meituan.net, discardrp.umetrip.com, dualstack*.amap.com, edith.xiaohongshu.com, elemecdn.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, g-acs.m.goofish.com, gab.122.gov.cn, gateway.kugou.com, guide-acs.m.taobao.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, image.mybank.icbc.com.cn, image1.ccb.com, imageadv.ccb.com, images.pinduoduo.com, img*.360buyimg.com, img.meituan.net, img3.doubanio.com, ios.prod.ftl.netflix.com, jzts.cmpassport.com, l*.51fanli.net, list-app-m.i4.cn, m.dianping.com, m.youtube.com, m5-zb.amap.com, m5.amap.com, mapi.dianping.com, mars.meituan.com, mb3admin.com, member.alipan.com, mobile.12306.cn, mobile.cmbchina.com, mobilepaas.abchina.com.cn, mp.weixin.qq.com, ms.jr.jd.com, music.youtube.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss-zjrs.haier.net, oss.amap.com, oss.umetrip.com, p*.meituan.net, p.meituan.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, portal-portm.meituan.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, res.xiaojukeji.com, rms.meituan.com, router.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, spclient.wg.spotify.com, sqt.meituan.com, startup.umetrip.com, storage.360buyimg.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, tv.youtube.com, umerp.umetrip.com, umerp.umetrip.com.cn, user-api.smzdm.com, video-dsp.pddpic.com, wallet.95516.com, wcprd.hilton.com.cn, webapp.joyingtrip.com, webappcfg.paas.cmbchina.com, weibo.com, weixin110.qq.com, www.dpfile.com, www.google.cn, www.meituan.com, www.router.com, www.washpayer.com, www.xiaohongshu.com, www.youtube.com, www.zhihu.com, www1.elecfans.com, youtubei.googleapis.com, zhiyou.m.smzdm.com, zhuanlan.zhihu.com, zj.haier.net
 

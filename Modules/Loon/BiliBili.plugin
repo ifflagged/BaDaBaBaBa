@@ -3,14 +3,6 @@
 #!author= Jacob[https://github.com/ifflagged/BaDaBaBaBa]
 #!icon= https://github.com/Semporia/Hand-Painted-icon/raw/master/Social_Media/Apple.png
 
-[Argument]
-# Enhanced
-Home.Tab = input,"直播tab,推荐tab,hottopic,bangumi,anime,film,koreavtw",tag=[首页]标签页,desc=请选择启用的首页标签页，建议不超过7个。
-Home.Tab_default = select,"推荐tab","直播tab","hottopic","bangumi","anime","film","koreavtw","game","mctab","dhtr","gaoxiao","school","kj",tag=[首页]默认标签页,desc=请选择启动APP时默认展示的标签页，需选择已启用的标签页。
-Home.Top_left = select,"mine","videoshortcut",tag=[首页]顶栏（左侧）按钮（用户头像）,desc=请选择顶栏（左侧）按钮（用户头像）的作用（在biliBili粉色版中无法修改）。
-Home.Top = input,"消息Top",tag=[首页]顶栏（右侧）按钮,desc=请选择启用的顶栏（右侧）按钮。
-Bottom = input,"home,dynamic,ogv,会员购Bottom,我的Bottom",tag=[底部]导航栏按钮,desc=请选择启用的底部导航栏按钮，最多6个。
-
 [General]
 # Bilibili_remove_ads & # BiliBili
 force-http-engine-hosts = :8000, *:4480, *.mcdn.bilivideo.cn:4483, *:8000, *:8082, *.mcdn.bilivideo.cn:9102
@@ -77,11 +69,6 @@ http-response ^https?:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.pol
 http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.community\.service\.dm\.v1\.DM\/(DmView|DmSegMobile) requires-body=1, binary-body-mode=1, script-path=https://raw.githubusercontent.com/BiliUniverse/ADBlock/main/js/BiliBili.ADBlock.response.js, tag=BiliBili.ADBlock.response.grpc, argument=
 http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus requires-body=1, binary-body-mode=1, script-path=https://raw.githubusercontent.com/BiliUniverse/ADBlock/main/js/BiliBili.ADBlock.response.js, tag=BiliBili.ADBlock.response.grpc, argument=
 http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList requires-body=1, binary-body-mode=1, script-path=https://raw.githubusercontent.com/BiliUniverse/ADBlock/main/js/BiliBili.ADBlock.response.js, tag=BiliBili.ADBlock.response.grpc, argument=
-# Enhanced
-http-response ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/resource\/show\/tab\/v2\? requires-body=1, script-path=https://github.com/BiliUniverse/Enhanced/releases/download/v0.5.2/response.bundle.js, tag=📺 BiliBili.Enhanced.x.resource.show.tab.v2, argument=[{Home.Tab},{Home.Tab_default},{Home.Top_left},{Home.Top},{Bottom}]
-http-response ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/account\/mine(\/ipad)?\? requires-body=1, script-path=https://github.com/BiliUniverse/Enhanced/releases/download/v0.5.2/response.bundle.js, tag=📺 BiliBili.Enhanced.x.v2.account.mine, argument=[{Home.Tab},{Home.Tab_default},{Home.Top_left},{Home.Top},{Bottom}]
-http-response ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/region\/index\? requires-body=1, script-path=https://github.com/BiliUniverse/Enhanced/releases/download/v0.5.2/response.bundle.js, tag=📺 BiliBili.Enhanced.x.v2.region.index, argument=[{Home.Tab},{Home.Tab_default},{Home.Top_left},{Home.Top},{Bottom}]
-http-response ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/channel\/region\/list\? requires-body=1, script-path=https://github.com/BiliUniverse/Enhanced/releases/download/v0.5.2/response.bundle.js, tag=📺 BiliBili.Enhanced.x.v2.channel.region.list, argument=[{Home.Tab},{Home.Tab_default},{Home.Top_left},{Home.Top},{Bottom}]
 # BiliBili
 http-request ^https?:\/\/.+\.bilivideo\.com\/upgcxcode\/ script-path=https://raw.githubusercontent.com/BiliUniverse/Redirect/main/js/BiliBili.Redirect.request.js, tag=BiliBili.Redirect.CDN.upgcxcode.m4s
 http-request ^https?:\/\/(.+):(8000|8082)\/v1\/resource\/ script-path=https://raw.githubusercontent.com/BiliUniverse/Redirect/main/js/BiliBili.Redirect.request.js, tag=BiliBili.Redirect.MCDN.v1.resource.m4s, argument=Host.MCDN=proxy-tf-all-ws.bilivideo.com

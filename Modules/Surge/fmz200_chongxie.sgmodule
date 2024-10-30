@@ -11,7 +11,7 @@
 #!system = iOS, iPadOS
 #!system_version = 
 #!loon_version = 
-#!date=2024-10-28 12:30:00
+#!date=2024-10-29 21:30:00
 #!support=支持约511款APP/小程序
 #!remark=下方的所有规则都标注了对应的hostname，可能存在错误或者遗漏，欢迎反馈。对于无法/可选MITM的hostname都特别做了“如开启可自行添加主机名”提示，如果提示后面没有标注主机名则包含所有主机名，否则只包含提示语后面的主机名。
 #############################################
@@ -723,18 +723,18 @@ fmz200_chongxie = type=http-response,pattern=^https?:\/\/api\.gamer\.com\.tw\/mo
 # > 滴滴出行
 # Hostname = %APPEND% res.xiaojukeji.com, common.diditaxi.com.cn, hd.xiaojukeji.com, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, conf.diditaxi.com.cn
 ^https?:\/\/hd\.xiaojukeji\.com\/d - reject
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/freight\.xiaojukeji\.com\/gateway,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/daijia\.kuaidadi\.com\/gateway,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/daijia\.kuaidadi\.com:443\/gateway,requires-body=1,script-path=https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/freight\.xiaojukeji\.com\/gateway,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
+fmz200_chongxie = type=http-response,pattern=#^https?:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/daijia\.kuaidadi\.com\/gateway,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/daijia\.kuaidadi\.com:443\/gateway,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
 # 微信小程序个人中心净化 感谢【TEXAS】分享
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/common\.diditaxi\.com\.cn\/common\/v5,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didi.js
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/common\.diditaxi\.com\.cn\/common\/v5,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
 
 # > 滴滴青桔
 # Hostname = %APPEND% pt-starimg.didistatic.com, omgup*.xiaojukeji.com

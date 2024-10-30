@@ -144,7 +144,7 @@ fmz200_cleanup = type=http-response,pattern=^https:\/\/coco-com\.e\.verystar\.ne
 
 # > 滴滴出行 微信小程序个人中心净化 由TEXAS和豆豆提供
 # Hostname = %APPEND% common.diditaxi.com.cn, conf.diditaxi.com.cn
-fmz200_cleanup = type=http-response,pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v5,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didi.js
+fmz200_cleanup = type=http-response,pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v5,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/didi/didiAds.js
 # > 滴滴打车 小程序净化 感谢#豆豆分享
 ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/core - reject
 

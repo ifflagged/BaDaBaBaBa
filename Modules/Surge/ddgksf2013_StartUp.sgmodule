@@ -45,7 +45,7 @@
 # ======= 0~9 ======= #
 
 # > Version
-^https?:\/\/2024.10.27/c352/v2.0.540 - reject
+^https?:\/\/2024.10.30/c352/v2.0.541 - reject
 # > 10
 ^https?:\/\/ftapi\.10jqka\.com\.cn\/futgwapi\/api\/om\/v\d\/ad\/common\/transfer - reject
 # > 139mail
@@ -211,6 +211,7 @@ ddgksf2013_StartUp = type=http-response,pattern=;^https:\/\/api\.gamer\.com\.tw\
 ^https?:\/\/entree-ws\.igetget\.com\/oms\/front\/start\/push - reject
 # > dingdongmaicai
 ^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/getAd url response-body rt_time":\d{2} response-body rt_time":40
+^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/startUpScreen - reject
 # > dejian
 ^https?:\/\/dj\.palmestore\.com\/zybk\/api\/ad - reject
 ^https?:\/\/saad\.ms\.zhangyue\.net\/ad\/ - reject

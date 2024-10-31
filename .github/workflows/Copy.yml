@@ -58,7 +58,7 @@ jobs:
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git commit -m "Update generated files"
+          git commit -m "Update merged files"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ifflagged/BaDaBaBaBa.git
 
       - name: Send TG Notification if changes were committed

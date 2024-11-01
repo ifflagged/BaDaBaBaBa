@@ -13,7 +13,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'  # 指定为 Node.js 16 或更高版本
 
       - name: Install Puppeteer
         run: npm install puppeteer

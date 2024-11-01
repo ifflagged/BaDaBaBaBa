@@ -41,10 +41,13 @@ jobs:
 
           node download.js
 
+      - name: List files in Test directory
+        run: ls -l Test
+
       - name: Commit and push the downloaded plugin
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
           git add Test/BlockAdvertisers.plugin
-          git commit -m "Add BlockAdvertisers.plugin"
-          git push
+          git commit -m "Add BlockAdvertisers.plugin" || echo "No changes to commit"
+          git push || echo "No changes to push"

@@ -1,4 +1,4 @@
-name: Download Loon Plugin Directly
+name: Download Loon Plugin with Puppeteer
 
 on:
   workflow_dispatch:
@@ -10,19 +10,41 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Download Loon Plugin directly
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install Puppeteer
         run: |
-          mkdir -p Plugins
-          curl -L -o Plugins/BlockAdvertisers.plugin \
-            -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Loon/2.1.3" \
-            "https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin"
+          npm install puppeteer
+
+      - name: Download Loon Plugin
+        run: |
+          node -e "
+          const puppeteer = require('puppeteer');
+
+          (async () => {
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+
+            // 设置自定义 User-Agent
+            await page.setUserAgent('Surge');
+
+            await page.goto('https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin', { waitUntil: 'networkidle2' });
+
+            // 获取页面内容
+            const content = await page.content();
+            require('fs').writeFileSync('Plugins/BlockAdvertisers.plugin', content);
+            await browser.close();
+          })();"
 
       - name: Commit and push changes if downloaded
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
           git add Plugins/BlockAdvertisers.plugin
-          git commit -m "Download Loon Plugin directly"
+          git commit -m "Download Loon Plugin with Puppeteer"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

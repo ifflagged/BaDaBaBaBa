@@ -1,62 +1,57 @@
-name: Download Loon Plugin
+name: Download Loon Plugin with Custom User-Agent
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  download_plugin:
+  download-plugin:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # 或其他你需要的版本
+          node-version: '16'
 
-      - name: Install axios
-        run: npm install axios
-
-      - name: Create Test directory
-        run: mkdir -p Test
-
-      - name: Download Plugin using Loon simulation
+      - name: Install Puppeteer
         run: |
-          echo "const fs = require('fs');
-          const axios = require('axios');
+          npm install puppeteer
 
-          async function download() {
-            const url = 'https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin';
-            const path = 'Test/BlockAdvertisers.plugin';
-            const response = await axios.get(url, {
-              responseType: 'arraybuffer',
-              headers: {
-                'User-Agent': 'Loon/3.2.3',  // 这里替换为 Loon 的 User-Agent
-                'Accept': '*/*',
-                'Referer': 'https://kelee.one/',
-                // 添加其他必要的标头
-                'Accept-Encoding': 'gzip, deflate, br',
-              }
+      - name: Download Loon Plugin with Custom Headers
+        run: |
+          node -e "
+          const puppeteer = require('puppeteer');
+
+          (async () => {
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+
+            // 设置 User-Agent 为 Loon
+            await page.setUserAgent('Loon');
+
+            // 设置其他 HTTP 请求头 (如果需要)
+            await page.setExtraHTTPHeaders({
+              'User-Agent': 'Loon',
+              // 添加其他自定义标头，例如 'Referer': 'https://example.com'，如果有需要
             });
-            fs.writeFileSync(path, response.data);
-            console.log('Download complete: ' + path);
-          }
 
-          download().catch(console.error);" > download.js
+            // 访问插件地址并等待页面加载完成
+            await page.goto('https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin', { waitUntil: 'networkidle2' });
 
-          node download.js
+            // 保存页面内容
+            const content = await page.content();
+            require('fs').writeFileSync('Plugins/BlockAdvertisers.plugin', content);
+            await browser.close();
+          })();"
 
-      - name: List files in Test directory
-        run: ls -l Test
-
-      - name: Commit and push the downloaded plugin
+      - name: Commit and push changes if downloaded
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git add Test/BlockAdvertisers.plugin
-          git commit -m "Add BlockAdvertisers.plugin" || echo "No changes to commit"
-          git push || echo "No changes to push"
+          git add Plugins/BlockAdvertisers.plugin
+          git commit -m "Download Loon Plugin with Custom User-Agent"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

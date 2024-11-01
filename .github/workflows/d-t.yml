@@ -1,0 +1,36 @@
+name: Download Loon Plugin via Import Link
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'  # 可设置为每天定时执行
+
+jobs:
+  download-plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download Loon Plugin via Import Link
+        run: |
+          # 创建插件保存目录
+          mkdir -p Plugins
+
+          # 使用 curl 下载插件，通过 nsloon 的 import 链接
+          curl -L -o Plugins/BlockAdvertisers.plugin "https://www.nsloon.com/openloon/import?plugin=https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin"
+
+      - name: Commit and push changes
+        run: |
+          # 配置 Git 信息
+          git config --local user.name "ifflagged"
+          git config --local user.email "qibo.sign@outlook.com"
+          
+          # 添加并提交更改
+          git add Plugins/BlockAdvertisers.plugin
+          git commit -m "Update Loon Plugin via Import Link"
+
+          # 推送到 GitHub
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

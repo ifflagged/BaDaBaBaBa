@@ -1,50 +1,50 @@
-name: Download Loon Plugin with Puppeteer
+name: Download Loon Plugin
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  download-plugin:
+  download_plugin:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '14'  # 或其他你需要的版本
 
-      - name: Install Puppeteer
+      - name: Install axios
+        run: npm install axios
+
+      - name: Create Test directory
+        run: mkdir -p Test
+
+      - name: Download Plugin using Loon simulation
         run: |
-          npm install puppeteer
+          echo "const fs = require('fs');
+          const axios = require('axios');
 
-      - name: Download Loon Plugin
-        run: |
-          node -e "
-          const puppeteer = require('puppeteer');
+          async function download() {
+            const url = 'https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin';
+            const path = 'Test/BlockAdvertisers.plugin';
+            const response = await axios.get(url, { responseType: 'arraybuffer' });
+            fs.writeFileSync(path, response.data);
+            console.log('Download complete: ' + path);
+          }
 
-          (async () => {
-            const browser = await puppeteer.launch();
-            const page = await browser.newPage();
+          download().catch(console.error);" > download.js
 
-            // 设置自定义 User-Agent
-            await page.setUserAgent('Surge');
+          node download.js
 
-            await page.goto('https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin', { waitUntil: 'networkidle2' });
-
-            // 获取页面内容
-            const content = await page.content();
-            require('fs').writeFileSync('Plugins/BlockAdvertisers.plugin', content);
-            await browser.close();
-          })();"
-
-      - name: Commit and push changes if downloaded
+      - name: Commit and push the downloaded plugin
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git add Plugins/BlockAdvertisers.plugin
-          git commit -m "Download Loon Plugin with Puppeteer"
+          git add Test/BlockAdvertisers.plugin
+          git commit -m "Add BlockAdvertisers.plugin"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

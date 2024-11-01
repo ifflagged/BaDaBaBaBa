@@ -1,56 +1,32 @@
-name: Download Loon Plugin with Custom User-Agent
+name: Download Plugin
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  download-plugin:
+  download-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+      - name: Create TEST directory
+        run: mkdir -p TEST
 
-      - name: Install Puppeteer
+      - name: Download Plugin with custom User-Agent
         run: |
-          npm install puppeteer
+          curl -A "Surge Mac/2985" -L -o TEST/BlockAdvertisers.plugin "https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin"
 
-      - name: Download Loon Plugin with Custom Headers
-        run: |
-          node -e "
-          const puppeteer = require('puppeteer');
-
-          (async () => {
-            const browser = await puppeteer.launch();
-            const page = await browser.newPage();
-
-            // 设置 User-Agent 为 Loon
-            await page.setUserAgent('Loon');
-
-            // 设置其他 HTTP 请求头 (如果需要)
-            await page.setExtraHTTPHeaders({
-              'User-Agent': 'Loon',
-              // 添加其他自定义标头，例如 'Referer': 'https://example.com'，如果有需要
-            });
-
-            // 访问插件地址并等待页面加载完成
-            await page.goto('https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin', { waitUntil: 'networkidle2' });
-
-            // 保存页面内容
-            const content = await page.content();
-            require('fs').writeFileSync('Plugins/BlockAdvertisers.plugin', content);
-            await browser.close();
-          })();"
+      - name: Verify download
+        run: ls -l TEST
 
       - name: Commit and push changes if downloaded
         run: |
           git config --local user.name "ifflagged"
           git config --local user.email "qibo.sign@outlook.com"
-          git add Plugins/BlockAdvertisers.plugin
+          git add .
           git commit -m "Download Loon Plugin with Custom User-Agent"
           git push
         env:

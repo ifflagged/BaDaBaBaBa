@@ -35,9 +35,11 @@ jobs:
             const response = await axios.get(url, {
               responseType: 'arraybuffer',
               headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
+                'User-Agent': 'Loon/3.2.3',  // 这里替换为 Loon 的 User-Agent
                 'Accept': '*/*',
-                'Referer': 'https://kelee.one/'
+                'Referer': 'https://kelee.one/',
+                // 添加其他必要的标头
+                'Accept-Encoding': 'gzip, deflate, br',
               }
             });
             fs.writeFileSync(path, response.data);

@@ -32,7 +32,14 @@ jobs:
           async function download() {
             const url = 'https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin';
             const path = 'Test/BlockAdvertisers.plugin';
-            const response = await axios.get(url, { responseType: 'arraybuffer' });
+            const response = await axios.get(url, {
+              responseType: 'arraybuffer',
+              headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
+                'Accept': '*/*',
+                'Referer': 'https://kelee.one/'
+              }
+            });
             fs.writeFileSync(path, response.data);
             console.log('Download complete: ' + path);
           }

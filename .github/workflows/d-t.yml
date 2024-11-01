@@ -12,13 +12,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Download Loon Plugin via Import Link
+      - name: Download Loon Plugin via Import Link with Custom Headers
         run: |
           # 创建插件保存目录
           mkdir -p Plugins
 
-          # 使用 curl 下载插件，通过 nsloon 的 import 链接
-          curl -L -o Plugins/BlockAdvertisers.plugin "https://www.nsloon.com/openloon/import?plugin=https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin"
+          # 模拟 Loon 请求环境，通过添加自定义请求头
+          curl -L -o Plugins/BlockAdvertisers.plugin \
+            -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Loon/2.1.3" \
+            -H "Referer: https://www.nsloon.com" \
+            "https://www.nsloon.com/openloon/import?plugin=https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin"
 
       - name: Commit and push changes
         run: |
@@ -28,7 +31,7 @@ jobs:
           
           # 添加并提交更改
           git add Plugins/BlockAdvertisers.plugin
-          git commit -m "Update Loon Plugin via Import Link"
+          git commit -m "Update Loon Plugin via Import Link with Headers"
 
           # 推送到 GitHub
           git push

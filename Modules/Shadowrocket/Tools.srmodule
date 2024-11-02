@@ -1,5 +1,5 @@
-#!name=  Merged Tools
-#!desc= Tools for Shadowrocket
+#!name=  Tools
+#!desc= Merger Tools for Shadowrocket
 #!category= Jacob
 #!arguments= 屏蔽上传按钮:true,屏蔽选段按钮:true,字幕翻译语言:zh-Hans,歌词翻译语言:zh-Hans,脚本执行引擎:auto,启用调试模式:false, TikTok_Region:US, TikTok_Watermark:TikTok Watermark Removal
 #!arguments-desc= # Maasea_YouTube\n- 屏蔽参数：[true, false] \n- 翻译参数：[语言代码, off] \n- 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志\n\n# ifflagged_TikTok\nTikTok_Region: 解锁 TikTok 地区的地区码\n美国：US, 台湾：TW, 新加坡：SG, 日本：JP, 韩国：KR\n\nTikTok_Watermark: 脚本名称\n# TikTok Watermark 为禁用

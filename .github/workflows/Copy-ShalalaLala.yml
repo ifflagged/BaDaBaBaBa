@@ -1,9 +1,8 @@
-name: Get Private Files
+name: Get Merged Files
 
 on:
   schedule:
-    - cron: '0 23 * * *'   # 每天早上7点（北京时间）
-    - cron: '0 13 * * *'   # 每天下午9点（北京时间）
+    - cron: '13 */8 * * *'  # 每 8 小时
   workflow_dispatch:       # 手动触发
 
 jobs:
@@ -16,8 +15,8 @@ jobs:
       - name: Checkout the private repository
         uses: actions/checkout@v2
         with:
-          repository: ifflagged/ShalalaLala  # 私有库的路径
-          token: ${{ secrets.PERSONAL_TOKENS }}  # 使用你的 GitHub Token
+          repository: ifflagged/ShalalaLala
+          token: ${{ secrets.PERSONAL_TOKENS }}
           path: private-repo  # 临时路径
 
       - name: Copy specific files

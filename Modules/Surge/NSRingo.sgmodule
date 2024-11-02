@@ -1,4 +1,4 @@
-#!name=  Merged NSRingo
+#!name=  NSRingo
 #!desc= Merger NSRingo for Surge
 #!category= Jacob
 #!arguments= NextHour.Provider:"ColorfulClouds",AQI.Provider:"ColorfulClouds",AQI.ReplaceProviders:"",AQI.Local.Scale:"WAQI_InstantCast",AQI.Local.ReplaceScales:"HJ6332012",AQI.Local.ConvertUnits:false,API.ColorfulClouds.Token:"",API.QWeather.Host:"devapi.qweather.com",API.QWeather.Token:"",API.WAQI.Token:"", PEP.GCC:US, GeoManifest.Dynamic.Config.CountryCode.default:"CN",GeoManifest.Dynamic.Config.CountryCode.watchOS:"US",UrlInfoSet.Dispatcher:"AutoNavi",UrlInfoSet.Directions:"AutoNavi",UrlInfoSet.RAP:"Apple",UrlInfoSet.LocationShift:"AUTO",TileSet.Satellite:"HYBRID",TileSet.Flyover:"XX",TileSet.Munin:"XX"

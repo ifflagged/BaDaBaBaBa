@@ -1,5 +1,5 @@
 #!name=  Merged Tools
-#!desc= Merger Tools for Shadowrocket
+#!desc= Tools for Shadowrocket
 #!category= Jacob
 #!arguments= 屏蔽上传按钮:true,屏蔽选段按钮:true,字幕翻译语言:zh-Hans,歌词翻译语言:zh-Hans,脚本执行引擎:auto,启用调试模式:false, TikTok_Region:US, TikTok_Watermark:TikTok Watermark Removal
 #!arguments-desc= # Maasea_YouTube\n- 屏蔽参数：[true, false] \n- 翻译参数：[语言代码, off] \n- 脚本引擎：[auto, jsc, webview]\n\n1. 语言代码遵循 Google Translate Languages Codes, 当填入 off 时关闭翻译\n2. 推荐使用 jsc 引擎，但你仍可以切换成 webview 体验 Surge 新特性\n3. 开启调试模式用于输出更多日志\n\n# ifflagged_TikTok\nTikTok_Region: 解锁 TikTok 地区的地区码\n美国：US, 台湾：TW, 新加坡：SG, 日本：JP, 韩国：KR\n\nTikTok_Watermark: 脚本名称\n# TikTok Watermark 为禁用
@@ -171,7 +171,7 @@ AND, ((DOMAIN-SUFFIX, googlevideo.com), (PROTOCOL, UDP)), REJECT
 AND, ((DOMAIN, youtubei.googleapis.com), (PROTOCOL, UDP)), REJECT
 # 12306_remove_ads
 # Amap_remove_ads
-AND, ((URL-REGEX, "^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch"), (USER-AGENT, "AMapiPhone*")), REJECT
+AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, AMapiPhone*)), REJECT
 DOMAIN, amap-aos-info-nogw.amap.com, REJECT
 DOMAIN, free-aos-cdn-image.amap.com, REJECT
 # BaiduNetDisk_remove_ads
@@ -213,7 +213,7 @@ AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -log-), (DOMAIN-SUFFIX, pangle.io)
 AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -dual-event-), (DOMAIN-SUFFIX, pangle.io)), REJECT
 AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
 AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
-URL-REGEX, "^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/", REJECT
+URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
 DOMAIN, mon.zijieapi.com, REJECT
 DOMAIN, i.snssdk.com, REJECT
 DOMAIN, is.snssdk.com, REJECT
@@ -257,6 +257,9 @@ DOMAIN, sdktmp.hubcloud.com.cn, REJECT
 DOMAIN, v.adx.hubcloud.com.cn, REJECT
 DOMAIN, config.inmobi.cn, REJECT
 DOMAIN, ztoken.uyunad.com, REJECT
+DOMAIN, yumao.puata.info, REJECT
+DOMAIN, adtrack.e.kuaishou.com, REJECT
+DOMAIN-SUFFIX, adbkwai.com, REJECT
 DOMAIN, st.appsad.cn, REJECT
 DOMAIN, sdk.beizi.biz, REJECT
 DOMAIN, api-htp.beizi.biz, REJECT
@@ -347,6 +350,7 @@ DOMAIN, sdk-data.ubixioe.com, REJECT
 DOMAIN, tower.ubixioe.com, REJECT
 DOMAIN, tx-cfg-u1.ubixioe.com, REJECT
 DOMAIN, tx-data-u1.ubixioe.com, REJECT
+DOMAIN, df.tanx.com, REJECT
 DOMAIN, beacon-api.aliyuncs.com, REJECT
 DOMAIN, adash.man.aliyuncs.com, REJECT
 DOMAIN, applog.uc.cn, REJECT
@@ -394,18 +398,18 @@ DOMAIN, api.bridgeoos.com, REJECT
 DOMAIN, adx-os.bridgeoos.com, REJECT
 DOMAIN, adx-sg-req.bridgeoos.com, REJECT
 DOMAIN-SUFFIX, bridgeoos.com, REJECT
+DOMAIN, ad-evods.tianya.tv, REJECT
 # DiDi_remove_ads
 DOMAIN, hd.xiaojukeji.com, REJECT
 DOMAIN, gwp.xiaojukeji.com, REJECT
 AND, ((IP-ASN, 45090, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
 AND, ((IP-ASN, 63646, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
 # FleaMarket_remove_ads
-AND, ((URL-REGEX, "^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch"), (USER-AGENT, "%E9%97%B2%E9%B1%BC*")), REJECT
+AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, %E9%97%B2%E9%B1%BC*)), REJECT
 # JD_remove_ads
-URL-REGEX, "^http:\/\/\w{32}\.jddebug\.com\/diagnose\?", REJECT
 # PinDuoDuo_remove_ads
-AND, ((URL-REGEX, "^http:\/\/((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/d"), (USER-AGENT, "*com.xunmeng.pinduoduo*")), REJECT
-AND, ((URL-REGEX, "^http:\/\/\[((([0-9A-Fa-f]{1, 4}:){7}([0-9A-Fa-f]{1, 4}|:))|(([0-9A-Fa-f]{1, 4}:){6}(:[0-9A-Fa-f]{1, 4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1, 4}:){5}(((:[0-9A-Fa-f]{1, 4}){1, 2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1, 4}:){4}(((:[0-9A-Fa-f]{1, 4}){1, 3})|((:[0-9A-Fa-f]{1, 4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1, 4}:){3}(((:[0-9A-Fa-f]{1, 4}){1, 4})|((:[0-9A-Fa-f]{1, 4}){0, 2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1, 4}:){2}(((:[0-9A-Fa-f]{1, 4}){1, 5})|((:[0-9A-Fa-f]{1, 4}){0, 3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1, 4}:){1}(((:[0-9A-Fa-f]{1, 4}){1, 6})|((:[0-9A-Fa-f]{1, 4}){0, 4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1, 4}){1, 7})|((:[0-9A-Fa-f]{1, 4}){0, 5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))\]\/d4\?"), (USER-AGENT, "*com.xunmeng.pinduoduo*")), REJECT
+AND, ((URL-REGEX, ^http:\/\/((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/d), (USER-AGENT, *com.xunmeng.pinduoduo*)), REJECT
+AND, ((URL-REGEX, ^http:\/\/\[((([0-9A-Fa-f]{1, 4}:){7}([0-9A-Fa-f]{1, 4}|:))|(([0-9A-Fa-f]{1, 4}:){6}(:[0-9A-Fa-f]{1, 4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1, 4}:){5}(((:[0-9A-Fa-f]{1, 4}){1, 2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1, 4}:){4}(((:[0-9A-Fa-f]{1, 4}){1, 3})|((:[0-9A-Fa-f]{1, 4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1, 4}:){3}(((:[0-9A-Fa-f]{1, 4}){1, 4})|((:[0-9A-Fa-f]{1, 4}){0, 2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1, 4}:){2}(((:[0-9A-Fa-f]{1, 4}){1, 5})|((:[0-9A-Fa-f]{1, 4}){0, 3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1, 4}:){1}(((:[0-9A-Fa-f]{1, 4}){1, 6})|((:[0-9A-Fa-f]{1, 4}){0, 4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1, 4}){1, 7})|((:[0-9A-Fa-f]{1, 4}){0, 5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))\]\/d4\?), (USER-AGENT, *com.xunmeng.pinduoduo*)), REJECT
 DOMAIN, titan.pinduoduo.com, REJECT
 DOMAIN, ta-a.pinduoduo.com, REJECT
 DOMAIN, ta.pinduoduo.com, REJECT
@@ -415,15 +419,15 @@ DOMAIN, th.pinduoduo.com, REJECT
 # RedPaper_remove_ads
 AND, ((PROTOCOL, QUIC), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 # Umetrip_remove_ads
-URL-REGEX, "^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native", REJECT
+URL-REGEX, ^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native, REJECT
 # Weibo_remove_ads
 DOMAIN, wbapp.uve.weibo.com, DIRECT
 DOMAIN-SUFFIX, biz.weibo.com, REJECT
 DOMAIN, dns.weibo.cn, REJECT
 IP-CIDR, 39.97.130.51/32, REJECT, no-resolve
 IP-CIDR, 39.97.128.148/32, REJECT, no-resolve
-URL-REGEX, "^http:\/\/api\.weibo\.cn\/2\/httpdns\/config", REJECT
-URL-REGEX, "^http:\/\/api\.weibo\.cn\/httpdns\/config", REJECT
+URL-REGEX, ^http:\/\/api\.weibo\.cn\/2\/httpdns\/config, REJECT
+URL-REGEX, ^http:\/\/api\.weibo\.cn\/httpdns\/config, REJECT
 # zirawell_10086_general
 IP-CIDR, 120.240.95.37/32, REJECT, no-resolve
 # zirawell_adUnion
@@ -1245,80 +1249,70 @@ ifflagged_myblockads = type=http-response,pattern=^https:\/\/jzts\.cmpassport\.c
 youtube.request = type=http-request, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch), script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.preview.js, requires-body=true, binary-body-mode=true, max-size=-1
 youtube.response = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.preview.js, requires-body=true, binary-body-mode=true, max-size=-1, argument="{"lyricLang":"zh-Hans","captionLang":"zh-Hans","blockUpload":true,"blockImmersive":true,"debug":false}"
 # 12306_remove_ads
-移除12306开屏广告 = type=http-request, pattern=^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$, script-path=https://kelee.one/Resource/Script/12306/12306_remove_splashscreen_ads.js, requires-body=true
-移除12306应用内广告 = type=http-response, pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$, script-path=https://kelee.one/Resource/Script/12306/12306_remove_ads.js
+移除12306开屏广告 = type=http-request, pattern=^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/12306_remove_splashscreen_ads.js, requires-body=true
+移除12306应用内广告 = type=http-response, pattern=^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/12306_remove_ads.js
 # Amap_remove_ads
-body_rewrite_22 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.tipsOperationLocation%22%2C%22obj.data.resourcePlacement%22%5D%5D%5D
-body_rewrite_23 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/homepage\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22history_tags%22%5D%5D%5D
-body_rewrite_34 = type=http-response, pattern=^https:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_car_tips\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.carTips.data.popupInfo%22%5D%5D%5D
-移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/bus\/plan\/integrate\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/c3frontend\/af-(hotel|launch)\/page\/main\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/perception\/drive\/(routeInfo|routePlan), script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search\/(common\/coupon\/info|poi\/detail), script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_bff\/hotword\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(?:mps|search\/sp|sug|tips_operation_location), script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除首页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(card-service-plan-home|main-page), script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除首页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable\/1\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除我的页面推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaasv3\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除附近页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search\/nearbyrec_smart\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除开屏广告 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除打车页推广 = type=http-response, pattern=^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(car\/order\/content_info|order_web\/friendly_information), script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
-移除打车页推广 = type=http-response, pattern=^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
+移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/bus\/plan\/integrate\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/c3frontend\/af-(hotel|launch)\/page\/main\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/perception\/drive\/(routeInfo|routePlan), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search\/(common\/coupon\/info|poi\/detail), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_bff\/hotword\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除导航详情页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(?:mps|search\/sp|sug|tips_operation_location), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除首页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(card-service-plan-home|main-page), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除首页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable\/1\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除我的页面推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaasv3\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除附近页推广 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/shield\/search\/nearbyrec_smart\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除开屏广告 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除打车页推广 = type=http-response, pattern=^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(car\/order\/content_info|order_web\/friendly_information), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
+移除打车页推广 = type=http-response, pattern=^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads.js, requires-body=true
 # DiDi_remove_ads
-移除广告 = type=http-response, pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
-移除广告 = type=http-response, pattern=^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
-移除广告 = type=http-response, pattern=^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
-移除广告 = type=http-response, pattern=^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
-移除广告 = type=http-response, pattern=^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Didichuxing.js, requires-body=true
+移除广告 = type=http-response, pattern=^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Didichuxing.js, requires-body=true
+移除广告 = type=http-response, pattern=^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Didichuxing.js, requires-body=true
+移除广告 = type=http-response, pattern=^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Didichuxing.js, requires-body=true
+移除广告 = type=http-response, pattern=^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Didichuxing.js, requires-body=true
+移除广告 = type=http-response, pattern=^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Didichuxing.js, requires-body=true
 # FleaMarket_remove_ads
-移除我的页面推广 = type=http-response, pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/, script-path=https://kelee.one/Resource/Script/FleaMarket/FleaMarket_remove_ads.js, requires-body=true
-移除首页信息流推广 = type=http-response, pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/, script-path=https://kelee.one/Resource/Script/FleaMarket/FleaMarket_remove_ads.js, requires-body=true
-移除首页顶部标签推广 = type=http-response, pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.circle\.list\/, script-path=https://kelee.one/Resource/Script/FleaMarket/FleaMarket_remove_ads.js, requires-body=true
-移除搜索结果广告 = type=http-response, pattern=^https:\/\/g-(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\/, script-path=https://kelee.one/Resource/Script/FleaMarket/FleaMarket_remove_ads.js, requires-body=true
+移除我的页面推广 = type=http-response, pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads.js, requires-body=true
+移除首页信息流推广 = type=http-response, pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads.js, requires-body=true
+移除首页顶部标签推广 = type=http-response, pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.circle\.list\/, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads.js, requires-body=true
+移除搜索结果广告 = type=http-response, pattern=^https:\/\/g-(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\/, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads.js, requires-body=true
 # JD_remove_ads
-移除京东广告 = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://kelee.one/Resource/Script/JD/JD_remove_ads.js, requires-body=true
+移除京东广告 = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/JD_remove_ads.js, requires-body=true
 # PinDuoDuo_remove_ads
-body_rewrite_32 = type=http-response, pattern=^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22bottom_section_list%22%2C%22ui.bottom_section%22%2C%22ui.live_section.float_info%22%5D%5D%5D
-body_rewrite_33 = type=http-response, pattern=^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22monthly_card_entrance%22%2C%22personal_center_style_v2_vo%22%2C%22icon_set.icons%22%2C%22icon_set.top_personal_icons%22%2C%22title_bar_items%22%5D%5D%5D
-body_rewrite_35 = type=http-response, pattern=^https:\/\/api\.pinduoduo\.com\/search, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22expansion%22%5D%5D%5D
-精简首页 = type=http-response, pattern=^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\?, script-path=https://kelee.one/Resource/Script/PinDuoDuo/PinDuoDuo_remove_ads.js, requires-body=true
+精简首页 = type=http-response, pattern=^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/PinDuoDuo_remove_ads.js, requires-body=true
 # RedPaper_remove_ads
-body_rewrite_21 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/banner_list$, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-replace%22%2C%5B%5B%22data%22%2C%22%7B%7D%22%5D%5D%5D%5D
-body_rewrite_22 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/hot_list$, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-replace%22%2C%5B%5B%22data.items%22%2C%22%5B%5D%22%5D%5D%5D%5D
-body_rewrite_23 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/hint, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-replace%22%2C%5B%5B%22data.hint_words%22%2C%22%5B%5D%22%5D%5D%5D%5D
-body_rewrite_24 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/trending\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-replace%22%2C%5B%5B%22data.queries%22%2C%22%5B%5D%22%5D%2C%5B%22data.hint_word%22%2C%22%7B%7D%22%5D%5D%5D%5D
-移除详情页小部件 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/(note\/widgets|user\/followings\/followfeed), script-path=https://kelee.one/Resource/Script/RedPaper/RedPaper_remove_ads.js, requires-body=true
-移除搜索页广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/notes\?, script-path=https://kelee.one/Resource/Script/RedPaper/RedPaper_remove_ads.js, requires-body=true
-移除开屏广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/config\?, script-path=https://kelee.one/Resource/Script/RedPaper/RedPaper_remove_ads.js, requires-body=true
-移除开屏广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/splash_config, script-path=https://kelee.one/Resource/Script/RedPaper/RedPaper_remove_ads.js, requires-body=true
-移除信息流广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/followfeed\?, script-path=https://kelee.one/Resource/Script/RedPaper/RedPaper_remove_ads.js, requires-body=true
-移除详情页感兴趣的人 = type=http-response, pattern=https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/recommend\/user\/follow_recommend\?, script-path=https://kelee.one/Resource/Script/RedPaper/RedPaper_remove_ads.js, requires-body=true
-移除信息流广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/homefeed\?, script-path=https://kelee.one/Resource/Script/RedPaper/RedPaper_remove_ads.js, requires-body=true
-移除图片和视频水印 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/(note\/feed|note\/videofeed)\?, script-path=https://kelee.one/Resource/Script/RedPaper/RedPaper_remove_ads.js, requires-body=true
-移除图片和实况照片水印 = type=http-response, pattern=https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/(imagefeed|live_photo\/save), script-path=https://kelee.one/Resource/Script/RedPaper/RedPaper_remove_ads.js, requires-body=true
+移除详情页小部件 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/(note\/widgets|user\/followings\/followfeed), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads.js, requires-body=true
+移除搜索页广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/notes\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads.js, requires-body=true
+移除开屏广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/config\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads.js, requires-body=true
+移除开屏广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/splash_config, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads.js, requires-body=true
+移除信息流广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/followfeed\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads.js, requires-body=true
+移除详情页感兴趣的人 = type=http-response, pattern=https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/recommend\/user\/follow_recommend\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads.js, requires-body=true
+移除信息流广告 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/homefeed\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads.js, requires-body=true
+移除图片和视频水印 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/(note\/feed|note\/videofeed)\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads.js, requires-body=true
+移除图片和实况照片水印 = type=http-response, pattern=https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/(imagefeed|live_photo\/save), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads.js, requires-body=true
 # Umetrip_remove_ads
-移除首页广告 = type=http-response, pattern=^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$, script-path=https://kelee.one/Resource/Script/Umetrip/Umetrip_remove_ads.js
+移除首页广告 = type=http-response, pattern=^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Umetrip_remove_ads.js
 # Weibo_remove_ads
-移除首页签到弹窗 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除首页顶部标签 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/groups\/allgroups\/v2\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除详情页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/(?:cardlist|page), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除评论区广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/comments\/build_comments\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除详情页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/(?:container\/asyn|flowlist|flowpage), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除关注、取消关注弹窗 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/friendships\/(?:create|destroy), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除个人主页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/profile\/(?:container_timeline|dealatt|me|statuses\/tab|userinfo), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除超话搜索页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/shproxy\/chaohua\/discovery\/searchactive\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除信息流广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:container_timeline(?:_hot|_topic|_topicpage|_unread)?|repost_timeline|unread_hot_timeline), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除微博详情页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:extend|show), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除视频流广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/video\/tiny_stream_video_list\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除超话顶部标签 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/!\/huati\/discovery_home_bottom_channels\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除消息页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/direct_messages\/user_list\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除消息页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/messageflow\/notice\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除发现页信息流广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/search\/(?:container_timeline|finder), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除发现页搜索结果广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/searchall\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除开屏广告 = type=http-response, pattern=^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除开屏广告 = type=http-response, pattern=^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
+移除首页签到弹窗 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除首页顶部标签 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/groups\/allgroups\/v2\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除详情页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/(?:cardlist|page), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除评论区广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/comments\/build_comments\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除详情页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/(?:container\/asyn|flowlist|flowpage), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除关注、取消关注弹窗 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/friendships\/(?:create|destroy), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除个人主页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/profile\/(?:container_timeline|dealatt|me|statuses\/tab|userinfo), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除超话搜索页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/shproxy\/chaohua\/discovery\/searchactive\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除信息流广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:container_timeline(?:_hot|_topic|_topicpage|_unread)?|repost_timeline|unread_hot_timeline), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除微博详情页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:extend|show), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除视频流广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/video\/tiny_stream_video_list\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除超话顶部标签 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/!\/huati\/discovery_home_bottom_channels\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除消息页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/direct_messages\/user_list\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除消息页广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/messageflow\/notice\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除发现页信息流广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/search\/(?:container_timeline|finder), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除发现页搜索结果广告 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/searchall\?, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除开屏广告 = type=http-response, pattern=^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除开屏广告 = type=http-response, pattern=^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
+移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads.js, requires-body=true
 # Yuheng0101_NoAds
 NoAds = type=http-response, pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$, script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js, requires-body=true, max-size=-1, timeout=60
 NoAds = type=http-response, pattern=^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/newTopPullSecond\/getNewTopPullList, script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js, requires-body=true, max-size=-1, timeout=60

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:       # 手动触发
 
 jobs:
-  get-files:
+  Coping:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout this repository
@@ -19,7 +19,7 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKENS }}
           path: private-repo  # 临时路径
 
-      - name: Copy specific files
+      - name: Copy Private files
         run: |
           mkdir -p Modules/Surge
           mkdir -p Modules/Loon

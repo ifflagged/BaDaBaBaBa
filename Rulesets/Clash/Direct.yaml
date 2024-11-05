@@ -1,5 +1,8 @@
 payload:
 # Merging from ifflagged/Direct.list
+# TV
+# > IPTV
+  - DOMAIN,tv.668966.xyz
 
 # Emby
 # > CC

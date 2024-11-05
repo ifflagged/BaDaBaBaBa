@@ -2,7 +2,7 @@ name: Get Merged Files
 
 on:
   schedule:
-    - cron: '13 */8 * * *'  # 每 8 小时
+    - cron: '13 */3 * * *'  # 每 8 小时
   workflow_dispatch:       # 手动触发
 
 jobs:

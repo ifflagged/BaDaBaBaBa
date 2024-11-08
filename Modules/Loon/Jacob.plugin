@@ -313,7 +313,7 @@ AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJE
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
-AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT//误杀
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT
 AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
 AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
 AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
@@ -1034,93 +1034,83 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 reject
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-200
 ^https?:\/\/([\w-]+)\.googlevideo\.com\/initplayback(\?.*oad=.+)$ reject-img
-^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? reject-dict
-^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) reject-dict
-^https:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\? response-body-json-del data.commonMaterial data.tipsOperationLocation data.resourcePlacement
-^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/homepage\? response-body-json-del history_tags
-^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? reject-dict
-^https:\/\/oss\.amap\.com\/ws\/banner\/lists\/\? reject-dict
-^https:\/\/m5\.amap\.com\/ws\/aos\/main\/page\/product\/list\? reject-dict
-^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(?:main-page-assets|main-page-location|ridewalk-end-fc) reject-dict
-^https:\/\/m5\.amap\.com\/ws\/(?:mapapi\/hint_text\/offline_data|message\/notice\/list|shield\/search\/new_hotword) reject-dict
-^https:\/\/m5\.amap\.com\/ws\/shield\/scene\/recommend\? reject-dict
-^https:\/\/m5\.amap\.com\/ws\/valueadded\/weather\/v2\? reject-dict
-^https:\/\/sns\.amap\.com\/ws\/msgbox\/pull_mp\? reject-dict
-^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:order\/car\/king_toolbox_car_bubble|tips\/onscene_visual_optimization) reject-dict
-^https:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_car_tips\? response-body-json-del data.carTips.data.popupInfo
-^https?:\/\/180\.76\.76\.200\/v\d\/resolve reject
-^https?:\/\/180\.76\.76\.112\/v\d\/resolve reject
-^https:\/\/pan\.baidu\.com\/api\/getconfig reject-dict
-^https:\/\/pan\.baidu\.com\/api\/getsyscfg reject-dict
-^https:\/\/pan\.baidu\.com\/api\/taskscore\/tasklist reject-dict
-^https:\/\/pan\.baidu\.com\/act\/api\/activityentry reject-dict
-^https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user\?method=gamecenter reject-dict
-^https:\/\/pan\.baidu\.com\/act\/v2\/welfare\/list reject-dict
-^https:\/\/pan\.baidu\.com\/rest\/\d\.\d\/pcs\/adv reject-dict
-^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
-^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union reject
-^https:\/\/images\.pinduoduo\.com\/mrk\/ reject
-^https:\/\/images\.pinduoduo\.com\/marketing_api\/ reject
-^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget reject-dict
-^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds reject-dict
-^https:\/\/daijia\.kuaidadi\.com\/gateway reject-dict
-^https:\/\/freight\.xiaojukeji\.com\/gateway reject-dict
-^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget reject-dict
-^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast reject-dict
-^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf reject-dict
-^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/other\/slow reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.recommend\.list\/ reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.resell\.recommendorhotcate\/ reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.playboy\.recommend\/ reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.topic\.banner\/ reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/ reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.idle\.coin\.nextfresh\/ reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.discover\/ reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ reject-dict
-^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ reject-dict
-^https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/[\w-]*search[\w-]*\/pages\/ reject-200
-^https?:\/\/(www.)?(g|google)\.cn 302 https://www.google.com
-^https?:\/\/(ditu|maps).google\.cn 302 https://maps.google.com
-^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|stationPullService|uniformRecommend[06]) reject-dict
-^https:\/\/api\.(?:pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash\? reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up\? reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/aquarius\/hungary\/global\/homepage\? reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/(?:likes|my_order_group|new_chat_group|order_express_group|personal) reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/flow\/hungary\/window\/global\/v2\? reject-dict
-^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render response-body-json-del bottom_section_list ui.bottom_section ui.live_section.float_info
-^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub\? response-body-json-del monthly_card_entrance personal_center_style_v2_vo icon_set.icons icon_set.top_personal_icons title_bar_items
-^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data reject-dict
-^https:\/\/api\.pinduoduo\.com\/search response-body-json-del expansion
-^https:\/\/api\.pinduoduo\.com\/search_hotquery\? reject-dict
+^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? - reject-dict
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) - reject-dict
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? - reject-dict
+^https:\/\/oss\.amap\.com\/ws\/banner\/lists\/\? - reject-dict
+^https:\/\/m5\.amap\.com\/ws\/aos\/main\/page\/product\/list\? - reject-dict
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(?:main-page-assets|main-page-location|ridewalk-end-fc) - reject-dict
+^https:\/\/m5\.amap\.com\/ws\/(?:mapapi\/hint_text\/offline_data|message\/notice\/list|shield\/search\/new_hotword) - reject-dict
+^https:\/\/m5\.amap\.com\/ws\/shield\/scene\/recommend\? - reject-dict
+^https:\/\/m5\.amap\.com\/ws\/valueadded\/weather\/v2\? - reject-dict
+^https:\/\/sns\.amap\.com\/ws\/msgbox\/pull_mp\? - reject-dict
+^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:order\/car\/king_toolbox_car_bubble|tips\/onscene_visual_optimization) - reject-dict
+^https?:\/\/180\.76\.76\.200\/v\d\/resolve - reject
+^https?:\/\/180\.76\.76\.112\/v\d\/resolve - reject
+^https:\/\/pan\.baidu\.com\/api\/getconfig - reject-dict
+^https:\/\/pan\.baidu\.com\/api\/getsyscfg - reject-dict
+^https:\/\/pan\.baidu\.com\/api\/taskscore\/tasklist - reject-dict
+^https:\/\/pan\.baidu\.com\/act\/api\/activityentry - reject-dict
+^https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user\?method=gamecenter - reject-dict
+^https:\/\/pan\.baidu\.com\/act\/v2\/welfare\/list - reject-dict
+^https:\/\/pan\.baidu\.com\/rest\/\d\.\d\/pcs\/adv - reject-dict
+^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ - reject
+^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union - reject
+^https:\/\/images\.pinduoduo\.com\/mrk\/ - reject
+^https:\/\/images\.pinduoduo\.com\/marketing_api\/ - reject
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget - reject-dict
+^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds - reject-dict
+^https:\/\/daijia\.kuaidadi\.com\/gateway - reject-dict
+^https:\/\/freight\.xiaojukeji\.com\/gateway - reject-dict
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget - reject-dict
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast - reject-dict
+^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf - reject-dict
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/other\/slow - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.recommend\.list\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.resell\.recommendorhotcate\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.playboy\.recommend\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.topic\.banner\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.user\.strategy\.list\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.idle\.coin\.nextfresh\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.discover\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ - reject-dict
+^https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/[\w-]*search[\w-]*\/pages\/ - reject-200
+^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
+^https?:\/\/(ditu|maps).google\.cn https://maps.google.com 302
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|stationPullService|uniformRecommend[06]) - reject-dict
+^https:\/\/api\.(?:pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash\? - reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up\? - reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/aquarius\/hungary\/global\/homepage\? - reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide - reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/(?:likes|my_order_group|new_chat_group|order_express_group|personal) - reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append - reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/flow\/hungary\/window\/global\/v2\? - reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data - reject-dict
+^https:\/\/api\.pinduoduo\.com\/search_hotquery\? - reject-dict
 ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/cells\/hub\/v3\? - reject-dict
-^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action) reject-dict
-^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? reject-dict
-^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/guide\/user_banner|v3\/note\/guide) reject-dict
-^https:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v1\/ads\/resource|v2\/hey\/\w+\/hey_gallery) reject-dict
-^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/banner_list$ response-body-json-replace data {}
-^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/search\/hot_list$ response-body-json-replace data.items []
-^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/hint response-body-json-replace data.hint_words []
-^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/search\/trending\? response-body-json-replace data.queries [] data.hint_word {}
-^https:\/\/api\.weibo\.cn\/2\/(?:ug\/checkin\/list|push\/daily) reject-dict
-^https:\/\/api\.weibo\.cn\/2\/!\/live\/media_homelist\? reject-dict
-^https:\/\/api\.weibo\.cn\/2\/comments\/bullet_screens\? reject-dict
-^https:\/\/api\.weibo\.cn\/2\/photo\/info\? reject-dict
-^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:container_positive|push_info) reject-dict
-^https:\/\/api\.weibo\.cn\/2\/vote\/get_vote_detail\? reject-dict
-^https:\/\/api\.weibo\.cn\/2\/!\/chaohua\/discovery\/home_bottom\/switch\? reject-dict
-^https:\/\/api\.weibo\.cn\/2\/!\/huati\/(?:discovery_home_bottom_getdotinfo|mobile_discovery_searchchange) reject-dict
-^https:\/\/api\.weibo\.cn\/2\/!\/wbox\/\w+\/(?:home_bottom_modal|interest_category) reject-dict
-^https:\/\/api\.weibo\.cn\/2\/search\/container_discover\? reject-dict
-^https:\/\/api\.weibo\.cn\/2\/hot\/hours_spotlight\? reject-dict
-^https:\/\/api\.weibo\.cn\/2\/video\/redpacket\? reject-dict
-^https:\/\/api\.weibo\.cn\/!\/sug\/list\/finderchange\? reject-dict
-^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime reject-dict
-^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) reject-dict
-^https:\/\/card\.weibo\.com\/article\/m\/aj\/(?:reward|uvead) reject-dict
-^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) reject-dict
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/surprisebox\/(?:get_style|open|submit_action) - reject-dict
+^https:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? - reject-dict
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/guide\/user_banner|v3\/note\/guide) - reject-dict
+^https:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v1\/ads\/resource|v2\/hey\/\w+\/hey_gallery) - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/(?:ug\/checkin\/list|push\/daily) - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/!\/live\/media_homelist\? - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/comments\/bullet_screens\? - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/photo\/info\? - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:container_positive|push_info) - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/vote\/get_vote_detail\? - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/!\/chaohua\/discovery\/home_bottom\/switch\? - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/!\/huati\/(?:discovery_home_bottom_getdotinfo|mobile_discovery_searchchange) - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/!\/wbox\/\w+\/(?:home_bottom_modal|interest_category) - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/search\/container_discover\? - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/hot\/hours_spotlight\? - reject-dict
+^https:\/\/api\.weibo\.cn\/2\/video\/redpacket\? - reject-dict
+^https:\/\/api\.weibo\.cn\/!\/sug\/list\/finderchange\? - reject-dict
+^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime - reject-dict
+^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) - reject-dict
+^https:\/\/card\.weibo\.com\/article\/m\/aj\/(?:reward|uvead) - reject-dict
+^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) - reject-dict
 ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject-200
 ^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading - reject-dict
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject-200
@@ -1284,16 +1274,18 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 (^https?:\/\/*\.\w{4}okv.com\/.+&.+)(\d{2}\.3\.\d)(.+) $118.0$3 302
 ^https:\/\/api-va\.tiktokv\.com\/api\/ad\/ - reject
 # BiliBili
-^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) - reject-dict
-^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? - reject-dict
-^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? - reject-dict
-^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? - reject-dict
-^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords - reject-dict
-^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo - reject-dict
-^https:\/\/app\.bilibili\.com\/x\/resource\/ip - reject-dict
-^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp - reject-dict
-(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
-(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
+^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) reject-dict
+^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? reject-dict
+^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? reject-dict
+^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? reject-dict
+^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? response-body-json-del data.common_equip
+^https:\/\/app\.bilibili\.com\/x\/resource\/top\/activity\? mock-response-body data-type=json status-code=200 data="{ "code": -404, "message": "啥都木有", "ttl": 1, "data": null }"
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords$ reject-dict
+^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo$ url reject-dict
+^https:\/\/app\.bilibili\.com\/x\/resource\/ip reject-dict
+^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp reject-dict
+(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) 302 $1
+(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) 302 $1
 ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords$ - reject
 ^https?:\/\/api\.vc\.bilibili\.com\/search_svr\/v\d\/Search\/recommend_words - reject-dict
 ^https?:\/\/api\.vc\.bilibili\.com\/topic_svr\/v1\/topic_svr - reject-dict
@@ -1301,6 +1293,7 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 ^https?:\/\/api\.bili(bili\.com|api\.net)\/pgc\/season\/app\/related\/recommend\? - reject-dict
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/Flash - reject-dict
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/ListFlash - reject-dict
+^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? - reject-dict
 
 [Host]
 # General&DNS
@@ -1580,63 +1573,63 @@ http-request ^https?:\/\/music\.youtube\.com\/youtubei\/v1\/browse(\?.+)?$ requi
 http-request ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse(\?.+)?$ requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.6/request.bundle.js, tag=🍿️ DualSubs.YouTube.Browse.request.proto, argument=[{Type},{Types},{AutoCC},{Position},{Languages[0]},{Languages[1]},{Vendor},{ShowOnly}]
 http-response ^https?:\/\/music\.youtube\.com\/youtubei\/v1\/browse\?(.*)subtype=Translate requires-body=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Translate.response.bundle.js, tag=🍿️ DualSubs.YouTubeMusic.Translate.Lyrics.response.json, argument=[{Type},{Types},{AutoCC},{Position},{Languages[0]},{Languages[1]},{Vendor},{ShowOnly}]
 http-response ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse\?(.*)subtype=Translate requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Translate.response.bundle.js, tag=🍿️ DualSubs.YouTubeMusic.Translate.Lyrics.response.proto, argument=[{Type},{Types},{AutoCC},{Position},{Languages[0]},{Languages[1]},{Vendor},{ShowOnly}]
-http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/12306_remove_ads/12306_remove_splashscreen_ads.js, requires-body = true, tag = 移除12306开屏广告
-http-response ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/12306_remove_ads/12306_remove_ads.js, tag = 移除12306应用内广告
-http-response ^https:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除路线规划推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/bus\/plan\/integrate\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除路线规划、导航结束页推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/c3frontend\/af-(?:hotel|launch)\/page\/main\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除导航详情页底部酒店
-http-response ^https:\/\/m5\.amap\.com\/ws\/perception\/drive\/(?:routeInfo|routePlan) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除路线规划推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/(?:common\/coupon\/info|poi\/detail) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除导航详情页推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search_bff\/hotword\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除搜索栏推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(?:mps|search\/sp|sug|tips_operation_location) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除搜索详情页推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(?:card-service-plan-home|main-page) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除首页推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable\/1\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除首页推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaasv3\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除我的页面推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/nearbyrec_smart\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除附近页推广
-http-response ^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除开屏广告
-http-response ^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:car\/order\/content_info|order_web\/friendly_information) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除打车页推广卡片、弹窗
-http-response ^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body = true, tag = 移除打车页红点角标、天气图标
-http-response ^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body = true, tag = 移除广告
-http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body = true, tag = 移除广告
-http-response ^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body = true, tag = 移除广告
-http-response ^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body = true, tag = 移除广告
-http-response ^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body = true, tag = 移除广告
-http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads/FleaMarket_remove_ads.js, requires-body = true, tag = 移除我的页面推广
-http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads/FleaMarket_remove_ads.js, requires-body = true, tag = 移除首页信息流推广
-http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.circle\.list\/ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads/FleaMarket_remove_ads.js, requires-body = true, tag = 移除首页顶部标签推广
-http-response ^https:\/\/g-(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\/ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads/FleaMarket_remove_ads.js, requires-body = true, tag = 移除搜索结果广告
-http-response ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/JD_remove_ads/JD_remove_ads.js, requires-body = true, tag = 移除京东广告
-http-response ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/PinDuoDuo_remove_ads/PinDuoDuo_remove_ads.js, requires-body = true, tag = 精简首页
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/note\/(?:imagefeed|live_photo\/save) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除图片和实况照片水印
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/system_service\/config\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除开屏广告 config
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/system_service\/splash_config script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除开屏广告 splash_config
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/(?:note\/widgets|user\/followings\/followfeed) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除详情页小部件、关注页感兴趣的人
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/followfeed\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除信息流广告
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v5\/recommend\/user\/follow_recommend\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除详情页感兴趣的人
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v6\/homefeed\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除信息流广告
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v10\/search\/notes\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除搜索页广告
-http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/note\/feed|v3\/note\/videofeed) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除图片和视频水印
-http-response ^https:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/(?:v4\/note\/videofeed|v10\/note\/video\/save) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body = true, tag = 移除视频水印
-http-response ^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Umetrip_remove_ads/Umetrip_remove_ads.js, tag = 移除首页广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除首页签到弹窗
-http-response ^https:\/\/api\.weibo\.cn\/2\/groups\/allgroups\/v2\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除首页顶部标签
-http-response ^https:\/\/api\.weibo\.cn\/2\/(?:cardlist|page) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除详情页广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/comments\/build_comments\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除评论区广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/(?:container\/asyn|flowlist|flowpage) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除详情页广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/friendships\/(?:create|destroy) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除关注、取消关注弹窗
-http-response ^https:\/\/api\.weibo\.cn\/2\/profile\/(?:container_timeline|dealatt|me|statuses\/tab|userinfo) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除个人主页广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/shproxy\/chaohua\/discovery\/searchactive\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除超话搜索页广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:container_timeline(?:_hot|_topic|_topicpage|_unread)?|repost_timeline|unread_hot_timeline) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除信息流广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:extend|show) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除微博详情页广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/video\/tiny_stream_video_list\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除视频流广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/!\/huati\/discovery_home_bottom_channels\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除超话顶部标签
-http-response ^https:\/\/api\.weibo\.cn\/2\/direct_messages\/user_list\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除消息页广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/messageflow\/notice\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除消息页广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/search\/(?:container_timeline|finder) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除发现页信息流广告
-http-response ^https:\/\/api\.weibo\.cn\/2\/searchall\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除发现页搜索结果广告
-http-response ^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除开屏广告
-http-response ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除开屏广告
-http-response ^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body = true, tag = 移除开屏广告
+http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/12306_remove_ads/12306_remove_splashscreen_ads.js, requires-body=true, tag=移除12306开屏广告
+http-response ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/12306_remove_ads/12306_remove_ads.js, tag=移除12306应用内广告
+http-response ^https:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除路线规划推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/bus\/plan\/integrate\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除路线规划、导航结束页推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/c3frontend\/af-(?:hotel|launch)\/page\/main\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除导航详情页底部酒店
+http-response ^https:\/\/m5\.amap\.com\/ws\/perception\/drive\/(?:routeInfo|routePlan) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除路线规划推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/(?:common\/coupon\/info|poi\/detail) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除导航详情页推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search_bff\/hotword\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除搜索栏推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(?:mps|search\/sp|sug|tips_operation_location) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除搜索详情页推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(?:card-service-plan-home|main-page) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除首页推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable\/1\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除首页推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaasv3\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除我的页面推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/nearbyrec_smart\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除附近页推广
+http-response ^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除开屏广告
+http-response ^https:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:car\/order\/content_info|order_web\/friendly_information) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除打车页推广卡片、弹窗
+http-response ^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(\/home)?\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Amap_remove_ads/Amap_remove_ads.js, requires-body=true, tag=移除打车页红点角标、天气图标
+http-response ^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body=true, tag=移除广告
+http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body=true, tag=移除广告
+http-response ^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body=true, tag=移除广告
+http-response ^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body=true, tag=移除广告
+http-response ^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/DiDi_remove_ads/DiDi_remove_ads.js, requires-body=true, tag=移除广告
+http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads/FleaMarket_remove_ads.js, requires-body=true, tag=移除我的页面推广
+http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads/FleaMarket_remove_ads.js, requires-body=true, tag=移除首页信息流推广
+http-response ^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.circle\.list\/ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads/FleaMarket_remove_ads.js, requires-body=true, tag=移除首页顶部标签推广
+http-response ^https:\/\/g-(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\/ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/FleaMarket_remove_ads/FleaMarket_remove_ads.js, requires-body=true, tag=移除搜索结果广告
+http-response ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/JD_remove_ads/JD_remove_ads.js, requires-body=true, tag=移除京东广告
+http-response ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/PinDuoDuo_remove_ads/PinDuoDuo_remove_ads.js, requires-body=true, tag=精简首页
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/note\/(?:imagefeed|live_photo\/save) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除图片和实况照片水印
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/system_service\/config\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除开屏广告 config
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/system_service\/splash_config script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除开屏广告 splash_config
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/(?:note\/widgets|user\/followings\/followfeed) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除详情页小部件、关注页感兴趣的人
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v4\/followfeed\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除信息流广告
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v5\/recommend\/user\/follow_recommend\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除详情页感兴趣的人
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v6\/homefeed\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除信息流广告
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v10\/search\/notes\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除搜索页广告
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v2\/note\/feed|v3\/note\/videofeed) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除图片和视频水印
+http-response ^https:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/(?:v4\/note\/videofeed|v10\/note\/video\/save) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/RedPaper_remove_ads/RedPaper_remove_ads.js, requires-body=true, tag=移除视频水印
+http-response ^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Umetrip_remove_ads/Umetrip_remove_ads.js, tag=移除首页广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除首页签到弹窗
+http-response ^https:\/\/api\.weibo\.cn\/2\/groups\/allgroups\/v2\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除首页顶部标签
+http-response ^https:\/\/api\.weibo\.cn\/2\/(?:cardlist|page) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除详情页广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/comments\/build_comments\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除评论区广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/(?:container\/asyn|flowlist|flowpage) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除详情页广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/friendships\/(?:create|destroy) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除关注、取消关注弹窗
+http-response ^https:\/\/api\.weibo\.cn\/2\/profile\/(?:container_timeline|dealatt|me|statuses\/tab|userinfo) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除个人主页广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/shproxy\/chaohua\/discovery\/searchactive\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除超话搜索页广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:container_timeline(?:_hot|_topic|_topicpage|_unread)?|repost_timeline|unread_hot_timeline) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除信息流广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/statuses\/(?:extend|show) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除微博详情页广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/video\/tiny_stream_video_list\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除视频流广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/!\/huati\/discovery_home_bottom_channels\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除超话顶部标签
+http-response ^https:\/\/api\.weibo\.cn\/2\/direct_messages\/user_list\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除消息页广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/messageflow\/notice\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除消息页广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/search\/(?:container_timeline|finder) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除发现页信息流广告
+http-response ^https:\/\/api\.weibo\.cn\/2\/searchall\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除发现页搜索结果广告
+http-response ^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除开屏广告
+http-response ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除开屏广告
+http-response ^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Weibo_remove_ads/Weibo_remove_ads.js, requires-body=true, tag=移除开屏广告
 http-response ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$ script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js, requires-body=true, timeout=60, tag=NoAds
 http-response ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/newTopPullSecond\/getNewTopPullList script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js, requires-body=true, timeout=60, tag=NoAds
 http-response ^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/emotionMarket\/getEmotionMarketNew script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/ChinaMobile/NoAds.js, requires-body=true, timeout=60, tag=NoAds
@@ -1677,33 +1670,35 @@ http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/p
 http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, requires-body=true, timeout=120, tag=BoxJs
 # BiliBili
 http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\? script-path=https://github.com/ifflagged/Neverflagged/raw/main/Surge/Scripts/BiliBili.js, requires-body=true, tag=精简首页顶部标签
-http-request ^https:\/\/app\.bilibili\.com\/x\/resource\/top\/activity\? script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/echo-response.js, timeout=60, tag=echoResponse, argument=json=%7B%20%22code%22%3A%20-404%2C%20%22message%22%3A%20%22%E5%95%A5%E9%83%BD%E6%9C%A8%E6%9C%89%22%2C%20%22ttl%22%3A%201%2C%20%22data%22%3A%20null%20%7D&status-code=200
-http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|ViewProgress)$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除播放页面视频列表广告
-http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除搜索结果广告
-http-response ^https:\/\/grpc\.biliapi\.net\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除评论区广告
-http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除动态页面广告
-http-response ^https:\/\/grpc\.biliapi\.net\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除交互式弹幕
-http-response ^https:\/\/grpc\.biliapi\.net\/bilibili\.community\.service\.dm\.v1\.DM\/DmView script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除交互式弹幕
-http-response ^https:\/\/grpc\.biliapi\.net\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_helper_beta.js, requires-body=true, binary-body-mode=true, tag=移除青少年弹窗
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(?:brand\/list|event\/list2|list|show) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body=true, tag=移除开屏广告
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body=true, tag=移除首页推荐广告
-http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body=true, tag=精简首页顶部标签
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/search\/square\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body=true, tag=移除热搜广告
-http-response ^https:\/\/api\.bilibili\.com\/pgc\/page\/(?:bangumi|cinema\/tab) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body=true, tag=移除观影页广告
-http-response ^https:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\? script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body=true, tag=移除直播间广告
-http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(?:mine|myinfo) script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body=true, tag=精简我的页面
-http-request ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/feed\/index\? requires-body=0, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/request.bundle.js, tag=📺 BiliBili.ADBlock.request.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/(splash\/(brand\/list|event\/list2|list|show)|feed\/index(\/story)?|search\/square) requires-body=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https?:\/\/api\.bilibili\.com\/x\/web-interface\/wbi\/index\/top\/feed\/rcmd\? requires-body=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https?:\/\/api\.bili(bili\.com|api\.net)\/pgc\/page\/(bangumi|cinema\/tab\?) requires-body=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom requires-body=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|TFInfo|RelatesFeed)$ requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/Dyn(All|Video)$ requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.playurl\.v1\.PlayURL\/PlayView$ requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$ requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/(DmView|DmSegMobile) requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
-http-response ^https:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.7/response.bundle.js, tag=📺 BiliBili.ADBlock.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除动态页面广告
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除青少年模式弹窗
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.show\.v1\.Popular\/Index$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除热门话题
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.playurl\.v1\.PlayURL\/PlayView$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除播放页面广告 playview
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.playerunite\.v1\.Player\/PlayViewUnite$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除播放页面广告 playerunite
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/(?:View|ViewProgress)$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除播放页面广告 view
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.viewunite\.v1\.View\/(?:RelatesFeed|View)$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除播放页面广告 viewunite
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除交互式弹幕
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除评论区广告
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$ script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_proto_kokoryh.js, requires-body = true, binary-body-mode = true, tag = 移除搜索结果广告
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(?:brand\/list|event\/list2|list|show) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body = true, tag = 移除开屏广告
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body = true, tag = 移除首页推荐广告
+http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body = true, tag = 精简首页顶部标签
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/search\/square\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body = true, tag = 移除热搜广告
+http-response ^https:\/\/api\.bilibili\.com\/pgc\/page\/(?:bangumi|cinema\/tab) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body = true, tag = 移除观影页广告
+http-response ^https:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\? script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body = true, tag = 移除直播间广告
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(?:mine|myinfo) script-path = https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/Bilibili_remove_ads/Bilibili_remove_ads.js, requires-body = true, tag = 精简我的页面
+http-request ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/feed\/index\? requires-body=0, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/request.bundle.js, tag=📺 BiliBili.ADBlock.request.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/(splash\/(brand\/list|event\/list2|list|show)|feed\/index(\/story)?|search\/square) requires-body=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.response.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https?:\/\/api\.bilibili\.com\/x\/web-interface\/wbi\/index\/top\/feed\/rcmd\? requires-body=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.response.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https?:\/\/api\.bili(bili\.com|api\.net)\/pgc\/page\/(bangumi|cinema\/tab\?) requires-body=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.response.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom requires-body=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.response.json, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|TFInfo|RelatesFeed)$ requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.view.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/Dyn(All|Video)$ requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.dynamic.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.playurl\.v1\.PlayURL\/PlayView$ requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.playurl.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$ requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.search.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/(DmView|DmSegMobile) requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.dm.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.interface.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
+http-response ^https:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList requires-body=1, binary-body-mode=1, script-path=https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.8/response.bundle.js, tag=📺 BiliBili.ADBlock.reply.response.grpc, argument=[{Splash},{Feed.AD},{Feed.Activity},{Feed.Vertical},{Feed.BlockUpLiveList},{Feed.Story},{Search.AD},{Search.HotSearch},{PGC.AD},{Xlive.AD},{Dynamic.HotTopics},{Dynamic.MostVisited},{Dynamic.AdCard},{View.AD},{DM.Command},{DM.Colorful},{Reply.AD}]
 http-response ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/resource\/show\/tab\/v2\? requires-body=1, script-path=https://github.com/BiliUniverse/Enhanced/releases/download/v0.5.3/response.bundle.js, tag=📺 BiliBili.Enhanced.x.resource.show.tab.v2, argument=[{Home.Tab},{Home.Tab_default},{Home.Top_left},{Home.Top},{Bottom}]
 http-response ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/account\/mine(\/ipad)?\? requires-body=1, script-path=https://github.com/BiliUniverse/Enhanced/releases/download/v0.5.3/response.bundle.js, tag=📺 BiliBili.Enhanced.x.v2.account.mine, argument=[{Home.Tab},{Home.Tab_default},{Home.Top_left},{Home.Top},{Bottom}]
 http-response ^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/region\/index\? requires-body=1, script-path=https://github.com/BiliUniverse/Enhanced/releases/download/v0.5.3/response.bundle.js, tag=📺 BiliBili.Enhanced.x.v2.region.index, argument=[{Home.Tab},{Home.Tab_default},{Home.Top_left},{Home.Top},{Bottom}]
@@ -1715,5 +1710,5 @@ http-request ^https?:\/\/(.+):4480\/upgcxcode\/ script-path=https://github.com/B
 http-request ^https?:\/\/upos-(hz|bstar1)-mirrorakam\.akamaized\.net/upgcxcode\/ script-path=https://github.com/BiliUniverse/Redirect/releases/download/v0.2.5/request.bundle.js, tag=📺 BiliBili.Redirect.Akamaized.upgcxcode.m4s, argument=Host.Akamaized=upos-sz-mirrorali.bilivideo.com, argument=[{Host.Akamaized},{Host.BStar},{Host.PCDN},{Host.MCDN}]
 
 [MITM]
-hostname = *.boxjs.com, *.boxjs.net, *.byteoversea.com, *.dianping.com, *.googlevideo.com, *.httpdns.pro, *.jddebug.com, *.mcdn.bilivideo.cn, *.tik-tokapi.com, *.tiktokv.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, -buy.itunes.apple.com, -gateway.icloud.com, -gateway.icloud.com.cn, -pan.baidu.com, -redirector*.googlevideo.com, -weather-data.apple.com, 103.37.155.60, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 119.29.29.29, 119.29.29.98, 119.29.29.99, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 162.14.157.*, 180.76.76.112, 180.76.76.200, 2023.redircdn.com, a.sinopecsales.com, acs-m.freshippo.com, acs.m.goofish.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, afd.baidu.com, amdc-sibling.alipay.com.cn, amdc.alipay.com, amdc.m.taobao.com, ams-cdn.cdtft.cn, api-sams.walmartmobile.cn, api.biliapi.net, api.bilibili.com, api.coolapk.com, api.douban.com, api.live.bilibili.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.spotify.com, api.udache.com, api.vc.bilibili.com, api.yangkeduo.com, api2.helper.qq.com, apimobile.meituan.com, app-api.smzdm.com, app.10086.cn, app.biliapi.net, app.bilibili.com, article-api.smzdm.com, awp-assets.meituan.net, baike-api.smzdm.com, bk.bingo.qq.com, bla.gtimg.com, boxjs.com, boxjs.net, c.m.163.com, cache.bydauto.com.cn, cdn.api.fotoable.com, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, configuration.ls.apple.com, cover.baidu.com, csc-service.sgcc.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, cy.cloud.ccb.com, daijia.kuaidadi.com, ddplus.meituan.net, discuz.gtimg.cn, dns.jd.com, dualstack*.amap.com, edith.xiaohongshu.com, elemecdn.com, fcvbjbcebos.baidu.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, g-acs.m.goofish.com, g.alicdn.com, g1.163.com, gab.122.gov.cn, gateway.kugou.com, grpc.biliapi.net, gspe1-ssl.ls.apple.com, gspe35-ssl.ls.apple.com, guide-acs.m.taobao.com, gw.alicdn.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, hwimg.beingfine.cn, image.mybank.icbc.com.cn, image1.ccb.com, imageadv.ccb.com, images.pinduoduo.com, img*.360buyimg.com, img.meituan.net, img1.126.net, img3.doubanio.com, imgcache.qq.com, issuecdn.baidupcs.com, jzts.cmpassport.com, l*.51fanli.net, learnywhere.cn, list-app-m.i4.cn, live.bilibili.com, m.bilibili.com, m.dianping.com, m.youtube.com, m5-zb.amap.com, m5.amap.com, manga.bilibili.com, mapi.dianping.com, mars.meituan.com, member.alipan.com, mmgr.gtimg.com, mobile.12306.cn, mobile.cmbchina.com, mobilepaas.abchina.com.cn, mp.weixin.qq.com, ms.jr.jd.com, mtteve.beacon.qq.com, music.youtube.com, nex.163.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss-zjrs.haier.net, oss.amap.com, p*.meituan.net, p.meituan.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, portal-portm.meituan.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, qt.qq.com, qzonestyle.gtimg.cn, rec.xiaohongshu.com, res.xiaojukeji.com, rms.meituan.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, spclient.wg.spotify.com, splashqqlive.gtimg.com, sqt.meituan.com, ssl.kohsocialapp.qq.com, storage.360buyimg.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, tv.youtube.com, update.pan.baidu.com, upos-*-mirrorakam.akamaized.net, upos-sz-mirror*bstar1.bilivideo.com, user-api.smzdm.com, video-dsp.pddpic.com, vv.video.qq.com, wallet.95516.com, wcprd.hilton.com.cn, weatherkit.apple.com, webapp.joyingtrip.com, webappcfg.paas.cmbchina.com, weibo.com, weixin110.qq.com, www.baidu.com, www.bilibili.com, www.dpfile.com, www.google.cn, www.meituan.com, www.washpayer.com, www.xiaohongshu.com, www.youtube.com, www1.elecfans.com, y.gtimg.cn, youtubei.googleapis.com, zhiyou.m.smzdm.com, zj.haier.net
+hostname = *.boxjs.com, *.boxjs.net, *.byteoversea.com, *.dianping.com, *.googlevideo.com, *.httpdns.pro, *.jddebug.com, *.mcdn.bilivideo.cn, *.tik-tokapi.com, *.tiktokv.com, *.weibo.cn, *.weibo.com, *.zdmimg.com, *api.alipan.com, *live.bilibili.com, -buy.itunes.apple.com, -gateway.icloud.com, -gateway.icloud.com.cn, -pan.baidu.com, -redirector*.googlevideo.com, -weather-data.apple.com, 103.37.155.60, 112.53.55.225, 114.115.217.129, 116.85.2.*, 116.85.3.*, 119.29.29.29, 119.29.29.98, 119.29.29.99, 120.241.142.*, 120.241.143.*, 123.207.209.*, 139.199.240.84, 162.14.157.*, 180.76.76.112, 180.76.76.200, 2023.redircdn.com, a.sinopecsales.com, acs-m.freshippo.com, acs.m.goofish.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, afd.baidu.com, amdc-sibling.alipay.com.cn, amdc.alipay.com, amdc.m.taobao.com, ams-cdn.cdtft.cn, ap?.bilibili.com, api-sams.walmartmobile.cn, api.biliapi.net, api.bilibili.com, api.coolapk.com, api.douban.com, api.live.bilibili.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.spotify.com, api.udache.com, api.vc.bilibili.com, api.yangkeduo.com, api2.helper.qq.com, apimobile.meituan.com, app-api.smzdm.com, app.10086.cn, app.biliapi.net, app.bilibili.com, article-api.smzdm.com, awp-assets.meituan.net, baike-api.smzdm.com, bk.bingo.qq.com, bla.gtimg.com, boxjs.com, boxjs.net, c.m.163.com, cache.bydauto.com.cn, cdn.api.fotoable.com, client.app.coc.10086.cn, client.qunar.com, common.diditaxi.com.cn, conf.diditaxi.com.cn, configuration.ls.apple.com, cover.baidu.com, csc-service.sgcc.com.cn, ct.xiaojukeji.com, cube.elemecdn.com, cy.cloud.ccb.com, daijia.kuaidadi.com, ddplus.meituan.net, discuz.gtimg.cn, dns.jd.com, dualstack*.amap.com, edith.xiaohongshu.com, elemecdn.com, fcvbjbcebos.baidu.com, flowplus.meituan.net, freight.xiaojukeji.com, fuss10.elemecdn.com, g-acs.m.goofish.com, g.alicdn.com, g1.163.com, gab.122.gov.cn, gateway.kugou.com, grpc.biliapi.net, gspe1-ssl.ls.apple.com, gspe35-ssl.ls.apple.com, guide-acs.m.taobao.com, gw.alicdn.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, home.umetrip.com, homefront.qunar.com, homepage-api.smzdm.com, hwimg.beingfine.cn, image.mybank.icbc.com.cn, image1.ccb.com, imageadv.ccb.com, images.pinduoduo.com, img*.360buyimg.com, img.meituan.net, img1.126.net, img3.doubanio.com, imgcache.qq.com, issuecdn.baidupcs.com, jzts.cmpassport.com, l*.51fanli.net, learnywhere.cn, list-app-m.i4.cn, m.bilibili.com, m.dianping.com, m.youtube.com, m5-zb.amap.com, m5.amap.com, manga.bilibili.com, mapi.dianping.com, mars.meituan.com, member.alipan.com, mmgr.gtimg.com, mobile.12306.cn, mobile.cmbchina.com, mobilepaas.abchina.com.cn, mp.weixin.qq.com, ms.jr.jd.com, mtteve.beacon.qq.com, music.youtube.com, nex.163.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss-zjrs.haier.net, oss.amap.com, p*.meituan.net, p.meituan.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, portal-portm.meituan.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, qt.qq.com, qzonestyle.gtimg.cn, rec.xiaohongshu.com, res.xiaojukeji.com, rms.meituan.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, sns.amap.com, spclient.wg.spotify.com, splashqqlive.gtimg.com, sqt.meituan.com, ssl.kohsocialapp.qq.com, storage.360buyimg.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, tv.youtube.com, update.pan.baidu.com, upos-*-mirrorakam.akamaized.net, upos-sz-mirror*bstar1.bilivideo.com, user-api.smzdm.com, video-dsp.pddpic.com, vv.video.qq.com, wallet.95516.com, wcprd.hilton.com.cn, weatherkit.apple.com, webapp.joyingtrip.com, webappcfg.paas.cmbchina.com, weibo.com, weixin110.qq.com, www.baidu.com, www.bilibili.com, www.dpfile.com, www.google.cn, www.meituan.com, www.washpayer.com, www.xiaohongshu.com, www.youtube.com, www1.elecfans.com, y.gtimg.cn, youtubei.googleapis.com, zhiyou.m.smzdm.com, zj.haier.net
 

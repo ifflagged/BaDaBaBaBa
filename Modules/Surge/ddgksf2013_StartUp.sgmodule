@@ -45,7 +45,7 @@
 # ======= 0~9 ======= #
 
 # > Version
-^https?:\/\/2024.11.06/c353/v2.0.546 - reject
+^https?:\/\/2024.11.08/c353/v2.0.547 - reject
 # > 10
 ^https?:\/\/ftapi\.10jqka\.com\.cn\/futgwapi\/api\/om\/v\d\/ad\/common\/transfer - reject
 # > 139mail
@@ -81,6 +81,7 @@ ddgksf2013_StartUp = type=http-request,pattern=^https?:\/\/ad\.12306\.cn\/ad\/se
 ^https?:\/\/sso.ifanr.com\/jiong\/IOS\/appso\/splash\/ - reject
 # > alibaba
 ^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv\/ - reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.cbu\.app\.homepage\.startup - reject
 # > amdc
 ddgksf2013_StartUp = type=http-response,pattern=^http:\/\/amdc\.m\.taobao\.com,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/amdc.js
 # > ahfs

@@ -261,7 +261,6 @@ DOMAIN, config.inmobi.cn, REJECT
 DOMAIN, ztoken.uyunad.com, REJECT
 DOMAIN, yumao.puata.info, REJECT
 DOMAIN, adtrack.e.kuaishou.com, REJECT
-DOMAIN-SUFFIX, adbkwai.com, REJECT
 DOMAIN, st.appsad.cn, REJECT
 DOMAIN, sdk.beizi.biz, REJECT
 DOMAIN, api-htp.beizi.biz, REJECT

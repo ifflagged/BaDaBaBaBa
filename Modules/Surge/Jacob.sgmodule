@@ -904,7 +904,6 @@ DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
 DOMAIN, flowplus.meituan.net, REJECT
 DOMAIN, lx0.meituan.com, REJECT
 DOMAIN, hlx.meituan.com, REJECT
-DOMAIN, w.meituan.net, REJECT
 DOMAIN-SUFFIX, httpdns.meituan.com, REJECT
 DOMAIN-SUFFIX, analytics.meituan.net, REJECT
 DOMAIN-SUFFIX, meituan.xn, REJECT

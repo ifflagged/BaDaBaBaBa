@@ -1024,7 +1024,7 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) reject-dict
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) reject-dict
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 reject
-^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-200
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad mock-response-body data-type=text data=""
 ^https?:\/\/([\w-]+)\.googlevideo\.com\/initplayback(\?.*oad=.+)$ reject-img
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) reject-dict
@@ -1176,6 +1176,7 @@ URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
 ^https?:\/\/cy\.cloud\.ccb\.com\/\/gateway\/user-server\/user\/qyCenter\/getCustomizedAdv - reject-dict
 ^https?:\/\/webappcfg\.paas\.cmbchina\.com\/v\d\/func\/getmarketconfig - reject-200
 ^https?:\/\/webapp\.joyingtrip\.com\/cmbapp\/api\/hotel\/marketing\/adListNew - reject-dict
+^https?:\/\/mobile\.cmbchina\.com\/dcardmanage\/salary-welfare\/get-recommend mock-response-body data="undefined"
 ^https?:\/\/103\.37\.155\.60\/fetch - reject
 ^https?:\/\/mapi\.dianping\.com\/mapi\/operating\/(?>indexopsmodules|loadsplashconfig) - reject
 ^https?:\/\/mapi\.dianping\.com\/mapi\/intelliindex - reject-dict
@@ -1658,7 +1659,6 @@ http-response ^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags script-
 http-response ^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js, requires-body=true, timeout=60, tag=smzdm_json
 http-response ^https?:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$ script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/amdc.js, timeout=60, tag=amdc
 http-response ^https?:\/\/g\.alicdn\.com\/.*o2o-ad script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/alicdn.js, requires-body=true, timeout=60, tag=alicdn
-http-request ^https?:\/\/mobile\.cmbchina\.com\/dcardmanage\/salary-welfare\/get-recommend script-path=http://127.0.0.1:9100/convert/_start_/https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Data/cmb.json/_end_/cmb.json?type=mock&target-app=loon-plugin, timeout=60, tag=cmb
 http-response ^https?:\/\/img\.meituan\.net\/dpmobile\/ script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/dianping.js, requires-body=true, timeout=60, tag=dianping
 http-response ^https?:\/\/oss-zjrs\.haier\.net\/resource\/confFile\/\d{22}\.json$ script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/haier.js, requires-body=true, timeout=60, tag=haier
 http-response ^https?:\/\/zj\.haier\.net\/omsappapi\/resource\/v\d\/get\/resourceBag$ script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/haier.js, requires-body=true, timeout=60, tag=haier

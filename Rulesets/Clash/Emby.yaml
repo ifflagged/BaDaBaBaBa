@@ -25,6 +25,9 @@ payload:
 # > Lyrebird
   - DOMAIN-SUFFIX,lyrebirdemby.com
 
+# > Nanfilx
+  - DOMAIN-SUFFIX,nanflix.net
+
 # > 星光
   - DOMAIN-SUFFIX,emby.eu.org
 

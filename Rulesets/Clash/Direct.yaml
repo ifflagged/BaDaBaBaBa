@@ -8,11 +8,5 @@ payload:
 # > CC
   - DOMAIN-SUFFIX,carryz.net
 
-# > Nanfilx
-  - DOMAIN-SUFFIX,nanflix.net
-
-# > 非越
-  - DOMAIN,jg.sfcj.org
-
 # > 叔服
   - DOMAIN,jz.mcjoker.xyz 

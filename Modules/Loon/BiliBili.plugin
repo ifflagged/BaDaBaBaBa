@@ -35,8 +35,8 @@ Host.PCDN = select,"upos-sz-mirrorali.bilivideo.com","upos-sz-mirrorcos.bilivide
 Host.MCDN = select,"proxy-tf-all-ws.bilivideo.com",,tag=[主机名] 重定向 MCDN 主机名 (中国大陆),desc=请选择 MCDN 要重定向的主机名。
 
 [General]
-# Bilibili_remove_ads & # BiliBili
-force-http-engine-hosts = :8000, *:4480, *.mcdn.bilivideo.cn:4483, *:8000, *:8082, *.mcdn.bilivideo.cn:9102
+# BiliBili
+force-http-engine-hosts = *:4480, *.mcdn.bilivideo.cn:4483, *:8000, *:8082, *.mcdn.bilivideo.cn:9102
 
 [Rule]
 # Bilibili_remove_ads

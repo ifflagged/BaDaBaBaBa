@@ -15,8 +15,8 @@ URL-REGEX, "^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH", REJECT-TINYG
 
 [URL Rewrite]
 # Bilibili_remove_ads
-(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
-(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
+(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 307
+(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 307
 # BiliBili
 ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords$ - reject
 

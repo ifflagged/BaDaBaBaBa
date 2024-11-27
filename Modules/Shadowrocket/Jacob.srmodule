@@ -1297,8 +1297,8 @@ URL-REGEX, "^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH", REJECT-DICT
 ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo$ - reject-dict
 ^https:\/\/app\.bilibili\.com\/x\/resource\/ip - reject-dict
 ^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp - reject-dict
-(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
-(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
+(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 307
+(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 307
 
 [SSID Setting]
 # General&DNS

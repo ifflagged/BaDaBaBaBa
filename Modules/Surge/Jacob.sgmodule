@@ -1127,8 +1127,8 @@ URL-REGEX, "^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH", REJECT-TINYG
 (^https?:\/\/*\.\w{4}okv.com\/.+&.+)(\d{2}\.3\.\d)(.+) $118.0$3 302
 ^https:\/\/api-va\.tiktokv\.com\/api\/ad\/ - reject
 # BiliBili
-(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
-(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
+(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 307
+(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 307
 ^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords$ - reject
 
 [Host]

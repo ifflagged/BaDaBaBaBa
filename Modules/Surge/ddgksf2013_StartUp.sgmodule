@@ -45,7 +45,7 @@
 # ======= 0~9 ======= #
 
 # > Version
-^https?:\/\/2024.11.27/c357/v2.0.553 - reject
+^https?:\/\/2024.11.30/c358/v2.0.554 - reject
 # > 10
 ^https?:\/\/ftapi\.10jqka\.com\.cn\/futgwapi\/api\/om\/v\d\/ad\/common\/transfer - reject
 # > 139mail
@@ -950,6 +950,8 @@ ddgksf2013_StartUp = type=http-response,pattern=^https?:\/\/api\.zhihu\.com\/com
 ^https?:\/\/m\.ctrip\.com\/restapi\/soa2\/\d+\/scjson\/tripAds - reject
 # > zijinnongshangyinhang*
 ^https?:\/\/zjmbank\.js96008\.com:8090\/gw\/advert\/oprAdvertQry - reject
+# > zhangyu
+^https?:\/\/.*zhangyuyidong\.cn\/api\/ - reject
 # > zhongguoguangdian
 ^https?:\/\/app\.10099\.com\.cn\/contact-web\/api\/version\/getFlashScreenPage - reject
 # > zhihuisuzhou

@@ -303,6 +303,7 @@ DOMAIN, c2.gdt.qq.com, REJECT
 DOMAIN, huatuocode.huatuo.qq.com, REJECT
 DOMAIN, ios.bugly.qq.com, REJECT
 DOMAIN, pro.bugly.qq.com, REJECT
+DOMAIN, us.l.qq.com, REJECT
 DOMAIN, mi.gdt.qq.com, REJECT
 DOMAIN, qzs.gdtimg.com, REJECT
 DOMAIN, qzs.qq.com, REJECT

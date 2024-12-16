@@ -1140,25 +1140,25 @@ DOMAIN-SUFFIX, m-adash.m.taobao.com, REJECT
 DOMAIN-SUFFIX, adashbc.m.taobao.com, REJECT
 
 # > 腾讯视频
-DOMAIN, adsmind.gdtimg.com, REJECT
-DOMAIN, btrace.qq.com, REJECT
-DOMAIN, btrace.video.qq.com, REJECT
-DOMAIN, info4.video.qq.com, REJECT
-DOMAIN, info6.video.qq.com, REJECT
-DOMAIN, ios.video.mpush.qq.com, REJECT
-DOMAIN, mtrace.qq.com, REJECT
-DOMAIN, p.l.qq.com, REJECT
-DOMAIN, pgdt.gtimg.cn, REJECT
-DOMAIN, rpt.gdt.qq.com, REJECT
-DOMAIN-SUFFIX, trace.qq.com, REJECT
-DOMAIN-SUFFIX, tetrack.qq.com, REJECT
-DOMAIN-SUFFIX, tpns.tencent.com, REJECT
-DOMAIN-SUFFIX, api.poll.video.qq.com, REJECT
-DOMAIN-SUFFIX, static-res.qq.com, REJECT
-DOMAIN-SUFFIX, stat.tpns.tencent.com, REJECT
-DOMAIN, h.trace.qq.com, REJECT
-DOMAIN-KEYWORD, omgmta.qq.com, REJECT
-DOMAIN-KEYWORD, omgmta1.qq.com, REJECT
+# DOMAIN, adsmind.gdtimg.com, REJECT
+# DOMAIN, btrace.qq.com, REJECT
+# DOMAIN, btrace.video.qq.com, REJECT
+# DOMAIN, info4.video.qq.com, REJECT
+# DOMAIN, info6.video.qq.com, REJECT
+# DOMAIN, ios.video.mpush.qq.com, REJECT
+# DOMAIN, mtrace.qq.com, REJECT
+# DOMAIN, p.l.qq.com, REJECT
+# DOMAIN, pgdt.gtimg.cn, REJECT
+# DOMAIN, rpt.gdt.qq.com, REJECT
+# DOMAIN-SUFFIX, trace.qq.com, REJECT
+# DOMAIN-SUFFIX, tetrack.qq.com, REJECT
+# DOMAIN-SUFFIX, tpns.tencent.com, REJECT
+# DOMAIN-SUFFIX, api.poll.video.qq.com, REJECT
+# DOMAIN-SUFFIX, static-res.qq.com, REJECT
+# DOMAIN-SUFFIX, stat.tpns.tencent.com, REJECT
+# DOMAIN, h.trace.qq.com, REJECT
+# DOMAIN-KEYWORD, omgmta.qq.com, REJECT
+# DOMAIN-KEYWORD, omgmta1.qq.com, REJECT
 
 # >  腾讯
 DOMAIN-SUFFIX, news.ssp.qq.com, REJECT
@@ -4243,7 +4243,6 @@ DOMAIN-SUFFIX, noberlmall.com, REJECT
 DOMAIN-SUFFIX, nongsalei.com, REJECT
 DOMAIN-SUFFIX, nowskip.com, REJECT
 DOMAIN-SUFFIX, nr1234.com, REJECT
-DOMAIN-SUFFIX, ntalker.com, REJECT
 DOMAIN-SUFFIX, nterbx.com, REJECT
 DOMAIN-SUFFIX, nthyn.com, REJECT
 DOMAIN-SUFFIX, nvrentao8.com, REJECT
@@ -5617,7 +5616,6 @@ DOMAIN-SUFFIX, b1.c1km4.com, REJECT
 DOMAIN-SUFFIX, ad.cacafly.com, REJECT
 DOMAIN-SUFFIX, vip.cainiaofx.com, REJECT
 DOMAIN-SUFFIX, apollo.caixin.com, REJECT
-DOMAIN-SUFFIX, gg.caixin.com, REJECT
 DOMAIN-SUFFIX, logstat.caixin.com, REJECT
 DOMAIN-SUFFIX, promote.caixin.com, REJECT
 DOMAIN-SUFFIX, ad.caiyunapp.com, REJECT

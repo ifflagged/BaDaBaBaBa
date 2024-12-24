@@ -11,6 +11,7 @@ payload:
 
 # Emby
 # > CC
+  - DOMAIN-SUFFIX,coemn.com
   - DOMAIN-SUFFIX,carryz.net
 
 # > 叔服

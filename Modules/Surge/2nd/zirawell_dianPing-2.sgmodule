@@ -21,5 +21,6 @@
 ^https?:\/\/mars\.meituan\.com\/locate\/v\d\/sdk\/loc - reject
 [Script]
 zirawell_dianPing-2 = type=http-response,pattern=^https?:\/\/img\.meituan\.net\/dpmobile\/,requires-body=1,script-path=https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/dianping.js
+zirawell_dianPing-2 = type=http-response,pattern=^https?:\/\/ddplus\.meituan\.net\/v\d\/mss_\w+\/picassovc,requires-body=1,script-path=https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/dianping.js
 [MITM]
 Hostname = %APPEND% 103.37.155.60, *.dianping.com, img.meituan.net, p.meituan.com, rms.meituan.com, www.dpfile.com, awp-assets.meituan.net, s3plus.meituan.net, p*.meituan.net, ddplus.meituan.net, mars.meituan.com

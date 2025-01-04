@@ -810,6 +810,7 @@ DOMAIN-SUFFIX, count.video.sina.com.cn, REJECT
 # zirawell_alipay
 DOMAIN, adgw.alipay.com, REJECT
 DOMAIN, amdc.alipay.com, REJECT
+DOMAIN, rtms.alipay.com, REJECT
 DOMAIN, amdc-sibling.alipay.com.cn, REJECT
 DOMAIN-SUFFIX, mdap.alipay.com, REJECT
 DOMAIN-SUFFIX, ynuf.alipay.com, REJECT

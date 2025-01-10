@@ -45,14 +45,14 @@
 # ======= 0~9 ======= #
 
 # > Version
-^https?:\/\/2025.01.04/c364/v2.0.563 reject-200
+^https?:\/\/2025.01.09/c364/v2.0.564 reject-200
 # > 10
 ^https?:\/\/ftapi\.10jqka\.com\.cn\/futgwapi\/api\/om\/v\d\/ad\/common\/transfer reject-200
 # > 139mail
 ^https?:\/\/ad\.mcloud\.139\.com\/advertapi reject-200
 ^https?:\/\/smsrebuild1\.mail\.10086\.cn\/together\/s reject-200
 # > 369chuxing
-^https?:\/\/api\.369cx\.cn\/v\d\/Splash\/GetSplashAd reject-200
+http-response ^https?:\/\/api\.369cx\.cn\/v\d\/Splash\/GetSplashAd script-path= https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/dict.js, requires-body = true, tag = ddgksf2013_StartUp
 # > 58
 ^https?:\/\/app\.58\.com\/api\/home\/(advertising|appadv) reject-200
 # > 555

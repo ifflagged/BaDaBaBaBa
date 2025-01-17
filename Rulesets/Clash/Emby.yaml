@@ -8,6 +8,9 @@ payload:
   - DOMAIN-SUFFIX,loseremby.org
   - DOMAIN-SUFFIX,emby.moe
 
+# > FacMata
+  - DOMAIN-SUFFIX,makima.online
+
 # > CC
   - DOMAIN-SUFFIX,coemn.com
 
@@ -35,6 +38,7 @@ payload:
 # > 起点
   - DOMAIN-SUFFIX,tdck.fun
   - DOMAIN-SUFFIX,vfing.de
+  - DOMAIN-SUFFIX,favoritewife.com
 
 # > Misty
   - DOMAIN-SUFFIX,misty.cx

@@ -43,8 +43,8 @@ payload:
 # > NMEmby
   - DOMAIN-SUFFIX,hovervan.org
 
-# > 纸片人
-  - DOMAIN-SUFFIX,embyplus.org
+# > 稳健
+  - DOMAIN-SUFFIX,wenjian.de
 
 # > TreeDiagram
   - DOMAIN-SUFFIX,123456.al

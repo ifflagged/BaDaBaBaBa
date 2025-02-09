@@ -8,6 +8,7 @@ payload:
 # > Github
   - DOMAIN-SUFFIX,github.site
   - DOMAIN-SUFFIX,github.store
+  - DOMAIN-SUFFIX,gh-proxy.com
 
 # Emby
 # > CC

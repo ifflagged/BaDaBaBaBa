@@ -40,6 +40,9 @@ payload:
 # > 惊蛰
   - DOMAIN-SUFFIX,jingzhe.pro
 
+# > 比比
+  - DOMAIN-SUFFIX,beebi.org
+
 # > Misty
   - DOMAIN-SUFFIX,misty.cx
 

@@ -62,7 +62,7 @@ IP-CIDR, 203.107.1.0/24, REJECT, no-resolve
 DOMAIN, httpsdns.baidu.com, REJECT
 DOMAIN, httpdns.baidu.com, REJECT
 DOMAIN, httpdns.baidubce.com, REJECT
-IP-CIDR, 186.76.76.200/32, REJECT, no-resolve
+IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
 DOMAIN, httpdns.bilivideo.com, REJECT
 DOMAIN, httpdns.c.cdnhwc2.com, REJECT
 DOMAIN, dns.jd.com, REJECT
@@ -99,7 +99,7 @@ IP-CIDR6, 2402:4e00:1900:1700:0:9554:1ad9:c3a/128, REJECT, no-resolve
 IP-CIDR6, 240e:928:1400:10::25/128, REJECT, no-resolve
 IP-CIDR, 182.254.116.117/32, REJECT, no-resolve
 IP-CIDR, 182.254.118.119/32, REJECT, no-resolve
-IP-CIDR, 118.89.204.198/23, REJECT, no-resolve
+IP-CIDR, 118.89.204.198/32, REJECT, no-resolve
 IP-CIDR6, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT, no-resolve
 # Tools
 DOMAIN, ad.12306.cn, DIRECT
@@ -134,7 +134,6 @@ DOMAIN, afd.baidu.com, REJECT
 DOMAIN, afdconf.baidu.com, REJECT
 DOMAIN, lc.map.baidu.com, REJECT
 IP-CIDR, 180.76.76.112/32, REJECT, no-resolve
-IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
 DOMAIN, m.adyounger.com, REJECT
 DOMAIN, api.helloclue.com, REJECT
 DOMAIN, brahe.apptimize.com, REJECT

@@ -2,6 +2,7 @@ payload:
 # Merging from ifflagged/Emby.list
 # > 终点站
   - DOMAIN-SUFFIX,emby.wtf
+  - DOMAIN-SUFFIX,term.wtf
 
 # > 垃圾影业
   - DOMAIN-SUFFIX,xmsl.org

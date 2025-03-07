@@ -45,7 +45,7 @@
 # ======= 0~9 ======= #
 
 # > Version
-^https?:\/\/2025.03.03/c370/v2.0.570 - reject
+^https?:\/\/2025.03.06/c370/v2.0.571 - reject
 # > 10
 ^https?:\/\/ftapi\.10jqka\.com\.cn\/futgwapi\/api\/om\/v\d\/ad\/common\/transfer - reject
 # > 139mail
@@ -56,8 +56,8 @@ ddgksf2013_StartUp = type=http-response,pattern=^https?:\/\/api\.369cx\.cn\/v\d\
 # > 58
 ^https?:\/\/app\.58\.com\/api\/home\/(advertising|appadv) - reject
 # > 555
-ddgksf2013_StartUp = type=http-response,pattern=^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/api\/v\d\/movie\/index_recommend,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/555Ad.js
-^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/.*?\/v\d\/(version$|notice\?|top_notice\?|advert\?position=[^2]+) - reject
+ddgksf2013_StartUp = type=http-response,pattern=^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,4}(:\d+)?\/api\/v\d\/movie\/index_recommend,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/555Ad.js
+^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,4}(:\d+)?\/.*?\/v\d\/(version$|notice\?|top_notice\?|advert\?position=[^2]+) - reject
 # > 5eplay
 ^https?:\/\/.*5eplay\.com\/.*adv_slot - reject
 # > 12123

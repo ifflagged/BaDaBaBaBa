@@ -27,6 +27,7 @@ http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core script-pat
 http-response ^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = ZenmoFeiShi_Didichuxing
 http-response ^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = ZenmoFeiShi_Didichuxing
 http-response ^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = ZenmoFeiShi_Didichuxing
+http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/oversea\/layout script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = ZenmoFeiShi_Didichuxing
 ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/other\/slow reject-dict
 
 

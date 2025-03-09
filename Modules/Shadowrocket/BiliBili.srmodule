@@ -42,5 +42,5 @@ BiliBili.Enhanced.x.v2.channel.region.list = type=http-response, pattern=^https?
 📺 BiliBili.Redirect.Akamaized.upgcxcode.m4s = type=http-request, pattern=^https?:\/\/upos-(hz|bstar1)-mirrorakam\.akamaized\.net/upgcxcode\/, engine=webview, script-path=https://github.com/BiliUniverse/Redirect/releases/download/v0.2.12/request.bundle.js, argument=Host.Akamaized="{{{Host.Akamaized}}}"&Host.BStar="{{{Host.BStar}}}"&Host.PCDN="{{{Host.PCDN}}}"&Host.MCDN="{{{Host.MCDN}}}"&LogLevel="{{{LogLevel}}}"
 
 [MITM]
-hostname = %APPEND% *.mcdn.bilivideo.cn, api.bilibili.com, api.live.bilibili.com, app.biliapi.net, app.bilibili.com, grpc.biliapi.net, manga.bilibili.com, upos-*-mirrorakam.akamaized.net, upos-sz-mirror*bstar1.bilivideo.com
+hostname = %APPEND% *.mcdn.bilivideo.cn, api.bilibili.com, api.live.bilibili.com, app.biliapi.net, app.bilibili.com, grpc.biliapi.net, upos-*-mirrorakam.akamaized.net, upos-sz-mirror*bstar1.bilivideo.com
 

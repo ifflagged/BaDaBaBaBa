@@ -3200,7 +3200,7 @@ fmz200_chongxie = type=http-response,pattern=^https?:\/\/.*\.xima.*\.com\/mobile
 # > YouTube
 # Hostname = %APPEND% rr*.googlevideo.com, youtubei.googleapis.com
 # 响应体
-fmz200_chongxie = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),requires-body=1,script-path=https://github.com/Maasea/sgmodule/raw/master/Script/Youtube/dist/youtube.response.preview.js
+fmz200_chongxie = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),requires-body=1,script-path=https://github.com/Maasea/sgmodule/refs/heads/raw/master/Script/Youtube/youtube.response.js
 # 播放页广告
 ^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\? - reject
 

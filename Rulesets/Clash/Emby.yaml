@@ -45,6 +45,9 @@ payload:
 # > 比比
   - DOMAIN-SUFFIX,beebi.org
 
+# > Saturday.Lite
+  - DOMAIN-SUFFIX,saturday.video
+
 # > Misty
   - DOMAIN-SUFFIX,misty.cx
 
@@ -57,14 +60,14 @@ payload:
 # > Doubon
   - DOMAIN-SUFFIX,114514.quest
 
-# > 叔服
-  - DOMAIN,emby3.mcjoker.xyz
+# > 跑路
+  - DOMAIN,emby.116168.xyz
 
 # > hkbemby
   - DOMAIN-SUFFIX,aliz.work
 
-# > 跑路
-  - DOMAIN,emby.116168.xyz
+# > 叔服
+  - DOMAIN,emby3.mcjoker.xyz
 
 # > Reflix
   - DOMAIN-SUFFIX,reflix.top

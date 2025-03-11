@@ -6,7 +6,7 @@
 #!icon=https://github.com/fmz200/wool_scripts/raw/main/icons/gif/naisi-01.gif
 #!raw-url=https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list
 #!tg-group=https://t.me/lanjieguanggao
-#!date=2024-10-18 23:10:00
+#!date=2025-03-10 11:10:00
 #!support=约9392行
 #!proxy-select=reject
 #############################################
@@ -969,6 +969,10 @@ DOMAIN-SUFFIX, android.rqd.qq.com, reject
 DOMAIN-SUFFIX, e.qq.com, reject
 DOMAIN-SUFFIX, beacon.qq.com, reject
 DOMAIN-SUFFIX, v.gdt.qq.com, reject
+DOMAIN, amsweb-cdn-gz-1258344696.file.myqcloud.com, REJECT
+DOMAIN, wallpaper-1258344696.file.myqcloud.com, REJECT
+DOMAIN, xs.gdt.qq.com,REJECT
+IP-CIDR, 120.222.240.171/32, REJECT, no-resolve
 
 # > 蜻蜓FM
 DOMAIN, ad.qingting.fm, reject
@@ -1574,6 +1578,7 @@ DOMAIN, cm-10-138.getui.com, reject
 DOMAIN, sdk.open.talk.getui.net, reject
 DOMAIN, sdk-conf.getui.com, reject
 DOMAIN, switch.cup.com.cn, reject
+DOMAIN, ads.cup.com.cn, reject
 
 # > 雅虎
 DOMAIN-SUFFIX, adserver.yahoo.com, reject
@@ -1587,12 +1592,27 @@ DOMAIN, ads.yahoo.com, reject
 DOMAIN, ads.yahoo.de, reject
 
 # > 优酷
+DOMAIN-SUFFIX, sm.cn, reject
+DOMAIN-SUFFIX, acz.youku.com,REJECT
+DOMAIN-SUFFIX, adx-core.youku.com,REJECT
+DOMAIN-SUFFIX, adx-open-service.youku.com,REJECT
+DOMAIN-SUFFIX, rhdc-acs.youku.com,REJECT
+DOMAIN-SUFFIX, partner.uc.cn,REJECT
+DOMAIN-SUFFIX, ubixioe.com,REJECT
+DOMAIN-SUFFIX, uczzd.cn,REJECT
+DOMAIN-SUFFIX, ranfenghd.com,REJECT
+DOMAIN-SUFFIX, zconfig.alibabausercontent.com,REJECT
+DOMAIN-SUFFIX, bgg.baidu.com,REJECT
+DOMAIN-SUFFIX, gdt.qq.com,REJECT
+DOMAIN-SUFFIX, sdk.e.qq.com,REJECT
+DOMAIN-SUFFIX, mazu.m.qq.com,REJECT
+DOMAIN-SUFFIX, snowflake.qq.com,REJECT
+DOMAIN-SUFFIX, cad.youku.com,REJECT
+DOMAIN-SUFFIX, sjarvis.taobao.com,REJECT
 DOMAIN, adsmind.ugdtimg.com, reject
 DOMAIN, amdc.m.youku.com, reject
 DOMAIN, apiv4-iyes.youku.com, reject
 DOMAIN, httpdns.alicdn.com, reject
-DOMAIN, huichuan-mc.sm.cn, reject
-DOMAIN, huichuan.sm.cn, reject
 DOMAIN, iyes.youku.com, reject
 DOMAIN, m-vali.cp31.ott.cibntv.net, reject
 DOMAIN, mc.atm.youku.com, reject
@@ -1645,6 +1665,7 @@ DOMAIN-SUFFIX, val.api.youku.com, reject
 DOMAIN-SUFFIX, wan.youku.com, reject
 DOMAIN-SUFFIX, ykatr.youku.com, reject
 DOMAIN-SUFFIX, ykrec.youku.com, reject
+IP-CIDR, 223.111.27.248/32, REJECT, no-resolve
 
 # > 易车
 DOMAIN, adx.yiche.com, reject

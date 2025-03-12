@@ -5,6 +5,12 @@
 
 [Argument]
 # Tools
+屏蔽上传按钮=switch,true,false,tag=屏蔽上传按钮, desc=屏蔽上传按钮
+屏蔽选段按钮=switch,true,false,tag=屏蔽选段按钮, desc=屏蔽选段按钮
+字幕翻译语言=input,zh-Hans,tag=字幕翻译语言, desc=字幕翻译语言
+歌词翻译语言=input,zh-Hans,tag=歌词翻译语言, desc=歌词翻译语言
+脚本执行引擎=input,auto,tag=脚本执行引擎, desc=脚本执行引擎
+启用调试模式=switch,false,true,tag=启用调试模式, desc=启用调试模式
 Types = input,"Translate,External",tag=[歌词] 启用类型（多选）,desc=请选择要添加的歌词选项，如果为多选，则会自动决定提供的歌词类型。
 Languages[0] = select,"AUTO","ZH","ZH-HANS","ZH-HK","ZH-HANT","EN","ES","JA","KO","DE","FR","TR","KM",tag=[翻译器] 主语言（源语言）,desc=仅当源语言识别不准确时更改此选项。
 Languages[1] = select,"ZH","ZH-HANS","ZH-HK","ZH-HANT","EN","ES","JA","KO","DE","FR","TR","KM",tag=[翻译器] 副语言（目标语言）,desc=请指定翻译歌词的目标语言。
@@ -16,6 +22,8 @@ Types = input,"Translate",tag=[歌词] 启用类型,desc=请选择要添加的�
 AutoCC = switch,true,tag=[字幕] 自动显示,desc=是否总是自动开启字幕显示。
 Position = select,"Forward","Reverse",tag=[字幕] 主语言（源语言）字幕位置,desc=主语言（源语言）字幕的显示位置。
 ShowOnly = switch,false,tag=[翻译器] 只显示“自动翻译”字幕,desc=是否仅显示“自动翻译”字幕，不显示源语言字幕。
+TikTok_Region=input,TW,tag=TikTok_Region, desc=TikTok_Region
+TikTok_Watermark=input,TikTok Watermark Removal,tag=TikTok_Watermark, desc=TikTok_Watermark
 # BiliBili
 showUpList=select,"auto","true","false",tag=[动态]中[最常访问]的显示方式,desc=auto：仅当列表中存在直播状态时显示；true：始终显示；false：始终隐藏。
 Splash = switch,true,tag=[开屏] 去除广告,desc=是否启用此处修改
@@ -1260,7 +1268,7 @@ URL-REGEX, "^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH", REJECT-DICT
 ^https?:\/\/tfsmy\.chengdu\.gov\.cn\/api\/v\d\/core\/version - reject-200
 ^https?:\/\/ams-cdn\.cdtft\.cn\/prod\/tft-ams - reject-dict
 ^https?:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
-(?<=_region=)CN(?=&) TW 307
+(?<=_region=)CN(?=&) {TikTok_Region} 307
 (?<=&mcc_mnc=)4 2 307
 ^(https?:\/\/(tnc|dm)[\w-]+\.\w+\.com\/.+)(\?)(.+) $1$3 302
 (^https?:\/\/*\.\w{4}okv.com\/.+&.+)(\d{2}\.3\.\d)(.+) $118.0$3 302
@@ -1535,7 +1543,7 @@ http-response ^https:\/\/api\.m\.mi\.com\/v1\/app\/start script-path = https://g
 http-request ^https:\/\/mobilepaas\.abchina\.com\.cn:441\/mgw\.htm$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/header.js, tag = ifflagged_myblockads
 http-response ^https:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\/ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/cloud139.js, requires-body = true, tag = ifflagged_myblockads
 http-response ^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/cloud139.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js, requires-body=true, binary-body-mode=true, tag=youtube.response, argument="{"lyricLang":"zh-Hans","captionLang":"zh-Hans","blockUpload":true,"blockImmersive":true,"debug":false}"
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js, requires-body=true, binary-body-mode=true, tag=youtube.response, argument="{"lyricLang":"{歌词翻译语言}","captionLang":"{字幕翻译语言}","blockUpload":{屏蔽上传按钮},"blockImmersive":{屏蔽选段按钮},"debug":{启用调试模式}}"
 http-response ^https?:\/\/api\.spotify\.com\/v1\/tracks\? requires-body=1, script-path=https://github.com/DualSubs/Spotify/releases/download/v1.9.9/response.bundle.js, tag=🍿️ DualSubs.Spotify.Tracks.response.json, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
 http-request ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json requires-body=1, script-path=https://github.com/DualSubs/Spotify/releases/download/v1.9.9/request.bundle.js, tag=🍿️ DualSubs.Spotify.Lyrics.request.json, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
 http-request ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*) requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/Spotify/releases/download/v1.9.9/request.bundle.js, tag=🍿️ DualSubs.Spotify.Lyrics.request.proto, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
@@ -1645,7 +1653,7 @@ http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?>deliver
 http-response ^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get) script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/taobao.js, requires-body=true, timeout=60, tag=taobao
 http-response ^https?:\/\/poplayer\.template\.alibaba\.com\/\w+\.json script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/taobao.js, requires-body=true, timeout=60, tag=taobao
 http-response ^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/replace-body.js, requires-body=true, timeout=30, tag=replaceBody, argument=officialAdvertResultVo-%3Erandom-response
-http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite) script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/Tiktok.js, requires-body=true, timeout=30, tag=TikTok Watermark Removal
+http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite) script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/Tiktok.js, requires-body=true, timeout=30, tag={TikTok_Watermark}
 http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, requires-body=true, timeout=120, tag=BoxJs
 # BiliBili
 http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2\? script-path=https://github.com/ifflagged/Neverflagged/raw/main/Surge/Scripts/BiliBili.js, requires-body=true, tag=精简首页顶部标签

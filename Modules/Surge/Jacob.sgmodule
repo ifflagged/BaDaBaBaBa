@@ -1055,9 +1055,9 @@ URL-REGEX, "^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH", REJECT-TINYG
 ^https:\/\/images\.pinduoduo\.com\/marketing_api\/ - reject
 ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 307
 ^https?:\/\/(ditu|maps).google\.cn https://maps.google.com 307
-^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit - reject
-^https?:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/explorePage\/getAdverList - reject
-^https?:\/\/(client\.app\.coc|h\.app\.coc|app)\.10086\.cn\/biz-orange\/DN\/emotionMarket - reject
+^https?:\/\/(client\.)?app(\.coc)?\.10086\.cn\/biz-orange\/DN\/init\/startInit - reject
+^https?:\/\/(client\.)?app(\.coc)?\.10086\.cn\/biz-orange\/DN\/explorePage\/getAdverList - reject
+^https?:\/\/(client\.)?app(\.coc)?\.10086\.cn\/biz-orange\/DN\/emotionMarket - reject
 ^https?:\/\/api-sams\.walmartmobile\.cn\/api\/v\d\/sams\/sams-user\/(window\/getGoUpPlus|screen_promotion\/get) - reject
 ^https?:\/\/fcvbjbcebos\.baidu\.com\/.+.mp4 - reject
 ^https?:\/\/cover\.baidu\.com\/cover\/page\/dspSwitchAds\/ - reject

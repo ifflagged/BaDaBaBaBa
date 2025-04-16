@@ -12,7 +12,7 @@
 // @Suitable          自行观看“# > ”注释内容
 // @Attention         如需引用请注明出处，谢谢合作！
 // @Version           V1.0.3
-// @ScriptURL         https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/SmzdmAds.conf
+// @ScriptURL         https://github.com/ddgksf2013/Rewrite/refs/heads/raw/master/AdBlock/SmzdmAds.conf
 // ==/UserScript==
 
 
@@ -21,7 +21,7 @@ Hostname = %APPEND% app-api.smzdm.com, *.zdmimg.com, homepage-api.smzdm.com, hao
 
 
 # > 搜索框填词@ddgksf2013
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/s-api.smzdm\.com\/sou\/search_default_keyword,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/s-api.smzdm\.com\/sou\/search_default_keyword,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js
 # > 好价详情页去广告@blackmatrix7
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject
 # > 好价详情页红包小助手@blackmatrix7
@@ -29,19 +29,19 @@ ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/s-api.smzdm\.com\/s
 # > Wiki@blackmatrix7
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul - reject
 # > 开屏去广告@blackmatrix7@ddgksf2013
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/.*zdmimg\.com\/cpm\/api\/v\d\/advert_distribution\/get_all_advertise,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/.*zdmimg\.com\/cpm\/api\/v\d\/advert_distribution\/get_all_advertise,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js
 # > 首页去广告@blackmatrix7@ddgksf2013
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/homepage-api\.smzdm\.com\/v3\/home,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/homepage-api\.smzdm\.com\/v3\/home,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js
 # > 好价去广告@blackmatrix7
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/haojia-api\.smzdm\.com\/home\/list,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/haojia-api\.smzdm\.com\/home\/list,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js
 # > 好价详情页去广告@blackmatrix7
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/article_releated_modul,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/article_releated_modul,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js
 # > 百科去广告@blackmatrix7
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/baike-api\.smzdm\.com\/home_v3\/list,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/baike-api\.smzdm\.com\/home_v3\/list,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js
 # > 搜索结果去广告@blackmatrix7
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/list_v10,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/list_v10,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js
 # > 搜索标签去广告@blackmatrix7
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js
 # > 值会员权益中心banner广告@blackmatrix7
-ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/smzdm_json.js
+ddgksf2013_SmzdmAds = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,script-path=https://github.com/ddgksf2013/Scripts/refs/heads/raw/master/smzdm_json.js

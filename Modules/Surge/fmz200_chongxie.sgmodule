@@ -1134,8 +1134,9 @@ fmz200_chongxie = type=http-response,pattern=^http?:\/\/(114\.115\.217\.129)|(ho
 ^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.sg\.querysinglescene - reject
 ^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.querysinglepage - reject
 ^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.fc\.recommend\.feedscommondservice - reject
-^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.querytabfeedstream - reject
-fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.query(index|my)page,requires-body=1,script-path=https://github.com/zirawell/Ad-Cleaner/raw/main/Collection/js/freshippo.js
+^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.crm\.platform\.ma\.recommend - reject
+^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.mimir\.recommend\.after\.purchase\.activity - reject
+fmz200_chongxie = type=http-response,pattern=^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.query(?>indexpage|mypage|tabfeedstream),requires-body=1,script-path=https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/freshippo.js
 
 # > 海豚优惠
 # Hostname = %APPEND% *.townmalls.cn

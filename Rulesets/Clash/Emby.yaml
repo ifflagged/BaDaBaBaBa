@@ -27,9 +27,6 @@ payload:
 # > Nya Media
   - DOMAIN-SUFFIX,bangumi.ca
 
-# > 野兽
-  - DOMAIN-SUFFIX,mius.uk
-
 # > 非越
   - DOMAIN-SUFFIX,sfcj.org
 
@@ -71,6 +68,9 @@ payload:
 
 # > hkbemby
   - DOMAIN-SUFFIX,aliz.work
+
+# > 云梯
+  - DOMAIN-SUFFIX,yunti.online
 
 # > 叔服
   - DOMAIN,emby3.mcjoker.xyz

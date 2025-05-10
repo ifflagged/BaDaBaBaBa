@@ -451,7 +451,10 @@ DOMAIN-SUFFIX, ad.duoduo.link, REJECT
 
 # > 盯盯拍 广告联盟已包含
 
-
+# > 叮咚买菜
+DOMAIN, trackercollect.ddxq.mobi, REJECT
+DOMAIN, ddfs-public.ddimg.mobi, REJECT
+DOMAIN, rttrack.ddxq.mobi, REJECT
 
 # >>>>>>>>>>>>>>> ✅ E ✅ <<<<<<<<<<<<<<
 

@@ -6,7 +6,7 @@
 #!icon=https://github.com/fmz200/wool_scripts/raw/main/icons/gif/naisi-01.gif
 #!raw-url=https://github.com/fmz200/wool_scripts/raw/main/QuantumultX/filter/fenliu.list
 #!tg-group=https://t.me/lanjieguanggao
-#!date=2025-03-10 11:10:00
+#!date=2025-05-14 22:11:00
 #!support=约9392行
 #!proxy-select=reject
 #############################################
@@ -808,6 +808,9 @@ DOMAIN-SUFFIX, d.meituan.net, REJECT
 DOMAIN, adui.tg.meitu.com, REJECT
 DOMAIN, aaid.uyunad.com, REJECT
 
+# > 美柚
+DOMAIN, ad.seeyouyima.com, REJECT
+
 # > 买单吧
 DOMAIN-SUFFIX, c-hzgt2.getui.com, REJECT
 DOMAIN-SUFFIX, c-hzgt2.getui.com, REJECT
@@ -1555,6 +1558,9 @@ DOMAIN, 39d83s.com, REJECT
 
 # > 小利生活
 DOMAIN-KEYWORD, mpos-pic.helipay.com, REJECT
+
+# > 小爱音箱
+DOMAIN, mistat.xiaomi.com, REJECT
 
 # > 晓晓优选
 DOMAIN-SUFFIX, api-htp.beizi.biz, REJECT

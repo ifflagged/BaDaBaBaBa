@@ -964,8 +964,10 @@ DOMAIN, tysdk.95516.com, REJECT
 ^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf - reject-dict
 ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/other\/slow - reject-dict
 # FleaMarket_remove_ads
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlecommerce\.splash\.ads\/ - reject-dict
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.recommend\.list\/ - reject-dict
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.local\.near\.by\.corner\.info\/ - reject-dict
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.buy\.feeds\/ - reject-dict
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.shade\/ - reject-dict
 # Google
 ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 307

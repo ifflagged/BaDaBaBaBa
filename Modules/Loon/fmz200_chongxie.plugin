@@ -106,13 +106,6 @@ http-response ^https?:\/\/api\.u51\.com\/generic-config-gateway\/api\/v\d\/guanj
 # Hostname = evs.500.com
 ^https?:\/\/evs\.500\.com\/esinfo\/loading\/loading reject
 
-# > 51job
-# Hostname = appapi.51job*.com, cupid.51job*.com
-^https?:\/\/appapi\.51job(app)?\.com\/api\/market\/(adtrace|get_launch|get_prompt) reject
-^https?:\/\/cupid\.51job(app)?\.com\/open\/index\/recommend-infos reject
-http-response ^https?:\/\/cupid\.51job(app)?\.com\/open\/noauth\/recommend\/job-tab-dynamic script-path= https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/51job.js, requires-body = true, tag = fmz200_chongxie
-
-
 
 # >>>>>>>>>>>>>>> ✅ 6 ✅ <<<<<<<<<<<<<<
 
@@ -1362,7 +1355,7 @@ http-response ^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show script-
 # 我的页面去推广
 http-response ^https?:\/\/api\.gotokeep\.com\/athena\/v\d\/people\/my$ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js, requires-body = true, tag = fmz200_chongxie
 # 应用底部栏净化
-http-response ^https?:\/\/api\.gotokeep\.com\/config\/v\d\/basic script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js, requires-body = true, tag = fmz200_chongxie
+http-response # ^https?:\/\/api\.gotokeep\.com\/config\/v\d\/basic script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js, requires-body = true, tag = fmz200_chongxie
 # 发现页处理
 http-response ^https?:\/\/api\.gotokeep\.com\/homepage\/v\d\/tab script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/keep.js, requires-body = true, tag = fmz200_chongxie
 # 课程预览页广告
@@ -1426,7 +1419,7 @@ http-response ^https:\/\/(api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\
 
 # > 酷安
 # Hostname = api.coolapk.com
-^https?:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch reject-dict
+# ^https?:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch reject-dict
 http-response ^https?:\/\/api\.coolapk\.com\/v6\/feed\/(detail|replyList)\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js, requires-body = true, tag = fmz200_chongxie
 http-response ^https?:\/\/api\.coolapk\.com\/v6\/main\/(dataList|indexV8|init) script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js, requires-body = true, tag = fmz200_chongxie
 http-response ^https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\? script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/coolapk.js, requires-body = true, tag = fmz200_chongxie
@@ -2031,9 +2024,27 @@ http-response #^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/(v1\/assembly\/t
 ^https?:\/\/facade-api\.black-unique\.com\/advertise\/v1\/get\?.* reject-dict
 
 # > 前程无忧 51Job
-# Hostname = img01.51jobcdn.com
+# Hostname = img01.51jobcdn.com, appapi.51job*.com, cupid.51job*.com
 # 去广告 (需卸载App重装) img01.51jobcdn.com
 ^https:\/\/img01\.51jobcdn\.com\/im\/mkt/(?:tg/((19|20)\d{2})banner/(?!jcgz2/)|\d{4}/bd/\d{4}/).*\.jpg reject
+# 屏蔽更新
+^https?:\/\/appapi\.51job(app)?\.com\/api\/util\/get_version reject-dict
+^https?:\/\/cupid\.51job(app)?\.com\/open\/noauth\/index\/last-version reject-dict
+# 开屏及营销广告
+^https?:\/\/appapi\.51job(app)?\.com\/api\/market\/(?>adtrace|get_launch|get_prompt) reject
+# 顶部弹窗
+^https?:\/\/cupid\.51job(app)?\.com\/open\/guide\/home-page-top reject
+# 首页右上角浮窗及右边浮标
+^https?:\/\/cupid\.51job(app)?\.com\/open\/user-task\/user\/task\/init reject
+# 底栏中央活动标
+^https?:\/\/cupid\.51job(app)?\.com\/open\/index\/notice-infos reject-dict
+# 弹窗广告
+^https?:\/\/cupid\.51job(app)?\.com\/launch-hub\/open\/noauth\/popUp reject
+# 推荐流信息广告
+^https?:\/\/cupid\.51job(app)?\.com\/open\/index\/recommend-infos reject
+http-response ^https?:\/\/cupid\.51job(app)?\.com\/open\/noauth\/recommend\/job-tab-dynamic script-path= https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/51job.js, requires-body = true, tag = fmz200_chongxie
+# 我的页净化
+http-response ^https?:\/\/cupid\.51job(app)?\.com\/open\/my-page\/ script-path= https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/51job.js, requires-body = true, tag = fmz200_chongxie
 
 # > 去哒
 # Hostname = iqushangwang.8quan.com
@@ -3716,7 +3727,7 @@ http-response ^https?:\/\/app\.zhuanzhuan\.com\/zz\/transfer\/getmyprofilev3 scr
 
 # > 浙里办
 # Hostname = portal.zjzwfw.gov.cn
-^https?:\/\/portal\.zjzwfw\.gov\.cn\/app_api\/appHome\/selectStartPic reject-200
+^https?:\/\/portal\.zjzwfw\.gov\.cn\/app_api\/appHome\/selectStartPic url response-body "data":\{.+\} response-body "data":{}
 
 # > 郑好办
 # Hostname = app-izz.zhengzhou.gov.cn

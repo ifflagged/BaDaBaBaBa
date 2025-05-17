@@ -1,9 +1,8 @@
 [Rule]
 
 [Rewrite]
-^https?:\/\/tfsmy\.chengdu\.gov\.cn\/api\/v\d\/core\/version reject-200
-^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd url response-body officialAdvertResultVo response-body random-response
+
 [Script]
 
 [MITM]
-Hostname = tfsmy.chengdu.gov.cn, tft-app.cdtft.cn
+

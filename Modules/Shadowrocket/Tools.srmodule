@@ -1135,7 +1135,7 @@ DOMAIN, tysdk.95516.com, REJECT
 ^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{3},h_\d{4}\/format,webp\/ - reject
 ^https?:\/\/(nr-op|cube)\.elemecdn\.com\/.+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{4,},h_\d{4,}\/($|format,webp\/$) - reject
 # zirawell_functional
-^https?:\/\/119\.29\.29\.\d+\/d\?dn - reject-200
+^https?:\/\/119\.29\.29\.\d+\/d\?dn=[a-z0-9]+&clientip=\d&ttl=\d&query=1&id=\d+&sdk=\d+_\d+\.\d+\.\d+&alg=des http://119.29.29.$0/d?dn=$1&clientip=$2&ttl=$3&query=0&id=$4&sdk=$5_$6.$7.$8&alg=des 302
 # zirawell_hilton
 ^https?:\/\/wcprd\.hilton\.com\.cn\/app-middleware\/graphql\?type=splashAd - reject-200
 # zirawell_jd

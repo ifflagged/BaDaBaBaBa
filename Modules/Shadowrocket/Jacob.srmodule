@@ -353,6 +353,7 @@ DOMAIN, c2.gdt.qq.com, REJECT
 DOMAIN, huatuocode.huatuo.qq.com, REJECT
 DOMAIN, ios.bugly.qq.com, REJECT
 DOMAIN, pro.bugly.qq.com, REJECT
+DOMAIN, mazu.m.qq.com, REJECT
 DOMAIN, us.l.qq.com, REJECT
 DOMAIN, mi.gdt.qq.com, REJECT
 DOMAIN, qzs.gdtimg.com, REJECT
@@ -392,6 +393,7 @@ DOMAIN, plbslog.umeng.com, REJECT
 DOMAIN, log.umtrack.com, REJECT
 DOMAIN, aaid.umeng.com, REJECT
 DOMAIN, log.umsns.com, REJECT
+DOMAIN, ulogs.umengcloud.com, REJECT
 DOMAIN, sdk.tianmu.mobi, REJECT
 DOMAIN, tracker.tianmu.mobi, REJECT
 DOMAIN, e-u1.ubixioe.com, REJECT
@@ -563,7 +565,6 @@ DOMAIN-KEYWORD, ads.yahoo, REJECT
 DOMAIN-SUFFIX, getui.net, REJECT
 DOMAIN-SUFFIX, gepush.com, REJECT
 DOMAIN, dns.qq.com, REJECT
-DOMAIN, mazu.m.qq.com, REJECT
 DOMAIN, appsupport.qq.com, REJECT
 DOMAIN, i.gtimg.cn, REJECT
 DOMAIN, qzonestyle.gtimg.cn, REJECT

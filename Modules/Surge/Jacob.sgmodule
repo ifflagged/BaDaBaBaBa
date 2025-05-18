@@ -1517,6 +1517,11 @@ upos-sz-upcdntx.bilivideo.com = server:https://doh.pub/dns-query // BiliBili upo
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/ListFlash data-type=text data="{}" header="application/json"
 ^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? data-type=text data="{}" header="application/json"
 
+[SSID Setting]
+# General&DNS
+SSID:Jacob dns-server=system,encrypted-dns-server=off
+SSID:McDonald's dns-server=system,encrypted-dns-server=off
+
 [Script]
 # Tools
 Look directly for Zhihu = type=http-response,pattern=https://(www\.zhihu\.com/question|zhuanlan\.zhihu\.com/p)/,requires-body=1,max-size=0,script-path=https://github.com/id77/QuantumultX/raw/master/Script/zhihu.js

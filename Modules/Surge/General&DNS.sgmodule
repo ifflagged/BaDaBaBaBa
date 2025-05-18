@@ -366,6 +366,11 @@ upos-sz-upcdntx.bilivideo.com = server:https://doh.pub/dns-query // BiliBili upo
 *.taipei = server:https://dns.twnic.tw/dns-query // TWNIC DNS
 *.he.net = server:https://ordns.he.net/dns-query // HE.net
 
+[SSID Setting]
+# DNS
+SSID:Jacob dns-server=system,encrypted-dns-server=off
+SSID:McDonald's dns-server=system,encrypted-dns-server=off
+
 [MITM]
 hostname = %APPEND% *.httpdns.pro, -*.facebook.com, -*.instagram.com, -*.pstatp.com, -*.snssdk.com, -*.twitter.com, 119.29.29.98, 119.29.29.99, amdc-sibling.alipay.com.cn, amdc.alipay.com, dns.jd.com
 hostname-disabled = %INSERT% buy.itunes.apple.com, gateway.icloud.com, gateway.icloud.com.cn, ios.chat.openai.com, weather-data.apple.com

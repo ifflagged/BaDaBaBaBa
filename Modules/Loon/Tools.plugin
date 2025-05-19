@@ -906,6 +906,9 @@ DOMAIN, tysdk.95516.com, REJECT
 DOMAIN-SUFFIX, jsdelivr.net, PROXY
 
 [Rewrite]
+# Tools
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising reject-dict
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getWidgetV1052 reject
 # ifflagged_myblockads
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml reject
 ^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders reject-dict

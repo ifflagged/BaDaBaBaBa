@@ -1564,6 +1564,9 @@ DOMAIN, mistat.xiaomi.com, reject
 
 # > 晓晓优选
 DOMAIN-SUFFIX, api-htp.beizi.biz, REJECT
+DOMAIN-SUFFIX, yfanads.com, reject
+DOMAIN-SUFFIX, 1rtb.net, reject
+DOMAIN-SUFFIX, adwangmai.com, reject
 
 # > 新浪
 DOMAIN-SUFFIX, beacon.sina.com.cn, reject

@@ -1166,9 +1166,8 @@ DOMAIN-SUFFIX, adashbc.m.taobao.com, reject
 # DOMAIN-SUFFIX, api.poll.video.qq.com, reject
 # DOMAIN-SUFFIX, static-res.qq.com, reject
 # DOMAIN-SUFFIX, stat.tpns.tencent.com, reject
-# DOMAIN, h.trace.qq.com, reject
-# DOMAIN-KEYWORD, omgmta.qq.com, reject
-# DOMAIN-KEYWORD, omgmta1.qq.com, reject
+# DOMAIN-SUFFIX, omgmta.qq.com, reject
+# DOMAIN-SUFFIX, omgmta1.qq.com, reject
 
 # >  腾讯
 DOMAIN-SUFFIX, news.ssp.qq.com, reject

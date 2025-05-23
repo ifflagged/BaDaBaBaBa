@@ -10,7 +10,6 @@
 屏蔽Shorts按钮=switch,false,true,tag=屏蔽Shorts按钮, desc=屏蔽Shorts按钮
 字幕翻译语言=input,off,tag=字幕翻译语言, desc=字幕翻译语言
 歌词翻译语言=input,off,tag=歌词翻译语言, desc=歌词翻译语言
-脚本执行引擎=input,auto,tag=脚本执行引擎, desc=脚本执行引擎
 启用调试模式=switch,false,true,tag=启用调试模式, desc=启用调试模式
 # DualSubs
 Types = input,"Translate,External",tag=[歌词] 启用类型（多选）,desc=请选择要添加的歌词选项，如果为多选，则会自动决定提供的歌词类型。

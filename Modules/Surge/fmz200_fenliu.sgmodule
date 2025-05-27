@@ -1603,7 +1603,7 @@ DOMAIN, ads.yahoo.com, REJECT
 DOMAIN, ads.yahoo.de, REJECT
 
 # > 优酷
-DOMAIN-SUFFIX, sm.cn, REJECT
+#DOMAIN-SUFFIX, sm.cn, REJECT
 DOMAIN-SUFFIX, acz.youku.com,REJECT
 DOMAIN-SUFFIX, adx-core.youku.com,REJECT
 DOMAIN-SUFFIX, adx-open-service.youku.com,REJECT

@@ -1206,6 +1206,7 @@ http-response ^https:\/\/saas-ad\.cloudpnr\.com\/huifuad-base-api\/api\/tactics\
 # > 海马爸比
 # Hostname = 39.98.135.211
 ^https?:\/\/39\.98\.135\.211\/admin\/filter\/crowdFunding\/getNewProductData reject-dict
+^https?:\/\/39\.98\.135\.211\/admin\/filter\/advert\/getAdvertLists reject-dict
 
 
 

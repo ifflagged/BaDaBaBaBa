@@ -183,7 +183,6 @@ AND, ((DOMAIN-KEYWORD, v), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJ
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
 AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJECT
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
-AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
 AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
 AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT
 AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
@@ -215,6 +214,7 @@ DOMAIN, pangolin.snssdk.com, REJECT
 DOMAIN, lf-cdn-tos.bytescm.com, REJECT
 DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
 DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
+DOMAIN, sf3-fe-tos.pglstatp-toutiao.com, REJECT
 DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
 DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
 DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
@@ -230,6 +230,7 @@ DOMAIN, v.adx.hubcloud.com.cn, REJECT
 DOMAIN, config.inmobi.cn, REJECT
 DOMAIN, ztoken.uyunad.com, REJECT
 DOMAIN, yumao.puata.info, REJECT
+DOMAIN, open.e.kuaishou.cn, REJECT
 DOMAIN, adtrack.e.kuaishou.com, REJECT
 DOMAIN, st.appsad.cn, REJECT
 DOMAIN, sdk.beizi.biz, REJECT
@@ -386,6 +387,11 @@ DOMAIN, ad-evods.tianya.tv, REJECT
 DOMAIN, adx.tuia.cn, REJECT
 DOMAIN-SUFFIX, 66mobi.com, REJECT
 DOMAIN, rpe.xdplt.com, REJECT
+DOMAIN-SUFFIX, adjust.com, REJECT
+DOMAIN-SUFFIX, adjust.net.in, REJECT
+DOMAIN, googleads.g.doubleclick-cn.net, REJECT
+DOMAIN-SUFFIX, doubleclick-cn.net, REJECT
+DOMAIN-SUFFIX, googlesyndication-cn.com, REJECT
 # DiDi_remove_ads
 DOMAIN, gwp.xiaojukeji.com, REJECT
 # FleaMarket_remove_ads
@@ -430,9 +436,7 @@ DOMAIN-SUFFIX, hiaiabc.com, REJECT
 DOMAIN-SUFFIX, uyunad.com, REJECT
 DOMAIN-SUFFIX, beizi.biz, REJECT
 DOMAIN-SUFFIX, fstats.xyz, REJECT
-DOMAIN-SUFFIX, doubleclick-cn.net, REJECT
 DOMAIN-SUFFIX, doubleclick.net, REJECT
-DOMAIN-SUFFIX, adjust.com, REJECT
 DOMAIN-SUFFIX, ad.gameley.com, REJECT
 DOMAIN-SUFFIX, app-measurement.com, REJECT
 DOMAIN-SUFFIX, anythinktech.com, REJECT
@@ -949,7 +953,7 @@ DOMAIN, tysdk.95516.com, REJECT
 ^https:\/\/pan\.baidu\.com\/rest\/\d\.\d\/pcs\/adv - reject-dict
 # BlockAdvertisers
 ^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ - reject
-^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union - reject
+^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_ - reject
 ^https:\/\/images\.pinduoduo\.com\/mrk\/ - reject
 ^https:\/\/images\.pinduoduo\.com\/marketing_api\/ - reject
 # DiDi_remove_ads

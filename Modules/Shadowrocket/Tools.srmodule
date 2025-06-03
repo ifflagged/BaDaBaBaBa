@@ -1017,6 +1017,7 @@ DOMAIN, tysdk.95516.com, REJECT
 # Yuheng0101_NoAds
 ^https?:\/\/h\.app\.coc\.10086\.cn\/biz-orange\/DH\/popupWindow\/getDetail - reject-200
 # ZenmoFeiShi_Smzdm
+^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul\? - reject-dict
 ^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading - reject-dict
 # ddgksf2013_SmzdmAds
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject-200
@@ -1311,11 +1312,13 @@ Smzdm = type=http-response, pattern=^https:\/\/app-api\.smzdm\.com\/util\/loadin
 Smzdm = type=http-response, pattern=^https:\/\/haojia-api\.smzdm\.com\/home\/list, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
 Smzdm = type=http-response, pattern=^https:\/\/app-api\.smzdm\.com\/util\/update, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
 Smzdm = type=http-response, pattern=^https:\/\/homepage-api\.smzdm\.com\/v3\/home, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
+Smzdm = type=http-response, pattern=^https:\/\/s-api\.smzdm\.com\/sou\/list_v10, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
 Smzdm = type=http-response, pattern=^https:\/\/user-api\.smzdm\.com\/vip, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
 Smzdm = type=http-response, pattern=^https:\/\/user-api\.smzdm\.com\/vip\/bottom_card_list, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
 Smzdm = type=http-response, pattern=^https:\/\/article-api\.smzdm\.com\/publish\/get_bubble, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
 Smzdm = type=http-response, pattern=^https:\/\/qianbao\.smzdm\.com\/v\d\/app\/home, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
 Smzdm = type=http-response, pattern=^https:\/\/s3\.zdmimg\.com\/third\/index, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
+Smzdm = type=http-response, pattern=^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
 Smzdm = type=http-response, pattern=^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list, script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/main/Smzdm.js, requires-body=true, max-size=-1, timeout=60
 # ddgksf2013_SmzdmAds
 smzdm_json = type=http-response, pattern=^https?:\/\/s-api.smzdm\.com\/sou\/search_default_keyword, script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js, requires-body=true, max-size=-1, timeout=60

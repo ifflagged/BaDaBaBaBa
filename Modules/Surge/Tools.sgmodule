@@ -7,8 +7,6 @@
 [General]
 # Tools & # boxjs
 force-http-engine-hosts = %APPEND% router.com, www.router.com, %APPEND% boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net
-# Tools
-use-local-host-item-for-proxy = true
 
 [Rule]
 # ifflagged_myblockads

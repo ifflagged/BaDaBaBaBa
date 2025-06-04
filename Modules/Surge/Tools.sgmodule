@@ -7,6 +7,8 @@
 [General]
 # Tools & # boxjs
 force-http-engine-hosts = %APPEND% router.com, www.router.com, %APPEND% boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net
+# Tools
+use-local-host-item-for-proxy = true
 
 [Rule]
 # ifflagged_myblockads
@@ -1204,6 +1206,7 @@ DOMAIN, tysdk.95516.com, REJECT
 ^https?:\/\/homefront\.qunar\.com\/front\/splash\/ad data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/qimgs\.qunarzz\.com\/wpf_newmpic_001\/06c3a131f53cca9a78dd26272e3e4cb3 data-type=tiny-gif status-code=200
 # zirawell_sgcc
+^https?:\/\/(?>csc|osg)-service\.sgcc\.com\.cn:\d+\/emss-pfa-homepage-front\/member data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/(?>csc|osg)-service\.sgcc\.com\.cn:\d+\/emss-pfa-appset-front\/bootpageoutter\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/(?>csc|osg)-service\.sgcc\.com\.cn:\d+\/.*\/app_api\/selectInfoByCondition data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 # zirawell_taobao

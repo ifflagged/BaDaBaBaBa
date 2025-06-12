@@ -271,9 +271,10 @@ http-response ^https:\/\/www\.bbkj\.work\/wp-json\/watch-life-net\/v1\/posts scr
 ^https:\/\/mobile-api\.imlaidian\.com\/api\/args reject-dict
 
 # > 罗森点点 微信小程序净化
-^https:\/\/lawsonapi\.yorentown\.com\/area\/sh-lawson\/app\/v1\/mina\/systemSetting reject-dict
+# ^https:\/\/lawsonapi\.yorentown\.com\/area\/sh-lawson\/app\/v1\/mina\/systemSetting reject-dict
 ^https:\/\/plt\.yorentown\.com\/pltapp\/v1\/banner reject-dict
-http-response ^https:\/\/lawsonapi\.yorentown\.com\/area\/sh-lawson\/app\/v1\/home script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/lawson.js, requires-body = true, tag = fmz200_cleanup
+http-response ^https:\/\/lawsonapi\.yorentown\.com\/area\/sh-lawson\/app\/v1\/ script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/lawson.js, requires-body = true, tag = fmz200_cleanup
+http-response ^https:\/\/lawsonapi\.yorentown\.com\/portal\/app\/globalLaunch\/listAdvert script-path= https://github.com/fmz200/wool_scripts/raw/main/Scripts/lawson.js, requires-body = true, tag = fmz200_cleanup
 
 # > 老乡鸡 微信小程序净化
 ^https:\/\/member\.lxjchina\.com\.cn\/mini-server\/home\/page\/banner reject-dict

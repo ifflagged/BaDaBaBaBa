@@ -271,9 +271,10 @@ fmz200_cleanup = type=http-response,pattern=^https:\/\/www\.bbkj\.work\/wp-json\
 ^https:\/\/mobile-api\.imlaidian\.com\/api\/args - reject
 
 # > 罗森点点 微信小程序净化
-^https:\/\/lawsonapi\.yorentown\.com\/area\/sh-lawson\/app\/v1\/mina\/systemSetting - reject
+# ^https:\/\/lawsonapi\.yorentown\.com\/area\/sh-lawson\/app\/v1\/mina\/systemSetting - reject
 ^https:\/\/plt\.yorentown\.com\/pltapp\/v1\/banner - reject
-fmz200_cleanup = type=http-response,pattern=^https:\/\/lawsonapi\.yorentown\.com\/area\/sh-lawson\/app\/v1\/home,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/lawson.js
+fmz200_cleanup = type=http-response,pattern=^https:\/\/lawsonapi\.yorentown\.com\/area\/sh-lawson\/app\/v1\/,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/lawson.js
+fmz200_cleanup = type=http-response,pattern=^https:\/\/lawsonapi\.yorentown\.com\/portal\/app\/globalLaunch\/listAdvert,requires-body=1,script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/lawson.js
 
 # > 老乡鸡 微信小程序净化
 ^https:\/\/member\.lxjchina\.com\.cn\/mini-server\/home\/page\/banner - reject

@@ -858,7 +858,6 @@ DOMAIN-KEYWORD, keplerapi.jd.com, REJECT
 DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
 # zirawell_meituan
 DOMAIN, flowplus.meituan.net, REJECT
-DOMAIN, lx0.meituan.com, REJECT
 DOMAIN, hlx.meituan.com, REJECT
 DOMAIN-SUFFIX, httpdns.meituan.com, REJECT
 DOMAIN-SUFFIX, analytics.meituan.net, REJECT

@@ -5,6 +5,6 @@ DOMAIN, tte.meituan.com, reject
 DOMAIN, dpmtpush.dianping.com, reject
 DOMAIN, dynamicf.sankuai.com, reject
 DOMAIN, live-monitor-broker.sankuai.com, reject
-DOMAIN-SUFFIX, lx.meituan.net, reject
+;DOMAIN-SUFFIX, lx.meituan.net, reject
 IP-CIDR, 101.32.16.204/32, reject, no-resolve
 IP-CIDR, 119.29.126.137/32, reject, no-resolve

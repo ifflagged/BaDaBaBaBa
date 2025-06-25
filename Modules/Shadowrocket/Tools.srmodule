@@ -930,8 +930,6 @@ DOMAIN, tysdk.95516.com, REJECT
 ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) - reject
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) - reject
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
-# Maasea_YouTube
-^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-200
 # Amap_remove_ads
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? - reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) - reject-dict
@@ -1206,6 +1204,12 @@ DOMAIN, tysdk.95516.com, REJECT
 (^https?:\/\/*\.\w{4}okv.com\/.+&.+)(\d{2}\.3\.\d)(.+) $118.0$3 302
 ^https:\/\/api-va\.tiktokv\.com\/api\/ad\/ - reject
 
+[Map Local]
+# Maasea_YouTube
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
+# zirawell_cmb
+^https?:\/\/mobile\.cmbchina\.com\/dcardmanage\/salary-welfare\/get-recommend data-type=file data="https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Data/cmb.json"
+
 [Script]
 # ifflagged_myblockads
 ifflagged_myblockads = type=http-request,pattern=^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$,script-path=https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/12306.js, requires-body = true
@@ -1335,8 +1339,6 @@ smzdm_json = type=http-response, pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user
 # zirawell_adUnion
 amdc = type=http-response, pattern=^https?:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/amdc.js, timeout=60
 alicdn = type=http-response, pattern=^https?:\/\/g\.alicdn\.com\/.*o2o-ad, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/alicdn.js, requires-body=true, max-size=-1, timeout=60
-# zirawell_cmb
-cmb = type=http-request, pattern=^https?:\/\/mobile\.cmbchina\.com\/dcardmanage\/salary-welfare\/get-recommend, script-path=http://127.0.0.1:9100/convert/_start_/https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Data/cmb.json/_end_/cmb.json?type=mock&target-app=shadowrocket-module, timeout=60
 # zirawell_dianping
 dianping = type=http-response, pattern=^https?:\/\/img\.meituan\.net\/dpmobile\/, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/dianping.js, requires-body=true, max-size=-1, timeout=60
 dianping = type=http-response, pattern=^https?:\/\/ddplus\.meituan\.net\/v\d\/mss_\w+\/picassovc, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/dianping.js, requires-body=true, max-size=-1, timeout=60

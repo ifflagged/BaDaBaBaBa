@@ -1033,7 +1033,6 @@ DOMAIN, app.biliapi.net, REJECT
 ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) - reject
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) - reject
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
-^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-200
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? - reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) - reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? - reject-dict
@@ -1271,6 +1270,9 @@ DOMAIN, app.biliapi.net, REJECT
 ^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? - reject-dict
 
 [Map Local]
+# Tools
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
+^https?:\/\/mobile\.cmbchina\.com\/dcardmanage\/salary-welfare\/get-recommend data-type=file data="https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Data/cmb.json"
 # BiliBili
 ^https:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive\? data-type=text data="{"code":0,"data":{"closeType":"close_win","container":[],"showTime":""},"message":"success"}" header="Content-Type:text/plain"
 ^https:\/\/ap[ip]\.bilibili\.com\/x\/(?:resource\/(?:top\/activity|patch\/tab)|v2\/search\/square|vip\/ads\/materials)\? data-type=text data="{"code":-404,"message":"-404","ttl":1,"data":null}" header="Content-Type:text/plain"
@@ -1398,7 +1400,6 @@ smzdm_json = type=http-response, pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/fil
 smzdm_json = type=http-response, pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner, script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js, requires-body=true, max-size=-1, timeout=60
 amdc = type=http-response, pattern=^https?:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/amdc.js, timeout=60
 alicdn = type=http-response, pattern=^https?:\/\/g\.alicdn\.com\/.*o2o-ad, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/alicdn.js, requires-body=true, max-size=-1, timeout=60
-cmb = type=http-request, pattern=^https?:\/\/mobile\.cmbchina\.com\/dcardmanage\/salary-welfare\/get-recommend, script-path=http://127.0.0.1:9100/convert/_start_/https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Data/cmb.json/_end_/cmb.json?type=mock&target-app=shadowrocket-module, timeout=60
 dianping = type=http-response, pattern=^https?:\/\/img\.meituan\.net\/dpmobile\/, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/dianping.js, requires-body=true, max-size=-1, timeout=60
 dianping = type=http-response, pattern=^https?:\/\/ddplus\.meituan\.net\/v\d\/mss_\w+\/picassovc, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/dianping.js, requires-body=true, max-size=-1, timeout=60
 haier = type=http-response, pattern=^https?:\/\/oss-zjrs\.haier\.net\/resource\/confFile\/\d{22}\.json$, script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/haier.js, requires-body=true, max-size=-1, timeout=60

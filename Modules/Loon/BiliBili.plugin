@@ -46,9 +46,10 @@ force-http-engine-hosts = *:4480, *:4483, *:8000, *:8082, *:9102
 [Rule]
 # Bilibili_remove_ads
 DOMAIN, api.biliapi.com, REJECT
-DOMAIN, api.biliapi.net, REJECT
 DOMAIN, app.biliapi.com, REJECT
+DOMAIN, api.biliapi.net, REJECT
 DOMAIN, app.biliapi.net, REJECT
+DOMAIN, line3-h5-mobile-api.biligame.com, REJECT
 DOMAIN-SUFFIX, chat.bilibili.com, REJECT
 
 [Rewrite]

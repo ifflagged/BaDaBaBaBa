@@ -1539,21 +1539,11 @@ DOMAIN-KEYWORD, m.panda.voiceads.cn, reject
 DOMAIN-KEYWORD, iflyad.bj.openstorage.cn, reject
 
 # > 喜马拉雅
-DOMAIN, adbehavior.ximalaya.com, reject
-DOMAIN, adwbs.ximalaya.com, reject
-DOMAIN-SUFFIX, ad.test.ximalaya.com, reject
-DOMAIN-SUFFIX, adse.test.ximalaya.com, reject
-DOMAIN-SUFFIX, adweb.test.ximalaya.com, reject
-DOMAIN-SUFFIX, adweb.ximalaya.com, reject
-DOMAIN-SUFFIX, linkeye.ximalaya.com, reject
-DOMAIN-SUFFIX, location.ximalaya.com, reject
-DOMAIN-SUFFIX, xdcs-collector.ximalaya.com, reject
-DOMAIN-SUFFIX, ad.ximalaya.com, reject
-DOMAIN-SUFFIX, adse.ximalaya.com, reject
-DOMAIN-SUFFIX, adse.wsa.ximalaya.com, reject
-DOMAIN-SUFFIX, adbehavior.wsa.ximalaya.com, reject
-DOMAIN-SUFFIX, adsebs.ximalaya.com, reject
-DOMAIN-SUFFIX, adbs.ximalaya.com, reject
+DOMAIN, adse.ximalaya.com, REJECT
+DOMAIN, adsehera.ximalaya.com, REJECT
+DOMAIN, adse.wsa.ximalaya.com, REJECT
+DOMAIN, adbehavior.ximalaya.com, REJECT
+DOMAIN, adbehavior.wsa.ximalaya.com, REJECT
 
 # > 小红书
 DOMAIN, ads-img-qc.xhscdn.com, reject
@@ -9786,7 +9776,6 @@ DOMAIN-SUFFIX, sape.ru, reject
 DOMAIN-SUFFIX, tns-counter.ru, reject
 DOMAIN-SUFFIX, winlinebet.ru, reject
 DOMAIN-SUFFIX, yadro.ru, reject
-DOMAIN-SUFFIX, yandex.ru, reject
 DOMAIN-SUFFIX, ad.3dnews.ru, reject
 DOMAIN-SUFFIX, rtb.com.ru, reject
 DOMAIN-SUFFIX, dmg.digitaltarget.ru, reject
@@ -9808,9 +9797,6 @@ DOMAIN-SUFFIX, pixel.vihub.ru, reject
 DOMAIN-SUFFIX, ad.xmovies8.ru, reject
 DOMAIN-SUFFIX, counter.yadro.ru, reject
 DOMAIN-SUFFIX, mg.yadro.ru, reject
-DOMAIN-SUFFIX, an.yandex.ru, reject
-DOMAIN-SUFFIX, mc.yandex.ru, reject
-DOMAIN-SUFFIX, mc.yandex.ru, reject
 DOMAIN-SUFFIX, spb.bid.run, reject
 DOMAIN-SUFFIX, adrotator.se, reject
 DOMAIN-SUFFIX, ingest.sentry, reject

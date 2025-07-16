@@ -937,7 +937,7 @@ DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao.com, reject
 ;DOMAIN-KEYWORD, mssdk-bu.bytedance.com, reject
 ;DOMAIN-KEYWORD, 365yg.com, reject
 ;DOMAIN-KEYWORD, ppx.byteimg.com, reject
-;DOMAIN-KEYWORD, i.snssdk.com, reject, reject
+;DOMAIN-KEYWORD, i.snssdk.com, reject
 
 # > 影响端传媒正常运行，默认关闭
 ;DOMAIN-SUFFIX, cloudfront.net, reject
@@ -9952,15 +9952,15 @@ DOMAIN-SUFFIX, yumcs.xiaohuau.xyz, reject
 DOMAIN-SUFFIX, banner.itweb.co.za, reject
 DOMAIN-SUFFIX, banners.itweb.co.za, reject
 DOMAIN-SUFFIX, xn--3bs795g.zone, reject
-DOMAIN-SUFFIX, ppezijkacga.com
-DOMAIN-SUFFIX, kreopbkabsit.com
-DOMAIN-SUFFIX, admiitad.com
-DOMAIN-SUFFIX, thelifeandmore.com
-DOMAIN-SUFFIX, fractionfridgejudiciary.com
-DOMAIN-SUFFIX, ocponcphaafb.com
-DOMAIN-SUFFIX, tapwhigwy.com
-DOMAIN-SUFFIX, ahqovxli.com
-DOMAIN-SUFFIX, fipabtomqok.com
+DOMAIN-SUFFIX, ppezijkacga.com, reject
+DOMAIN-SUFFIX, kreopbkabsit.com, reject
+DOMAIN-SUFFIX, admiitad.com, reject
+DOMAIN-SUFFIX, thelifeandmore.com, reject
+DOMAIN-SUFFIX, fractionfridgejudiciary.com, reject
+DOMAIN-SUFFIX, ocponcphaafb.com, reject
+DOMAIN-SUFFIX, tapwhigwy.com, reject
+DOMAIN-SUFFIX, ahqovxli.com, reject
+DOMAIN-SUFFIX, fipabtomqok.com, reject
 
 # IPV4 addresses
 IP-CIDR, 117.177.248.17/32, reject, no-resolve

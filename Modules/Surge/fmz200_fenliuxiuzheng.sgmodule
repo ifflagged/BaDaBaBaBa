@@ -97,7 +97,8 @@ DOMAIN-KEYWORD, gsa.apple.com, direct
 DOMAIN-KEYWORD, ess.apple.com, direct
 # > 苹果app store
 DOMAIN, itunes.apple.com, direct
-
+# > 苹果播客
+DOMAIN-KEYWORD, amp-api.podcasts.apple.com, proxy
 
 
 # >>>>>>>>>>>>>>> ✅ Q ✅ <<<<<<<<<<<<<<

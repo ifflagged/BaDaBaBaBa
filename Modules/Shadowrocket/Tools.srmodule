@@ -757,6 +757,7 @@ DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
 # zirawell_meituan
 DOMAIN, flowplus.meituan.net, REJECT
 DOMAIN, hlx.meituan.com, REJECT
+DOMAIN, httpdnsmultiapi.meituan.com, REJECT
 DOMAIN, httpdnsmultiapivip.meituan.com, REJECT
 DOMAIN-SUFFIX, httpdns.meituan.com, REJECT
 DOMAIN-SUFFIX, analytics.meituan.net, REJECT

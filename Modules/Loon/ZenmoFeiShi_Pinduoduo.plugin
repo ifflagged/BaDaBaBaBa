@@ -1,7 +1,8 @@
 # Pinduoduo // api.pinduoduo.com,
 #!name = 拼多多净化页面布局
 #!author = 怎么肥事 walala
-#!update = 2024-10-18 13:13
+#!update = 2025-08-02
+#!版本号：7.55.0
 
 //pdd
 DOMAIN, sdk.1rtb.net, reject
@@ -19,6 +20,8 @@ IP-CIDR, 117.185.242.18/32, reject, no-resolve
 IP-CIDR, 183.194.214.14/32, reject, no-resolve
 IP-CIDR, 114.110.96.1/32, reject, no-resolve
 
+^https:\/\/api\.pinduoduo\.com\/api\/aristotle\/unrated_order_for_unreceived_tab reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/aristotle\/query_order_list_tabs_element reject-dict
 ^https:\/\/api\.pinduoduo\.com\/api\/aquarius\/hungary\/global\/homepage\? reject-dict
 ^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/order_express_group reject-dict
 ^https:\/\/api\.pinduoduo\.com\/search_hotquery reject-dict

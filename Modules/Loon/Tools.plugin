@@ -11,189 +11,21 @@
 字幕翻译语言=input,off,tag=字幕翻译语言, desc=字幕翻译语言
 歌词翻译语言=input,off,tag=歌词翻译语言, desc=歌词翻译语言
 启用调试模式=switch,"false","true",tag=启用调试模式, desc=启用调试模式
-# DualSubs
-Types = input,"Translate,External",tag=[歌词] 启用类型（多选）,desc=请选择要添加的歌词选项，如果为多选，则会自动决定提供的歌词类型。
-Languages[0] = select,"AUTO","ZH","ZH-HANS","ZH-HK","ZH-HANT","EN","ES","JA","KO","DE","FR","TR","KM",tag=[翻译器] 主语言（源语言）,desc=仅当源语言识别不准确时更改此选项。
-Languages[1] = select,"ZH","ZH-HANS","ZH-HK","ZH-HANT","EN","ES","JA","KO","DE","FR","TR","KM",tag=[翻译器] 副语言（目标语言）,desc=请指定翻译歌词的目标语言。
-Vendor = select,"Google","Microsoft",tag=[翻译器] 服务商API,desc=请选择翻译器所使用的服务商API，更多翻译选项请使用BoxJs。
-LrcVendor = select,"NeteaseMusic","QQMusic","NeteaseMusicNodeJS",tag=[歌词] 服务商API,desc=请选择外部源所使用的服务商API。
-LogLevel = select,"WARN","OFF","ERROR","INFO","DEBUG","ALL",tag=[调试] 日志等级,desc=选择脚本日志的输出等级，低于所选等级的日志将全部输出。
-# DualSubs
-Type = select,"Official","Translate",tag=[字幕] 启用类型,desc=请选择要使用的字幕，双语字幕将使用您选择类型呈现。
-Types = input,"Translate",tag=[歌词] 启用类型,desc=请选择要添加的歌词选项，如果为多选，则会自动决定提供的歌词类型。
-AutoCC = switch,true,tag=[字幕] 自动显示,desc=是否总是自动开启字幕显示。
-Position = select,"Forward","Reverse",tag=[字幕] 主语言（源语言）字幕位置,desc=主语言（源语言）字幕的显示位置。
-ShowOnly = switch,false,tag=[翻译器] 只显示“自动翻译”字幕,desc=是否仅显示“自动翻译”字幕，不显示源语言字幕。
 # ifflagged_TikTok
 TikTok_Region=input,TW,tag=TikTok_Region, desc=TikTok_Region
 TikTok_Watermark=input,TikTok Watermark Removal,tag=TikTok_Watermark, desc=TikTok_Watermark
 
 [Rule]
-# ifflagged_myblockads
-DOMAIN, ad.12306.cn, DIRECT
-DOMAIN-SUFFIX, ut.taobao.com, REJECT
-DOMAIN, dns.alidns.com, REJECT
-DOMAIN, ems.youku.com, REJECT
-DOMAIN, hudong.alicdn.com, REJECT
-DOMAIN, ossgw.alicdn.com, REJECT
-IP-CIDR, 203.107.1.1/24, REJECT, no-resolve
-DOMAIN, api.iqiyi.com, REJECT
-DOMAIN, ca.iadsdk.apple.com, DIRECT
-DOMAIN-SUFFIX, advp.apple.com, REJECT
-DOMAIN-SUFFIX, iad-apple.com, REJECT
-DOMAIN-SUFFIX, iadsdk.apple.com, REJECT
-DOMAIN, advertising.apple.com, REJECT
-DOMAIN, api-adservices.apple.com, REJECT
-DOMAIN, apple.comscoreresearch.com, REJECT
-DOMAIN, banners.itunes.apple.com, REJECT
-DOMAIN, iad.apple.com, REJECT
-DOMAIN, iadcontent.apple.com, REJECT
-DOMAIN, iadctest.qwapi.com, REJECT
-DOMAIN, iadmoo.apple.com, REJECT
-DOMAIN, iadworkbench.apple.com, REJECT
-DOMAIN, launch.apple.com, REJECT
-DOMAIN, qwapi.apple.com, REJECT
-DOMAIN-KEYWORD, safebrowsing., REJECT
-DOMAIN-SUFFIX, u3.ucweb.com, REJECT
-DOMAIN, lookup.api.bsb.baidu.com, REJECT
-DOMAIN-SUFFIX, pos.baidu.com, REJECT
-DOMAIN, mobads.baidu.com, REJECT
-DOMAIN, afd.baidu.com, REJECT
-DOMAIN, afdconf.baidu.com, REJECT
-DOMAIN, lc.map.baidu.com, REJECT
-IP-CIDR, 180.76.76.112/32, REJECT, no-resolve
-IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
-DOMAIN, m.adyounger.com, REJECT
-DOMAIN, api.helloclue.com, REJECT
-DOMAIN, brahe.apptimize.com, REJECT
-DOMAIN, collector.clue.run, REJECT
-DOMAIN, images.ctfassets.net, REJECT
-DOMAIN, mapi.apptimize.com, REJECT
-DOMAIN, md-i-s.apptimize.com, REJECT
-DOMAIN, adttrackingprd.hwwt8.com, REJECT
-DOMAIN, adservice.sigmob.cn, REJECT
-DOMAIN-SUFFIX, mall.icbc.com.cn, REJECT
-DOMAIN, pageviewp.icbc.com.cn, REJECT
-AND, ((OR, ((DOMAIN-SUFFIX, amemv.com), (DOMAIN-SUFFIX, zijieapi.com))), (DOMAIN-KEYWORD, -misc-)), REJECT
-DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
-DOMAIN-KEYWORD, ads.g.doubleclick, REJECT
-DOMAIN-KEYWORD, asiad.byteactivity, REJECT
-DOMAIN-KEYWORD, pangolin-sdk-toutiao, REJECT
-DOMAIN-KEYWORD, pangolin.snssdk.com, REJECT
-DOMAIN-KEYWORD, pglstatp-toutiao, REJECT
-DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
-DOMAIN-SUFFIX, ads.linkedin.com, REJECT
-DOMAIN-SUFFIX, ads.vungle.com, REJECT
-DOMAIN-SUFFIX, adservice.google.com, REJECT
-DOMAIN-SUFFIX, adukwai.com, REJECT
-DOMAIN-SUFFIX, applovin.com, REJECT
-DOMAIN-SUFFIX, applvn.com, REJECT
-DOMAIN-SUFFIX, appsflyer.com, REJECT
-DOMAIN-SUFFIX, appsflyersdk.com, REJECT
-DOMAIN-SUFFIX, kuaishouzt.com, REJECT
-DOMAIN-SUFFIX, miaozhen.com, REJECT
-DOMAIN-SUFFIX, ubixioe.com, REJECT
-DOMAIN-SUFFIX, unityads.unity3d.com, REJECT
-DOMAIN-SUFFIX, v.smtcdns.com, REJECT
-DOMAIN, ad.zijieapi.com, REJECT
-DOMAIN, adapi.izuiyou.com, REJECT
-DOMAIN, adtracker.adfunlink.com, REJECT
-DOMAIN, dig.bdurl.net, REJECT
-DOMAIN, dsp-x.jd.com, REJECT
-DOMAIN, et.tanx.com, REJECT
-DOMAIN, gdfp.gifshow.com, REJECT
-DOMAIN, init.supersonicads.com, REJECT
-DOMAIN, janapi.jd.com, REJECT
-DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
-DOMAIN, mercury-gateway.ixiaochuan.cn, REJECT
-DOMAIN, mon.toutiaocloud.com, REJECT
-DOMAIN, open.e.kuaishou.com, REJECT
-DOMAIN, open.kuaishou.com, REJECT
-DOMAIN, pagead2.googlesyndication-cn.com, REJECT
-DOMAIN, pagead2.googlesyndication.com, REJECT
-DOMAIN, sdk.e.qq.com, REJECT
-DOMAIN, tangram.e.qq.com, REJECT
-DOMAIN, ws.tapjoyads.com, REJECT
-DOMAIN, www.googleadservices.com, REJECT
-DOMAIN-SUFFIX, ehaier.com, REJECT
-AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, Hema4iPhone*)), REJECT
-DOMAIN-KEYWORD, httpdns., REJECT
-DOMAIN-KEYWORD, httpdns-, REJECT
-DOMAIN, hdns.ksyun.com, REJECT
-DOMAIN-KEYWORD, adv.ccb.com, REJECT
-DOMAIN, dns.jd.com, REJECT
-IP-CIDR, 101.124.19.122/32, REJECT, no-resolve
-IP-CIDR6, 2402:db40:5100:1011::5/128, REJECT, no-resolve
-DOMAIN, adserviceretry.kglink.cn, DIRECT
-DOMAIN, ads.service.kugou.com, REJECT
-DOMAIN, adserviceretry.kugou.com, REJECT
-DOMAIN, ad.tencentmusic.com, REJECT
-DOMAIN, g.koowo.com, REJECT
-DOMAIN, mobilead.kuwo.cn, REJECT
-DOMAIN, rich.kuwo.cn, REJECT
-DOMAIN, statics.woozooo.com, REJECT
-DOMAIN-SUFFIX, da.mgtv.com, REJECT
-DOMAIN, credits.bz.mgtv.com, REJECT
-DOMAIN, credits2.bz.mgtv.com, REJECT
-DOMAIN, credits3.bz.mgtv.com, REJECT
-DOMAIN, dflow.bz.mgtv.com, REJECT
-DOMAIN, encounter.bz.mgtv.com, REJECT
-DOMAIN, floor.bz.mgtv.com, REJECT
-DOMAIN, layer.bz.mgtv.com, REJECT
-DOMAIN, mob.bz.mgtv.com, REJECT
-DOMAIN, rc-topic-api.bz.mgtv.com, REJECT
-DOMAIN, rprain.bz.mgtv.com, REJECT
-DOMAIN, rprain.log.mgtv.com, REJECT
-DOMAIN, vip.bz.mgtv.com, REJECT
-DOMAIN, maplocatesdksnapshot.d.meituan.net, REJECT
-DOMAIN, metrics-picture.d.meituan.net, REJECT
-IP-CIDR, 103.37.155.60/32, REJECT, no-resolve
-DOMAIN, aaid.uyunad.com, REJECT
-DOMAIN, adui.tg.meitu.com, REJECT
-DOMAIN, acdn.adnxs.com, REJECT
-DOMAIN, mediation.adnxs.com, REJECT
-DOMAIN, sin3-ib.adnxs.com, REJECT
-DOMAIN, affcpatrk.com, REJECT
-DOMAIN, api.zuihuimai.com, REJECT
-DOMAIN-SUFFIX, shuzilm.cn, REJECT
-DOMAIN-KEYWORD, -adsystem.com, REJECT
-DOMAIN, ads.pubmatic.com, REJECT
-DOMAIN, id.hadron.ad.gt, REJECT
-DOMAIN, a.cpic.com.cn, REJECT
-DOMAIN-KEYWORD, trace.qq.com, REJECT
-DOMAIN-KEYWORD, trace.video.qq.com, REJECT
-DOMAIN-SUFFIX, gdt.qq.com, REJECT
-DOMAIN-SUFFIX, l.qq.com, REJECT
-DOMAIN, adsmind.gdtimg.com, REJECT
-DOMAIN, info4.video.qq.com, REJECT
-DOMAIN, info6.video.qq.com, REJECT
-DOMAIN, ios.video.mpush.qq.com, REJECT
-DOMAIN, otheve.beacon.qq.com, REJECT
-DOMAIN, pgdt.gtimg.cn, REJECT
-DOMAIN, pgdt.ugdtimg.com, REJECT
-DOMAIN, tmead.y.qq.com, REJECT
-DOMAIN, tmeadbak.y.qq.com, REJECT
-DOMAIN, tmeadcomm.y.qq.com, REJECT
-DOMAIN, tpns.qq.com, REJECT
-IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
-DOMAIN-SUFFIX, wxs.qq.com, REJECT
-DOMAIN, badjs.weixinbridge.com, REJECT
-DOMAIN, dns.weixin.qq.com.cn, REJECT
-DOMAIN, sdkconfig.ad.xiaomi.com, REJECT
-DOMAIN, tong.8888888888.bid, REJECT
-AND, ((OR, ((DOMAIN-KEYWORD, kc.), (DOMAIN-KEYWORD, kcc.), (DOMAIN-KEYWORD, kg.))), (DEST-PORT, 8008)), REJECT
-DOMAIN, ads.95516.com, REJECT
-DOMAIN, switch.cup.com.cn, REJECT
-DOMAIN, yandexmetrica.com, REJECT
-URL-REGEX, ^http:\/\/\w{32}\.jddebug\.com\/diagnose\?, REJECT
 # Maasea_YouTube
 AND, ((DOMAIN-SUFFIX, googlevideo.com), (PROTOCOL, UDP)), REJECT
 AND, ((DOMAIN, youtubei.googleapis.com), (PROTOCOL, UDP)), REJECT
 # 12306_remove_ads
+DOMAIN, ad.12306.cn, DIRECT
 # Amap_remove_ads
 AND, ((URL-REGEX, "^http:\/\/.+\/amdc\/mobileDispatch"), (USER-AGENT, "AMapiPhone*")), REJECT
 DOMAIN, amap-aos-info-nogw.amap.com, REJECT
 DOMAIN, free-aos-cdn-image.amap.com, REJECT
+DOMAIN-SUFFIX, v.smtcdns.com, REJECT
 # BlockAdvertisers
 AND, ((OR, ((DOMAIN-KEYWORD, p1-be-pb), (DOMAIN-KEYWORD, lf3-plat), (DOMAIN-KEYWORD, lf6-plat), (DOMAIN-KEYWORD, lf9-plat), (DOMAIN-KEYWORD, lf26-plat), (DOMAIN-KEYWORD, s1-fe-scm), (DOMAIN-KEYWORD, s9-fe-scm), (DOMAIN-KEYWORD, s3-fe-scm), (DOMAIN-KEYWORD, sf3-be-tos), (DOMAIN-KEYWORD, sf1-fe-tos), (DOMAIN-KEYWORD, v1-be-pack), (DOMAIN-KEYWORD, sf1-be-tos), (DOMAIN-KEYWORD, v9-be-pack), (DOMAIN-KEYWORD, v6-be-pack), (DOMAIN-KEYWORD, v5-be-pack), (DOMAIN-KEYWORD, v3-be-pack), (DOMAIN-KEYWORD, sf6-fe-tos), (DOMAIN-KEYWORD, sf3-fe-tos), (DOMAIN-KEYWORD, p1-platform), (DOMAIN-KEYWORD, sf1-be-pack), (DOMAIN-KEYWORD, sf1-vc-pack), (DOMAIN-KEYWORD, sf3-be-pack), (DOMAIN-KEYWORD, sf3-vc-pack), (DOMAIN-KEYWORD, sf6-be-pack), (DOMAIN-KEYWORD, v1-dpa-pack), (DOMAIN-KEYWORD, p9-be-endcard), (DOMAIN-KEYWORD, p1-be-endcard), (DOMAIN-KEYWORD, sf1-scmcdn-tos), (DOMAIN-KEYWORD, sf3-scmcdn-tos), (DOMAIN-KEYWORD, sf6-scmcdn-tos), (DOMAIN-KEYWORD, lf3-reward-sign), (DOMAIN-KEYWORD, p6-be-pack-sign), (DOMAIN-KEYWORD, p3-be-pack-sign), (DOMAIN-KEYWORD, s3-platform-scm), (DOMAIN-KEYWORD, s9-platform-scm), (DOMAIN-KEYWORD, p9-be-pack-sign), (DOMAIN-KEYWORD, lf9-reward-sign), (DOMAIN-KEYWORD, v6-be-pack-nxyd), (DOMAIN-KEYWORD, lf3-ad-union-sdk), (DOMAIN-KEYWORD, lf6-ad-union-sdk), (DOMAIN-KEYWORD, p26-be-pack-sign), (DOMAIN-KEYWORD, sf1-be-auditpack), (DOMAIN-KEYWORD, lf9-ad-union-sdk), (DOMAIN-KEYWORD, lf3-sf-be-tos-sign), (DOMAIN-KEYWORD, lf9-sf-be-tos-sign), (DOMAIN-KEYWORD, lf6-sf-be-tos-sign), (DOMAIN-KEYWORD, lf26-sf-be-tos-sign), (DOMAIN-KEYWORD, lf6-sf-be-pack-sign), (DOMAIN-KEYWORD, lf9-sf-be-pack-sign), (DOMAIN-KEYWORD, lf3-sf-be-pack-sign), (DOMAIN-KEYWORD, lf26-sf-be-pack-sign))), (DOMAIN-SUFFIX, pglstatp-toutiao.com)), REJECT
 AND, ((OR, ((DOMAIN-KEYWORD, api-access), (DOMAIN-KEYWORD, api-access), (DOMAIN-KEYWORD, api-access), (DOMAIN-KEYWORD, api-access), (DOMAIN-KEYWORD, content-union), (DOMAIN-KEYWORD, dpa-pack), (DOMAIN-KEYWORD, ecom), (DOMAIN-KEYWORD, empower), (DOMAIN-KEYWORD, endcard-pack), (DOMAIN-KEYWORD, ether-pack), (DOMAIN-KEYWORD, gromore), (DOMAIN-KEYWORD, log-api), (DOMAIN-KEYWORD, mix), (DOMAIN-KEYWORD, novel), (DOMAIN-KEYWORD, track-pack-lq))), (DOMAIN-KEYWORD, pangolin-sdk-toutiao)), REJECT
@@ -201,7 +33,9 @@ AND, ((DOMAIN-KEYWORD, tnc), (OR, ((DOMAIN-SUFFIX, zijieapi.com), (DOMAIN-SUFFIX
 AND, ((DOMAIN-KEYWORD, pangolin), (OR, ((DOMAIN-SUFFIX, zijieapi.com), (DOMAIN-SUFFIX, snssdk.com), (DOMAIN-SUFFIX, sgsnssdk.com)))), REJECT
 AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
 AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
 DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
 DOMAIN-KEYWORD, iflyad.bj.openstorage.cn, REJECT
 DOMAIN-KEYWORD, bjimp.voiceads.cn, REJECT
 DOMAIN-SUFFIX, 1rtb.net, REJECT
@@ -210,13 +44,17 @@ DOMAIN-SUFFIX, hubcloud.com.cn, REJECT
 DOMAIN-SUFFIX, inmobi.cn, REJECT
 DOMAIN-SUFFIX, uyunad.com, REJECT
 DOMAIN-SUFFIX, puata.info, REJECT
+DOMAIN, gdfp.gifshow.com, REJECT
+DOMAIN, open.e.kuaishou.com, REJECT
 DOMAIN, open.e.kuaishou.cn, REJECT
 DOMAIN, adtrack.e.kuaishou.com, REJECT
 DOMAIN-SUFFIX, partner.gifshow.com, REJECT
+DOMAIN-SUFFIX, adukwai.com, REJECT
 DOMAIN-SUFFIX, adkwai.com, REJECT
 DOMAIN-SUFFIX, supersonicads.com, REJECT
 DOMAIN-SUFFIX, appsad.cn, REJECT
 DOMAIN-SUFFIX, beizi.biz, REJECT
+DOMAIN-SUFFIX, miaozhen.com, REJECT
 DOMAIN-SUFFIX, admobile.top, REJECT
 DOMAIN-SUFFIX, yksdks.com, REJECT
 DOMAIN-SUFFIX, dutils.com, REJECT
@@ -224,6 +62,7 @@ DOMAIN-SUFFIX, mob.com, REJECT
 DOMAIN-SUFFIX, jiguang.cn, REJECT
 DOMAIN-SUFFIX, jpush.cn, REJECT
 DOMAIN-SUFFIX, jpush.io, REJECT
+DOMAIN, afd.baidu.com, REJECT
 DOMAIN, als.baidu.com, REJECT
 DOMAIN, bgg.baidu.com, REJECT
 DOMAIN, cpro.baidustatic.com, REJECT
@@ -232,32 +71,50 @@ DOMAIN, click-bes.baidu.com, REJECT
 DOMAIN, eclick.baidu.com, REJECT
 DOMAIN, mobads-logs.baidu.com, REJECT
 DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
 DOMAIN, nadvideo2.baidu.com, REJECT
 DOMAIN, wn.pos.baidu.com, REJECT
 DOMAIN, miniapp-ad.cdn.bcebos.com, REJECT
 DOMAIN-SUFFIX, union.baidu.cn, REJECT
 DOMAIN-SUFFIX, union.baidu.com, REJECT
+DOMAIN, adsmind.gdtimg.com, REJECT
 DOMAIN, adsmind.ugdtimg.com, REJECT
 DOMAIN, c2.gdt.qq.com, REJECT
 DOMAIN, 2fwin.gdt.qq.com, REJECT
 DOMAIN, huatuocode.huatuo.qq.com, REJECT
+DOMAIN, info4.video.qq.com, REJECT
+DOMAIN, info6.video.qq.com, REJECT
 DOMAIN, ios.bugly.qq.com, REJECT
 DOMAIN, pro.bugly.qq.com, REJECT
+DOMAIN, ios.video.mpush.qq.com, REJECT
 DOMAIN, us.l.qq.com, REJECT
 DOMAIN, mi.gdt.qq.com, REJECT
+DOMAIN, otheve.beacon.qq.com, REJECT
+DOMAIN, pgdt.gtimg.cn, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
 DOMAIN, qzs.gdtimg.com, REJECT
 DOMAIN, qzs.qq.com, REJECT
 DOMAIN, rmonitor.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
 DOMAIN, sdkconfig.video.qq.com, REJECT
 DOMAIN, t.gdt.qq.com, REJECT
+DOMAIN, tmead.y.qq.com, REJECT
+DOMAIN, tmeadbak.y.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, tpns.qq.com, REJECT
 DOMAIN, v.gdt.qq.com, REJECT
 DOMAIN, v2.gdt.qq.com, REJECT
 DOMAIN, win.gdt.qq.com, REJECT
 DOMAIN, wup.imtt.qq.com, REJECT
 DOMAIN, tpstelemetry.tencent.com, REJECT
 DOMAIN, ii.gdt.qq.com, REJECT
+DOMAIN-KEYWORD, trace.qq.com, REJECT
+DOMAIN-KEYWORD, trace.video.qq.com, REJECT
 DOMAIN-KEYWORD, ad.hunyuan.tencent.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+DOMAIN-SUFFIX, l.qq.com, REJECT
 DOMAIN-SUFFIX, ugdtimg.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
 DOMAIN-SUFFIX, openinstall.io, REJECT
 DOMAIN-SUFFIX, getui.com, REJECT
 DOMAIN-SUFFIX, igexin.com, REJECT
@@ -267,6 +124,11 @@ DOMAIN-SUFFIX, umsns.com, REJECT
 DOMAIN-SUFFIX, umengcloud.com, REJECT
 DOMAIN-SUFFIX, adfunlink.com, REJECT
 DOMAIN-SUFFIX, tianmu.mobi, REJECT
+DOMAIN-SUFFIX, ubixioe.com, REJECT
+DOMAIN, ossgw.alicdn.com, REJECT
+DOMAIN, ems.youku.com, REJECT
+DOMAIN, hudong.alicdn.com, REJECT
+DOMAIN, et.tanx.com, REJECT
 DOMAIN, df.tanx.com, REJECT
 DOMAIN, beacon-api.aliyuncs.com, REJECT
 DOMAIN, adash.man.aliyuncs.com, REJECT
@@ -278,9 +140,13 @@ DOMAIN, gorgon.youdao.com, REJECT
 DOMAIN-SUFFIX, ad.xiaomi.com, REJECT
 DOMAIN, al-log.d.meituan.net, REJECT
 DOMAIN, babel-statistics-android.d.meituan.net, REJECT
+DOMAIN, maplocatesdksnapshot.d.meituan.net, REJECT
+DOMAIN, metrics-picture.d.meituan.net, REJECT
 DOMAIN, route-stats.d.meituan.net, REJECT
+DOMAIN, dsp-x.jd.com, REJECT
 DOMAIN, im-x.jd.com, REJECT
 DOMAIN, xlog.jd.com, REJECT
+DOMAIN, janapi.jd.com, REJECT
 DOMAIN-SUFFIX, toponadss.com, REJECT
 DOMAIN-SUFFIX, motowoo.com, REJECT
 DOMAIN, guide2.bianxianmao.com, REJECT
@@ -316,6 +182,8 @@ DOMAIN, ad.shunchangzhixing.com, REJECT
 DOMAIN, redirect.shunchangzhixing.com, REJECT
 DOMAIN, api.touch-moblie.com, REJECT
 DOMAIN-SUFFIX, api.touch-moblie.com, REJECT
+DOMAIN, mercury-gateway.ixiaochuan.cn, REJECT
+DOMAIN, adapi.izuiyou.com, REJECT
 DOMAIN-SUFFIX, domob.cn, REJECT
 DOMAIN-SUFFIX, bxsnews.com, REJECT
 DOMAIN-SUFFIX, tradplusad.com, REJECT
@@ -343,6 +211,12 @@ DOMAIN-SUFFIX, biz.weibo.com, REJECT
 # zirawell_10086_general
 IP-CIDR, 120.240.95.37/32, REJECT, no-resolve
 # zirawell_adUnion
+DOMAIN, adtracker.adfunlink.com, REJECT
+DOMAIN, init.supersonicads.com, REJECT
+DOMAIN, ws.tapjoyads.com, REJECT
+DOMAIN, hdns.ksyun.com, REJECT
+DOMAIN, adservice.sigmob.cn, REJECT
+DOMAIN, adttrackingprd.hwwt8.com, REJECT
 DOMAIN, sdk.tianmu.mobi, REJECT
 DOMAIN, config.inmobi.cn, REJECT
 DOMAIN, api-p0.yksdks.com, REJECT
@@ -350,6 +224,7 @@ DOMAIN, api.share.mob.com, REJECT
 DOMAIN, api.verify.mob.com, REJECT
 DOMAIN, log-verify.mob.com, REJECT
 DOMAIN, api.adnet.mob.com, REJECT
+DOMAIN, dig.bdurl.net, REJECT
 DOMAIN, g1.tagtic.cn, REJECT
 DOMAIN, log.tagtic.cn, REJECT
 DOMAIN, img.adnyg.com, REJECT
@@ -358,10 +233,16 @@ DOMAIN, sdownload.stargame.com, REJECT
 DOMAIN, app-analytics-services.com, REJECT
 DOMAIN-SUFFIX, ttayy.cn, REJECT
 DOMAIN-SUFFIX, zhengxiaoliu.top, REJECT
+DOMAIN-SUFFIX, shuzilm.cn, REJECT
 DOMAIN-SUFFIX, u51.me, REJECT
 DOMAIN-SUFFIX, hiaiabc.com, REJECT
 DOMAIN-SUFFIX, fstats.xyz, REJECT
 DOMAIN-SUFFIX, doubleclick.net, REJECT
+DOMAIN-SUFFIX, ads.vungle.com, REJECT
+DOMAIN-SUFFIX, applovin.com, REJECT
+DOMAIN-SUFFIX, applvn.com, REJECT
+DOMAIN-SUFFIX, appsflyer.com, REJECT
+DOMAIN-SUFFIX, appsflyersdk.com, REJECT
 DOMAIN-SUFFIX, ad.gameley.com, REJECT
 DOMAIN-SUFFIX, app-measurement.com, REJECT
 DOMAIN-SUFFIX, appier.net, REJECT
@@ -370,12 +251,14 @@ DOMAIN-SUFFIX, adcanvas.com, REJECT
 DOMAIN-SUFFIX, bianxianmao.com, REJECT
 DOMAIN-SUFFIX, gentags.net, REJECT
 DOMAIN-SUFFIX, dcloud.net.cn, REJECT
+DOMAIN-KEYWORD, ads.g.doubleclick, REJECT
 DOMAIN-KEYWORD, sdk.1rtb.net, REJECT
 DOMAIN-KEYWORD, sensorsdata.cn, REJECT
 DOMAIN-SUFFIX, gozendata.com, REJECT
 DOMAIN-SUFFIX, gzads.com, REJECT
 DOMAIN-SUFFIX, gz-data.com, REJECT
 DOMAIN, dig.zjurl.cn, REJECT
+DOMAIN, ad.zijieapi.com, REJECT
 DOMAIN, applog.zijieapi.com, REJECT
 DOMAIN, mon.zijieapi.com, REJECT
 DOMAIN, vcs.zijieapi.com, REJECT
@@ -408,15 +291,22 @@ DOMAIN-SUFFIX, ic.snssdk.com, REJECT
 DOMAIN-SUFFIX, analytics.snssdk.com, REJECT
 DOMAIN-KEYWORD, -normal-lq.zijieapi.com, REJECT
 DOMAIN-KEYWORD, -lq.snssdk.com, REJECT
+DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
 DOMAIN-KEYWORD, log.snssdk.com, REJECT
 DOMAIN-KEYWORD, ad-sign.byteimg.com, REJECT
 DOMAIN-KEYWORD, -pack.byteimg.com, REJECT
 DOMAIN-KEYWORD, -analytics.bytescm.com, REJECT
 DOMAIN-KEYWORD, -tos.pstatp.com, REJECT
 DOMAIN-KEYWORD, p3.pstatp.com, REJECT
+DOMAIN-KEYWORD, pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, pangolin.snssdk.com, REJECT
+DOMAIN-KEYWORD, pglstatp-toutiao, REJECT
+DOMAIN, open.kuaishou.com, REJECT
+DOMAIN-SUFFIX, kuaishouzt.com, REJECT
 DOMAIN-SUFFIX, googleadsserving.cn, REJECT
 DOMAIN-SUFFIX, googleadservices.com, REJECT
 DOMAIN-SUFFIX, googlecommerce.com, REJECT
+DOMAIN-SUFFIX, adservice.google.com, REJECT
 DOMAIN-SUFFIX, mobileads.google.com, REJECT
 DOMAIN-SUFFIX, google-analytics.com, REJECT
 DOMAIN-SUFFIX, googlesyndication.com, REJECT
@@ -429,10 +319,24 @@ DOMAIN-SUFFIX, ads1.msn.com, REJECT
 DOMAIN-SUFFIX, ads2.msn.com, REJECT
 DOMAIN-KEYWORD, ads.msn.com, REJECT
 DOMAIN-KEYWORD, ads.microsoft.com, REJECT
+DOMAIN, advertising.apple.com, REJECT
+DOMAIN, api-adservices.apple.com, REJECT
+DOMAIN, apple.comscoreresearch.com, REJECT
+DOMAIN, banners.itunes.apple.com, REJECT
+DOMAIN, iad.apple.com, REJECT
+DOMAIN, iadcontent.apple.com, REJECT
+DOMAIN, iadctest.qwapi.com, REJECT
+DOMAIN, iadmoo.apple.com, REJECT
+DOMAIN, iadworkbench.apple.com, REJECT
+DOMAIN, launch.apple.com, REJECT
 DOMAIN, metrics.apple.com, REJECT
+DOMAIN, qwapi.apple.com, REJECT
 DOMAIN, securemetrics.apple.com, REJECT
 DOMAIN, webproxy-advp.iad-apple.com, REJECT
 DOMAIN, webproxy-advp.iad-apple.com.akadns.net, REJECT
+DOMAIN-SUFFIX, advp.apple.com, REJECT
+DOMAIN-SUFFIX, iad-apple.com, REJECT
+DOMAIN-SUFFIX, iadsdk.apple.com, REJECT
 DOMAIN, admarketing.yahoo.net, REJECT
 DOMAIN, ads.auctions.yahoo.com, REJECT
 DOMAIN, ads.finance.yahoo.com, REJECT
@@ -444,6 +348,7 @@ DOMAIN-KEYWORD, ads.yahoo, REJECT
 DOMAIN-SUFFIX, mobileservice.cn, REJECT
 DOMAIN-SUFFIX, getui.net, REJECT
 DOMAIN-SUFFIX, gepush.com, REJECT
+DOMAIN-SUFFIX, unityads.unity3d.com, REJECT
 DOMAIN, dns.qq.com, REJECT
 DOMAIN, mazu.m.qq.com, REJECT
 DOMAIN, appsupport.qq.com, REJECT
@@ -537,6 +442,7 @@ DOMAIN-SUFFIX, bar.baidu.com, REJECT
 DOMAIN-SUFFIX, duapps.com, REJECT
 DOMAIN-SUFFIX, duclick.baidu.com, REJECT
 DOMAIN-SUFFIX, cpro.baidu.com, REJECT
+DOMAIN-SUFFIX, pos.baidu.com, REJECT
 DOMAIN-SUFFIX, baiduyubaidu.com, REJECT
 DOMAIN-SUFFIX, baidutv.baidu.com, REJECT
 DOMAIN-SUFFIX, baichuan.baidu.com, REJECT
@@ -662,6 +568,8 @@ DOMAIN-SUFFIX, wisepush.video.baidu.com, REJECT
 DOMAIN-SUFFIX, wm.baidu.com, REJECT
 DOMAIN-SUFFIX, yingxiao.baidu.com, REJECT
 DOMAIN-SUFFIX, znsv.baidu.com, REJECT
+IP-CIDR, 180.76.76.112/32, REJECT, no-resolve
+IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
 DOMAIN, o2o-ad-log-gateway.alibaba.com, REJECT
 DOMAIN, eco.taobao.com, REJECT
 DOMAIN, baichuan-sdk.alicdn.com, REJECT
@@ -734,8 +642,11 @@ DOMAIN-SUFFIX, ynuf.alipay.com, REJECT
 DOMAIN-SUFFIX, alipaydns.com, REJECT
 DOMAIN-KEYWORD, loggw.alipay.com, REJECT
 # zirawell_beautycam
+DOMAIN, aaid.uyunad.com, REJECT
+DOMAIN, adui.tg.meitu.com, REJECT
 # zirawell_ccb
 DOMAIN, imageadv.ccb.com, DIRECT
+DOMAIN-KEYWORD, adv.ccb.com, REJECT
 # zirawell_cmb
 DOMAIN, mbads.paas.cmbchina.com, REJECT
 DOMAIN, yl.zh.cmbchina.com, REJECT
@@ -749,16 +660,20 @@ DOMAIN-SUFFIX, lx.meituan.net, REJECT
 IP-CIDR, 101.32.16.204/32, REJECT, no-resolve
 IP-CIDR, 119.29.126.137/32, REJECT, no-resolve
 # zirawell_ehaier
+DOMAIN-SUFFIX, ehaier.com, REJECT
 # zirawell_functional
+DOMAIN, lookup.api.bsb.baidu.com, REJECT
 DOMAIN, safebrowsing.g.applimg.com, REJECT
 DOMAIN, safebrowsing.googleapis.com, REJECT
 DOMAIN, safebrowsing.urlsec.qq.com, REJECT
 DOMAIN-SUFFIX, safebrowsing.apple, REJECT
+DOMAIN-SUFFIX, u3.ucweb.com, REJECT
 IP-CIDR, 119.29.29.98/32, REJECT, no-resolve
 IP-CIDR, 119.29.29.99/32, REJECT, no-resolve
 IP-CIDR, 81.71.61.216/32, REJECT, no-resolve
 DOMAIN, geo2.adobe.com, REJECT
 # zirawell_jd
+DOMAIN, dns.jd.com, REJECT
 DOMAIN, waapdg.jd.com, REJECT
 DOMAIN, jdqd.jd.com, REJECT
 DOMAIN, dgstatic.jd.com, REJECT
@@ -771,7 +686,10 @@ DOMAIN-KEYWORD, kepler.jd.com, REJECT
 DOMAIN-KEYWORD, bdsp.x.jd.com, REJECT
 DOMAIN-KEYWORD, keplerapi.jd.com, REJECT
 DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
+IP-CIDR, 101.124.19.122/32, REJECT, no-resolve
+IP-CIDR6, 2402:db40:5100:1011::5/128, REJECT, no-resolve
 # zirawell_meituan
+IP-CIDR, 103.37.155.60/32, REJECT, no-resolve
 DOMAIN, flowplus.meituan.net, REJECT
 DOMAIN, hlx.meituan.com, REJECT
 DOMAIN, httpdnsmultiapi.meituan.com, REJECT
@@ -787,6 +705,7 @@ DOMAIN-SUFFIX, mads.meituan.com, REJECT
 DOMAIN-SUFFIX, d.meituan.net, REJECT
 DOMAIN-KEYWORD, report.meituan, REJECT
 # zirawell_miHome
+DOMAIN, sdkconfig.ad.xiaomi.com, REJECT
 # zirawell_sgcc
 DOMAIN, mdap.mpaas.cn-hangzhou.aliyuncs.com, REJECT
 DOMAIN, csc-apm.sgcc.com.cn, REJECT
@@ -816,65 +735,18 @@ DOMAIN-SUFFIX, click.tz.simba.taobao.com, REJECT
 DOMAIN-SUFFIX, stat.simba.taobao.com, REJECT
 DOMAIN-SUFFIX, m-adash.m.taobao.com, REJECT
 DOMAIN-SUFFIX, adashbc.m.taobao.com, REJECT
+DOMAIN-SUFFIX, ut.taobao.com, REJECT
 DOMAIN-SUFFIX, tunion-api.m.taobao.com, REJECT
 DOMAIN-SUFFIX, acs4baichuan.m.taobao.com, REJECT
 # zirawell_unionPay
+DOMAIN, switch.cup.com.cn, REJECT
 DOMAIN, ads.cup.com.cn, REJECT
 DOMAIN, analytics.95516.com, REJECT
 DOMAIN, tysdk.95516.com, REJECT
-# boxjs
-DOMAIN-SUFFIX, jsdelivr.net, PROXY
 
 [Rewrite]
-# Tools
-^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising reject-dict
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getWidgetV1052 reject
-# ifflagged_myblockads
-^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml reject
-^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders reject-dict
-^https:\/\/member\.alipan\.com\/v2\/activity\/sign_in_luckyBottle reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict) reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimusic\.common\.mobileservice\.startinit reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.etao\.noah\.query\/.+tao_splash reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryadvertise reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources reject-dict
-^https:\/\/heic\.alicdn\.com\/imgextra\/i\d\/\d*\/?[\w!]+-\d-(?:octopus|tps-1125-1602|tps-1080-1920)\.(?:jpg|png)_(?:1\d{3}|9\d{2})x(?:1\d{3}|9\d{2})q[59]0 reject-dict
-^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad reject-dict
-^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) reject-dict
-^https:\/\/pan\.baidu\.com\/(?:act\/|aipic\/|aisearch\/|api\/getsyscfg\?|rest\/) reject-dict
-^http:\/\/ad\.5tao5ai\.com\/common\/getReceipt\? - reject
-^https:\/\/www\.washpayer\.com\/(?:ad\/getBannerAd|ad\/user-adword|user\/getBannerList) reject-dict
-^https:\/\/www\.washpayer\.com\/common\/getReceipt - reject
-^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
-^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ reject-dict
-^https:\/\/hfapp-service\.qweather\.net\/v2\.0\/app\/ad\/list\? reject-dict
-^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querysinglepage\/ reject-dict
-^http:\/\/image1\.ccb\.com\/newsinfo\/eBranch\/check\/(?:nf\/newfin\/activity|po\/poortheme\/activity)\/\w+\.png reject
-^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:searchBoxWord|stationPullService|uniformRecommend[06]) reject-dict
-^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery\/adver reject-dict
-^https:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch reject-dict
-^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.jpg\?imageMogr2\/quality\/ reject-dict
-^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.(?:jpg|png)\?imageMogr2\/thumbnail\/(?:860x0|!165x165|!1049x1169) reject-dict
-^http:\/\/app-cdn\.2q10\.com\/app\/ical\/honored\? reject-dict
-^http:\/\/wmapi\.meituan\.com\/api\/v7\/(?:loadInfo|openscreen|startpicture) reject-dict
-^https:\/\/flowplus\.meituan\.net\/v1\/mss_\w+\/linglong\/\d+\.jpg reject-dict
-^https:\/\/img\.meituan\.net\/bizad\/bizad_brandCpt_\d+\.jpg reject-dict
-^https:\/\/s3plus\.meituan\.net\/ocean-blk-index\/index\/blk_conf_\d+\.json reject-dict
-^https:\/\/s3plus\.meituan\.net\/v1\/mss_\w+\/(?:brandcpt-vedio|waimai-alita)\/\w+\.zip$ reject-dict
-^https:\/\/osg-service\.sgcc\.com\.cn:18600\/emss-pfa-appset-front\/bootpageoutter\/ reject-dict
-^https:\/\/mp\.weixin\.qq\.com\/mp\/(?:cps_product_info|getappmsgad|jsmonitor|masonryfeed|relatedarticle) reject-dict
-^https:\/\/api\.m\.mi\.com\/v1\/order\/expressView - reject
-^https:\/\/api\.m\.mi\.com\/(?:v1\/(?:app\/popup_info|home\/page_feed|misearch\/search_input)|v2\/search\/search_default) reject-dict
-^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) reject-dict
-^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) reject-dict
-^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 reject
 # Maasea_YouTube
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad mock-response-body data-type=text status-code=200
-# DualSubs
-^https?:\/\/([\w-]+)\.googlevideo\.com\/initplayback(\?.*oad=.+)$ reject-img
 # Amap_remove_ads
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) reject-dict
@@ -1170,47 +1042,8 @@ DOMAIN-SUFFIX, jsdelivr.net, PROXY
 ^https:\/\/api-va\.tiktokv\.com\/api\/ad\/ - reject
 
 [Script]
-# ifflagged_myblockads
-http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/12306.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/header.js, tag = ifflagged_myblockads
-http-response ^https:\/\/(biz)?api\.alipan\.com\/apps\/v\d\/users?\/home\/(?:news|widgets) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/adrive.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/adrive.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/myBlockAds.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/myBlockAds.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/2023\.redircdn\.com\/web\/mob_post\.js\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/myBlockAds.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/www\.washpayer\.com\/user\/message\/equipmentPara\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/changyuan.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/jingdong.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/api\.coolapk\.com\/v6\/(?:feed\/detail|feed\/replyList|page\/dataList|main\/dataList|main\/indexV8|main\/init) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/coolapk.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/gateway\.kugou\.com\/(?:adp\/ad\/v1\/mine_top_banner|ads\.gateway\/v2\/home_card) script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/kugou.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https?:\/\/adserviceretry\.kglink\.cn\/v\d\/mobile\w+ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/kugou.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https\:\/\/(?:weixin110\.qq|security\.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/wechat/unlockUrls.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/api\.m\.mi\.com\/v1\/app\/start script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/myBlockAds.js, requires-body = true, tag = ifflagged_myblockads
-http-request ^https:\/\/mobilepaas\.abchina\.com\.cn:441\/mgw\.htm$ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/header.js, tag = ifflagged_myblockads
-http-response ^https:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\/ script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/cloud139.js, requires-body = true, tag = ifflagged_myblockads
-http-response ^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent script-path = https://github.com/ifflagged/nBlock/raw/main/Walalala/Scripts/cloud139.js, requires-body = true, tag = ifflagged_myblockads
 # Maasea_YouTube
 http-response ^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$ script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js, requires-body=true, binary-body-mode=true, tag=youtube.response, argument="{"lyricLang":"{歌词翻译语言}","captionLang":"{字幕翻译语言}","blockUpload":{屏蔽上传按钮},"blockImmersive":{屏蔽选段按钮},"blockShorts":{屏蔽Shorts按钮},"debug":{启用调试模式}}"
-# DualSubs
-http-response ^https?:\/\/api\.spotify\.com\/v1\/tracks\? requires-body=1, script-path=https://github.com/DualSubs/Spotify/releases/download/v1.9.9/response.bundle.js, tag=🍿️ DualSubs.Spotify.Tracks.response.json, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
-http-request ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json requires-body=1, script-path=https://github.com/DualSubs/Spotify/releases/download/v1.9.9/request.bundle.js, tag=🍿️ DualSubs.Spotify.Lyrics.request.json, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
-http-request ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*) requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/Spotify/releases/download/v1.9.9/request.bundle.js, tag=🍿️ DualSubs.Spotify.Lyrics.request.proto, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
-http-response ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json(.*)subtype=Translate requires-body=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Translate.response.bundle.js, tag=🍿️ DualSubs.Spotify.Translate.Lyrics.response.json, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
-http-response ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*)subtype=Translate requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Translate.response.bundle.js, tag=🍿️ DualSubs.Spotify.Translate.Lyrics.response.proto, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
-http-response ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/(.+)\?(.*)format=json(.*)subtype=External requires-body=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/External.Lyrics.response.bundle.js, tag=🍿️ DualSubs.Spotify.External.Lyrics.response.json, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
-http-response ^https?:\/\/spclient\.wg\.spotify\.com\/color-lyrics\/v2\/track\/\w+\?(.*)subtype=External requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/External.Lyrics.response.bundle.js, tag=🍿️ DualSubs.Spotify.External.Lyrics.response.proto, argument=[{Types},{Languages[0]},{Languages[1]},{Vendor},{LrcVendor},{LogLevel}]
-# DualSubs
-http-request ^https?:\/\/(www|m|tv)\.youtube\.com\/youtubei\/v1\/player(\?.+)?$ requires-body=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.11/request.bundle.js, tag=🍿️ DualSubs.YouTube.Player.request.json, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-response ^https?:\/\/(www|m|tv)\.youtube\.com\/youtubei\/v1\/player(\?.+)?$ requires-body=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.11/response.bundle.js, tag=🍿️ DualSubs.YouTube.Player.response.json, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-request ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player(\?.+)?$ requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.11/request.bundle.js, tag=🍿️ DualSubs.YouTube.Player.request.proto, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-response ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player(\?.+)?$ requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.11/response.bundle.js, tag=🍿️ DualSubs.YouTube.Player.response.proto, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-response ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/get_watch(\?.+)?$ requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.11/response.bundle.js, tag=🍿️ DualSubs.YouTube.GetWatch.response.proto, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-request ^https?:\/\/(www|m)\.youtube\.com\/api\/timedtext(\?.+)?$ script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.11/request.bundle.js, tag=🍿️ DualSubs.YouTube.TimedText.request, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-response ^https?:\/\/(www|m)\.youtube\.com\/api\/timedtext\?(.*)subtype=(Official|External) requires-body=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Composite.Subtitles.response.bundle.js, tag=🍿️ DualSubs.YouTube.Composite.TimedText.response, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-response ^https?:\/\/(www|m)\.youtube\.com\/api\/timedtext\?(.*)subtype=Translate requires-body=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Translate.response.bundle.js, tag=🍿️ DualSubs.YouTube.Translate.TimedText.response, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-request ^https?:\/\/music\.youtube\.com\/youtubei\/v1\/browse(\?.+)?$ requires-body=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.11/request.bundle.js, tag=🍿️ DualSubs.YouTubeMusic.Browse.request.json, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-request ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse(\?.+)?$ requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/YouTube/releases/download/v1.5.11/request.bundle.js, tag=🍿️ DualSubs.YouTube.Browse.request.proto, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-response ^https?:\/\/music\.youtube\.com\/youtubei\/v1\/browse\?(.*)subtype=Translate requires-body=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Translate.response.bundle.js, tag=🍿️ DualSubs.YouTubeMusic.Translate.Lyrics.response.json, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
-http-response ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/browse\?(.*)subtype=Translate requires-body=1, binary-body-mode=1, script-path=https://github.com/DualSubs/Universal/releases/latest/download/Translate.response.bundle.js, tag=🍿️ DualSubs.YouTubeMusic.Translate.Lyrics.response.proto, argument=[{Type},{Types},{AutoCC},{Position},{Vendor},{ShowOnly},{LogLevel}]
 # 12306_remove_ads
 http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/12306_remove_ads/12306_remove_splashscreen_ads.js, requires-body=true, tag=移除12306开屏广告
 http-request ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ script-path=https://github.com/ifflagged/Darwin/raw/main/Modules/JS/Kelee/12306_remove_ads/12306_remove_ads.js, tag=移除12306应用内广告
@@ -1320,9 +1153,7 @@ http-response ^https?:\/\/poplayer\.template\.alibaba\.com\/\w+\.json script-pat
 http-response ^https?:\/\/tft-app\.cdtft\.cn\/gateway-customer\/tftapp\/tft-ams\/api\/appAd script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/replace-body.js, requires-body=true, timeout=30, tag=replaceBody, argument=officialAdvertResultVo-%3Erandom-response
 # ifflagged_TikTok
 http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite) script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/Tiktok.js, requires-body=true, timeout=30, tag={TikTok_Watermark}
-# boxjs
-http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, requires-body=true, timeout=120, tag=BoxJs
 
 [MITM]
-hostname = *.boxjs.com, *.boxjs.net, *.byteoversea.com, *.dianping.com, *.googlevideo.com, *.jddebug.com, *.tik-tokapi.com, *.tiktokv.com, *.zdmimg.com, *api.alipan.com, -redirector*.googlevideo.com, 103.37.155.60, 119.29.29.*, 2023.redircdn.com, a.sinopecsales.com, acs-m.freshippo.com, acs.m.taobao.com, ad.12306.cn, ad.mcloud.139.com, adserviceretry.kglink.cn, afd.baidu.com, amdc.m.taobao.com, ams-cdn.cdtft.cn, api-sams.walmartmobile.cn, api.coolapk.com, api.douban.com, api.m.jd.com, api.m.mi.com, api.mcd.cn, api.pinduoduo.com, api.spotify.com, api2.helper.qq.com, apimobile.meituan.com, app-api.smzdm.com, app.10086.cn, article-api.smzdm.com, awp-assets.meituan.net, baike-api.smzdm.com, bdsp-x.jd.com, bk.bingo.qq.com, bla.gtimg.com, boxjs.com, boxjs.net, c.m.163.com, cache.bydauto.com.cn, cdn.api.fotoable.com, client.app.coc.10086.cn, client.qunar.com, cloud.bluecardsoft.com, cover.baidu.com, csc-service.sgcc.com.cn, cube.elemecdn.com, cy.cloud.ccb.com, ddplus.meituan.net, discuz.gtimg.cn, dsp-x.jd.com, dualstack*.amap.com, elemecdn.com, fcvbjbcebos.baidu.com, flowplus.meituan.net, fuss10.elemecdn.com, g.alicdn.com, g1.163.com, gab.122.gov.cn, gateway.kugou.com, gist.githubusercontent.com, github.com, guide-acs.m.taobao.com, gw.alicdn.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, hfapp-service.qweather.net, home.mi.com, homefront.qunar.com, homepage-api.smzdm.com, hwimg.beingfine.cn, image.mybank.icbc.com.cn, image1.ccb.com, imageadv.ccb.com, images.pinduoduo.com, img*.360buyimg.com, img.meituan.net, img1.126.net, img3.doubanio.com, imgcache.qq.com, issuecdn.baidupcs.com, jzts.cmpassport.com, l*.51fanli.net, learnywhere.cn, list-app-m.i4.cn, m.dianping.com, m.youtube.com, mapi.dianping.com, member.alipan.com, mmgr.gtimg.com, mobile.12306.cn, mobile.cmbchina.com, mobilepaas.abchina.com.cn, mp.weixin.qq.com, mtteve.beacon.qq.com, music.youtube.com, nex.163.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss-zjrs.haier.net, p*.meituan.net, p.meituan.com, p0.pipi.cn, pan.baidu.com, poplayer.template.alibaba.com, portal-portm.meituan.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qnmob3.doubanio.com, qt.qq.com, qzonestyle.gtimg.cn, raw.githubusercontent.com, rms.meituan.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, security.wechat.com, shop-api.retail.mi.com, spclient.wg.spotify.com, splashqqlive.gtimg.com, sqt.meituan.com, storage.360buyimg.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, tv.youtube.com, update.pan.baidu.com, user-api.smzdm.com, video-dsp.pddpic.com, vv.video.qq.com, wallet.95516.com, wcprd.hilton.com.cn, webappcfg.paas.cmbchina.com, weixin110.qq.com, www.baidu.com, www.dpfile.com, www.google.com, www.meituan.com, www.washpayer.com, www.youtube.com, www1.elecfans.com, y.gtimg.cn, yixiu-abtest.alicdn.com, youtubei.googleapis.com, zhiyou.m.smzdm.com, zj.haier.net
+hostname = *.byteoversea.com, *.dianping.com, *.googlevideo.com, *.jddebug.com, *.tik-tokapi.com, *.tiktokv.com, *.zdmimg.com, 103.37.155.60, 119.29.29.*, a.sinopecsales.com, acs.m.taobao.com, afd.baidu.com, amdc.m.taobao.com, ams-cdn.cdtft.cn, api-sams.walmartmobile.cn, api.m.jd.com, api.mcd.cn, api.pinduoduo.com, api2.helper.qq.com, apimobile.meituan.com, app-api.smzdm.com, app.10086.cn, article-api.smzdm.com, awp-assets.meituan.net, baike-api.smzdm.com, bdsp-x.jd.com, bk.bingo.qq.com, bla.gtimg.com, c.m.163.com, cache.bydauto.com.cn, cdn.api.fotoable.com, client.app.coc.10086.cn, client.qunar.com, cloud.bluecardsoft.com, cover.baidu.com, csc-service.sgcc.com.cn, cube.elemecdn.com, cy.cloud.ccb.com, ddplus.meituan.net, discuz.gtimg.cn, dsp-x.jd.com, dualstack*.amap.com, elemecdn.com, fcvbjbcebos.baidu.com, flowplus.meituan.net, fuss10.elemecdn.com, g.alicdn.com, g1.163.com, gist.githubusercontent.com, github.com, guide-acs.m.taobao.com, gw.alicdn.com, h.app.coc.10086.cn, haojia-api.smzdm.com, haojia.m.smzdm.com, heic.alicdn.com, home.mi.com, homefront.qunar.com, homepage-api.smzdm.com, hwimg.beingfine.cn, image1.ccb.com, imageadv.ccb.com, images.pinduoduo.com, img*.360buyimg.com, img.meituan.net, img1.126.net, imgcache.qq.com, issuecdn.baidupcs.com, l*.51fanli.net, learnywhere.cn, m.dianping.com, mapi.dianping.com, mmgr.gtimg.com, mobile.cmbchina.com, mtteve.beacon.qq.com, nex.163.com, nr-op.elemecdn.com, osg-service.sgcc.com.cn, oss-zjrs.haier.net, p*.meituan.net, p.meituan.com, poplayer.template.alibaba.com, portal-portm.meituan.com, post.m.smzdm.com, qde.qunar.com, qianbao.smzdm.com, qimgs.qunarzz.com, qt.qq.com, qzonestyle.gtimg.cn, raw.githubusercontent.com, rms.meituan.com, s-api.smzdm.com, s3.zdmimg.com, s3plus.meituan.net, splashqqlive.gtimg.com, sqt.meituan.com, storage.360buyimg.com, t-dsp.pinduoduo.com, tfsmy.chengdu.gov.cn, tft-app.cdtft.cn, update.pan.baidu.com, user-api.smzdm.com, video-dsp.pddpic.com, vv.video.qq.com, wallet.95516.com, wcprd.hilton.com.cn, webappcfg.paas.cmbchina.com, www.baidu.com, www.dpfile.com, www.google.com, www.meituan.com, www1.elecfans.com, y.gtimg.cn, yixiu-abtest.alicdn.com, youtubei.googleapis.com, zhiyou.m.smzdm.com, zj.haier.net
 

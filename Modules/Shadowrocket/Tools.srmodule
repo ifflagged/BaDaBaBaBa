@@ -769,6 +769,7 @@ DOMAIN-SUFFIX, ad.e.waimai.sankuai.com, REJECT
 DOMAIN-SUFFIX, mads.meituan.com, REJECT
 DOMAIN-SUFFIX, d.meituan.net, REJECT
 DOMAIN-KEYWORD, report.meituan, REJECT
+DOMAIN-KEYWORD, dnspod.meituan.httpdns, REJECT
 # zirawell_miHome
 # zirawell_sgcc
 DOMAIN, mdap.mpaas.cn-hangzhou.aliyuncs.com, REJECT

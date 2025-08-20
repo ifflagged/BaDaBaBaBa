@@ -819,6 +819,7 @@ DOMAIN-SUFFIX, ad.e.waimai.sankuai.com, REJECT
 DOMAIN-SUFFIX, mads.meituan.com, REJECT
 DOMAIN-SUFFIX, d.meituan.net, REJECT
 DOMAIN-KEYWORD, report.meituan, REJECT
+DOMAIN-KEYWORD, dnspod.meituan.httpdns, REJECT
 DOMAIN, mdap.mpaas.cn-hangzhou.aliyuncs.com, REJECT
 DOMAIN, csc-apm.sgcc.com.cn, REJECT
 DOMAIN-SUFFIX, apoll.m.taobao.com, REJECT

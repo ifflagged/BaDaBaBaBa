@@ -804,6 +804,7 @@ DOMAIN-KEYWORD, keplerapi.jd.com, REJECT
 DOMAIN-KEYWORD, mapi.m.jd.com, REJECT
 DOMAIN, flowplus.meituan.net, REJECT
 DOMAIN, hlx.meituan.com, REJECT
+DOMAIN, layout.meituan.net, REJECT
 DOMAIN, httpdnsmultiapi.meituan.com, REJECT
 DOMAIN, httpdnsmultiapivip.meituan.com, REJECT
 DOMAIN-SUFFIX, httpdns.meituan.com, REJECT

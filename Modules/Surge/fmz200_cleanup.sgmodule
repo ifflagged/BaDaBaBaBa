@@ -183,7 +183,8 @@ fmz200_cleanup = type=http-response,pattern=^https:\/\/www\.freeheikeji\.cn\/wp\
 
 
 # >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<<
-# > 怪兽充电 微信小程序
+# > 怪兽充电
+# 微信小程序
 ^https:\/\/aag\.enmonster\.com\/apa\/index\/advert\/skin - reject
 ^https:\/\/aag\.enmonster\.com\/apa\/(index\/)?advert\/(skin|multi\/positions|demand\/home\/poster) - reject
 # 我的界面广告 支付宝小程序
@@ -217,7 +218,8 @@ fmz200_cleanup = type=http-response,pattern=^https:\/\/newton\.gumingnc\.com\/ne
 ^https:\/\/qapi\.huolala\.cn\/home_new_user - reject
 ^https:\/\/qapi\.huolala\.cn\/get_service_list - reject
 
-# > 哈啰 微信小程序首页弹窗屏蔽
+# > 哈啰
+# 微信小程序首页弹窗屏蔽
 ^https:\/\/api\.hellobike\.com\/api\?adx - reject
 
 # > 华住会 微信小程序净化
@@ -267,7 +269,8 @@ fmz200_cleanup = type=http-response,pattern=^https:\/\/www\.bbkj\.work\/wp-json\
 
 
 # >>>>>>>>>>>>>>> ✅ L ✅ <<<<<<<<<<<<<<
-# > 来电 小程序净化
+# > 来电
+# 小程序净化
 ^https:\/\/mobile-api\.imlaidian\.com\/api\/args - reject
 
 # > 罗森点点 微信小程序净化

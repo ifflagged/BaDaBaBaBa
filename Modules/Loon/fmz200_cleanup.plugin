@@ -183,7 +183,8 @@ http-response ^https:\/\/www\.freeheikeji\.cn\/wp\-json\/wp\/v2\/posts script-pa
 
 
 # >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<<
-# > 怪兽充电 微信小程序
+# > 怪兽充电
+# 微信小程序
 ^https:\/\/aag\.enmonster\.com\/apa\/index\/advert\/skin reject
 ^https:\/\/aag\.enmonster\.com\/apa\/(index\/)?advert\/(skin|multi\/positions|demand\/home\/poster) reject
 # 我的界面广告 支付宝小程序
@@ -217,7 +218,8 @@ http-response ^https:\/\/newton\.gumingnc\.com\/newton-buyer\/newton\/buyer\/(um
 ^https:\/\/qapi\.huolala\.cn\/home_new_user reject-dict
 ^https:\/\/qapi\.huolala\.cn\/get_service_list reject-dict
 
-# > 哈啰 微信小程序首页弹窗屏蔽
+# > 哈啰
+# 微信小程序首页弹窗屏蔽
 ^https:\/\/api\.hellobike\.com\/api\?adx reject-dict
 
 # > 华住会 微信小程序净化
@@ -267,7 +269,8 @@ http-response ^https:\/\/www\.bbkj\.work\/wp-json\/watch-life-net\/v1\/posts scr
 
 
 # >>>>>>>>>>>>>>> ✅ L ✅ <<<<<<<<<<<<<<
-# > 来电 小程序净化
+# > 来电
+# 小程序净化
 ^https:\/\/mobile-api\.imlaidian\.com\/api\/args reject-dict
 
 # > 罗森点点 微信小程序净化

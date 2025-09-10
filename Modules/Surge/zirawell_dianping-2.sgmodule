@@ -5,7 +5,7 @@
 ^https?:\/\/mapi\.dianping\.com\/mapi\/intelliindex - reject
 ^https?:\/\/mapi\.dianping\.com\/wdrpreload\/userprediction - reject
 ^https?:\/\/mapi\.dianping\.com\/adshopping - reject
-^https?:\/\/img\.meituan\.net\/goodsawardpic\/(?!85588) - reject
+^https?:\/\/img\.meituan\.net\/goodsawardpic - reject
 zirawell_dianping-2 = type=http-response,pattern=^https?:\/\/img\.meituan\.net\/dpmobile\/,requires-body=1,script-path=https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/dianping.js
 ^https?:\/\/p\.meituan\.com\/api\/privacy\/config - reject
 ^https?:\/\/rms\.meituan\.com\/api\/v\d\/rmsmina\/c\/queryWechatAdvertisement - reject

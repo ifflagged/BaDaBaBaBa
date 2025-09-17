@@ -797,7 +797,6 @@ DOMAIN, rtms.alipay.com, REJECT
 DOMAIN, amdc-sibling.alipay.com.cn, REJECT
 DOMAIN-SUFFIX, mdap.alipay.com, REJECT
 DOMAIN-SUFFIX, ynuf.alipay.com, REJECT
-DOMAIN-SUFFIX, alipaydns.com, REJECT
 DOMAIN-KEYWORD, loggw.alipay.com, REJECT
 DOMAIN, imageadv.ccb.com, DIRECT
 DOMAIN, mbads.paas.cmbchina.com, REJECT

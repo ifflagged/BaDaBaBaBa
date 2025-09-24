@@ -3,7 +3,7 @@
 # 屏蔽强制更新
 ^https?:\/\/api\.m\.jd\.com\/openUpgrade reject
 http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?>deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path= https://github.com/zirawell/R-Store/raw/main/Res/Scripts/AntiAd/jd.js, requires-body = true, tag = zirawell_jd-2
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?>searchBoxWord|xview2Config|stationPullService|getWidget|widget|hybrid|jdDiscoveryRedPoint|queryMaterialAdverts) reject-200
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?>searchBoxWord|xview2Config|stationPullService|getWidget|widget|hybrid|jdDiscoveryRedPoint|queryMaterialAdverts|apollo_style) reject-200
 ^https?:\/\/\w{32}\.jddebug\.com\/diagnose\? reject
 ^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ reject-200
 ^https?:\/\/storage\.360buyimg\.com\/app\.m\.jd\.com\/lottie reject

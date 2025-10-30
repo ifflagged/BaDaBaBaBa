@@ -5,6 +5,12 @@
 #!版本号：7.79.0
 
 //pdd
+IP-CIDR, 114.110.98.3/32, reject, no-resolve
+IP-CIDR, 114.110.98.2/32, reject, no-resolve
+IP-CIDR, 36.152.46.3/32, reject, no-resolve
+IP-CIDR, 114.110.96.6/32, reject, no-resolve
+IP-CIDR, 36.152.46.13/32, reject, no-resolve
+IP-CIDR, 121.5.84.85/32, reject, no-resolve
 DOMAIN, sdk.1rtb.net, reject
 DOMAIN, titan.pinduoduo.com, reject
 IP-CIDR, 183.194.214.21/32, reject, no-resolve
@@ -25,6 +31,10 @@ IP-CIDR, 81.69.130.131/32, reject, no-resolve
 IP-CIDR, 114.110.96.26/32, reject, no-resolve
 IP-CIDR, 101.35.212.35/32, reject, no-resolve
 
+^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub url jsonjq-response-body 'del(.result.icon_set, .result.search_bar_hot_query, .result.dy_module) | if .result.bottom_tabs then .result.bottom_tabs |= map(select(.link == "index.html" or .link == "chat_list.html" or .link == "personal.html")) else . end'
+^https:\/\/api\.pinduoduo\.com\/search url jsonjq-response-body 'del(.expansion)'
+^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub url jsonjq-response-body 'del(.monthly_card_entrance, .personal_center_style_v2_vo, .icon_set.icons, .icon_set.top_personal_icons)'
+^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render url jsonjq-response-body 'del(.bottom_section_list, .ui.bottom_section, .ui.live_section.float_info)'
 ^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/order_detail_group url jsonjq-response-body 'del(.data.goods_list)'
 ^https:\/\/api\.pinduoduo\.com\/api\/aristotle\/unrated_order_for_unreceived_tab reject-dict
 ^https:\/\/api\.pinduoduo\.com\/api\/aristotle\/query_order_list_tabs_element reject-dict
@@ -39,12 +49,11 @@ IP-CIDR, 101.35.212.35/32, reject, no-resolve
 ^https:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append reject-dict
 ^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/my_order_group reject-dict
 ^https:\/\/api\.pinduoduo\.com\/api\/caterham\/v3\/query\/likes reject-dict
-http-response ^https:\/\/api\.pinduoduo\.com\/search script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js, requires-body = true, tag = ZenmoFeiShi_Pinduoduo
-http-response ^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js, requires-body = true, tag = ZenmoFeiShi_Pinduoduo
-http-response ^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js, requires-body = true, tag = ZenmoFeiShi_Pinduoduo
-http-response ^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Pinduoduo.js, requires-body = true, tag = ZenmoFeiShi_Pinduoduo
 
-
+^https:\/\/api\.pinduoduo\.com\/api\/phantom\/gbdbpdv\/extra reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/manufacturer\/cross\/shortcut\/list reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/dunkirk\/liveactivity\/push\/create\/url\/report reject-dict
+^https:\/\/api\.pinduoduo\.com\/api\/growth\/nagato\/app\/index\/gather reject-dict
 
 
 

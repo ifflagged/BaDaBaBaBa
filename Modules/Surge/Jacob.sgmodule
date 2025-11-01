@@ -795,6 +795,10 @@ DOMAIN, geo2.adobe.com, REJECT
 DOMAIN, waapdg.jd.com, REJECT
 DOMAIN, jdqd.jd.com, REJECT
 DOMAIN, dgstatic.jd.com, REJECT
+DOMAIN, un.m.jd.com, REJECT
+DOMAIN, wqs.jd.com, REJECT
+DOMAIN, hermes.jd.com, REJECT
+DOMAIN, cactus.jd.com, REJECT
 DOMAIN-SUFFIX, jzt.jd.com, REJECT
 DOMAIN-SUFFIX, img-x.jd.com, REJECT
 DOMAIN-SUFFIX, du.jd.com, REJECT
@@ -1390,7 +1394,7 @@ upos-sz-upcdntx.bilivideo.com = server:https://doh.pub/dns-query // BiliBili upo
 ^https?:\/\/fuss10\.elemecdn\.com\/.+?\.mp4 data-type=tiny-gif status-code=200
 ^https?:\/\/119\.29\.29\.\d+\/d\?dn data-type=text data=" " status-code=200
 ^https?:\/\/wcprd\.hilton\.com\.cn\/app-middleware\/graphql\?type=splashAd data-type=text data=" " status-code=200
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?>searchBoxWord|xview2Config|stationPullService|getWidget|widget|hybrid|jdDiscoveryRedPoint|queryMaterialAdverts|apollo_style) data-type=text data=" " status-code=200
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?>searchBoxWord|xview2Config|stationPullService|getWidget|widget|hybrid|jdDiscoveryRedPoint|queryMaterialAdverts|apollo_style|jdaPreDownload) data-type=text data=" " status-code=200
 ^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ data-type=text data=" " status-code=200
 ^https?:\/\/api\.mcd\.cn\/bff\/portal\/(home\/splash|richpop) data-type=text data=" " status-code=200
 ^https?:\/\/api\.mcd\.cn\/bff\/portal\/home\/hotActivity data-type=text data="{}" status-code=200 header="Content-Type:application/json"

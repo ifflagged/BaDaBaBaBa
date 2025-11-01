@@ -795,7 +795,6 @@ DOMAIN, geo2.adobe.com, REJECT
 DOMAIN, waapdg.jd.com, REJECT
 DOMAIN, jdqd.jd.com, REJECT
 DOMAIN, dgstatic.jd.com, REJECT
-DOMAIN, un.m.jd.com, REJECT
 DOMAIN, wqs.jd.com, REJECT
 DOMAIN, hermes.jd.com, REJECT
 DOMAIN, cactus.jd.com, REJECT

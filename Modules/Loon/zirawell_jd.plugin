@@ -7,7 +7,6 @@ DOMAIN, xlog.jd.com, reject
 DOMAIN, janapi.jd.com, reject
 DOMAIN, jdqd.jd.com, reject
 DOMAIN, dgstatic.jd.com, reject
-DOMAIN, un.m.jd.com, reject
 DOMAIN, wqs.jd.com, reject
 DOMAIN, hermes.jd.com, reject
 DOMAIN, cactus.jd.com, reject

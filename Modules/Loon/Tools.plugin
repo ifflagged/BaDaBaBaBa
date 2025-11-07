@@ -762,8 +762,6 @@ DOMAIN, waapdg.jd.com, REJECT
 DOMAIN, jdqd.jd.com, REJECT
 DOMAIN, dgstatic.jd.com, REJECT
 DOMAIN, wqs.jd.com, REJECT
-DOMAIN, hermes.jd.com, REJECT
-DOMAIN, cactus.jd.com, REJECT
 DOMAIN-SUFFIX, jzt.jd.com, REJECT
 DOMAIN-SUFFIX, img-x.jd.com, REJECT
 DOMAIN-SUFFIX, du.jd.com, REJECT

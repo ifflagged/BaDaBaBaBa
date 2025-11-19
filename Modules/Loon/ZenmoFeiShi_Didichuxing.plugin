@@ -2,7 +2,7 @@
 
 #!name = 滴滴出行
 #!author = 怎么肥事
-#!update = 2024-10-22 21:56
+#!update = 2025-11-18 23:42
 
 //滴滴
 IP-CIDR, 113.46.225.8/32, reject, no-resolve
@@ -36,6 +36,8 @@ http-response ^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList scri
 http-response ^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = ZenmoFeiShi_Didichuxing
 http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/oversea\/layout script-path= https://github.com/ZenmoFeiShi/Qx/raw/main/Didichuxing.js, requires-body = true, tag = ZenmoFeiShi_Didichuxing
 ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/other\/slow reject-dict
+^https:\/\/mapi\.xiaojukeji\.com\/passenger-wallet\/api\/v6\/wallet\/homepage url jsonjq-response-body 'del(.data.cardList[0].detailData.myCreditLimit, .data.cardList[0].detailData.discountList[3], .data.cardList[0].detailData.discountList[4], .data.cardList[1], .data.cardList[2], .data.cardList[3], .data.cardList[4], .data.cardList[5], .data.cardList[6], .data.cardList[7], .data.cardList[8], .data.cardList[9])'
+^https:\/\/goblin\.hupu\.com\/d\/d\.d\.d+\/interfaceAd\/getOther\/v3 url jsonjq-response-body '.ad_code = 0'
 
 
 

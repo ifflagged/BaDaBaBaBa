@@ -1,10 +1,13 @@
-# Didichuxing // common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, 162.14.157.*, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*, 116.85.*, 139.199.240.84 ,
+# Didichuxing // 113.46.225.*,common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, 162.14.157.*, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*, 116.85.*, 139.199.240.84 ,
 
 #!name = 滴滴出行
 #!author = 怎么肥事
 #!update = 2025-11-18 23:42
 
 //滴滴
+IP-CIDR, 139.199.244.6/32, reject, no-resolve
+IP-CIDR, 113.46.225.9/32, reject, no-resolve
+IP-CIDR, 139.199.244.7/32, reject, no-resolve
 IP-CIDR, 113.46.225.8/32, reject, no-resolve
 IP-CIDR, 123.207.209.39/32, reject, no-resolve
 IP-CIDR, 123.207.209.60/32, reject, no-resolve
@@ -41,4 +44,4 @@ http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/oversea\/layout 
 
 
 
-Hostname = common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, 162.14.157.*, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*, 116.85.*, 139.199.240.84 
+Hostname = 113.46.225.*,common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, 162.14.157.*, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*, 116.85.*, 139.199.240.84 

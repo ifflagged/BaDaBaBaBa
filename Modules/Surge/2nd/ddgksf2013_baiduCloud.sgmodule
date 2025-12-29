@@ -1,18 +1,8 @@
 [Rule]
 
 [URL Rewrite]
-^https?:\/\/.*baidu\.com\/rest\/.*\/membership\/proxy\/guide - reject
-^https?:\/\/pan\.baidu\.com\/act\/v\d\/(bchannel|welfare)\/list - reject
-^https?:\/\/pan\.baidu\.com\/rest\/.*\/pcs\/ad - reject
-^https?:\/\/pan\.baidu\.com\/act\/api\/activityentry - reject
-^https:\/\/pan\.baidu\.com\/feed\/hotlist - reject
-^https?:\/\/.*zhangyuyidong\.cn\/api\/zysdk - reject
-^https:\/\/pan\.baidu\.com\/queryintent\/queryhint - reject
-^https:\/\/pan\.baidu\.com\/coins\/center\/notice - reject
+
 [Script]
-ddgksf2013_baiduCloud = type=http-response,pattern=^https?:\/\/pan\.baidu\.com\/api\/getsyscfg,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js
-ddgksf2013_baiduCloud = type=http-response,pattern=^https?:\/\/afd\.baidu\.com\/afd\/entry,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js
-ddgksf2013_baiduCloud = type=http-response,pattern=^https:\/\/pan\.baidu\.com\/rest\/.*\/membership\/user\?method=gamecenter,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js
-ddgksf2013_baiduCloud = type=http-response,pattern=^https:\/\/pan\.baidu\.com\/feed\/cardinfos,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/f43026707830c7818ee3ba624e383c8d/raw/baiduCloud.adblock.js
+
 [MITM]
-Hostname = %APPEND% pan.baidu.com, afd.baidu.com
+

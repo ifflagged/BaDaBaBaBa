@@ -42,6 +42,9 @@ payload:
 # > Misty
   - DOMAIN-SUFFIX,misty.cx
 
+# > Youno
+  - DOMAIN-SUFFIX,younoyes.com
+
 # > Doubon
   - DOMAIN-SUFFIX,114514.quest
 

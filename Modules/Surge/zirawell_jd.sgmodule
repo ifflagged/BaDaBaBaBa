@@ -1,5 +1,6 @@
 # jd // 
 # > 京东 - JD
+DOMAIN, dns.jd.com, REJECT
 DOMAIN, waapdg.jd.com, REJECT
 DOMAIN, dsp-x.jd.com, REJECT
 DOMAIN, xlog.jd.com, REJECT

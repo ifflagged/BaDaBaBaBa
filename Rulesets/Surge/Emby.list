@@ -11,9 +11,6 @@ DOMAIN-SUFFIX,emby.moe
 # > CC
 DOMAIN-SUFFIX,coemn.com
 
-# > FacMata
-DOMAIN-SUFFIX,313445.xyz
-
 # > Nya Media
 DOMAIN-SUFFIX,bangumi.ca
 
@@ -31,6 +28,7 @@ DOMAIN-SUFFIX,embymv.link
 
 # > 起点
 DOMAIN-SUFFIX,28.al
+DOMAIN,freestream.startspoint.com
 
 # > Saturday.Lite
 DOMAIN-SUFFIX,saturdayvideo.top
@@ -56,8 +54,11 @@ DOMAIN-SUFFIX,shrekmedia.org
 # > 二次元
 DOMAIN-SUFFIX,nijigem.by
 
-# > hkbemby
+# > hkaemby
 DOMAIN-SUFFIX,aliz.work
 
 # > OkEmby
 DOMAIN-SUFFIX,okemby.org
+
+# > HG_Emby
+DOMAIN-SUFFIX,microsoftpersonalcontent.com

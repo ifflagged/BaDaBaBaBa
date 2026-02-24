@@ -12,9 +12,6 @@ payload:
 # > CC
   - DOMAIN-SUFFIX,coemn.com
 
-# > FacMata
-  - DOMAIN-SUFFIX,313445.xyz
-
 # > Nya Media
   - DOMAIN-SUFFIX,bangumi.ca
 
@@ -32,6 +29,7 @@ payload:
 
 # > 起点
   - DOMAIN-SUFFIX,28.al
+  - DOMAIN,freestream.startspoint.com
 
 # > Saturday.Lite
   - DOMAIN-SUFFIX,saturdayvideo.top
@@ -57,8 +55,11 @@ payload:
 # > 二次元
   - DOMAIN-SUFFIX,nijigem.by
 
-# > hkbemby
+# > hkaemby
   - DOMAIN-SUFFIX,aliz.work
 
 # > OkEmby
   - DOMAIN-SUFFIX,okemby.org
+
+# > HG_Emby
+  - DOMAIN-SUFFIX,microsoftpersonalcontent.com

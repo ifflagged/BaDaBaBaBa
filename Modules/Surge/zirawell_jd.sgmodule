@@ -1,5 +1,11 @@
 # jd // 
 # > 京东 - JD
+DOMAIN, dns.jd.com, REJECT
+DOMAIN, perf.m.jd.com, REJECT
+DOMAIN, mars.jd.com, REJECT
+DOMAIN, ex.m.jd.com, REJECT
+DOMAIN, cactus.jd.com, REJECT
+DOMAIN, mllog.jd.com, REJECT
 DOMAIN, waapdg.jd.com, REJECT
 DOMAIN, dsp-x.jd.com, REJECT
 DOMAIN, xlog.jd.com, REJECT

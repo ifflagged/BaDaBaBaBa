@@ -4,7 +4,6 @@ DOMAIN, dns.jd.com, reject
 DOMAIN, perf.m.jd.com, reject
 DOMAIN, mars.jd.com, reject
 DOMAIN, ex.m.jd.com, reject
-DOMAIN, cactus.jd.com, reject
 DOMAIN, mllog.jd.com, reject
 DOMAIN, waapdg.jd.com, reject
 DOMAIN, dsp-x.jd.com, reject

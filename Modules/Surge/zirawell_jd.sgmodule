@@ -12,6 +12,8 @@ DOMAIN, janapi.jd.com, REJECT
 DOMAIN, jdqd.jd.com, REJECT
 DOMAIN, dgstatic.jd.com, REJECT
 DOMAIN, wqs.jd.com, REJECT
+DOMAIN, storage23.360buyimg.com, REJECT
+DOMAIN, second-floor-pro.pf.jd.com, REJECT
 DOMAIN-SUFFIX, jzt.jd.com, REJECT
 DOMAIN-SUFFIX, img-x.jd.com, REJECT
 DOMAIN-SUFFIX, du.jd.com, REJECT

@@ -9,6 +9,7 @@ http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?>deliver
 ^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ reject-200
 ^https?:\/\/storage\.360buyimg\.com\/app\.m\.jd\.com\/lottie reject
 ^https?:\/\/storage\.360buyimg\.com\/dynamicConfig\/binary reject
+^https?:\/\/storage\.360buyimg\.com\/occupy-home\/ reject
 ^https?:\/\/storage\.360buyimg\.com\/appcartsoa\/client\/cart_egg_entry reject
 ^https?:\/\/img\d+\.360buyimg\.com\/jddjadvertise\/ reject
 
